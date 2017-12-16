@@ -1,0 +1,631 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <title>Castie! Notes</title>
+  <meta name="description" content="  MVP是个非常好的设计模式, 能够进行代码解耦, 业务分层, 组件化必备良品, 但是还能不能再提升一步呢? 现在项目中的耦合是很少了, 但是控制器之前的切换还是有耦合存在, 有什么办法能够实现控制器零耦合呢?? 那就要祭出本系列的核心Router模式了.代码见: github">
+  <meta name="author" content="Wei Wang">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Hybird 搭建路由Router实现组件化">
+  <meta name="twitter:description" content="  MVP是个非常好的设计模式, 能够进行代码解耦, 业务分层, 组件化必备良品, 但是还能不能再提升一步呢? 现在项目中的耦合是很少了, 但是控制器之前的切换还是有耦合存在, 有什么办法能够实现控制器零耦合呢?? 那就要祭出本系列的核心Router模式了.代码见: github">
+  
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Hybird 搭建路由Router实现组件化">
+  <meta property="og:description" content="  MVP是个非常好的设计模式, 能够进行代码解耦, 业务分层, 组件化必备良品, 但是还能不能再提升一步呢? 现在项目中的耦合是很少了, 但是控制器之前的切换还是有耦合存在, 有什么办法能够实现控制器零耦合呢?? 那就要祭出本系列的核心Router模式了.代码见: github">
+  
+  <link rel="icon" type="image/ico" href="/assets/images/favicon.ico" />
+  <link href="/assets/images/favicon.ico" rel="shortcut icon" type="image/ico">
+  
+  <link rel="stylesheet" href="/css/main.css">
+  <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+
+  <link rel="canonical" href="http://localhost:4000/2017/04/Hybird-%E6%90%AD%E5%BB%BA%E8%B7%AF%E7%94%B1Router%E5%AE%9E%E7%8E%B0%E7%BB%84%E4%BB%B6%E5%8C%96/">
+  <link rel="alternate" type="application/rss+xml" title="Castie!" href="http://localhost:4000/feed.xml">
+  
+  <meta name="google-site-verification" content="1-1ZlHoRvM0T2FqPbW2S-qLgYXN6rsn52kErlMPd_gw" />
+  
+</head>
+
+
+  <body>
+
+    <span class="mobile btn-mobile-menu">
+        <i class="fa fa-list btn-mobile-menu__icon"></i>
+        <i class="fa fa-angle-up btn-mobile-close__icon hidden"></i>
+    </span>
+    
+    <header class="panel-cover panel-cover--collapsed" style="background-image: url('/assets/images/background-cover.jpg')">
+  <div class="panel-main">
+
+    <div class="panel-main__inner panel-inverted">
+    <div class="panel-main__content">
+
+        <a href="/#blog" title="前往 Castie! 的主页" class="blog-button"><img src="/assets/images/avatar.jpg" width="80" alt="Castie! logo" class="panel-cover__logo logo" /></a>
+        <h1 class="panel-cover__title panel-title"><a href="/#blog" title="link to homepage for Castie!" class="blog-button">Castie!</a></h1>
+        
+        <span class="panel-cover__subtitle panel-subtitle">正态分布, 优劣伴生</span>
+        
+        <hr class="panel-cover__divider" />
+        <p class="panel-cover__description">北冥有鱼，其名为鲲（kūn）。鲲之大，不知其几千里也；化而为鸟，其名为鹏。鹏之背，不知其几千里也；怒而飞，其翼若垂天之云。是鸟也，海运则将徙于南冥。南冥者，天池也。</p>
+        <hr class="panel-cover__divider panel-cover__divider--secondary" />
+        
+        
+        <p class="panel-cover__description">北海若曰：“井鼃不可以语于海者，拘于虚也；夏虫不可以语于冰者，笃于时也；曲士不可以语于道者，束于教也。今尔出于崖涘，观于大海，乃知尔丑，尔将可与语大理矣。</p>
+        
+        
+        <div class="navigation-wrapper">
+          <div>
+            <nav class="cover-navigation cover-navigation--primary">
+              <ul class="navigation">
+                <li class="navigation__item"><a href="/#blog" title="访问博客" class="blog-button">博客</a></li>
+                
+                  <li class="navigation__item"><a href="http://www.jianshu.com/u/9d7fad1a4693" target="_blank" title="访问简书">简书</a></li>
+                
+                  <li class="navigation__item"><a href="https://juejin.im/user/57e735dfa22b9d00614eecb8" target="_blank" title="访问掘金">掘金</a></li>
+                
+              </ul>
+            </nav>
+          </div>
+          
+          <div><nav class="cover-navigation navigation--social">
+  <ul class="navigation">
+
+    
+    <!-- jianshu-->
+    <li class="navigation__item">
+      <a href="http://www.jianshu.com/u/9d7fad1a4693" title="@coderZsq 的简书" target="_blank">
+        <i class='social fa fa-book'></i>
+        <span class="label">jianshu</span>
+      </a>
+    </li>
+    
+
+    
+    <!-- juejin-->
+    <li class="navigation__item">
+      <a href="https://juejin.im/user/57e735dfa22b9d00614eecb8" title="@coderZsq 的稀土掘金" target="_blank">
+        <i class='social fa fa-align-center'></i>
+        <span class="label">juejin</span>
+      </a>
+    </li>
+    
+
+  
+
+  
+  <!-- Github -->
+  <li class="navigation__item">
+    <a href="https://github.com/coderZsq" title="@coderZsq 的 Github" target="_blank">
+      <i class='social fa fa-github'></i>
+      <span class="label">Github</span>
+    </a>
+  </li>
+  
+
+  
+
+  
+
+  <!-- RSS -->
+  <li class="navigation__item">
+    <a href="/feed.xml" rel="author" title="RSS" target="_blank">
+      <i class='social fa fa-rss'></i>
+      <span class="label">RSS</span>
+    </a>
+  </li>
+
+  
+  <!-- Email -->
+  <li class="navigation__item">
+    <a href="mailto:a13701777868@gmail.com" title="Contact me">
+      <i class='social fa fa-envelope'></i>
+      <span class="label">Email</span>
+    </a>
+  </li>
+  
+
+  </ul>
+</nav>
+</div>
+        </div>
+      </div>
+    </div>
+    
+    
+    <div class="panel-cover--overlay cover-blue"></div>
+    
+  </div>
+</header>
+
+
+    <div class="content-wrapper">
+        <div class="content-wrapper__inner">
+            <article class="post-container post-container--single" itemscope itemtype="http://schema.org/BlogPosting">
+  <header class="post-header">
+    <div class="post-meta">
+      <time datetime="2017-04-12 13:40:00 +0800" itemprop="datePublished" class="post-meta__date date">2017-04-12</time> &#8226; <span class="post-meta__tags tags">移动开发</span>
+    </div>
+    <h1 class="post-title">Hybird 搭建路由Router实现组件化</h1>
+  </header>
+
+  <section class="post">
+    <blockquote>
+  <p>MVP是个非常好的设计模式, 能够进行代码解耦, 业务分层, 组件化必备良品, 但是还能不能再提升一步呢? 现在项目中的耦合是很少了, 但是控制器之前的切换还是有耦合存在, 有什么办法能够实现控制器零耦合呢?? 那就要祭出本系列的核心Router模式了.代码见: <a href="https://github.com/coderZsq/coderZsq.target.swift">github</a></p>
+</blockquote>
+
+<p><img src="http://upload-images.jianshu.io/upload_images/1229762-3866097366648136.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="" /></p>
+
+<h6 id="参考链接">参考链接:</h6>
+
+<ul>
+  <li><a href="http://www.jianshu.com/p/5a03995a6ce1">Hybird 搭建零耦合架构从MVC开始</a></li>
+  <li><a href="http://www.jianshu.com/p/846b9f181cb7">Hybird 搭建后端Koa.js并过度到MVVM</a></li>
+  <li><a href="http://www.jianshu.com/p/8d4a84e3ddaa">Hybird 搭建前端Vue.js并升级至MVP</a></li>
+</ul>
+
+<p>以下内容在上述文章基础上进行, 请事先查阅.</p>
+
+<p>零耦合一直都是神话般的存在, 但是身边的负能量总是不绝于耳, 不要为了用设计模式而设计模式, 诶.. 我们还是回到Router上来吧, 究竟如何才能构建Router架构呢? 不急, 我们先把前端的项目给搭建完毕吧.</p>
+
+<p>首先我们将端口号改为3000, 对应端口 前端: 3000, 接口服务器: 3001, 图片服务器: 3002</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>├── config
+  ├── dev.env.js
+  ├── index.js
+  └── prod.env.js
+</code></pre>
+</div>
+
+<p>index.js</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>  dev: {
+    env: require('./dev.env'),
+    port: 3000, //update
+    autoOpenBrowser: true,
+    assetsSubDirectory: 'static',
+    assetsPublicPath: '/',
+    proxyTable: {},
+    // CSS Sourcemaps off by default because relative paths are "buggy"
+    // with this option, according to the CSS-Loader README
+    // (https://github.com/webpack/css-loader#sourcemaps)
+    // In our experience, they generally work as expected,
+    // just be aware of this issue when enabling this option.
+    cssSourceMap: false
+  }
+}
+
+
+</code></pre>
+</div>
+
+<p>我们先在package.json中添加网络请求axios, Vue2开始的官方推荐,</p>
+
+<p>package.json</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>  "dependencies": {
+    "axios": "^0.15.3",
+    "element-ui": "^1.1.2",
+    "stylus": "^0.54.5",
+    "stylus-loader": "^2.4.0",
+    "vue": "^2.1.0",
+    "vue-router": "^2.1.1"
+  },
+</code></pre>
+</div>
+
+<p>并在src下创建javascripts 和 stylesheets 两个目录:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>.
+├── App.vue
+├── assets
+│   └── logo.png
+├── components
+├── javascripts
+├── main.js
+├── router
+│   └── index.js
+└── stylesheets
+</code></pre>
+</div>
+
+<p>并在javascripts中添加http.js来执行网路请求脚本:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>├── javascripts
+    ├── http.js
+
+</code></pre>
+</div>
+
+<p>http.js</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>
+import axios from 'axios'
+
+export function GET(url) {
+
+  return new Promise((resolve, reject) =&gt; {
+    axios.get(url).then((response) =&gt; {
+      resolve(response.data.data);
+    }).catch((error) =&gt; {
+      reject(error);
+    })
+  });
+}
+
+export const URL = {
+  getJ1List: 'http://localhost:3001/api/J1/getJ1List'
+}
+
+
+</code></pre>
+</div>
+
+<p>代码也很简单, 和之前Swift的Alamofire一样, 在外面封装一层, 使用ES6语法的Promise, 并定义接口URL.</p>
+
+<p>接着我们将Hello.vue修改为J1.vue</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>├── src
+  ├── components
+    └── J1.vue
+</code></pre>
+</div>
+
+<p>J1.vue</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>
+&lt;template lang="html"&gt;
+  &lt;div&gt;
+    &lt;div class="cell" v-for="model in models"&gt;
+        ![](model.imageUrl)
+        &lt;span&gt;&lt;/span&gt;
+        &lt;span&gt;&lt;/span&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/template&gt;
+
+&lt;script&gt;
+
+import { GET,URL } from '../javascripts/http'
+
+export default {
+  data () {
+    return {
+      title: '',
+      models: []
+    }
+  },
+  methods: {
+    request: function() {
+      GET(URL.getJ1List).then((data) =&gt; {
+          this.models = data.models;
+      }).catch((error) =&gt; {
+
+      })
+    }
+  },
+  mounted:function () {
+    this.title = document.title = "J1";
+    this.request();
+    // alert(window.location.href);
+  }
+}
+&lt;/script&gt;
+
+&lt;style scoped&gt;
+
+.cell {
+    height: 100px;
+    position: relative;
+    border-bottom: 1px solid lightgray;
+}
+
+.cell img {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    padding-left: 10px;
+}
+
+.cell span:first-of-type {
+    position: absolute;
+    top: 35%;
+    transform: translateY(-35%);
+    padding-left: 84px;
+    font-size: 15px;
+}
+
+.cell span:last-of-type {
+    position: absolute;
+    top: 65%;
+    transform: translateY(-65%);
+    padding-left: 84px;
+    font-size: 12px;
+}
+
+&lt;/style&gt;
+
+</code></pre>
+</div>
+<p>接下来我们修改路由:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>├── src
+  ├── router
+    └── index.js
+</code></pre>
+</div>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>import Vue from 'vue'
+import Router from 'vue-router'
+import J1 from '../components/J1'
+
+Vue.use(Router)
+
+export default new Router({
+  routes: [{
+      path: '/',
+      component: J1
+    },
+    {
+      path: '/J1',
+      component: J1
+    },
+    {
+      path: '*',
+      redirect: '/'
+    }
+  ]
+})
+
+</code></pre>
+</div>
+
+<p>执行一下, 怎么什么都没有, 这个就要说到ajax的跨域问题了, 我们这里不展开, 对跨域有疑问的同学请自行Google.</p>
+
+<p>要解决跨域, 我们通过在后端加载跨域权限的方式:</p>
+
+<p>在server/app.js 中添加:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>const cors = require('koa-cors');
+
+app.use(cors());
+
+</code></pre>
+</div>
+<p>当然你需要 npm install一下了, 这样我们就能看见web端的显示了.</p>
+
+<p>前端不封叙述的有点多了, 但这对于热修复还是必须的, 我们回到移动端的项目上来, 在加载webView的时候将端口号改为3000, 这样我们在app端就能够加载刚才创建相同版本的web页面了.</p>
+
+<p>连载到现在, 我们发现了Koa中的接口是基于Router的, Vue中的页面跳转也是基于Router的, 那我们移动端能不能也有自己的Router跳转机制呢? 其实一些紧跟潮流的开发者都知道现在流行组件化, 而移动端组件化的代表就是Router, 也有一些第三方框架之类的, 孰优孰劣我没用过, 也不清楚, 在这里我只是基于对前端路由的理解来搭建一个移动端的路由, 首先我们添加一个Router.swift.</p>
+
+<p>Router.swift</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>class Router {
+    static let shareRouter = Router()
+    var params: [String : Any]?
+    fileprivate let map = ["J1" : "Controller"]
+}
+
+
+extension Router {
+    
+    func addParam(key: String, value: Any) {
+        params?[key] = value
+    }
+    
+    func clearParams() {
+        params?.removeAll()
+    }
+    
+    func push(_ path: String) {
+        guard let nativeController = NSClassFromString("RouterPatterm.\(self.map[path]!)") as? UIViewController.Type else { return }
+        currentController?.navigationController?.pushViewController(nativeController.init(), animated: true)
+    }
+}
+
+</code></pre>
+</div>
+
+<p>首先Router必须是一个单例, Swift的单例比起Objective-C真是简单太多了, 来看我们的Router类, map是对应匹配跳转控制器,并可以添加参数, 删除参数, 和跳转的方法, 当然也可以加上pop等其他功能, 我这里就不演示, 有兴趣的同学自行研究.</p>
+
+<p>定义完成之后, 我们就可以进行使用了, 我们修改业务逻辑的Presenter.swift</p>
+
+<p>Presenter.swift</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>
+extension Presenter: ViewOperation {
+    
+    func pushTo() {
+        Router.shareRouter.params = [
+            "text" : "app端 传入数据",
+            "code" : 1001
+        ]
+        Router.shareRouter.push("J1") //update
+    }
+}
+
+</code></pre>
+</div>
+
+<p>在操作这里直接更改为使用Router跳转, 这样更具map定义的匹配, 我们就能够进行零耦合的页面跳转了. 如果需要传参也可以通过字典的形式存储在路由中, 当使用完成后对参数做清空操作就可以了.</p>
+
+<p>现在我们对移动端的路由跳转已经到位了, 接下啦该说说重点的热更新的思想了, 我们通过一个从服务器读取的字段来匹配该页面是跳转到移动端还是前端, 简单来说就是当移动端代码逻辑发生错误时怎么将移动端的页面降级为前端的页面. 这里我们在后端定义下获取跳转的接口.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>controllers
+	└── J1.js
+</code></pre>
+</div>
+
+<p>J1.js</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>exports.getRouters = async(ctx, next) =&gt; {
+
+    ctx.body = {
+        routers: {
+            J1: 'web'
+        }
+    }
+}
+
+</code></pre>
+</div>
+<p>并挂载到路由上:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>.
+├── api
+│   ├── J1_router.js
+│   └── index.js
+├── index.js
+└── users.js
+</code></pre>
+</div>
+
+<p>J1_router</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>
+var router = require('koa-router')();
+var J1 = require('../../app/controllers/J1');
+
+router.get('/getRouters', J1.getRouters); //update
+router.get('/getJ1List', J1.getJ1List);
+
+module.exports = router;
+
+</code></pre>
+</div>
+
+<p>通过接口访问, 我们就能得到返回数据:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"routers"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"J1"</span><span class="p">:</span><span class="w"> </span><span class="s2">"web"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre>
+</div>
+
+<p>回到移动端, 我们就可以根据这个接口来判断路由的跳转了.</p>
+
+<p>Router.swift</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>class Router {
+    static let shareRouter = Router()
+    var params: [String : Any]?
+    var routers: [String : Any]? //update
+    fileprivate let map = ["J1" : "Controller"]
+    
+    func guardRouters(finishedCallback : @escaping () -&gt; ()) { //update
+        
+        Http.requestData(.get, URLString: "http://localhost:3001/api/J1/getRouters") { (response) in
+            guard let result = response as? [String : Any] else { return }
+            guard let data:[String : Any] = result["data"] as? [String : Any] else { return }
+            guard let routers:[String : Any] = data["routers"] as? [String : Any] else { return }
+            self.routers = routers
+            finishedCallback()
+        }
+    }
+}
+
+extension Router {
+    
+    func addParam(key: String, value: Any) {
+        params?[key] = value
+    }
+    
+    func clearParams() {
+        params?.removeAll()
+    }
+    
+    func push(_ path: String) {
+        
+        guardRouters { //update
+            guard let state = self.routers?[path] as? String else { return }
+            
+            if state == "app" {
+                guard let nativeController = NSClassFromString("RouterPatterm.\(self.map[path]!)") as? UIViewController.Type else { return }
+                currentController?.navigationController?.pushViewController(nativeController.init(), animated: true)
+            }
+            
+            if state == "web" {
+                let host = "http://localhost:3000/"
+                let webViewController = WebViewController("\(host)")
+                currentController?.navigationController?.pushViewController(webViewController, animated: true)
+            }
+        }
+    }
+}
+</code></pre>
+</div>
+<p>现在我们在每次路由跳转的时候都请求到对应的页面状态就可以后台操作跳转Native还是H5了.</p>
+
+<p>回顾之前的代码, 我们现在已经做到了Model, View, ViewModel, Presenter和Controller之间的零耦合, 想想是不是有点小激动, 下一节内容, 我们会将Swift, Vue, Koa三端进行统筹, 实现真正的热修复框架.</p>
+
+<p>About:</p>
+
+<p><img src="http://upload-images.jianshu.io/upload_images/1229762-3f8925783027b3fa.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="点击下方链接跳转!!" /></p>
+
+<p><a href="https://github.com/coderZsq/coderZsq.target.swift">🌟 源码 请点这里🌟 »&gt; 喜欢的朋友请点喜欢 »&gt; 下载源码的同学请送下小星星 »&gt; 有闲钱的壕们可以进行打赏 »&gt; 小弟会尽快推出更好的文章和大家分享 »&gt; 你的激励就是我的动力!! </a></p>
+
+  </section>
+</article>
+
+<section class="read-more">
+   
+   
+   <div class="read-more-item">
+       <span class="read-more-item-dim">最近的文章</span>
+       <h2 class="post-list__post-title post-title"><a href="/2017/04/Hybird-%E6%90%AD%E5%BB%BA%E5%AE%A2%E6%88%B7%E7%AB%AF%E5%AE%9E%E6%97%B6%E9%99%8D%E7%BA%A7%E6%9E%B6%E6%9E%84/" title="link to Hybird 搭建客户端实时降级架构">Hybird 搭建客户端实时降级架构</a></h2>
+       <p class="excerpt">  Router真是一个非常好的一种设计模式, 能够做到超低的耦合, 作为系列的最后一节, 我们来统筹三端, 实现热修复架构, 再来说下这个架构的定义, 就是当Native页面业务逻辑出现Bug时, 又不能马上打包上线通过审核的情况下, 通过后台配置将页面降级为H5的页面, 等待修复完成上线后再回到Native的设计思想.参考链接:  Hybird 搭建零耦合架构从MVC开始  Hybird 搭建后端Koa.js并过度到MVVM  Hybird 搭建前端Vue.js并升级至MVP  Hyb...&hellip;</p>
+       <div class="post-list__meta"><time datetime="2017-04-12 16:37:00 +0800" class="post-list__meta--date date">2017-04-12</time> &#8226; <span class="post-list__meta--tags tags">移动开发</span><a class="btn-border-small" href=/2017/04/Hybird-%E6%90%AD%E5%BB%BA%E5%AE%A2%E6%88%B7%E7%AB%AF%E5%AE%9E%E6%97%B6%E9%99%8D%E7%BA%A7%E6%9E%B6%E6%9E%84/>继续阅读</a></div>
+   </div>
+   
+   
+   
+   
+   <div class="read-more-item">
+       <span class="read-more-item-dim">更早的文章</span>
+       <h2 class="post-list__post-title post-title"><a href="/2017/04/Hybird-%E6%90%AD%E5%BB%BA%E5%89%8D%E7%AB%AFVue.js%E5%B9%B6%E5%8D%87%E7%BA%A7%E8%87%B3MVP/" title="link to Hybird 搭建前端Vue.js并升级至MVP">Hybird 搭建前端Vue.js并升级至MVP</a></h2>
+       <p class="excerpt">  上回我们说到MVVM, 说真的我真没觉得MVVM为什么会鼓吹的那么神, 用大篇幅的叙述我着实提不起劲. 回顾一下内容, 我们通过Node.js搭建了图片服务器, 并通过Kingfisher加载出来, 说真的前两篇主要还是叙述移动端入门后端吧.. 噗.. 笑.. 这一节我们来说说MVP模式, 也是我比较喜欢以及推荐大家使用的一种设计思想. 代码见:github参考链接:  Hybird 搭建零耦合架构从MVC开始  Hybird 搭建后端Koa.js并过度到MVVM以下内容在上述文章基础...&hellip;</p>
+       <div class="post-list__meta"><time datetime="2017-04-11 15:06:00 +0800" class="post-list__meta--date date">2017-04-11</time> &#8226; <span class="post-list__meta--tags tags">移动开发</span><a class="btn-border-small" href=/2017/04/Hybird-%E6%90%AD%E5%BB%BA%E5%89%8D%E7%AB%AFVue.js%E5%B9%B6%E5%8D%87%E7%BA%A7%E8%87%B3MVP/>继续阅读</a></div>
+   </div>
+   
+</section>
+
+<section class="post-comments">
+  
+  
+  
+  
+</section>
+
+
+            <section class="footer">
+    <footer>
+    	<span class="footer__copyright">本站点采用<a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">知识共享 署名-非商业性使用-相同方式共享 4.0 国际 许可协议</a></span>
+        <span class="footer__copyright">由 <a href="https://jekyllrb.com">Jekyll</a> 于 2017-12-16 生成，感谢 <a href="https://www.digitalocean.com/?refcode=30ed2d146762">Digital Ocean</a> 为本站提供稳定的 VPS 服务</span>
+        <span class="footer__copyright">本站由 <a href="https://github.com/coderZsq">@Castie!</a> 创建，采用 <a href="https://github.com/onevcat/vno-jekyll">Vno - Jekyll</a> 作为主题，您可以在 GitHub 找到<a href="https://github.com/onevcat/OneV-s-Den">本站源码</a> - &copy; 2017</span>
+    </footer>
+</section>
+
+        </div>
+    </div>
+    
+    <script type="text/javascript" src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+
+<script type="text/javascript" src="/js/main.js"></script>
+
+
+
+    
+  </body>
+
+</html>

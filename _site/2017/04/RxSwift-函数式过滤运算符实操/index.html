@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <title>Castie! Notes</title>
+  <meta name="description" content="  接着上一部分, 我们已经完成了函数式编程的简单实践, 也同时接触了Photos框架带来的自定义的便利, 主要熟悉了Variable, Subject 作为 Observable 进行订阅 subscribe 并通过处置包DisposeBag 处理的具体案例, 这一节我们来进一步完善相片拼图. 代码见:github">
+  <meta name="author" content="Wei Wang">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="RxSwift 函数式过滤运算符实操">
+  <meta name="twitter:description" content="  接着上一部分, 我们已经完成了函数式编程的简单实践, 也同时接触了Photos框架带来的自定义的便利, 主要熟悉了Variable, Subject 作为 Observable 进行订阅 subscribe 并通过处置包DisposeBag 处理的具体案例, 这一节我们来进一步完善相片拼图. 代码见:github">
+  
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="RxSwift 函数式过滤运算符实操">
+  <meta property="og:description" content="  接着上一部分, 我们已经完成了函数式编程的简单实践, 也同时接触了Photos框架带来的自定义的便利, 主要熟悉了Variable, Subject 作为 Observable 进行订阅 subscribe 并通过处置包DisposeBag 处理的具体案例, 这一节我们来进一步完善相片拼图. 代码见:github">
+  
+  <link rel="icon" type="image/ico" href="/assets/images/favicon.ico" />
+  <link href="/assets/images/favicon.ico" rel="shortcut icon" type="image/ico">
+  
+  <link rel="stylesheet" href="/css/main.css">
+  <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+
+  <link rel="canonical" href="http://localhost:4000/2017/04/RxSwift-%E5%87%BD%E6%95%B0%E5%BC%8F%E8%BF%87%E6%BB%A4%E8%BF%90%E7%AE%97%E7%AC%A6%E5%AE%9E%E6%93%8D/">
+  <link rel="alternate" type="application/rss+xml" title="Castie!" href="http://localhost:4000/feed.xml">
+  
+  <meta name="google-site-verification" content="1-1ZlHoRvM0T2FqPbW2S-qLgYXN6rsn52kErlMPd_gw" />
+  
+</head>
+
+
+  <body>
+
+    <span class="mobile btn-mobile-menu">
+        <i class="fa fa-list btn-mobile-menu__icon"></i>
+        <i class="fa fa-angle-up btn-mobile-close__icon hidden"></i>
+    </span>
+    
+    <header class="panel-cover panel-cover--collapsed" style="background-image: url('/assets/images/background-cover.jpg')">
+  <div class="panel-main">
+
+    <div class="panel-main__inner panel-inverted">
+    <div class="panel-main__content">
+
+        <a href="/#blog" title="前往 Castie! 的主页" class="blog-button"><img src="/assets/images/avatar.jpg" width="80" alt="Castie! logo" class="panel-cover__logo logo" /></a>
+        <h1 class="panel-cover__title panel-title"><a href="/#blog" title="link to homepage for Castie!" class="blog-button">Castie!</a></h1>
+        
+        <span class="panel-cover__subtitle panel-subtitle">正态分布, 优劣伴生</span>
+        
+        <hr class="panel-cover__divider" />
+        <p class="panel-cover__description">北冥有鱼，其名为鲲（kūn）。鲲之大，不知其几千里也；化而为鸟，其名为鹏。鹏之背，不知其几千里也；怒而飞，其翼若垂天之云。是鸟也，海运则将徙于南冥。南冥者，天池也。</p>
+        <hr class="panel-cover__divider panel-cover__divider--secondary" />
+        
+        
+        <p class="panel-cover__description">北海若曰：“井鼃不可以语于海者，拘于虚也；夏虫不可以语于冰者，笃于时也；曲士不可以语于道者，束于教也。今尔出于崖涘，观于大海，乃知尔丑，尔将可与语大理矣。</p>
+        
+        
+        <div class="navigation-wrapper">
+          <div>
+            <nav class="cover-navigation cover-navigation--primary">
+              <ul class="navigation">
+                <li class="navigation__item"><a href="/#blog" title="访问博客" class="blog-button">博客</a></li>
+                
+                  <li class="navigation__item"><a href="http://www.jianshu.com/u/9d7fad1a4693" target="_blank" title="访问简书">简书</a></li>
+                
+                  <li class="navigation__item"><a href="https://juejin.im/user/57e735dfa22b9d00614eecb8" target="_blank" title="访问掘金">掘金</a></li>
+                
+              </ul>
+            </nav>
+          </div>
+          
+          <div><nav class="cover-navigation navigation--social">
+  <ul class="navigation">
+
+    
+    <!-- jianshu-->
+    <li class="navigation__item">
+      <a href="http://www.jianshu.com/u/9d7fad1a4693" title="@coderZsq 的简书" target="_blank">
+        <i class='social fa fa-book'></i>
+        <span class="label">jianshu</span>
+      </a>
+    </li>
+    
+
+    
+    <!-- juejin-->
+    <li class="navigation__item">
+      <a href="https://juejin.im/user/57e735dfa22b9d00614eecb8" title="@coderZsq 的稀土掘金" target="_blank">
+        <i class='social fa fa-align-center'></i>
+        <span class="label">juejin</span>
+      </a>
+    </li>
+    
+
+  
+
+  
+  <!-- Github -->
+  <li class="navigation__item">
+    <a href="https://github.com/coderZsq" title="@coderZsq 的 Github" target="_blank">
+      <i class='social fa fa-github'></i>
+      <span class="label">Github</span>
+    </a>
+  </li>
+  
+
+  
+
+  
+
+  <!-- RSS -->
+  <li class="navigation__item">
+    <a href="/feed.xml" rel="author" title="RSS" target="_blank">
+      <i class='social fa fa-rss'></i>
+      <span class="label">RSS</span>
+    </a>
+  </li>
+
+  
+  <!-- Email -->
+  <li class="navigation__item">
+    <a href="mailto:a13701777868@gmail.com" title="Contact me">
+      <i class='social fa fa-envelope'></i>
+      <span class="label">Email</span>
+    </a>
+  </li>
+  
+
+  </ul>
+</nav>
+</div>
+        </div>
+      </div>
+    </div>
+    
+    
+    <div class="panel-cover--overlay cover-blue"></div>
+    
+  </div>
+</header>
+
+
+    <div class="content-wrapper">
+        <div class="content-wrapper__inner">
+            <article class="post-container post-container--single" itemscope itemtype="http://schema.org/BlogPosting">
+  <header class="post-header">
+    <div class="post-meta">
+      <time datetime="2017-04-19 11:50:00 +0800" itemprop="datePublished" class="post-meta__date date">2017-04-19</time> &#8226; <span class="post-meta__tags tags">移动开发</span>
+    </div>
+    <h1 class="post-title">RxSwift 函数式过滤运算符实操</h1>
+  </header>
+
+  <section class="post">
+    <blockquote>
+  <p>接着上一部分, 我们已经完成了函数式编程的简单实践, 也同时接触了<code class="highlighter-rouge">Photos</code>框架带来的自定义的便利, 主要熟悉了<code class="highlighter-rouge">Variable</code>, <code class="highlighter-rouge">Subject</code> 作为 <code class="highlighter-rouge">Observable</code> 进行订阅 <code class="highlighter-rouge">subscribe</code> 并通过处置包<code class="highlighter-rouge">DisposeBag</code> 处理的具体案例, 这一节我们来进一步完善相片拼图. 代码见:<a href="https://github.com/coderZsq/coderZsq.target.swift">github</a></p>
+</blockquote>
+
+<p><img src="http://upload-images.jianshu.io/upload_images/1229762-a67b7f2ab21d4b23.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="" /></p>
+
+<p>本节所需的一些关于订阅信息过滤的基本知识已经更新到<a href="https://github.com/coderZsq/coderZsq.target.swift">github</a>代码中的playground文件中, 没有接触过响应式编程的同学请和之前一样先行在<a href="https://github.com/coderZsq/coderZsq.target.swift/blob/master/AlbumPuzzle/AlbumPuzzle.playground/Contents.swift">playground</a>中了解概要以便更好的理解本文. 在进行对项目的完善之前我们先来看一个问题:</p>
+<div class="highlighter-rouge"><pre class="highlight"><code>example(of: "Sharing subscription") {
+    
+    var start = 0
+    func getStartNumber() -&gt; Int {
+        start += 1
+        return start
+    }
+    
+    let numbers = Observable&lt;Int&gt;.create { observer in
+        
+        let start = getStartNumber()
+        observer.onNext(start)
+        observer.onNext(start+1)
+        observer.onNext(start+2)
+        observer.onCompleted()
+        return Disposables.create()
+    }
+    
+    numbers.subscribe(
+        onNext: { el in
+            print("element [\(el)]")
+        },
+        onCompleted: {
+            print("---------------")
+        }
+    )
+    
+    numbers.subscribe(
+        onNext: { el in
+            print("element [\(el)]")
+        },
+        onCompleted: {
+            print("---------------")
+        }
+    )
+}
+
+---Example of: Sharing subscription ---
+element [1]
+element [2]
+element [3]
+---------------
+element [2]
+element [3]
+element [4]
+---------------
+
+</code></pre>
+</div>
+<p>同样是对于可观察对象进行订阅为什么会出现两种不同的结果? 问题是，每次调用subscribe（…）时，都会为该订阅创建一个新的Observable，并且每个副本不能保证与之前的相同。 即使Observable确实产生了相同的元素序列，为每个订阅生成相同的重复元素也是没有意义的。</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>example(of: "Sharing subscription Fix") {
+        
+    var start = 0
+    func getStartNumber() -&gt; Int {
+        start += 1
+        return start
+    }
+    
+    let numbers = Observable&lt;Int&gt;.create { observer in
+        
+        let start = getStartNumber()
+        observer.onNext(start)
+        observer.onNext(start+1)
+        observer.onNext(start+2)
+        observer.onCompleted()
+        return Disposables.create()
+    }
+    
+    let shareNumbers = numbers.share()
+    
+    shareNumbers.subscribe(
+        onNext: { el in
+            print("element [\(el)]")
+        },
+        onCompleted: {
+            print("---------------")
+        }
+    )
+    
+    shareNumbers.subscribe(
+        onNext: { el in
+            print("element [\(el)]")
+        },
+        onCompleted: {
+            print("---------------")
+        }
+    )
+}
+
+---Example of: Sharing subscription Fix ---
+element [1]
+element [2]
+element [3]
+---------------
+---------------
+</code></pre>
+</div>
+<p>如果需要进行共享订阅，可以使用share（）运算符。 Rx代码中的常见模式是通过过滤每个结果中的不同元素来从同一个源中创建几个序列。</p>
+
+<p>回到我们的项目中来看如何将share()运算符运用的实际, 将ViewController中的代码修改如下:</p>
+<div class="highlighter-rouge"><pre class="highlight"><code>class ViewController: UIViewController {
+    ...
+    fileprivate var imageCache = [Int]() //update
+    ...
+}
+</code></pre>
+</div>
+<div class="highlighter-rouge"><pre class="highlight"><code>    //update
+    fileprivate func updateNavigationIcon() {
+        let icon = imagePreview.image?.scaled(CGSize(width: 22, height: 22)).withRenderingMode(.alwaysOriginal)
+        navigationItem.leftBarButtonItem = UIBarButtonItem(image: icon, style: .done, target: nil, action: nil)
+    }
+</code></pre>
+</div>
+<div class="highlighter-rouge"><pre class="highlight"><code>    @IBAction func actionAdd() {
+//        images.value.append(UIImage(named: "Castie!")!)
+        
+        let albumViewController = storyboard?.instantiateViewController(withIdentifier: "AlbumViewController") as! AlbumViewController
+        
+        //update
+        let newImages = albumViewController.selectedImages.share()
+
+        newImages.takeWhile { [weak self] image in
+                return (self?.images.value.count ?? 0) &lt; 6
+            }.filter { newImage in
+                return newImage.size.width &gt; newImage.size.height
+            }.filter { [weak self] newImage in
+                let len = UIImagePNGRepresentation(newImage)?.count ?? 0
+                guard self?.imageCache.contains(len) == false else { return false }
+                self?.imageCache.append(len)
+                return true
+            }.subscribe(
+                
+            onNext: { [weak self] newImage in
+                guard let images = self?.images else { return }
+                images.value.append(newImage)
+            },
+            onDisposed: {
+                print("completed photo selection")
+            }
+                
+        ).addDisposableTo(albumViewController.bag)
+        
+        newImages.ignoreElements().subscribe(
+            onCompleted: { [weak self] in
+            self?.updateNavigationIcon()
+        }).addDisposableTo(albumViewController.bag)
+        
+        navigationController?.pushViewController(albumViewController, animated: true)
+    }
+    
+    @IBAction func actionClear() {
+        images.value = []
+        //update
+        imageCache = []
+    }
+
+</code></pre>
+</div>
+<p>我们来具体分析<code class="highlighter-rouge">actionAdd()</code> 这段代码, 首先, 我们通过<code class="highlighter-rouge">share()</code>操作符对可观察对象进行订阅共享<code class="highlighter-rouge">takeWhile()</code>操作符将得到的订阅信息进行过滤, 返回最大六张图片和之前对点击按钮的屏蔽逻辑进行了对应, <code class="highlighter-rouge">filter()</code>操作符就是传统的函数式过滤, 返回图片宽度大于高度的图片及通过图片字节数和缓存池中的字节数判断是否为同一张图片. 这里我们新加了一个订阅 <code class="highlighter-rouge">ignoreElements()</code> 操作符是忽略所有的<code class="highlighter-rouge">onNext()</code>事件, 只接收<code class="highlighter-rouge">onCompleted ()</code>事件. UI层面我们在左上角添加了一个对应图片的缩略图.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>    //update
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        selectedImagesSubject.onCompleted()
+    }
+</code></pre>
+</div>
+<p>接下来我们就需要对AlbumViewController生命周期结束的时候对可观察对象进行<code class="highlighter-rouge">onCompleted()</code>调用, 执行之前的订阅代码修改UI.
+<img src="http://upload-images.jianshu.io/upload_images/1229762-718f23f9c824c8bb.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="" /></p>
+
+<p>运行成功后, 我们顺利的看到左上角的缩略图显示了, 并且不能重复添加大于六张图片及只允许宽度大于长度的图片. 但我们这里有一个小问题, 当我们第一次访问相册的时候, 会弹出一个提示框对用户行为进行授权, 但授权完成后, 图片并没有显示出来, 这是因为懒加载的时候在授权验证前并没有拿到任何的数据. 我们来看看如何解决. 我们新建一个文件, 并对PHPhotoLibrary进行类扩展.</p>
+
+<p>PHPhotoLibrary可以看成是一个用户图库，包含了一些的图片和相册，同时包含本地的和iCloud中的资源。当Photos app发生图片的修改、增加、删除等改变时，使用PHPhotoLibrary来做一些刷新UI，保存数据等响应动作，同时也可以注册观察者（使用registerChangeObserver方法），当Photos app内容发生改变的时，会触发代理方法photoLibraryDidChange。</p>
+<div class="highlighter-rouge"><pre class="highlight"><code>extension PHPhotoLibrary {
+
+    static var authorized: Observable&lt;Bool&gt; {
+        return Observable.create { observer in
+
+            DispatchQueue.main.async {
+                if authorizationStatus() == .authorized {
+                    observer.onNext(true)
+                    observer.onCompleted()
+                } else {
+                    observer.onNext(false)
+                    requestAuthorization { newStatus in
+                        observer.onNext(newStatus == .authorized)
+                        observer.onCompleted()
+                    }
+                }
+            }
+            
+            return Disposables.create()
+        }
+    }
+}
+
+</code></pre>
+</div>
+<p>这里对于刚学习Swift的同学可能并不是很好理解, 这里我们对<code class="highlighter-rouge">PHPhotoLibrary</code>扩展了一个<code class="highlighter-rouge">authorized</code>属性, 并通过计算属性返回了一个可观察对象, 对观察对象进行授权校验, 如果校验过就执行操作, 没有校验过就请求授权校验, 这里开了一个GCD的主线程, 但一般来说在订阅中是观察器不应该阻止当前线程. 接下来我们在AlbumViewController中进行使用.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>    override func viewDidLoad() {
+        super.viewDidLoad()
+        self.collectionView!.register(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
+        //update
+        let authorized = PHPhotoLibrary.authorized.share()
+        
+        authorized.skipWhile { $0 == false }.take(1).subscribe(onNext: { [weak self] _ in
+            self?.images = AlbumViewController.loadImages()
+            DispatchQueue.main.async {
+                self?.collectionView?.reloadData()
+            }
+        }).addDisposableTo(bag)
+        
+        authorized.skip(1).takeLast(1).filter { $0 == false }.subscribe(onNext: { [weak self] _ in
+            guard let errorMessage = self?.errorMessage else { return }
+                DispatchQueue.main.async(execute: errorMessage)
+        }).addDisposableTo(bag)
+    }
+</code></pre>
+</div>
+<p>我们通过订阅共享的形式进行, 第一个订阅授权验证当验证成功后进行获取系统相册图片, 并在主线程刷新UI, 第二个是发起请求验证后仍没有验证后, 主线程执行错误提示弹窗. 代码中的<code class="highlighter-rouge">skipWhile()</code>, <code class="highlighter-rouge">take()</code>,<code class="highlighter-rouge">skip()</code>, <code class="highlighter-rouge">takeLast()</code>操作符, 不理解的同学可以到项目中的playground中先行了解.</p>
+<div class="highlighter-rouge"><pre class="highlight"><code>    fileprivate func errorMessage() {
+        alert(title: "No access to Camera Roll",
+              text: "You can grant access to Combinestagram from the Settings app")
+            .take(5.0, scheduler: MainScheduler.instance)
+            .subscribe(onDisposed: { [weak self] in
+                self?.dismiss(animated: true, completion: nil)
+                _ = self?.navigationController?.popViewController(animated: true)
+        }).addDisposableTo(bag)
+    }
+</code></pre>
+</div>
+<p><code class="highlighter-rouge">errorMessage()</code> 中需要讲一下的是<code class="highlighter-rouge">.take(5.0, scheduler: MainScheduler.instance)</code> 从给定时间段的源序列中获取元素。 一旦时间间隔过去，完成结果序列。我们在ViewController中也更改如下:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>    fileprivate func setupObservable() {
+        //update
+        images.asObservable().throttle(0.5, scheduler: MainScheduler.instance).subscribe(onNext: { [weak self] images in
+            guard let preview = self?.imagePreview else { return }
+            preview.image = UIImage.collage(images: images, size: preview.frame.size)
+            }).addDisposableTo(bag)
+        
+        images.asObservable().subscribe(onNext: { [weak self] images in
+            self?.updateUI(images: images)
+        }).addDisposableTo(bag)
+    }
+</code></pre>
+</div>
+<p><code class="highlighter-rouge">.throttle(0.5, scheduler: MainScheduler.instance)</code>和刚才的<code class="highlighter-rouge">take(_:scheduler:)</code>非常相似, 是在一定时间间隔内过滤掉之前的元素只留下最新的元素,</p>
+
+<p>演示效果:
+<img src="http://upload-images.jianshu.io/upload_images/1229762-c9e974553e6ba09b.gif?imageMogr2/auto-orient/strip" alt="" /></p>
+
+<p>About:</p>
+
+<p><img src="http://upload-images.jianshu.io/upload_images/1229762-3f8925783027b3fa.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="点击下方链接跳转!!" /></p>
+
+<p><a href="https://github.com/coderZsq/coderZsq.target.swift">🌟 源码 请点这里🌟 »&gt; 喜欢的朋友请点喜欢 »&gt; 下载源码的同学请送下小星星 »&gt; 有闲钱的壕们可以进行打赏 »&gt; 小弟会尽快推出更好的文章和大家分享 »&gt; 你的激励就是我的动力!! </a></p>
+
+  </section>
+</article>
+
+<section class="read-more">
+   
+   
+   <div class="read-more-item">
+       <span class="read-more-item-dim">最近的文章</span>
+       <h2 class="post-list__post-title post-title"><a href="/2017/04/RxSwift-%E5%87%BD%E6%95%B0%E5%BC%8F%E6%98%A0%E5%B0%84%E8%BF%90%E7%AE%97%E7%AC%A6%E5%AE%9E%E6%93%8D/" title="link to RxSwift 函数式映射运算符实操">RxSwift 函数式映射运算符实操</a></h2>
+       <p class="excerpt">  一路走来, 感觉RxSwift也不像之前一样晦涩难懂了, 甚至渐渐的喜欢上了这种响应式编程的思想, 将对象作为可观察对象并进行订阅, 加上过滤操作符的协作, 一切的逻辑运算都在后台线程执行, 本节所要讲的是Rx中最为强大的功能 — 映射, 代码见:github本节所需的一些关于映射的基本知识已经更新到github代码中的playground文件中, 没有接触过响应式编程的同学请和之前一样先行在playground中了解概要以便更好的理解本文. 本节我们就通过案例逐步精讲映射操作符在网络...&hellip;</p>
+       <div class="post-list__meta"><time datetime="2017-04-20 10:45:00 +0800" class="post-list__meta--date date">2017-04-20</time> &#8226; <span class="post-list__meta--tags tags">移动开发</span><a class="btn-border-small" href=/2017/04/RxSwift-%E5%87%BD%E6%95%B0%E5%BC%8F%E6%98%A0%E5%B0%84%E8%BF%90%E7%AE%97%E7%AC%A6%E5%AE%9E%E6%93%8D/>继续阅读</a></div>
+   </div>
+   
+   
+   
+   
+   <div class="read-more-item">
+       <span class="read-more-item-dim">更早的文章</span>
+       <h2 class="post-list__post-title post-title"><a href="/2017/04/RxSwift-%E5%A4%A7%E7%A5%9E%E4%BB%AC%E9%83%BD%E5%9C%A8%E7%9C%8B%E7%9A%84%E5%93%8D%E5%BA%94%E5%BC%8F/" title="link to RxSwift 大神们都在看的响应式">RxSwift 大神们都在看的响应式</a></h2>
+       <p class="excerpt">  上个系列的架构设计, 从MVC -&gt; MVVM -&gt; MVP -&gt; Router -&gt; Downgradable, 我们实现了通过分层将各个组件进行解耦并动态的升降级页面, 这一系列准备说说如何通过RxSwift进行响应式编程更好的和架构设计进行协同. 代码见:github这系列所述案例是通过Ray家的RxSwift一书进行笔记, 在学习本篇之前, 请确保熟练掌握Swift3基础语法并具备中级iOS开发能力. 对于RxSwift的概念不是很清晰的同学可以参照本文...&hellip;</p>
+       <div class="post-list__meta"><time datetime="2017-04-18 12:13:00 +0800" class="post-list__meta--date date">2017-04-18</time> &#8226; <span class="post-list__meta--tags tags">移动开发</span><a class="btn-border-small" href=/2017/04/RxSwift-%E5%A4%A7%E7%A5%9E%E4%BB%AC%E9%83%BD%E5%9C%A8%E7%9C%8B%E7%9A%84%E5%93%8D%E5%BA%94%E5%BC%8F/>继续阅读</a></div>
+   </div>
+   
+</section>
+
+<section class="post-comments">
+  
+  
+  
+  
+</section>
+
+
+            <section class="footer">
+    <footer>
+    	<span class="footer__copyright">本站点采用<a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">知识共享 署名-非商业性使用-相同方式共享 4.0 国际 许可协议</a></span>
+        <span class="footer__copyright">由 <a href="https://jekyllrb.com">Jekyll</a> 于 2017-12-16 生成，感谢 <a href="https://www.digitalocean.com/?refcode=30ed2d146762">Digital Ocean</a> 为本站提供稳定的 VPS 服务</span>
+        <span class="footer__copyright">本站由 <a href="https://github.com/coderZsq">@Castie!</a> 创建，采用 <a href="https://github.com/onevcat/vno-jekyll">Vno - Jekyll</a> 作为主题，您可以在 GitHub 找到<a href="https://github.com/onevcat/OneV-s-Den">本站源码</a> - &copy; 2017</span>
+    </footer>
+</section>
+
+        </div>
+    </div>
+    
+    <script type="text/javascript" src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+
+<script type="text/javascript" src="/js/main.js"></script>
+
+
+
+    
+  </body>
+
+</html>

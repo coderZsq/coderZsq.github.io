@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <title>Castie! Notes</title>
+  <meta name="description" content="  这周的身体状态不好, 所以更新也比较有限了, 反正也不急这一时半会, 少则得多则惑不是吗, 我在现在在想一个问题, 简历制作完成进行投递的时候, 尼玛人事还要装个Node环境在在终端进行npm操作, 诶… 没有IP的痛啊~ 不多想了, 直接给个Png图片算了, 毕竟也不在乎这些…">
+  <meta name="author" content="Wei Wang">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Web 使用Vue代替陈旧的jQuery">
+  <meta name="twitter:description" content="  这周的身体状态不好, 所以更新也比较有限了, 反正也不急这一时半会, 少则得多则惑不是吗, 我在现在在想一个问题, 简历制作完成进行投递的时候, 尼玛人事还要装个Node环境在在终端进行npm操作, 诶… 没有IP的痛啊~ 不多想了, 直接给个Png图片算了, 毕竟也不在乎这些…">
+  
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Web 使用Vue代替陈旧的jQuery">
+  <meta property="og:description" content="  这周的身体状态不好, 所以更新也比较有限了, 反正也不急这一时半会, 少则得多则惑不是吗, 我在现在在想一个问题, 简历制作完成进行投递的时候, 尼玛人事还要装个Node环境在在终端进行npm操作, 诶… 没有IP的痛啊~ 不多想了, 直接给个Png图片算了, 毕竟也不在乎这些…">
+  
+  <link rel="icon" type="image/ico" href="/assets/images/favicon.ico" />
+  <link href="/assets/images/favicon.ico" rel="shortcut icon" type="image/ico">
+  
+  <link rel="stylesheet" href="/css/main.css">
+  <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+
+  <link rel="canonical" href="http://localhost:4000/2017/07/Web-%E4%BD%BF%E7%94%A8Vue%E4%BB%A3%E6%9B%BF%E9%99%88%E6%97%A7%E7%9A%84jQuery/">
+  <link rel="alternate" type="application/rss+xml" title="Castie!" href="http://localhost:4000/feed.xml">
+  
+  <meta name="google-site-verification" content="1-1ZlHoRvM0T2FqPbW2S-qLgYXN6rsn52kErlMPd_gw" />
+  
+</head>
+
+
+  <body>
+
+    <span class="mobile btn-mobile-menu">
+        <i class="fa fa-list btn-mobile-menu__icon"></i>
+        <i class="fa fa-angle-up btn-mobile-close__icon hidden"></i>
+    </span>
+    
+    <header class="panel-cover panel-cover--collapsed" style="background-image: url('/assets/images/background-cover.jpg')">
+  <div class="panel-main">
+
+    <div class="panel-main__inner panel-inverted">
+    <div class="panel-main__content">
+
+        <a href="/#blog" title="前往 Castie! 的主页" class="blog-button"><img src="/assets/images/avatar.jpg" width="80" alt="Castie! logo" class="panel-cover__logo logo" /></a>
+        <h1 class="panel-cover__title panel-title"><a href="/#blog" title="link to homepage for Castie!" class="blog-button">Castie!</a></h1>
+        
+        <span class="panel-cover__subtitle panel-subtitle">正态分布, 优劣伴生</span>
+        
+        <hr class="panel-cover__divider" />
+        <p class="panel-cover__description">北冥有鱼，其名为鲲（kūn）。鲲之大，不知其几千里也；化而为鸟，其名为鹏。鹏之背，不知其几千里也；怒而飞，其翼若垂天之云。是鸟也，海运则将徙于南冥。南冥者，天池也。</p>
+        <hr class="panel-cover__divider panel-cover__divider--secondary" />
+        
+        
+        <p class="panel-cover__description">北海若曰：“井鼃不可以语于海者，拘于虚也；夏虫不可以语于冰者，笃于时也；曲士不可以语于道者，束于教也。今尔出于崖涘，观于大海，乃知尔丑，尔将可与语大理矣。</p>
+        
+        
+        <div class="navigation-wrapper">
+          <div>
+            <nav class="cover-navigation cover-navigation--primary">
+              <ul class="navigation">
+                <li class="navigation__item"><a href="/#blog" title="访问博客" class="blog-button">博客</a></li>
+                
+                  <li class="navigation__item"><a href="http://www.jianshu.com/u/9d7fad1a4693" target="_blank" title="访问简书">简书</a></li>
+                
+                  <li class="navigation__item"><a href="https://juejin.im/user/57e735dfa22b9d00614eecb8" target="_blank" title="访问掘金">掘金</a></li>
+                
+              </ul>
+            </nav>
+          </div>
+          
+          <div><nav class="cover-navigation navigation--social">
+  <ul class="navigation">
+
+    
+    <!-- jianshu-->
+    <li class="navigation__item">
+      <a href="http://www.jianshu.com/u/9d7fad1a4693" title="@coderZsq 的简书" target="_blank">
+        <i class='social fa fa-book'></i>
+        <span class="label">jianshu</span>
+      </a>
+    </li>
+    
+
+    
+    <!-- juejin-->
+    <li class="navigation__item">
+      <a href="https://juejin.im/user/57e735dfa22b9d00614eecb8" title="@coderZsq 的稀土掘金" target="_blank">
+        <i class='social fa fa-align-center'></i>
+        <span class="label">juejin</span>
+      </a>
+    </li>
+    
+
+  
+
+  
+  <!-- Github -->
+  <li class="navigation__item">
+    <a href="https://github.com/coderZsq" title="@coderZsq 的 Github" target="_blank">
+      <i class='social fa fa-github'></i>
+      <span class="label">Github</span>
+    </a>
+  </li>
+  
+
+  
+
+  
+
+  <!-- RSS -->
+  <li class="navigation__item">
+    <a href="/feed.xml" rel="author" title="RSS" target="_blank">
+      <i class='social fa fa-rss'></i>
+      <span class="label">RSS</span>
+    </a>
+  </li>
+
+  
+  <!-- Email -->
+  <li class="navigation__item">
+    <a href="mailto:a13701777868@gmail.com" title="Contact me">
+      <i class='social fa fa-envelope'></i>
+      <span class="label">Email</span>
+    </a>
+  </li>
+  
+
+  </ul>
+</nav>
+</div>
+        </div>
+      </div>
+    </div>
+    
+    
+    <div class="panel-cover--overlay cover-blue"></div>
+    
+  </div>
+</header>
+
+
+    <div class="content-wrapper">
+        <div class="content-wrapper__inner">
+            <article class="post-container post-container--single" itemscope itemtype="http://schema.org/BlogPosting">
+  <header class="post-header">
+    <div class="post-meta">
+      <time datetime="2017-07-14 11:34:00 +0800" itemprop="datePublished" class="post-meta__date date">2017-07-14</time> &#8226; <span class="post-meta__tags tags">前端开发</span>
+    </div>
+    <h1 class="post-title">Web 使用Vue代替陈旧的jQuery</h1>
+  </header>
+
+  <section class="post">
+    <blockquote>
+  <p>这周的身体状态不好, 所以更新也比较有限了, 反正也不急这一时半会, 少则得多则惑不是吗, 我在现在在想一个问题, 简历制作完成进行投递的时候, 尼玛人事还要装个Node环境在在终端进行npm操作, 诶… 没有IP的痛啊~ 不多想了, 直接给个Png图片算了, 毕竟也不在乎这些…</p>
+</blockquote>
+
+<p><img src="http://upload-images.jianshu.io/upload_images/1229762-4daa1dfb99967aa8.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="" /></p>
+
+<h6 id="参考链接">参考链接:</h6>
+
+<ul>
+  <li><a href="http://www.jianshu.com/p/d1497da0f9ab">Web 是时候用前端写个简历了!</a></li>
+  <li><a href="http://www.jianshu.com/p/5c4788c0389d">Web 前端项目要从基本布局开始</a></li>
+  <li><a href="http://www.jianshu.com/p/b3389f66f539">Web 简历一定要设计的美美的</a></li>
+</ul>
+
+<p>以下内容在上述文章基础上进行, 请事先查阅.</p>
+
+<p>状态不好, 我就不多逼逼了, 直接进行我们的项目, 上周我们完成了home和project两个模块的开发, 今天我们来进行接下来的工作, 首先, 我们先来看一下今天的技术点:</p>
+
+<p><img src="http://upload-images.jianshu.io/upload_images/1229762-4a037769697f6645.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="" /></p>
+
+<p><img src="http://upload-images.jianshu.io/upload_images/1229762-6750478a776e1537.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="" /></p>
+
+<p>选择Vue的理由是去年公司没有HTML5开发, 让我去主导前端开发, 技术选型的时候选择了Vue这个框架, 至今我也没有用过react和angluar, 但这都不重要, 我中专的时候可是科班出身, 像前端这种容易入门的语言还是很好学的. 说实话, 看官方文档是学习新技术的最佳方法了, 但也不排除有些官方文档写的很烂什么的.</p>
+
+<p>简单的东西也不过多赘述了, 直接进行组件的封装:</p>
+<h6 id="父组件-githubvue">父组件 github.vue</h6>
+<div class="highlighter-rouge"><pre class="highlight"><code>&lt;template&gt;
+&lt;div&gt;
+  &lt;div class="subtitle"&gt;
+    &lt;h1&gt;GitHub&lt;/h1&gt;
+  &lt;/div&gt;
+  &lt;div class="github"&gt;
+    &lt;div class="github-block"&gt;
+      &lt;target name="coderZsq.project.oc" description="Use the SQExtension &amp; SQTemplate to quickly build a project architecture, quickly use wheel components, and quickly integrate animated effects." href="https://github.com/coderZsq/coderZsq.project.oc" color="#438eff"
+        language="Objective-C" star="113"&gt;&lt;/target&gt;
+      &lt;target name="coderZsq.target.swift" description="Learn the advanced path of Swift Including Hybrid, RxSwift, Animations, SpriteKit, SceneKit, CoreData, LLDB, iOS, watchOS, tvOS etc." href="https://github.com/coderZsq/coderZsq.target.swift" color="#ffac45"
+        language="Swift" star="4"&gt;&lt;/target&gt;
+      &lt;target name="coderZsq.display.js" description="Through Vue.js to build a personal resume, hope that most companies to discuss cooperation." href="https://github.com/coderZsq/coderZsq.display.js" color="#2C3E50" language="Vue" star="0"&gt;&lt;/target&gt;
+      &lt;target name="coderZsq.github.io" description="Through Hexo to build a personal blog, hoping to leave a good memory moments with you." href="https://github.com/coderZsq/coderZsq.github.io" color="#563D7C" language="CSS" star="1"&gt;&lt;/target&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;/template&gt;
+</code></pre>
+</div>
+<h6 id="子组件-targetvue">子组件 target.vue</h6>
+<div class="highlighter-rouge"><pre class="highlight"><code>&lt;template&gt;
+&lt;div class="target"&gt;
+  &lt;div class="target-block"&gt;
+    &lt;h2&gt;&lt;/h2&gt;
+    &lt;p&gt;&lt;/p&gt;
+    &lt;div class="download"&gt;
+      &lt;a :href="href"&gt;Clone or download&lt;/a&gt;
+    &lt;/div&gt;
+    &lt;div class="comment"&gt;
+      &lt;div class="dot" ref="dot"&gt;&lt;/div&gt;
+      &lt;div class="language"&gt;
+        
+      &lt;/div&gt;
+      &lt;div class="star"&gt;
+        ★ 
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;/template&gt;
+</code></pre>
+</div>
+<p>这里的大多数概念在之前的文章中都有说明, 这次主要想讲的就是ref这个关键字, 看了上面官方文档的说明就能了解ref是javascript用来访问dom用的, 但是一般人都会想到用jquery吧, 昨天我问了做前端的同事, 现在还有人用jquery吗?  他说官网那些jsp的都用吧, 用着一脸嘲讽的语气, 
+因为我个人是比较讨厌使用第三方的东西的, 所以既然vue有这个关键字用就好啦~~ 其实这里不适宜用jquery的真正原因是, Vue是一个单页的网页框架, 所以使用jquery无论是获取class还是id, 在进行循环的时候, 总会是重复的, 而ref和scope就避免了这个问题.</p>
+<h6 id="子组件-targetvue-1">子组件 target.vue</h6>
+<div class="highlighter-rouge"><pre class="highlight"><code>&lt;script&gt;
+export default {
+  data() {
+    return {
+
+    }
+  },
+  props: {
+    href: String,
+    name: String,
+    description: String,
+    color: String,
+    language: String,
+    star: String
+  },
+  methods: {
+    setDotColor: function() {
+      this.$refs.dot.style.backgroundColor = this.color;
+    }
+  },
+  mounted: function() {
+    this.setDotColor();
+  }
+}
+&lt;/script&gt;
+</code></pre>
+</div>
+<p>这里也有知识点, methods是用来写函数的, 而mounted是Vue组件的生命周期和viewDidLoad类似, 通过<code class="highlighter-rouge">this.$refs.dot.style.backgroundColor = this.color;</code>可以设置dom的css.</p>
+
+<p><img src="http://upload-images.jianshu.io/upload_images/1229762-1dbea85e6bd3b013.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="实现效果" /></p>
+
+<p>完成了github模块, 我们就来进行articles模块的实现, 这里我们需要了解一个知识点:</p>
+
+<p><img src="http://upload-images.jianshu.io/upload_images/1229762-9eb4b8779970e140.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="" /></p>
+
+<p>了解了v-for的基本用法, 我们来看下组件的通信:</p>
+<h6 id="articlesvue">articles.vue</h6>
+<div class="highlighter-rouge"><pre class="highlight"><code>&lt;template&gt;
+&lt;div&gt;
+  &lt;div class="subtitle"&gt;
+    &lt;h1&gt;Articles&lt;/h1&gt;
+  &lt;/div&gt;
+  &lt;div class="articles"&gt;
+    &lt;div class="articles-block"&gt;
+      &lt;div v-for="item in items"&gt;
+        &lt;column :name="item.name" :articles="item.articles"&gt;&lt;/column&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;/template&gt;
+</code></pre>
+</div>
+<div class="highlighter-rouge"><pre class="highlight"><code>&lt;script&gt;
+import column from './column'
+export default {
+  data() {
+    return {
+      items: [{
+        name: "SQTemplate Column",
+        articles: [{
+          name: "Hybird 搭建零耦合架构从MVC开始",
+          href: "http://www.jianshu.com/p/5a03995a6ce1"
+        }, {
+          name: "Hybird 搭建后端Koa.js并过度到MVVM",
+          href: "http://www.jianshu.com/p/846b9f181cb7"
+        }, {
+          name: "Hybird 搭建前端Vue.js并升级至MVP",
+          href: "http://www.jianshu.com/p/8d4a84e3ddaa"
+        }, {
+          name: "Hybird 搭建路由Router实现组件化",
+          href: "http://www.jianshu.com/p/36314d0c0032"
+        }, {
+          name: "Hybird 搭建客户端实时降级架构",
+          href: "http://www.jianshu.com/p/7054a694cfeb"
+        }, {
+          name: "iOS 执行.py脚本生成解耦架构",
+          href: "http://www.jianshu.com/p/47d565bf200e"
+        }, {
+          name: "iOS 执行.py脚本生成UI层结构",
+          href: "http://www.jianshu.com/p/d15379908582"
+        }]
+      }
+      ...
+  },
+  components: {
+    column
+  }
+}
+</code></pre>
+</div>
+<p>这个就是v-for的基本使用了, 通过在data中的默认参数进行数据绑定, 比起iOS的模型映射还是简单很多, 这里要注意<code class="highlighter-rouge">&lt;column :name="item.name" :articles="item.articles"&gt;</code>, 传入参数带有<code class="highlighter-rouge">:</code>的是传入引用类型, 而没有<code class="highlighter-rouge">:</code>的是传入字符串, 这点请注意.</p>
+
+<h6 id="columnvue">column.vue</h6>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>&lt;template&gt;
+&lt;div class="column"&gt;
+  &lt;div class="column-block"&gt;
+    &lt;div class="column-list"&gt;
+      &lt;div class="row" v-for="article in articles"&gt;
+        &lt;a :href="article.href"&gt;&lt;/a&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="column-title"&gt;
+      
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;/template&gt;
+</code></pre>
+</div>
+<div class="highlighter-rouge"><pre class="highlight"><code>&lt;script&gt;
+export default {
+  data() {
+    return {
+
+    }
+  },
+  props: {
+    articles: Object,
+    name: String
+  }
+}
+&lt;/script&gt;
+</code></pre>
+</div>
+<p>这里有一个双重v-for的使用, 注意<code class="highlighter-rouge">articles: Object,</code>传入的为对象类型而不是String类型.</p>
+<div class="highlighter-rouge"><pre class="highlight"><code>...
+.column-list {
+  height: 460px;
+  overflow: scroll;
+}
+...
+</code></pre>
+</div>
+
+<p>其他的css都不用看了, 之前都有讲到过, 这里注意<code class="highlighter-rouge">overflow: scroll</code>这样设置就能将普通div变成scrollView.</p>
+
+<p><img src="http://upload-images.jianshu.io/upload_images/1229762-70b8e5680807d8e3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="" /></p>
+
+<p>实现的效果也没有太差, 而且文章多了就会支持上下滑动, 颜色也是根据简书的颜色来的. 还是蛮好看的, 好了, 我么来看下整体效果就结束这一种的内容吧.</p>
+
+<p><img src="http://upload-images.jianshu.io/upload_images/1229762-b4c525b8272d8398.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="整体效果" /></p>
+
+<p>好了, 今天就到这里了, 我们下周再见.</p>
+
+<h5 id="about">About:</h5>
+
+<p><img src="http://upload-images.jianshu.io/upload_images/1229762-3f8925783027b3fa.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="点击下方链接跳转!!" /></p>
+
+<p><a href="https://github.com/coderZsq/coderZsq.webpack.js">🌟 源码 请点这里🌟 »&gt; 喜欢的朋友请点喜欢 »&gt; 下载源码的同学请送下小星星 »&gt; 有闲钱的壕们可以进行打赏 »&gt; 小弟会尽快推出更好的文章和大家分享 »&gt; 你的激励就是我的动力!! </a></p>
+
+  </section>
+</article>
+
+<section class="read-more">
+   
+   
+   <div class="read-more-item">
+       <span class="read-more-item-dim">最近的文章</span>
+       <h2 class="post-list__post-title post-title"><a href="/2017/07/Web-Vue%E9%A1%B9%E7%9B%AE%E9%80%9F%E8%BD%AC.htm%E9%9D%99%E6%80%81%E7%BD%91%E9%A1%B5/" title="link to Web Vue项目速转.htm静态网页">Web Vue项目速转.htm静态网页</a></h2>
+       <p class="excerpt">  拖了2个星期, 终于可以结束简历制作的项目了, 说实话这个项目其实挺没有技术含量的, 话说我也没什么技术, 对于前端方面的技术也仅仅是浅显的认知, 要更加深入的进行学习的话算法也就是数学知识真的是一个很大的瓶颈, 所以这一话后准备潜心修炼自己薄弱的数学知识.参考链接:  Web 是时候用前端写个简历了!  Web 前端项目要从基本布局开始  Web 简历一定要设计的美美的  Web 使用Vue代替陈旧的jQuery以下内容在上述文章基础上进行, 请事先查阅.设计模式是小白晋升码农的利器...&hellip;</p>
+       <div class="post-list__meta"><time datetime="2017-07-19 14:13:00 +0800" class="post-list__meta--date date">2017-07-19</time> &#8226; <span class="post-list__meta--tags tags">前端开发</span><a class="btn-border-small" href=/2017/07/Web-Vue%E9%A1%B9%E7%9B%AE%E9%80%9F%E8%BD%AC.htm%E9%9D%99%E6%80%81%E7%BD%91%E9%A1%B5/>继续阅读</a></div>
+   </div>
+   
+   
+   
+   
+   <div class="read-more-item">
+       <span class="read-more-item-dim">更早的文章</span>
+       <h2 class="post-list__post-title post-title"><a href="/2017/07/Web-%E7%AE%80%E5%8E%86%E4%B8%80%E5%AE%9A%E8%A6%81%E8%AE%BE%E8%AE%A1%E7%9A%84%E7%BE%8E%E7%BE%8E%E7%9A%84/" title="link to Web 简历一定要设计的美美的">Web 简历一定要设计的美美的</a></h2>
+       <p class="excerpt">  继续之前的项目, 之前我们通过最基本的HTML和CSS将Home模块的基本布局给搭建了一下, 整体的流程比较简单, 没有什么技术含量, 作为前端的入门篇看看也是个不错的选择, 可是说真的, 除了算法, 设计模式, 数据结构这些, 平时码代码真的有技术含量吗? 会写几个网页, 几个App, 几个后台就能上天吗? 好吧, 是我太奋青~参考链接:  Web 是时候用前端写个简历了!  Web 前端项目要从基本布局开始以下内容在上述文章基础上进行, 请事先查阅.其实我做开发也没有多少时日, 也...&hellip;</p>
+       <div class="post-list__meta"><time datetime="2017-07-07 13:43:00 +0800" class="post-list__meta--date date">2017-07-07</time> &#8226; <span class="post-list__meta--tags tags">前端开发</span><a class="btn-border-small" href=/2017/07/Web-%E7%AE%80%E5%8E%86%E4%B8%80%E5%AE%9A%E8%A6%81%E8%AE%BE%E8%AE%A1%E7%9A%84%E7%BE%8E%E7%BE%8E%E7%9A%84/>继续阅读</a></div>
+   </div>
+   
+</section>
+
+<section class="post-comments">
+  
+  
+  
+  
+</section>
+
+
+            <section class="footer">
+    <footer>
+    	<span class="footer__copyright">本站点采用<a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">知识共享 署名-非商业性使用-相同方式共享 4.0 国际 许可协议</a></span>
+        <span class="footer__copyright">由 <a href="https://jekyllrb.com">Jekyll</a> 于 2017-12-16 生成，感谢 <a href="https://www.digitalocean.com/?refcode=30ed2d146762">Digital Ocean</a> 为本站提供稳定的 VPS 服务</span>
+        <span class="footer__copyright">本站由 <a href="https://github.com/coderZsq">@Castie!</a> 创建，采用 <a href="https://github.com/onevcat/vno-jekyll">Vno - Jekyll</a> 作为主题，您可以在 GitHub 找到<a href="https://github.com/onevcat/OneV-s-Den">本站源码</a> - &copy; 2017</span>
+    </footer>
+</section>
+
+        </div>
+    </div>
+    
+    <script type="text/javascript" src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+
+<script type="text/javascript" src="/js/main.js"></script>
+
+
+
+    
+  </body>
+
+</html>

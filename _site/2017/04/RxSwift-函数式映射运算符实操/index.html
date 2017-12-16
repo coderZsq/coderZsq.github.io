@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <title>Castie! Notes</title>
+  <meta name="description" content="  一路走来, 感觉RxSwift也不像之前一样晦涩难懂了, 甚至渐渐的喜欢上了这种响应式编程的思想, 将对象作为可观察对象并进行订阅, 加上过滤操作符的协作, 一切的逻辑运算都在后台线程执行, 本节所要讲的是Rx中最为强大的功能 — 映射, 代码见:github">
+  <meta name="author" content="Wei Wang">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="RxSwift 函数式映射运算符实操">
+  <meta name="twitter:description" content="  一路走来, 感觉RxSwift也不像之前一样晦涩难懂了, 甚至渐渐的喜欢上了这种响应式编程的思想, 将对象作为可观察对象并进行订阅, 加上过滤操作符的协作, 一切的逻辑运算都在后台线程执行, 本节所要讲的是Rx中最为强大的功能 — 映射, 代码见:github">
+  
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="RxSwift 函数式映射运算符实操">
+  <meta property="og:description" content="  一路走来, 感觉RxSwift也不像之前一样晦涩难懂了, 甚至渐渐的喜欢上了这种响应式编程的思想, 将对象作为可观察对象并进行订阅, 加上过滤操作符的协作, 一切的逻辑运算都在后台线程执行, 本节所要讲的是Rx中最为强大的功能 — 映射, 代码见:github">
+  
+  <link rel="icon" type="image/ico" href="/assets/images/favicon.ico" />
+  <link href="/assets/images/favicon.ico" rel="shortcut icon" type="image/ico">
+  
+  <link rel="stylesheet" href="/css/main.css">
+  <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+
+  <link rel="canonical" href="http://localhost:4000/2017/04/RxSwift-%E5%87%BD%E6%95%B0%E5%BC%8F%E6%98%A0%E5%B0%84%E8%BF%90%E7%AE%97%E7%AC%A6%E5%AE%9E%E6%93%8D/">
+  <link rel="alternate" type="application/rss+xml" title="Castie!" href="http://localhost:4000/feed.xml">
+  
+  <meta name="google-site-verification" content="1-1ZlHoRvM0T2FqPbW2S-qLgYXN6rsn52kErlMPd_gw" />
+  
+</head>
+
+
+  <body>
+
+    <span class="mobile btn-mobile-menu">
+        <i class="fa fa-list btn-mobile-menu__icon"></i>
+        <i class="fa fa-angle-up btn-mobile-close__icon hidden"></i>
+    </span>
+    
+    <header class="panel-cover panel-cover--collapsed" style="background-image: url('/assets/images/background-cover.jpg')">
+  <div class="panel-main">
+
+    <div class="panel-main__inner panel-inverted">
+    <div class="panel-main__content">
+
+        <a href="/#blog" title="前往 Castie! 的主页" class="blog-button"><img src="/assets/images/avatar.jpg" width="80" alt="Castie! logo" class="panel-cover__logo logo" /></a>
+        <h1 class="panel-cover__title panel-title"><a href="/#blog" title="link to homepage for Castie!" class="blog-button">Castie!</a></h1>
+        
+        <span class="panel-cover__subtitle panel-subtitle">正态分布, 优劣伴生</span>
+        
+        <hr class="panel-cover__divider" />
+        <p class="panel-cover__description">北冥有鱼，其名为鲲（kūn）。鲲之大，不知其几千里也；化而为鸟，其名为鹏。鹏之背，不知其几千里也；怒而飞，其翼若垂天之云。是鸟也，海运则将徙于南冥。南冥者，天池也。</p>
+        <hr class="panel-cover__divider panel-cover__divider--secondary" />
+        
+        
+        <p class="panel-cover__description">北海若曰：“井鼃不可以语于海者，拘于虚也；夏虫不可以语于冰者，笃于时也；曲士不可以语于道者，束于教也。今尔出于崖涘，观于大海，乃知尔丑，尔将可与语大理矣。</p>
+        
+        
+        <div class="navigation-wrapper">
+          <div>
+            <nav class="cover-navigation cover-navigation--primary">
+              <ul class="navigation">
+                <li class="navigation__item"><a href="/#blog" title="访问博客" class="blog-button">博客</a></li>
+                
+                  <li class="navigation__item"><a href="http://www.jianshu.com/u/9d7fad1a4693" target="_blank" title="访问简书">简书</a></li>
+                
+                  <li class="navigation__item"><a href="https://juejin.im/user/57e735dfa22b9d00614eecb8" target="_blank" title="访问掘金">掘金</a></li>
+                
+              </ul>
+            </nav>
+          </div>
+          
+          <div><nav class="cover-navigation navigation--social">
+  <ul class="navigation">
+
+    
+    <!-- jianshu-->
+    <li class="navigation__item">
+      <a href="http://www.jianshu.com/u/9d7fad1a4693" title="@coderZsq 的简书" target="_blank">
+        <i class='social fa fa-book'></i>
+        <span class="label">jianshu</span>
+      </a>
+    </li>
+    
+
+    
+    <!-- juejin-->
+    <li class="navigation__item">
+      <a href="https://juejin.im/user/57e735dfa22b9d00614eecb8" title="@coderZsq 的稀土掘金" target="_blank">
+        <i class='social fa fa-align-center'></i>
+        <span class="label">juejin</span>
+      </a>
+    </li>
+    
+
+  
+
+  
+  <!-- Github -->
+  <li class="navigation__item">
+    <a href="https://github.com/coderZsq" title="@coderZsq 的 Github" target="_blank">
+      <i class='social fa fa-github'></i>
+      <span class="label">Github</span>
+    </a>
+  </li>
+  
+
+  
+
+  
+
+  <!-- RSS -->
+  <li class="navigation__item">
+    <a href="/feed.xml" rel="author" title="RSS" target="_blank">
+      <i class='social fa fa-rss'></i>
+      <span class="label">RSS</span>
+    </a>
+  </li>
+
+  
+  <!-- Email -->
+  <li class="navigation__item">
+    <a href="mailto:a13701777868@gmail.com" title="Contact me">
+      <i class='social fa fa-envelope'></i>
+      <span class="label">Email</span>
+    </a>
+  </li>
+  
+
+  </ul>
+</nav>
+</div>
+        </div>
+      </div>
+    </div>
+    
+    
+    <div class="panel-cover--overlay cover-blue"></div>
+    
+  </div>
+</header>
+
+
+    <div class="content-wrapper">
+        <div class="content-wrapper__inner">
+            <article class="post-container post-container--single" itemscope itemtype="http://schema.org/BlogPosting">
+  <header class="post-header">
+    <div class="post-meta">
+      <time datetime="2017-04-20 10:45:00 +0800" itemprop="datePublished" class="post-meta__date date">2017-04-20</time> &#8226; <span class="post-meta__tags tags">移动开发</span>
+    </div>
+    <h1 class="post-title">RxSwift 函数式映射运算符实操</h1>
+  </header>
+
+  <section class="post">
+    <blockquote>
+  <p>一路走来, 感觉RxSwift也不像之前一样晦涩难懂了, 甚至渐渐的喜欢上了这种响应式编程的思想, 将对象作为可观察对象并进行订阅, 加上过滤操作符的协作, 一切的逻辑运算都在后台线程执行, 本节所要讲的是Rx中最为强大的功能 — 映射, 代码见:<a href="https://github.com/coderZsq/coderZsq.target.swift">github</a></p>
+</blockquote>
+
+<p><img src="http://upload-images.jianshu.io/upload_images/1229762-a67b7f2ab21d4b23.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="" /></p>
+
+<p>本节所需的一些关于映射的基本知识已经更新到<a href="https://github.com/coderZsq/coderZsq.target.swift">github</a>代码中的playground文件中, 没有接触过响应式编程的同学请和之前一样先行在<a href="https://github.com/coderZsq/coderZsq.target.swift/blob/master/GitHubRepo/GitHubRepository/GitHubRepository.playground/Contents.swift">playground</a>中了解概要以便更好的理解本文. 本节我们就通过案例逐步精讲映射操作符在网络请求时的妙用.</p>
+
+<p><img src="http://upload-images.jianshu.io/upload_images/1229762-81e919722e1627dd.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="" /></p>
+
+<p>这次的UI界面非常的简单,  就是一个简单的TableViewController, 我们通过网络请求将获取的JSON数据映射到Model上并展示在Cell上, API: https://api.github.com/repos/coderZsq/coderZsq.target.swift/events</p>
+
+<p>想了解如何进行后台搭建并模拟数据返回的同学 请点击 –&gt; <a href="http://www.jianshu.com/p/5a03995a6ce1">Hybird 实现热修复架构 从MVC说起</a></p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="p">{</span><span class="w">
+    </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5715074941"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PushEvent"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"actor"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">19483268</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"login"</span><span class="p">:</span><span class="w"> </span><span class="s2">"coderZsq"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"display_login"</span><span class="p">:</span><span class="w"> </span><span class="s2">"coderZsq"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"gravatar_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.github.com/users/coderZsq"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"avatar_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://avatars.githubusercontent.com/u/19483268?"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nt">"repo"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">87806175</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"coderZsq/coderZsq.target.swift"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.github.com/repos/coderZsq/coderZsq.target.swift"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nt">"payload"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"push_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1688506435</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"size"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"distinct_size"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"ref"</span><span class="p">:</span><span class="w"> </span><span class="s2">"refs/heads/master"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"head"</span><span class="p">:</span><span class="w"> </span><span class="s2">"90306f546ee0e17d94891415a2f8938d28736dc7"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"before"</span><span class="p">:</span><span class="w"> </span><span class="s2">"778ac2b60b85a3e97e0a1e85e16cdb1061445181"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"commits"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="nt">"sha"</span><span class="p">:</span><span class="w"> </span><span class="s2">"90306f546ee0e17d94891415a2f8938d28736dc7"</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"author"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"a13701777868@yahoo.com"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Castie!"</span><span class="w">
+          </span><span class="p">},</span><span class="w">
+          </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Update README.md"</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"distinct"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.github.com/repos/coderZsq/coderZsq.target.swift/commits/90306f546ee0e17d94891415a2f8938d28736dc7"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">]</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nt">"public"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-04-19T12:12:49Z"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span></code></pre>
+</div>
+<p>我们先从浏览器看下接口所返回的字段, 并提取我们需要的字段生成模型Model, 以备之后的映射.</p>
+<div class="highlighter-rouge"><pre class="highlight"><code>typealias AnyDict = [String: Any]
+
+class Event {
+
+    let repo: String
+    let name: String
+    let imageUrl: URL
+    let action: String
+    
+    init?(dictionary: AnyDict) {
+        guard let repoDict = dictionary["repo"] as? AnyDict,
+            let actor = dictionary["actor"] as? AnyDict,
+            let repoName = repoDict["name"] as? String,
+            let actorName = actor["display_login"] as? String,
+            let actorUrlString = actor["avatar_url"] as? String,
+            let actorUrl  = URL(string: actorUrlString),
+            let actionType = dictionary["type"] as? String
+            else {  return nil  }
+        
+        repo = repoName
+        name = actorName
+        imageUrl = actorUrl
+        action = actionType
+    }
+    
+    var dictionary: AnyDict {
+        return [
+            "repo" : ["name": repo],
+            "actor": ["display_login": name, "avatar_url": imageUrl.absoluteString],
+            "type" : action
+        ]
+    }
+}
+
+</code></pre>
+</div>
+<p>我们将模型命名为Event, 添加了一个dictionary变量供返回序列化完成后的字典.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>    func fetchEvents(repo: String) {
+        
+        let response = Observable.from([repo]).map { urlString -&gt; URL in
+                return URL(string: "https://api.github.com/repos/\(urlString)/events")!
+            }.map { [weak self] url -&gt; URLRequest in
+                var request = URLRequest(url: url)
+                if let modifiedHeader = self?.lastModified.value {
+                    request.addValue(modifiedHeader as String,forHTTPHeaderField: "Last-Modified")
+                }
+                return request
+            }.flatMap { request -&gt; Observable&lt;(HTTPURLResponse, Data)&gt; in
+                return URLSession.shared.rx.response(request: request)
+            }.shareReplay(1)
+        
+        response.filter { response, _ in
+                return 200..&lt;300 ~= response.statusCode
+            }.map { _, data -&gt; [[String: Any]] in
+                guard let jsonObject = try? JSONSerialization.jsonObject(with: data, options: []),
+                    let result = jsonObject as? [[String: Any]] else { return [] }
+                return result
+            }.filter { objects in
+                return objects.count &gt; 0
+            }.map { objects in
+                return objects.flatMap(Event.init)
+            }.subscribe(onNext: { [weak self] newEvents in
+                self?.processEvents(newEvents)
+            }).addDisposableTo(bag)
+    }
+</code></pre>
+</div>
+<p>一切准备就绪, 我们就来说说本节最重要的部分了, 我们逐行来进行讲解.</p>
+<ul>
+  <li>通过<code class="highlighter-rouge">Observable.from()</code>的方式创建一个可观察对象, 传入<code class="highlighter-rouge">repo</code>字段, 通过<code class="highlighter-rouge">map</code>映射成<code class="highlighter-rouge">URL</code>返回.</li>
+  <li>通过<code class="highlighter-rouge">map</code>映射将<code class="highlighter-rouge">URL</code>映射成<code class="highlighter-rouge">URLRequest</code>, 如果有进行修改则写入请求头.</li>
+  <li>通过’flatmap’映射将将<code class="highlighter-rouge">URLRequest</code>映射成<code class="highlighter-rouge">HTTPURLResponse </code>, 网络请求封装在<code class="highlighter-rouge">RxCocoa</code>的<code class="highlighter-rouge">URLSession.shared.rx.response(request:)</code>方法中, 有兴趣的同学可以看下源码, 当然这些都是在后台线程中执行的.</li>
+  <li>最后通过<code class="highlighter-rouge">shareReplay(1)</code>进行订阅共享. <code class="highlighter-rouge">shareReplay</code>可以将之前响应结果加入缓冲区. 这也是不使用<code class="highlighter-rouge">share()</code>的原因, 避免多次请求.</li>
+</ul>
+
+<p>对于flatmap 和 map 之前的区别不了解的同学可以看下<a href="https://github.com/coderZsq/coderZsq.target.swift/blob/master/GitHubRepo/GitHubRepository/GitHubRepository.playground/Contents.swift">playground</a>中的例子, 或者直接查看Swift中的Array文档.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>    /// Returns an array containing the non-`nil` results of calling the given
+    /// transformation with each element of this sequence.
+    ///
+    /// Use this method to receive an array of nonoptional values when your
+    /// transformation produces an optional value.
+    ///
+    /// In this example, note the difference in the result of using `map` and
+    /// `flatMap` with a transformation that returns an optional `Int` value.
+    ///
+    ///     let possibleNumbers = ["1", "2", "three", "///4///", "5"]
+    /// 
+    ///     let mapped: [Int?] = numbers.map { str in Int(str) }
+    ///     // [1, 2, nil, nil, 5]
+    /// 
+    ///     let flatMapped: [Int] = numbers.flatMap { str in Int(str) }
+    ///     // [1, 2, 5]
+    ///
+    /// - Parameter transform: A closure that accepts an element of this
+    ///   sequence as its argument and returns an optional value.
+    /// - Returns: An array of the non-`nil` results of calling `transform`
+    ///   with each element of the sequence.
+    ///
+    /// - Complexity: O(*m* + *n*), where *m* is the length of this sequence
+    ///   and *n* is the length of the result.
+    public func flatMap&lt;ElementOfResult&gt;(_ transform: (Element) throws -&gt; ElementOfResult?) rethrows -&gt; [ElementOfResult]
+</code></pre>
+</div>
+
+<p>拿到了响应结果, 我们对相应结果进行过滤, 如果对过滤不了解的同学, 请翻看之前的文章 –&gt; <a href="http://www.jianshu.com/p/04349d324a6f">RxSwift 响应式编程实战 过滤运算符</a></p>
+
+<ul>
+  <li>通过<code class="highlighter-rouge">filter </code>过滤掉错误的statusCode, 对于statusCode不了解的同学可以查阅HTTP状态码的资料, <code class="highlighter-rouge">~=</code>操作符是指操作符右边的值是否在操作符左边的范围之内, 返回Bool类型,</li>
+  <li>得到正确的数据后, 通过<code class="highlighter-rouge">map</code>进行映射将数据映射成字典数组类型, 使用的是系统的JSON序列化.</li>
+  <li>再次进行<code class="highlighter-rouge">filter</code>过滤, 过滤掉没有返回的数据.</li>
+  <li>再次进行<code class="highlighter-rouge">map</code>映射, 将数据结构映射到Event模型中.</li>
+  <li>最后进行订阅执行操作并添加到<code class="highlighter-rouge">DisposeBag</code>中.</li>
+</ul>
+
+<p>接着我们来看下拿到了映射完成后的[Event]模型数组后的执行操作.</p>
+<div class="highlighter-rouge"><pre class="highlight"><code>    func processEvents(_ newEvents: [Event]) {
+        
+        var updatedEvents = newEvents + events.value
+        if updatedEvents.count &gt; 50 {
+            updatedEvents = Array&lt;Event&gt;(updatedEvents.prefix(upTo: 50))
+        }
+        
+        events.value = updatedEvents
+        tableView.reloadData()
+        refreshControl?.endRefreshing()
+        
+        let eventsArray = updatedEvents.map{ $0.dictionary } as NSArray
+        eventsArray.write(to: eventsFileURL, atomically: true)
+        
+    }
+</code></pre>
+</div>
+<ul>
+  <li>拿到模型数组的个数后取如果超过50个, 取前面50个数据.</li>
+  <li>刷新tableView, refreshControl结束刷新, 并将映射模型缓存到沙盒.</li>
+</ul>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>func cachedFileURL(_ fileName: String) -&gt; URL {
+    return FileManager.default.urls(for: .cachesDirectory, in: .allDomainsMask).first!.appendingPathComponent(fileName)
+}
+
+class ViewController: UITableViewController {
+
+    fileprivate let repo = "coderZsq/coderZsq.target.swift"
+    fileprivate let events = Variable&lt;[Event]&gt;([])
+    fileprivate let bag = DisposeBag()
+    
+    fileprivate let eventsFileURL = cachedFileURL("events.plist")
+    fileprivate let modifiedFileURL = cachedFileURL("modified.txt")
+    fileprivate let lastModified = Variable&lt;NSString?&gt;(nil)
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        title = repo
+        
+        let eventsArray = (NSArray(contentsOf: eventsFileURL)
+            as? [[String: Any]]) ?? []
+        events.value = eventsArray.flatMap(Event.init)
+        lastModified.value = try? NSString(contentsOf: modifiedFileURL, usedEncoding: nil)
+        
+        setupRefreshControl()
+    }
+}
+</code></pre>
+</div>
+<ul>
+  <li><code class="highlighter-rouge">cachedFileURL</code>缓存路径地址</li>
+  <li>每次先执行缓存本地的映射数据再进行网络请求.</li>
+</ul>
+
+<p>映射和过滤的好处在于一切都在后台线程进行, 并在映射和过滤的过程中如果发生不匹配的情况, 之后的操作就会被打断, 不再执行.</p>
+
+<p>演示效果:
+<img src="http://upload-images.jianshu.io/upload_images/1229762-86d2e2011251ccd6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="" /></p>
+
+<p>About:</p>
+
+<p><img src="http://upload-images.jianshu.io/upload_images/1229762-3f8925783027b3fa.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="点击下方链接跳转!!" /></p>
+
+<p><a href="https://github.com/coderZsq/coderZsq.target.swift">🌟 源码 请点这里🌟 »&gt; 喜欢的朋友请点喜欢 »&gt; 下载源码的同学请送下小星星 »&gt; 有闲钱的壕们可以进行打赏 »&gt; 小弟会尽快推出更好的文章和大家分享 »&gt; 你的激励就是我的动力!! </a></p>
+
+  </section>
+</article>
+
+<section class="read-more">
+   
+   
+   <div class="read-more-item">
+       <span class="read-more-item-dim">最近的文章</span>
+       <h2 class="post-list__post-title post-title"><a href="/2017/04/RxSwift-%E5%87%BD%E6%95%B0%E5%BC%8F%E7%BB%84%E5%90%88%E8%BF%90%E7%AE%97%E7%AC%A6%E5%AE%9E%E6%93%8D/" title="link to RxSwift 函数式组合运算符实操">RxSwift 函数式组合运算符实操</a></h2>
+       <p class="excerpt">  上周我们开启了RxSwift的学习之旅, 从可观察序列–&gt;过滤运算符–&gt;映射运算符, 接下来我们来说说组合运算符. 说实话, 对于之前的内容的学习, 我觉得还是比较通俗易懂的, 但是这次的组合运算符相比之前在理解难易程度上又上了个档次, 本节我们就来攻克这一挑战吧! 代码见:github本节所需的一些关于组合的基本知识已经更新到github代码中的playground文件中, 没有接触过响应式编程的同学请和之前一样先行在playground中了解概要以便更好的理解本文. 本...&hellip;</p>
+       <div class="post-list__meta"><time datetime="2017-04-24 14:51:00 +0800" class="post-list__meta--date date">2017-04-24</time> &#8226; <span class="post-list__meta--tags tags">移动开发</span><a class="btn-border-small" href=/2017/04/RxSwift-%E5%87%BD%E6%95%B0%E5%BC%8F%E7%BB%84%E5%90%88%E8%BF%90%E7%AE%97%E7%AC%A6%E5%AE%9E%E6%93%8D/>继续阅读</a></div>
+   </div>
+   
+   
+   
+   
+   <div class="read-more-item">
+       <span class="read-more-item-dim">更早的文章</span>
+       <h2 class="post-list__post-title post-title"><a href="/2017/04/RxSwift-%E5%87%BD%E6%95%B0%E5%BC%8F%E8%BF%87%E6%BB%A4%E8%BF%90%E7%AE%97%E7%AC%A6%E5%AE%9E%E6%93%8D/" title="link to RxSwift 函数式过滤运算符实操">RxSwift 函数式过滤运算符实操</a></h2>
+       <p class="excerpt">  接着上一部分, 我们已经完成了函数式编程的简单实践, 也同时接触了Photos框架带来的自定义的便利, 主要熟悉了Variable, Subject 作为 Observable 进行订阅 subscribe 并通过处置包DisposeBag 处理的具体案例, 这一节我们来进一步完善相片拼图. 代码见:github本节所需的一些关于订阅信息过滤的基本知识已经更新到github代码中的playground文件中, 没有接触过响应式编程的同学请和之前一样先行在playground中了解概要以...&hellip;</p>
+       <div class="post-list__meta"><time datetime="2017-04-19 11:50:00 +0800" class="post-list__meta--date date">2017-04-19</time> &#8226; <span class="post-list__meta--tags tags">移动开发</span><a class="btn-border-small" href=/2017/04/RxSwift-%E5%87%BD%E6%95%B0%E5%BC%8F%E8%BF%87%E6%BB%A4%E8%BF%90%E7%AE%97%E7%AC%A6%E5%AE%9E%E6%93%8D/>继续阅读</a></div>
+   </div>
+   
+</section>
+
+<section class="post-comments">
+  
+  
+  
+  
+</section>
+
+
+            <section class="footer">
+    <footer>
+    	<span class="footer__copyright">本站点采用<a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">知识共享 署名-非商业性使用-相同方式共享 4.0 国际 许可协议</a></span>
+        <span class="footer__copyright">由 <a href="https://jekyllrb.com">Jekyll</a> 于 2017-12-16 生成，感谢 <a href="https://www.digitalocean.com/?refcode=30ed2d146762">Digital Ocean</a> 为本站提供稳定的 VPS 服务</span>
+        <span class="footer__copyright">本站由 <a href="https://github.com/coderZsq">@Castie!</a> 创建，采用 <a href="https://github.com/onevcat/vno-jekyll">Vno - Jekyll</a> 作为主题，您可以在 GitHub 找到<a href="https://github.com/onevcat/OneV-s-Den">本站源码</a> - &copy; 2017</span>
+    </footer>
+</section>
+
+        </div>
+    </div>
+    
+    <script type="text/javascript" src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+
+<script type="text/javascript" src="/js/main.js"></script>
+
+
+
+    
+  </body>
+
+</html>

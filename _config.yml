@@ -1,0 +1,51 @@
+# Basic
+title: Castie!
+subtitle: 正态分布, 优劣伴生
+welcome_message: 北海若曰：“井鼃不可以语于海者，拘于虚也；夏虫不可以语于冰者，笃于时也；曲士不可以语于道者，束于教也。今尔出于崖涘，观于大海，乃知尔丑，尔将可与语大理矣。
+description: 北冥有鱼，其名为鲲（kūn）。鲲之大，不知其几千里也；化而为鸟，其名为鹏。鹏之背，不知其几千里也；怒而飞，其翼若垂天之云。是鸟也，海运则将徙于南冥。南冥者，天池也。
+creator: <a href="https://github.com/coderZsq">@Castie!</a>
+
+url: ""
+
+permalink: /:year/:month/:title/
+
+# Format
+highlighter: rouge
+
+# supported colors: blue, green, purple, red, orange or slate. If you need clear, leave it empty.
+cover_color: blue
+
+# The blog button should not be removed.
+blog_button:
+    title: 博客
+    description: 访问博客
+
+# Navigation buttons in the front page.
+nav:
+    - {title: 简书, description: 访问简书, url: 'http://www.jianshu.com/u/9d7fad1a4693'}
+    - {title: 掘金, description: 访问掘金, url: 'https://juejin.im/user/57e735dfa22b9d00614eecb8'}
+
+# Pagination
+gems: [jekyll-paginate]
+paginate: 10
+paginate_path: "page/:num/"
+
+# Comment
+comment:
+    #disqus: vno-jekyll
+    # duoshuo: 
+
+# Social
+social:
+    #weibo: onevcat
+    github: coderZsq
+    jianshu: coderZsq
+    juejin: coderZsq
+    #twitter: onevcat
+    #gplus: 107108267983477358170
+    mail: a13701777868@gmail.com
+
+# Google Analytics
+ga:
+    # id: your_ga_id
+    # host: your_host

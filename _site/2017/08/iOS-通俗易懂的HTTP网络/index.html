@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <title>Castie! Notes</title>
+  <meta name="description" content="  去了饿厂面试后了解到了自己计算机基础的薄弱, 非科班出身薄弱也是自然的, 说实话, 我也并不是特别想要往底层深究, 因为越底层的东西越会抽象成服务输送给大众, 就好比自来水, 一般人都不会想要去了解自来水的底层逻辑吧, 但作为开发者, 我们还是得了解下基础的网络概念.">
+  <meta name="author" content="Wei Wang">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="iOS 通俗易懂的HTTP网络">
+  <meta name="twitter:description" content="  去了饿厂面试后了解到了自己计算机基础的薄弱, 非科班出身薄弱也是自然的, 说实话, 我也并不是特别想要往底层深究, 因为越底层的东西越会抽象成服务输送给大众, 就好比自来水, 一般人都不会想要去了解自来水的底层逻辑吧, 但作为开发者, 我们还是得了解下基础的网络概念.">
+  
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="iOS 通俗易懂的HTTP网络">
+  <meta property="og:description" content="  去了饿厂面试后了解到了自己计算机基础的薄弱, 非科班出身薄弱也是自然的, 说实话, 我也并不是特别想要往底层深究, 因为越底层的东西越会抽象成服务输送给大众, 就好比自来水, 一般人都不会想要去了解自来水的底层逻辑吧, 但作为开发者, 我们还是得了解下基础的网络概念.">
+  
+  <link rel="icon" type="image/ico" href="/assets/images/favicon.ico" />
+  <link href="/assets/images/favicon.ico" rel="shortcut icon" type="image/ico">
+  
+  <link rel="stylesheet" href="/css/main.css">
+  <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+
+  <link rel="canonical" href="http://localhost:4000/2017/08/iOS-%E9%80%9A%E4%BF%97%E6%98%93%E6%87%82%E7%9A%84HTTP%E7%BD%91%E7%BB%9C/">
+  <link rel="alternate" type="application/rss+xml" title="Castie!" href="http://localhost:4000/feed.xml">
+  
+  <meta name="google-site-verification" content="1-1ZlHoRvM0T2FqPbW2S-qLgYXN6rsn52kErlMPd_gw" />
+  
+</head>
+
+
+  <body>
+
+    <span class="mobile btn-mobile-menu">
+        <i class="fa fa-list btn-mobile-menu__icon"></i>
+        <i class="fa fa-angle-up btn-mobile-close__icon hidden"></i>
+    </span>
+    
+    <header class="panel-cover panel-cover--collapsed" style="background-image: url('/assets/images/background-cover.jpg')">
+  <div class="panel-main">
+
+    <div class="panel-main__inner panel-inverted">
+    <div class="panel-main__content">
+
+        <a href="/#blog" title="前往 Castie! 的主页" class="blog-button"><img src="/assets/images/avatar.jpg" width="80" alt="Castie! logo" class="panel-cover__logo logo" /></a>
+        <h1 class="panel-cover__title panel-title"><a href="/#blog" title="link to homepage for Castie!" class="blog-button">Castie!</a></h1>
+        
+        <span class="panel-cover__subtitle panel-subtitle">正态分布, 优劣伴生</span>
+        
+        <hr class="panel-cover__divider" />
+        <p class="panel-cover__description">北冥有鱼，其名为鲲（kūn）。鲲之大，不知其几千里也；化而为鸟，其名为鹏。鹏之背，不知其几千里也；怒而飞，其翼若垂天之云。是鸟也，海运则将徙于南冥。南冥者，天池也。</p>
+        <hr class="panel-cover__divider panel-cover__divider--secondary" />
+        
+        
+        <p class="panel-cover__description">北海若曰：“井鼃不可以语于海者，拘于虚也；夏虫不可以语于冰者，笃于时也；曲士不可以语于道者，束于教也。今尔出于崖涘，观于大海，乃知尔丑，尔将可与语大理矣。</p>
+        
+        
+        <div class="navigation-wrapper">
+          <div>
+            <nav class="cover-navigation cover-navigation--primary">
+              <ul class="navigation">
+                <li class="navigation__item"><a href="/#blog" title="访问博客" class="blog-button">博客</a></li>
+                
+                  <li class="navigation__item"><a href="http://www.jianshu.com/u/9d7fad1a4693" target="_blank" title="访问简书">简书</a></li>
+                
+                  <li class="navigation__item"><a href="https://juejin.im/user/57e735dfa22b9d00614eecb8" target="_blank" title="访问掘金">掘金</a></li>
+                
+              </ul>
+            </nav>
+          </div>
+          
+          <div><nav class="cover-navigation navigation--social">
+  <ul class="navigation">
+
+    
+    <!-- jianshu-->
+    <li class="navigation__item">
+      <a href="http://www.jianshu.com/u/9d7fad1a4693" title="@coderZsq 的简书" target="_blank">
+        <i class='social fa fa-book'></i>
+        <span class="label">jianshu</span>
+      </a>
+    </li>
+    
+
+    
+    <!-- juejin-->
+    <li class="navigation__item">
+      <a href="https://juejin.im/user/57e735dfa22b9d00614eecb8" title="@coderZsq 的稀土掘金" target="_blank">
+        <i class='social fa fa-align-center'></i>
+        <span class="label">juejin</span>
+      </a>
+    </li>
+    
+
+  
+
+  
+  <!-- Github -->
+  <li class="navigation__item">
+    <a href="https://github.com/coderZsq" title="@coderZsq 的 Github" target="_blank">
+      <i class='social fa fa-github'></i>
+      <span class="label">Github</span>
+    </a>
+  </li>
+  
+
+  
+
+  
+
+  <!-- RSS -->
+  <li class="navigation__item">
+    <a href="/feed.xml" rel="author" title="RSS" target="_blank">
+      <i class='social fa fa-rss'></i>
+      <span class="label">RSS</span>
+    </a>
+  </li>
+
+  
+  <!-- Email -->
+  <li class="navigation__item">
+    <a href="mailto:a13701777868@gmail.com" title="Contact me">
+      <i class='social fa fa-envelope'></i>
+      <span class="label">Email</span>
+    </a>
+  </li>
+  
+
+  </ul>
+</nav>
+</div>
+        </div>
+      </div>
+    </div>
+    
+    
+    <div class="panel-cover--overlay cover-blue"></div>
+    
+  </div>
+</header>
+
+
+    <div class="content-wrapper">
+        <div class="content-wrapper__inner">
+            <article class="post-container post-container--single" itemscope itemtype="http://schema.org/BlogPosting">
+  <header class="post-header">
+    <div class="post-meta">
+      <time datetime="2017-08-09 17:01:00 +0800" itemprop="datePublished" class="post-meta__date date">2017-08-09</time> &#8226; <span class="post-meta__tags tags">移动开发</span>
+    </div>
+    <h1 class="post-title">iOS 通俗易懂的HTTP网络</h1>
+  </header>
+
+  <section class="post">
+    <blockquote>
+  <p>去了饿厂面试后了解到了自己计算机基础的薄弱, 非科班出身薄弱也是自然的, 说实话, 我也并不是特别想要往底层深究, 因为越底层的东西越会抽象成服务输送给大众, 就好比自来水, 一般人都不会想要去了解自来水的底层逻辑吧, 但作为开发者, 我们还是得了解下基础的网络概念.</p>
+</blockquote>
+
+<p><img src="http://upload-images.jianshu.io/upload_images/1229762-e3a79ef83834ea88.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="" /></p>
+
+<h2 id="序">序</h2>
+<p>关于<code class="highlighter-rouge">HTTP</code>与<code class="highlighter-rouge">HTML</code>的发明有个很有趣的插曲, 那就是首个万维网服务器与浏览器是在一台<code class="highlighter-rouge">NeXTStep</code>计算机上编写的, 在1997年, <code class="highlighter-rouge">Apple</code>收购了<code class="highlighter-rouge">NeXTStep Computer</code>并将<code class="highlighter-rouge">NeXTStep</code>作为<code class="highlighter-rouge">mac OS</code>的基础后来成为了<code class="highlighter-rouge">iOS</code>的基础.</p>
+
+<h2 id="url">URL</h2>
+<p>每个Web资源被称为统一资源标识符(Uniform Resource Identifier, URI) 其中包括 <code class="highlighter-rouge">URL</code> 和 <code class="highlighter-rouge">URN</code>, 现在几乎所有的<code class="highlighter-rouge">URI</code>都是<code class="highlighter-rouge">URL</code>.</p>
+
+<h5 id="url-通用格式">URL 通用格式</h5>
+<p><code class="highlighter-rouge">&lt;scheme&gt;://&lt;user&gt;:&lt;password&gt;@&lt;host&gt;:&lt;port&gt;/&lt;path&gt;;&lt;params&gt;?&lt;query&gt;#&lt;frag&gt;</code>
+几乎没有哪个<code class="highlighter-rouge">URL</code>中包含了所有这些组件, URL最重要的三个部分是 (<code class="highlighter-rouge">scheme</code> 方案), (<code class="highlighter-rouge">host</code> 主机), (<code class="highlighter-rouge">path</code> 路径)</p>
+
+<p>比如说, 你想要获取<code class="highlighter-rouge">URL</code> <a href="https://www.apple.com/index.html">https://www.apple.com/index.html</a> 那么<code class="highlighter-rouge">URL</code>包含以下三个部分:</p>
+
+<ol>
+  <li><code class="highlighter-rouge">https</code> 是<code class="highlighter-rouge">URL</code>方案(scheme). 方案告诉客户端如何访问资源.</li>
+  <li><code class="highlighter-rouge">www.apple.com</code> 是服务器的位置, 告知客户端资源位于何处.</li>
+  <li><code class="highlighter-rouge">/index.html</code> 是资源路径, 说明了请求的是服务器上哪个指定文件资源.</li>
+</ol>
+
+<p>构建网络架构<code class="highlighter-rouge">URL</code>时遵循服务版本化和服务定位器原则.</p>
+
+<h2 id="报文">报文</h2>
+<p>所有的<code class="highlighter-rouge">HTTP</code>报文都可以分为两类, 请求报文(<code class="highlighter-rouge">request message</code>) 和 响应报文 (<code class="highlighter-rouge">response message</code>) 我们可以通过<code class="highlighter-rouge">Chrome</code>模拟请求得到请求报文和响应报文, 我们来简单的看一下首部中的一些简单的概念.</p>
+
+<h5 id="响应首部">响应首部</h5>
+<div class="highlighter-rouge"><pre class="highlight"><code>HTTP/1.1 200 OK
+Access-Control-Allow-Origin: http://localhost:3000
+Access-Control-Allow-Methods: GET,HEAD,PUT,POST,DELETE
+Content-Type: application/json; charset=utf-8
+Content-Length: 2180
+Date: Mon, 31 Jul 2017 02:56:17 GMT
+Connection: keep-alive
+</code></pre>
+</div>
+
+<p>由上述响应首部, 我们可得知以下信息:</p>
+
+<ol>
+  <li>应用程序支持最高的<code class="highlighter-rouge">HTTP</code>版本号为<code class="highlighter-rouge">1.1</code>.</li>
+  <li>状态码<code class="highlighter-rouge">200</code>表示请求成功. 如为<code class="highlighter-rouge">3XX</code>表示重定向, <code class="highlighter-rouge">4XX</code>表示客户端错误, <code class="highlighter-rouge">5XX</code>表示服务器错误.</li>
+  <li>原因短语<code class="highlighter-rouge">OK</code>仅为显示, 并无实际含义.</li>
+  <li><code class="highlighter-rouge">Content-Type</code>就是<code class="highlighter-rouge">MIME Type</code>, 用以区分传输资源, 例子中主体部分是字符集为<code class="highlighter-rouge">utf-8</code>的<code class="highlighter-rouge">json</code>数据.</li>
+  <li><code class="highlighter-rouge">Content-Length</code>表示主体部分包含了<code class="highlighter-rouge">2180 </code>字节的数据.</li>
+  <li><code class="highlighter-rouge">Date</code>表示了服务器产生响应的日期.</li>
+  <li><code class="highlighter-rouge">Connection</code> 连接类型为<code class="highlighter-rouge">keep-alive</code>.</li>
+  <li><code class="highlighter-rouge">Access-Control-Allow-Origin</code> 服务器域名为<code class="highlighter-rouge">http://localhost:3000</code>.</li>
+  <li><code class="highlighter-rouge">Access-Control-Allow-Methods</code>服务器实现的方法为<code class="highlighter-rouge">GET,HEAD,PUT,POST,DELETE</code>.</li>
+</ol>
+
+<h5 id="请求首部">请求首部</h5>
+<div class="highlighter-rouge"><pre class="highlight"><code>GET /api/J1/getJ1List HTTP/1.1
+Host: localhost:3001
+Connection: keep-alive
+Pragma: no-cache
+Cache-Control: no-cache
+Accept: application/json, text/plain, */*
+Origin: http://localhost:3000
+User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 9_1 like Mac OS X) AppleWebKit/601.1.46 (KHTML, like Gecko) Version/9.0 Mobile/13B143 Safari/601.1
+Referer: http://localhost:3000/
+Accept-Encoding: gzip, deflate, br
+Accept-Language: zh-CN,zh;q=0.8
+</code></pre>
+</div>
+<p>由上述请求首部, 我们可以得知以下信息:</p>
+
+<ol>
+  <li>使用了<code class="highlighter-rouge">GET</code>方法进行请求, 请求的路由为<code class="highlighter-rouge">/api/J1/getJ1List</code>, <code class="highlighter-rouge">HTTP</code>版本号为<code class="highlighter-rouge">1.1</code></li>
+  <li><code class="highlighter-rouge">Host</code> 提供了接受请求的服务器的主机名和端口号<code class="highlighter-rouge">localhost:3001</code>.</li>
+  <li><code class="highlighter-rouge">Connection</code> 和响应首部信息对照.</li>
+  <li><code class="highlighter-rouge">Pragma</code> 随报文传送指示的方式, 并不专用于缓存.</li>
+  <li><code class="highlighter-rouge">Cache-Control</code> 用于随报文传送缓存指示.</li>
+  <li><code class="highlighter-rouge">Accept</code> 接受的任意媒体类型, 和响应首部的<code class="highlighter-rouge">Content-Type</code>信息对照</li>
+  <li><code class="highlighter-rouge">Origin</code> 当前访问域名, 与<code class="highlighter-rouge">Access-Control-Allow-Origin</code>信息对照</li>
+  <li><code class="highlighter-rouge">User-Agent</code> 将发起请求的应用程序名称告知服务器.</li>
+  <li><code class="highlighter-rouge">Referer</code> 提供了包含当前请求URI的文档的URL.</li>
+  <li><code class="highlighter-rouge">Accept-Encoding</code> 告诉服务器能够发送哪些编码方式.</li>
+  <li><code class="highlighter-rouge">Accept-Language</code> 告诉服务器能够发送哪些语言.</li>
+</ol>
+
+<h2 id="实体">实体</h2>
+
+<p>具体来说, <code class="highlighter-rouge">HTTP</code>承载的实体需要满足以下条件.</p>
+
+<ul>
+  <li>可以被正确识别(通过<code class="highlighter-rouge">Content-Type</code>首部说明媒体格式, <code class="highlighter-rouge">Content-Language</code>首部说明语言), 以便浏览器和其他客户端能正确处理内容.</li>
+  <li>可以被正确地解包(通过<code class="highlighter-rouge">Content-Length</code>首部和<code class="highlighter-rouge">Content-Encoding</code>首部).</li>
+  <li>是最新的(通过实体验证码和缓存过期控制).</li>
+  <li>符合用户的需要(基于<code class="highlighter-rouge">Accept</code>系列的内容协商首部).</li>
+  <li>在网络上可以快速有效地传输(通过范围请求, 差异编码以及其他数据压缩方法).</li>
+  <li>完整到达, 未被篡改(通过传输编码首部和<code class="highlighter-rouge">Content-MD5</code>校验和首部).</li>
+</ul>
+
+<p><code class="highlighter-rouge">HTTP / 1.1</code>版定义了一下10个基本字体首部字段.</p>
+
+<ul>
+  <li><code class="highlighter-rouge">Content-Type</code> 实体中所承载对象的类型.</li>
+  <li><code class="highlighter-rouge">Content-Length</code> 所传送实体的长度或大小.</li>
+  <li><code class="highlighter-rouge">Content-Language</code> 与所传送实体主体的长度或大小.</li>
+  <li><code class="highlighter-rouge">Content-Encoding</code> 对象数据所做的任意变换 (比如, 压缩).</li>
+  <li><code class="highlighter-rouge">Content-Location</code> 一个备用位置, 请求时可通过它获得对象.</li>
+  <li><code class="highlighter-rouge">Content-MD5</code> 实体主体内容的校验和.</li>
+  <li><code class="highlighter-rouge">Last-Modified</code> 所传输内容在服务器上创建或最后修改的日期时间.</li>
+  <li><code class="highlighter-rouge">Expires</code> 实体数据将要失效的日期时间.</li>
+  <li><code class="highlighter-rouge">Allow</code> 该资源所允许的各种请求方法, 例如, <code class="highlighter-rouge">GET</code>和<code class="highlighter-rouge">HEAD</code>.</li>
+  <li><code class="highlighter-rouge">ETag</code> 这份文档特定实例的唯一验证码. <code class="highlighter-rouge">ETag</code>首部没有正式定义为实体首部, 但它对许多涉及实体的操作来说, 都是一个重要的首部.</li>
+  <li><code class="highlighter-rouge">Chahe-Control</code> 指出应该如何缓存该文档, 和<code class="highlighter-rouge">ETag</code>首部类似, <code class="highlighter-rouge">Chche-Control</code>首部也没有正式定义为实体首部.</li>
+</ul>
+
+<h2 id="连接">连接</h2>
+<p>世界上几乎所有的<code class="highlighter-rouge">HTTP</code>通信都是由<code class="highlighter-rouge">TCP/IP</code>承载的, <code class="highlighter-rouge">HTTP</code>要传送一条报文时, 会以流的形式将报文数据的内容通过一条打开的<code class="highlighter-rouge">TCP</code>链接按序传输, <code class="highlighter-rouge">TCP</code>收到数据流之后, 会将数据流砍成被称作段的小数据块, 并将段封装在<code class="highlighter-rouge">IP</code>分组中.</p>
+
+<h5 id="ios-urlsession">iOS URLSession</h5>
+
+<p>我们先来简单的看下<code class="highlighter-rouge">iOS</code>中如何使用<code class="highlighter-rouge">HTTP</code>网络, 使用系统的<code class="highlighter-rouge">URLSession</code>进行网络请求, 将请求方法设置为<code class="highlighter-rouge">GET</code>, 当然默认就是<code class="highlighter-rouge">GET</code>, 使用单例创建<code class="highlighter-rouge">URLSession</code>进行任务回调, <code class="highlighter-rouge">URLSession</code>是异步请求, <code class="highlighter-rouge">dataTask</code>默认是关闭状态, 需要手动开启<code class="highlighter-rouge">dataTask.resume()</code>.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>var request = URLRequest(url: URL(string: "http://localhost:3001/api/J1/getJ1List")!)
+request.httpMethod = "GET"
+let session = URLSession.shared
+let dataTask = session.dataTask(with: request) { (data, response, err) in
+    if err != nil {
+        print(err.debugDescription)
+    } else {
+        let responseStr = String(data: data!, encoding: String.Encoding.utf8)
+        print(responseStr!)
+        print("mimeType: \(String(describing: response?.mimeType))")
+    }
+    if let response = response as? HTTPURLResponse {
+        print("statusCode: \(response.statusCode)")
+        for (tab, result) in response.allHeaderFields {
+            print("\(tab.description) - \(result)")
+        }
+        if response.statusCode == 200 {
+            print(response)
+        }
+    }
+}
+dataTask.resume()
+
+</code></pre>
+</div>
+
+<p>结合上面的内容, 我们发送了一个<code class="highlighter-rouge">GET</code>请求到<code class="highlighter-rouge">http://localhost:3001/api/J1/getJ1List</code>, 现在我们就会分析<code class="highlighter-rouge">URL</code>了, 方案是<code class="highlighter-rouge">http</code>, 主机为<code class="highlighter-rouge">localhost</code>, 端口号为<code class="highlighter-rouge">3001</code>, 路径为<code class="highlighter-rouge">/api/J1/getJ1List</code></p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>&lt;NSHTTPURLResponse: 0x6100000326a0&gt; { URL: http://localhost:3001/api/J1/getJ1List } { status code: 200, headers {
+    "Access-Control-Allow-Methods" = "GET,HEAD,PUT,POST,DELETE";
+    "Access-Control-Allow-Origin" = "*";
+    Connection = "keep-alive";
+    "Content-Length" = 2180;
+    "Content-Type" = "application/json; charset=utf-8";
+    Date = "Mon, 31 Jul 2017 07:29:52 GMT";
+} }
+</code></pre>
+</div>
+<p>返回的响应报文与<code class="highlighter-rouge">Chrome</code>中显示相同, 在<code class="highlighter-rouge">iOS9</code>之后系统推荐使用<code class="highlighter-rouge">URLSeesion</code>, 使用起来非常的方便快捷. 当然<code class="highlighter-rouge">URLSession</code>的功能不止于此, 若想深究请看官方文档, 在网络可达性方面使用系统<code class="highlighter-rouge">Reachability</code>框架.</p>
+
+<h2 id="缓存">缓存</h2>
+
+<p><code class="highlighter-rouge">HTTP</code>为我们提供了几个用来对已缓存对象进行再验证的工具吗但最常用的是<code class="highlighter-rouge">If-Modified-Since</code>和<code class="highlighter-rouge">If-None-Match</code>首部. 将这个首部添加到<code class="highlighter-rouge">GET</code>请求中去, 就可以告诉服务器, 只有在缓存了对象的副本之后, 又对其进行了修改的情况下, 才发送此对象.</p>
+
+<h5 id="ios-nsurlrequestcachepolicy">iOS NSURLRequestCachePolicy</h5>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>typedef NS_ENUM(NSUInteger, NSURLRequestCachePolicy)
+{
+    NSURLRequestUseProtocolCachePolicy = 0,
+
+    NSURLRequestReloadIgnoringLocalCacheData = 1,
+    NSURLRequestReloadIgnoringLocalAndRemoteCacheData = 4, // Unimplemented
+    NSURLRequestReloadIgnoringCacheData = NSURLRequestReloadIgnoringLocalCacheData,
+
+    NSURLRequestReturnCacheDataElseLoad = 2,
+    NSURLRequestReturnCacheDataDontLoad = 3,
+
+    NSURLRequestReloadRevalidatingCacheData = 5, // Unimplemented
+};
+</code></pre>
+</div>
+<p>设置缓存策略会对应的添加请求首部<code class="highlighter-rouge">Cache-Control</code>等到<code class="highlighter-rouge">URLRequest</code>中.</p>
+
+<h5 id="缓存的处理步骤">缓存的处理步骤</h5>
+
+<ol>
+  <li>接收: 缓存从网络中读取抵达的请求报文.</li>
+  <li>解析: 缓存对报文进行解析, 提取出<code class="highlighter-rouge">URL</code>和各种首部.</li>
+  <li>查询: 缓存查看是否有本地副本可用, 如果没有, 就获取一份副本 (并将其保存在本地).</li>
+  <li>新鲜度检测: 缓存查看已缓存副本是否足够新鲜, 如果不是, 就询问服务器是否有任何更新.</li>
+  <li>创建响应: 缓存会用新的首部和一缓存的主体来构建一条响应报文.</li>
+  <li>发送: 缓存通过网络将响应发回客户端.</li>
+  <li>日志: 缓存可选地创建一个日志文件条目来描述这个事务.</li>
+</ol>
+
+<h2 id="cookie">Cookie</h2>
+<p>可以笼统的将<code class="highlighter-rouge">cookie</code>分为两类: 会话<code class="highlighter-rouge">cookie</code>和持久<code class="highlighter-rouge">cookie</code>. 会话<code class="highlighter-rouge">cookie</code>是一种临时<code class="highlighter-rouge">cookie</code>, 它记录了用户访问站点时的设置和偏好. 用户退出浏览器时, 会话<code class="highlighter-rouge">cookie</code>就被删除了. 持久<code class="highlighter-rouge">cookie</code>的生存时间更长一些, 他们存储在硬盘上, 浏览器退出, 计算机重启时他们仍然存在, 通常会用持久<code class="highlighter-rouge">cookie</code>维护某个用户会周期性访问的站点的配置文件或登录名.</p>
+
+<p>会话<code class="highlighter-rouge">cookie</code>和持久<code class="highlighter-rouge">cookie</code>之间唯一的区别就是它们的过期时间, 如果设置了<code class="highlighter-rouge">Discard</code>参数, 或者没有设置<code class="highlighter-rouge">Expires</code>或<code class="highlighter-rouge">Max-Age</code>参数来说明扩展的过期时间, 这个<code class="highlighter-rouge">cookie</code>就是一个会话<code class="highlighter-rouge">cookie</code>.</p>
+
+<h5 id="ios-httpcookie--httpcookiestorage">iOS HTTPCookie / HTTPCookieStorage</h5>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>// 阻止应用保存`cookie`.
+HTTPCookieStorage.shared.cookieAcceptPolicy = .never
+</code></pre>
+</div>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>// 从响应中获取`cookie`.
+guard let url = URL(string: "http://localhost:3001/api/J1/getJ1List") else {
+    return
+}
+let request = URLRequest(url: url)
+let session = URLSession.shared
+let dataTask = session.dataTask(with: request) { (data, response, err) in
+    if err != nil {
+        print(err.debugDescription)
+    } else {
+        let responseStr = String(data: data!, encoding: String.Encoding.utf8)
+        print(responseStr!)
+        print("mimeType: \(String(describing: response?.mimeType))")
+    }
+    if let response = response as? HTTPURLResponse {
+        print("statusCode: \(response.statusCode)")
+        
+        // get cookie from response
+        let cookies = HTTPCookie.cookies(withResponseHeaderFields: response.allHeaderFields as! [String : String], for: url)
+        
+        for cookie in cookies {
+            print("Cookie: \(cookie)")
+        }
+        
+        for (tab, result) in response.allHeaderFields {
+            print("\(tab.description) - \(result)")
+        }
+        if response.statusCode == 200 {
+            print(response)
+        }
+    }
+}
+dataTask.resume()
+
+</code></pre>
+</div>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>// 删除cookie.
+func deleteCookie(cookieName:String, url:URL) {
+    let jar = HTTPCookieStorage.shared
+    guard let storedcookies = jar.cookies(for: url) else {
+        return
+    }
+    for cookie in storedcookies {
+        jar.deleteCookie(cookie)
+    }
+}
+</code></pre>
+</div>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>// 创建cookie.
+guard let url = URL(string: "http://localhost:3001/api/J1/getJ1List") else {
+    return
+}
+let properties = [HTTPCookiePropertyKey.name : "FOO",
+                  HTTPCookiePropertyKey.value : "This is foo",
+                  HTTPCookiePropertyKey.path : "/",
+                  HTTPCookiePropertyKey.originURL : "url"]
+guard let cookie = HTTPCookie.init(properties: properties) else {
+    return
+}
+
+var request = URLRequest(url: url)
+var newCookies: [HTTPCookie] = [cookie]
+var newHeaders = HTTPCookie.requestHeaderFields(with: newCookies)
+request.allHTTPHeaderFields = newHeaders
+
+let dataTask = session.dataTask(with: request) { (data, response, err) in {
+    ...
+    }
+}
+dataTask.resume()
+</code></pre>
+</div>
+<p><code class="highlighter-rouge">cookie</code>是可以禁止的, 而且可以通过日志分析或其他方式来实现大部分跟踪记录, 所以<code class="highlighter-rouge">cookie</code>自身并不是很大的安全隐患. 实际上, 可以通过提供一个标准的审查方法在远程数据库中保存个人信息, 并将匿名<code class="highlighter-rouge">cookie</code>作为键值, 来降低客户端到服务器的敏感数据传输频率.</p>
+
+<h2 id="认证">认证</h2>
+<p>认证就是要给出一些身份信息, 当出示像护照或驾照那样有照片的身份证件时, 就给出了一些证据, 说明你就是你所声称的那个人, 在自动取款机上输入<code class="highlighter-rouge">PIN</code>码, 或在计算机系统的对话框中输入了密码时, 也是在证明你就是你所声称的那个人.</p>
+
+<p><code class="highlighter-rouge">HTTP</code>提供了一个原生的质询 / 响应(<code class="highlighter-rouge">challenge / response</code>)框架, 简化了对用户的认证过程.</p>
+
+<h5 id="ios-urlprotectionspace">iOS URLProtectionSpace</h5>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>_ =  URLProtectionSpace(host: "localhost",
+                        port: 3001, protocol: NSURLProtectionSpaceHTTP,
+                        realm: "moblie",
+                        authenticationMethod: NSURLAuthenticationMethodDefault)                 
+</code></pre>
+</div>
+<p>最佳实践是使用<code class="highlighter-rouge">URLProtectionSpace</code>验证手机银行应用的用户与安全的银行服务器进行通信, 特别是在发出的请求会操纵后端数据时更是如此. <code class="highlighter-rouge">URLProtectionSpace</code>是要认证的服务器或域, 是多有进来的<code class="highlighter-rouge">URLAuthenticationChallenges</code>的一个属性.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>func urlSession(_ session: URLSession, didReceive challenge: URLAuthenticationChallenge, completionHandler: @escaping (URLSession.AuthChallengeDisposition, URLCredential?) -&gt; Void) {
+    
+    let defaultSpace = URLProtectionSpace(host: "localhost", port: 3001, protocol: NSURLProtectionSpaceHTTP, realm: "mobile", authenticationMethod: NSURLAuthenticationMethodDefault)
+    
+    let trustSpace = URLProtectionSpace(host: "localhost", port: 3001, protocol: NSURLAuthenticationMethodDefault, realm: "mobile", authenticationMethod: NSURLAuthenticationMethodClientCertificate)
+    
+    let validSpaces = [defaultSpace, trustSpace]
+    if !validSpaces.contains(challenge.protectionSpace) {
+        let msg = "We're unable to establish a secure connection. Please check your network connection and try again"
+        DispatchQueue.main.async {
+            let alert = UIAlertController(title: "Unsecure Connection", message: msg, preferredStyle: .alert)
+            alert .addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+        }
+        challenge.sender?.cancel(challenge)
+    }
+}
+</code></pre>
+</div>
+<p>上述代码片段添加了额外的保护空间, 这位后端提供了一些灵活性. 当确定要支持的保护控件后, 请创建它们, 然后将它们添加到数组中以便与进来的认证挑战相比较. 实际上, 你应该定义有效的保护控件作为模型层的一部分, 这样就可以在所有网络中重用它们了, 如果认证挑战的保护控件与所有支持的空间不匹配, 那么你应该通知用户取消认证质询.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>func urlSession(_ session: URLSession, didReceive challenge: URLAuthenticationChallenge, completionHandler: @escaping (URLSession.AuthChallengeDisposition, URLCredential?) -&gt; Void) {
+        
+        if challenge.protectionSpace.authenticationMethod == NSURLAuthenticationMethodHTTPBasic {
+        
+            if challenge.previousFailureCount == 0 {
+                let creds = URLCredential(user: "Castie!", password: "******", persistence: URLCredential.Persistence.forSession)
+                challenge.sender?.use(creds, for: challenge)
+            } else {
+                challenge.sender?.cancel(challenge)
+                DispatchQueue.main.async {
+                    let alert = UIAlertController(title: "Unsecure Connection", message: msg, preferredStyle: .alert)
+                    alert .addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+                    self.present(alert, animated: true, completion: nil)
+                }
+            }
+        }
+    }
+</code></pre>
+</div>
+
+<p>在确定质询是针对<code class="highlighter-rouge">HTTP Basic</code>或另一种支持的质询类型后, 应该确保没有失败, 并使用用户输入的用户名与密码创建<code class="highlighter-rouge">URLCredential</code>对象. 如果质询失败, 那就警告用户并取消质询.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>URLCredentialStorage.shared.set(creds, for: protectionSpace)
+
+</code></pre>
+</div>
+<p>使用<code class="highlighter-rouge">URLCredentialStorage</code>可以处理证书数据的认证响应.</p>
+
+<h2 id="优化">优化</h2>
+
+<p><code class="highlighter-rouge">iOS</code> 用户都希望应用能够立刻响应每个请求, 移动产业都有这样一条原则, 即屏幕越小, 用户越没耐心. 提供让用户乐于使用的应用意味着要珍惜用户的时间, 就像珍惜你自己的时间一样. 通过压缩请求和响应来优化应用所使用的带宽, 通过管道化请求避免不必要的延迟, 甚至通过缓存响应来避免冗余的网络请求都会加速应用并改进用户体验.</p>
+
+<h5 id="压缩请求和响应">压缩请求和响应</h5>
+
+<p>在默认情况下, <code class="highlighter-rouge">URLSession</code> 会为每个请求添加<code class="highlighter-rouge">Accept-Encoding: gzip, deflate</code> 告知服务器, 客户端可以接收使用<code class="highlighter-rouge">gzip</code>或<code class="highlighter-rouge">DEFLATE</code>压缩的负载, 不过服务器可以自己选择是否压缩响应. 这样, 通过响应负载压缩来提升性能的关键在于配置服务器以支持压缩.</p>
+
+<p>如果想要禁用负载压缩, 应用可以通过清除自动设定的<code class="highlighter-rouge">Accept-Encoding</code>首部来实现.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>var request = URLRequest(url: URL(string: "http://localhost:3000")!, cachePolicy: URLRequest.CachePolicy.useProtocolCachePolicy, timeoutInterval: 20)
+request.addValue("", forHTTPHeaderField: "Accept-Encoding")
+</code></pre>
+</div>
+
+<h5 id="http管道">HTTP管道</h5>
+<p><code class="highlighter-rouge">HTTP</code>管道是重用现有<code class="highlighter-rouge">TCP</code>连接的一种方式, 它使得<code class="highlighter-rouge">HTTP</code>客户端能够在对第一个请求的响应返回前在相同的<code class="highlighter-rouge">TCP Socket</code>上发送第二个请求, 响应返回的顺序与请求发起的顺序保持一致.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>var request = URLRequest(url: URL(string: "http://localhost:3000")!)
+request.httpShouldUsePipelining = true
+</code></pre>
+</div>
+
+<h5 id="重定义缓存">重定义缓存</h5>
+
+<p>除了上述提到的缓存策略, <code class="highlighter-rouge">iOS</code>还提供了重新定义默认的缓存, 并指定了更大的内存容量和持久化储存, 以便在应用重启后依然可以使用.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>let cache = URLCache(memoryCapacity: 1024 * 1024, diskCapacity: 1024 * 1024 * 20, diskPath: "URLCache")
+URLCache.shared = cache
+</code></pre>
+</div>
+
+<h2 id="最后">最后</h2>
+
+<p>其实<code class="highlighter-rouge">HTTP</code>是一个很复杂的工程, 包括很多的首部定义及各种代理网关, DNS及均衡负载等知识, 不过这些一般都是由服务端进行完成, 不过好在现在<code class="highlighter-rouge">BAAS</code>这种云平台的出现极大的便利了我们这些前端开发者, 但基础的知识还是需要了解的, 你说呢?</p>
+
+  </section>
+</article>
+
+<section class="read-more">
+   
+   
+   <div class="read-more-item">
+       <span class="read-more-item-dim">最近的文章</span>
+       <h2 class="post-list__post-title post-title"><a href="/2017/08/iOS-%E7%A7%BB%E5%8A%A8%E7%AB%AF%E7%94%9F%E6%88%90%E5%B7%A5%E5%85%B7%E5%BC%80%E5%8F%91/" title="link to iOS 移动端生成工具开发">iOS 移动端生成工具开发</a></h2>
+       <p class="excerpt">  上个月的一篇移动端面向文档开发一文久违的被编辑推荐到了首页, 也引来了饿了么大神的关注, 虽然最后实力不济未被录用, 但也指明了我前进的方向. 从4月到现在从一个想法到一步步的实现, 感觉自己还是有充足的长进的, 今天我们继续来完善这个项目.参考链接:  iOS 执行.py脚本生成解耦架构  iOS 执行.py脚本生成UI层结构  iOS 移动端面向文档开发之前有写过一个python脚本的生成工具, 通过读取json文件进行代码的生成, 实际操作中部分使用者反映, json文件的可读性...&hellip;</p>
+       <div class="post-list__meta"><time datetime="2017-08-21 11:14:00 +0800" class="post-list__meta--date date">2017-08-21</time> &#8226; <span class="post-list__meta--tags tags">移动开发</span><a class="btn-border-small" href=/2017/08/iOS-%E7%A7%BB%E5%8A%A8%E7%AB%AF%E7%94%9F%E6%88%90%E5%B7%A5%E5%85%B7%E5%BC%80%E5%8F%91/>继续阅读</a></div>
+   </div>
+   
+   
+   
+   
+   <div class="read-more-item">
+       <span class="read-more-item-dim">更早的文章</span>
+       <h2 class="post-list__post-title post-title"><a href="/2017/07/iOS-%E7%A7%BB%E5%8A%A8%E7%AB%AF%E9%9D%A2%E5%90%91%E6%96%87%E6%A1%A3%E5%BC%80%E5%8F%91/" title="link to iOS 移动端面向文档开发">iOS 移动端面向文档开发</a></h2>
+       <p class="excerpt">  之前的解耦架构生成器在实际项目中已经顺利测试通过了, 现在要做的是将文档规范出来, 并扩展到Android, HTML5端的共用, 实现面向文档开发.参考链接:  iOS 执行.py脚本生成解耦架构  iOS 执行.py脚本生成UI层结构1. 面向文档架构设计文档要求:  视图操作需求, 包括页面中所有需要调用网络接口的逻辑, 比如跳转, 刷新等请求.  网络通信接口, 对于目前sender层的一次解耦封装, 目的是不过于依赖sender层, 避免一套请求逻辑写很多遍.  传输数据类型...&hellip;</p>
+       <div class="post-list__meta"><time datetime="2017-07-21 14:21:00 +0800" class="post-list__meta--date date">2017-07-21</time> &#8226; <span class="post-list__meta--tags tags">移动开发</span><a class="btn-border-small" href=/2017/07/iOS-%E7%A7%BB%E5%8A%A8%E7%AB%AF%E9%9D%A2%E5%90%91%E6%96%87%E6%A1%A3%E5%BC%80%E5%8F%91/>继续阅读</a></div>
+   </div>
+   
+</section>
+
+<section class="post-comments">
+  
+  
+  
+  
+</section>
+
+
+            <section class="footer">
+    <footer>
+    	<span class="footer__copyright">本站点采用<a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">知识共享 署名-非商业性使用-相同方式共享 4.0 国际 许可协议</a></span>
+        <span class="footer__copyright">由 <a href="https://jekyllrb.com">Jekyll</a> 于 2017-12-16 生成，感谢 <a href="https://www.digitalocean.com/?refcode=30ed2d146762">Digital Ocean</a> 为本站提供稳定的 VPS 服务</span>
+        <span class="footer__copyright">本站由 <a href="https://github.com/coderZsq">@Castie!</a> 创建，采用 <a href="https://github.com/onevcat/vno-jekyll">Vno - Jekyll</a> 作为主题，您可以在 GitHub 找到<a href="https://github.com/onevcat/OneV-s-Den">本站源码</a> - &copy; 2017</span>
+    </footer>
+</section>
+
+        </div>
+    </div>
+    
+    <script type="text/javascript" src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+
+<script type="text/javascript" src="/js/main.js"></script>
+
+
+
+    
+  </body>
+
+</html>

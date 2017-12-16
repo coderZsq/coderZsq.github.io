@@ -1,0 +1,735 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <title>Castie! Notes</title>
+  <meta name="description" content="  Router真是一个非常好的一种设计模式, 能够做到超低的耦合, 作为系列的最后一节, 我们来统筹三端, 实现热修复架构, 再来说下这个架构的定义, 就是当Native页面业务逻辑出现Bug时, 又不能马上打包上线通过审核的情况下, 通过后台配置将页面降级为H5的页面, 等待修复完成上线后再回到Native的...">
+  <meta name="author" content="Wei Wang">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Hybird 搭建客户端实时降级架构">
+  <meta name="twitter:description" content="  Router真是一个非常好的一种设计模式, 能够做到超低的耦合, 作为系列的最后一节, 我们来统筹三端, 实现热修复架构, 再来说下这个架构的定义, 就是当Native页面业务逻辑出现Bug时, 又不能马上打包上线通过审核的情况下, 通过后台配置将页面降级为H5的页面, 等待修复完成上线后再回到Native的...">
+  
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Hybird 搭建客户端实时降级架构">
+  <meta property="og:description" content="  Router真是一个非常好的一种设计模式, 能够做到超低的耦合, 作为系列的最后一节, 我们来统筹三端, 实现热修复架构, 再来说下这个架构的定义, 就是当Native页面业务逻辑出现Bug时, 又不能马上打包上线通过审核的情况下, 通过后台配置将页面降级为H5的页面, 等待修复完成上线后再回到Native的...">
+  
+  <link rel="icon" type="image/ico" href="/assets/images/favicon.ico" />
+  <link href="/assets/images/favicon.ico" rel="shortcut icon" type="image/ico">
+  
+  <link rel="stylesheet" href="/css/main.css">
+  <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+
+  <link rel="canonical" href="http://localhost:4000/2017/04/Hybird-%E6%90%AD%E5%BB%BA%E5%AE%A2%E6%88%B7%E7%AB%AF%E5%AE%9E%E6%97%B6%E9%99%8D%E7%BA%A7%E6%9E%B6%E6%9E%84/">
+  <link rel="alternate" type="application/rss+xml" title="Castie!" href="http://localhost:4000/feed.xml">
+  
+  <meta name="google-site-verification" content="1-1ZlHoRvM0T2FqPbW2S-qLgYXN6rsn52kErlMPd_gw" />
+  
+</head>
+
+
+  <body>
+
+    <span class="mobile btn-mobile-menu">
+        <i class="fa fa-list btn-mobile-menu__icon"></i>
+        <i class="fa fa-angle-up btn-mobile-close__icon hidden"></i>
+    </span>
+    
+    <header class="panel-cover panel-cover--collapsed" style="background-image: url('/assets/images/background-cover.jpg')">
+  <div class="panel-main">
+
+    <div class="panel-main__inner panel-inverted">
+    <div class="panel-main__content">
+
+        <a href="/#blog" title="前往 Castie! 的主页" class="blog-button"><img src="/assets/images/avatar.jpg" width="80" alt="Castie! logo" class="panel-cover__logo logo" /></a>
+        <h1 class="panel-cover__title panel-title"><a href="/#blog" title="link to homepage for Castie!" class="blog-button">Castie!</a></h1>
+        
+        <span class="panel-cover__subtitle panel-subtitle">正态分布, 优劣伴生</span>
+        
+        <hr class="panel-cover__divider" />
+        <p class="panel-cover__description">北冥有鱼，其名为鲲（kūn）。鲲之大，不知其几千里也；化而为鸟，其名为鹏。鹏之背，不知其几千里也；怒而飞，其翼若垂天之云。是鸟也，海运则将徙于南冥。南冥者，天池也。</p>
+        <hr class="panel-cover__divider panel-cover__divider--secondary" />
+        
+        
+        <p class="panel-cover__description">北海若曰：“井鼃不可以语于海者，拘于虚也；夏虫不可以语于冰者，笃于时也；曲士不可以语于道者，束于教也。今尔出于崖涘，观于大海，乃知尔丑，尔将可与语大理矣。</p>
+        
+        
+        <div class="navigation-wrapper">
+          <div>
+            <nav class="cover-navigation cover-navigation--primary">
+              <ul class="navigation">
+                <li class="navigation__item"><a href="/#blog" title="访问博客" class="blog-button">博客</a></li>
+                
+                  <li class="navigation__item"><a href="http://www.jianshu.com/u/9d7fad1a4693" target="_blank" title="访问简书">简书</a></li>
+                
+                  <li class="navigation__item"><a href="https://juejin.im/user/57e735dfa22b9d00614eecb8" target="_blank" title="访问掘金">掘金</a></li>
+                
+              </ul>
+            </nav>
+          </div>
+          
+          <div><nav class="cover-navigation navigation--social">
+  <ul class="navigation">
+
+    
+    <!-- jianshu-->
+    <li class="navigation__item">
+      <a href="http://www.jianshu.com/u/9d7fad1a4693" title="@coderZsq 的简书" target="_blank">
+        <i class='social fa fa-book'></i>
+        <span class="label">jianshu</span>
+      </a>
+    </li>
+    
+
+    
+    <!-- juejin-->
+    <li class="navigation__item">
+      <a href="https://juejin.im/user/57e735dfa22b9d00614eecb8" title="@coderZsq 的稀土掘金" target="_blank">
+        <i class='social fa fa-align-center'></i>
+        <span class="label">juejin</span>
+      </a>
+    </li>
+    
+
+  
+
+  
+  <!-- Github -->
+  <li class="navigation__item">
+    <a href="https://github.com/coderZsq" title="@coderZsq 的 Github" target="_blank">
+      <i class='social fa fa-github'></i>
+      <span class="label">Github</span>
+    </a>
+  </li>
+  
+
+  
+
+  
+
+  <!-- RSS -->
+  <li class="navigation__item">
+    <a href="/feed.xml" rel="author" title="RSS" target="_blank">
+      <i class='social fa fa-rss'></i>
+      <span class="label">RSS</span>
+    </a>
+  </li>
+
+  
+  <!-- Email -->
+  <li class="navigation__item">
+    <a href="mailto:a13701777868@gmail.com" title="Contact me">
+      <i class='social fa fa-envelope'></i>
+      <span class="label">Email</span>
+    </a>
+  </li>
+  
+
+  </ul>
+</nav>
+</div>
+        </div>
+      </div>
+    </div>
+    
+    
+    <div class="panel-cover--overlay cover-blue"></div>
+    
+  </div>
+</header>
+
+
+    <div class="content-wrapper">
+        <div class="content-wrapper__inner">
+            <article class="post-container post-container--single" itemscope itemtype="http://schema.org/BlogPosting">
+  <header class="post-header">
+    <div class="post-meta">
+      <time datetime="2017-04-12 16:37:00 +0800" itemprop="datePublished" class="post-meta__date date">2017-04-12</time> &#8226; <span class="post-meta__tags tags">移动开发</span>
+    </div>
+    <h1 class="post-title">Hybird 搭建客户端实时降级架构</h1>
+  </header>
+
+  <section class="post">
+    <blockquote>
+  <p>Router真是一个非常好的一种设计模式, 能够做到超低的耦合, 作为系列的最后一节, 我们来统筹三端, 实现热修复架构, 再来说下这个架构的定义, 就是当Native页面业务逻辑出现Bug时, 又不能马上打包上线通过审核的情况下, 通过后台配置将页面降级为H5的页面, 等待修复完成上线后再回到Native的设计思想.</p>
+</blockquote>
+
+<p><img src="http://upload-images.jianshu.io/upload_images/1229762-3866097366648136.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="" /></p>
+
+<h6 id="参考链接">参考链接:</h6>
+
+<ul>
+  <li><a href="http://www.jianshu.com/p/5a03995a6ce1">Hybird 搭建零耦合架构从MVC开始</a></li>
+  <li><a href="http://www.jianshu.com/p/846b9f181cb7">Hybird 搭建后端Koa.js并过度到MVVM</a></li>
+  <li><a href="http://www.jianshu.com/p/8d4a84e3ddaa">Hybird 搭建前端Vue.js并升级至MVP</a></li>
+  <li><a href="http://www.jianshu.com/p/36314d0c0032">Hybird 搭建路由Router实现组件化</a></li>
+</ul>
+
+<p>以下内容在上述文章基础上进行, 请事先查阅.</p>
+
+<p>不过写到这里, 不禁感觉自己写的这个架构不是传统意义上的热更新, 而是变相的替代, 就像AT&amp;T的蜂窝数据从LTE降到3G一样, 就是加载的速度上的差异, 但想必也比有Bug来的好吧.</p>
+
+<p>我们还是先来完成前端的页面吧, 作为M站, 导航栏在浏览器的访问下需要显示而在移动端的降级时不需要, 所以我们先来完成这项工作, 首先我们需要通过get参数来判断跳转情况.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>src
+├── javascripts
+│   ├── http.js
+│   └── regex.js
+</code></pre>
+</div>
+
+<p>regex.js</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>export function URLQuery(key) {
+
+  let reg = new RegExp("(^|&amp;)" + key + "=([^&amp;]*)(&amp;|$)");
+  let r = window.location.search.substr(1).match(reg);
+  if (r != null) {
+    return unescape(r[2]);
+  }
+  return null;
+}
+
+</code></pre>
+</div>
+<p>接着我们创建导航组件:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>src
+├── components
+│   ├── J1.vue
+│   └── navigation.vue
+</code></pre>
+</div>
+
+<p>navigation.vue</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>&lt;template lang="html"&gt;
+  &lt;div v-show="show"&gt;
+    &lt;div class="nav"&gt;
+        &lt;span class="title"&gt;&lt;/span&gt;
+    &lt;/div&gt;
+    &lt;div class="nav-offset"&gt;&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/template&gt;
+
+&lt;script&gt;
+
+import {
+  URLQuery
+} from '../javascripts/regex'
+
+export default {
+  data () {
+    return {
+      show: true
+    }
+  },
+  props: {
+    documentTitle: String
+  },
+  mounted:function () {
+    if (URLQuery('client') === 'app') {
+      this.show = false;
+    }
+  }
+}
+&lt;/script&gt;
+
+&lt;style scoped&gt;
+
+.nav {
+    width: 100%;
+    height: 44px;
+    position: relative;
+    background: rgba(248,248,248,1.0);
+    border-bottom: 1px solid lightgray;
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    z-index: 1;
+}
+
+.nav-offset {
+    height: 44px;
+}
+
+.title {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+&lt;/style&gt;
+
+
+</code></pre>
+</div>
+
+<p>在J1.vue中挂载子组件</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>
+&lt;template lang="html"&gt;
+  &lt;div&gt;
+    &lt;navigation :documentTitle="title"&gt;&lt;/navigation&gt; //update
+    &lt;div class="cell" v-for="model in models"&gt;
+        ![](model.imageUrl)
+        &lt;span&gt;&lt;/span&gt;
+        &lt;span&gt;&lt;/span&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/template&gt;
+
+&lt;script&gt;
+
+import navigation from './navigation' //update
+import { GET,URL } from '../javascripts/http'
+import { URLQuery } from '../javascripts/regex' //update
+
+export default {
+  data () {
+    return {
+      title: '',
+      models: []
+    }
+  },
+  components: { //update
+    navigation
+  },
+  methods: {
+    request: function() {
+      GET(URL.getJ1List).then((data) =&gt; {
+          this.models = data.models;
+      }).catch((error) =&gt; {
+
+      })
+    }
+  },
+  mounted:function () {
+    this.title = document.title = "J1";
+    this.request();
+    // alert(window.location.href);
+  }
+}
+&lt;/script&gt;
+
+&lt;style scoped&gt;
+
+.cell {
+    height: 100px;
+    position: relative;
+    border-bottom: 1px solid lightgray;
+}
+
+.cell img {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    padding-left: 10px;
+}
+
+.cell span:first-of-type {
+    position: absolute;
+    top: 35%;
+    transform: translateY(-35%);
+    padding-left: 84px;
+    font-size: 15px;
+}
+
+.cell span:last-of-type {
+    position: absolute;
+    top: 65%;
+    transform: translateY(-65%);
+    padding-left: 84px;
+    font-size: 12px;
+}
+
+&lt;/style&gt;
+
+
+</code></pre>
+</div>
+
+<p>在移动端对webView页面进行传参:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>extension Router {
+    
+    func addParam(key: String, value: Any) {
+        params?[key] = value
+    }
+    
+    func clearParams() {
+        params?.removeAll()
+    }
+    
+    func push(_ path: String) {
+        
+        guardRouters {
+            guard let state = self.routers?[path] as? String else { return }
+            
+            if state == "app" {
+                guard let nativeController = NSClassFromString("RouterPatterm.\(self.map[path]!)") as? UIViewController.Type else { return }
+                currentController?.navigationController?.pushViewController(nativeController.init(), animated: true)
+            }
+            
+            if state == "web" { //update
+                
+                let host = "http://localhost:3000/"
+                var query = ""
+                let ref = "client=app"
+                
+                guard let params = self.params else { return }
+                for (key, value) in params {
+                    query += "\(key)=\(value)&amp;"
+                }
+                
+                self.clearParams()
+                
+                let webViewController = WebViewController("\(host)\(path)?\(query)\(ref)")
+                currentController?.navigationController?.pushViewController(webViewController, animated: true)
+            }
+        }
+    }
+}
+</code></pre>
+</div>
+
+<p>通过client是不是app来判断导航栏的显示和隐藏, 接下来我们通过WKWebView来进行对JS的通讯:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>
+class WebViewController: ViewController {
+    
+    fileprivate lazy var configuretion: WKWebViewConfiguration = { [weak self] in
+        let configuretion = WKWebViewConfiguration()
+        configuretion.userContentController.add(self!, name: "push") //update
+        configuretion.userContentController.add(self!, name: "params") //update
+        return configuretion
+    }()
+    
+	...    
+}
+
+extension WebViewController: WKScriptMessageHandler {
+    
+    func userContentController(_ userContentController: WKUserContentController, didReceive message: WKScriptMessage) { //update
+        
+        let methods = "\(message.name):"
+        let selector = NSSelectorFromString(methods)
+        if self.responds(to: selector) {
+            self.perform(selector, with: message.body)
+        }
+    }
+}
+
+extension WebViewController {
+    
+    @objc fileprivate func push(_ path: String) { //update
+        Router.shareRouter.push(path)
+    }
+    
+    @objc fileprivate func params(_ params: [String : Any]) { //update
+        Router.shareRouter.params = params
+    }
+}
+
+
+</code></pre>
+</div>
+
+<p>在JS中添加跳转和添加参数的方法并通过runtime的方法匹配SEL原生方法, 接下来, 我们在前端中也加入交互的代码:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>├── javascripts
+│   ├── http.js
+│   ├── native.js
+│   └── regex.js
+</code></pre>
+</div>
+
+<p>native.js</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>
+export function NativePush(path) {
+  window.webkit.messageHandlers.push.postMessage(path);
+}
+
+export function NativeParams(params) {
+  window.webkit.messageHandlers.params.postMessage(params);
+}
+
+</code></pre>
+</div>
+<p>并在J1.vue中添加上交互逻辑</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>&lt;template lang="html"&gt;
+  &lt;div&gt;
+    &lt;navigation :documentTitle="title"&gt;&lt;/navigation&gt;
+    &lt;div class="cell" v-for="model in models" @click="push('J1')"&gt; //update
+        ![](model.imageUrl)
+        &lt;span&gt;&lt;/span&gt;
+        &lt;span&gt;&lt;/span&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/template&gt;
+
+&lt;script&gt;
+
+import navigation from './navigation'
+import { GET,URL } from '../javascripts/http'
+import { URLQuery } from '../javascripts/regex'
+import { NativePush, NativeParams } from '../javascripts/native' //update
+
+export default {
+  data () {
+    return {
+      title: '',
+      models: []
+    }
+  },
+  components: {
+    navigation
+  },
+  methods: {
+    request: function() {
+      GET(URL.getJ1List).then((data) =&gt; {
+          this.models = data.models;
+      }).catch((error) =&gt; {
+
+      })
+    },
+    push : function(path) { //update
+      if (URLQuery('client') === 'app') {
+          let params = {
+            text : "web端 传入数据",
+            code : 1002
+          }
+          NativeParams(params);
+          NativePush(path);
+      } else {
+          this.$router.push({
+                path: '/' + path
+          });
+      }
+    }
+  },
+  mounted:function () {
+    this.title = document.title = "J1";
+    this.request();
+    // alert(window.location.href);
+  }
+}
+&lt;/script&gt;
+
+</code></pre>
+</div>
+
+<p>这样我们的架构设计就算基本完成了.</p>
+
+<p>彩蛋:
+为我们的后端连上数据库吧, 通过接口改变数据库的值不用重启服务就能够操控页面.
+数据库我们在这里使用<a href="https://www.mongodb.com/">mongodb</a>, 当然你也可以使用大众情人mysql, 随便…</p>
+
+<p>安装完成后我们执行</p>
+
+<ol>
+  <li>$ mongod –config /usr/local/etc/mongod.conf 开启服务.</li>
+  <li>$ use J1 //创建数据库</li>
+  <li>$ switched to db J1 //切换到数据库</li>
+  <li>$ db.createCollection(‘routers’) //创建routers集合</li>
+  <li>$ db.routers.insert({‘J1’ : ‘app’}) //插入数据到集合</li>
+</ol>
+
+<p>这样我们数据库的准备工作就完成了, 对于Node我们在package.json中导入mongoose, 然后在后端的目录结构上添加db路径:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>db
+├── J1
+│   └── routers.js
+├── base.js
+└── config.js
+</code></pre>
+</div>
+
+<p>config.js</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>const mongoose = require('mongoose');
+
+var db = mongoose.connect('mongodb://localhost/J1');
+
+db.connection.on("error", function(error) {
+    console.log("database connect fail：" + error);
+});
+
+db.connection.on("open", function() {
+    console.log("database connect success");
+})
+
+db.connection.on('disconnected', function() {
+    console.log('database disconnected');
+})
+
+exports.mongoose = mongoose;
+
+
+</code></pre>
+</div>
+
+<p>base.js</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>let mongodb = require('./config');
+let mongoose = mongodb.mongoose;
+let Schema = mongoose.Schema;
+let ObjectId = Schema.Types.ObjectId;
+
+exports.mongodb = mongodb;
+exports.mongoose = mongoose;
+exports.Schema = Schema;
+exports.ObjectId = ObjectId;
+exports.Mixed = Schema.Types.Mixed;
+
+</code></pre>
+</div>
+
+<p>routers.js</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>let base = require('../base');
+let ObjectId = base.ObjectId;
+let Scheme = new base.Schema({
+    J1: String
+});
+
+module.exports = base.mongoose.model('routers', Scheme);
+</code></pre>
+</div>
+
+<p>然后在接口中调用数据库:</p>
+
+<p>J1.js</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>exports.getRouters = async(ctx, next) =&gt; {
+
+    var routers = await Routers.find({});
+    ctx.body = {
+        routers: routers[0]
+    }
+}
+
+exports.updateRouters = async(ctx, next) =&gt; {
+
+    const controller = ctx.params.controller;
+    const client = ctx.params.client;
+
+    if (controller === 'J1') {
+        Routers.update({
+            J1: client
+        }, (err, doc) =&gt; {
+            console.log(doc);
+        })
+    } else {
+        console.log('controller is not exist');
+    }
+}
+
+</code></pre>
+</div>
+<p>添加路由:</p>
+
+<p>J1_router.js</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>
+var router = require('koa-router')();
+var J1 = require('../../app/controllers/J1');
+
+router.get('/getRouters', J1.getRouters);
+router.get('/updateRouters/:controller/:client', J1.updateRouters); //update
+router.get('/getJ1List', J1.getJ1List);
+
+module.exports = router;
+
+</code></pre>
+</div>
+
+<p>这样我们在服务全部开启的情况下调用updateRouters接口,</p>
+
+<p>浏览器输入:
+http://localhost:3001/api/J1/updateRouters/J1/web
+http://localhost:3001/api/J1/updateRouters/J1/app</p>
+
+<p>我们就能够直接更改数据库动态的降级或升级页面了.</p>
+
+<p>最后来总结一下, 我们通过了Swift3 + Vue2 + Koa2, 实现了可降级的移动端架构:</p>
+<ol>
+  <li>cd /RouterPattern/server/RouterPattern $ npm start 开启接口服务器</li>
+  <li>cd /RouterPattern/server/RouterPattern/public/javascripts $ node image.js 开启图片服务器</li>
+  <li>cd /RouterPattern/web/RouterPattern $ npm run dev 打开前端页面</li>
+  <li>cd /RouterPattern/app/RouterPattern $ open RouterPatterm.xcworkspace 打开Xcode</li>
+</ol>
+
+<p>以上就是我想与大家分享的设计思想, 希望大家提出宝贵意见.</p>
+
+<p>演示效果:</p>
+
+<p><img src="http://upload-images.jianshu.io/upload_images/1229762-32c9c5e7c147b54a.gif?imageMogr2/auto-orient/strip" alt="RouterPattern.gif" /></p>
+
+<p>About:</p>
+
+<p><img src="http://upload-images.jianshu.io/upload_images/1229762-3f8925783027b3fa.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="点击下方链接跳转!!" /></p>
+
+<p><a href="https://github.com/coderZsq/coderZsq.target.swift">🌟 源码 请点这里🌟 »&gt; 喜欢的朋友请点喜欢 »&gt; 下载源码的同学请送下小星星 »&gt; 有闲钱的壕们可以进行打赏 »&gt; 小弟会尽快推出更好的文章和大家分享 »&gt; 你的激励就是我的动力!! </a></p>
+
+  </section>
+</article>
+
+<section class="read-more">
+   
+   
+   <div class="read-more-item">
+       <span class="read-more-item-dim">最近的文章</span>
+       <h2 class="post-list__post-title post-title"><a href="/2017/04/RxSwift-%E5%A4%A7%E7%A5%9E%E4%BB%AC%E9%83%BD%E5%9C%A8%E7%9C%8B%E7%9A%84%E5%93%8D%E5%BA%94%E5%BC%8F/" title="link to RxSwift 大神们都在看的响应式">RxSwift 大神们都在看的响应式</a></h2>
+       <p class="excerpt">  上个系列的架构设计, 从MVC -&gt; MVVM -&gt; MVP -&gt; Router -&gt; Downgradable, 我们实现了通过分层将各个组件进行解耦并动态的升降级页面, 这一系列准备说说如何通过RxSwift进行响应式编程更好的和架构设计进行协同. 代码见:github这系列所述案例是通过Ray家的RxSwift一书进行笔记, 在学习本篇之前, 请确保熟练掌握Swift3基础语法并具备中级iOS开发能力. 对于RxSwift的概念不是很清晰的同学可以参照本文...&hellip;</p>
+       <div class="post-list__meta"><time datetime="2017-04-18 12:13:00 +0800" class="post-list__meta--date date">2017-04-18</time> &#8226; <span class="post-list__meta--tags tags">移动开发</span><a class="btn-border-small" href=/2017/04/RxSwift-%E5%A4%A7%E7%A5%9E%E4%BB%AC%E9%83%BD%E5%9C%A8%E7%9C%8B%E7%9A%84%E5%93%8D%E5%BA%94%E5%BC%8F/>继续阅读</a></div>
+   </div>
+   
+   
+   
+   
+   <div class="read-more-item">
+       <span class="read-more-item-dim">更早的文章</span>
+       <h2 class="post-list__post-title post-title"><a href="/2017/04/Hybird-%E6%90%AD%E5%BB%BA%E8%B7%AF%E7%94%B1Router%E5%AE%9E%E7%8E%B0%E7%BB%84%E4%BB%B6%E5%8C%96/" title="link to Hybird 搭建路由Router实现组件化">Hybird 搭建路由Router实现组件化</a></h2>
+       <p class="excerpt">  MVP是个非常好的设计模式, 能够进行代码解耦, 业务分层, 组件化必备良品, 但是还能不能再提升一步呢? 现在项目中的耦合是很少了, 但是控制器之前的切换还是有耦合存在, 有什么办法能够实现控制器零耦合呢?? 那就要祭出本系列的核心Router模式了.代码见: github参考链接:  Hybird 搭建零耦合架构从MVC开始  Hybird 搭建后端Koa.js并过度到MVVM  Hybird 搭建前端Vue.js并升级至MVP以下内容在上述文章基础上进行, 请事先查阅.零耦合一直...&hellip;</p>
+       <div class="post-list__meta"><time datetime="2017-04-12 13:40:00 +0800" class="post-list__meta--date date">2017-04-12</time> &#8226; <span class="post-list__meta--tags tags">移动开发</span><a class="btn-border-small" href=/2017/04/Hybird-%E6%90%AD%E5%BB%BA%E8%B7%AF%E7%94%B1Router%E5%AE%9E%E7%8E%B0%E7%BB%84%E4%BB%B6%E5%8C%96/>继续阅读</a></div>
+   </div>
+   
+</section>
+
+<section class="post-comments">
+  
+  
+  
+  
+</section>
+
+
+            <section class="footer">
+    <footer>
+    	<span class="footer__copyright">本站点采用<a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">知识共享 署名-非商业性使用-相同方式共享 4.0 国际 许可协议</a></span>
+        <span class="footer__copyright">由 <a href="https://jekyllrb.com">Jekyll</a> 于 2017-12-16 生成，感谢 <a href="https://www.digitalocean.com/?refcode=30ed2d146762">Digital Ocean</a> 为本站提供稳定的 VPS 服务</span>
+        <span class="footer__copyright">本站由 <a href="https://github.com/coderZsq">@Castie!</a> 创建，采用 <a href="https://github.com/onevcat/vno-jekyll">Vno - Jekyll</a> 作为主题，您可以在 GitHub 找到<a href="https://github.com/onevcat/OneV-s-Den">本站源码</a> - &copy; 2017</span>
+    </footer>
+</section>
+
+        </div>
+    </div>
+    
+    <script type="text/javascript" src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+
+<script type="text/javascript" src="/js/main.js"></script>
+
+
+
+    
+  </body>
+
+</html>

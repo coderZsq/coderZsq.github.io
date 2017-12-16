@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <title>Castie! Notes</title>
+  <meta name="description" content="  最近在写论文阶段, 没有足够的精力来写技术分享, 再此说声抱歉, 不过我也会尽力挤出时间不定期为大家更新一些干货的!! 请大家继续关注!!">
+  <meta name="author" content="Wei Wang">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="iOS 5行代码搞定全屏Pop转场">
+  <meta name="twitter:description" content="  最近在写论文阶段, 没有足够的精力来写技术分享, 再此说声抱歉, 不过我也会尽力挤出时间不定期为大家更新一些干货的!! 请大家继续关注!!">
+  
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="iOS 5行代码搞定全屏Pop转场">
+  <meta property="og:description" content="  最近在写论文阶段, 没有足够的精力来写技术分享, 再此说声抱歉, 不过我也会尽力挤出时间不定期为大家更新一些干货的!! 请大家继续关注!!">
+  
+  <link rel="icon" type="image/ico" href="/assets/images/favicon.ico" />
+  <link href="/assets/images/favicon.ico" rel="shortcut icon" type="image/ico">
+  
+  <link rel="stylesheet" href="/css/main.css">
+  <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+
+  <link rel="canonical" href="http://localhost:4000/2016/07/iOS-5%E8%A1%8C%E4%BB%A3%E7%A0%81%E6%90%9E%E5%AE%9A%E5%85%A8%E5%B1%8FPop%E8%BD%AC%E5%9C%BA/">
+  <link rel="alternate" type="application/rss+xml" title="Castie!" href="http://localhost:4000/feed.xml">
+  
+  <meta name="google-site-verification" content="1-1ZlHoRvM0T2FqPbW2S-qLgYXN6rsn52kErlMPd_gw" />
+  
+</head>
+
+
+  <body>
+
+    <span class="mobile btn-mobile-menu">
+        <i class="fa fa-list btn-mobile-menu__icon"></i>
+        <i class="fa fa-angle-up btn-mobile-close__icon hidden"></i>
+    </span>
+    
+    <header class="panel-cover panel-cover--collapsed" style="background-image: url('/assets/images/background-cover.jpg')">
+  <div class="panel-main">
+
+    <div class="panel-main__inner panel-inverted">
+    <div class="panel-main__content">
+
+        <a href="/#blog" title="前往 Castie! 的主页" class="blog-button"><img src="/assets/images/avatar.jpg" width="80" alt="Castie! logo" class="panel-cover__logo logo" /></a>
+        <h1 class="panel-cover__title panel-title"><a href="/#blog" title="link to homepage for Castie!" class="blog-button">Castie!</a></h1>
+        
+        <span class="panel-cover__subtitle panel-subtitle">正态分布, 优劣伴生</span>
+        
+        <hr class="panel-cover__divider" />
+        <p class="panel-cover__description">北冥有鱼，其名为鲲（kūn）。鲲之大，不知其几千里也；化而为鸟，其名为鹏。鹏之背，不知其几千里也；怒而飞，其翼若垂天之云。是鸟也，海运则将徙于南冥。南冥者，天池也。</p>
+        <hr class="panel-cover__divider panel-cover__divider--secondary" />
+        
+        
+        <p class="panel-cover__description">北海若曰：“井鼃不可以语于海者，拘于虚也；夏虫不可以语于冰者，笃于时也；曲士不可以语于道者，束于教也。今尔出于崖涘，观于大海，乃知尔丑，尔将可与语大理矣。</p>
+        
+        
+        <div class="navigation-wrapper">
+          <div>
+            <nav class="cover-navigation cover-navigation--primary">
+              <ul class="navigation">
+                <li class="navigation__item"><a href="/#blog" title="访问博客" class="blog-button">博客</a></li>
+                
+                  <li class="navigation__item"><a href="http://www.jianshu.com/u/9d7fad1a4693" target="_blank" title="访问简书">简书</a></li>
+                
+                  <li class="navigation__item"><a href="https://juejin.im/user/57e735dfa22b9d00614eecb8" target="_blank" title="访问掘金">掘金</a></li>
+                
+              </ul>
+            </nav>
+          </div>
+          
+          <div><nav class="cover-navigation navigation--social">
+  <ul class="navigation">
+
+    
+    <!-- jianshu-->
+    <li class="navigation__item">
+      <a href="http://www.jianshu.com/u/9d7fad1a4693" title="@coderZsq 的简书" target="_blank">
+        <i class='social fa fa-book'></i>
+        <span class="label">jianshu</span>
+      </a>
+    </li>
+    
+
+    
+    <!-- juejin-->
+    <li class="navigation__item">
+      <a href="https://juejin.im/user/57e735dfa22b9d00614eecb8" title="@coderZsq 的稀土掘金" target="_blank">
+        <i class='social fa fa-align-center'></i>
+        <span class="label">juejin</span>
+      </a>
+    </li>
+    
+
+  
+
+  
+  <!-- Github -->
+  <li class="navigation__item">
+    <a href="https://github.com/coderZsq" title="@coderZsq 的 Github" target="_blank">
+      <i class='social fa fa-github'></i>
+      <span class="label">Github</span>
+    </a>
+  </li>
+  
+
+  
+
+  
+
+  <!-- RSS -->
+  <li class="navigation__item">
+    <a href="/feed.xml" rel="author" title="RSS" target="_blank">
+      <i class='social fa fa-rss'></i>
+      <span class="label">RSS</span>
+    </a>
+  </li>
+
+  
+  <!-- Email -->
+  <li class="navigation__item">
+    <a href="mailto:a13701777868@gmail.com" title="Contact me">
+      <i class='social fa fa-envelope'></i>
+      <span class="label">Email</span>
+    </a>
+  </li>
+  
+
+  </ul>
+</nav>
+</div>
+        </div>
+      </div>
+    </div>
+    
+    
+    <div class="panel-cover--overlay cover-blue"></div>
+    
+  </div>
+</header>
+
+
+    <div class="content-wrapper">
+        <div class="content-wrapper__inner">
+            <article class="post-container post-container--single" itemscope itemtype="http://schema.org/BlogPosting">
+  <header class="post-header">
+    <div class="post-meta">
+      <time datetime="2016-07-10 15:20:00 +0800" itemprop="datePublished" class="post-meta__date date">2016-07-10</time> &#8226; <span class="post-meta__tags tags">移动开发</span>
+    </div>
+    <h1 class="post-title">iOS 5行代码搞定全屏Pop转场</h1>
+  </header>
+
+  <section class="post">
+    <blockquote>
+  <p>最近在写论文阶段, 没有足够的精力来写技术分享, 再此说声抱歉, 不过我也会尽力挤出时间不定期为大家更新一些干货的!! 请大家继续关注!!</p>
+</blockquote>
+
+<h6 id="参考链接">参考链接:</h6>
+
+<ul>
+  <li><a href="http://www.jianshu.com/p/a3e1b54c73d6">iOS 做好开工前的准备</a></li>
+  <li><a href="http://www.jianshu.com/p/861c9c916b2a">iOS 集成Reveal UI调试利器</a></li>
+  <li><a href="http://www.jianshu.com/p/440bdc425c02">UI/UX 产品原型 从Axure开始</a></li>
+  <li><a href="http://www.jianshu.com/p/56eb4917f956">UI/UX 使用Ps 进行视觉设计</a></li>
+  <li><a href="http://www.jianshu.com/p/c1a0cd2a348f">iOS 会跳舞的TabbarController</a></li>
+  <li><a href="http://www.jianshu.com/p/bba27212de69">iOS 超Easy实现 渐变导航栏</a></li>
+  <li><a href="http://www.jianshu.com/p/6106f5a08ec3">iOS 狂霸酷炫拽之Button动效</a></li>
+</ul>
+
+<p>以下内容在上述文章基础上进行, 请事先查阅.</p>
+
+<h5 id="pop全屏转场">POP全屏转场</h5>
+
+<p>好了, 今天要分享的是5行代码实现全屏POP转场动画, 众所周知,iOS7后导航控制器默认自带了侧滑功能，当用户在界面的左边滑动的时候，就会有侧滑功能。导航控制器的view自带了滑动手势，只不过手势的触发范围只能在左边。当用户在界面左边拖动，就会触发滑动手势方法，并且有滑动返回功能，说明系统手势触发的方法已经实现了滑动返回功能</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>- (void)viewDidLoad {
+    [super viewDidLoad];
+    
+    id target = self.interactivePopGestureRecognizer.delegate;
+    UIPanGestureRecognizer * pan = [[UIPanGestureRecognizer alloc]initWithTarget:target action:@selector(handleNavigationTransition:)];
+    pan.delegate = self;
+    [self.view addGestureRecognizer:pan];
+    [self.interactivePopGestureRecognizer setEnabled:NO];
+}
+
+- (BOOL)gestureRecognizerShouldBegin:(UIGestureRecognizer *)gestureRecognizer {
+    return self.childViewControllers.count == 1 ? NO : YES;
+}
+
+</code></pre>
+</div>
+
+<p>我们只需要在SQNavigationController中添加一个全屏的滑动手势，调用系统自带滑动手势的target的action方法，利用系统实现的滑动返回功能，加上自己全屏滑动手势，就有全屏滑动功能了。</p>
+
+<h5 id="显示效果">显示效果</h5>
+<p><img src="http://upload-images.jianshu.io/upload_images/1229762-cd138be98b9fe184.gif?imageMogr2/auto-orient/strip" alt="" /></p>
+
+<h5 id="runtime-预防数组越界">Runtime 预防数组越界</h5>
+
+<p>我刚学习编程的时候有老师告诉我, 大约有90%的Crash来自于数组越界, 那如果解决了数组越界那就能够屏蔽90%的Crash 是不是很厉害!! 哈哈哈~~~ 但是我们怎么能够屏蔽越界呢??</p>
+
+<p>大家都知道在数组越界就是<code class="highlighter-rouge">objectAtIndex:</code>这个方法的<code class="highlighter-rouge">index</code>超过了数组的<code class="highlighter-rouge">count</code> 然后就无情的Crash了, 最为粗暴的解决方法是在每一次<code class="highlighter-rouge">objectAtIndex:</code>时做下if判断, 的确有这么个习惯非常好,但是人总有遗忘的时候, 项目那么大不可能每次我都写把… 这时 我们想到了第二个办法 就是在NSArray的分类中写一个<code class="highlighter-rouge">safeObjectAtIndex:</code>以后所有调用数组下标,都使用这个方法, 期初看这的确是一个办法, 不过如果是在项目中期, 我怎么保证前面的都有使用这个方法呢? 还有如果使用<code class="highlighter-rouge">array[index]</code>这种coding suger的访问 根本就不可控啊!! 于是我们来学习最终的解决方案Runtime;</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>+ (void)load {
+
+    SEL safeSel   = @selector(safeObjectAtIndex:);
+    SEL unsafeSel = @selector(objectAtIndex:);
+    
+    Class class = NSClassFromString(@"__NSArrayI");
+
+    Method safeMethod   = class_getInstanceMethod(class, safeSel);
+    Method unsafeMethod = class_getInstanceMethod(class, unsafeSel);
+    
+    method_exchangeImplementations(unsafeMethod, safeMethod);
+}
+
+- (id)safeObjectAtIndex:(NSUInteger)index {
+
+    if (index &gt; (self.count - 1)) {
+        NSAssert(NO, @"beyond the boundary");
+        return nil;
+    } else {
+        return [self safeObjectAtIndex:index];
+    }
+}
+
+</code></pre>
+</div>
+<p>Runtime也就是运行时, 是OC中消息机制<code class="highlighter-rouge">msgSend</code>的核心, 但是要讲Runtime真的涉及到的知识点太多, 一般实际应用场景有, 模型转字典, 分类加属性, 动态创建和获取等,JSPatch热修复也是基于Runtime实现的,今天我所分享个大家的用法是交换两个方法的实现来防止数组越界造成的崩溃!!</p>
+
+<p>我们来分析上面的代码, 其实也没有什么好说的…&lt;/br&gt;
+<code class="highlighter-rouge">+ (void)load</code>方法是在创建分类的时候系统会自动调用的方法&lt;/br&gt;
+<code class="highlighter-rouge">SEL unsafeSel = @selector(objectAtIndex:)</code> objc_selector结构体的详细定义没有在头文件中找到。方法的selector用于表示运行时方 法的名字。Objective-C在编译时，会依据每一个方法的名字、参数序列，生成一个唯一的整型标识(Int类型的地址)，这个标识就是SEL。&lt;/br&gt;
+<code class="highlighter-rouge">Method unsafeMethod = class_getInstanceMethod(class, unsafeSel)</code> 使用runtime方法拿到类中的方法&lt;/br&gt; 
+<code class="highlighter-rouge">method_exchangeImplementations</code>交换SEL对应的IMP实现</p>
+
+<p>这样 我们就轻松愉快的防止了90%的Crash 是不是很牛逼!!!!</p>
+
+<h5 id="进一步联系我">进一步联系我</h5>
+<p>好了 今天的分享也就结束了, 最近想换个环境找个新工作, 地点在上海, 有志同道合的朋友可以发我私信进一步联系!!</p>
+
+<hr />
+
+<h5 id="github-下载地址">github 下载地址!!!</h5>
+
+<p>点击下方链接跳转!!</p>
+
+<p><a href="https://github.com/coderZsq">具体源码及SQExtension方法信息 请到github上进行下载! 喜欢的朋友送下小星星哟!!</a></p>
+
+  </section>
+</article>
+
+<section class="read-more">
+   
+   
+   <div class="read-more-item">
+       <span class="read-more-item-dim">最近的文章</span>
+       <h2 class="post-list__post-title post-title"><a href="/2017/01/Hybird-%E8%AF%B4%E8%AF%B4%E4%B8%8EWeb%E4%BA%A4%E4%BA%92%E7%9A%84%E9%82%A3%E4%BA%9B%E4%BA%8B%E5%84%BF/" title="link to Hybird 说说与Web交互的那些事儿">Hybird 说说与Web交互的那些事儿</a></h2>
+       <p class="excerpt">  喵神100Tips的解读连载已经到了第十篇了, 是要好好敲一个Demo来巩固一下自己Swift的学习情况, 说来也巧, 前两天领导来问我能不能帮他做一个需求, 要求web页面调用app原生相册, 选择照片后将图片加载到web页面上. (同学们先想想怎样才能够实现这个需求), 这正是一个锻炼Swift3的机会, 绝对不能错过, 虽然一口答应, 但实际操作中还是有一些技术难点存在的, 在此与你分享.要做这个功能, 虽然对我来说还是Objective-C比较熟悉, 各项技术黑魔法都手到擒来,...&hellip;</p>
+       <div class="post-list__meta"><time datetime="2017-01-11 23:33:00 +0800" class="post-list__meta--date date">2017-01-11</time> &#8226; <span class="post-list__meta--tags tags">移动开发</span><a class="btn-border-small" href=/2017/01/Hybird-%E8%AF%B4%E8%AF%B4%E4%B8%8EWeb%E4%BA%A4%E4%BA%92%E7%9A%84%E9%82%A3%E4%BA%9B%E4%BA%8B%E5%84%BF/>继续阅读</a></div>
+   </div>
+   
+   
+   
+   
+   <div class="read-more-item">
+       <span class="read-more-item-dim">更早的文章</span>
+       <h2 class="post-list__post-title post-title"><a href="/2016/07/iOS-%E7%8B%82%E9%9C%B8%E9%85%B7%E7%82%AB%E6%8B%BD%E4%B9%8BButton%E5%8A%A8%E6%95%88/" title="link to iOS 狂霸酷炫拽之Button动效">iOS 狂霸酷炫拽之Button动效</a></h2>
+       <p class="excerpt">  上周的  引起热烈的反响, 小弟真的是受宠若惊, 还有些同学私信求更新的, 我特别推崇这种互帮互助的学习方式, 有利于共同学习, 好了开始今天的话题!参考链接:  iOS 做好开工前的准备  iOS 集成Reveal UI调试利器  UI/UX 产品原型 从Axure开始  UI/UX 使用Ps 进行视觉设计  iOS 会跳舞的TabbarController  iOS 超Easy实现 渐变导航栏以下内容在上述文章基础上进行, 请事先查阅.今天我们需要实现的功能是: 酷炫的Button...&hellip;</p>
+       <div class="post-list__meta"><time datetime="2016-07-02 15:08:00 +0800" class="post-list__meta--date date">2016-07-02</time> &#8226; <span class="post-list__meta--tags tags">移动开发</span><a class="btn-border-small" href=/2016/07/iOS-%E7%8B%82%E9%9C%B8%E9%85%B7%E7%82%AB%E6%8B%BD%E4%B9%8BButton%E5%8A%A8%E6%95%88/>继续阅读</a></div>
+   </div>
+   
+</section>
+
+<section class="post-comments">
+  
+  
+  
+  
+</section>
+
+
+            <section class="footer">
+    <footer>
+    	<span class="footer__copyright">本站点采用<a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">知识共享 署名-非商业性使用-相同方式共享 4.0 国际 许可协议</a></span>
+        <span class="footer__copyright">由 <a href="https://jekyllrb.com">Jekyll</a> 于 2017-12-16 生成，感谢 <a href="https://www.digitalocean.com/?refcode=30ed2d146762">Digital Ocean</a> 为本站提供稳定的 VPS 服务</span>
+        <span class="footer__copyright">本站由 <a href="https://github.com/coderZsq">@Castie!</a> 创建，采用 <a href="https://github.com/onevcat/vno-jekyll">Vno - Jekyll</a> 作为主题，您可以在 GitHub 找到<a href="https://github.com/onevcat/OneV-s-Den">本站源码</a> - &copy; 2017</span>
+    </footer>
+</section>
+
+        </div>
+    </div>
+    
+    <script type="text/javascript" src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+
+<script type="text/javascript" src="/js/main.js"></script>
+
+
+
+    
+  </body>
+
+</html>
