@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <title>Castie! Notes</title>
+  <meta name="description" content="  上个月的一篇移动端面向文档开发一文久违的被编辑推荐到了首页, 也引来了饿了么大神的关注, 虽然最后实力不济未被录用, 但也指明了我前进的方向. 从4月到现在从一个想法到一步步的实现, 感觉自己还是有充足的长进的, 今天我们继续来完善这个项目.">
+  <meta name="author" content="Wei Wang">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="iOS 移动端生成工具开发">
+  <meta name="twitter:description" content="  上个月的一篇移动端面向文档开发一文久违的被编辑推荐到了首页, 也引来了饿了么大神的关注, 虽然最后实力不济未被录用, 但也指明了我前进的方向. 从4月到现在从一个想法到一步步的实现, 感觉自己还是有充足的长进的, 今天我们继续来完善这个项目.">
+  
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="iOS 移动端生成工具开发">
+  <meta property="og:description" content="  上个月的一篇移动端面向文档开发一文久违的被编辑推荐到了首页, 也引来了饿了么大神的关注, 虽然最后实力不济未被录用, 但也指明了我前进的方向. 从4月到现在从一个想法到一步步的实现, 感觉自己还是有充足的长进的, 今天我们继续来完善这个项目.">
+  
+  <link rel="icon" type="image/ico" href="/assets/images/favicon.ico" />
+  <link href="/assets/images/favicon.ico" rel="shortcut icon" type="image/ico">
+  
+  <link rel="stylesheet" href="/css/main.css">
+  <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+
+  <link rel="canonical" href="http://localhost:4000/2017/08/iOS-%E7%A7%BB%E5%8A%A8%E7%AB%AF%E7%94%9F%E6%88%90%E5%B7%A5%E5%85%B7%E5%BC%80%E5%8F%91/">
+  <link rel="alternate" type="application/rss+xml" title="Castie!" href="http://localhost:4000/feed.xml">
+  
+  <meta name="google-site-verification" content="1-1ZlHoRvM0T2FqPbW2S-qLgYXN6rsn52kErlMPd_gw" />
+  
+</head>
+
+
+  <body>
+
+    <span class="mobile btn-mobile-menu">
+        <i class="fa fa-list btn-mobile-menu__icon"></i>
+        <i class="fa fa-angle-up btn-mobile-close__icon hidden"></i>
+    </span>
+    
+    <header class="panel-cover panel-cover--collapsed" style="background-image: url('/assets/images/background-cover.jpg')">
+  <div class="panel-main">
+
+    <div class="panel-main__inner panel-inverted">
+    <div class="panel-main__content">
+
+        <a href="/#blog" title="前往 Castie! 的主页" class="blog-button"><img src="/assets/images/avatar.jpg" width="80" alt="Castie! logo" class="panel-cover__logo logo" /></a>
+        <h1 class="panel-cover__title panel-title"><a href="/#blog" title="link to homepage for Castie!" class="blog-button">Castie!</a></h1>
+        
+        <span class="panel-cover__subtitle panel-subtitle">正态分布, 优劣伴生</span>
+        
+        <hr class="panel-cover__divider" />
+        <p class="panel-cover__description">北冥有鱼，其名为鲲（kūn）。鲲之大，不知其几千里也；化而为鸟，其名为鹏。鹏之背，不知其几千里也；怒而飞，其翼若垂天之云。是鸟也，海运则将徙于南冥。南冥者，天池也。</p>
+        <hr class="panel-cover__divider panel-cover__divider--secondary" />
+        
+        
+        <p class="panel-cover__description">北海若曰：“井鼃不可以语于海者，拘于虚也；夏虫不可以语于冰者，笃于时也；曲士不可以语于道者，束于教也。今尔出于崖涘，观于大海，乃知尔丑，尔将可与语大理矣。</p>
+        
+        
+        <div class="navigation-wrapper">
+          <div>
+            <nav class="cover-navigation cover-navigation--primary">
+              <ul class="navigation">
+                <li class="navigation__item"><a href="/#blog" title="访问博客" class="blog-button">博客</a></li>
+                
+                  <li class="navigation__item"><a href="http://www.jianshu.com/u/9d7fad1a4693" target="_blank" title="访问简书">简书</a></li>
+                
+                  <li class="navigation__item"><a href="https://juejin.im/user/57e735dfa22b9d00614eecb8" target="_blank" title="访问掘金">掘金</a></li>
+                
+              </ul>
+            </nav>
+          </div>
+          
+          <div><nav class="cover-navigation navigation--social">
+  <ul class="navigation">
+
+    
+    <!-- jianshu-->
+    <li class="navigation__item">
+      <a href="http://www.jianshu.com/u/9d7fad1a4693" title="@coderZsq 的简书" target="_blank">
+        <i class='social fa fa-book'></i>
+        <span class="label">jianshu</span>
+      </a>
+    </li>
+    
+
+    
+    <!-- juejin-->
+    <li class="navigation__item">
+      <a href="https://juejin.im/user/57e735dfa22b9d00614eecb8" title="@coderZsq 的稀土掘金" target="_blank">
+        <i class='social fa fa-align-center'></i>
+        <span class="label">juejin</span>
+      </a>
+    </li>
+    
+
+  
+
+  
+  <!-- Github -->
+  <li class="navigation__item">
+    <a href="https://github.com/coderZsq" title="@coderZsq 的 Github" target="_blank">
+      <i class='social fa fa-github'></i>
+      <span class="label">Github</span>
+    </a>
+  </li>
+  
+
+  
+
+  
+
+  <!-- RSS -->
+  <li class="navigation__item">
+    <a href="/feed.xml" rel="author" title="RSS" target="_blank">
+      <i class='social fa fa-rss'></i>
+      <span class="label">RSS</span>
+    </a>
+  </li>
+
+  
+  <!-- Email -->
+  <li class="navigation__item">
+    <a href="mailto:a13701777868@gmail.com" title="Contact me">
+      <i class='social fa fa-envelope'></i>
+      <span class="label">Email</span>
+    </a>
+  </li>
+  
+
+  </ul>
+</nav>
+</div>
+        </div>
+      </div>
+    </div>
+    
+    
+    <div class="panel-cover--overlay cover-blue"></div>
+    
+  </div>
+</header>
+
+
+    <div class="content-wrapper">
+        <div class="content-wrapper__inner">
+            <article class="post-container post-container--single" itemscope itemtype="http://schema.org/BlogPosting">
+  <header class="post-header">
+    <div class="post-meta">
+      <time datetime="2017-08-21 11:14:00 +0800" itemprop="datePublished" class="post-meta__date date">2017-08-21</time> &#8226; <span class="post-meta__tags tags">移动开发</span>
+    </div>
+    <h1 class="post-title">iOS 移动端生成工具开发</h1>
+  </header>
+
+  <section class="post">
+    <blockquote>
+  <p>上个月的一篇<a href="http://www.jianshu.com/p/b35d06cf189a">移动端面向文档开发</a>一文久违的被编辑推荐到了首页, 也引来了饿了么大神的关注, 虽然最后实力不济未被录用, 但也指明了我前进的方向. 从4月到现在从一个想法到一步步的实现, 感觉自己还是有充足的长进的, 今天我们继续来完善这个项目.</p>
+</blockquote>
+
+<p><img src="http://upload-images.jianshu.io/upload_images/1229762-6b2c8bed102c297f.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="" /></p>
+
+<h6 id="参考链接">参考链接:</h6>
+
+<ul>
+  <li><a href="http://www.jianshu.com/p/47d565bf200e">iOS 执行.py脚本生成解耦架构</a></li>
+  <li><a href="http://www.jianshu.com/p/d15379908582">iOS 执行.py脚本生成UI层结构</a></li>
+  <li><a href="http://www.jianshu.com/p/b35d06cf189a">iOS 移动端面向文档开发</a></li>
+</ul>
+
+<p>之前有写过一个python脚本的生成工具, 通过读取json文件进行代码的生成, 实际操作中部分使用者反映, json文件的可读性不是很好(明显是不熟悉json语法导致的), 以及需要生成多平台代码, 所以python并不是很熟练的我, 考虑再三还是写一个oc项目一劳永逸. 本文会涉及到一些平时开发并不会特别关注的知识点, 以及该生成工具的代码设计和使用方法.</p>
+
+<h4 id="选择项目类型">选择项目类型</h4>
+
+<p>第一个脑中闪现的想法就是使用Command Line Tool命令行工具了, 不就是代码生成吗, 还要开启模拟器? 这不是逗咩…</p>
+
+<p><img src="http://upload-images.jianshu.io/upload_images/1229762-633eb57502c60a1f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="" /></p>
+
+<p>但我们需要读取Template模板文件, 由于模板文件是不可编译的文件, 所以我们并不能直接将其拖入项目中来, 然后我想那就通过相对路径的方法来读取文件吧, 可惜的是我找了一圈都没有获取当前路径的api, 只有sandbox, 沙盒…</p>
+
+<p>我想命令行工具还有沙盒这玩意? 好吧, 我试试通过Bundle进行获取吧, 试了很久获取到的都是null, 无语… 到Stack Overflow上一问, 命令行工具不支持自制Bundle的读取, 好吧, 我认了. 但我感觉这只是一个链接的问题, 应该是可以读取的, 可惜找不到可执行的方法, 无奈只有放弃.</p>
+
+<p><img src="http://upload-images.jianshu.io/upload_images/1229762-6b1e477d06602050.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="" /></p>
+
+<p>被迫我们只能够选择Single View Application了, 只是万般无奈啊, 好吧, 对世事的妥协不也是生活中的一部分嘛…</p>
+
+<h4 id="选择配置文件">选择配置文件</h4>
+
+<p>在配置文件上的选择其实比较简单, 既然是oc的项目, 选择读取最为简单的plist是最好的选择. 同时也比较容易配置.</p>
+
+<p><img src="http://upload-images.jianshu.io/upload_images/1229762-d4c8b910298ae21a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="" />
+<img src="http://upload-images.jianshu.io/upload_images/1229762-7df7f7846e1ef1e0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="" /></p>
+
+<p>进行了一些简单的配置, 这部分不是很清晰的同学可以前往 <a href="http://www.jianshu.com/p/47d565bf200e">http://www.jianshu.com/p/47d565bf200e</a> 进行了解.</p>
+
+<p>配置完plist后我们将之前的模板一起放入bundle并引入工程.</p>
+
+<p><img src="http://upload-images.jianshu.io/upload_images/1229762-ec6f1235005944b3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="" /></p>
+
+<p>知识点: 放入bundle的文件并不会进行编译, 仅作为资源文件存储.</p>
+
+<h4 id="选择设计模式">选择设计模式</h4>
+
+<p>对于设计模式来说, 确实是看过不少相关类型的书籍, 一些常用的设计模式也是手到擒来, 这不, 对于代码生成工具, 立马能够想到生成器模式, 哈哈, 是工厂模式和装饰模式.</p>
+
+<p>其实对于这些设计模式的命名其实感觉挺误导人的, 什么责任链咯, 原型什么的, 其实看一遍代码就懂得东西被吹的神神道道, 也是醉了.</p>
+
+<p>通过设计模式的选择后我们创建了<code class="highlighter-rouge">SQBuilder</code>和<code class="highlighter-rouge">SQFileParser</code>, 前者为工厂模式, 后者为装饰模式.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="k">@interface</span> <span class="nc">SQBuilder</span> <span class="p">:</span> <span class="nc">NSObject</span>
+
+<span class="k">@property</span> <span class="p">(</span><span class="n">nonatomic</span><span class="p">,</span><span class="n">copy</span><span class="p">)</span> <span class="n">NSString</span> <span class="o">*</span> <span class="n">user</span><span class="p">;</span>
+<span class="k">@property</span> <span class="p">(</span><span class="n">nonatomic</span><span class="p">,</span><span class="n">copy</span><span class="p">)</span> <span class="n">NSString</span> <span class="o">*</span> <span class="n">prefix</span><span class="p">;</span>
+<span class="k">@property</span> <span class="p">(</span><span class="n">nonatomic</span><span class="p">,</span><span class="n">copy</span><span class="p">)</span> <span class="n">NSString</span> <span class="o">*</span> <span class="n">module</span><span class="p">;</span>
+<span class="k">@property</span> <span class="p">(</span><span class="n">nonatomic</span><span class="p">,</span><span class="n">strong</span><span class="p">)</span> <span class="n">NSDictionary</span> <span class="o">*</span> <span class="n">parameter</span><span class="p">;</span>
+<span class="k">@property</span> <span class="p">(</span><span class="n">nonatomic</span><span class="p">,</span><span class="n">strong</span><span class="p">)</span> <span class="n">NSDictionary</span> <span class="o">*</span> <span class="n">dataList</span><span class="p">;</span>
+<span class="k">@property</span> <span class="p">(</span><span class="n">nonatomic</span><span class="p">,</span><span class="n">strong</span><span class="p">)</span> <span class="n">NSArray</span> <span class="o">*</span> <span class="n">actionList</span><span class="p">;</span>
+
+<span class="k">+</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">runWithFileParser</span><span class="p">:(</span><span class="n">NSDictionary</span> <span class="o">*</span><span class="p">)</span><span class="nv">config</span> <span class="nf">success</span><span class="p">:(</span><span class="kt">void</span> <span class="p">(</span><span class="o">^</span><span class="p">)())</span><span class="nv">success</span> <span class="nf">failure</span><span class="p">:(</span><span class="kt">void</span> <span class="p">(</span><span class="o">^</span><span class="p">)())</span><span class="nv">failure</span><span class="p">;</span>
+
+<span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="n">build</span><span class="p">;</span>
+
+<span class="k">@end</span>
+</code></pre>
+</div>
+<div class="highlighter-rouge"><pre class="highlight"><code>+ (SQBuilder *)builderWithType:(SQBuilderType)builderType {
+
+    switch (builderType) {
+        case SQBuilderTypeiOS:
+            return [SQBuilder_iOS new];
+            break;
+        case SQBuilderTypeAndroid:
+            return [SQBuilder_Android new];
+            break;
+        case SQBuilderTypeNone:
+            return [SQBuilder new];
+            break;
+        default:
+            break;
+    }
+}
+</code></pre>
+</div>
+<p>SQBuilder的头文件暴露了和plist中需要配置的属性以及加载SQFileParser文件解析类的方法. 通过工厂模式可以分配创建不同的类.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="k">@interface</span> <span class="nc">SQFileParser</span> <span class="p">:</span> <span class="nc">NSObject</span>
+
+<span class="k">+</span> <span class="p">(</span><span class="n">NSDictionary</span> <span class="o">*</span><span class="p">)</span><span class="n">parser_plist_r</span><span class="p">;</span>
+
+<span class="k">+</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">parser_rw</span><span class="p">:(</span><span class="n">NSString</span> <span class="o">*</span><span class="p">)</span><span class="nv">path</span> <span class="nf">code</span><span class="p">:(</span><span class="n">NSString</span> <span class="o">*</span><span class="p">)</span><span class="nv">code</span> <span class="nf">filename</span><span class="p">:(</span><span class="n">NSString</span> <span class="o">*</span><span class="p">)</span><span class="nv">filename</span> <span class="nf">header</span><span class="p">:(</span><span class="n">NSString</span> <span class="o">*</span><span class="p">)</span><span class="nv">header</span> <span class="nf">parameter</span><span class="p">:(</span><span class="n">NSMutableArray</span> <span class="o">*</span><span class="p">)</span><span class="nv">parameter</span><span class="p">;</span>
+
+<span class="k">@end</span>
+</code></pre>
+</div>
+<div class="highlighter-rouge"><pre class="highlight"><code>[SQBuilder runWithFileParser:[SQFileParser parser_plist_r] success:^{
+    title = @"Build Finished"; message = @"please view the floder on the desktop";
+} failure:^{
+    title = @"Build Error!!!"; message = @"please enter the right builder type!!";
+}];
+</code></pre>
+</div>
+<p>SQFileParser的头文件暴露了读取不同文件类型的接口, 后续读取Excel表格类型仅需添加新的类型接口即可.</p>
+
+<h4 id="创建文件夹-api">创建文件夹 Api</h4>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>NSFileManager * manager = [NSFileManager defaultManager];
+NSString * path = [NSString stringWithFormat:@"/Users/%@/Desktop/%@", self.user, self.module];
+[manager createDirectoryAtPath:path withIntermediateDirectories:NO attributes:nil error:nil];
+</code></pre>
+</div>
+<p>oc中创建文件夹的方式, 能找到的就只有这个了, 而且只能读取绝对路径, 但又不能读取当前文件路径, mac机的user每台机器都不一样, 真是坑啊, 像文件读写这种东西还是python写最为稳妥.</p>
+
+<h4 id="sqfileparser-代码分析">SQFileParser 代码分析</h4>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>+ (NSDictionary *)parser_plist_r {
+    
+    NSBundle * bundle = [NSBundle bundleWithPath:[[NSBundle mainBundle] pathForResource:@"builder.bundle" ofType:nil]];
+    return [NSDictionary dictionaryWithContentsOfFile:[bundle pathForResource:@"config/config.plist" ofType:nil]];
+}
+
+</code></pre>
+</div>
+<p>通过子bundle进行读取/config.plist配置文件, 知识点: 当读取bundle深层结构时需要添加文件路径.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>+ (NSString *)parser_r:(NSString *)filename code:(NSString *)code {
+    
+    NSBundle * bundle = [NSBundle bundleWithPath:[[NSBundle mainBundle] pathForResource:@"builder.bundle" ofType:nil]];
+    return [NSMutableString stringWithContentsOfFile:[bundle pathForResource:[NSString stringWithFormat:@"template/%@/%@", code, filename] ofType:nil] encoding:NSUTF8StringEncoding error:nil];
+}
+</code></pre>
+</div>
+<p>Templete文件的读取, 和上面的读取plist相同, 并没有什么不同之处.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>static NSString * code;
+
++ (NSString *)replaceThougth:(NSString *)templete parameter:(NSMutableArray *)parameter {
+    
+    __block NSString * temp = templete;
+    [[parameter firstObject] enumerateKeysAndObjectsUsingBlock:^(NSString *  _Nonnull key, NSString *  _Nonnull obj, BOOL * _Nonnull stop) {
+        temp = [templete stringByReplacingOccurrencesOfString:key withString:obj];
+    }];
+    [parameter removeObjectAtIndex:0];
+    if (parameter.count) {
+        [SQFileParser replaceThougth:temp parameter:parameter];
+    } else {
+        code = temp;
+    }
+    return code;
+}
+</code></pre>
+</div>
+<p>写入新文件, 这个就要好好讲讲了, NSString的<code class="highlighter-rouge">stringByReplacingOccurrencesOfString</code>方法是会返回一个新的更改后的字符串但并不会改变原指针. 但如果需要替换很多处的话就需要链式调用多次, 真是丑, 一个字概括了所有的观点, 所以我在想有什么方法能够避免这个问题呢? 马上想的就是上述递归调用的方法啦, 哈哈.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>+ (void)parser_rw:(NSString *)path code:(NSString *)code filename:(NSString *)filename header:(NSString *)header parameter:(NSMutableArray *)parameter {
+
+    NSString * arch = [[filename componentsSeparatedByString:@"."]firstObject];
+    NSString * suffix = [[filename componentsSeparatedByString:@"."]lastObject];
+    NSString * filename_r = [NSString stringWithFormat:@"%@Template.%@", arch,suffix];
+    NSString * filename_w = [NSString stringWithFormat:@"%@/%@%@.%@", path,header,arch,suffix];
+    NSString * template =  [SQFileParser parser_r:filename_r code:[code lowercaseString]];
+    [[SQFileParser replaceThougth:template parameter:parameter] writeToFile:filename_w atomically:YES encoding:NSUTF8StringEncoding error:nil];
+}
+</code></pre>
+</div>
+<p>这个方法是读写一体的, 根据拿到的配置参数, 拼接出输入文件名和输出文件名, 并进行文件的读取和写入.</p>
+
+<h4 id="sqbuilder">SQBuilder</h4>
+
+<p>这个其实就没什么好讲的了, 自己去看代码即可, 仅是读取配置参数并动态生成方法的逻辑代码了.</p>
+
+<h4 id="如何使用">如何使用?</h4>
+
+<p><img src="http://upload-images.jianshu.io/upload_images/1229762-fc74bd0c6d91d2af.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="" />
+<img src="http://upload-images.jianshu.io/upload_images/1229762-3440afd9c465ff1f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="" /></p>
+
+<p>打开终端输入pwd获取user信息,并填入plist配置文件, 并输入其他参数, 进行<code class="highlighter-rouge">Run</code>即可将代码生成至桌面. 以后开发的时候只需要关注View层, 其他的都不需要操心啦~~</p>
+
+<p>具体说明可以<a href="https://github.com/coderZsq/coderZsq.project.oc">下载SQTemplate</a>来进行共同探讨.</p>
+
+  </section>
+</article>
+
+<section class="read-more">
+   
+   
+   <div class="read-more-item">
+       <span class="read-more-item-dim">最近的文章</span>
+       <h2 class="post-list__post-title post-title"><a href="/2017/09/Web-%E4%BD%BF%E7%94%A8gulp%E6%9E%84%E5%BB%BA%E5%89%8D%E7%AB%AF%E9%A1%B9%E7%9B%AE/" title="link to Web 使用gulp构建前端项目">Web 使用gulp构建前端项目</a></h2>
+       <p class="excerpt">  对于现在的前端开发来说, 比起之前jQuery时期真心方便很多, 自从ES6的更新后, 更是进一步加快了前端开发的脚步, 并有统一天下的趋势, 随之而出的React / React-Native, Vue / Weex (Vue-Native)之流的框架兴起更是降低了前端开发的门槛, 以至于开发者们对大前端时代趋之若鹜.对于现在的前端开发已经不想以前仅靠切图加上HTML+CSS+JS三件套就能够轻松搞定了, 现在三方提供的工具层出不穷, jQuery, Angular, BootStr...&hellip;</p>
+       <div class="post-list__meta"><time datetime="2017-09-04 14:39:00 +0800" class="post-list__meta--date date">2017-09-04</time> &#8226; <span class="post-list__meta--tags tags">前端开发</span><a class="btn-border-small" href=/2017/09/Web-%E4%BD%BF%E7%94%A8gulp%E6%9E%84%E5%BB%BA%E5%89%8D%E7%AB%AF%E9%A1%B9%E7%9B%AE/>继续阅读</a></div>
+   </div>
+   
+   
+   
+   
+   <div class="read-more-item">
+       <span class="read-more-item-dim">更早的文章</span>
+       <h2 class="post-list__post-title post-title"><a href="/2017/08/iOS-%E9%80%9A%E4%BF%97%E6%98%93%E6%87%82%E7%9A%84HTTP%E7%BD%91%E7%BB%9C/" title="link to iOS 通俗易懂的HTTP网络">iOS 通俗易懂的HTTP网络</a></h2>
+       <p class="excerpt">  去了饿厂面试后了解到了自己计算机基础的薄弱, 非科班出身薄弱也是自然的, 说实话, 我也并不是特别想要往底层深究, 因为越底层的东西越会抽象成服务输送给大众, 就好比自来水, 一般人都不会想要去了解自来水的底层逻辑吧, 但作为开发者, 我们还是得了解下基础的网络概念.序关于HTTP与HTML的发明有个很有趣的插曲, 那就是首个万维网服务器与浏览器是在一台NeXTStep计算机上编写的, 在1997年, Apple收购了NeXTStep Computer并将NeXTStep作为mac O...&hellip;</p>
+       <div class="post-list__meta"><time datetime="2017-08-09 17:01:00 +0800" class="post-list__meta--date date">2017-08-09</time> &#8226; <span class="post-list__meta--tags tags">移动开发</span><a class="btn-border-small" href=/2017/08/iOS-%E9%80%9A%E4%BF%97%E6%98%93%E6%87%82%E7%9A%84HTTP%E7%BD%91%E7%BB%9C/>继续阅读</a></div>
+   </div>
+   
+</section>
+
+<section class="post-comments">
+  
+  
+  
+  
+</section>
+
+
+            <section class="footer">
+    <footer>
+    	<span class="footer__copyright">本站点采用<a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">知识共享 署名-非商业性使用-相同方式共享 4.0 国际 许可协议</a></span>
+        <span class="footer__copyright">由 <a href="https://jekyllrb.com">Jekyll</a> 于 2017-12-16 生成，感谢 <a href="https://www.digitalocean.com/?refcode=30ed2d146762">Digital Ocean</a> 为本站提供稳定的 VPS 服务</span>
+        <span class="footer__copyright">本站由 <a href="https://github.com/coderZsq">@Castie!</a> 创建，采用 <a href="https://github.com/onevcat/vno-jekyll">Vno - Jekyll</a> 作为主题，您可以在 GitHub 找到<a href="https://github.com/onevcat/OneV-s-Den">本站源码</a> - &copy; 2017</span>
+    </footer>
+</section>
+
+        </div>
+    </div>
+    
+    <script type="text/javascript" src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+
+<script type="text/javascript" src="/js/main.js"></script>
+
+
+
+    
+  </body>
+
+</html>

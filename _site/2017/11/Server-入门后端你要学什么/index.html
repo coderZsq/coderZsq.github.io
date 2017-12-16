@@ -1,0 +1,792 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <title>Castie! Notes</title>
+  <meta name="description" content="  好久没有更新了, 最近一个月在入门服务端的技术栈, 所以快速学了一下java, ssm框架, 这篇文章会将我的学习思路以及一些思考进行分享, 如何将一个月的学习所得通过一篇文章进行梳理, 这对我也是一个极大的挑战.">
+  <meta name="author" content="Wei Wang">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Server 入门后端你要学什么">
+  <meta name="twitter:description" content="  好久没有更新了, 最近一个月在入门服务端的技术栈, 所以快速学了一下java, ssm框架, 这篇文章会将我的学习思路以及一些思考进行分享, 如何将一个月的学习所得通过一篇文章进行梳理, 这对我也是一个极大的挑战.">
+  
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Server 入门后端你要学什么">
+  <meta property="og:description" content="  好久没有更新了, 最近一个月在入门服务端的技术栈, 所以快速学了一下java, ssm框架, 这篇文章会将我的学习思路以及一些思考进行分享, 如何将一个月的学习所得通过一篇文章进行梳理, 这对我也是一个极大的挑战.">
+  
+  <link rel="icon" type="image/ico" href="/assets/images/favicon.ico" />
+  <link href="/assets/images/favicon.ico" rel="shortcut icon" type="image/ico">
+  
+  <link rel="stylesheet" href="/css/main.css">
+  <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+
+  <link rel="canonical" href="http://localhost:4000/2017/11/Server-%E5%85%A5%E9%97%A8%E5%90%8E%E7%AB%AF%E4%BD%A0%E8%A6%81%E5%AD%A6%E4%BB%80%E4%B9%88/">
+  <link rel="alternate" type="application/rss+xml" title="Castie!" href="http://localhost:4000/feed.xml">
+  
+  <meta name="google-site-verification" content="1-1ZlHoRvM0T2FqPbW2S-qLgYXN6rsn52kErlMPd_gw" />
+  
+</head>
+
+
+  <body>
+
+    <span class="mobile btn-mobile-menu">
+        <i class="fa fa-list btn-mobile-menu__icon"></i>
+        <i class="fa fa-angle-up btn-mobile-close__icon hidden"></i>
+    </span>
+    
+    <header class="panel-cover panel-cover--collapsed" style="background-image: url('/assets/images/background-cover.jpg')">
+  <div class="panel-main">
+
+    <div class="panel-main__inner panel-inverted">
+    <div class="panel-main__content">
+
+        <a href="/#blog" title="前往 Castie! 的主页" class="blog-button"><img src="/assets/images/avatar.jpg" width="80" alt="Castie! logo" class="panel-cover__logo logo" /></a>
+        <h1 class="panel-cover__title panel-title"><a href="/#blog" title="link to homepage for Castie!" class="blog-button">Castie!</a></h1>
+        
+        <span class="panel-cover__subtitle panel-subtitle">正态分布, 优劣伴生</span>
+        
+        <hr class="panel-cover__divider" />
+        <p class="panel-cover__description">北冥有鱼，其名为鲲（kūn）。鲲之大，不知其几千里也；化而为鸟，其名为鹏。鹏之背，不知其几千里也；怒而飞，其翼若垂天之云。是鸟也，海运则将徙于南冥。南冥者，天池也。</p>
+        <hr class="panel-cover__divider panel-cover__divider--secondary" />
+        
+        
+        <p class="panel-cover__description">北海若曰：“井鼃不可以语于海者，拘于虚也；夏虫不可以语于冰者，笃于时也；曲士不可以语于道者，束于教也。今尔出于崖涘，观于大海，乃知尔丑，尔将可与语大理矣。</p>
+        
+        
+        <div class="navigation-wrapper">
+          <div>
+            <nav class="cover-navigation cover-navigation--primary">
+              <ul class="navigation">
+                <li class="navigation__item"><a href="/#blog" title="访问博客" class="blog-button">博客</a></li>
+                
+                  <li class="navigation__item"><a href="http://www.jianshu.com/u/9d7fad1a4693" target="_blank" title="访问简书">简书</a></li>
+                
+                  <li class="navigation__item"><a href="https://juejin.im/user/57e735dfa22b9d00614eecb8" target="_blank" title="访问掘金">掘金</a></li>
+                
+              </ul>
+            </nav>
+          </div>
+          
+          <div><nav class="cover-navigation navigation--social">
+  <ul class="navigation">
+
+    
+    <!-- jianshu-->
+    <li class="navigation__item">
+      <a href="http://www.jianshu.com/u/9d7fad1a4693" title="@coderZsq 的简书" target="_blank">
+        <i class='social fa fa-book'></i>
+        <span class="label">jianshu</span>
+      </a>
+    </li>
+    
+
+    
+    <!-- juejin-->
+    <li class="navigation__item">
+      <a href="https://juejin.im/user/57e735dfa22b9d00614eecb8" title="@coderZsq 的稀土掘金" target="_blank">
+        <i class='social fa fa-align-center'></i>
+        <span class="label">juejin</span>
+      </a>
+    </li>
+    
+
+  
+
+  
+  <!-- Github -->
+  <li class="navigation__item">
+    <a href="https://github.com/coderZsq" title="@coderZsq 的 Github" target="_blank">
+      <i class='social fa fa-github'></i>
+      <span class="label">Github</span>
+    </a>
+  </li>
+  
+
+  
+
+  
+
+  <!-- RSS -->
+  <li class="navigation__item">
+    <a href="/feed.xml" rel="author" title="RSS" target="_blank">
+      <i class='social fa fa-rss'></i>
+      <span class="label">RSS</span>
+    </a>
+  </li>
+
+  
+  <!-- Email -->
+  <li class="navigation__item">
+    <a href="mailto:a13701777868@gmail.com" title="Contact me">
+      <i class='social fa fa-envelope'></i>
+      <span class="label">Email</span>
+    </a>
+  </li>
+  
+
+  </ul>
+</nav>
+</div>
+        </div>
+      </div>
+    </div>
+    
+    
+    <div class="panel-cover--overlay cover-blue"></div>
+    
+  </div>
+</header>
+
+
+    <div class="content-wrapper">
+        <div class="content-wrapper__inner">
+            <article class="post-container post-container--single" itemscope itemtype="http://schema.org/BlogPosting">
+  <header class="post-header">
+    <div class="post-meta">
+      <time datetime="2017-11-13 19:57:00 +0800" itemprop="datePublished" class="post-meta__date date">2017-11-13</time> &#8226; <span class="post-meta__tags tags">后端开发</span>
+    </div>
+    <h1 class="post-title">Server 入门后端你要学什么</h1>
+  </header>
+
+  <section class="post">
+    <blockquote>
+  <p>好久没有更新了, 最近一个月在入门服务端的技术栈, 所以快速学了一下java, ssm框架, 这篇文章会将我的学习思路以及一些思考进行分享, 如何将一个月的学习所得通过一篇文章进行梳理, 这对我也是一个极大的挑战.</p>
+</blockquote>
+
+<p><img src="http://upload-images.jianshu.io/upload_images/1229762-b906bd1959a9f779.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="" /></p>
+
+<h4 id="技术选型">技术选型</h4>
+<p>对于Web服务端开发, 有很多语言可供选择比如, php, java, .net, python等, 之前我也试过使用node进行服务器的开发, 但对于国内来说, java还是企业级的标配, 所以我们来学习一下java还是很有必要的.</p>
+
+<h4 id="java技术栈">java技术栈</h4>
+<p>学习java服务端开发, 我们需要掌握或了解以下技术栈, 所谓万丈高楼平地起, 基础知识还是有必要了解的. 我们通过以下几步来了解下整个java所需的技术流程以及关系.</p>
+
+<ol>
+  <li>java环境搭建, 需要下载jdk并配置环境, 这块请自行搜索, 就和你下载Xcode是一个道理.</li>
+  <li>java基础学习, 如果你有其他语言基础, 直接学习java特色的东西, 比如包结构, 静态, 接口, 注解, 反射, 注解和反射需要好好看看, ssm里面经常用, 要知其所以然.</li>
+  <li>servlet, filter, listener学习, 了解一下前端和后端的交互, 如何监听过滤请求, 了解原理, jsp可以不用看, 原理和servlet相似.</li>
+  <li>jdbc, mysql 学习一下如何建表以及连接数据库, 如果有其他开发经验如ios, 就对应fmdb和sqlite.</li>
+  <li>spring springmvc mybatis, 俗称ssm框架, 也是比较适合上手的框架, 推荐入门.</li>
+  <li>maven tomcat nginx vstpd linux 项目管理工具, 及服务器反向代理以及ftp静态服务及运维基础.</li>
+  <li>intillij idea 一个ide熟悉掌握即可.</li>
+</ol>
+
+<p>上述知识, 对于有开发经验的, 看看文档其实也就两个礼拜的时间足以, 不用特别精通, 知其大略即可.</p>
+
+<h4 id="与oc区别">与oc区别</h4>
+
+<ol>
+  <li>interface 对比 protocol, 这个是一个知识点, 虽然相似但是不同, 对于接口继承和可选的概念和设计也不一样, 可以了解下.</li>
+  <li>反射 对比 runtime, 还是不一样的, java中反射和注解是一对相辅相成的东西, 而runtime就是消息转发.</li>
+  <li>javabean 与property, 一个是通过get 私有属性调用, 一个是自动生成, 还是不一样的.</li>
+  <li>包装类, 内部类, final之类的特有功能, 还是有必要学习一下.还有import的概念和oc也是大相径庭.</li>
+</ol>
+
+<p>先列以上几点, 之后再继续补充总结.</p>
+
+<h4 id="实战为例">实战为例</h4>
+
+<p>如果你已经花了些时间, 完成了上述基础部分的学习, 其实花时间2个星期能够看个大概了,然后我们来进行一个接口制作的实际演示.</p>
+
+<p>首先我们需要安装tomcat, jdk 并集成到ide中, 这步骤虽然比较繁琐, 但自行搜索受益良多. 接下来我们就来为之前的简历项目制作接口.</p>
+
+<p><img src="http://upload-images.jianshu.io/upload_images/1229762-a3d8a0c34c76e69e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="页面图示" /></p>
+
+<p>针对图示今天先实现第一部分的接口, 首先是数据表设计. 装好mysql后执行创建表sql.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>/*
+ Navicat Premium Data Transfer
+
+ Source Server         : localhost
+ Source Server Type    : MySQL
+ Source Server Version : 50719
+ Source Host           : localhost
+ Source Database       : resume
+
+ Target Server Type    : MySQL
+ Target Server Version : 50719
+ File Encoding         : utf-8
+
+ Date: 11/13/2017 19:10:36 PM
+*/
+
+SET NAMES utf8mb4;
+SET FOREIGN_KEY_CHECKS = 0;
+
+-- ----------------------------
+--  Table structure for `resume_profile`
+-- ----------------------------
+DROP TABLE IF EXISTS `resume_profile`;
+CREATE TABLE `resume_profile` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `profile_image` varchar(500) COLLATE utf8_bin NOT NULL,
+  `profile_name` varchar(50) COLLATE utf8_bin NOT NULL,
+  `profile_career` varchar(50) COLLATE utf8_bin NOT NULL,
+  `profile_summary_title` varchar(50) COLLATE utf8_bin NOT NULL,
+  `profile_summary_description` varchar(500) COLLATE utf8_bin NOT NULL,
+  `profile_interest_title` varchar(50) COLLATE utf8_bin NOT NULL,
+  `profile_education_title` varchar(50) COLLATE utf8_bin NOT NULL,
+  `profile_location` varchar(50) COLLATE utf8_bin NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+
+-- ----------------------------
+--  Records of `resume_profile`
+-- ----------------------------
+BEGIN;
+INSERT INTO `resume_profile` VALUES ('1', 'http://upload-images.jianshu.io/upload_images/1229762-23e162b9bd6b9c39.JPG?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240', 'Shuangquan Zhu', 'Designer / Developer', 'Summary', 'Shuangquan Zhu is a professional developer who focuses on iOS now. He has strong knowledge of Objective-C, Swift and Javascript. With these skills, he created quite a few quickly developer tools. He also leads the J1 iOS team to promote the project process.\\nHe crazy loves playing basketball with friends in spare time, He also loves traveling, writing and listening music. He is always willing to try new things, and keeping to learn from them.', 'Interest', 'Education', 'Shanghai');
+COMMIT;
+
+-- ----------------------------
+--  Table structure for `resume_profile_education`
+-- ----------------------------
+DROP TABLE IF EXISTS `resume_profile_education`;
+CREATE TABLE `resume_profile_education` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `major` varchar(100) COLLATE utf8_bin NOT NULL,
+  `school` varchar(100) COLLATE utf8_bin NOT NULL,
+  `year` varchar(100) COLLATE utf8_bin NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+
+-- ----------------------------
+--  Records of `resume_profile_education`
+-- ----------------------------
+BEGIN;
+INSERT INTO `resume_profile_education` VALUES ('1', 'Business Management', 'East China University of Science and Technology', '2016'), ('2', 'Customs and International Freight', 'Shanghai Maritime Academy', '2013');
+COMMIT;
+
+-- ----------------------------
+--  Table structure for `resume_profile_interest`
+-- ----------------------------
+DROP TABLE IF EXISTS `resume_profile_interest`;
+CREATE TABLE `resume_profile_interest` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `interest` varchar(100) COLLATE utf8_bin NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+
+-- ----------------------------
+--  Records of `resume_profile_interest`
+-- ----------------------------
+BEGIN;
+INSERT INTO `resume_profile_interest` VALUES ('1', 'Learn about high tech'), ('2', 'Play basketball'), ('3', 'Listen to music'), ('4', 'Apple products');
+COMMIT;
+
+-- ----------------------------
+--  Table structure for `resume_profile_social`
+-- ----------------------------
+DROP TABLE IF EXISTS `resume_profile_social`;
+CREATE TABLE `resume_profile_social` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `src` varchar(500) COLLATE utf8_bin NOT NULL,
+  `href` varchar(500) COLLATE utf8_bin NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+
+-- ----------------------------
+--  Records of `resume_profile_social`
+-- ----------------------------
+BEGIN;
+INSERT INTO `resume_profile_social` VALUES ('1', 'http://upload-images.jianshu.io/upload_images/1229762-877e3e5c2260bcf1.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240', 'https://github.com/coderzsq'), ('2', 'http://upload-images.jianshu.io/upload_images/1229762-f6525252f3e8387b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240', 'http://www.jianshu.com/u/9d7fad1a4693'), ('3', 'http://upload-images.jianshu.io/upload_images/1229762-a69614a97de93f36.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240', 'http://upload-images.jianshu.io/upload_images/1229762-453920a3f4eedcd8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240'), ('4', 'http://upload-images.jianshu.io/upload_images/1229762-91b0949aec719aab.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240', 'http://coderzsq.github.io/');
+COMMIT;
+
+SET FOREIGN_KEY_CHECKS = 1;
+
+</code></pre>
+</div>
+
+<p>接口设计方面, 注意的就是如果是数组对象, 新建一张单独的表即可, sql语句不懂的同学, 嗯… 努力吧.</p>
+
+<p>然后我们通过maven原型构建一下web-app
+<img src="http://upload-images.jianshu.io/upload_images/1229762-dc4346121f67ff08.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="" /></p>
+
+<p>接下来, 我们需要创建一下包结构.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>.java
+└── com
+    └── resume
+        ├── common
+        │   ├── ResponseCode.java
+        │   └── ServerResponse.java
+        ├── controller
+        │   └── PortalController.java
+        ├── dao
+        │   ├── ProfileEducationMapper.java
+        │   ├── ProfileInterestMapper.java
+        │   ├── ProfileMapper.java
+        │   └── ProfileSocialMapper.java
+        ├── pojo
+        │   ├── Profile.java
+        │   ├── ProfileEducation.java
+        │   ├── ProfileInterest.java
+        │   └── ProfileSocial.java
+        ├── service
+        │   ├── IPortalService.java
+        │   └── impl
+        │       └── PortalServiceImpl.java
+        ├── util
+        └── vo
+            ├── ProfileEducationVo.java
+            ├── ProfileInterestVo.java
+            ├── ProfileSocialVo.java
+            └── ProfileVo.java
+
+</code></pre>
+</div>
+
+<p>我们将项目分为四层, controller, service, dao, pojo, 类似于我们iOS的controller, presenter, viewmodel, model.</p>
+
+<p>分完层级后, 我们来学习下xml的配置吧.</p>
+
+<h5 id="pomxml">pom.xml</h5>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>&lt;project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd"&gt;
+  &lt;modelVersion&gt;4.0.0&lt;/modelVersion&gt;
+  &lt;groupId&gt;com.coderzsq&lt;/groupId&gt;
+  &lt;artifactId&gt;resume&lt;/artifactId&gt;
+  &lt;packaging&gt;war&lt;/packaging&gt;
+  &lt;version&gt;1.0-SNAPSHOT&lt;/version&gt;
+  &lt;name&gt;resume Maven Webapp&lt;/name&gt;
+  &lt;url&gt;http://maven.apache.org&lt;/url&gt;
+
+  &lt;properties&gt;
+    &lt;project.build.sourceEncoding&gt;UTF-8&lt;/project.build.sourceEncoding&gt;
+    &lt;project.reporting.outputEncoding&gt;UTF-8&lt;/project.reporting.outputEncoding&gt;
+    &lt;maven.compiler.encoding&gt;UTF-8&lt;/maven.compiler.encoding&gt;
+
+    &lt;org.springframework.version&gt;4.0.0.RELEASE&lt;/org.springframework.version&gt;
+    &lt;org.mybatis.version&gt;3.4.1&lt;/org.mybatis.version&gt;
+    &lt;org.mybatis.spring.version&gt;1.3.0&lt;/org.mybatis.spring.version&gt;
+  &lt;/properties&gt;
+
+  &lt;dependencies&gt;
+    &lt;dependency&gt;
+      &lt;groupId&gt;org.apache.tomcat&lt;/groupId&gt;
+      &lt;artifactId&gt;tomcat-servlet-api&lt;/artifactId&gt;
+      &lt;version&gt;7.0.64&lt;/version&gt;
+      &lt;scope&gt;provided&lt;/scope&gt;
+    &lt;/dependency&gt;
+
+    &lt;dependency&gt;
+      &lt;groupId&gt;org.springframework&lt;/groupId&gt;
+      &lt;artifactId&gt;spring-webmvc&lt;/artifactId&gt;
+      &lt;version&gt;${org.springframework.version}&lt;/version&gt;
+    &lt;/dependency&gt;
+
+    &lt;dependency&gt;
+      &lt;groupId&gt;org.springframework&lt;/groupId&gt;
+      &lt;artifactId&gt;spring-oxm&lt;/artifactId&gt;
+      &lt;version&gt;${org.springframework.version}&lt;/version&gt;
+    &lt;/dependency&gt;
+
+    &lt;dependency&gt;
+      &lt;groupId&gt;org.springframework&lt;/groupId&gt;
+      &lt;artifactId&gt;spring-jdbc&lt;/artifactId&gt;
+      &lt;version&gt;${org.springframework.version}&lt;/version&gt;
+    &lt;/dependency&gt;
+
+    &lt;dependency&gt;
+      &lt;groupId&gt;org.springframework&lt;/groupId&gt;
+      &lt;artifactId&gt;spring-tx&lt;/artifactId&gt;
+      &lt;version&gt;${org.springframework.version}&lt;/version&gt;
+    &lt;/dependency&gt;
+
+    &lt;dependency&gt;
+      &lt;groupId&gt;org.springframework&lt;/groupId&gt;
+      &lt;artifactId&gt;spring-test&lt;/artifactId&gt;
+      &lt;version&gt;${org.springframework.version}&lt;/version&gt;
+    &lt;/dependency&gt;
+
+
+    &lt;dependency&gt;
+      &lt;groupId&gt;org.aspectj&lt;/groupId&gt;
+      &lt;artifactId&gt;aspectjweaver&lt;/artifactId&gt;
+      &lt;version&gt;1.7.3&lt;/version&gt;
+    &lt;/dependency&gt;
+
+    &lt;dependency&gt;
+      &lt;groupId&gt;org.mybatis&lt;/groupId&gt;
+      &lt;artifactId&gt;mybatis-spring&lt;/artifactId&gt;
+      &lt;version&gt;${org.mybatis.spring.version}&lt;/version&gt;
+    &lt;/dependency&gt;
+    &lt;dependency&gt;
+      &lt;groupId&gt;org.mybatis&lt;/groupId&gt;
+      &lt;artifactId&gt;mybatis&lt;/artifactId&gt;
+      &lt;version&gt;${org.mybatis.version}&lt;/version&gt;
+    &lt;/dependency&gt;
+
+    &lt;dependency&gt;
+      &lt;groupId&gt;org.aspectj&lt;/groupId&gt;
+      &lt;artifactId&gt;aspectjrt&lt;/artifactId&gt;
+      &lt;version&gt;1.6.11&lt;/version&gt;
+    &lt;/dependency&gt;
+
+    &lt;dependency&gt;
+      &lt;groupId&gt;org.codehaus.jackson&lt;/groupId&gt;
+      &lt;artifactId&gt;jackson-mapper-asl&lt;/artifactId&gt;
+      &lt;version&gt;1.9.12&lt;/version&gt;
+    &lt;/dependency&gt;
+
+    &lt;dependency&gt;
+      &lt;groupId&gt;commons-dbcp&lt;/groupId&gt;
+      &lt;artifactId&gt;commons-dbcp&lt;/artifactId&gt;
+      &lt;version&gt;1.4&lt;/version&gt;
+      &lt;!--&lt;scope&gt;runtime&lt;/scope&gt;--&gt;
+    &lt;/dependency&gt;
+
+
+    &lt;dependency&gt;
+      &lt;groupId&gt;ch.qos.logback&lt;/groupId&gt;
+      &lt;artifactId&gt;logback-classic&lt;/artifactId&gt;
+      &lt;version&gt;1.1.2&lt;/version&gt;
+      &lt;scope&gt;compile&lt;/scope&gt;
+    &lt;/dependency&gt;
+    &lt;dependency&gt;
+      &lt;groupId&gt;ch.qos.logback&lt;/groupId&gt;
+      &lt;artifactId&gt;logback-core&lt;/artifactId&gt;
+      &lt;version&gt;1.1.2&lt;/version&gt;
+      &lt;scope&gt;compile&lt;/scope&gt;
+    &lt;/dependency&gt;
+
+    &lt;dependency&gt;
+      &lt;groupId&gt;mysql&lt;/groupId&gt;
+      &lt;artifactId&gt;mysql-connector-java&lt;/artifactId&gt;
+      &lt;version&gt;5.1.6&lt;/version&gt;
+    &lt;/dependency&gt;
+
+  &lt;/dependencies&gt;
+  &lt;build&gt;
+    &lt;finalName&gt;resume&lt;/finalName&gt;
+    &lt;plugins&gt;
+      &lt;plugin&gt;
+        &lt;groupId&gt;org.mybatis.generator&lt;/groupId&gt;
+        &lt;artifactId&gt;mybatis-generator-maven-plugin&lt;/artifactId&gt;
+        &lt;version&gt;1.3.2&lt;/version&gt;
+        &lt;configuration&gt;
+          &lt;verbose&gt;true&lt;/verbose&gt;
+          &lt;overwrite&gt;true&lt;/overwrite&gt;
+        &lt;/configuration&gt;
+        &lt;!--增加配置文件的依赖，可以省去mysbatis-generator中配置jdbc-connect的jar的位置--&gt;
+        &lt;dependencies&gt;
+          &lt;dependency&gt;
+            &lt;groupId&gt;mysql&lt;/groupId&gt;
+            &lt;artifactId&gt;mysql-connector-java&lt;/artifactId&gt;
+            &lt;version&gt;5.1.40&lt;/version&gt;
+          &lt;/dependency&gt;
+        &lt;/dependencies&gt;
+      &lt;/plugin&gt;
+
+      
+      &lt;plugin&gt;
+        &lt;groupId&gt;org.apache.maven.plugins&lt;/groupId&gt;
+        &lt;artifactId&gt;maven-compiler-plugin&lt;/artifactId&gt;
+        &lt;configuration&gt;
+          &lt;source&gt;1.8&lt;/source&gt;
+          &lt;target&gt;1.8&lt;/target&gt;
+          &lt;encoding&gt;UTF-8&lt;/encoding&gt;
+          &lt;compilerArguments&gt;
+            &lt;extdirs&gt;${project.basedir}/src/main/webapp/WEB-INF/lib/&lt;/extdirs&gt;
+          &lt;/compilerArguments&gt;
+        &lt;/configuration&gt;
+      &lt;/plugin&gt;
+
+      &lt;plugin&gt;
+        &lt;groupId&gt;org.apache.tomcat.maven&lt;/groupId&gt;
+        &lt;artifactId&gt;tomcat7-maven-plugin&lt;/artifactId&gt;
+        &lt;version&gt;2.2&lt;/version&gt;
+        &lt;configuration&gt;
+          &lt;port&gt;8080&lt;/port&gt;
+          &lt;path&gt;/&lt;/path&gt;
+          &lt;uriEncoding&gt;UTF-8&lt;/uriEncoding&gt;
+        &lt;/configuration&gt;
+      &lt;/plugin&gt;
+    &lt;/plugins&gt;
+  &lt;/build&gt;
+&lt;/project&gt;
+
+</code></pre>
+</div>
+
+<p>一些基本的依赖和运行时配置及插件, 类似package.json以及cocoapods.</p>
+
+<h5 id="webxml">web.xml</h5>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="cp">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span>
+<span class="nt">&lt;web-app</span> <span class="na">xmlns:xsi=</span><span class="s">"http://www.w3.org/2001/XMLSchema-instance"</span>
+         <span class="na">xmlns=</span><span class="s">"http://java.sun.com/xml/ns/javaee"</span>
+         <span class="na">xsi:schemaLocation=</span><span class="s">"http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"</span>
+         <span class="na">id=</span><span class="s">"WebApp_ID"</span> <span class="na">version=</span><span class="s">"2.5"</span><span class="nt">&gt;</span>
+
+    <span class="nt">&lt;display-name&gt;</span>Archetype Created Web Application<span class="nt">&lt;/display-name&gt;</span>
+
+    <span class="nt">&lt;filter&gt;</span>
+        <span class="nt">&lt;filter-name&gt;</span>characterEncodingFilter<span class="nt">&lt;/filter-name&gt;</span>
+        <span class="nt">&lt;filter-class&gt;</span>org.springframework.web.filter.CharacterEncodingFilter<span class="nt">&lt;/filter-class&gt;</span>
+        <span class="nt">&lt;init-param&gt;</span>
+            <span class="nt">&lt;param-name&gt;</span>encoding<span class="nt">&lt;/param-name&gt;</span>
+            <span class="nt">&lt;param-value&gt;</span>UTF-8<span class="nt">&lt;/param-value&gt;</span>
+        <span class="nt">&lt;/init-param&gt;</span>
+        <span class="nt">&lt;init-param&gt;</span>
+            <span class="nt">&lt;param-name&gt;</span>forceEncoding<span class="nt">&lt;/param-name&gt;</span>
+            <span class="nt">&lt;param-value&gt;</span>true<span class="nt">&lt;/param-value&gt;</span>
+        <span class="nt">&lt;/init-param&gt;</span>
+    <span class="nt">&lt;/filter&gt;</span>
+    <span class="nt">&lt;filter-mapping&gt;</span>
+        <span class="nt">&lt;filter-name&gt;</span>characterEncodingFilter<span class="nt">&lt;/filter-name&gt;</span>
+        <span class="nt">&lt;url-pattern&gt;</span>/*<span class="nt">&lt;/url-pattern&gt;</span>
+    <span class="nt">&lt;/filter-mapping&gt;</span>
+
+
+    <span class="nt">&lt;listener&gt;</span>
+        <span class="nt">&lt;listener-class&gt;</span>org.springframework.web.context.request.RequestContextListener<span class="nt">&lt;/listener-class&gt;</span>
+    <span class="nt">&lt;/listener&gt;</span>
+
+    <span class="nt">&lt;listener&gt;</span>
+        <span class="nt">&lt;listener-class&gt;</span>org.springframework.web.context.ContextLoaderListener<span class="nt">&lt;/listener-class&gt;</span>
+    <span class="nt">&lt;/listener&gt;</span>
+    <span class="nt">&lt;context-param&gt;</span>
+        <span class="nt">&lt;param-name&gt;</span>contextConfigLocation<span class="nt">&lt;/param-name&gt;</span>
+        <span class="nt">&lt;param-value&gt;</span>
+            classpath:applicationContext.xml
+        <span class="nt">&lt;/param-value&gt;</span>
+    <span class="nt">&lt;/context-param&gt;</span>
+
+    <span class="nt">&lt;servlet&gt;</span>
+        <span class="nt">&lt;servlet-name&gt;</span>dispatcher<span class="nt">&lt;/servlet-name&gt;</span>
+        <span class="nt">&lt;servlet-class&gt;</span>org.springframework.web.servlet.DispatcherServlet<span class="nt">&lt;/servlet-class&gt;</span>
+        <span class="nt">&lt;load-on-startup&gt;</span>1<span class="nt">&lt;/load-on-startup&gt;</span>
+    <span class="nt">&lt;/servlet&gt;</span>
+
+
+
+    <span class="nt">&lt;servlet-mapping&gt;</span>
+        <span class="nt">&lt;servlet-name&gt;</span>dispatcher<span class="nt">&lt;/servlet-name&gt;</span>
+        <span class="nt">&lt;url-pattern&gt;</span>*.do<span class="nt">&lt;/url-pattern&gt;</span>
+    <span class="nt">&lt;/servlet-mapping&gt;</span>
+
+<span class="nt">&lt;/web-app&gt;</span>
+
+
+</code></pre>
+</div>
+<p>这个文件就管理servlet的监听及过滤的配置, 可以看到使用的是spring的dispatcher.</p>
+
+<h5 id="dispatcher-servletxml">dispatcher-servlet.xml</h5>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="cp">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span>
+<span class="nt">&lt;beans</span> <span class="na">xmlns=</span><span class="s">"http://www.springframework.org/schema/beans"</span>
+       <span class="na">xmlns:xsi=</span><span class="s">"http://www.w3.org/2001/XMLSchema-instance"</span> <span class="na">xmlns:p=</span><span class="s">"http://www.springframework.org/schema/p"</span>
+       <span class="na">xmlns:context=</span><span class="s">"http://www.springframework.org/schema/context"</span>
+       <span class="na">xmlns:mvc=</span><span class="s">"http://www.springframework.org/schema/mvc"</span> <span class="na">xmlns:aop=</span><span class="s">"http://www.springframework.org/schema/aop"</span>
+       <span class="na">xsi:schemaLocation=</span><span class="s">"http://www.springframework.org/schema/beans</span> <span class="err">http://www.springframework.org/schema/beans/spring-beans.xsd</span>
+	<span class="err">http://www.springframework.org/schema/context</span> <span class="err">http://www.springframework.org/schema/context/spring-context.xsd</span>
+	<span class="err">http://www.springframework.org/schema/mvc</span>
+	<span class="err">http://www.springframework.org/schema/mvc/spring-mvc.xsd"</span><span class="nt">&gt;</span>
+
+    <span class="nt">&lt;context:component-scan</span> <span class="na">base-package=</span><span class="s">"com.resume"</span> <span class="na">annotation-config=</span><span class="s">"true"</span><span class="nt">/&gt;</span>
+
+    <span class="nt">&lt;mvc:annotation-driven&gt;</span>
+        <span class="nt">&lt;mvc:message-converters&gt;</span>
+            <span class="nt">&lt;bean</span> <span class="na">class=</span><span class="s">"org.springframework.http.converter.StringHttpMessageConverter"</span><span class="nt">&gt;</span>
+                <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"supportedMediaTypes"</span><span class="nt">&gt;</span>
+                    <span class="nt">&lt;list&gt;</span>
+                        <span class="nt">&lt;value&gt;</span>text/plain;charset=UTF-8<span class="nt">&lt;/value&gt;</span>
+                        <span class="nt">&lt;value&gt;</span>text/html;charset=UTF-8<span class="nt">&lt;/value&gt;</span>
+                    <span class="nt">&lt;/list&gt;</span>
+                <span class="nt">&lt;/property&gt;</span>
+            <span class="nt">&lt;/bean&gt;</span>
+            <span class="nt">&lt;bean</span> <span class="na">class=</span><span class="s">"org.springframework.http.converter.json.MappingJacksonHttpMessageConverter"</span><span class="nt">&gt;</span>
+                <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"supportedMediaTypes"</span><span class="nt">&gt;</span>
+                    <span class="nt">&lt;list&gt;</span>
+                        <span class="nt">&lt;value&gt;</span>application/json;charset=UTF-8<span class="nt">&lt;/value&gt;</span>
+                    <span class="nt">&lt;/list&gt;</span>
+                <span class="nt">&lt;/property&gt;</span>
+            <span class="nt">&lt;/bean&gt;</span>
+        <span class="nt">&lt;/mvc:message-converters&gt;</span>
+    <span class="nt">&lt;/mvc:annotation-driven&gt;</span>
+
+
+
+    <span class="c">&lt;!-- 文件上传 --&gt;</span>
+    <span class="nt">&lt;bean</span> <span class="na">id=</span><span class="s">"multipartResolver"</span> <span class="na">class=</span><span class="s">"org.springframework.web.multipart.commons.CommonsMultipartResolver"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"maxUploadSize"</span> <span class="na">value=</span><span class="s">"10485760"</span><span class="nt">/&gt;</span> <span class="c">&lt;!-- 10m --&gt;</span>
+        <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"maxInMemorySize"</span> <span class="na">value=</span><span class="s">"4096"</span> <span class="nt">/&gt;</span>
+        <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"defaultEncoding"</span> <span class="na">value=</span><span class="s">"UTF-8"</span><span class="nt">&gt;&lt;/property&gt;</span>
+    <span class="nt">&lt;/bean&gt;</span>
+
+
+<span class="nt">&lt;/beans&gt;</span>
+
+</code></pre>
+</div>
+<p>这个文件告诉springmvc如何扫描注解,之前有讲到注解的本质就是打好标记通过反射实现逻辑.</p>
+
+<h5 id="applicationcontextxml">applicationContext.xml</h5>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="cp">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span>
+<span class="nt">&lt;beans</span> <span class="na">xmlns=</span><span class="s">"http://www.springframework.org/schema/beans"</span>
+       <span class="na">xmlns:xsi=</span><span class="s">"http://www.w3.org/2001/XMLSchema-instance"</span> <span class="na">xmlns:aop=</span><span class="s">"http://www.springframework.org/schema/aop"</span>
+       <span class="na">xmlns:tx=</span><span class="s">"http://www.springframework.org/schema/tx"</span> <span class="na">xmlns:jdbc=</span><span class="s">"http://www.springframework.org/schema/jdbc"</span>
+       <span class="na">xmlns:context=</span><span class="s">"http://www.springframework.org/schema/context"</span>
+       <span class="na">xsi:schemaLocation=</span><span class="s">"</span>
+     <span class="err">http://www.springframework.org/schema/context</span> <span class="err">http://www.springframework.org/schema/context/spring-context.xsd</span>
+     <span class="err">http://www.springframework.org/schema/beans</span> <span class="err">http://www.springframework.org/schema/beans/spring-beans.xsd</span>
+     <span class="err">http://www.springframework.org/schema/tx</span> <span class="err">http://www.springframework.org/schema/tx/spring-tx.xsd</span>
+     <span class="err">http://www.springframework.org/schema/aop</span> <span class="err">http://www.springframework.org/schema/aop/spring-aop.xsd"</span><span class="nt">&gt;</span>
+
+    <span class="nt">&lt;context:component-scan</span> <span class="na">base-package=</span><span class="s">"com.resume"</span> <span class="na">annotation-config=</span><span class="s">"true"</span><span class="nt">/&gt;</span>
+
+    <span class="nt">&lt;bean</span> <span class="na">id=</span><span class="s">"propertyConfigurer"</span>
+          <span class="na">class=</span><span class="s">"org.springframework.beans.factory.config.PropertyPlaceholderConfigurer"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"order"</span> <span class="na">value=</span><span class="s">"2"</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"ignoreUnresolvablePlaceholders"</span> <span class="na">value=</span><span class="s">"true"</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"locations"</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;list&gt;</span>
+                <span class="nt">&lt;value&gt;</span>classpath:datasource.properties<span class="nt">&lt;/value&gt;</span>
+            <span class="nt">&lt;/list&gt;</span>
+        <span class="nt">&lt;/property&gt;</span>
+        <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"fileEncoding"</span> <span class="na">value=</span><span class="s">"utf-8"</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;/bean&gt;</span>
+
+
+    <span class="nt">&lt;bean</span> <span class="na">id=</span><span class="s">"dataSource"</span> <span class="na">class=</span><span class="s">"org.apache.commons.dbcp.BasicDataSource"</span> <span class="na">destroy-method=</span><span class="s">"close"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"driverClassName"</span> <span class="na">value=</span><span class="s">"${db.driverClassName}"</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"url"</span> <span class="na">value=</span><span class="s">"${db.url}"</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"username"</span> <span class="na">value=</span><span class="s">"${db.username}"</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"password"</span> <span class="na">value=</span><span class="s">"${db.password}"</span><span class="nt">/&gt;</span>
+        <span class="c">&lt;!-- 连接池启动时的初始值 --&gt;</span>
+        <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"initialSize"</span> <span class="na">value=</span><span class="s">"${db.initialSize}"</span><span class="nt">/&gt;</span>
+        <span class="c">&lt;!-- 连接池的最大值 --&gt;</span>
+        <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"maxActive"</span> <span class="na">value=</span><span class="s">"${db.maxActive}"</span><span class="nt">/&gt;</span>
+        <span class="c">&lt;!-- 最大空闲值.当经过一个高峰时间后，连接池可以慢慢将已经用不到的连接慢慢释放一部分，一直减少到maxIdle为止 --&gt;</span>
+        <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"maxIdle"</span> <span class="na">value=</span><span class="s">"${db.maxIdle}"</span><span class="nt">/&gt;</span>
+        <span class="c">&lt;!-- 最小空闲值.当空闲的连接数少于阀值时，连接池就会预申请去一些连接，以免洪峰来时来不及申请 --&gt;</span>
+        <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"minIdle"</span> <span class="na">value=</span><span class="s">"${db.minIdle}"</span><span class="nt">/&gt;</span>
+        <span class="c">&lt;!-- 最大建立连接等待时间。如果超过此时间将接到异常。设为－1表示无限制 --&gt;</span>
+        <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"maxWait"</span> <span class="na">value=</span><span class="s">"${db.maxWait}"</span><span class="nt">/&gt;</span>
+        <span class="c">&lt;!--#给出一条简单的sql语句进行验证 --&gt;</span>
+         <span class="c">&lt;!--&lt;property name="validationQuery" value="select getdate()" /&gt;--&gt;</span>
+        <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"defaultAutoCommit"</span> <span class="na">value=</span><span class="s">"${db.defaultAutoCommit}"</span><span class="nt">/&gt;</span>
+        <span class="c">&lt;!-- 回收被遗弃的（一般是忘了释放的）数据库连接到连接池中 --&gt;</span>
+         <span class="c">&lt;!--&lt;property name="removeAbandoned" value="true" /&gt;--&gt;</span>
+        <span class="c">&lt;!-- 数据库连接过多长时间不用将被视为被遗弃而收回连接池中 --&gt;</span>
+         <span class="c">&lt;!--&lt;property name="removeAbandonedTimeout" value="120" /&gt;--&gt;</span>
+        <span class="c">&lt;!-- #连接的超时时间，默认为半小时。 --&gt;</span>
+        <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"minEvictableIdleTimeMillis"</span> <span class="na">value=</span><span class="s">"${db.minEvictableIdleTimeMillis}"</span><span class="nt">/&gt;</span>
+
+        <span class="c">&lt;!--# 失效检查线程运行时间间隔，要小于MySQL默认--&gt;</span>
+        <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"timeBetweenEvictionRunsMillis"</span> <span class="na">value=</span><span class="s">"40000"</span><span class="nt">/&gt;</span>
+        <span class="c">&lt;!--# 检查连接是否有效--&gt;</span>
+        <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"testWhileIdle"</span> <span class="na">value=</span><span class="s">"true"</span><span class="nt">/&gt;</span>
+        <span class="c">&lt;!--# 检查连接有效性的SQL语句--&gt;</span>
+        <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"validationQuery"</span> <span class="na">value=</span><span class="s">"SELECT 1 FROM dual"</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;/bean&gt;</span>
+
+    <span class="nt">&lt;bean</span> <span class="na">id=</span><span class="s">"sqlSessionFactory"</span> <span class="na">class=</span><span class="s">"org.mybatis.spring.SqlSessionFactoryBean"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"dataSource"</span> <span class="na">ref=</span><span class="s">"dataSource"</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"mapperLocations"</span> <span class="na">value=</span><span class="s">"classpath*:mappers/*Mapper.xml"</span><span class="nt">&gt;&lt;/property&gt;</span>
+
+        <span class="c">&lt;!-- 分页插件 --&gt;</span>
+        <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"plugins"</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;array&gt;</span>
+                <span class="nt">&lt;bean</span> <span class="na">class=</span><span class="s">"com.github.pagehelper.PageHelper"</span><span class="nt">&gt;</span>
+                    <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"properties"</span><span class="nt">&gt;</span>
+                        <span class="nt">&lt;value&gt;</span>
+                            dialect=mysql
+                        <span class="nt">&lt;/value&gt;</span>
+                    <span class="nt">&lt;/property&gt;</span>
+                <span class="nt">&lt;/bean&gt;</span>
+            <span class="nt">&lt;/array&gt;</span>
+        <span class="nt">&lt;/property&gt;</span>
+
+    <span class="nt">&lt;/bean&gt;</span>
+
+    <span class="nt">&lt;bean</span> <span class="na">name=</span><span class="s">"mapperScannerConfigurer"</span> <span class="na">class=</span><span class="s">"org.mybatis.spring.mapper.MapperScannerConfigurer"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"basePackage"</span> <span class="na">value=</span><span class="s">"com.resume.dao"</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;/bean&gt;</span>
+
+    <span class="c">&lt;!-- 使用@Transactional进行声明式事务管理需要声明下面这行 --&gt;</span>
+    <span class="nt">&lt;tx:annotation-driven</span> <span class="na">transaction-manager=</span><span class="s">"transactionManager"</span> <span class="na">proxy-target-class=</span><span class="s">"true"</span> <span class="nt">/&gt;</span>
+    <span class="c">&lt;!-- 事务管理 --&gt;</span>
+    <span class="nt">&lt;bean</span> <span class="na">id=</span><span class="s">"transactionManager"</span> <span class="na">class=</span><span class="s">"org.springframework.jdbc.datasource.DataSourceTransactionManager"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"dataSource"</span> <span class="na">ref=</span><span class="s">"dataSource"</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"rollbackOnCommitFailure"</span> <span class="na">value=</span><span class="s">"true"</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;/bean&gt;</span>
+
+
+<span class="nt">&lt;/beans&gt;</span>
+</code></pre>
+</div>
+<p>这个文件告诉了我们如何配置spring的注解以及一些其他的配置.</p>
+
+<p>以上的其实对于前端都有脚手架工具可以自动生成, 而spring迟迟没有, 只能人肉脚手架, 有点感到spring boot的好了 hhhhhh.</p>
+
+<p>这一篇我们讲解了学习后端你要学什么, 并搭建起了基本框架, 下一篇我们就来实际讲讲如何进行接口开发.</p>
+
+<h5 id="about">About:</h5>
+
+<p><img src="http://upload-images.jianshu.io/upload_images/1229762-3f8925783027b3fa.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="点击下方链接跳转!!" /></p>
+
+<p><a href="https://github.com/coderZsq/coderZsq.maven.java">🌟 项目源码 请点这里🌟 »&gt; 喜欢的朋友请点喜欢 »&gt; 下载源码的同学请送下小星星 »&gt; 有闲钱的壕们可以进行打赏 »&gt; 小弟会尽快推出更好的文章和大家分享 »&gt; 你的激励就是我的动力!! </a></p>
+
+  </section>
+</article>
+
+<section class="read-more">
+   
+   
+   <div class="read-more-item">
+       <span class="read-more-item-dim">最近的文章</span>
+       <h2 class="post-list__post-title post-title"><a href="/2017/11/Server-%E4%BD%BF%E7%94%A8Spring%E6%9D%A5%E6%9E%84%E5%BB%BA%E6%9C%8D%E5%8A%A1/" title="link to Server 使用Spring来构建服务">Server 使用Spring来构建服务</a></h2>
+       <p class="excerpt">  刚才一篇我们提到了如何入门后端, 我也知道一篇文章是不可能完成后端的方方面面的, 期望达到的是知道如何进行学习, 有一条清晰的学习路径, 少绕弯路. 这篇我们就来进行简历的接口开发了.参考链接:  Server 入门后端你要学什么以下内容在上述文章基础上进行, 请事先查阅.jdbc 代码生成首先我们要做的就是使用mybatis插件进行读取数据库数据并生成jdbc代码.generatorConfig.xml&lt;?xml version="1.0" encoding="UTF-8"?&...&hellip;</p>
+       <div class="post-list__meta"><time datetime="2017-11-13 20:32:00 +0800" class="post-list__meta--date date">2017-11-13</time> &#8226; <span class="post-list__meta--tags tags">后端开发</span><a class="btn-border-small" href=/2017/11/Server-%E4%BD%BF%E7%94%A8Spring%E6%9D%A5%E6%9E%84%E5%BB%BA%E6%9C%8D%E5%8A%A1/>继续阅读</a></div>
+   </div>
+   
+   
+   
+   
+   <div class="read-more-item">
+       <span class="read-more-item-dim">更早的文章</span>
+       <h2 class="post-list__post-title post-title"><a href="/2017/09/Web-PC%E9%A1%B9%E7%9B%AE%E5%BF%AB%E9%80%9F%E9%80%82%E9%85%8D%E7%A7%BB%E5%8A%A8%E7%AB%AF/" title="link to Web PC项目快速适配移动端">Web PC项目快速适配移动端</a></h2>
+       <p class="excerpt">  昨天我们快速的将Vue的项目快速迁移到了React上来, 经过学习两个不同的框架发现, React更加适合复杂的需求以及更加适合我们这种移动端开发者的思维习惯.参考链接:  Web 是时候用前端写个简历了!  Web 前端项目要从基本布局开始  Web 简历一定要设计的美美的  Web 使用Vue代替陈旧的jQuery  Web Vue项目速转.htm静态网页  Web 将项目快速迁移至React以下内容在上述文章基础上进行, 请事先查阅.在着手移动端之前, 我们先给之前的导航栏点击按...&hellip;</p>
+       <div class="post-list__meta"><time datetime="2017-09-30 10:31:00 +0800" class="post-list__meta--date date">2017-09-30</time> &#8226; <span class="post-list__meta--tags tags">前端开发</span><a class="btn-border-small" href=/2017/09/Web-PC%E9%A1%B9%E7%9B%AE%E5%BF%AB%E9%80%9F%E9%80%82%E9%85%8D%E7%A7%BB%E5%8A%A8%E7%AB%AF/>继续阅读</a></div>
+   </div>
+   
+</section>
+
+<section class="post-comments">
+  
+  
+  
+  
+</section>
+
+
+            <section class="footer">
+    <footer>
+    	<span class="footer__copyright">本站点采用<a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">知识共享 署名-非商业性使用-相同方式共享 4.0 国际 许可协议</a></span>
+        <span class="footer__copyright">由 <a href="https://jekyllrb.com">Jekyll</a> 于 2017-12-16 生成，感谢 <a href="https://www.digitalocean.com/?refcode=30ed2d146762">Digital Ocean</a> 为本站提供稳定的 VPS 服务</span>
+        <span class="footer__copyright">本站由 <a href="https://github.com/coderZsq">@Castie!</a> 创建，采用 <a href="https://github.com/onevcat/vno-jekyll">Vno - Jekyll</a> 作为主题，您可以在 GitHub 找到<a href="https://github.com/onevcat/OneV-s-Den">本站源码</a> - &copy; 2017</span>
+    </footer>
+</section>
+
+        </div>
+    </div>
+    
+    <script type="text/javascript" src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+
+<script type="text/javascript" src="/js/main.js"></script>
+
+
+
+    
+  </body>
+
+</html>

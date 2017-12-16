@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <title>Castie! Notes</title>
+  <meta name="description" content="  经过了上周的基本动画和核心动画的理解, 我们今天来讲讲自定义转场动画, 自定义转场动画是iOS中比较高阶的动画形式了, 简单来说就是在切换控制器时发生的动画形式, 可以在Push/Pop ,Modal(present/dismiss)以及tabbar切换时进行动画. 代码见:github">
+  <meta name="author" content="Wei Wang">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Animations 自定义转场现已加入豪华午餐">
+  <meta name="twitter:description" content="  经过了上周的基本动画和核心动画的理解, 我们今天来讲讲自定义转场动画, 自定义转场动画是iOS中比较高阶的动画形式了, 简单来说就是在切换控制器时发生的动画形式, 可以在Push/Pop ,Modal(present/dismiss)以及tabbar切换时进行动画. 代码见:github">
+  
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Animations 自定义转场现已加入豪华午餐">
+  <meta property="og:description" content="  经过了上周的基本动画和核心动画的理解, 我们今天来讲讲自定义转场动画, 自定义转场动画是iOS中比较高阶的动画形式了, 简单来说就是在切换控制器时发生的动画形式, 可以在Push/Pop ,Modal(present/dismiss)以及tabbar切换时进行动画. 代码见:github">
+  
+  <link rel="icon" type="image/ico" href="/assets/images/favicon.ico" />
+  <link href="/assets/images/favicon.ico" rel="shortcut icon" type="image/ico">
+  
+  <link rel="stylesheet" href="/css/main.css">
+  <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+
+  <link rel="canonical" href="http://localhost:4000/2017/05/Animations-%E8%87%AA%E5%AE%9A%E4%B9%89%E8%BD%AC%E5%9C%BA%E7%8E%B0%E5%B7%B2%E5%8A%A0%E5%85%A5%E8%B1%AA%E5%8D%8E%E5%8D%88%E9%A4%90/">
+  <link rel="alternate" type="application/rss+xml" title="Castie!" href="http://localhost:4000/feed.xml">
+  
+  <meta name="google-site-verification" content="1-1ZlHoRvM0T2FqPbW2S-qLgYXN6rsn52kErlMPd_gw" />
+  
+</head>
+
+
+  <body>
+
+    <span class="mobile btn-mobile-menu">
+        <i class="fa fa-list btn-mobile-menu__icon"></i>
+        <i class="fa fa-angle-up btn-mobile-close__icon hidden"></i>
+    </span>
+    
+    <header class="panel-cover panel-cover--collapsed" style="background-image: url('/assets/images/background-cover.jpg')">
+  <div class="panel-main">
+
+    <div class="panel-main__inner panel-inverted">
+    <div class="panel-main__content">
+
+        <a href="/#blog" title="前往 Castie! 的主页" class="blog-button"><img src="/assets/images/avatar.jpg" width="80" alt="Castie! logo" class="panel-cover__logo logo" /></a>
+        <h1 class="panel-cover__title panel-title"><a href="/#blog" title="link to homepage for Castie!" class="blog-button">Castie!</a></h1>
+        
+        <span class="panel-cover__subtitle panel-subtitle">正态分布, 优劣伴生</span>
+        
+        <hr class="panel-cover__divider" />
+        <p class="panel-cover__description">北冥有鱼，其名为鲲（kūn）。鲲之大，不知其几千里也；化而为鸟，其名为鹏。鹏之背，不知其几千里也；怒而飞，其翼若垂天之云。是鸟也，海运则将徙于南冥。南冥者，天池也。</p>
+        <hr class="panel-cover__divider panel-cover__divider--secondary" />
+        
+        
+        <p class="panel-cover__description">北海若曰：“井鼃不可以语于海者，拘于虚也；夏虫不可以语于冰者，笃于时也；曲士不可以语于道者，束于教也。今尔出于崖涘，观于大海，乃知尔丑，尔将可与语大理矣。</p>
+        
+        
+        <div class="navigation-wrapper">
+          <div>
+            <nav class="cover-navigation cover-navigation--primary">
+              <ul class="navigation">
+                <li class="navigation__item"><a href="/#blog" title="访问博客" class="blog-button">博客</a></li>
+                
+                  <li class="navigation__item"><a href="http://www.jianshu.com/u/9d7fad1a4693" target="_blank" title="访问简书">简书</a></li>
+                
+                  <li class="navigation__item"><a href="https://juejin.im/user/57e735dfa22b9d00614eecb8" target="_blank" title="访问掘金">掘金</a></li>
+                
+              </ul>
+            </nav>
+          </div>
+          
+          <div><nav class="cover-navigation navigation--social">
+  <ul class="navigation">
+
+    
+    <!-- jianshu-->
+    <li class="navigation__item">
+      <a href="http://www.jianshu.com/u/9d7fad1a4693" title="@coderZsq 的简书" target="_blank">
+        <i class='social fa fa-book'></i>
+        <span class="label">jianshu</span>
+      </a>
+    </li>
+    
+
+    
+    <!-- juejin-->
+    <li class="navigation__item">
+      <a href="https://juejin.im/user/57e735dfa22b9d00614eecb8" title="@coderZsq 的稀土掘金" target="_blank">
+        <i class='social fa fa-align-center'></i>
+        <span class="label">juejin</span>
+      </a>
+    </li>
+    
+
+  
+
+  
+  <!-- Github -->
+  <li class="navigation__item">
+    <a href="https://github.com/coderZsq" title="@coderZsq 的 Github" target="_blank">
+      <i class='social fa fa-github'></i>
+      <span class="label">Github</span>
+    </a>
+  </li>
+  
+
+  
+
+  
+
+  <!-- RSS -->
+  <li class="navigation__item">
+    <a href="/feed.xml" rel="author" title="RSS" target="_blank">
+      <i class='social fa fa-rss'></i>
+      <span class="label">RSS</span>
+    </a>
+  </li>
+
+  
+  <!-- Email -->
+  <li class="navigation__item">
+    <a href="mailto:a13701777868@gmail.com" title="Contact me">
+      <i class='social fa fa-envelope'></i>
+      <span class="label">Email</span>
+    </a>
+  </li>
+  
+
+  </ul>
+</nav>
+</div>
+        </div>
+      </div>
+    </div>
+    
+    
+    <div class="panel-cover--overlay cover-blue"></div>
+    
+  </div>
+</header>
+
+
+    <div class="content-wrapper">
+        <div class="content-wrapper__inner">
+            <article class="post-container post-container--single" itemscope itemtype="http://schema.org/BlogPosting">
+  <header class="post-header">
+    <div class="post-meta">
+      <time datetime="2017-05-02 11:23:00 +0800" itemprop="datePublished" class="post-meta__date date">2017-05-02</time> &#8226; <span class="post-meta__tags tags">移动开发</span>
+    </div>
+    <h1 class="post-title">Animations 自定义转场现已加入豪华午餐</h1>
+  </header>
+
+  <section class="post">
+    <blockquote>
+  <p>经过了上周的基本动画和核心动画的理解, 我们今天来讲讲自定义转场动画, 自定义转场动画是iOS中比较高阶的动画形式了, 简单来说就是在切换控制器时发生的动画形式, 可以在Push/Pop ,Modal(present/dismiss)以及tabbar切换时进行动画. 代码见:<a href="https://github.com/coderZsq/coderZsq.target.swift">github</a></p>
+</blockquote>
+
+<p><img src="http://upload-images.jianshu.io/upload_images/1229762-8f8d322fd1b24ddb.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="" /></p>
+
+<p>对于Modal(present/dismiss)以及tabbar切换的自定义动画可以看我之前的博客:
+ <a href="http://www.jianshu.com/p/6106f5a08ec3">Modal  请点击 –&gt; iOS 狂霸酷炫拽之Button动效</a>
+<a href="http://www.jianshu.com/p/c1a0cd2a348f">Tabbar 请点击 –&gt; iOS 会跳舞的TabbarController</a></p>
+
+<p>本期我们来着重说说Push/Pop里如何进行自定义转场动画, 和之前的核心动画一样, 我们还是一如既往的先讲API, 再进行实战的演练, 对于自定义转场我们要分三步走:  1) 设置代理, 2)遵守协议, 3)实现代理方法.我们先从协议开始看起:</p>
+
+<p>导航控制器代理方法:</p>
+<div class="highlighter-rouge"><pre class="highlight"><code>public protocol UINavigationControllerDelegate : NSObjectProtocol
+
+@available(iOS 7.0, *)
+    optional public func navigationController(_ navigationController: UINavigationController, interactionControllerFor animationController: UIViewControllerAnimatedTransitioning) -&gt; UIViewControllerInteractiveTransitioning?
+
+@available(iOS 7.0, *)
+    optional public func navigationController(_ navigationController: UINavigationController, animationControllerFor operation: UINavigationControllerOperation, from fromVC: UIViewController, to toVC: UIViewController) -&gt; UIViewControllerAnimatedTransitioning?
+</code></pre>
+</div>
+<ul>
+  <li>interactionControllerFor 与用户交互时调用的代理方法</li>
+  <li>animationControllerFor  自定义转场切换时调用的代理方法</li>
+</ul>
+
+<p>自定义转场协议:</p>
+<div class="highlighter-rouge"><pre class="highlight"><code>public protocol UIViewControllerAnimatedTransitioning : NSObjectProtocol
+    public func transitionDuration(using transitionContext: UIViewControllerContextTransitioning?) -&gt; TimeInterval
+    public func animateTransition(using transitionContext: UIViewControllerContextTransitioning)
+</code></pre>
+</div>
+<ul>
+  <li>transitionDuration 转场时长</li>
+  <li>animateTransition 转场动画如何实现</li>
+</ul>
+
+<p>自定义转场交互协议:</p>
+<div class="highlighter-rouge"><pre class="highlight"><code>@available(iOS 7.0, *)
+open class UIPercentDrivenInteractiveTransition : NSObject, UIViewControllerInteractiveTransitioning
+    open func update(_ percentComplete: CGFloat)
+    open func cancel()
+    open func finish()
+</code></pre>
+</div>
+<ul>
+  <li>update 更新转场 百分比</li>
+  <li>cancel 取消转场</li>
+  <li>finish 完成转场</li>
+</ul>
+
+<p>自定义转场类型枚举:</p>
+<div class="highlighter-rouge"><pre class="highlight"><code>public enum UINavigationControllerOperation : Int {
+    case push
+    case pop
+}
+</code></pre>
+</div>
+<ul>
+  <li>push 压栈</li>
+  <li>pop 出栈</li>
+</ul>
+
+<p>自定义转场上下文:</p>
+<div class="highlighter-rouge"><pre class="highlight"><code>public protocol UIViewControllerContextTransitioning : NSObjectProtocol
+@available(iOS 2.0, *)
+    public var containerView: UIView { get }
+    public var transitionWasCancelled: Bool { get }
+@available(iOS 2.0, *)
+    public func viewController(forKey key: UITransitionContextViewControllerKey) -&gt; UIViewController?
+@available(iOS 2.0, *)
+    public func initialFrame(for vc: UIViewController) -&gt; CGRect
+@available(iOS 2.0, *)
+    public func finalFrame(for vc: UIViewController) -&gt; CGRect
+</code></pre>
+</div>
+<ul>
+  <li>containerView 包装View, 用户处理自定义转场交互的View</li>
+  <li>transitionWasCancelled 取消转场的操作</li>
+  <li>viewControllerforKey 拿到起始或目标控制器方法</li>
+  <li>initialFrame 初始Frame</li>
+  <li>finalFrame 最终Frame</li>
+</ul>
+
+<p>讲完API, 我们就来使用这些API进行实战, 和之前一样, 我们就通过Stroyboard搭建界面:
+<img src="http://upload-images.jianshu.io/upload_images/1229762-0ec1f9c441fc9f99.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="" /></p>
+
+<p>跳过@IBOutlet 关联这步, 我们先来创建自定义转场对象:</p>
+<div class="highlighter-rouge"><pre class="highlight"><code>class RevealAnimator: UIPercentDrivenInteractiveTransition, UIViewControllerAnimatedTransitioning, CAAnimationDelegate { //遵循协议
+
+  let animationDuration = 2.0 //动画时长
+  var operation: UINavigationControllerOperation = .push //转场类型
+  weak var storedContext: UIViewControllerContextTransitioning? //保存转场上下文
+  var interactive = false //是否可交互
+
+  func transitionDuration(using transitionContext: UIViewControllerContextTransitioning?) -&gt; TimeInterval {
+    return animationDuration //返回动画时长
+  }
+
+  func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {
+    storedContext = transitionContext //保存上下文
+    ... 
+  }
+}
+</code></pre>
+</div>
+<p>进行动画的自定义:</p>
+<div class="highlighter-rouge"><pre class="highlight"><code>  func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {
+    storedContext = transitionContext
+
+    if operation == .push { //判断转场类型 为push
+
+      let fromVC = transitionContext.viewController(forKey: .from) as! MasterViewController //拿到初始控制器
+      let toVC = transitionContext.viewController(forKey: .to) as! DetailViewController //拿到目标控制器
+
+      transitionContext.containerView.addSubview(toVC.view) //将目标控制器的View添加到上下文的包装View中
+      toVC.view.frame = transitionContext.finalFrame(for: toVC) //设置目标控制器View为finalFrame
+
+      let animation = CABasicAnimation(keyPath: "transform") //进行核心动画
+      animation.fromValue = NSValue(caTransform3D: CATransform3DIdentity) 
+      animation.toValue = NSValue(caTransform3D:
+        CATransform3DConcat( //concat与RxSwift中相同为向后拼接, 此处为叠加3D仿射动画
+          CATransform3DMakeTranslation(0.0, -10.0, 0.0),
+          CATransform3DMakeScale(150.0, 150.0, 1.0)
+        )
+      )
+
+      animation.duration = animationDuration 
+      animation.delegate = self 
+      animation.fillMode = kCAFillModeForwards 
+      animation.isRemovedOnCompletion = false
+      animation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseIn)
+      
+      let maskLayer: CAShapeLayer = RWLogoLayer.logoLayer() //maskLayer为遮罩层
+      maskLayer.position = fromVC.logo.position 
+      maskLayer.add(animation, forKey: nil)
+      toVC.view.layer.mask = maskLayer //将遮罩层Layer添加到显示层Layer的Mask属性上
+      
+      fromVC.logo.add(animation, forKey: nil)
+
+      let fadeIn = CABasicAnimation(keyPath: "opacity")
+      fadeIn.fromValue = 0.0
+      fadeIn.toValue = 1.0
+      fadeIn.duration = animationDuration
+      toVC.view.layer.add(fadeIn, forKey: nil)
+    } else {
+
+      let fromView = transitionContext.view(forKey: .from)!
+      let toView = transitionContext.view(forKey: .to)!
+
+      transitionContext.containerView.insertSubview(toView, belowSubview: fromView)
+
+      UIView.animate(withDuration: animationDuration, delay: 0.0, options: .curveEaseIn,
+        animations: {
+          fromView.transform = CGAffineTransform(scaleX: 0.01, y: 0.01)
+        },
+        completion: {_ in
+          transitionContext.completeTransition(!transitionContext.transitionWasCancelled) //完成转场
+        }
+      )
+    }
+</code></pre>
+</div>
+
+<p>核心动画代理:</p>
+<div class="highlighter-rouge"><pre class="highlight"><code>  func animationDidStop(_ anim: CAAnimation, finished flag: Bool) {
+    if let context = storedContext {
+      context.completeTransition(!context.transitionWasCancelled) //完成转场
+      //reset logo
+      let fromVC = context.viewController(forKey: .from) as! MasterViewController
+      fromVC.logo.removeAllAnimations() //删除所有动画
+      
+      let toVC = context.viewController(forKey: .to) as! DetailViewController
+      toVC.view.layer.mask = nil //动画停止 清空遮罩层
+    }
+    storedContext = nil
+  }
+</code></pre>
+</div>
+
+<p>pan手势转场交互:</p>
+<div class="highlighter-rouge"><pre class="highlight"><code>  func handlePan(recognizer: UIPanGestureRecognizer) {
+    let translation = recognizer.translation(in: recognizer.view!.superview!) //拿到转换坐标
+    var progress: CGFloat = abs(translation.x / 200.0) //拿到x轴进度
+    progress = min(max(progress, 0.01), 0.99) //给定进度边界
+
+    switch recognizer.state { //控制手势状态
+    case .changed: //改变时
+      update(progress) //更新进度
+    case .cancelled, .ended: //取消或结束时
+      let transitionLayer = storedContext!.containerView.layer //拿到包装Layer层
+      transitionLayer.beginTime = CACurrentMediaTime()
+      if progress &lt; 0.5 { //控制进度
+        cancel() //取消转场
+        transitionLayer.speed = -1.0 //进行隐式动画
+      } else {
+        transitionLayer.speed = 1.0 //进行隐式动画
+        finish() //完成转场
+      }
+      interactive = false //交互设置为不可交互
+    default:
+      break
+    }
+  }
+</code></pre>
+</div>
+<p>完成自定义转场类后, 我们进行三步走:</p>
+<div class="highlighter-rouge"><pre class="highlight"><code>1)  设置代理:
+class MasterViewController: UIViewController {
+  
+  let logo = RWLogoLayer.logoLayer() 
+  let transition = RevealAnimator() //自定义转场类
+
+  override func viewDidLoad() {
+    super.viewDidLoad()
+    title = "Start"
+    navigationController?.delegate = self //设置代理
+  }
+}
+</code></pre>
+</div>
+<div class="highlighter-rouge"><pre class="highlight"><code>2) 遵守协议并实现代理方法:
+extension MasterViewController: UINavigationControllerDelegate {
+  func navigationController(_ navigationController: UINavigationController, animationControllerFor operation: UINavigationControllerOperation, from fromVC: UIViewController, to toVC: UIViewController) -&gt; UIViewControllerAnimatedTransitioning? {
+    transition.operation = operation
+    return transition
+  }
+
+  func navigationController(_ navigationController: UINavigationController, interactionControllerFor animationController: UIViewControllerAnimatedTransitioning) -&gt; UIViewControllerInteractiveTransitioning? {
+    if !transition.interactive { //当上下文不可交互时返回空
+      return nil
+    }
+    return transition
+  }
+}
+</code></pre>
+</div>
+<div class="highlighter-rouge"><pre class="highlight"><code>3) 添加手势:
+  override func viewDidAppear(_ animated: Bool) {
+    super.viewDidAppear(animated)
+    
+    let pan = UIPanGestureRecognizer(target: self, action: #selector(didPan))
+    view.addGestureRecognizer(pan)
+
+    // add the logo to the view
+    logo.position = CGPoint(x: view.layer.bounds.size.width/2,
+      y: view.layer.bounds.size.height/2 - 30)
+    logo.fillColor = UIColor.white.cgColor
+    view.layer.addSublayer(logo)
+  }
+
+  func didPan(recognizer: UIPanGestureRecognizer) {
+    switch recognizer.state {
+    case .began:
+      transition.interactive = true //设置转场可交互
+      performSegue(withIdentifier: "details", sender: nil)
+    default:
+      transition.handlePan(recognizer: recognizer) //调用自定义转场类中的手势操作更新转场
+
+    }
+  }
+</code></pre>
+</div>
+<p>演示效果:
+<img src="http://upload-images.jianshu.io/upload_images/1229762-f2c856c0d61b0117.gif?imageMogr2/auto-orient/strip" alt="" />
+About:</p>
+
+<p>About:</p>
+
+<p><img src="http://upload-images.jianshu.io/upload_images/1229762-3f8925783027b3fa.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="点击下方链接跳转!!" /></p>
+
+<p><a href="https://github.com/coderZsq/coderZsq.target.swift">🌟 源码 请点这里🌟 »&gt; 喜欢的朋友请点喜欢 »&gt; 下载源码的同学请送下小星星 »&gt; 有闲钱的壕们可以进行打赏 »&gt; 小弟会尽快推出更好的文章和大家分享 »&gt; 你的激励就是我的动力!! </a></p>
+
+  </section>
+</article>
+
+<section class="read-more">
+   
+   
+   <div class="read-more-item">
+       <span class="read-more-item-dim">最近的文章</span>
+       <h2 class="post-list__post-title post-title"><a href="/2017/05/Animations-%E5%BF%AB%E9%80%9F%E4%B8%8A%E6%89%8B-iOS10-%E5%B1%9E%E6%80%A7%E5%8A%A8%E7%94%BB/" title="link to Animations 快速上手 iOS10 属性动画">Animations 快速上手 iOS10 属性动画</a></h2>
+       <p class="excerpt">  基础动画, 核心动画到自定义转场动画其实都不是什么新东西了, 所以我也是草草看一遍就能够读个大概, 但今天要说的UIViewPropertyAnimator, 是iOS10新的API, 其他的好处我还不太清楚, 但抽象动画逻辑和监控动画的进程上真的是方便很多.代码见:github对于属性动画来说, 真的是个新知识, 想必会用的还不多, 我也是近期才有涉及, 理解不周还望大伙指点一二, 之前我们要做一些稍微高级的动画都会使用核心动画的方法, 但是核心动画有一个致命的弱点, 就是假象和被打...&hellip;</p>
+       <div class="post-list__meta"><time datetime="2017-05-03 11:04:00 +0800" class="post-list__meta--date date">2017-05-03</time> &#8226; <span class="post-list__meta--tags tags">移动开发</span><a class="btn-border-small" href=/2017/05/Animations-%E5%BF%AB%E9%80%9F%E4%B8%8A%E6%89%8B-iOS10-%E5%B1%9E%E6%80%A7%E5%8A%A8%E7%94%BB/>继续阅读</a></div>
+   </div>
+   
+   
+   
+   
+   <div class="read-more-item">
+       <span class="read-more-item-dim">更早的文章</span>
+       <h2 class="post-list__post-title post-title"><a href="/2017/04/Animations-%E6%A0%B8%E5%BF%83%E5%8A%A8%E7%94%BB%E4%BB%80%E4%B9%88%E7%9A%84%E8%A6%81%E7%A0%94%E7%A9%B6%E9%80%8F!/" title="link to Animations 核心动画什么的要研究透!">Animations 核心动画什么的要研究透!</a></h2>
+       <p class="excerpt">  看过我去年文章的同学们一定知道对于动画方面还是有点心得体会的, 对于核心动画的学习, 之前我看的是iOS Core Animation的翻译版, 看完感觉真的学到了不少东西, 不过这本书已经有点时日了, 我们需要与时俱进学习最前沿的技术.代码见:github和之前的View的动画一样, 这次Layer的核心动画, 我们也是先细讲API, 再进行项目实战, 这样会比较容易理解, 新入行的同学不会望而却步.其实刚学习核心动画的时候还有有点难度的, 先提两个注意点: 1) 相对于view的c...&hellip;</p>
+       <div class="post-list__meta"><time datetime="2017-04-27 10:44:00 +0800" class="post-list__meta--date date">2017-04-27</time> &#8226; <span class="post-list__meta--tags tags">移动开发</span><a class="btn-border-small" href=/2017/04/Animations-%E6%A0%B8%E5%BF%83%E5%8A%A8%E7%94%BB%E4%BB%80%E4%B9%88%E7%9A%84%E8%A6%81%E7%A0%94%E7%A9%B6%E9%80%8F!/>继续阅读</a></div>
+   </div>
+   
+</section>
+
+<section class="post-comments">
+  
+  
+  
+  
+</section>
+
+
+            <section class="footer">
+    <footer>
+    	<span class="footer__copyright">本站点采用<a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">知识共享 署名-非商业性使用-相同方式共享 4.0 国际 许可协议</a></span>
+        <span class="footer__copyright">由 <a href="https://jekyllrb.com">Jekyll</a> 于 2017-12-16 生成，感谢 <a href="https://www.digitalocean.com/?refcode=30ed2d146762">Digital Ocean</a> 为本站提供稳定的 VPS 服务</span>
+        <span class="footer__copyright">本站由 <a href="https://github.com/coderZsq">@Castie!</a> 创建，采用 <a href="https://github.com/onevcat/vno-jekyll">Vno - Jekyll</a> 作为主题，您可以在 GitHub 找到<a href="https://github.com/onevcat/OneV-s-Den">本站源码</a> - &copy; 2017</span>
+    </footer>
+</section>
+
+        </div>
+    </div>
+    
+    <script type="text/javascript" src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+
+<script type="text/javascript" src="/js/main.js"></script>
+
+
+
+    
+  </body>
+
+</html>

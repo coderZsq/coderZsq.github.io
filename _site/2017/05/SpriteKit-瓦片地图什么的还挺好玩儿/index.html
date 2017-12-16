@@ -1,0 +1,942 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <title>Castie! Notes</title>
+  <meta name="description" content="  说实话这个2D游戏实战的入门看的我脑浆子都沸腾了, 好多新的概念涌入, 没做过游戏开发的我表示真的难以接受, 吸收效率与之前相比也下降好多, 不过越往后学, 就能够加深对之前知识的掌握, 这可能也是看书的好处吧, 今天我也把对瓦片地图的一些学习经验记录下来供大家探讨.代码见:github">
+  <meta name="author" content="Wei Wang">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="SpriteKit 瓦片地图什么的还挺好玩儿">
+  <meta name="twitter:description" content="  说实话这个2D游戏实战的入门看的我脑浆子都沸腾了, 好多新的概念涌入, 没做过游戏开发的我表示真的难以接受, 吸收效率与之前相比也下降好多, 不过越往后学, 就能够加深对之前知识的掌握, 这可能也是看书的好处吧, 今天我也把对瓦片地图的一些学习经验记录下来供大家探讨.代码见:github">
+  
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="SpriteKit 瓦片地图什么的还挺好玩儿">
+  <meta property="og:description" content="  说实话这个2D游戏实战的入门看的我脑浆子都沸腾了, 好多新的概念涌入, 没做过游戏开发的我表示真的难以接受, 吸收效率与之前相比也下降好多, 不过越往后学, 就能够加深对之前知识的掌握, 这可能也是看书的好处吧, 今天我也把对瓦片地图的一些学习经验记录下来供大家探讨.代码见:github">
+  
+  <link rel="icon" type="image/ico" href="/assets/images/favicon.ico" />
+  <link href="/assets/images/favicon.ico" rel="shortcut icon" type="image/ico">
+  
+  <link rel="stylesheet" href="/css/main.css">
+  <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+
+  <link rel="canonical" href="http://localhost:4000/2017/05/SpriteKit-%E7%93%A6%E7%89%87%E5%9C%B0%E5%9B%BE%E4%BB%80%E4%B9%88%E7%9A%84%E8%BF%98%E6%8C%BA%E5%A5%BD%E7%8E%A9%E5%84%BF/">
+  <link rel="alternate" type="application/rss+xml" title="Castie!" href="http://localhost:4000/feed.xml">
+  
+  <meta name="google-site-verification" content="1-1ZlHoRvM0T2FqPbW2S-qLgYXN6rsn52kErlMPd_gw" />
+  
+</head>
+
+
+  <body>
+
+    <span class="mobile btn-mobile-menu">
+        <i class="fa fa-list btn-mobile-menu__icon"></i>
+        <i class="fa fa-angle-up btn-mobile-close__icon hidden"></i>
+    </span>
+    
+    <header class="panel-cover panel-cover--collapsed" style="background-image: url('/assets/images/background-cover.jpg')">
+  <div class="panel-main">
+
+    <div class="panel-main__inner panel-inverted">
+    <div class="panel-main__content">
+
+        <a href="/#blog" title="前往 Castie! 的主页" class="blog-button"><img src="/assets/images/avatar.jpg" width="80" alt="Castie! logo" class="panel-cover__logo logo" /></a>
+        <h1 class="panel-cover__title panel-title"><a href="/#blog" title="link to homepage for Castie!" class="blog-button">Castie!</a></h1>
+        
+        <span class="panel-cover__subtitle panel-subtitle">正态分布, 优劣伴生</span>
+        
+        <hr class="panel-cover__divider" />
+        <p class="panel-cover__description">北冥有鱼，其名为鲲（kūn）。鲲之大，不知其几千里也；化而为鸟，其名为鹏。鹏之背，不知其几千里也；怒而飞，其翼若垂天之云。是鸟也，海运则将徙于南冥。南冥者，天池也。</p>
+        <hr class="panel-cover__divider panel-cover__divider--secondary" />
+        
+        
+        <p class="panel-cover__description">北海若曰：“井鼃不可以语于海者，拘于虚也；夏虫不可以语于冰者，笃于时也；曲士不可以语于道者，束于教也。今尔出于崖涘，观于大海，乃知尔丑，尔将可与语大理矣。</p>
+        
+        
+        <div class="navigation-wrapper">
+          <div>
+            <nav class="cover-navigation cover-navigation--primary">
+              <ul class="navigation">
+                <li class="navigation__item"><a href="/#blog" title="访问博客" class="blog-button">博客</a></li>
+                
+                  <li class="navigation__item"><a href="http://www.jianshu.com/u/9d7fad1a4693" target="_blank" title="访问简书">简书</a></li>
+                
+                  <li class="navigation__item"><a href="https://juejin.im/user/57e735dfa22b9d00614eecb8" target="_blank" title="访问掘金">掘金</a></li>
+                
+              </ul>
+            </nav>
+          </div>
+          
+          <div><nav class="cover-navigation navigation--social">
+  <ul class="navigation">
+
+    
+    <!-- jianshu-->
+    <li class="navigation__item">
+      <a href="http://www.jianshu.com/u/9d7fad1a4693" title="@coderZsq 的简书" target="_blank">
+        <i class='social fa fa-book'></i>
+        <span class="label">jianshu</span>
+      </a>
+    </li>
+    
+
+    
+    <!-- juejin-->
+    <li class="navigation__item">
+      <a href="https://juejin.im/user/57e735dfa22b9d00614eecb8" title="@coderZsq 的稀土掘金" target="_blank">
+        <i class='social fa fa-align-center'></i>
+        <span class="label">juejin</span>
+      </a>
+    </li>
+    
+
+  
+
+  
+  <!-- Github -->
+  <li class="navigation__item">
+    <a href="https://github.com/coderZsq" title="@coderZsq 的 Github" target="_blank">
+      <i class='social fa fa-github'></i>
+      <span class="label">Github</span>
+    </a>
+  </li>
+  
+
+  
+
+  
+
+  <!-- RSS -->
+  <li class="navigation__item">
+    <a href="/feed.xml" rel="author" title="RSS" target="_blank">
+      <i class='social fa fa-rss'></i>
+      <span class="label">RSS</span>
+    </a>
+  </li>
+
+  
+  <!-- Email -->
+  <li class="navigation__item">
+    <a href="mailto:a13701777868@gmail.com" title="Contact me">
+      <i class='social fa fa-envelope'></i>
+      <span class="label">Email</span>
+    </a>
+  </li>
+  
+
+  </ul>
+</nav>
+</div>
+        </div>
+      </div>
+    </div>
+    
+    
+    <div class="panel-cover--overlay cover-blue"></div>
+    
+  </div>
+</header>
+
+
+    <div class="content-wrapper">
+        <div class="content-wrapper__inner">
+            <article class="post-container post-container--single" itemscope itemtype="http://schema.org/BlogPosting">
+  <header class="post-header">
+    <div class="post-meta">
+      <time datetime="2017-05-24 11:49:00 +0800" itemprop="datePublished" class="post-meta__date date">2017-05-24</time> &#8226; <span class="post-meta__tags tags">移动开发</span>
+    </div>
+    <h1 class="post-title">SpriteKit 瓦片地图什么的还挺好玩儿</h1>
+  </header>
+
+  <section class="post">
+    <blockquote>
+  <p>说实话这个2D游戏实战的入门看的我脑浆子都沸腾了, 好多新的概念涌入, 没做过游戏开发的我表示真的难以接受, 吸收效率与之前相比也下降好多, 不过越往后学, 就能够加深对之前知识的掌握, 这可能也是看书的好处吧, 今天我也把对瓦片地图的一些学习经验记录下来供大家探讨.代码见:<a href="https://github.com/coderZsq/coderZsq.target.swift">github</a></p>
+</blockquote>
+
+<p><img src="http://upload-images.jianshu.io/upload_images/1229762-b5433f0a638b1a15.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="" /></p>
+
+<p>说实话, 我很推荐Ray家的资源, 由浅入深手把手的教学, 内容前后呼应, 看几本书就能涵盖国内4个月培训班的课程体系. 遵循本系列一贯的风格, 我们还是从基础的API开始看起, 对API掌握熟练的话, 多敲两个Demo就能够基本的上手任何项目了.</p>
+<h5 id="sktilemapnode">SKTileMapNode</h5>
+<div class="highlighter-rouge"><pre class="highlight"><code>@available(iOS 10.0, *)
+open class SKTileMapNode : SKNode, NSCopying, NSCoding
+     public init(tileSet: SKTileSet, columns: Int, rows: Int, tileSize: CGSize)
+     open var numberOfColumns: Int
+     open var numberOfRows: Int
+     open var tileSize: CGSize
+     open var mapSize: CGSize { get }
+     open var tileSet: SKTileSet
+     open var colorBlendFactor: CGFloat
+     open func tileDefinition(atColumn column: Int, row: Int) -&gt; SKTileDefinition?
+     open func tileGroup(atColumn column: Int, row: Int) -&gt; SKTileGroup?
+     open func setTileGroup(_ tileGroup: SKTileGroup?, forColumn column: Int, row: Int)
+     open func tileColumnIndex(fromPosition position: CGPoint) -&gt; Int
+     open func tileRowIndex(fromPosition position: CGPoint) -&gt; Int
+     open func centerOfTile(atColumn column: Int, row: Int) -&gt; CGPoint
+</code></pre>
+</div>
+<ul>
+  <li><code class="highlighter-rouge">init(tileSet: SKTileSet, columns: Int, rows: Int, tileSize: CGSize)</code> 瓦片地图节点的初始化方法</li>
+  <li><code class="highlighter-rouge">numberOfColumns</code> 瓦片地图的列数</li>
+  <li><code class="highlighter-rouge">numberOfRows</code> 瓦片地图的行数</li>
+  <li><code class="highlighter-rouge">tileSize</code> 瓦片地图中每个瓦片的尺寸</li>
+  <li><code class="highlighter-rouge">mapSize</code> 瓦片地图的尺寸</li>
+  <li><code class="highlighter-rouge">tileSet</code> 瓦片地图的瓦片集</li>
+  <li><code class="highlighter-rouge">colorBlendFactor</code> 瓦片的渲染着色</li>
+  <li><code class="highlighter-rouge">tileDefinition(atColumn column: Int, row: Int) -&gt; SKTileDefinition?</code> 根据列数和行数返回瓦片定义</li>
+  <li><code class="highlighter-rouge">tileGroup(atColumn column: Int, row: Int) -&gt; SKTileGroup?</code> 根据列数和行数返回瓦片组</li>
+  <li><code class="highlighter-rouge">setTileGroup(_ tileGroup: SKTileGroup?, forColumn column: Int, row: Int)</code> 根据列数和行数设置瓦片组</li>
+  <li><code class="highlighter-rouge">tileColumnIndex(fromPosition position: CGPoint) -&gt; Int</code> 根据瓦片位置返回瓦片在瓦片地图中列数下标</li>
+  <li><code class="highlighter-rouge"> tileRowIndex(fromPosition position: CGPoint) -&gt; Int</code> 根据瓦片位置返回瓦片在瓦片地图中行数下标</li>
+</ul>
+
+<h5 id="sktileset">SKTileSet</h5>
+<div class="highlighter-rouge"><pre class="highlight"><code>@available(iOS 10.0, *)
+open class SKTileSet : NSObject, NSCopying, NSCoding 
+     public init(tileGroups: [SKTileGroup])
+     open var tileGroups: [SKTileGroup]
+     open var name: String?
+     open var defaultTileGroup: SKTileGroup?
+     open var defaultTileSize: CGSize
+     open var type: SKTileSetType
+
+@available(iOS 10.0, *)
+public enum SKTileSetType : UInt {
+    case grid
+    case isometric
+    case hexagonalFlat
+    case hexagonalPointy
+}
+</code></pre>
+</div>
+<ul>
+  <li><code class="highlighter-rouge">init(tileGroups: [SKTileGroup])</code> 根据瓦片组初始化瓦片集</li>
+  <li><code class="highlighter-rouge">tileGroups</code> 瓦片组</li>
+  <li><code class="highlighter-rouge">name</code> 瓦片集的标识</li>
+  <li><code class="highlighter-rouge">defaultTileGroup</code> 瓦片集默认瓦片组</li>
+  <li><code class="highlighter-rouge">defaultTileSize</code> 瓦片集默认瓦片尺寸</li>
+  <li><code class="highlighter-rouge">type</code> 瓦片集类型 - 网格, 等值, 六边形</li>
+</ul>
+
+<h5 id="sktilegroup">SKTileGroup</h5>
+<div class="highlighter-rouge"><pre class="highlight"><code>@available(iOS 10.0, *)
+open class SKTileGroup : NSObject, NSCopying, NSCoding
+     open class func empty() -&gt; Self
+     public init(tileDefinition: SKTileDefinition)
+     public init(rules: [SKTileGroupRule])
+     open var name: String?
+</code></pre>
+</div>
+<ul>
+  <li><code class="highlighter-rouge">empty()</code> 返回一个空的瓦片组</li>
+  <li><code class="highlighter-rouge">init(tileDefinition: SKTileDefinition)</code> 根据瓦片定义初始化瓦片组</li>
+  <li><code class="highlighter-rouge">init(rules: [SKTileGroupRule])</code> 根据瓦片组规则初始化瓦片组</li>
+  <li><code class="highlighter-rouge">name</code> 瓦片组的标识</li>
+</ul>
+
+<h5 id="sktilegrouprule">SKTileGroupRule</h5>
+<div class="highlighter-rouge"><pre class="highlight"><code>@available(iOS 10.0, *)
+open class SKTileGroupRule : NSObject, NSCopying, NSCoding
+     public init(adjacency: SKTileAdjacencyMask, tileDefinitions: [SKTileDefinition])
+     open var adjacency: SKTileAdjacencyMask
+     open var tileDefinitions: [SKTileDefinition]
+     open var name: String?
+</code></pre>
+</div>
+<ul>
+  <li><code class="highlighter-rouge">init(adjacency: SKTileAdjacencyMask, tileDefinitions: [SKTileDefinition])</code> 根据瓦片链接和瓦片定义初始化瓦片组规则</li>
+  <li><code class="highlighter-rouge">adjacency</code> 瓦片链接</li>
+  <li><code class="highlighter-rouge">tileDefinitions</code> 瓦片规则</li>
+  <li><code class="highlighter-rouge">name</code> 瓦片组规则标识</li>
+</ul>
+
+<h5 id="sktiledefinition">SKTileDefinition</h5>
+<div class="highlighter-rouge"><pre class="highlight"><code>@available(iOS 10.0, *)
+open class SKTileDefinition : NSObject, NSCopying, NSCoding
+     public init(texture: SKTexture)
+     public init(textures: [SKTexture], normalTextures: [SKTexture], size: CGSize, timePerFrame: CGFloat)
+     open var userData: NSMutableDictionary?
+     open var name: String?
+     open var size: CGSize
+     open var timePerFrame: CGFloat
+     open var rotation: SKTileDefinitionRotation
+     open var flipVertically: Bool
+     open var flipHorizontally: Bool
+</code></pre>
+</div>
+
+<ul>
+  <li><code class="highlighter-rouge">init(texture: SKTexture)</code> 根据纹理初始化瓦片定义</li>
+  <li><code class="highlighter-rouge"> init(textures: [SKTexture], normalTextures: [SKTexture], size: CGSize, timePerFrame: CGFloat)</code> 根据纹理集合, 尺寸, 和帧率初始化瓦片定义</li>
+  <li><code class="highlighter-rouge">userData</code> 瓦片定义的用户数据</li>
+  <li><code class="highlighter-rouge">name</code> 瓦片定义的标识</li>
+  <li><code class="highlighter-rouge">timePerFrame</code> 瓦片定义的帧率</li>
+  <li><code class="highlighter-rouge">rotation</code> 瓦片定义的旋转规则</li>
+  <li><code class="highlighter-rouge">flipVertically</code> 是否垂直翻转</li>
+  <li><code class="highlighter-rouge">flipHorizontally</code> 是否水平翻转</li>
+</ul>
+
+<h4 id="实战">实战:</h4>
+
+<p>API, 了解一些基本的就够了, 如果要深究可以打开头文件逐个尝试, 我们现在就来实现一个小游戏, 这个游戏中包含了3个场景, 控制人物在规定时间内消灭所有的害虫, 我们着手进行游戏的开发吧!</p>
+
+<p><img src="http://upload-images.jianshu.io/upload_images/1229762-f837c5a6c01be613.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="" /></p>
+
+<ul>
+  <li>step1 设置游戏场景的属性</li>
+</ul>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>class GameScene: SKScene {
+  var background: SKTileMapNode! //背景瓦片地图节点
+  var obstaclesTileMap: SKTileMapNode? //障碍物瓦片地图节点
+  var bugsprayTileMap: SKTileMapNode? //杀虫喷剂瓦片地图节点
+
+  var bugsNode = SKNode() //害虫的节点
+  
+  var player = Player() //玩家的节点
+  var hud = HUD() //文字说明
+  
+  var firebugCount: Int = 0 //高级害虫的节点数
+
+  var timeLimit: Int = 10 //时间限制
+  var elapsedTime: Int = 0 //经过时间
+  var startTime: Int? //开始时间
+
+  var currentLevel: Int = 1 //当前关卡等级
+
+  var gameState: GameState = .initial { //游戏状态默认为初始状态
+    didSet { 
+      hud.updateGameState(from: oldValue, to: gameState) //更新游戏状态
+    }
+  }
+  ...
+}
+</code></pre>
+</div>
+<ul>
+  <li>step2 加载游戏场景的初始化设置</li>
+</ul>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>  required init?(coder aDecoder: NSCoder) {
+    super.init(coder: aDecoder)
+    background =
+      childNode(withName: "background") as! SKTileMapNode //通过节点名读取背景瓦片地图节点
+    obstaclesTileMap = childNode(withName: "obstacles") 
+      as? SKTileMapNode //通过节点名读取障碍物瓦片地图节点
+
+    if let timeLimit =
+      userData?.object(forKey: "timeLimit") as? Int {
+      self.timeLimit = timeLimit //通过节点的用户数据设置每个场景的时间限制
+    }
+    // 1
+    let savedGameState = aDecoder.decodeInteger(forKey: "Scene.gameState") //解档保存游戏状态
+    if let gameState = GameState(rawValue: savedGameState), gameState == .pause { //当解档保存游戏状态为暂停时
+      self.gameState = gameState //赋值游戏状态
+      firebugCount = aDecoder.decodeInteger(
+        forKey: "Scene.firebugCount") //解档高级害虫数
+      elapsedTime = aDecoder.decodeInteger(
+        forKey: "Scene.elapsedTime") //解档经过时间
+      currentLevel = aDecoder.decodeInteger(
+        forKey: "Scene.currentLevel") //解档当前关卡等级
+      // 2
+      player = childNode(withName: "Player") as! Player //根据节点名读取玩家节点
+      hud = camera!.childNode(withName: "HUD") as! HUD //根据节点名读取文字说明
+      bugsNode = childNode(withName: "Bugs")! //根据节点名读取害虫节点
+      bugsprayTileMap = childNode(withName: "Bugspray") 
+        as? SKTileMapNode //通过节点名读取杀虫喷雾瓦片地图节点
+    }
+
+    addObservers() //添加观察者
+  }
+
+  deinit {
+    NotificationCenter.default.removeObserver(self) //移除观察者
+  }
+</code></pre>
+</div>
+<ul>
+  <li>step3 当场景移动到屏幕时的设置</li>
+</ul>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>  override func didMove(to view: SKView) {
+    if gameState == .initial { //当游戏状态为初始状态时
+      addChild(player) //添加玩家到场景
+      setupWorldPhysics() //添加物理世界
+      createBugs() //添加害虫
+      setupObstaclePhysics() //添加障碍物
+      if firebugCount &gt; 0 { //如果有高级害虫
+        createBugspray(quantity: firebugCount + 10) //添加杀虫喷雾
+      }
+      setupHUD() //添加文字说明
+      gameState = .start //设置游戏状态为开始状态
+    }
+    setupCamera() //添加摄像头
+  }
+</code></pre>
+</div>
+<ul>
+  <li>step4 物理世界的设置</li>
+</ul>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>  func setupWorldPhysics() {
+    background.physicsBody =
+      SKPhysicsBody(edgeLoopFrom: background.frame) //设置边缘物理体
+    background.physicsBody?.categoryBitMask = PhysicsCategory.Edge //设置物理体标识为边缘
+    
+    physicsWorld.contactDelegate = self //物理世界代理
+
+  }
+</code></pre>
+</div>
+<ul>
+  <li>step5 创建害虫的设置</li>
+</ul>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>  func createBugs() {
+    guard let bugsMap = childNode(withName: "bugs")
+      as? SKTileMapNode else { return } //校验害虫瓦片地图节点
+    // 1
+    for row in 0..&lt;bugsMap.numberOfRows { //逐行遍历害虫瓦片地图
+      for column in 0..&lt;bugsMap.numberOfColumns { //逐列遍历害虫瓦片地图
+        // 2
+        guard let tile = tile(in: bugsMap,
+                              at: (column, row)) 
+          else { continue } //校验瓦片地图中的每个瓦片
+        // 3
+        let bug: Bug 
+        if tile.userData?.object(forKey: "firebug") != nil { //从用户数据中判断是否为高级害虫
+          bug = Firebug() //将害虫设置为高级害虫
+          firebugCount += 1 //高级害虫书自增
+        } else {
+          bug = Bug() //将害虫设置为普通害虫
+        }
+        bug.position = bugsMap.centerOfTile(atColumn: column,
+                                            row: row) //从害虫瓦片地图中读取位置并赋值
+        bugsNode.addChild(bug) //添加节点
+        bug.moveBug() //移动害虫
+      }
+    }
+    // 4
+    bugsNode.name = "Bugs" //设置害虫节点标识
+    addChild(bugsNode) //添加父节点到场景
+    // 5
+    bugsMap.removeFromParent() //删除害虫瓦片地图地图节点
+  }
+</code></pre>
+</div>
+<ul>
+  <li>step6 添加障碍物的设置</li>
+</ul>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>  func setupObstaclePhysics() {
+    guard let obstaclesTileMap = obstaclesTileMap else { return } //校验障碍物瓦片地图节点
+    // 1
+    for row in 0..&lt;obstaclesTileMap.numberOfRows {
+      for column in 0..&lt;obstaclesTileMap.numberOfColumns {
+        // 2
+        guard let tile = tile(in: obstaclesTileMap,
+                              at: (column, row))
+          else { continue }
+        guard tile.userData?.object(forKey: "obstacle") != nil
+          else { continue }
+        // 3
+        let node = SKNode() //创建节点
+        node.physicsBody = SKPhysicsBody(rectangleOf: tile.size) 根据瓦片尺寸创建物理体
+        node.physicsBody?.isDynamic = false //不进入物理世界
+        node.physicsBody?.friction = 0 //摩擦系数为0
+        node.physicsBody?.categoryBitMask =
+          PhysicsCategory.Breakable //设置物理体标识
+        
+        node.position = obstaclesTileMap.centerOfTile(
+          atColumn: column, row: row)
+        obstaclesTileMap.addChild(node)
+      }
+    }
+  }
+</code></pre>
+</div>
+
+<ul>
+  <li>step7 添加杀虫喷雾的设置</li>
+</ul>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>  func createBugspray(quantity: Int) {
+    // 1
+    let tile = SKTileDefinition(texture:
+      SKTexture(pixelImageNamed: "bugspray")) //创建瓦片定义
+    // 2
+    let tilerule = SKTileGroupRule(adjacency:
+      SKTileAdjacencyMask.adjacencyAll, tileDefinitions: [tile]) //创建瓦片组规则
+    // 3 
+    let tilegroup = SKTileGroup(rules: [tilerule]) //创建瓦片组
+    // 4
+    let tileSet = SKTileSet(tileGroups: [tilegroup]) //创建瓦片集
+    
+    // 5
+    let columns = background.numberOfColumns //读取背景瓦片地图节点的列数
+    let rows = background.numberOfRows //读取背景瓦片地图节点的行数
+    bugsprayTileMap = SKTileMapNode(tileSet: tileSet, 
+                                    columns: columns,
+                                    rows: rows,
+                                    tileSize: tile.size) //创建新的瓦片地图节点
+    // 6
+    for _ in 1...quantity { 
+      let column = Int.random(min: 0, max: columns-1) //随机列数
+      let row = Int.random(min: 0, max: rows-1) //随机行数
+      bugsprayTileMap?.setTileGroup(tilegroup,
+                                    forColumn: column, row: row) //在新额的瓦片地图节点上随机生成瓦片组
+    }
+    // 7
+    bugsprayTileMap?.name = "Bugspray" //设置瓦片地图节点的标识
+    addChild(bugsprayTileMap!) //将瓦片地图添加到场景
+
+  }
+</code></pre>
+</div>
+<ul>
+  <li>step8 添加摄像头设置</li>
+</ul>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>  func setupCamera() {
+    guard let camera = camera, let view = view else { return }
+    
+    let zeroDistance = SKRange(constantValue: 0)
+    let playerConstraint = SKConstraint.distance(zeroDistance,
+                                                 to: player) //对玩家进行约束
+    // 1
+    let xInset = min(view.bounds.width/2 * camera.xScale,
+                     background.frame.width/2)
+    let yInset = min(view.bounds.height/2 * camera.yScale,
+                     background.frame.height/2)
+    
+    // 2
+    let constraintRect = background.frame.insetBy(dx: xInset,
+                                                  dy: yInset)
+    // 3
+    let xRange = SKRange(lowerLimit: constraintRect.minX,
+                         upperLimit: constraintRect.maxX)
+    let yRange = SKRange(lowerLimit: constraintRect.minY,
+                         upperLimit: constraintRect.maxY)
+    
+    let edgeConstraint = SKConstraint.positionX(xRange, y: yRange)
+    edgeConstraint.referenceNode = background
+    // 4
+    camera.constraints = [playerConstraint, edgeConstraint]
+  }
+
+</code></pre>
+</div>
+<ul>
+  <li>step9 获取瓦片的一些帮助方法</li>
+</ul>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>  func tile(in tileMap: SKTileMapNode,
+            at coordinates: TileCoordinates)
+    -&gt; SKTileDefinition? {
+      return tileMap.tileDefinition(atColumn: coordinates.column,
+                                    row: coordinates.row)
+  }
+
+  func tileCoordinates(in tileMap: SKTileMapNode,
+                       at position: CGPoint) -&gt; TileCoordinates {
+    let column = tileMap.tileColumnIndex(fromPosition: position)
+    let row = tileMap.tileRowIndex(fromPosition: position)
+    return (column, row)
+  }
+
+  func tileGroupForName(tileSet: SKTileSet, name: String)
+    -&gt; SKTileGroup? {
+      let tileGroup = tileSet.tileGroups
+        .filter { $0.name == name }.first
+      return tileGroup
+  }
+</code></pre>
+</div>
+<ul>
+  <li>step10 点击场景的设置</li>
+</ul>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>  override func touchesBegan(_ touches: Set&lt;UITouch&gt;,
+                             with event: UIEvent?) {
+    guard let touch = touches.first else { return }
+    switch gameState {
+    // 1
+    case .start: //开始状态
+      gameState = .play //切换成游戏状态
+      isPaused = false //开始
+      startTime = nil
+      elapsedTime = 0
+    // 2
+    case .play: //游戏状态
+      player.move(target: touch.location(in: self)) //移动玩家
+    case .win: //获胜状态
+      transitionToScene(level: currentLevel + 1) //切换场景
+    case .lose: //落败状态
+      transitionToScene(level: 1) //切换场景
+    case .reload: //唤醒状态
+      // 1
+      if let touchedNode =
+        atPoint(touch.location(in: self)) as? SKLabelNode {
+        // 2
+        if touchedNode.name == HUDMessages.yes { //如果点击的节点是YES
+          isPaused = false
+          startTime = nil
+          gameState = .play
+          // 3
+        } else if touchedNode.name == HUDMessages.no { //如果点击的节点是NO
+          transitionToScene(level: 1)
+        }
+      }
+    default:
+      break
+    }
+  }
+
+</code></pre>
+</div>
+<ul>
+  <li>step11 切换场景的设置</li>
+</ul>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>  func transitionToScene(level: Int) {
+    // 1
+    guard let newScene = SKScene(fileNamed: "Level\(level)")
+      as? GameScene else {
+        fatalError("Level: \(level) not found")
+    }
+    // 2
+    newScene.currentLevel = level
+    view!.presentScene(newScene,
+                       transition: SKTransition.flipVertical(withDuration: 0.5))
+  }
+</code></pre>
+</div>
+
+<ul>
+  <li>step12 刷帧</li>
+</ul>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>  override func update(_ currentTime: TimeInterval) {
+    if gameState != .play  {
+      isPaused = true //如果不是游戏状态就暂停刷帧
+      return
+    }
+
+    if !player.hasBugspray {
+      updateBugspray() //如果玩家没有杀虫喷雾, 就进行更新
+    }
+    advanceBreakableTile(locatedAt: player.position) //更新障碍物的物理体状态
+    updateHUD(currentTime: currentTime) //更新文字说明
+    checkEndGame() //检查是否达到胜负条件
+  }
+
+</code></pre>
+</div>
+<ul>
+  <li>step13 更新杀虫喷雾</li>
+</ul>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>  func updateBugspray() {
+    guard let bugsprayTileMap = bugsprayTileMap else { return }
+    let (column, row) = tileCoordinates(in: bugsprayTileMap,
+                                        at: player.position)
+    if tile(in: bugsprayTileMap, at: (column, row)) != nil {
+      bugsprayTileMap.setTileGroup(nil, forColumn: column,
+                                   row: row)
+      player.hasBugspray = true
+    }
+  }
+</code></pre>
+</div>
+<ul>
+  <li>step14 更新障碍物的物理体状态</li>
+</ul>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>  func advanceBreakableTile(locatedAt nodePosition: CGPoint) {
+    guard let obstaclesTileMap = obstaclesTileMap else { return }
+    // 1
+    let (column, row) = tileCoordinates(in: obstaclesTileMap,
+                                        at: nodePosition)
+    // 2
+    let obstacle = tile(in: obstaclesTileMap,
+                        at: (column, row))
+    //3
+    guard let nextTileGroupName =
+      obstacle?.userData?.object(forKey: "breakable") as? String
+      else { return }
+    // 4
+    if let nextTileGroup =
+      tileGroupForName(tileSet: obstaclesTileMap.tileSet,
+                       name: nextTileGroupName) {
+      obstaclesTileMap.setTileGroup(nextTileGroup, 
+                                    forColumn: column, row: row) //设置新的瓦片组到瓦片地图中
+    }
+  }
+</code></pre>
+</div>
+<ul>
+  <li>step15 更新文字说明</li>
+</ul>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>  func updateHUD(currentTime: TimeInterval) {
+    // 1
+    if let startTime = startTime {
+      // 2
+      elapsedTime = Int(currentTime) - startTime
+    } else {
+      // 3
+      startTime = Int(currentTime) - elapsedTime
+    }
+    // 4
+    hud.updateTimer(time: timeLimit - elapsedTime) //对文字说明进行更新
+  }
+</code></pre>
+</div>
+
+<ul>
+  <li>step16 检查是否达到胜负条件</li>
+</ul>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>  func checkEndGame() {
+    if bugsNode.children.count == 0 { //是否消灭全部害虫
+      player.physicsBody?.linearDamping = 1
+      gameState = .win
+    } else if timeLimit - elapsedTime &lt;= 0 { //是否时间用完
+      player.physicsBody?.linearDamping = 1
+      gameState = .lose
+    }
+  }
+</code></pre>
+</div>
+<ul>
+  <li>step17 物理世界代理的设置</li>
+</ul>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>extension GameScene : SKPhysicsContactDelegate {
+  func remove(bug: Bug) { //消灭害虫
+    bug.removeFromParent()
+    background.addChild(bug)
+    bug.die()
+    hud.updateBugCount(with: bugsNode.children.count)
+  }
+
+  func didBegin(_ contact: SKPhysicsContact) {
+    let other = contact.bodyA.categoryBitMask
+      == PhysicsCategory.Player ?
+        contact.bodyB : contact.bodyA
+    
+    switch other.categoryBitMask {
+    case PhysicsCategory.Bug:
+      if let bug = other.node as? Bug {
+        remove(bug: bug) //当玩家接触到普通害虫, 消灭普通害虫
+      }
+    case PhysicsCategory.Firebug:
+      if player.hasBugspray {
+        if let firebug = other.node as? Firebug {
+          remove(bug: firebug)
+          player.hasBugspray = false //当玩家手持杀虫喷雾接触高级害虫才能消灭高级害虫
+        }
+      }
+    case PhysicsCategory.Breakable:
+      if let obstacleNode = other.node {
+        // 1
+        advanceBreakableTile(locatedAt: obstacleNode.position) //更新障碍物
+        // 2
+        obstacleNode.removeFromParent() //删除原障碍物
+      }
+
+    default:
+      break
+    }
+    if let physicsBody = player.physicsBody {
+      if physicsBody.velocity.length() &gt; 0 {
+        player.checkDirection() //进行玩家方向的设置
+      }
+    }
+  }
+}
+
+</code></pre>
+</div>
+
+<ul>
+  <li>step18 观察者的设置</li>
+</ul>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>extension GameScene {
+  func applicationDidBecomeActive() {
+    print("* applicationDidBecomeActive")
+    if gameState == .pause {
+      gameState = .reload //重新进入, 进行游戏重载
+    }
+  }
+  
+  func applicationWillResignActive() {
+    print("* applicationWillResignActive")
+    isPaused = true
+    if gameState != .lose {
+      gameState = .pause  //暂停游戏进程
+    }
+  }
+  
+  func applicationDidEnterBackground() {
+    print("* applicationDidEnterBackground")
+    if gameState != .lose {
+      saveGame() //进入后台保存游戏进度
+    }
+  }
+
+  func addObservers() {
+    NotificationCenter.default.addObserver(self,
+                                           selector: #selector(applicationDidBecomeActive),
+                                           name: .UIApplicationDidBecomeActive, object: nil)
+    NotificationCenter.default.addObserver(self,
+                                           selector: #selector(applicationWillResignActive),
+                                           name: .UIApplicationWillResignActive, object: nil)
+    NotificationCenter.default.addObserver(self,
+                                           selector: #selector(applicationDidEnterBackground),
+                                           name: .UIApplicationDidEnterBackground, object: nil)
+  }
+
+}
+</code></pre>
+</div>
+
+<ul>
+  <li>step19 游戏的存储设置</li>
+</ul>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>extension GameScene {
+  func saveGame() {
+    // 1
+    let fileManager = FileManager.default
+    guard let directory =
+      fileManager.urls(for: .libraryDirectory,
+                       in: .userDomainMask).first
+      else { return }
+    // 2
+    let saveURL = directory.appendingPathComponent("SavedGames")
+    // 3
+    do {
+      try fileManager.createDirectory(atPath: saveURL.path,
+                                      withIntermediateDirectories: true,
+                                      attributes: nil)
+    } catch let error as NSError {
+      fatalError(
+        "Failed to create directory: \(error.debugDescription)")
+    }
+    // 4
+    let fileURL = saveURL.appendingPathComponent("saved-game")
+    print("* Saving: \(fileURL.path)")
+    // 5
+    NSKeyedArchiver.archiveRootObject(self, toFile: fileURL.path) //文件处理器新建路径并归档
+  }
+  
+  override func encode(with aCoder: NSCoder) { /对关键属性的归档
+    aCoder.encode(firebugCount,
+                  forKey: "Scene.firebugCount")
+    aCoder.encode(elapsedTime,
+                  forKey: "Scene.elapsedTime")
+    aCoder.encode(gameState.rawValue,
+                  forKey: "Scene.gameState")
+    aCoder.encode(currentLevel,
+                  forKey: "Scene.currentLevel")
+    super.encode(with: aCoder)
+  }
+
+  class func loadGame() -&gt; SKScene? { //重新加载存储游戏进程
+    print("* loading game")
+    var scene: SKScene?
+    // 1
+    let fileManager = FileManager.default
+    guard let directory =
+      fileManager.urls(for: .libraryDirectory,
+                       in: .userDomainMask).first
+      else { return nil }
+    // 2
+    let url = directory.appendingPathComponent(
+      "SavedGames/saved-game")
+    // 3
+    if FileManager.default.fileExists(atPath: url.path) {
+      scene = NSKeyedUnarchiver.unarchiveObject(  //根据路径进行解档游戏进程
+        withFile: url.path) as? GameScene
+      _ = try? fileManager.removeItem(at: url)
+    }
+    return scene
+  }
+
+}
+
+</code></pre>
+</div>
+
+<p>Notice: 忽略了一些节点的设置, 但不影响瓦片地图的理解.</p>
+
+<h5 id="演示效果">演示效果:</h5>
+
+<p><img src="http://upload-images.jianshu.io/upload_images/1229762-be56289d668241e4.gif?imageMogr2/auto-orient/strip" alt="" /></p>
+
+<h5 id="about">About:</h5>
+
+<p><img src="http://upload-images.jianshu.io/upload_images/1229762-3f8925783027b3fa.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="点击下方链接跳转!!" /></p>
+
+<p><a href="https://github.com/coderZsq/coderZsq.target.swift">🌟 源码 请点这里🌟 »&gt; 喜欢的朋友请点喜欢 »&gt; 下载源码的同学请送下小星星 »&gt; 有闲钱的壕们可以进行打赏 »&gt; 小弟会尽快推出更好的文章和大家分享 »&gt; 你的激励就是我的动力!! </a></p>
+
+  </section>
+</article>
+
+<section class="read-more">
+   
+   
+   <div class="read-more-item">
+       <span class="read-more-item-dim">最近的文章</span>
+       <h2 class="post-list__post-title post-title"><a href="/2017/06/CoreData-SQL%E5%86%99%E7%83%A6%E4%BA%86-%E8%AF%95%E8%AF%95%E4%BA%B2%E5%84%BF%E5%AD%90!/" title="link to CoreData SQL写烦了? 试试亲儿子!">CoreData SQL写烦了? 试试亲儿子!</a></h2>
+       <p class="excerpt">  目前来说 iOS的数据库一般都使用FMDB, 之前看了下挺火的Rleam, 以我目前的水平还分不清楚各种移动数据库孰优孰劣, 以一般覆盖80%的页面缓存, 个人愚见使用写.plist的方式最为简单有效, 但作为iOS开发者, 怎么能不试试亲儿子Core Data呢?从来没有看过Core Data的我, 只是道听途说底层也是SQLite, 性能不好, 学习曲线陡峭, 诶… 听起来就很丧, 但作为亲儿子, 如此不成气候, 莫非是地主家的傻儿子? 从iOS3 ~ iOS10 Apple老爹还...&hellip;</p>
+       <div class="post-list__meta"><time datetime="2017-06-08 15:52:00 +0800" class="post-list__meta--date date">2017-06-08</time> &#8226; <span class="post-list__meta--tags tags">移动开发</span><a class="btn-border-small" href=/2017/06/CoreData-SQL%E5%86%99%E7%83%A6%E4%BA%86-%E8%AF%95%E8%AF%95%E4%BA%B2%E5%84%BF%E5%AD%90!/>继续阅读</a></div>
+   </div>
+   
+   
+   
+   
+   <div class="read-more-item">
+       <span class="read-more-item-dim">更早的文章</span>
+       <h2 class="post-list__post-title post-title"><a href="/2017/05/SpriteKit-%E9%80%9A%E8%BF%87%E6%A3%80%E6%B5%8B%E6%8E%A9%E7%A0%81%E8%BF%9B%E8%A1%8C%E7%89%A9%E7%90%86%E8%AF%86%E5%88%AB/" title="link to SpriteKit 通过检测掩码进行物理识别">SpriteKit 通过检测掩码进行物理识别</a></h2>
+       <p class="excerpt">  上周忙着写代码生成器了, 回到我们的学习中来, 今天我们来继续学习SpriteKit, 上篇我们学习了一些2D游戏场景, 精灵, 摄像头, 行动的基本概念, 今天我们就来进入物理的世界, 感受碰撞所带来的乐趣.代码见:githubiOS7有出过UIDynamic, 用于UIVIew的物理动画效果, 同期Apple也出了SpriteKit框架, 到现在也已经3个年头了, 我们学习SpriteKit的目的也在于更好的对UIKit进行了解. 也算是一条技术进阶的路吧, 我们先来看一下学习物理...&hellip;</p>
+       <div class="post-list__meta"><time datetime="2017-05-18 16:38:00 +0800" class="post-list__meta--date date">2017-05-18</time> &#8226; <span class="post-list__meta--tags tags">移动开发</span><a class="btn-border-small" href=/2017/05/SpriteKit-%E9%80%9A%E8%BF%87%E6%A3%80%E6%B5%8B%E6%8E%A9%E7%A0%81%E8%BF%9B%E8%A1%8C%E7%89%A9%E7%90%86%E8%AF%86%E5%88%AB/>继续阅读</a></div>
+   </div>
+   
+</section>
+
+<section class="post-comments">
+  
+  
+  
+  
+</section>
+
+
+            <section class="footer">
+    <footer>
+    	<span class="footer__copyright">本站点采用<a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">知识共享 署名-非商业性使用-相同方式共享 4.0 国际 许可协议</a></span>
+        <span class="footer__copyright">由 <a href="https://jekyllrb.com">Jekyll</a> 于 2017-12-16 生成，感谢 <a href="https://www.digitalocean.com/?refcode=30ed2d146762">Digital Ocean</a> 为本站提供稳定的 VPS 服务</span>
+        <span class="footer__copyright">本站由 <a href="https://github.com/coderZsq">@Castie!</a> 创建，采用 <a href="https://github.com/onevcat/vno-jekyll">Vno - Jekyll</a> 作为主题，您可以在 GitHub 找到<a href="https://github.com/onevcat/OneV-s-Den">本站源码</a> - &copy; 2017</span>
+    </footer>
+</section>
+
+        </div>
+    </div>
+    
+    <script type="text/javascript" src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+
+<script type="text/javascript" src="/js/main.js"></script>
+
+
+
+    
+  </body>
+
+</html>

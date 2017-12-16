@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <title>Castie! Notes</title>
+  <meta name="description" content="  我们接着之前的项目, 上篇主要是扯皮一下前端所需要掌握的技能, 并通过vue.js和element-ui, 快速搭建项目的方法, 但之前我也说过了, 本人不太喜欢使用第三方的东西, 所以我这里既不用bootstrap, 也不用jquery, 也不适用任何的三方组件, 只使用vue全家桶来进行实现, 当然真正做...">
+  <meta name="author" content="Wei Wang">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Web 前端项目要从基本布局开始">
+  <meta name="twitter:description" content="  我们接着之前的项目, 上篇主要是扯皮一下前端所需要掌握的技能, 并通过vue.js和element-ui, 快速搭建项目的方法, 但之前我也说过了, 本人不太喜欢使用第三方的东西, 所以我这里既不用bootstrap, 也不用jquery, 也不适用任何的三方组件, 只使用vue全家桶来进行实现, 当然真正做...">
+  
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Web 前端项目要从基本布局开始">
+  <meta property="og:description" content="  我们接着之前的项目, 上篇主要是扯皮一下前端所需要掌握的技能, 并通过vue.js和element-ui, 快速搭建项目的方法, 但之前我也说过了, 本人不太喜欢使用第三方的东西, 所以我这里既不用bootstrap, 也不用jquery, 也不适用任何的三方组件, 只使用vue全家桶来进行实现, 当然真正做...">
+  
+  <link rel="icon" type="image/ico" href="/assets/images/favicon.ico" />
+  <link href="/assets/images/favicon.ico" rel="shortcut icon" type="image/ico">
+  
+  <link rel="stylesheet" href="/css/main.css">
+  <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+
+  <link rel="canonical" href="http://localhost:4000/2017/07/Web-%E5%89%8D%E7%AB%AF%E9%A1%B9%E7%9B%AE%E8%A6%81%E4%BB%8E%E5%9F%BA%E6%9C%AC%E5%B8%83%E5%B1%80%E5%BC%80%E5%A7%8B/">
+  <link rel="alternate" type="application/rss+xml" title="Castie!" href="http://localhost:4000/feed.xml">
+  
+  <meta name="google-site-verification" content="1-1ZlHoRvM0T2FqPbW2S-qLgYXN6rsn52kErlMPd_gw" />
+  
+</head>
+
+
+  <body>
+
+    <span class="mobile btn-mobile-menu">
+        <i class="fa fa-list btn-mobile-menu__icon"></i>
+        <i class="fa fa-angle-up btn-mobile-close__icon hidden"></i>
+    </span>
+    
+    <header class="panel-cover panel-cover--collapsed" style="background-image: url('/assets/images/background-cover.jpg')">
+  <div class="panel-main">
+
+    <div class="panel-main__inner panel-inverted">
+    <div class="panel-main__content">
+
+        <a href="/#blog" title="前往 Castie! 的主页" class="blog-button"><img src="/assets/images/avatar.jpg" width="80" alt="Castie! logo" class="panel-cover__logo logo" /></a>
+        <h1 class="panel-cover__title panel-title"><a href="/#blog" title="link to homepage for Castie!" class="blog-button">Castie!</a></h1>
+        
+        <span class="panel-cover__subtitle panel-subtitle">正态分布, 优劣伴生</span>
+        
+        <hr class="panel-cover__divider" />
+        <p class="panel-cover__description">北冥有鱼，其名为鲲（kūn）。鲲之大，不知其几千里也；化而为鸟，其名为鹏。鹏之背，不知其几千里也；怒而飞，其翼若垂天之云。是鸟也，海运则将徙于南冥。南冥者，天池也。</p>
+        <hr class="panel-cover__divider panel-cover__divider--secondary" />
+        
+        
+        <p class="panel-cover__description">北海若曰：“井鼃不可以语于海者，拘于虚也；夏虫不可以语于冰者，笃于时也；曲士不可以语于道者，束于教也。今尔出于崖涘，观于大海，乃知尔丑，尔将可与语大理矣。</p>
+        
+        
+        <div class="navigation-wrapper">
+          <div>
+            <nav class="cover-navigation cover-navigation--primary">
+              <ul class="navigation">
+                <li class="navigation__item"><a href="/#blog" title="访问博客" class="blog-button">博客</a></li>
+                
+                  <li class="navigation__item"><a href="http://www.jianshu.com/u/9d7fad1a4693" target="_blank" title="访问简书">简书</a></li>
+                
+                  <li class="navigation__item"><a href="https://juejin.im/user/57e735dfa22b9d00614eecb8" target="_blank" title="访问掘金">掘金</a></li>
+                
+              </ul>
+            </nav>
+          </div>
+          
+          <div><nav class="cover-navigation navigation--social">
+  <ul class="navigation">
+
+    
+    <!-- jianshu-->
+    <li class="navigation__item">
+      <a href="http://www.jianshu.com/u/9d7fad1a4693" title="@coderZsq 的简书" target="_blank">
+        <i class='social fa fa-book'></i>
+        <span class="label">jianshu</span>
+      </a>
+    </li>
+    
+
+    
+    <!-- juejin-->
+    <li class="navigation__item">
+      <a href="https://juejin.im/user/57e735dfa22b9d00614eecb8" title="@coderZsq 的稀土掘金" target="_blank">
+        <i class='social fa fa-align-center'></i>
+        <span class="label">juejin</span>
+      </a>
+    </li>
+    
+
+  
+
+  
+  <!-- Github -->
+  <li class="navigation__item">
+    <a href="https://github.com/coderZsq" title="@coderZsq 的 Github" target="_blank">
+      <i class='social fa fa-github'></i>
+      <span class="label">Github</span>
+    </a>
+  </li>
+  
+
+  
+
+  
+
+  <!-- RSS -->
+  <li class="navigation__item">
+    <a href="/feed.xml" rel="author" title="RSS" target="_blank">
+      <i class='social fa fa-rss'></i>
+      <span class="label">RSS</span>
+    </a>
+  </li>
+
+  
+  <!-- Email -->
+  <li class="navigation__item">
+    <a href="mailto:a13701777868@gmail.com" title="Contact me">
+      <i class='social fa fa-envelope'></i>
+      <span class="label">Email</span>
+    </a>
+  </li>
+  
+
+  </ul>
+</nav>
+</div>
+        </div>
+      </div>
+    </div>
+    
+    
+    <div class="panel-cover--overlay cover-blue"></div>
+    
+  </div>
+</header>
+
+
+    <div class="content-wrapper">
+        <div class="content-wrapper__inner">
+            <article class="post-container post-container--single" itemscope itemtype="http://schema.org/BlogPosting">
+  <header class="post-header">
+    <div class="post-meta">
+      <time datetime="2017-07-04 15:56:00 +0800" itemprop="datePublished" class="post-meta__date date">2017-07-04</time> &#8226; <span class="post-meta__tags tags">前端开发</span>
+    </div>
+    <h1 class="post-title">Web 前端项目要从基本布局开始</h1>
+  </header>
+
+  <section class="post">
+    <blockquote>
+  <p>我们接着之前的项目, 上篇主要是扯皮一下前端所需要掌握的技能, 并通过vue.js和element-ui, 快速搭建项目的方法, 但之前我也说过了, 本人不太喜欢使用第三方的东西, 所以我这里既不用bootstrap, 也不用jquery, 也不适用任何的三方组件, 只使用vue全家桶来进行实现, 当然真正做项目时, 一些大厂的三方组件也是值得信赖的.</p>
+</blockquote>
+
+<p><img src="http://upload-images.jianshu.io/upload_images/1229762-4daa1dfb99967aa8.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="" /></p>
+
+<h6 id="参考链接">参考链接:</h6>
+
+<ul>
+  <li><a href="http://www.jianshu.com/p/d1497da0f9ab">Web 是时候用前端写个简历了!</a></li>
+</ul>
+
+<p>以下内容在上述文章基础上进行, 请事先查阅.</p>
+
+<p>我们开发iOS的时候, 使用的是Xcode作为我们的开发工具, 但开发H5的时候, 我们该用什么软件呢? 记事本? 你肯定是活在上个世纪, DW? WebStrom?, 只能说你老师教的不错, sublime, 嗯, 一般的开发都用这个, 而我用的是github自己开发的Atom. <a href="https://atom.io/">Atom下载地址</a> 当然你也可以使用目前呼声最高的微软出品的VSCode. 我不用的原因仅仅是因为图标太丑了而已.</p>
+
+<p>下载下来后我们可以安装一下插件, 由于是github亲儿子, 集成的时候方便很多, 推荐以下插件供你使用: atom-beatify, atom-ternjs, language-vue, 其他的看你开心了~</p>
+
+<p>直接进入正题, 我们先将之前的Home.vue的内容全部清空, 并将Element-UI的配置导入也删除, 这样之前的所有的东西就烟消云散了, 之前说过那些都不重要. 由于不用饿了吗的导航栏, 转而要自己实现, 我们需要新建一个子组件命名为navigation.vue. (代码中我将Home.vue更名为Index.vue)</p>
+
+<p><img src="http://upload-images.jianshu.io/upload_images/1229762-1bd54afb40f19b3c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="" /></p>
+
+<p>在navigation.vue中添加以下代码:</p>
+<div class="highlighter-rouge"><pre class="highlight"><code>&lt;template&gt;
+&lt;div&gt;
+  &lt;div class="nav"&gt;
+    &lt;div class="content"&gt;
+      &lt;div class="title"&gt;
+        XXXXX
+      &lt;/div&gt;
+      &lt;div class="items"&gt;
+        &lt;span&gt;XXXXX&lt;/span&gt;
+        &lt;span&gt;XXXXX&lt;/span&gt;
+        &lt;span&gt;XXXXX&lt;/span&gt;
+        &lt;span&gt;XXXXX&lt;/span&gt;
+        &lt;span&gt;XXXXX&lt;/span&gt;
+        &lt;span&gt;XXXXX&lt;/span&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="nav-offset"&gt;
+
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;/template&gt;
+
+</code></pre>
+</div>
+<p>之前说过HTML都是语义, 我的习惯是使用div和span足矣.</p>
+<div class="highlighter-rouge"><pre class="highlight"><code>
+&lt;style scoped&gt;
+.nav {
+  position: fixed;  //fixed 定位, 将导航栏进行固定
+  background-color: rgba(0, 0, 0, 0.8);
+  width: 100%;
+  height: 50px;
+  z-index: 1; //始终保持在上一层
+}
+
+.nav-offset {
+  height: 50px; //对定位的空间进行填补
+}
+
+.nav .content {
+  margin: 0 auto; //水平居中
+  width: 1000px; //写死宽度
+  height: inherit;
+}
+
+.nav .content .title { //三级选择器
+  line-height: 50px; //设置行高, 进行垂直居中
+  font-size: 28px;
+  display: inline-block; //行内块级标签
+  text-indent: 40px; //字符缩进
+  color: white; //字体颜色
+}
+
+.nav .content .items {
+  line-height: 50px;
+  width: 700px;
+  display: inline-block;
+  float: right; //进行右浮动 关键技术点
+}
+
+.nav .content .items span {
+  width: 112px;
+  text-align: center; //字体居中
+  line-height: 50px;
+  display: inline-block;
+  color: white;
+}
+&lt;/style&gt;
+</code></pre>
+</div>
+<p>重点我们来看看CSS的部分, 说实话前端的代码在复用性方面绝对是渣.尤其是CSS的部分, 完全不知道为什么要这样设计, 可能是历史遗留问题吧. 目前我们写前端的话, 一种是按px写死定位, 一种是响应式布局, 我看国内的都喜欢做两套, 而国外的比较喜欢响应式布局, 其实各有利弊啦, 但是我不喜欢用bootstrap来做响应式布局, 宁愿自己使用@media进行实现. 我目前是使用px定位的方法制作, 不排除有时间进行响应式布局,  但这都不重要..</p>
+
+<p>完成了组件的部分, 我们将navigation.vue导入至父组件Index.vue进行使用:</p>
+<div class="highlighter-rouge"><pre class="highlight"><code>&lt;template&gt;
+&lt;div&gt;
+  &lt;navigation&gt;&lt;/navigation&gt;
+&lt;/div&gt;
+&lt;/template&gt;
+</code></pre>
+</div>
+<div class="highlighter-rouge"><pre class="highlight"><code>&lt;script&gt;
+import navigation from './navigation' //引入子组件
+export default {
+  data() {
+    return {
+
+    }
+  },
+  components: { //集成子组件
+    navigation
+  }
+}
+&lt;/script&gt;
+</code></pre>
+</div>
+<p>简单两步, 就将导航栏加入到我们的父组件上面了, 我们来看一下效果吧:</p>
+
+<p><img src="http://upload-images.jianshu.io/upload_images/1229762-2dc1bbd175f86b65.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="自定义导航栏显示效果" /></p>
+
+<p>效果什么的不比饿了么的显示效果差吧, 还是自定义好, 是自定义好, 自定义好, 重要的话说三遍!</p>
+
+<p>制作完导航栏后, 我们进行主题内容的制作, 所以我们将简历分成六块内容, 对应个人介绍, 项目, 博客, GitHub, 经历和联系方式, 但我做前端有个习惯, 是喜欢将布局做完后再扣细节, 所以就先用XXXXX进行代替了. 添加三组如下代码:</p>
+<div class="highlighter-rouge"><pre class="highlight"><code>  &lt;div class="odd"&gt;
+    &lt;div class="content"&gt;
+
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="even"&gt;
+    &lt;div class="content"&gt;
+
+    &lt;/div&gt;
+  &lt;/div&gt;
+</code></pre>
+</div>
+<p>通过odd和even的class来分辨是奇数行还是偶数行, 这里要说的是, 不要觉得div套了div会消耗多少内存什么的, 前端和移动端不一样, HTML标签是虚拟dom的形式, 具体细节我也不是很懂, 反正就算嵌套100层, 只会消耗加载出屏幕的那个资源而已, 所以尽情的躁吧!</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>.even {
+  width: 100%;
+  height: 600px;
+  background-color: rgba(248, 248, 248, 1);
+}
+
+.odd {
+  width: 100%;
+  height: 600px;
+  background-color: white;
+}
+
+.content {
+  margin: 0 auto;
+  width: 1000px;
+  height: inherit;
+  border: 1px solid gray; //添加框线, 能有更好的概念
+}
+</code></pre>
+</div>
+<p>这里也通过类选择器的方式给div做渲染, 渲染完成后我们来看下效果吧.</p>
+
+<p><img src="http://upload-images.jianshu.io/upload_images/1229762-23f16ab285050c18.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="" /></p>
+
+<p>设置完基本的布局, 我们就要来完成内部的结构啦, 其实因为没有设计图的原因, 怎么布局都凭感觉来, 什么颜色多少像素, 跟着感觉走…</p>
+
+<p>我们来进行第一部分的布局吧, 第一部分是由四个区域组成的, 左边, 右上, 右左下, 右右下. 我们来进行实现吧. 在content中添加如下代码:</p>
+<div class="highlighter-rouge"><pre class="highlight"><code>&lt;div class="user"&gt; //左边
+&lt;/div&gt;
+&lt;div class="introduction"&gt;
+        &lt;div class="main"&gt; //右上
+        &lt;/div&gt;
+        &lt;div class="left"&gt; //右左下
+        &lt;/div&gt;
+        &lt;div class="right"&gt; //右右下
+        &lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+</div>
+<div class="highlighter-rouge"><pre class="highlight"><code>.user {
+  background-color: rgba(240, 240, 240, 1);
+  width: 300px;
+  height: inherit;
+  display: inline-block;
+  position: relative;//相对布局, 子view进行绝对定位使用
+}
+
+.introduction {
+  width: 700px;
+  height: inherit;
+  display: inline-block;
+  float: right;
+}
+
+.introduction .main {
+  background-color: rgba(230, 230, 230, 1);
+  width: inherit;
+  height: 350px;
+  position: relative;
+}
+
+.introduction .left {
+  background-color: rgba(220, 220, 220, 1);
+  width: 350px;
+  height: 250px;
+  display: inline-block;
+  position: relative;
+}
+
+.introduction .right {
+  background-color: rgba(210, 210, 210, 1);
+  width: 350px;
+  height: 250px;
+  float: right;
+  display: inline-block;
+  position: relative;
+}
+</code></pre>
+</div>
+
+<p><img src="http://upload-images.jianshu.io/upload_images/1229762-2cc152848df6ad36.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="布局效果图" /></p>
+
+<p>完成了大布局, 我们也来进行小的布局, 在user中添加:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>&lt;div class="user-block"&gt;
+      &lt;div class="icon"&gt;
+
+      &lt;/div&gt;
+      &lt;div class="row1"&gt;
+
+      &lt;/div&gt;
+      &lt;div class="row2"&gt;
+
+      &lt;/div&gt;
+      &lt;div class="row3"&gt;
+
+      &lt;/div&gt;
+      &lt;div class="row4"&gt;
+
+      &lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+</div>
+<div class="highlighter-rouge"><pre class="highlight"><code>.user .user-block {
+  position: absolute; //绝对定位, 子绝父相
+  width: 300px;
+  height: 500px;
+  top: calc(50% - 250px); //使用定位进行块级标签垂直居中 关键技术点
+  background-color: rgba(210, 210, 210, 1);
+}
+
+.user .user-block .icon {
+  margin: 0 auto;
+  width: 280px;
+  height: 280px;
+  background-color: red;
+  border-radius: 8px; //圆角
+}
+
+.user .user-block .row1,
+.user .user-block .row2,
+.user .user-block .row3,
+.user .user-block .row4 {
+  margin: 0 auto;
+  margin-top: 8px;
+  width: 280px;
+  height: 40px;
+  background-color: red;
+}
+
+</code></pre>
+</div>
+<p><img src="http://upload-images.jianshu.io/upload_images/1229762-4315df4f0f31b3b0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="user部分效果图" /></p>
+
+<p>既然最难的一块都完成了, 我们就将其他的几个部分一同完成吧~</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>  &lt;div class="main"&gt;
+      &lt;div class="main-block"&gt;
+
+      &lt;/div&gt;
+ &lt;/div&gt;
+ &lt;div class="left"&gt;
+      &lt;div class="left-block"&gt;
+
+      &lt;/div&gt;
+ &lt;/div&gt;
+ &lt;div class="right"&gt;
+      &lt;div class="right-block"&gt;
+
+      &lt;/div&gt;
+ &lt;/div&gt;
+</code></pre>
+</div>
+<div class="highlighter-rouge"><pre class="highlight"><code>.introduction .main .main-block {
+  background-color: orange;
+  position: absolute;
+  width: 680px;
+  height: 330px;
+  top: calc(50% - 165px);
+  left: calc(50% - 340px);
+}
+
+.introduction .left .left-block {
+  background-color: blue;
+  width: 330px;
+  height: 250px;
+  left: calc(50% - 165px);
+  position: absolute;
+}
+
+.introduction .right .right-block {
+  background-color: green;
+  width: 330px;
+  height: 250px;
+  left: calc(50% - 165px);
+  position: absolute;
+}
+</code></pre>
+</div>
+
+<p><img src="http://upload-images.jianshu.io/upload_images/1229762-b011850b16106300.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="最终效果图" /></p>
+
+<p>这样我们就一步一步的将一个网页布局给制作出来了, 其实没什么技术含量, 呵呵. 当然只能说前端入门简单了, 听说精通很难, 但也没人告诉我什么事精通的定义, 再说我也不在乎, 因为这都不重要, 做为一个丧X, 做自己开心的事情就好啦, 你说呢?</p>
+
+<h5 id="about">About:</h5>
+
+<p><img src="http://upload-images.jianshu.io/upload_images/1229762-3f8925783027b3fa.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="点击下方链接跳转!!" /></p>
+
+<p><a href="https://github.com/coderZsq/coderZsq.webpack.js">🌟 源码 请点这里🌟 »&gt; 喜欢的朋友请点喜欢 »&gt; 下载源码的同学请送下小星星 »&gt; 有闲钱的壕们可以进行打赏 »&gt; 小弟会尽快推出更好的文章和大家分享 »&gt; 你的激励就是我的动力!! </a></p>
+
+  </section>
+</article>
+
+<section class="read-more">
+   
+   
+   <div class="read-more-item">
+       <span class="read-more-item-dim">最近的文章</span>
+       <h2 class="post-list__post-title post-title"><a href="/2017/07/Web-%E7%AE%80%E5%8E%86%E4%B8%80%E5%AE%9A%E8%A6%81%E8%AE%BE%E8%AE%A1%E7%9A%84%E7%BE%8E%E7%BE%8E%E7%9A%84/" title="link to Web 简历一定要设计的美美的">Web 简历一定要设计的美美的</a></h2>
+       <p class="excerpt">  继续之前的项目, 之前我们通过最基本的HTML和CSS将Home模块的基本布局给搭建了一下, 整体的流程比较简单, 没有什么技术含量, 作为前端的入门篇看看也是个不错的选择, 可是说真的, 除了算法, 设计模式, 数据结构这些, 平时码代码真的有技术含量吗? 会写几个网页, 几个App, 几个后台就能上天吗? 好吧, 是我太奋青~参考链接:  Web 是时候用前端写个简历了!  Web 前端项目要从基本布局开始以下内容在上述文章基础上进行, 请事先查阅.其实我做开发也没有多少时日, 也...&hellip;</p>
+       <div class="post-list__meta"><time datetime="2017-07-07 13:43:00 +0800" class="post-list__meta--date date">2017-07-07</time> &#8226; <span class="post-list__meta--tags tags">前端开发</span><a class="btn-border-small" href=/2017/07/Web-%E7%AE%80%E5%8E%86%E4%B8%80%E5%AE%9A%E8%A6%81%E8%AE%BE%E8%AE%A1%E7%9A%84%E7%BE%8E%E7%BE%8E%E7%9A%84/>继续阅读</a></div>
+   </div>
+   
+   
+   
+   
+   <div class="read-more-item">
+       <span class="read-more-item-dim">更早的文章</span>
+       <h2 class="post-list__post-title post-title"><a href="/2017/07/Web-%E6%98%AF%E6%97%B6%E5%80%99%E7%94%A8%E5%89%8D%E7%AB%AF%E5%86%99%E4%B8%AA%E7%AE%80%E5%8E%86%E4%BA%86!/" title="link to Web 是时候用前端写个简历了!">Web 是时候用前端写个简历了!</a></h2>
+       <p class="excerpt">  最近感觉自己又好像处于瓶颈期了, 感觉就像是便秘一样的难受, 当然我从来没有便秘过, 就是一个说辞, 上一次又这种感觉还是在14年的时候, 那时候我还是在做空运关务的工作, 整天面对着的就是提单, 清关等杂事, 觉得总不能碌碌无为的混一辈子吧, 那时正值国内移动端开发的蓝海期, 看了当年WWDC大会的我毅然决然的投入了移动端开发的浪潮, 但是做了几年, 又有一种莫名的无力感逐渐的涌现, 不久感觉又要进行人生的选择了.越来越发现自己是一个很丧的人, 虽然丧, 但是做事很积极什么事也没耽误...&hellip;</p>
+       <div class="post-list__meta"><time datetime="2017-07-03 16:31:00 +0800" class="post-list__meta--date date">2017-07-03</time> &#8226; <span class="post-list__meta--tags tags">前端开发</span><a class="btn-border-small" href=/2017/07/Web-%E6%98%AF%E6%97%B6%E5%80%99%E7%94%A8%E5%89%8D%E7%AB%AF%E5%86%99%E4%B8%AA%E7%AE%80%E5%8E%86%E4%BA%86!/>继续阅读</a></div>
+   </div>
+   
+</section>
+
+<section class="post-comments">
+  
+  
+  
+  
+</section>
+
+
+            <section class="footer">
+    <footer>
+    	<span class="footer__copyright">本站点采用<a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">知识共享 署名-非商业性使用-相同方式共享 4.0 国际 许可协议</a></span>
+        <span class="footer__copyright">由 <a href="https://jekyllrb.com">Jekyll</a> 于 2017-12-16 生成，感谢 <a href="https://www.digitalocean.com/?refcode=30ed2d146762">Digital Ocean</a> 为本站提供稳定的 VPS 服务</span>
+        <span class="footer__copyright">本站由 <a href="https://github.com/coderZsq">@Castie!</a> 创建，采用 <a href="https://github.com/onevcat/vno-jekyll">Vno - Jekyll</a> 作为主题，您可以在 GitHub 找到<a href="https://github.com/onevcat/OneV-s-Den">本站源码</a> - &copy; 2017</span>
+    </footer>
+</section>
+
+        </div>
+    </div>
+    
+    <script type="text/javascript" src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+
+<script type="text/javascript" src="/js/main.js"></script>
+
+
+
+    
+  </body>
+
+</html>

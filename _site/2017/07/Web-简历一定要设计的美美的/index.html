@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <title>Castie! Notes</title>
+  <meta name="description" content="  继续之前的项目, 之前我们通过最基本的HTML和CSS将Home模块的基本布局给搭建了一下, 整体的流程比较简单, 没有什么技术含量, 作为前端的入门篇看看也是个不错的选择, 可是说真的, 除了算法, 设计模式, 数据结构这些, 平时码代码真的有技术含量吗? 会写几个网页, 几个App, 几个后台就能上天吗?...">
+  <meta name="author" content="Wei Wang">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Web 简历一定要设计的美美的">
+  <meta name="twitter:description" content="  继续之前的项目, 之前我们通过最基本的HTML和CSS将Home模块的基本布局给搭建了一下, 整体的流程比较简单, 没有什么技术含量, 作为前端的入门篇看看也是个不错的选择, 可是说真的, 除了算法, 设计模式, 数据结构这些, 平时码代码真的有技术含量吗? 会写几个网页, 几个App, 几个后台就能上天吗?...">
+  
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Web 简历一定要设计的美美的">
+  <meta property="og:description" content="  继续之前的项目, 之前我们通过最基本的HTML和CSS将Home模块的基本布局给搭建了一下, 整体的流程比较简单, 没有什么技术含量, 作为前端的入门篇看看也是个不错的选择, 可是说真的, 除了算法, 设计模式, 数据结构这些, 平时码代码真的有技术含量吗? 会写几个网页, 几个App, 几个后台就能上天吗?...">
+  
+  <link rel="icon" type="image/ico" href="/assets/images/favicon.ico" />
+  <link href="/assets/images/favicon.ico" rel="shortcut icon" type="image/ico">
+  
+  <link rel="stylesheet" href="/css/main.css">
+  <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+
+  <link rel="canonical" href="http://localhost:4000/2017/07/Web-%E7%AE%80%E5%8E%86%E4%B8%80%E5%AE%9A%E8%A6%81%E8%AE%BE%E8%AE%A1%E7%9A%84%E7%BE%8E%E7%BE%8E%E7%9A%84/">
+  <link rel="alternate" type="application/rss+xml" title="Castie!" href="http://localhost:4000/feed.xml">
+  
+  <meta name="google-site-verification" content="1-1ZlHoRvM0T2FqPbW2S-qLgYXN6rsn52kErlMPd_gw" />
+  
+</head>
+
+
+  <body>
+
+    <span class="mobile btn-mobile-menu">
+        <i class="fa fa-list btn-mobile-menu__icon"></i>
+        <i class="fa fa-angle-up btn-mobile-close__icon hidden"></i>
+    </span>
+    
+    <header class="panel-cover panel-cover--collapsed" style="background-image: url('/assets/images/background-cover.jpg')">
+  <div class="panel-main">
+
+    <div class="panel-main__inner panel-inverted">
+    <div class="panel-main__content">
+
+        <a href="/#blog" title="前往 Castie! 的主页" class="blog-button"><img src="/assets/images/avatar.jpg" width="80" alt="Castie! logo" class="panel-cover__logo logo" /></a>
+        <h1 class="panel-cover__title panel-title"><a href="/#blog" title="link to homepage for Castie!" class="blog-button">Castie!</a></h1>
+        
+        <span class="panel-cover__subtitle panel-subtitle">正态分布, 优劣伴生</span>
+        
+        <hr class="panel-cover__divider" />
+        <p class="panel-cover__description">北冥有鱼，其名为鲲（kūn）。鲲之大，不知其几千里也；化而为鸟，其名为鹏。鹏之背，不知其几千里也；怒而飞，其翼若垂天之云。是鸟也，海运则将徙于南冥。南冥者，天池也。</p>
+        <hr class="panel-cover__divider panel-cover__divider--secondary" />
+        
+        
+        <p class="panel-cover__description">北海若曰：“井鼃不可以语于海者，拘于虚也；夏虫不可以语于冰者，笃于时也；曲士不可以语于道者，束于教也。今尔出于崖涘，观于大海，乃知尔丑，尔将可与语大理矣。</p>
+        
+        
+        <div class="navigation-wrapper">
+          <div>
+            <nav class="cover-navigation cover-navigation--primary">
+              <ul class="navigation">
+                <li class="navigation__item"><a href="/#blog" title="访问博客" class="blog-button">博客</a></li>
+                
+                  <li class="navigation__item"><a href="http://www.jianshu.com/u/9d7fad1a4693" target="_blank" title="访问简书">简书</a></li>
+                
+                  <li class="navigation__item"><a href="https://juejin.im/user/57e735dfa22b9d00614eecb8" target="_blank" title="访问掘金">掘金</a></li>
+                
+              </ul>
+            </nav>
+          </div>
+          
+          <div><nav class="cover-navigation navigation--social">
+  <ul class="navigation">
+
+    
+    <!-- jianshu-->
+    <li class="navigation__item">
+      <a href="http://www.jianshu.com/u/9d7fad1a4693" title="@coderZsq 的简书" target="_blank">
+        <i class='social fa fa-book'></i>
+        <span class="label">jianshu</span>
+      </a>
+    </li>
+    
+
+    
+    <!-- juejin-->
+    <li class="navigation__item">
+      <a href="https://juejin.im/user/57e735dfa22b9d00614eecb8" title="@coderZsq 的稀土掘金" target="_blank">
+        <i class='social fa fa-align-center'></i>
+        <span class="label">juejin</span>
+      </a>
+    </li>
+    
+
+  
+
+  
+  <!-- Github -->
+  <li class="navigation__item">
+    <a href="https://github.com/coderZsq" title="@coderZsq 的 Github" target="_blank">
+      <i class='social fa fa-github'></i>
+      <span class="label">Github</span>
+    </a>
+  </li>
+  
+
+  
+
+  
+
+  <!-- RSS -->
+  <li class="navigation__item">
+    <a href="/feed.xml" rel="author" title="RSS" target="_blank">
+      <i class='social fa fa-rss'></i>
+      <span class="label">RSS</span>
+    </a>
+  </li>
+
+  
+  <!-- Email -->
+  <li class="navigation__item">
+    <a href="mailto:a13701777868@gmail.com" title="Contact me">
+      <i class='social fa fa-envelope'></i>
+      <span class="label">Email</span>
+    </a>
+  </li>
+  
+
+  </ul>
+</nav>
+</div>
+        </div>
+      </div>
+    </div>
+    
+    
+    <div class="panel-cover--overlay cover-blue"></div>
+    
+  </div>
+</header>
+
+
+    <div class="content-wrapper">
+        <div class="content-wrapper__inner">
+            <article class="post-container post-container--single" itemscope itemtype="http://schema.org/BlogPosting">
+  <header class="post-header">
+    <div class="post-meta">
+      <time datetime="2017-07-07 13:43:00 +0800" itemprop="datePublished" class="post-meta__date date">2017-07-07</time> &#8226; <span class="post-meta__tags tags">前端开发</span>
+    </div>
+    <h1 class="post-title">Web 简历一定要设计的美美的</h1>
+  </header>
+
+  <section class="post">
+    <blockquote>
+  <p>继续之前的项目, 之前我们通过最基本的HTML和CSS将Home模块的基本布局给搭建了一下, 整体的流程比较简单, 没有什么技术含量, 作为前端的入门篇看看也是个不错的选择, 可是说真的, 除了算法, 设计模式, 数据结构这些, 平时码代码真的有技术含量吗? 会写几个网页, 几个App, 几个后台就能上天吗? 好吧, 是我太奋青~</p>
+</blockquote>
+
+<p><img src="http://upload-images.jianshu.io/upload_images/1229762-4daa1dfb99967aa8.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="" /></p>
+
+<h6 id="参考链接">参考链接:</h6>
+
+<ul>
+  <li><a href="http://www.jianshu.com/p/d1497da0f9ab">Web 是时候用前端写个简历了!</a></li>
+  <li><a href="http://www.jianshu.com/p/5c4788c0389d">Web 前端项目要从基本布局开始</a></li>
+</ul>
+
+<p>以下内容在上述文章基础上进行, 请事先查阅.</p>
+
+<p>其实我做开发也没有多少时日, 也主要是兴趣为主, 当然从事开发工作也让我这毕业不久的孩子脱了贫, 从小我就不是一个爱学习的孩子, 从小英语就没有及格过, 印象很深的是中考那年满分150, 90分及格的卷子, 我居然考了89分, 四级考了多次都是以几分不过收场… 呵呵, 自证预言真是从小灵验, 导致我进入了中专之后进入了大专, 整天浑浑噩噩的无所事事, 篮球在我空虚的校园生活中无疑是打了一剂春药, 找到了一群志同道合的朋友, 良好的人际关系也成为了我唯一幸福的源泉.</p>
+
+<p>话说穷则思变, 说的是一点也不错, 但如何改变这应该是我们这一代共同的迷茫, 这种迷茫经过不断的转变成为了现在的丧文化, 不知是从何开始, 我觉得这种状态不能继续下去了, 我开始寻找我真正喜欢的事情, 逐步的寻找不同的兴趣, 中专的时候我是计算机应用专业, 教的是一些最为基础的Photoshop / Flash / Dreamware / Database, 现在想想这可能是我现在作为开发的基础吧, 14年的WWDC中Swift的发布直接让我辞去了现有的工作, 正式进入了iOS开发, 想想这也是一个契机吧, 正所谓潜意识即是命运, 虽不能完全证伪, 但就像马云说的有时候”信”很重要, 也和我最近的思考相同 — “每个人都活在自己的想象之中, 在外人看来不过是自欺欺人罢了”.</p>
+
+<p>闲扯了那么久, 我们进入今天的开发中来, 今天我们着重要讲的一个概念是Vue的组件封装以及父子组件间的传参, 组件封装我们在自定义nav中已经有了浅显的涉及, 传参方面我们先来看下官方的用法:</p>
+
+<p><img src="http://upload-images.jianshu.io/upload_images/1229762-d2ac4d81434e6470.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="vue 传递参数" /></p>
+
+<p>先留个印象就好, 我们将home模块先进行封装, 这是iOS开发时的习惯, 归因驱动下前端应该也是相同的道理吧, 我们先来看下home.vue:</p>
+
+<h6 id="class-user">class user</h6>
+<div class="highlighter-rouge"><pre class="highlight"><code>  &lt;div class="user"&gt;
+    &lt;div class="user-block"&gt;
+      &lt;div class="icon"&gt;
+        ![](../assets/icon.jpg)
+      &lt;/div&gt;
+      &lt;div class="row name"&gt;
+        Shuangquan Zhu
+      &lt;/div&gt;
+      &lt;div class="row career"&gt;
+        Designer / Developer
+      &lt;/div&gt;
+      &lt;div class="row location"&gt;
+        Location: Shanghai
+      &lt;/div&gt;
+      &lt;div class="row social"&gt;
+        &lt;div class="indent"&gt;&lt;/div&gt;
+        &lt;div class="github"&gt;
+          ![](../assets/github.png)
+        &lt;/div&gt;
+        &lt;div class="jianshu"&gt;
+          ![](../assets/blog.png)
+        &lt;/div&gt;
+        &lt;div class="wechat"&gt;
+          ![](../assets/wechat.png)
+        &lt;/div&gt;
+        &lt;div class="home"&gt;
+          ![](../assets/home.png)
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+</code></pre>
+</div>
+<div class="highlighter-rouge"><pre class="highlight"><code>...
+.user .user-block .icon,
+.user .user-block .icon img {
+  margin: 0 auto;
+  width: 280px;
+  height: 280px;
+  border-radius: 12px;
+}
+
+.user .user-block .icon {
+  padding-bottom: 10px;
+}
+...
+.user .user-block .name {
+  color: #444;
+  font-size: 22px;
+  font-weight: bold;
+}
+
+.user .user-block .career {
+  color: #666;
+  font-size: 18px;
+}
+
+.user .user-block .location {
+  color: #666;
+  font-size: 18px;
+}
+
+.user .user-block .social div {
+  width: 40px;
+  height: 40px;
+  float: left;
+  position: relative;
+  margin-left: 5px;
+}
+
+.user .user-block .social div img {
+  position: absolute;
+  width: 24px;
+  height: 24px;
+  left: calc(50% - 12px);
+  top: calc(50% - 12px);
+}
+
+.user .user-block .social .indent {
+  width: 44px;
+  background-color: #f8f8f8;
+}
+</code></pre>
+</div>
+<p>没什么特别的地方, 用的都是最基本的div+css的方式, 没有任何的技巧, 在布局碰到瓶颈的时候使用空div进行排版真的是个不错的选择, 由于是虚拟dom的原因也没有性能方面的顾虑. 在设计方面, 字体颜色一般不会出现全黑色这种色调, 所以我们使用#333来代替最黑色, 看下效果:</p>
+
+<p><img src="http://upload-images.jianshu.io/upload_images/1229762-a9431fd91dbbd555.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="" /></p>
+
+<p>在职业这一栏我将设计师放在了开发者前面, 原因是我在穷则思变的时间段, 不仅有开发这一个选择, 还有诸如3D建模, 室内设计, 平面设计, 原画设计, 之类的艺术考量, 可能和之前中专的时候学过Ps和Flash有关吧, 那是Flash这门课我记得是免考的, 原来那时的天赋就已经显现, 哈哈! 人总是能够在发生过的事情之后找到合理的解释, 真是人性的弱点啊, 顿时想到了卡耐基…</p>
+
+<p>在这次的简历制作中, 设计方面是我比较头疼的部分, 我对的审美观比较自信, 但我并没有设计的基础, 什么光影设计, 扁平化之类的也没有概念, 仅凭我浅显的认知, 使用了最近很火的卡片式设计, 至少我觉得凭我的水平做成这样还是能够拿的出手, 以及计划之后去系统的学一下设计了…</p>
+
+<p>完成了左边的部分, 我们继续来实现右边的部分:</p>
+<h6 id="class-introduction">class introduction</h6>
+<div class="highlighter-rouge"><pre class="highlight"><code>&lt;div class="introduction"&gt;
+    &lt;div class="main"&gt;
+      &lt;div class="main-block"&gt;
+        &lt;h1&gt;Summary&lt;/h1&gt;
+        &lt;p&gt;Shuangquan Zhu is a professional developer who focuses on iOS now. He has strong knowledge of Objective-C, Swift and Javascript. With these skills, he created quite a few quickly developer tools. He also leads the J1 iOS team to promote the project
+          process.
+        &lt;/p&gt;
+        &lt;p&gt;He crazy loves playing basketball with friends in spare time, He also loves traveling, writing and listening music. He is always willing to try new things, and keeping to learn from them.&lt;/p&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="left"&gt;
+      &lt;div class="left-block"&gt;
+        &lt;h2&gt;Interest&lt;/h2&gt;
+        &lt;ul&gt;
+          &lt;li&gt;# Learn about high tech&lt;/li&gt;
+          &lt;li&gt;# Play basketball&lt;/li&gt;
+          &lt;li&gt;# Listen to music&lt;/li&gt;
+          &lt;li&gt;# Apple products&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="right"&gt;
+      &lt;div class="right-block"&gt;
+        &lt;h2&gt;Education&lt;/h2&gt;
+        &lt;dl&gt;
+          &lt;dd&gt;Business Management - 2016&lt;/dd&gt;
+          &lt;dt&gt;East China University of Science and Technology&lt;/dt&gt;
+        &lt;/dl&gt;
+        &lt;dl&gt;
+          &lt;dd&gt;Customs and International Freight - 2013&lt;/dd&gt;
+          &lt;dt&gt;Shanghai Maritime Academy&lt;/dt&gt;
+        &lt;/dl&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+</code></pre>
+</div>
+<p>这里有两个新的知识点, 通过ul / li 标签可以进行列表排列, 犹如UITableView. 通过dl / dd / dt 标签可以进行定义, 这个不是很好描述, 但是很有用, 当然你也可以用一个div全部都给打发了, 因为这都不重要!</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>...
+.introduction .left .left-block ul li {
+  color: #555;
+  height: 30px;
+  padding-left: 20px;
+  list-style-type: none;
+}
+...
+.introduction .right .right-block dl dd {
+  padding-left: 20px;
+  padding-right: 20px;
+  color: #555;
+}
+
+.introduction .right .right-block dl dt {
+  padding-left: 20px;
+  padding-right: 20px;
+  color: #999;
+  font-size: 14px;
+  padding-bottom: 10px;
+}
+</code></pre>
+</div>
+<p>简要的贴下css部分, li 标签的使用过程中请设置 list-style-type: none; 这是W3C的建议.</p>
+
+<p><img src="http://upload-images.jianshu.io/upload_images/1229762-f81e51b11fb537e1.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="" /></p>
+
+<p>这个设计平平在我这里能打个60分吧, 不算难看, 但绝对算不上好看…</p>
+
+<p>这里有个关键的东西漏了说了, 那就是字体, 我们在app.vue中设置全局字体:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>#app {
+  font-family: 'Chalkboard'
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+</code></pre>
+</div>
+<p>我们将全局字体设置为 Chalkboard.</p>
+
+<p>接下来我我们继续projects模块的制作, 这个模块就用到了之前所说的vue父子控件传参的问题, 由于上篇有讲到怎么进行布局, 这篇就布局和设计一起来咯, 我们先将布局如下:</p>
+
+<p><img src="http://upload-images.jianshu.io/upload_images/1229762-2981104488b21377.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="" /></p>
+
+<p>看这个设计, 我们就能够了解, 四个布局相同的控件可以抽出来作为一个子控件, 将其命名为project.vue.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>&lt;template&gt;
+&lt;div class="project"&gt;
+  &lt;div class="project-block"&gt;
+    &lt;div class="icon"&gt;
+      &lt;a :href="href"&gt;![](src)&lt;/a&gt;
+    &lt;/div&gt;
+    &lt;div class="download"&gt;
+      &lt;a :href="href"&gt;Download&lt;/a&gt;
+    &lt;/div&gt;
+    &lt;div class="title"&gt;
+      &lt;h2&gt;&lt;/h2&gt;
+      &lt;p&gt;&lt;/p&gt;
+    &lt;/div&gt;
+    &lt;div class="desc"&gt;
+      &lt;ul&gt;
+        &lt;li&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;/li&gt;
+      &lt;/ul&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;/template&gt;
+</code></pre>
+</div>
+<p>在vue的html中, 通过<code class="highlighter-rouge">:</code>进行对标签的绑定, 通过``进行对字符的绑定.</p>
+
+<p><img src="http://upload-images.jianshu.io/upload_images/1229762-a0208370a003f07c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="" /></p>
+
+<p><img src="http://upload-images.jianshu.io/upload_images/1229762-056639ad107a5d4f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="vue 绑定插值" /></p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>...
+download {
+  position: absolute;
+  bottom: 0px;
+  left: 0px;
+  width: 330px;
+  height: 40px;
+  line-height: 40px;
+  text-align: center;
+  border-bottom-left-radius: 12px;
+  border-bottom-right-radius: 12px;
+  background-color: #3385ff;
+  color: #fff;
+  font-size: 20px;
+}
+
+.download a,
+.download a:link,
+.download a:visited,
+.download a:hover {
+  text-decoration: none;
+  color: #fff;
+}
+...
+
+</code></pre>
+</div>
+
+<p>其他之前说过的我就不多赘述了, 这次主要来看a标签的使用, a标签是用来做超链接的, 所以我们将css的伪类中设置text-decoration: none;并将字体颜色全部设置为白色, 关于伪类的更多用法, 可以在W3C中查看.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>&lt;script&gt;
+export default {
+  data() {
+    return {
+
+    }
+  },
+  props: {
+    src: String,
+    href: String,
+    name: String,
+    description: String,
+    text1: String,
+    text2: String,
+    text3: String
+  }
+}
+&lt;/script&gt;
+</code></pre>
+</div>
+<p>进行控件接口参数的设置, 这是封装子控件的一个关键点, 在props中添加参数即可.</p>
+
+<p>完成了子控件, 我们来进行父控件的实现, projects.vue.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>&lt;template&gt;
+&lt;div&gt;
+  &lt;div class="subtitle"&gt;
+    &lt;h1&gt;Projects&lt;/h1&gt;
+  &lt;/div&gt;
+  &lt;div class="projects"&gt;
+    &lt;div class="projects-block"&gt;
+      &lt;project src="http://upload-images.jianshu.io/upload_images/1229762-e41470fb14d50dd0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" href="https://itunes.apple.com/us/app/%E5%81%A5%E4%B8%80%E7%BD%91-%E5%8D%8E%E6%B6%A6%E6%97%97%E4%B8%8B%E7%BD%91%E4%B8%8A%E8%8D%AF%E5%BA%97/id910027998?mt=8"
+        name="J1 Mall" description="China Resources's online pharmacy" text1="Developed by J1 iOS team" text2="Developing version 3.8.5" text3="Enterprise main project"&gt;&lt;/project&gt;
+      &lt;project src="http://upload-images.jianshu.io/upload_images/1229762-895d58180c1893e9.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" href="https://itunes.apple.com/us/app/%E5%81%A5%E4%B8%80%E5%81%A5%E5%BA%B7/id994784918?mt=8" name="J1 Health"
+        description="Professional patient consultation platform" text1="Developed by J1 iOS team" text2="Developing version 3.1.0" text3="Enterprise self-operated project"&gt;&lt;/project&gt;
+      &lt;project src="http://upload-images.jianshu.io/upload_images/1229762-2aa0ac79354150f4.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" href="https://itunes.apple.com/cn/app/hua-run-tong/id1175972491?mt=8" name="HuaRun Tong" description="China Resources Integrated business platform"
+        text1="Developed by J1 &amp; CR Network" text2="Developing version 1.6.1" text3="Cooperation project with CR Network"&gt;&lt;/project&gt;
+      &lt;project src="http://upload-images.jianshu.io/upload_images/1229762-f819fb27af63f404.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" href="https://itunes.apple.com/us/app/%E6%B9%96%E5%B7%9E%E4%B8%AD%E5%BF%83%E5%8C%BB%E9%99%A2-%E4%B8%93%E4%B8%9A%E7%89%88/id1098112284?mt=8"
+        name="HuZhou Hospital" description="Simplify patient treatment and time" text1="Developed by J1 iOS team" text2="Developing version 1.0.0" text3="Outsourcing project"&gt;&lt;/project&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/template&gt;
+</code></pre>
+</div>
+<p>这样在使用上就很简单了, 就和一般的html标签一样, 进行传参即可, 当然也可以使用v-for来进行循环, 都是可以的, 我这边先写死, 这都不重要.</p>
+
+<p>最后将projects模块引入index.vue中, 这部分就完成了, 来看一下效果:
+<img src="http://upload-images.jianshu.io/upload_images/1229762-9b41c93afe2debd8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="" /></p>
+
+<p>其实比起开发来说, 设计现在对于我来说更加重要, 而且在人工智能即将到来的未来, 好的审美观和创意比开发这种纯工具的手艺更加来的重要, AI的世界并不可怕, 只会淘汰那些不需要深入思考, 重复劳动的工种, 而未来的神人都是一些拥有机器智商的人们.</p>
+
+<p>好了, 来看下目前为止整体的设计感觉吧.</p>
+
+<p><img src="http://upload-images.jianshu.io/upload_images/1229762-bf75faf88dfe3990.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="整体设计的实现" /></p>
+
+<p>好了, 今天就到这里了, 我们下周再见.</p>
+
+<h5 id="about">About:</h5>
+
+<p><img src="http://upload-images.jianshu.io/upload_images/1229762-3f8925783027b3fa.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="点击下方链接跳转!!" /></p>
+
+<p><a href="https://github.com/coderZsq/coderZsq.webpack.js">🌟 源码 请点这里🌟 »&gt; 喜欢的朋友请点喜欢 »&gt; 下载源码的同学请送下小星星 »&gt; 有闲钱的壕们可以进行打赏 »&gt; 小弟会尽快推出更好的文章和大家分享 »&gt; 你的激励就是我的动力!! </a>
+w</p>
+
+  </section>
+</article>
+
+<section class="read-more">
+   
+   
+   <div class="read-more-item">
+       <span class="read-more-item-dim">最近的文章</span>
+       <h2 class="post-list__post-title post-title"><a href="/2017/07/Web-%E4%BD%BF%E7%94%A8Vue%E4%BB%A3%E6%9B%BF%E9%99%88%E6%97%A7%E7%9A%84jQuery/" title="link to Web 使用Vue代替陈旧的jQuery">Web 使用Vue代替陈旧的jQuery</a></h2>
+       <p class="excerpt">  这周的身体状态不好, 所以更新也比较有限了, 反正也不急这一时半会, 少则得多则惑不是吗, 我在现在在想一个问题, 简历制作完成进行投递的时候, 尼玛人事还要装个Node环境在在终端进行npm操作, 诶… 没有IP的痛啊~ 不多想了, 直接给个Png图片算了, 毕竟也不在乎这些…参考链接:  Web 是时候用前端写个简历了!  Web 前端项目要从基本布局开始  Web 简历一定要设计的美美的以下内容在上述文章基础上进行, 请事先查阅.状态不好, 我就不多逼逼了, 直接进行我们的项目,...&hellip;</p>
+       <div class="post-list__meta"><time datetime="2017-07-14 11:34:00 +0800" class="post-list__meta--date date">2017-07-14</time> &#8226; <span class="post-list__meta--tags tags">前端开发</span><a class="btn-border-small" href=/2017/07/Web-%E4%BD%BF%E7%94%A8Vue%E4%BB%A3%E6%9B%BF%E9%99%88%E6%97%A7%E7%9A%84jQuery/>继续阅读</a></div>
+   </div>
+   
+   
+   
+   
+   <div class="read-more-item">
+       <span class="read-more-item-dim">更早的文章</span>
+       <h2 class="post-list__post-title post-title"><a href="/2017/07/Web-%E5%89%8D%E7%AB%AF%E9%A1%B9%E7%9B%AE%E8%A6%81%E4%BB%8E%E5%9F%BA%E6%9C%AC%E5%B8%83%E5%B1%80%E5%BC%80%E5%A7%8B/" title="link to Web 前端项目要从基本布局开始">Web 前端项目要从基本布局开始</a></h2>
+       <p class="excerpt">  我们接着之前的项目, 上篇主要是扯皮一下前端所需要掌握的技能, 并通过vue.js和element-ui, 快速搭建项目的方法, 但之前我也说过了, 本人不太喜欢使用第三方的东西, 所以我这里既不用bootstrap, 也不用jquery, 也不适用任何的三方组件, 只使用vue全家桶来进行实现, 当然真正做项目时, 一些大厂的三方组件也是值得信赖的.参考链接:  Web 是时候用前端写个简历了!以下内容在上述文章基础上进行, 请事先查阅.我们开发iOS的时候, 使用的是Xcode作为...&hellip;</p>
+       <div class="post-list__meta"><time datetime="2017-07-04 15:56:00 +0800" class="post-list__meta--date date">2017-07-04</time> &#8226; <span class="post-list__meta--tags tags">前端开发</span><a class="btn-border-small" href=/2017/07/Web-%E5%89%8D%E7%AB%AF%E9%A1%B9%E7%9B%AE%E8%A6%81%E4%BB%8E%E5%9F%BA%E6%9C%AC%E5%B8%83%E5%B1%80%E5%BC%80%E5%A7%8B/>继续阅读</a></div>
+   </div>
+   
+</section>
+
+<section class="post-comments">
+  
+  
+  
+  
+</section>
+
+
+            <section class="footer">
+    <footer>
+    	<span class="footer__copyright">本站点采用<a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">知识共享 署名-非商业性使用-相同方式共享 4.0 国际 许可协议</a></span>
+        <span class="footer__copyright">由 <a href="https://jekyllrb.com">Jekyll</a> 于 2017-12-16 生成，感谢 <a href="https://www.digitalocean.com/?refcode=30ed2d146762">Digital Ocean</a> 为本站提供稳定的 VPS 服务</span>
+        <span class="footer__copyright">本站由 <a href="https://github.com/coderZsq">@Castie!</a> 创建，采用 <a href="https://github.com/onevcat/vno-jekyll">Vno - Jekyll</a> 作为主题，您可以在 GitHub 找到<a href="https://github.com/onevcat/OneV-s-Den">本站源码</a> - &copy; 2017</span>
+    </footer>
+</section>
+
+        </div>
+    </div>
+    
+    <script type="text/javascript" src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+
+<script type="text/javascript" src="/js/main.js"></script>
+
+
+
+    
+  </body>
+
+</html>
