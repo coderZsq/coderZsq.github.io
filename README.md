@@ -16,7 +16,8 @@
 
 <br/>
 <br/>
-<br/>
+
+
 ## Focus areas: App 
 
 
@@ -38,9 +39,9 @@
 
 <br/>
 <br/>
-<br/>
 
 ## Focus areas: Web 
+
 | Technology stack | GitHub repositorie  | Article |
 |:-------:|:-------:|:------:|
 |React|[coderZsq.webpack.js](https://github.com/coderZsq/coderZsq.webpack.js)|[Web 将项目快速迁移至React](https://coderzsq.github.io/2017/09/Web-%E5%B0%86%E9%A1%B9%E7%9B%AE%E5%BF%AB%E9%80%9F%E8%BF%81%E7%A7%BB%E8%87%B3React/)<br/>[Web PC项目快速适配移动端](https://coderzsq.github.io/2017/09/Web-PC%E9%A1%B9%E7%9B%AE%E5%BF%AB%E9%80%9F%E9%80%82%E9%85%8D%E7%A7%BB%E5%8A%A8%E7%AB%AF/)<br/>[Web 使用fetch请求后端服务](https://coderzsq.github.io/2017/11/Web-%E4%BD%BF%E7%94%A8fetch%E8%AF%B7%E6%B1%82%E5%90%8E%E7%AB%AF%E6%9C%8D%E5%8A%A1/)|
@@ -51,13 +52,12 @@
 
 <br/>
 <br/>
-<br/>
 
 ## Focus areas: Server 
+
 | Technology stack | GitHub repositorie  | Article |
 |:-------:|:-------:|:------:|
 |Spring|[coderZsq.maven.java](https://github.com/coderZsq/coderZsq.maven.java)|[Server 入门后端你要学什么](https://coderzsq.github.io/2017/11/Server-%E5%85%A5%E9%97%A8%E5%90%8E%E7%AB%AF%E4%BD%A0%E8%A6%81%E5%AD%A6%E4%BB%80%E4%B9%88/)<br/>[Server 使用Spring来构建服务](https://coderzsq.github.io/2017/11/Server-%E4%BD%BF%E7%94%A8Spring%E6%9D%A5%E6%9E%84%E5%BB%BA%E6%9C%8D%E5%8A%A1/)|
 
-<br/>
 <br/>
 <br/>
