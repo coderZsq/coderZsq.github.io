@@ -1,0 +1,921 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <title>Castie! Notes</title>
+  <meta name="description" content="  上篇我们实现了架构代码生成器, 顿时觉得代码生成器这个东西只要掌握了写代码真的就是配置的问题了, 今天我们就来实现我一直以来就想做的功能 – UI界面适配代码生成器, 和之前一样我们通过JSON配置和Python来进行实现, 没看过上一篇的直接看这篇即可, 主要是思想.">
+  <meta name="author" content="Wei Wang">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="iOS 执行.py脚本生成UI层结构">
+  <meta name="twitter:description" content="  上篇我们实现了架构代码生成器, 顿时觉得代码生成器这个东西只要掌握了写代码真的就是配置的问题了, 今天我们就来实现我一直以来就想做的功能 – UI界面适配代码生成器, 和之前一样我们通过JSON配置和Python来进行实现, 没看过上一篇的直接看这篇即可, 主要是思想.">
+  
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="iOS 执行.py脚本生成UI层结构">
+  <meta property="og:description" content="  上篇我们实现了架构代码生成器, 顿时觉得代码生成器这个东西只要掌握了写代码真的就是配置的问题了, 今天我们就来实现我一直以来就想做的功能 – UI界面适配代码生成器, 和之前一样我们通过JSON配置和Python来进行实现, 没看过上一篇的直接看这篇即可, 主要是思想.">
+  
+  <link rel="icon" type="image/ico" href="/assets/images/favicon.ico" />
+  <link href="/assets/images/favicon.ico" rel="shortcut icon" type="image/ico">
+  
+  <link rel="stylesheet" href="/css/main.css">
+  <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+
+  <link rel="canonical" href="http://localhost:4000/2017/05/iOS-%E6%89%A7%E8%A1%8C.py%E8%84%9A%E6%9C%AC%E7%94%9F%E6%88%90UI%E5%B1%82%E7%BB%93%E6%9E%84/">
+  <link rel="alternate" type="application/rss+xml" title="Castie!" href="http://localhost:4000/feed.xml">
+  
+  <meta name="google-site-verification" content="1-1ZlHoRvM0T2FqPbW2S-qLgYXN6rsn52kErlMPd_gw" />
+  
+</head>
+
+
+  <body>
+
+    <span class="mobile btn-mobile-menu">
+        <i class="fa fa-list btn-mobile-menu__icon"></i>
+        <i class="fa fa-angle-up btn-mobile-close__icon hidden"></i>
+    </span>
+    
+    <header class="panel-cover panel-cover--collapsed" style="background-image: url('/assets/images/background-cover.jpg')">
+  <div class="panel-main">
+
+    <div class="panel-main__inner panel-inverted">
+    <div class="panel-main__content">
+
+        <a href="/#blog" title="前往 Castie! 的主页" class="blog-button"><img src="/assets/images/avatar.jpg" width="80" alt="Castie! logo" class="panel-cover__logo logo" /></a>
+        <h1 class="panel-cover__title panel-title"><a href="/#blog" title="link to homepage for Castie!" class="blog-button">Castie!</a></h1>
+        
+        <span class="panel-cover__subtitle panel-subtitle">正态分布, 优劣伴生</span>
+        
+        <hr class="panel-cover__divider" />
+        <p class="panel-cover__description">北冥有鱼，其名为鲲（kūn）。鲲之大，不知其几千里也；化而为鸟，其名为鹏。鹏之背，不知其几千里也；怒而飞，其翼若垂天之云。是鸟也，海运则将徙于南冥。南冥者，天池也。</p>
+        <hr class="panel-cover__divider panel-cover__divider--secondary" />
+        
+        
+        <p class="panel-cover__description">北海若曰：“井鼃不可以语于海者，拘于虚也；夏虫不可以语于冰者，笃于时也；曲士不可以语于道者，束于教也。今尔出于崖涘，观于大海，乃知尔丑，尔将可与语大理矣。</p>
+        
+        
+        <div class="navigation-wrapper">
+          <div>
+            <nav class="cover-navigation cover-navigation--primary">
+              <ul class="navigation">
+                <li class="navigation__item"><a href="/#blog" title="访问博客" class="blog-button">博客</a></li>
+                
+                  <li class="navigation__item"><a href="https://coderzsq.github.io/coderZsq.webpack.js/" target="_blank" title="我的简历">简历</a></li>
+                
+              </ul>
+            </nav>
+          </div>
+          
+          <div><nav class="cover-navigation navigation--social">
+  <ul class="navigation">
+
+    
+    <!-- jianshu-->
+    <li class="navigation__item">
+      <a href="http://www.jianshu.com/u/9d7fad1a4693" title="@coderZsq 的简书" target="_blank">
+        <i class='social fa fa-book'></i>
+        <span class="label">jianshu</span>
+      </a>
+    </li>
+    
+
+    
+    <!-- juejin-->
+    <li class="navigation__item">
+      <a href="https://juejin.im/user/57e735dfa22b9d00614eecb8" title="@coderZsq 的稀土掘金" target="_blank">
+        <i class='social fa fa-align-center'></i>
+        <span class="label">juejin</span>
+      </a>
+    </li>
+    
+
+  
+
+  
+  <!-- Github -->
+  <li class="navigation__item">
+    <a href="https://github.com/coderZsq" title="@coderZsq 的 Github" target="_blank">
+      <i class='social fa fa-github'></i>
+      <span class="label">Github</span>
+    </a>
+  </li>
+  
+
+  
+
+  
+
+  <!-- RSS -->
+  <li class="navigation__item">
+    <a href="/feed.xml" rel="author" title="RSS" target="_blank">
+      <i class='social fa fa-rss'></i>
+      <span class="label">RSS</span>
+    </a>
+  </li>
+
+  
+  <!-- Email -->
+  <li class="navigation__item">
+    <a href="mailto:a13701777868@gmail.com" title="Contact me">
+      <i class='social fa fa-envelope'></i>
+      <span class="label">Email</span>
+    </a>
+  </li>
+  
+
+  </ul>
+</nav>
+</div>
+        </div>
+      </div>
+    </div>
+    
+    
+    <div class="panel-cover--overlay cover-blue"></div>
+    
+  </div>
+</header>
+
+
+    <div class="content-wrapper">
+        <div class="content-wrapper__inner">
+            <article class="post-container post-container--single" itemscope itemtype="http://schema.org/BlogPosting">
+  <header class="post-header">
+    <div class="post-meta">
+      <time datetime="2017-05-12 14:42:00 +0800" itemprop="datePublished" class="post-meta__date date">2017-05-12</time> &#8226; <span class="post-meta__tags tags">移动开发</span>
+    </div>
+    <h1 class="post-title">iOS 执行.py脚本生成UI层结构</h1>
+  </header>
+
+  <section class="post">
+    <blockquote>
+  <p>上篇我们实现了架构代码生成器, 顿时觉得代码生成器这个东西只要掌握了写代码真的就是配置的问题了, 今天我们就来实现我一直以来就想做的功能 – UI界面适配代码生成器, 和之前一样我们通过JSON配置和Python来进行实现, 没看过上一篇的直接看这篇即可, 主要是思想.</p>
+</blockquote>
+
+<p><img src="http://upload-images.jianshu.io/upload_images/1229762-6b2c8bed102c297f.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="" /></p>
+
+<h6 id="参考链接">参考链接:</h6>
+
+<ul>
+  <li><a href="http://www.jianshu.com/p/47d565bf200e">iOS 执行.py脚本生成解耦架构</a></li>
+</ul>
+
+<p>上篇有一个内存泄露的问题, 需要将P层的模板的.h属性改为weak即可, 适配UI界面代码生成器的模板是我一直以来的的OC编码习惯,  代码风格无需强求, 直接修改模板即可. 我们先来看UI层的生成器目录结构:</p>
+
+<h3 id="生成器目录结构">生成器目录结构</h3>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>├── UITemplate
+│   ├── CellAdapterTemplate.h 
+│   ├── CollectionViewCellTemplate.h 
+│   ├── CollectionViewCellTemplate.m
+│   ├── CollectionViewTemplate.h
+│   ├── CollectionViewTemplate.m
+│   ├── SubmodelTemplate.h
+│   ├── SubmodelTemplate.m
+│   ├── SubviewTemplate.h
+│   ├── SubviewTemplate.m
+│   ├── TableViewCellTemplate.h
+│   └── TableViewCellTemplate.m
+├── builder.py
+└── config.json
+</code></pre>
+</div>
+
+<h5 id="celladaptertemplateh">CellAdapterTemplate.h</h5>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>
+<span class="cp">#import &lt;Foundation/Foundation.h&gt;
+</span>
+<span class="k">@protocol</span> <span class="err">&lt;#</span><span class="nc">Unit</span><span class="err">#</span><span class="o">&gt;</span><span class="n">CellAdapter</span> <span class="o">&lt;</span><span class="n">NSObject</span><span class="o">&gt;</span>
+<span class="o">&lt;</span><span class="err">#</span><span class="n">ModelInterface</span><span class="err">#</span><span class="o">&gt;</span>
+
+<span class="k">@end</span>
+
+</code></pre>
+</div>
+
+<ul>
+  <li>cell的数据适配协议, 也就是适配器模式, 生成不依赖模型的Cell</li>
+</ul>
+
+<h5 id="tableviewcelltemplateh">TableViewCellTemplate.h</h5>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="cp">#import &lt;UIKit/UIKit.h&gt;
+#import "&lt;#Unit#&gt;CellAdapter.h"
+</span>
+<span class="k">@interface</span> <span class="err">&lt;#</span><span class="nc">Unit</span><span class="err">#</span><span class="o">&gt;</span><span class="n">Cell</span> <span class="o">:</span> <span class="n">UITableViewCell</span>
+
+<span class="k">@property</span> <span class="p">(</span><span class="n">nonatomic</span><span class="p">,</span><span class="n">strong</span><span class="p">)</span> <span class="n">id</span><span class="o">&lt;&lt;</span><span class="err">#</span><span class="n">Unit</span><span class="err">#</span><span class="o">&gt;</span><span class="n">CellAdapter</span><span class="o">&gt;</span> <span class="n">adapter</span><span class="p">;</span>
+
+<span class="k">+</span> <span class="p">(</span><span class="n">instancetype</span><span class="p">)</span><span class="nf">cellWithTableView</span><span class="p">:(</span><span class="n">UITableView</span> <span class="o">*</span><span class="p">)</span><span class="nv">tableView</span><span class="p">;</span>
+
+<span class="k">+</span> <span class="p">(</span><span class="n">CGFloat</span><span class="p">)</span><span class="n">cellHeight</span><span class="p">;</span>
+
+<span class="k">@end</span>
+
+</code></pre>
+</div>
+
+<ul>
+  <li>将cell的实现和高度屏蔽在内</li>
+</ul>
+
+<h5 id="tableviewcelltemplatem">TableViewCellTemplate.m</h5>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="cp">#import "&lt;#Unit#&gt;Cell.h"
+</span><span class="o">&lt;</span><span class="err">#</span><span class="n">ViewImport</span><span class="err">#</span><span class="o">&gt;</span>
+<span class="k">@interface</span> <span class="err">&lt;#</span><span class="nc">Unit</span><span class="err">#</span><span class="o">&gt;</span><span class="n">Cell</span> <span class="p">()</span>
+
+<span class="o">&lt;</span><span class="err">#</span><span class="n">ViewProperty</span><span class="err">#</span><span class="o">&gt;</span>
+<span class="k">@end</span>
+
+<span class="k">@implementation</span> <span class="err">&lt;#</span><span class="nc">Unit</span><span class="err">#</span><span class="o">&gt;</span><span class="n">Cell</span>
+
+<span class="o">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="n">dealloc</span> <span class="p">{</span>
+    <span class="n">NSLog</span><span class="p">(</span><span class="s">@"%@ - execute %s"</span><span class="p">,</span><span class="n">NSStringFromClass</span><span class="p">([</span><span class="n">self</span> <span class="nf">class</span><span class="p">]),</span><span class="n">__func__</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="o">+</span> <span class="p">(</span><span class="n">instancetype</span><span class="p">)</span><span class="n">cellWithTableView</span><span class="o">:</span><span class="p">(</span><span class="n">UITableView</span> <span class="o">*</span><span class="p">)</span><span class="n">tableView</span> <span class="p">{</span>
+    
+    <span class="n">NSString</span> <span class="o">*</span> <span class="n">identifier</span> <span class="o">=</span> <span class="n">NSStringFromClass</span><span class="p">([</span><span class="o">&lt;</span><span class="err">#</span><span class="n">Unit</span><span class="err">#</span><span class="o">&gt;</span><span class="n">Cell</span> <span class="nf">class</span><span class="p">]);</span>
+    <span class="o">&lt;</span><span class="err">#</span><span class="n">Unit</span><span class="err">#</span><span class="o">&gt;</span><span class="n">Cell</span> <span class="o">*</span> <span class="n">cell</span> <span class="o">=</span> <span class="p">[</span><span class="n">tableView</span> <span class="nf">dequeueReusableCellWithIdentifier</span><span class="p">:</span><span class="n">identifier</span><span class="p">];</span>
+    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">cell</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">cell</span> <span class="o">=</span> <span class="p">[[</span><span class="o">&lt;</span><span class="err">#</span><span class="n">Unit</span><span class="err">#</span><span class="o">&gt;</span><span class="n">Cell</span> <span class="nf">alloc</span><span class="p">]</span><span class="nf">initWithStyle</span><span class="p">:</span><span class="n">UITableViewCellStyleDefault</span> <span class="nf">reuseIdentifier</span><span class="p">:</span><span class="n">identifier</span><span class="p">];</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="n">cell</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="o">-</span> <span class="p">(</span><span class="n">instancetype</span><span class="p">)</span><span class="n">initWithStyle</span><span class="o">:</span><span class="p">(</span><span class="n">UITableViewCellStyle</span><span class="p">)</span><span class="n">style</span> <span class="n">reuseIdentifier</span><span class="o">:</span><span class="p">(</span><span class="n">NSString</span> <span class="o">*</span><span class="p">)</span><span class="n">reuseIdentifier</span> <span class="p">{</span>
+    
+    <span class="n">self</span> <span class="o">=</span> <span class="p">[</span><span class="n">super</span> <span class="nf">initWithStyle</span><span class="p">:</span><span class="n">style</span> <span class="nf">reuseIdentifier</span><span class="p">:</span><span class="n">reuseIdentifier</span><span class="p">];</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">self</span><span class="p">)</span> <span class="p">{</span>
+        <span class="p">[</span><span class="n">self</span> <span class="nf">setupSubviews</span><span class="p">];</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="n">self</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="o">&lt;</span><span class="err">#</span><span class="n">ViewLazyLoad</span><span class="err">#</span><span class="o">&gt;</span>
+
+<span class="o">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="n">setupSubviews</span> <span class="p">{</span>
+<span class="o">&lt;</span><span class="err">#</span><span class="n">ViewSetup</span><span class="err">#</span><span class="o">&gt;</span>
+<span class="p">}</span>
+
+<span class="o">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="n">setAdapter</span><span class="o">:</span><span class="p">(</span><span class="n">id</span><span class="o">&lt;&lt;</span><span class="err">#</span><span class="n">Unit</span><span class="err">#</span><span class="o">&gt;</span><span class="n">CellAdapter</span><span class="o">&gt;</span><span class="p">)</span><span class="n">adapter</span> <span class="p">{</span>
+    <span class="n">_adapter</span> <span class="o">=</span> <span class="n">adapter</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="o">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="n">layoutSubviews</span> <span class="p">{</span>
+    <span class="p">[</span><span class="n">super</span> <span class="nf">layoutSubviews</span><span class="p">];</span>
+    
+<span class="o">&lt;</span><span class="err">#</span><span class="n">ViewLayout</span><span class="err">#</span><span class="o">&gt;</span>
+<span class="p">}</span>
+
+<span class="o">+</span> <span class="p">(</span><span class="n">CGFloat</span><span class="p">)</span><span class="n">cellHeight</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="o">&lt;</span><span class="err">#</span><span class="n">cellHeight</span><span class="err">#</span><span class="o">&gt;</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="k">@end</span>
+
+</code></pre>
+</div>
+<ul>
+  <li>cell的基本实现, 没有什么好说的.</li>
+</ul>
+
+<h5 id="subviewtemplateh">SubviewTemplate.h</h5>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="cp">#import &lt;UIKit/UIKit.h&gt;
+</span>
+<span class="o">&lt;</span><span class="err">#</span><span class="n">ClassImport</span><span class="err">#</span><span class="o">&gt;</span>
+<span class="k">@interface</span> <span class="err">&lt;#</span><span class="nc">Unit</span><span class="err">#</span><span class="o">&gt;</span><span class="n">View</span> <span class="o">:</span> <span class="n">UIView</span>
+
+<span class="o">&lt;</span><span class="err">#</span><span class="n">ViewProperty</span><span class="err">#</span><span class="o">&gt;</span>
+<span class="k">@end</span>
+
+</code></pre>
+</div>
+<ul>
+  <li>将View的属性暴露在外供外部修改</li>
+</ul>
+
+<h5 id="subviewtemplatem">SubviewTemplate.m</h5>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="cp">#import "&lt;#Unit#&gt;View.h"
+</span><span class="o">&lt;</span><span class="err">#</span><span class="n">ViewImport</span><span class="err">#</span><span class="o">&gt;</span>
+<span class="k">@implementation</span> <span class="err">&lt;#</span><span class="nc">Unit</span><span class="err">#</span><span class="o">&gt;</span><span class="n">View</span>
+
+<span class="o">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="n">dealloc</span> <span class="p">{</span>
+    <span class="n">NSLog</span><span class="p">(</span><span class="s">@"%@ - execute %s"</span><span class="p">,</span><span class="n">NSStringFromClass</span><span class="p">([</span><span class="n">self</span> <span class="nf">class</span><span class="p">]),</span><span class="n">__func__</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="o">-</span> <span class="p">(</span><span class="n">instancetype</span><span class="p">)</span><span class="n">initWithFrame</span><span class="o">:</span><span class="p">(</span><span class="n">CGRect</span><span class="p">)</span><span class="n">frame</span> <span class="p">{</span>
+    
+    <span class="n">self</span> <span class="o">=</span> <span class="p">[</span><span class="n">super</span> <span class="nf">initWithFrame</span><span class="p">:</span><span class="n">frame</span><span class="p">];</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">self</span><span class="p">)</span> <span class="p">{</span>
+        <span class="p">[</span><span class="n">self</span> <span class="nf">setupSubviews</span><span class="p">];</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="n">self</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="o">-</span> <span class="p">(</span><span class="n">instancetype</span><span class="p">)</span><span class="n">initWithCoder</span><span class="o">:</span><span class="p">(</span><span class="n">NSCoder</span> <span class="o">*</span><span class="p">)</span><span class="n">coder</span>  <span class="p">{</span>
+    
+    <span class="n">self</span> <span class="o">=</span> <span class="p">[</span><span class="n">super</span> <span class="nf">initWithCoder</span><span class="p">:</span><span class="n">coder</span><span class="p">];</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">self</span><span class="p">)</span> <span class="p">{</span>
+        <span class="p">[</span><span class="n">self</span> <span class="nf">setupSubviews</span><span class="p">];</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="n">self</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="o">&lt;</span><span class="err">#</span><span class="n">ViewLazyLoad</span><span class="err">#</span><span class="o">&gt;</span>
+<span class="o">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="n">setupSubviews</span> <span class="p">{</span>
+<span class="o">&lt;</span><span class="err">#</span><span class="n">ViewSetup</span><span class="err">#</span><span class="o">&gt;</span>
+<span class="p">}</span>
+
+<span class="o">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="n">layoutSubviews</span> <span class="p">{</span>
+    <span class="p">[</span><span class="n">super</span> <span class="nf">layoutSubviews</span><span class="p">];</span>
+    
+<span class="o">&lt;</span><span class="err">#</span><span class="n">ViewLayout</span><span class="err">#</span><span class="o">&gt;</span>
+<span class="p">}</span>
+
+
+<span class="k">@end</span>
+</code></pre>
+</div>
+<ul>
+  <li>自定义View的基本实现</li>
+</ul>
+
+<h5 id="collectionviewtemplateh">CollectionViewTemplate.h</h5>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="cp">#import &lt;UIKit/UIKit.h&gt;
+</span>
+<span class="k">@interface</span> <span class="err">&lt;#</span><span class="nc">Unit</span><span class="err">#</span><span class="o">&gt;</span><span class="n">View</span> <span class="o">:</span> <span class="n">UIView</span>
+
+<span class="k">@property</span> <span class="p">(</span><span class="n">nonatomic</span><span class="p">,</span><span class="n">strong</span><span class="p">)</span> <span class="n">NSArray</span> <span class="o">*</span> <span class="n">dataSourceArr</span><span class="p">;</span>
+
+<span class="k">@end</span>
+</code></pre>
+</div>
+<ul>
+  <li>传入可用data数组, 不在意是否为模型或字典.</li>
+</ul>
+
+<h5 id="collectionviewtemplatem">CollectionViewTemplate.m</h5>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="cp">#import "&lt;#Unit#&gt;View.h"
+#import "&lt;#Unit#&gt;Cell.h"
+</span>
+<span class="k">@interface</span> <span class="err">&lt;#</span><span class="nc">Unit</span><span class="err">#</span><span class="o">&gt;</span><span class="n">View</span> <span class="p">()</span> <span class="o">&lt;</span><span class="n">UICollectionViewDataSource</span><span class="p">,</span> <span class="n">UICollectionViewDelegate</span><span class="o">&gt;</span>
+
+<span class="k">@property</span> <span class="p">(</span><span class="n">nonatomic</span><span class="p">,</span><span class="n">strong</span><span class="p">)</span> <span class="n">UICollectionView</span> <span class="o">*</span> <span class="n">collectionView</span><span class="p">;</span>
+<span class="k">@property</span> <span class="p">(</span><span class="n">nonatomic</span><span class="p">,</span><span class="n">strong</span><span class="p">)</span> <span class="n">UICollectionViewFlowLayout</span> <span class="o">*</span> <span class="n">collectionViewLayout</span><span class="p">;</span>
+
+<span class="k">@end</span>
+
+<span class="k">@implementation</span> <span class="err">&lt;#</span><span class="nc">Unit</span><span class="err">#</span><span class="o">&gt;</span><span class="n">View</span>
+
+<span class="o">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="n">dealloc</span> <span class="p">{</span>
+    <span class="n">NSLog</span><span class="p">(</span><span class="s">@"%@ - execute %s"</span><span class="p">,</span><span class="n">NSStringFromClass</span><span class="p">([</span><span class="n">self</span> <span class="nf">class</span><span class="p">]),</span><span class="n">__func__</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="o">-</span> <span class="p">(</span><span class="n">instancetype</span><span class="p">)</span><span class="n">initWithFrame</span><span class="o">:</span><span class="p">(</span><span class="n">CGRect</span><span class="p">)</span><span class="n">frame</span> <span class="p">{</span>
+    
+    <span class="n">self</span> <span class="o">=</span> <span class="p">[</span><span class="n">super</span> <span class="nf">initWithFrame</span><span class="p">:</span><span class="n">frame</span><span class="p">];</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">self</span><span class="p">)</span> <span class="p">{</span>
+        <span class="p">[</span><span class="n">self</span> <span class="nf">setupSubviews</span><span class="p">];</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="n">self</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="o">-</span> <span class="p">(</span><span class="n">instancetype</span><span class="p">)</span><span class="n">initWithCoder</span><span class="o">:</span><span class="p">(</span><span class="n">NSCoder</span> <span class="o">*</span><span class="p">)</span><span class="n">coder</span>  <span class="p">{</span>
+    
+    <span class="n">self</span> <span class="o">=</span> <span class="p">[</span><span class="n">super</span> <span class="nf">initWithCoder</span><span class="p">:</span><span class="n">coder</span><span class="p">];</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">self</span><span class="p">)</span> <span class="p">{</span>
+        <span class="p">[</span><span class="n">self</span> <span class="nf">setupSubviews</span><span class="p">];</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="n">self</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="o">-</span> <span class="p">(</span><span class="n">UICollectionView</span> <span class="o">*</span><span class="p">)</span><span class="n">collectionView</span> <span class="p">{</span>
+    
+    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">_collectionView</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">_collectionView</span> <span class="o">=</span> <span class="p">[[</span><span class="n">UICollectionView</span> <span class="nf">alloc</span><span class="p">]</span><span class="nf">initWithFrame</span><span class="p">:</span><span class="n">CGRectZero</span> <span class="nf">collectionViewLayout</span><span class="p">:</span><span class="n">self</span><span class="p">.</span><span class="n">collectionViewLayout</span><span class="p">];;</span>
+        <span class="n">_collectionView</span><span class="p">.</span><span class="n">dataSource</span> <span class="o">=</span> <span class="n">self</span><span class="p">;</span>
+        <span class="n">_collectionView</span><span class="p">.</span><span class="n">delegate</span> <span class="o">=</span> <span class="n">self</span><span class="p">;</span>
+        <span class="n">_collectionView</span><span class="p">.</span><span class="n">backgroundColor</span> <span class="o">=</span> <span class="p">[</span><span class="n">UIColor</span> <span class="nf">whiteColor</span><span class="p">];</span>
+        <span class="n">_collectionView</span><span class="p">.</span><span class="n">pagingEnabled</span> <span class="o">=</span> <span class="nb">YES</span><span class="p">;</span>
+        <span class="n">_collectionView</span><span class="p">.</span><span class="n">showsHorizontalScrollIndicator</span> <span class="o">=</span> <span class="nb">NO</span><span class="p">;</span>
+        <span class="p">[</span><span class="n">_collectionView</span> <span class="nf">registerClass</span><span class="p">:[</span><span class="o">&lt;</span><span class="err">#</span><span class="n">Unit</span><span class="err">#</span><span class="o">&gt;</span><span class="n">Cell</span> <span class="nf">class</span><span class="p">]</span> <span class="nf">forCellWithReuseIdentifier</span><span class="p">:</span><span class="n">NSStringFromClass</span><span class="p">([</span><span class="o">&lt;</span><span class="err">#</span><span class="n">Unit</span><span class="err">#</span><span class="o">&gt;</span><span class="n">Cell</span> <span class="nf">class</span><span class="p">])];</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="n">_collectionView</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="o">-</span> <span class="p">(</span><span class="n">UICollectionViewFlowLayout</span> <span class="o">*</span><span class="p">)</span><span class="n">collectionViewLayout</span> <span class="p">{</span>
+    
+    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">_collectionViewLayout</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">_collectionViewLayout</span> <span class="o">=</span> <span class="p">[</span><span class="n">UICollectionViewFlowLayout</span> <span class="nf">new</span><span class="p">];</span>
+        <span class="n">_collectionViewLayout</span><span class="p">.</span><span class="n">scrollDirection</span> <span class="o">=</span> <span class="n">UICollectionViewScrollDirectionHorizontal</span><span class="p">;</span>
+        <span class="n">_collectionViewLayout</span><span class="p">.</span><span class="n">minimumInteritemSpacing</span> <span class="o">=</span> <span class="mi">0</span><span class="p">.</span><span class="mi">0</span><span class="n">f</span><span class="p">;</span>
+        <span class="n">_collectionViewLayout</span><span class="p">.</span><span class="n">minimumLineSpacing</span> <span class="o">=</span> <span class="mi">0</span><span class="p">.</span><span class="mi">0</span><span class="n">f</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="n">_collectionViewLayout</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="o">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="n">setupSubviews</span> <span class="p">{</span>
+    <span class="p">[</span><span class="n">self</span> <span class="nf">addSubview</span><span class="p">:</span><span class="n">self</span><span class="p">.</span><span class="n">collectionView</span><span class="p">];</span>
+<span class="p">}</span>
+
+<span class="o">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="n">setDataSourceArr</span><span class="o">:</span><span class="p">(</span><span class="n">NSArray</span> <span class="o">*</span><span class="p">)</span><span class="n">dataSourceArr</span> <span class="p">{</span>
+    <span class="n">_dataSourceArr</span> <span class="o">=</span> <span class="n">dataSourceArr</span><span class="p">;</span>
+    <span class="p">[</span><span class="n">_collectionView</span> <span class="nf">reloadData</span><span class="p">];</span>
+<span class="p">}</span>
+
+<span class="o">-</span> <span class="p">(</span><span class="n">NSInteger</span><span class="p">)</span><span class="n">collectionView</span><span class="o">:</span><span class="p">(</span><span class="n">UICollectionView</span> <span class="o">*</span><span class="p">)</span><span class="n">collectionView</span> <span class="n">numberOfItemsInSection</span><span class="o">:</span><span class="p">(</span><span class="n">NSInteger</span><span class="p">)</span><span class="n">section</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="n">_dataSourceArr</span><span class="p">.</span><span class="n">count</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="o">-</span> <span class="p">(</span><span class="n">UICollectionViewCell</span> <span class="o">*</span><span class="p">)</span><span class="n">collectionView</span><span class="o">:</span><span class="p">(</span><span class="n">UICollectionView</span> <span class="o">*</span><span class="p">)</span><span class="n">collectionView</span> <span class="n">cellForItemAtIndexPath</span><span class="o">:</span><span class="p">(</span><span class="n">NSIndexPath</span> <span class="o">*</span><span class="p">)</span><span class="n">indexPath</span> <span class="p">{</span>
+    
+    <span class="o">&lt;</span><span class="err">#</span><span class="n">Unit</span><span class="err">#</span><span class="o">&gt;</span><span class="n">Cell</span> <span class="o">*</span> <span class="n">cell</span> <span class="o">=</span> <span class="p">[</span><span class="n">collectionView</span> <span class="nf">dequeueReusableCellWithReuseIdentifier</span><span class="p">:</span><span class="n">NSStringFromClass</span><span class="p">([</span><span class="o">&lt;</span><span class="err">#</span><span class="n">Unit</span><span class="err">#</span><span class="o">&gt;</span><span class="n">Cell</span> <span class="nf">class</span><span class="p">])</span> <span class="nf">forIndexPath</span><span class="p">:</span><span class="n">indexPath</span><span class="p">];</span>
+    <span class="k">return</span> <span class="n">cell</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="o">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="n">layoutSubviews</span> <span class="p">{</span>
+    <span class="p">[</span><span class="n">super</span> <span class="nf">layoutSubviews</span><span class="p">];</span>
+    <span class="n">_collectionView</span><span class="p">.</span><span class="n">frame</span> <span class="o">=</span> <span class="n">self</span><span class="p">.</span><span class="n">bounds</span><span class="p">;</span>
+    <span class="n">_collectionViewLayout</span><span class="p">.</span><span class="n">itemSize</span> <span class="o">=</span> <span class="o">&lt;</span><span class="err">#</span><span class="n">size</span><span class="err">#</span><span class="o">&gt;</span><span class="p">;</span>
+
+<span class="p">}</span>
+
+<span class="k">@end</span>
+
+</code></pre>
+</div>
+<ul>
+  <li>collectionView的基本实现, 实现最基本的功能.</li>
+</ul>
+
+<h5 id="collectionviewcelltemplateh">CollectionViewCellTemplate.h</h5>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="cp">#import &lt;UIKit/UIKit.h&gt;
+#import "&lt;#Unit#&gt;CellAdapter.h"
+</span>
+<span class="k">@interface</span> <span class="err">&lt;#</span><span class="nc">Unit</span><span class="err">#</span><span class="o">&gt;</span><span class="n">Cell</span> <span class="o">:</span> <span class="n">UICollectionViewCell</span>
+
+<span class="k">@property</span> <span class="p">(</span><span class="n">nonatomic</span><span class="p">,</span><span class="n">strong</span><span class="p">)</span> <span class="n">id</span><span class="o">&lt;&lt;</span><span class="err">#</span><span class="n">Unit</span><span class="err">#</span><span class="o">&gt;</span><span class="n">CellAdapter</span><span class="o">&gt;</span> <span class="n">adapter</span><span class="p">;</span>
+
+<span class="k">@end</span>
+
+</code></pre>
+</div>
+<ul>
+  <li>使用适配器加载数据.</li>
+</ul>
+
+<h5 id="collectionviewcelltemplatem">CollectionViewCellTemplate.m</h5>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="cp">#import "&lt;#Unit#&gt;Cell.h"
+</span><span class="o">&lt;</span><span class="err">#</span><span class="n">ViewImport</span><span class="err">#</span><span class="o">&gt;</span>
+<span class="k">@interface</span> <span class="err">&lt;#</span><span class="nc">Unit</span><span class="err">#</span><span class="o">&gt;</span><span class="n">Cell</span> <span class="p">()</span>
+
+<span class="o">&lt;</span><span class="err">#</span><span class="n">ViewProperty</span><span class="err">#</span><span class="o">&gt;</span>
+<span class="k">@end</span>
+
+<span class="k">@implementation</span> <span class="err">&lt;#</span><span class="nc">Unit</span><span class="err">#</span><span class="o">&gt;</span><span class="n">Cell</span>
+
+<span class="o">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="n">dealloc</span> <span class="p">{</span>
+    <span class="n">NSLog</span><span class="p">(</span><span class="s">@"%@ - execute %s"</span><span class="p">,</span><span class="n">NSStringFromClass</span><span class="p">([</span><span class="n">self</span> <span class="nf">class</span><span class="p">]),</span><span class="n">__func__</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="o">-</span> <span class="p">(</span><span class="n">instancetype</span><span class="p">)</span><span class="n">initWithFrame</span><span class="o">:</span><span class="p">(</span><span class="n">CGRect</span><span class="p">)</span><span class="n">frame</span> <span class="p">{</span>
+    
+    <span class="n">self</span> <span class="o">=</span> <span class="p">[</span><span class="n">super</span> <span class="nf">initWithFrame</span><span class="p">:</span><span class="n">frame</span><span class="p">];</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">self</span><span class="p">)</span> <span class="p">{</span>
+        <span class="p">[</span><span class="n">self</span> <span class="nf">setupSubviews</span><span class="p">];</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="n">self</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="o">-</span> <span class="p">(</span><span class="n">instancetype</span><span class="p">)</span><span class="n">initWithCoder</span><span class="o">:</span><span class="p">(</span><span class="n">NSCoder</span> <span class="o">*</span><span class="p">)</span><span class="n">coder</span>  <span class="p">{</span>
+    
+    <span class="n">self</span> <span class="o">=</span> <span class="p">[</span><span class="n">super</span> <span class="nf">initWithCoder</span><span class="p">:</span><span class="n">coder</span><span class="p">];</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">self</span><span class="p">)</span> <span class="p">{</span>
+        <span class="p">[</span><span class="n">self</span> <span class="nf">setupSubviews</span><span class="p">];</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="n">self</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="o">&lt;</span><span class="err">#</span><span class="n">ViewLazyLoad</span><span class="err">#</span><span class="o">&gt;</span>
+
+<span class="o">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="n">setupSubviews</span> <span class="p">{</span>
+<span class="o">&lt;</span><span class="err">#</span><span class="n">ViewSetup</span><span class="err">#</span><span class="o">&gt;</span>
+<span class="p">}</span>
+
+<span class="o">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="n">setAdapter</span><span class="o">:</span><span class="p">(</span><span class="n">id</span><span class="o">&lt;&lt;</span><span class="err">#</span><span class="n">Unit</span><span class="err">#</span><span class="o">&gt;</span><span class="n">CellAdapter</span><span class="o">&gt;</span><span class="p">)</span><span class="n">adapter</span> <span class="p">{</span>
+    <span class="n">_adapter</span> <span class="o">=</span> <span class="n">adapter</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="o">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="n">layoutSubviews</span> <span class="p">{</span>
+    <span class="p">[</span><span class="n">super</span> <span class="nf">layoutSubviews</span><span class="p">];</span>
+    
+<span class="o">&lt;</span><span class="err">#</span><span class="n">ViewLayout</span><span class="err">#</span><span class="o">&gt;</span>
+<span class="p">}</span>
+
+<span class="k">@end</span>
+
+</code></pre>
+</div>
+<ul>
+  <li>一样的基本实现, 不多说.</li>
+</ul>
+
+<h5 id="submodeltemplateh">SubmodelTemplate.h</h5>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="cp">#import &lt;Foundation/Foundation.h&gt;
+</span>
+<span class="k">@interface</span> <span class="err">&lt;#</span><span class="nc">SubUnit</span><span class="err">#</span><span class="o">&gt;</span><span class="n">Model</span> <span class="o">:</span> <span class="n">NSObject</span> 
+<span class="o">&lt;</span><span class="err">#</span><span class="n">ModelInterface</span><span class="err">#</span><span class="o">&gt;</span>
+
+<span class="o">-</span> <span class="p">(</span><span class="n">instancetype</span><span class="p">)</span><span class="n">initWithDictionary</span><span class="o">:</span><span class="p">(</span><span class="n">NSDictionary</span> <span class="o">*</span><span class="p">)</span><span class="n">dictionary</span><span class="p">;</span>
+<span class="k">+</span> <span class="p">(</span><span class="o">&lt;</span><span class="err">#</span><span class="n">SubUnit</span><span class="err">#</span><span class="o">&gt;</span><span class="n">Model</span> <span class="o">*</span><span class="p">)</span><span class="nf">modelWithDictionary</span><span class="p">:(</span><span class="n">NSDictionary</span> <span class="o">*</span><span class="p">)</span><span class="nv">dictionary</span><span class="p">;</span>
+
+<span class="k">@end</span>
+</code></pre>
+</div>
+<h5 id="submodeltemplatem">SubmodelTemplate.m</h5>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="cp">#import "&lt;#SubUnit#&gt;Model.h"
+</span>
+<span class="k">@implementation</span> <span class="err">&lt;#</span><span class="nc">SubUnit</span><span class="err">#</span><span class="o">&gt;</span><span class="n">Model</span>
+
+<span class="o">-</span> <span class="p">(</span><span class="n">instancetype</span><span class="p">)</span><span class="n">initWithDictionary</span><span class="o">:</span><span class="p">(</span><span class="n">NSDictionary</span> <span class="o">*</span><span class="p">)</span><span class="n">dictionary</span> <span class="p">{</span>
+    
+    <span class="n">self</span> <span class="o">=</span> <span class="p">[</span><span class="n">super</span> <span class="nf">init</span><span class="p">];</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">self</span><span class="p">)</span> <span class="p">{</span>
+        <span class="p">[</span><span class="n">self</span> <span class="nf">setValuesForKeysWithDictionary</span><span class="p">:</span><span class="n">dictionary</span><span class="p">];</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="n">self</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="o">+</span> <span class="p">(</span><span class="o">&lt;</span><span class="err">#</span><span class="n">SubUnit</span><span class="err">#</span><span class="o">&gt;</span><span class="n">Model</span> <span class="o">*</span><span class="p">)</span><span class="n">modelWithDictionary</span><span class="o">:</span><span class="p">(</span><span class="n">NSDictionary</span> <span class="o">*</span><span class="p">)</span><span class="n">dictionary</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="p">[[</span><span class="o">&lt;</span><span class="err">#</span><span class="n">SubUnit</span><span class="err">#</span><span class="o">&gt;</span><span class="n">Model</span> <span class="nf">alloc</span><span class="p">]</span><span class="nf">initWithDictionary</span><span class="p">:</span><span class="n">dictionary</span><span class="p">];</span>
+<span class="p">}</span>
+
+<span class="k">@end</span>
+
+</code></pre>
+</div>
+<ul>
+  <li>和上篇的model相同, 这篇为自动生成子模型. 为了灵活性单独生成.</li>
+</ul>
+
+<p>说实话, 上述的UI层的界面重复的代码写的都快吐了, 开发过程中大多数时间就是花费在搭建UI界面上, 重复劳动, 真是醉了, 还好现在有了代码生成器这种神器, 写界面真的是分分钟搞定, 省下大把时间学习新东西.</p>
+
+<h5 id="configjson">config.json</h5>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="p">{</span><span class="w">
+	</span><span class="nt">"tableViewCell"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Yes"</span><span class="p">,</span><span class="w"> </span><span class="err">//是否生成TableViewCell</span><span class="w">
+	</span><span class="nt">"collectionViewCell"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"No"</span><span class="p">,</span><span class="w"> </span><span class="err">//是否生成CollectionViewCell</span><span class="w">
+	</span><span class="nt">"subview"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"No"</span><span class="p">,</span><span class="w"> </span><span class="err">//是否生成自定义View</span><span class="w">
+	</span><span class="nt">"submodel"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"No"</span><span class="p">,</span><span class="w"> </span><span class="err">//是否生成子Model</span><span class="w">
+	</span><span class="nt">"isImport"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Yes"</span><span class="p">,</span><span class="w"> </span><span class="err">//是否需要导入自定义View</span><span class="w">
+
+	</span><span class="nt">"unit"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"HYBlockFive"</span><span class="p">,</span><span class="w"> </span><span class="err">//生成单元的名称</span><span class="w">
+	</span><span class="nt">"bean"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Goods"</span><span class="p">,</span><span class="w"> </span><span class="err">//生成子模型的名称</span><span class="w">
+	
+	</span><span class="nt">"layout"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="err">//文件布局的配置</span><span class="w">
+		</span><span class="nt">"blockFiveView"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"HYBlockFiveView"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"textLabel"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"UILabel"</span><span class="w">
+	</span><span class="p">},</span><span class="w">
+	
+	</span><span class="nt">"model"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="err">//子模型和上篇模型相同</span><span class="w">
+		</span><span class="nt">"text"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"String"</span><span class="p">,</span><span class="w">
+		</span><span class="nt">"detailText"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"String"</span><span class="p">,</span><span class="w">
+		</span><span class="nt">"imageUrl"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"String"</span><span class="p">,</span><span class="w">
+		</span><span class="nt">"models"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Array"</span><span class="p">,</span><span class="w">
+		</span><span class="nt">"price"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Float"</span><span class="w">
+	</span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre>
+</div>
+<h3 id="生成器的实现">生成器的实现</h3>
+
+<h5 id="builderpy">builder.py</h5>
+
+<div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">os</span><span class="o">,</span> <span class="nn">sys</span><span class="o">,</span> <span class="nn">json</span>
+
+<span class="k">def</span> <span class="nf">cur_file_dir</span><span class="p">():</span>
+   <span class="n">path</span> <span class="o">=</span> <span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+   <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isdir</span><span class="p">(</span><span class="n">path</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">path</span>
+   <span class="k">elif</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isfile</span><span class="p">(</span><span class="n">path</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
+
+<span class="n">file_json</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">cur_file_dir</span><span class="p">()</span> <span class="o">+</span> <span class="s">"/config.json"</span><span class="p">,</span> <span class="s">"r"</span><span class="p">)</span>
+<span class="n">data_json</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">file_json</span><span class="o">.</span><span class="n">read</span><span class="p">())</span>
+
+<span class="n">bean</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">data_json</span><span class="p">[</span><span class="s">"bean"</span><span class="p">])</span>
+<span class="n">unit</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">data_json</span><span class="p">[</span><span class="s">"unit"</span><span class="p">])</span>
+<span class="n">isImport</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">data_json</span><span class="p">[</span><span class="s">"isImport"</span><span class="p">])</span>
+
+<span class="n">submodel</span> <span class="o">=</span> <span class="n">data_json</span><span class="p">[</span><span class="s">"submodel"</span><span class="p">]</span>
+<span class="n">subview</span> <span class="o">=</span> <span class="n">data_json</span><span class="p">[</span><span class="s">"subview"</span><span class="p">]</span>
+<span class="n">tableViewCell</span> <span class="o">=</span> <span class="n">data_json</span><span class="p">[</span><span class="s">"tableViewCell"</span><span class="p">]</span>
+<span class="n">collectionViewCell</span> <span class="o">=</span> <span class="n">data_json</span><span class="p">[</span><span class="s">"collectionViewCell"</span><span class="p">]</span>
+
+<span class="n">viewProperty</span> <span class="o">=</span> <span class="s">''</span> <span class="o">//</span><span class="n">view</span><span class="err">的属性</span>
+<span class="n">viewLazyLoad</span> <span class="o">=</span> <span class="s">''</span> <span class="o">//</span><span class="err">懒加载</span>
+<span class="n">viewSetup</span> <span class="o">=</span> <span class="s">''</span> <span class="o">//</span><span class="err">添加到</span><span class="n">superview</span>
+<span class="n">viewLayout</span> <span class="o">=</span> <span class="s">''</span> <span class="o">//</span><span class="n">view</span><span class="err">的布局</span>
+<span class="n">viewImport</span> <span class="o">=</span> <span class="s">''</span> <span class="o">//</span><span class="err">引入头文件</span>
+<span class="n">classImport</span> <span class="o">=</span> <span class="s">''</span> <span class="o">//</span><span class="err">引入</span><span class="k">class</span>
+<span class="nc">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">data_json</span><span class="p">[</span><span class="s">"layout"</span><span class="p">]:</span> <span class="o">//</span><span class="err">进行布局代码的生成</span>
+   <span class="n">value</span> <span class="o">=</span> <span class="n">data_json</span><span class="p">[</span><span class="s">"layout"</span><span class="p">][</span><span class="n">key</span><span class="p">]</span>
+   <span class="n">viewProperty</span> <span class="o">+=</span> <span class="s">"@property (nonatomic,strong) "</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">value</span><span class="p">)</span> <span class="o">+</span> <span class="s">" * "</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">key</span><span class="p">)</span> <span class="o">+</span> <span class="s">";</span><span class="se">\n</span><span class="s">"</span>
+   <span class="n">viewLazyLoad</span> <span class="o">+=</span> <span class="s">"- ("</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">value</span><span class="p">)</span> <span class="o">+</span> <span class="s">" *)"</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">key</span><span class="p">)</span> <span class="o">+</span> <span class="s">" {</span><span class="se">\n\n</span><span class="s">    if (!_"</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">key</span><span class="p">)</span> <span class="o">+</span> <span class="s">") {</span><span class="se">\n</span><span class="s">        _"</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">key</span><span class="p">)</span> <span class="o">+</span> <span class="s">" = ["</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">value</span><span class="p">)</span> <span class="o">+</span> <span class="s">" new];</span><span class="se">\n</span><span class="s">    }</span><span class="se">\n</span><span class="s">    return _"</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">key</span><span class="p">)</span> <span class="o">+</span> <span class="s">";</span><span class="se">\n</span><span class="s">}</span><span class="se">\n\n</span><span class="s">"</span>
+   <span class="n">viewSetup</span> <span class="o">+=</span> <span class="s">"</span><span class="se">\n</span><span class="s">    [self addSubview:self."</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">key</span><span class="p">)</span> <span class="o">+</span> <span class="s">"];"</span>
+   <span class="n">viewLayout</span> <span class="o">+=</span> <span class="s">"    CGFloat "</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">key</span><span class="p">)</span> <span class="o">+</span> <span class="s">"X = &lt;#length#&gt;;</span><span class="se">\n</span><span class="s">    CGFloat "</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">key</span><span class="p">)</span> <span class="o">+</span> <span class="s">"Y = &lt;#length#&gt;;</span><span class="se">\n</span><span class="s">    CGFloat "</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">key</span><span class="p">)</span> <span class="o">+</span> <span class="s">"W = &lt;#length#&gt;;</span><span class="se">\n</span><span class="s">    CGFloat "</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">key</span><span class="p">)</span> <span class="o">+</span> <span class="s">"H = &lt;#length#&gt;;</span><span class="se">\n</span><span class="s">    _"</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">key</span><span class="p">)</span> <span class="o">+</span> <span class="s">".frame = CGRectMake("</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">key</span><span class="p">)</span> <span class="o">+</span> <span class="s">"X, "</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">key</span><span class="p">)</span> <span class="o">+</span> <span class="s">"Y, "</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">key</span><span class="p">)</span> <span class="o">+</span> <span class="s">"W, "</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">key</span><span class="p">)</span> <span class="o">+</span> <span class="s">"H);</span><span class="se">\n\n</span><span class="s">"</span>
+   <span class="k">if</span> <span class="n">isImport</span> <span class="o">==</span> <span class="s">'Yes'</span><span class="p">:</span>
+      <span class="n">viewImport</span> <span class="o">+=</span> <span class="s">'#import "'</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">value</span><span class="p">)</span> <span class="o">+</span> <span class="s">'.h"</span><span class="se">\n</span><span class="s">'</span>
+      <span class="n">classImport</span> <span class="o">+=</span> <span class="s">'@class '</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">value</span><span class="p">)</span> <span class="o">+</span> <span class="s">';</span><span class="se">\n</span><span class="s">'</span>
+
+<span class="n">model</span> <span class="o">=</span> <span class="s">''</span>
+<span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">data_json</span><span class="p">[</span><span class="s">"model"</span><span class="p">]:</span>
+   <span class="nb">type</span> <span class="o">=</span> <span class="s">''</span>
+   <span class="n">modified</span> <span class="o">=</span> <span class="s">''</span>
+   <span class="n">value</span> <span class="o">=</span> <span class="n">data_json</span><span class="p">[</span><span class="s">"model"</span><span class="p">][</span><span class="n">key</span><span class="p">]</span>
+   <span class="k">if</span> <span class="n">value</span> <span class="o">==</span> <span class="s">'String'</span><span class="p">:</span>
+      <span class="nb">type</span> <span class="o">=</span> <span class="s">'NSString * '</span> 
+      <span class="n">modified</span> <span class="o">=</span> <span class="s">'copy'</span>
+   <span class="k">elif</span> <span class="n">value</span> <span class="o">==</span> <span class="s">'Int'</span><span class="p">:</span>
+   	  <span class="nb">type</span> <span class="o">=</span> <span class="s">'NSInteger '</span>
+   	  <span class="n">modified</span> <span class="o">=</span> <span class="s">'assign'</span>
+   <span class="k">elif</span> <span class="n">value</span> <span class="o">==</span> <span class="s">'Float'</span><span class="p">:</span>
+   	  <span class="nb">type</span> <span class="o">=</span> <span class="s">'CGFloat '</span>
+   	  <span class="n">modified</span> <span class="o">=</span> <span class="s">'assign'</span>
+   <span class="k">elif</span> <span class="n">value</span> <span class="o">==</span> <span class="s">'Bool'</span><span class="p">:</span>
+   	  <span class="nb">type</span> <span class="o">=</span> <span class="s">'BOOL '</span>
+   	  <span class="n">modified</span> <span class="o">=</span> <span class="s">'assign'</span>
+   <span class="k">elif</span> <span class="n">value</span> <span class="o">==</span> <span class="s">'Array'</span><span class="p">:</span>
+   	  <span class="nb">type</span> <span class="o">=</span> <span class="s">'NSArray * '</span>
+   	  <span class="n">modified</span> <span class="o">=</span> <span class="s">'strong'</span>
+   <span class="k">elif</span> <span class="n">value</span> <span class="o">==</span> <span class="s">'Dictionary'</span><span class="p">:</span>
+   	  <span class="nb">type</span> <span class="o">=</span> <span class="s">'NSDictionary * '</span>
+   	  <span class="n">modified</span> <span class="o">=</span> <span class="s">'strong'</span>
+   <span class="k">else</span><span class="p">:</span>
+   	  <span class="nb">type</span> <span class="o">=</span> <span class="n">value</span>
+   	  <span class="n">modified</span> <span class="o">=</span> <span class="s">'strong'</span>
+   <span class="n">model</span> <span class="o">+=</span> <span class="s">'</span><span class="se">\n</span><span class="s">@property (nonatomic,'</span> <span class="o">+</span> <span class="n">modified</span> <span class="o">+</span> <span class="s">') '</span> <span class="o">+</span> <span class="nb">type</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">key</span><span class="p">)</span> <span class="o">+</span> <span class="s">';'</span>
+
+<span class="n">file_json</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+
+<span class="k">def</span> <span class="nf">builder</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="nb">file</span><span class="p">,</span> <span class="n">isbean</span><span class="p">):</span>
+   <span class="n">r</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">cur_file_dir</span><span class="p">()</span> <span class="o">+</span> <span class="s">'/UITemplate/'</span> <span class="o">+</span> <span class="n">path</span><span class="p">,</span> <span class="s">'r'</span><span class="p">)</span>
+   <span class="n">d</span> <span class="o">=</span> <span class="n">r</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+   <span class="n">r</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+   <span class="k">if</span> <span class="n">isbean</span> <span class="o">==</span> <span class="s">'Yes'</span><span class="p">:</span> <span class="o">//</span><span class="err">判断输出的文件名是模型还是其他</span>
+      <span class="n">w</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">cur_file_dir</span><span class="p">()</span> <span class="o">+</span> <span class="s">'/'</span> <span class="o">+</span> <span class="n">bean</span> <span class="o">+</span> <span class="nb">file</span><span class="p">,</span> <span class="s">'w'</span><span class="p">)</span>
+   <span class="k">else</span><span class="p">:</span>
+      <span class="n">w</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">cur_file_dir</span><span class="p">()</span> <span class="o">+</span> <span class="s">'/'</span> <span class="o">+</span> <span class="n">unit</span> <span class="o">+</span> <span class="nb">file</span><span class="p">,</span> <span class="s">'w'</span><span class="p">)</span>
+   <span class="n">w</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">d</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s">"&lt;#ViewProperty#&gt;"</span><span class="p">,</span> <span class="n">viewProperty</span><span class="p">)</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s">"&lt;#Unit#&gt;"</span><span class="p">,</span> <span class="n">unit</span><span class="p">)</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s">"&lt;#ViewLazyLoad#&gt;"</span><span class="p">,</span> <span class="n">viewLazyLoad</span><span class="p">)</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s">"&lt;#ViewSetup#&gt;"</span><span class="p">,</span><span class="n">viewSetup</span><span class="p">)</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s">"&lt;#ViewLayout#&gt;"</span><span class="p">,</span><span class="n">viewLayout</span><span class="p">)</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s">"&lt;#SubUnit#&gt;"</span><span class="p">,</span> <span class="n">bean</span><span class="p">)</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s">"&lt;#ViewImport#&gt;"</span><span class="p">,</span> <span class="n">viewImport</span><span class="p">)</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s">"&lt;#ModelInterface#&gt;"</span><span class="p">,</span> <span class="n">model</span><span class="p">)</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s">"&lt;#ClassImport#&gt;"</span><span class="p">,</span> <span class="n">classImport</span><span class="p">))</span>
+   <span class="n">w</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+
+<span class="k">if</span> <span class="n">subview</span> <span class="o">==</span> <span class="s">"Yes"</span><span class="p">:</span> <span class="o">//</span><span class="err">生成自定义</span><span class="n">View</span>
+   <span class="n">builder</span><span class="p">(</span><span class="s">"SubviewTemplate.h"</span><span class="p">,</span> <span class="s">"View.h"</span><span class="p">,</span> <span class="s">"No"</span><span class="p">)</span>
+   <span class="n">builder</span><span class="p">(</span><span class="s">"SubviewTemplate.m"</span><span class="p">,</span> <span class="s">"View.m"</span><span class="p">,</span> <span class="s">"No"</span><span class="p">)</span>
+
+<span class="k">if</span> <span class="n">tableViewCell</span> <span class="o">==</span> <span class="s">"Yes"</span><span class="p">:</span> <span class="o">//</span><span class="err">生成</span><span class="n">TableViewCell</span>
+   <span class="n">builder</span><span class="p">(</span><span class="s">"TableViewCellTemplate.h"</span><span class="p">,</span> <span class="s">"Cell.h"</span><span class="p">,</span> <span class="s">"No"</span><span class="p">)</span>
+   <span class="n">builder</span><span class="p">(</span><span class="s">"TableViewCellTemplate.m"</span><span class="p">,</span> <span class="s">"Cell.m"</span><span class="p">,</span> <span class="s">"No"</span><span class="p">)</span>
+   <span class="n">builder</span><span class="p">(</span><span class="s">"CellAdapterTemplate.h"</span><span class="p">,</span> <span class="s">"CellAdapter.h"</span><span class="p">,</span> <span class="s">"No"</span><span class="p">)</span>
+
+<span class="k">if</span> <span class="n">submodel</span> <span class="o">==</span> <span class="s">'Yes'</span><span class="p">:</span> <span class="o">//</span><span class="err">生成子模型</span>
+   <span class="n">builder</span><span class="p">(</span><span class="s">"SubmodelTemplate.h"</span><span class="p">,</span> <span class="s">"Model.h"</span><span class="p">,</span> <span class="s">"Yes"</span><span class="p">)</span>
+   <span class="n">builder</span><span class="p">(</span><span class="s">"SubmodelTemplate.m"</span><span class="p">,</span> <span class="s">"Model.m"</span><span class="p">,</span> <span class="s">"Yes"</span><span class="p">)</span>
+
+<span class="k">if</span> <span class="n">collectionViewCell</span> <span class="o">==</span> <span class="s">'Yes'</span><span class="p">:</span> <span class="o">//</span><span class="err">生成</span><span class="n">CollectionViewCell</span>
+   <span class="n">builder</span><span class="p">(</span><span class="s">"CollectionViewTemplate.h"</span><span class="p">,</span> <span class="s">"View.h"</span><span class="p">,</span> <span class="s">"No"</span><span class="p">)</span>
+   <span class="n">builder</span><span class="p">(</span><span class="s">"CollectionViewTemplate.m"</span><span class="p">,</span> <span class="s">"View.m"</span><span class="p">,</span> <span class="s">"No"</span><span class="p">)</span>
+   <span class="n">builder</span><span class="p">(</span><span class="s">"CollectionViewCellTemplate.h"</span><span class="p">,</span> <span class="s">"Cell.h"</span><span class="p">,</span> <span class="s">"No"</span><span class="p">)</span>
+   <span class="n">builder</span><span class="p">(</span><span class="s">"CollectionViewCellTemplate.m"</span><span class="p">,</span> <span class="s">"Cell.m"</span><span class="p">,</span> <span class="s">"No"</span><span class="p">)</span>
+   <span class="n">builder</span><span class="p">(</span><span class="s">"CellAdapterTemplate.h"</span><span class="p">,</span> <span class="s">"CellAdapter.h"</span><span class="p">,</span> <span class="s">"No"</span><span class="p">)</span>
+
+</code></pre>
+</div>
+<ul>
+  <li>这样通过在终端中 python builder.py, 就能根据JSON表进行UI界面的的生成了.</li>
+</ul>
+
+<h6 id="彩蛋">彩蛋:</h6>
+
+<p>最近需要进行首页的改版, 我就使用这套生成器来练练手, 先贴下产品原型:</p>
+
+<p><img src="http://upload-images.jianshu.io/upload_images/1229762-e8e1b4514ce0c7b9.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="" /></p>
+
+<p>实测完成专题页一共生成53个文件, 仅需修改布局和导入, 完成用时30分钟左右.</p>
+
+<h6 id="代码库">代码库</h6>
+<p>当然我们写代码的时候也不能过分依赖代码生成工具, 我们还需要一些常用的代码库, 将我常用的分享与你.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="c1">//UIView
+</span><span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="n">dealloc</span> <span class="p">{</span>
+<span class="cp">#if DEBUG
+</span>    <span class="n">NSLog</span><span class="p">(</span><span class="s">@"--------"</span><span class="p">);</span>
+    <span class="n">NSLog</span><span class="p">(</span><span class="s">@"%@ - execute %s"</span><span class="p">,</span><span class="n">NSStringFromClass</span><span class="p">([</span><span class="n">self</span> <span class="nf">class</span><span class="p">]),</span><span class="n">__func__</span><span class="p">);</span>
+    <span class="n">NSLog</span><span class="p">(</span><span class="s">@"--------"</span><span class="p">);</span>
+<span class="cp">#endif
+</span><span class="p">}</span>
+
+<span class="o">-</span> <span class="p">(</span><span class="n">instancetype</span><span class="p">)</span><span class="n">initWithFrame</span><span class="o">:</span><span class="p">(</span><span class="n">CGRect</span><span class="p">)</span><span class="n">frame</span> <span class="p">{</span>
+   
+    <span class="n">self</span> <span class="o">=</span> <span class="p">[</span><span class="n">super</span> <span class="nf">initWithFrame</span><span class="p">:</span><span class="n">frame</span><span class="p">];</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">self</span><span class="p">)</span> <span class="p">{</span>
+        <span class="p">[</span><span class="n">self</span> <span class="nf">setupSubviews</span><span class="p">];</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="n">self</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="o">-</span> <span class="p">(</span><span class="n">instancetype</span><span class="p">)</span><span class="n">initWithCoder</span><span class="o">:</span><span class="p">(</span><span class="n">NSCoder</span> <span class="o">*</span><span class="p">)</span><span class="n">coder</span>  <span class="p">{</span>
+   
+    <span class="n">self</span> <span class="o">=</span> <span class="p">[</span><span class="n">super</span> <span class="nf">initWithCoder</span><span class="p">:</span><span class="n">coder</span><span class="p">];</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">self</span><span class="p">)</span> <span class="p">{</span>
+        <span class="p">[</span><span class="n">self</span> <span class="nf">setupSubviews</span><span class="p">];</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="n">self</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="o">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="n">setupSubviews</span> <span class="p">{</span>
+   
+<span class="p">}</span>
+
+<span class="o">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="n">loadSubviews</span><span class="o">:</span><span class="p">(</span><span class="n">id</span><span class="p">)</span><span class="n">dataSource</span> <span class="p">{</span>
+   
+<span class="p">}</span>
+
+<span class="o">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="n">layoutSubviews</span> <span class="p">{</span>
+    <span class="p">[</span><span class="n">super</span> <span class="nf">layoutSubviews</span><span class="p">];</span>
+   
+<span class="p">}</span>
+
+<span class="c1">//UITableViewCell
+</span><span class="o">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="n">dealloc</span> <span class="p">{</span>
+<span class="cp">#if DEBUG
+</span>    <span class="n">NSLog</span><span class="p">(</span><span class="s">@"--------"</span><span class="p">);</span>
+    <span class="n">NSLog</span><span class="p">(</span><span class="s">@"%@ - execute %s"</span><span class="p">,</span><span class="n">NSStringFromClass</span><span class="p">([</span><span class="n">self</span> <span class="nf">class</span><span class="p">]),</span><span class="n">__func__</span><span class="p">);</span>
+    <span class="n">NSLog</span><span class="p">(</span><span class="s">@"--------"</span><span class="p">);</span>
+<span class="cp">#endif
+</span><span class="p">}</span>
+
+<span class="o">+</span> <span class="p">(</span><span class="n">instancetype</span><span class="p">)</span><span class="n">cellWithTableView</span><span class="o">:</span><span class="p">(</span><span class="n">UITableView</span> <span class="o">*</span><span class="p">)</span><span class="n">tableView</span> <span class="p">{</span>
+   
+    <span class="n">NSString</span> <span class="o">*</span> <span class="n">identifier</span> <span class="o">=</span> <span class="n">NSStringFromClass</span><span class="p">([</span><span class="o">&lt;</span><span class="err">#</span><span class="n">class</span><span class="err">#</span><span class="o">&gt;</span> <span class="nf">class</span><span class="p">]);</span>
+    <span class="o">&lt;</span><span class="err">#</span><span class="n">class</span><span class="err">#</span><span class="o">&gt;</span> <span class="o">*</span> <span class="n">cell</span> <span class="o">=</span> <span class="p">[</span><span class="n">tableView</span> <span class="nf">dequeueReusableCellWithIdentifier</span><span class="p">:</span><span class="n">identifier</span><span class="p">];</span>
+    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">cell</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">cell</span> <span class="o">=</span> <span class="p">[[</span><span class="o">&lt;</span><span class="err">#</span><span class="n">class</span><span class="err">#</span><span class="o">&gt;</span> <span class="nf">alloc</span><span class="p">]</span><span class="nf">initWithStyle</span><span class="p">:</span><span class="n">UITableViewCellStyleDefault</span> <span class="nf">reuseIdentifier</span><span class="p">:</span><span class="n">identifier</span><span class="p">];</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="n">cell</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="o">-</span> <span class="p">(</span><span class="n">instancetype</span><span class="p">)</span><span class="n">initWithStyle</span><span class="o">:</span><span class="p">(</span><span class="n">UITableViewCellStyle</span><span class="p">)</span><span class="n">style</span> <span class="n">reuseIdentifier</span><span class="o">:</span><span class="p">(</span><span class="n">NSString</span> <span class="o">*</span><span class="p">)</span><span class="n">reuseIdentifier</span> <span class="p">{</span>
+   
+    <span class="n">self</span> <span class="o">=</span> <span class="p">[</span><span class="n">super</span> <span class="nf">initWithStyle</span><span class="p">:</span><span class="n">style</span> <span class="nf">reuseIdentifier</span><span class="p">:</span><span class="n">reuseIdentifier</span><span class="p">];</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">self</span><span class="p">)</span> <span class="p">{</span>
+        <span class="p">[</span><span class="n">self</span> <span class="nf">setupSubviews</span><span class="p">];</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="n">self</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="o">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="n">setupSubviews</span> <span class="p">{</span>
+   
+<span class="p">}</span>
+
+<span class="o">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="n">loadSubviews</span><span class="o">:</span><span class="p">(</span><span class="n">id</span><span class="p">)</span><span class="n">dataSource</span> <span class="p">{</span>
+   
+<span class="p">}</span>
+
+<span class="o">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="n">layoutSubviews</span> <span class="p">{</span>
+    <span class="p">[</span><span class="n">super</span> <span class="nf">layoutSubviews</span><span class="p">];</span>
+   
+<span class="p">}</span>
+
+<span class="o">+</span> <span class="p">(</span><span class="n">CGFloat</span><span class="p">)</span><span class="n">cellHeight</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="o">&lt;</span><span class="err">#</span><span class="n">height</span><span class="err">#</span><span class="o">&gt;</span>
+<span class="p">}</span>
+
+<span class="c1">//Define Peoperty 
+</span><span class="k">@property</span> <span class="p">(</span><span class="n">nonatomic</span><span class="p">,</span><span class="o">&lt;</span><span class="err">#</span><span class="n">modify</span><span class="err">#</span><span class="o">&gt;</span><span class="p">)</span> <span class="o">&lt;</span><span class="err">#</span><span class="n">statement</span><span class="err">#</span><span class="o">&gt;</span><span class="p">;</span>
+
+<span class="c1">//Weak Self
+</span><span class="n">__weak</span> <span class="n">typeof</span><span class="p">(</span><span class="n">self</span><span class="p">)</span> <span class="n">_self</span> <span class="o">=</span> <span class="n">self</span><span class="p">;</span>
+
+<span class="c1">//Lazy Load
+</span><span class="o">-</span> <span class="p">(</span><span class="o">&lt;</span><span class="err">#</span><span class="n">class</span><span class="err">#</span><span class="o">&gt;</span> <span class="o">*</span><span class="p">)</span><span class="o">&lt;</span><span class="err">#</span><span class="n">name</span><span class="err">#</span><span class="o">&gt;</span> <span class="p">{</span>
+   
+    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">_</span><span class="o">&lt;</span><span class="err">#</span><span class="n">name</span><span class="err">#</span><span class="o">&gt;</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">_</span><span class="o">&lt;</span><span class="err">#</span><span class="n">name</span><span class="err">#</span><span class="o">&gt;</span> <span class="o">=</span> <span class="o">&lt;</span><span class="err">#</span><span class="n">initialize</span><span class="err">#</span><span class="o">&gt;</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="n">_</span><span class="o">&lt;</span><span class="err">#</span><span class="n">name</span><span class="err">#</span><span class="o">&gt;</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="c1">//Frame Layout
+</span><span class="n">CGFloat</span> <span class="o">&lt;</span><span class="err">#</span><span class="n">name</span><span class="err">#</span><span class="o">&gt;</span><span class="n">X</span> <span class="o">=</span> <span class="o">&lt;</span><span class="err">#</span><span class="n">length</span><span class="err">#</span><span class="o">&gt;</span><span class="p">;</span>
+<span class="n">CGFloat</span> <span class="o">&lt;</span><span class="err">#</span><span class="n">name</span><span class="err">#</span><span class="o">&gt;</span><span class="n">Y</span> <span class="o">=</span> <span class="o">&lt;</span><span class="err">#</span><span class="n">length</span><span class="err">#</span><span class="o">&gt;</span><span class="p">;</span>
+<span class="n">CGFloat</span> <span class="o">&lt;</span><span class="err">#</span><span class="n">name</span><span class="err">#</span><span class="o">&gt;</span><span class="n">W</span> <span class="o">=</span> <span class="o">&lt;</span><span class="err">#</span><span class="n">length</span><span class="err">#</span><span class="o">&gt;</span><span class="p">;</span>
+<span class="n">CGFloat</span> <span class="o">&lt;</span><span class="err">#</span><span class="n">name</span><span class="err">#</span><span class="o">&gt;</span><span class="n">H</span> <span class="o">=</span> <span class="o">&lt;</span><span class="err">#</span><span class="n">length</span><span class="err">#</span><span class="o">&gt;</span><span class="p">;</span>
+<span class="n">_</span><span class="o">&lt;</span><span class="err">#</span><span class="n">name</span><span class="err">#</span><span class="o">&gt;</span><span class="p">.</span><span class="n">frame</span> <span class="o">=</span> <span class="n">CGRectMake</span><span class="p">(</span><span class="o">&lt;</span><span class="err">#</span><span class="n">name</span><span class="err">#</span><span class="o">&gt;</span><span class="n">X</span><span class="p">,</span> <span class="o">&lt;</span><span class="err">#</span><span class="n">name</span><span class="err">#</span><span class="o">&gt;</span><span class="n">Y</span><span class="p">,</span> <span class="o">&lt;</span><span class="err">#</span><span class="n">name</span><span class="err">#</span><span class="o">&gt;</span><span class="n">W</span><span class="p">,</span> <span class="o">&lt;</span><span class="err">#</span><span class="n">name</span><span class="err">#</span><span class="o">&gt;</span><span class="n">H</span><span class="p">);</span>
+
+<span class="c1">//Debug
+</span><span class="cp">#if DEBUG
+</span>    <span class="n">NSLog</span><span class="p">(</span><span class="s">@"--------"</span><span class="p">);</span>
+    <span class="n">NSLog</span><span class="p">(</span><span class="err">@“</span><span class="o">&lt;</span><span class="err">#</span><span class="n">string</span><span class="err">#</span><span class="o">&gt;</span>  <span class="o">-</span> <span class="o">%&lt;</span><span class="err">#</span><span class="n">encode</span><span class="err">#</span><span class="o">&gt;</span><span class="s">",&lt;#param#&gt;);</span><span class="err">
+</span><span class="s">    NSLog(@"</span><span class="o">--------</span><span class="s">");</span><span class="err">
+</span><span class="s">#endif</span><span class="err">
+
+</span><span class="s">//KeyBoard Events</span><span class="err">
+</span><span class="s">- (void)setupNotificationCenter {</span><span class="err">
+</span><span class="s">    [[NSNotificationCenter defaultCenter] addObserver:self</span><span class="err">
+</span><span class="s">                                             selector:@selector(keyboardWillChangeFrame:)</span><span class="err">
+</span><span class="s">                                                 name:UIKeyboardWillChangeFrameNotification object:nil];</span><span class="err">
+</span><span class="s">}</span><span class="err">
+
+</span><span class="s">- (void)removeNotificationCenter {</span><span class="err">
+</span><span class="s">    [[NSNotificationCenter defaultCenter]removeObserver:self];</span><span class="err">
+</span><span class="s">}</span><span class="err">
+
+</span><span class="s">- (void)keyboardWillChangeFrame:(NSNotification *)notification {</span><span class="err">
+</span><span class="s">   </span><span class="err">
+</span><span class="s">    &lt;#view#&gt;.backgroundColor = self.backgroundColor;</span><span class="err">
+</span><span class="s">    CGFloat duration = [notification.userInfo[UIKeyboardAnimationDurationUserInfoKey] doubleValue];</span><span class="err">
+</span><span class="s">    CGRect keyboardFrame = [notification.userInfo[UIKeyboardFrameEndUserInfoKey] CGRectValue];</span><span class="err">
+</span><span class="s">    CGFloat transformY = keyboardFrame.origin.y - &lt;#view#&gt;.frame.size.height;</span><span class="err">
+</span><span class="s">    [UIView animateWithDuration:duration animations:^{</span><span class="err">
+</span><span class="s">        &lt;#view#&gt;.transform = CGAffineTransformMakeTranslation(0, transformY * 0.4f);</span><span class="err">
+</span><span class="s">    }];</span><span class="err">
+</span><span class="s">}</span><span class="err">
+</span></code></pre>
+</div>
+<p>可以发现, 这次的UI界面生成器就是根据我常用的代码库制作的, 以后就可以以生成为主, 代码库为辅了, 哈哈!</p>
+
+<h5 id="github-下载地址">github 下载地址!!!</h5>
+<p><img src="http://upload-images.jianshu.io/upload_images/1229762-0a46036fb613eb0f.jpeg!heading?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="" />
+ <a href="https://github.com/coderZsq/coderZsq.project.oc">具体源码及SQTemplates Demo 请到github上进行下载! 喜欢的朋友送下小星星哟!!</a></p>
+
+  </section>
+</article>
+
+<section class="read-more">
+   
+   
+   <div class="read-more-item">
+       <span class="read-more-item-dim">最近的文章</span>
+       <h2 class="post-list__post-title post-title"><a href="/2017/05/SpriteKit-%E9%80%9A%E8%BF%87%E6%A3%80%E6%B5%8B%E6%8E%A9%E7%A0%81%E8%BF%9B%E8%A1%8C%E7%89%A9%E7%90%86%E8%AF%86%E5%88%AB/" title="link to SpriteKit 通过检测掩码进行物理识别">SpriteKit 通过检测掩码进行物理识别</a></h2>
+       <p class="excerpt">  上周忙着写代码生成器了, 回到我们的学习中来, 今天我们来继续学习SpriteKit, 上篇我们学习了一些2D游戏场景, 精灵, 摄像头, 行动的基本概念, 今天我们就来进入物理的世界, 感受碰撞所带来的乐趣.代码见:githubiOS7有出过UIDynamic, 用于UIVIew的物理动画效果, 同期Apple也出了SpriteKit框架, 到现在也已经3个年头了, 我们学习SpriteKit的目的也在于更好的对UIKit进行了解. 也算是一条技术进阶的路吧, 我们先来看一下学习物理...&hellip;</p>
+       <div class="post-list__meta"><time datetime="2017-05-18 16:38:00 +0800" class="post-list__meta--date date">2017-05-18</time> &#8226; <span class="post-list__meta--tags tags">移动开发</span><a class="btn-border-small" href=/2017/05/SpriteKit-%E9%80%9A%E8%BF%87%E6%A3%80%E6%B5%8B%E6%8E%A9%E7%A0%81%E8%BF%9B%E8%A1%8C%E7%89%A9%E7%90%86%E8%AF%86%E5%88%AB/>继续阅读</a></div>
+   </div>
+   
+   
+   
+   
+   <div class="read-more-item">
+       <span class="read-more-item-dim">更早的文章</span>
+       <h2 class="post-list__post-title post-title"><a href="/2017/05/iOS-%E6%89%A7%E8%A1%8C.py%E8%84%9A%E6%9C%AC%E7%94%9F%E6%88%90%E8%A7%A3%E8%80%A6%E6%9E%B6%E6%9E%84/" title="link to iOS 执行.py脚本生成解耦架构">iOS 执行.py脚本生成解耦架构</a></h2>
+       <p class="excerpt">  刚刚学习完SpriteKit的第一章, 项目的需求就压过来了, 诶, 时间都去哪啦, 接着之前的热修复架构, 这次为了更加好的进行代码规范, 我们将之间的架构模式进行模板代码生成, 这里会用到一些简单的python, 没接触过的同学们可以先去了解下, 今天我就将零耦合代码生成工具分享与你.参考链接:  Hybird 搭建零耦合架构从MVC开始  Hybird 搭建后端Koa.js并过度到MVVM  Hybird 搭建前端Vue.js并升级至MVP  Hybird 搭建路由Router实...&hellip;</p>
+       <div class="post-list__meta"><time datetime="2017-05-10 16:50:00 +0800" class="post-list__meta--date date">2017-05-10</time> &#8226; <span class="post-list__meta--tags tags">移动开发</span><a class="btn-border-small" href=/2017/05/iOS-%E6%89%A7%E8%A1%8C.py%E8%84%9A%E6%9C%AC%E7%94%9F%E6%88%90%E8%A7%A3%E8%80%A6%E6%9E%B6%E6%9E%84/>继续阅读</a></div>
+   </div>
+   
+</section>
+
+<section class="post-comments">
+  
+  
+  
+  
+</section>
+
+
+            <section class="footer">
+    <footer>
+    	<span class="footer__copyright">本站点采用<a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">知识共享 署名-非商业性使用-相同方式共享 4.0 国际 许可协议</a></span>
+        <span class="footer__copyright">由 <a href="https://jekyllrb.com">Jekyll</a> 于 2017-12-17 生成，感谢 <a href="https://www.digitalocean.com/?refcode=30ed2d146762">Digital Ocean</a> 为本站提供稳定的 VPS 服务</span>
+        <span class="footer__copyright">本站由 <a href="https://github.com/coderZsq">@Castie!</a> 创建，采用 <a href="https://github.com/onevcat/vno-jekyll">Vno - Jekyll</a> 作为主题，您可以在 GitHub 找到<a href="https://github.com/onevcat/OneV-s-Den">本站源码</a> - &copy; 2017</span>
+    </footer>
+</section>
+
+        </div>
+    </div>
+    
+    <script type="text/javascript" src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+
+<script type="text/javascript" src="/js/main.js"></script>
+
+
+
+    
+  </body>
+
+</html>
