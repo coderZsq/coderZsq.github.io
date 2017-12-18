@@ -324,9 +324,9 @@ git push origin gh-pages
 
 诶... 砍砍杀杀这种见血的多不好, 诛心才是我们行走江湖的第一要诀不是么? ... 诛什么心, 还是修心吧, 最近不是流行什么`佛系`云云... `善哉`...
 
-最后声明: 以后文章首发地址更改为[https://github.com/coderZsq/coderZsq.github.io](https://github.com/coderZsq/coderZsq.github.io) 我这里精编了目录记录我的学习和成长, 虽然很`肤浅`但是很开心~~
-
 ![](http://upload-images.jianshu.io/upload_images/1229762-f3593bc6698ef19e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+
+最后声明: 以后文章首发地址更改为[https://github.com/coderZsq/coderZsq.github.io](https://github.com/coderZsq/coderZsq.github.io) 我这里精编了目录记录我的学习和成长, 虽然很`肤浅`但是很开心~~
 
 
 ![点击下方链接跳转!!](http://upload-images.jianshu.io/upload_images/1229762-3f8925783027b3fa.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
