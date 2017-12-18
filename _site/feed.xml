@@ -5,9 +5,347 @@
     <description>北冥有鱼，其名为鲲（kūn）。鲲之大，不知其几千里也；化而为鸟，其名为鹏。鹏之背，不知其几千里也；怒而飞，其翼若垂天之云。是鸟也，海运则将徙于南冥。南冥者，天池也。</description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Sun, 17 Dec 2017 11:12:56 +0800</pubDate>
-    <lastBuildDate>Sun, 17 Dec 2017 11:12:56 +0800</lastBuildDate>
+    <pubDate>Mon, 18 Dec 2017 22:22:12 +0800</pubDate>
+    <lastBuildDate>Mon, 18 Dec 2017 22:22:12 +0800</lastBuildDate>
     <generator>Jekyll v3.4.0</generator>
+    
+      <item>
+        <title>Web 将博客迁移至GitHubPages</title>
+        <description>&lt;blockquote&gt;
+  &lt;p&gt;前段时间简书&lt;a href=&quot;https://www.jianshu.com/u/rHypHw&quot;&gt;饱醉豚&lt;/a&gt;诋毁程序员的事件导致大量我关注的大佬纷纷同一时间离开简书, 为了表示了对在简书CEO&lt;a href=&quot;http://www.jianshu.com/u/y3Dbcz&quot;&gt;简叔&lt;/a&gt;的一文&lt;a href=&quot;http://www.jianshu.com/p/eba255074765&quot;&gt;饱醉豚对简书的意义&lt;/a&gt;的无声的抗议吧.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/1229762-8eec1ee0477e4a9f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;对于这个事件有些大佬很愤慨, 比如&lt;a href=&quot;http://www.jianshu.com/c/d0e03deec61e&quot;&gt;饱且撑着&lt;/a&gt;中收录的长文, 也有些默默的迁移到其他平台, 留下一段链接, 不带走一片云彩.&lt;/p&gt;
+
+&lt;p&gt;当然简书官方眼看事情闹大, 可能是想尽快平息事件, 连续发布了两篇公告 &lt;code class=&quot;highlighter-rouge&quot;&gt;--&amp;gt;&lt;/code&gt; &lt;a href=&quot;https://www.jianshu.com/p/56e59acbf2e3&quot;&gt;关于简书签约作者饱醉豚违反简书社区原则的公示说明&lt;/a&gt;, &lt;a href=&quot;https://www.jianshu.com/p/8a736f64f509&quot;&gt;关于「作者饱醉豚违反简书社区规则」事件的后续处理公告&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;当然先在这里吐个槽:&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;牢记简书 “全民创作” 的初心和使命。如果哪天简书开始封杀饱醉豚，那将是偏离初心的开端。如果仅仅因为饱醉豚的存在而导致简书无法增长，那一定是我们产品出现了问题。&lt;/code&gt; 选自: &lt;a href=&quot;http://www.jianshu.com/p/eba255074765&quot;&gt;简叔 饱醉豚对简书的意义&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;签约作者饱醉豚违反简书社区原则的行为，简书认定属实，正式解除饱醉豚的签约作者身份，并给予警告。&lt;/code&gt; 选自: &lt;a href=&quot;http://www.jianshu.com/p/56e59acbf2e3&quot;&gt;关于简书签约作者饱醉豚违反简书社区原则的公示说明&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;打脸什么的我就不说了, &lt;code class=&quot;highlighter-rouge&quot;&gt;封杀&lt;/code&gt;和&lt;code class=&quot;highlighter-rouge&quot;&gt;正式解除&lt;/code&gt;? 这是使用&lt;code class=&quot;highlighter-rouge&quot;&gt;语言的模糊性&lt;/code&gt;来欺瞒广大的读者朋友么? &lt;code class=&quot;highlighter-rouge&quot;&gt;仅仅因为饱醉豚的存在而导致简书无法增长&lt;/code&gt;?, 这个&lt;code class=&quot;highlighter-rouge&quot;&gt;仅仅&lt;/code&gt;两字的使用真是恰到好处, 妙哉, 妙哉!&lt;/p&gt;
+
+&lt;p&gt;当然对于我使用信息论的观点进行&lt;code class=&quot;highlighter-rouge&quot;&gt;带节奏&lt;/code&gt;的行为, 我也不会谴责自己的, 嘿嘿…&lt;/p&gt;
+
+&lt;p&gt;对此, 我也来说说我的看法(其实我对于这种诋毁是&lt;code class=&quot;highlighter-rouge&quot;&gt;没有什么观点&lt;/code&gt;的, 但为了&lt;code class=&quot;highlighter-rouge&quot;&gt;蹭下热度&lt;/code&gt;还是说说吧, 谁叫一些大佬随便写一篇&lt;code class=&quot;highlighter-rouge&quot;&gt;离开简书&lt;/code&gt;都能够上&lt;code class=&quot;highlighter-rouge&quot;&gt;首页投稿&lt;/code&gt;).&lt;/p&gt;
+
+&lt;p&gt;好了, 我来认真谈谈这个问题(让我好好蹭蹭热度, 别凉了), 我是&lt;code class=&quot;highlighter-rouge&quot;&gt;2016&lt;/code&gt;年入驻简书的, 那时候还是一个刚刚成为&lt;code class=&quot;highlighter-rouge&quot;&gt;程序员的新兵&lt;/code&gt;(为什么不用菜鸟来描述? 因为我现在依然是个&lt;code class=&quot;highlighter-rouge&quot;&gt;菜鸟&lt;/code&gt;啊!), 不过在简书写文章的岁月中, 对自己的成长还是有一定程度的帮助的(当然也不是说简书有多牛什么的, 其实简书&lt;code class=&quot;highlighter-rouge&quot;&gt;并没有什么&lt;/code&gt;实质性的帮助), 其实自己写作的时候会对于自己学习到的知识&lt;code class=&quot;highlighter-rouge&quot;&gt;进行梳理&lt;/code&gt;, 文章发布后的别人的评论也是对自己最好的&lt;code class=&quot;highlighter-rouge&quot;&gt;及时反馈&lt;/code&gt;, 在简书也认识了很多大佬, 也有机会到&lt;code class=&quot;highlighter-rouge&quot;&gt;京东&lt;/code&gt;及&lt;code class=&quot;highlighter-rouge&quot;&gt;饿了么&lt;/code&gt;这种一线互联网公司进行面试(当然因为&lt;code class=&quot;highlighter-rouge&quot;&gt;水平菜&lt;/code&gt;, 就被拒啦), 当然有机会尝试一下也是极好的, &lt;code class=&quot;highlighter-rouge&quot;&gt;了解了实力上的差距, 也为今后的学习指引了方向&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;说完&lt;code class=&quot;highlighter-rouge&quot;&gt;自我介绍&lt;/code&gt;, 接下来也该进行事件的讲解了, 为了尽可能的穷尽事件的来龙去脉(事实证明 真的是闲的蛋疼!), 我快速翻阅了&lt;a href=&quot;https://www.jianshu.com/u/rHypHw&quot;&gt;饱醉豚&lt;/a&gt;的文章, &lt;code class=&quot;highlighter-rouge&quot;&gt;敏感内容&lt;/code&gt;已经被&lt;code class=&quot;highlighter-rouge&quot;&gt;简书查封&lt;/code&gt;, 看看如下简书想让你看到的:&lt;/p&gt;
+
+&lt;p&gt;本次事件中相关文章的处理如下：&lt;/p&gt;
+
+&lt;p&gt;如下文章经审核判定违反社区规则，依规则予以删除&lt;/p&gt;
+
+&lt;p&gt;   · 饱醉豚：《我不骂程序员低素质，我只是去证明他们是&lt;code class=&quot;highlighter-rouge&quot;&gt;低素质群体&lt;/code&gt;》&lt;/p&gt;
+
+&lt;p&gt;   · 饱醉豚：《为什么有这么蠢的程序员？难道程序员真是&lt;code class=&quot;highlighter-rouge&quot;&gt;低智商福利职业&lt;/code&gt;？》&lt;/p&gt;
+
+&lt;p&gt;   · 饱醉豚：《为什么简书的程序员用户里有那么多&lt;code class=&quot;highlighter-rouge&quot;&gt;mother fucker和恋尸癖&lt;/code&gt;？》&lt;/p&gt;
+
+&lt;p&gt;   · 饱醉豚：《为什么中国的程序员&lt;code class=&quot;highlighter-rouge&quot;&gt;巨婴&lt;/code&gt;这么多》&lt;/p&gt;
+
+&lt;p&gt;2.以下文章经审核判定不违反社区规则，但由于在简书社区造成大范围负面影响，予以删除&lt;/p&gt;
+
+&lt;p&gt;   · 饱醉豚：《为什么程序员是&lt;code class=&quot;highlighter-rouge&quot;&gt;出轨率最高的群体&lt;/code&gt;》&lt;/p&gt;
+
+&lt;p&gt;   · 饱醉豚：《&lt;code class=&quot;highlighter-rouge&quot;&gt;笨到学不懂中学物理&lt;/code&gt;怎么办？&lt;code class=&quot;highlighter-rouge&quot;&gt;逻辑极差&lt;/code&gt;怎么办？当程序员去！》&lt;/p&gt;
+
+&lt;p&gt;3.以下文章经审核判定不违反社区规则，不删除&lt;/p&gt;
+
+&lt;p&gt;   · 简叔：《饱醉豚对简书的意义》&lt;/p&gt;
+
+&lt;p&gt;4.其他涉嫌违规的文章仍然在紧张排查中，简书内容审核人员将逐步进行删除，在此不予以一一公告&lt;/p&gt;
+
+&lt;p&gt;上述摘自: &lt;a href=&quot;http://www.jianshu.com/p/8a736f64f509&quot;&gt;关于「作者饱醉豚违反简书社区规则」事件的后续处理公告&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;关于上述内容, 已经被简书官方删除了, 当然在删除之前我也点进去看了一下(谁都有一颗八卦的心不是么), 内容其实感觉和鸡肋一般食之无味, 既没有&lt;code class=&quot;highlighter-rouge&quot;&gt;形式主义&lt;/code&gt;的文笔, 也没有&lt;code class=&quot;highlighter-rouge&quot;&gt;走心走肾&lt;/code&gt;的内容, 真怀疑是怎么当上&lt;code class=&quot;highlighter-rouge&quot;&gt;签约作者&lt;/code&gt;的, 还有简叔的力挺? 真是怪哉, 怪哉…&lt;/p&gt;
+
+&lt;p&gt;可能是这两天有什么事情打击到他了吧, 不然怎么会有勇气去攻击一个团体, 要不就是&lt;code class=&quot;highlighter-rouge&quot;&gt;和简书合作&lt;/code&gt;为了迅速提高自己的热度? 细想我X,果然跑流量啊!! (诶.. 我这种阴谋论和厚黑学…)&lt;/p&gt;
+
+&lt;p&gt;来看看&lt;a href=&quot;https://www.jianshu.com/u/rHypHw&quot;&gt;饱醉豚&lt;/a&gt;最热的一篇文章好了 &lt;code class=&quot;highlighter-rouge&quot;&gt;--&amp;gt;&lt;/code&gt; &lt;a href=&quot;http://www.jianshu.com/p/faa6359b4ef3&quot;&gt;毁掉你的不是高房价，而是你自己&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;170k&lt;/code&gt;人阅读, &lt;code class=&quot;highlighter-rouge&quot;&gt;2k&lt;/code&gt;人评论, &lt;code class=&quot;highlighter-rouge&quot;&gt;4k&lt;/code&gt;人点赞?? 还以为是一篇什么文章, 观其大略简直连鸡汤也算不上啊, 全文&lt;code class=&quot;highlighter-rouge&quot;&gt;单边逻辑&lt;/code&gt;, 没有&lt;code class=&quot;highlighter-rouge&quot;&gt;数据支持&lt;/code&gt;, 没有&lt;code class=&quot;highlighter-rouge&quot;&gt;科学认证&lt;/code&gt;, 就连&lt;code class=&quot;highlighter-rouge&quot;&gt;操纵舆论&lt;/code&gt;的&lt;code class=&quot;highlighter-rouge&quot;&gt;说服能力&lt;/code&gt;也是&lt;code class=&quot;highlighter-rouge&quot;&gt;极其低下&lt;/code&gt;的, 这样的文章代表了简书的&lt;code class=&quot;highlighter-rouge&quot;&gt;实力展现&lt;/code&gt;, 相信也能想象&lt;a href=&quot;https://www.jianshu.com/u/rHypHw&quot;&gt;饱醉豚&lt;/a&gt;的关注人群了, 果然认知水平需要提升啊.&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;高度契合简书 “真实、新鲜、多元 ” 的内容主张&lt;/code&gt;, 我是看出了简书的内容主张了, &lt;code class=&quot;highlighter-rouge&quot;&gt;所谓真实, 就是逻辑基点基于猜测和想象之上并以为是真的&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;所谓新鲜, 就是对于内容质量毫无追求, 仅仅凭量来达到新鲜&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;所谓多元, 就是接纳各种黑子喷子的节奏, 不经自己的价值过滤而内化自身的行为&lt;/code&gt;, 果然只能说是人各有志吧.&lt;/p&gt;
+
+&lt;p&gt;其实, 我感觉大量的大佬出走, 并不是因为程序员这个群体&lt;code class=&quot;highlighter-rouge&quot;&gt;一碰就炸&lt;/code&gt;, 可能是如我上述而言和简书的&lt;code class=&quot;highlighter-rouge&quot;&gt;价值观不符&lt;/code&gt;吧, 大佬们都是一些&lt;code class=&quot;highlighter-rouge&quot;&gt;正直善良&lt;/code&gt;的人, 像我这种道德底线低下的程序员, 可能最应该被&lt;a href=&quot;https://www.jianshu.com/u/rHypHw&quot;&gt;饱醉豚&lt;/a&gt;抨击吧, 来啊! 对&lt;code class=&quot;highlighter-rouge&quot;&gt;A&lt;/code&gt;啊!, 就用你最擅长的文字&lt;code class=&quot;highlighter-rouge&quot;&gt;羞辱&lt;/code&gt;你!&lt;/p&gt;
+
+&lt;p&gt;诶… 好了好了, 不蹭热度了, 真是有够闲的, 读到这里, 你以为是一篇水文当然就错了, 因为&lt;code class=&quot;highlighter-rouge&quot;&gt;大反转&lt;/code&gt;才是世间运行的要义啊!&lt;/p&gt;
+
+&lt;h4 id=&quot;github-pages&quot;&gt;GitHub Pages&lt;/h4&gt;
+
+&lt;p&gt;今天要分享给大家的是&lt;a href=&quot;https://pages.github.com/&quot;&gt;GitHub Pages&lt;/a&gt;的使用.&lt;/p&gt;
+
+&lt;p&gt;新学习一个技术首先就要看&lt;a href=&quot;https://pages.github.com/&quot;&gt;官方文档&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/1229762-e6f3e774eb4bf905.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;第一步: 创建一个GitHub仓库名字叫&lt;code class=&quot;highlighter-rouge&quot;&gt;coderZsq&lt;/code&gt;.github.io, 其中着重符为GitHub用户名, 后面的是一定要这样写(不要问我为什么, 问了我也不知道.)&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/1229762-63c7005163f02347.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;第二步: 通过终端克隆仓库到本地.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/1229762-8e1e17e585d5c5f6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;第三步: 创建一个index.html页面.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/1229762-7580064e9561f14c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;第四步: 将代码推送到远程仓库.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/1229762-2b4f526411de9cc2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;最后: 通过浏览器访问&lt;a href=&quot;https://coderZsq.github.io&quot;&gt;https://coderZsq.github.io&lt;/a&gt;就能够看到我们的网页啦~&lt;/p&gt;
+
+&lt;p&gt;是不是觉得这次分享的东西有点简单, 是的, 就是那么简单, 但要做一个博客的话, 还是要花点心思, 好在有像&lt;a href=&quot;https://jekyllrb.com/&quot;&gt;Jekyll&lt;/a&gt;和&lt;a href=&quot;https://hexo.io/&quot;&gt;Hexo&lt;/a&gt;这类建站工具可以帮我们进行快速的博客搭建.&lt;/p&gt;
+
+&lt;h4 id=&quot;jekyll&quot;&gt;Jekyll&lt;/h4&gt;
+
+&lt;p&gt;去年的时候用过&lt;code class=&quot;highlighter-rouge&quot;&gt;Hexo&lt;/code&gt;做过博客, 但是感觉不是太好, 还有一套&lt;code class=&quot;highlighter-rouge&quot;&gt;hexo&lt;/code&gt;自己的命令, 什么&lt;code class=&quot;highlighter-rouge&quot;&gt;hexo g&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;hexo d&lt;/code&gt;什么的感觉很不好.&lt;/p&gt;
+
+&lt;p&gt;这次我们就用&lt;code class=&quot;highlighter-rouge&quot;&gt;Jekyll&lt;/code&gt;来进行博客的搭建吧!&lt;/p&gt;
+
+&lt;p&gt;和之前一样, 新学习一个技术还是要看&lt;a href=&quot;https://jekyllrb.com/&quot;&gt;官方文档&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/1229762-a5fb758fd82e00e8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;进行这几步就能够生成一个博客? 诶.. 怎么我好想不行啊, 这年头官方文档也坑人啊…&lt;/p&gt;
+
+&lt;p&gt;原来我们没有&lt;code class=&quot;highlighter-rouge&quot;&gt;ruby&lt;/code&gt;环境… 如果你安装过&lt;code class=&quot;highlighter-rouge&quot;&gt;cocoapods&lt;/code&gt;应该就没有这个问题了.&lt;/p&gt;
+
+&lt;h4 id=&quot;ruby&quot;&gt;Ruby&lt;/h4&gt;
+
+&lt;p&gt;以下截取网络&lt;code class=&quot;highlighter-rouge&quot;&gt;ruby环境搭建的文章&lt;/code&gt;:&lt;/p&gt;
+
+&lt;p&gt;步骤0 － 安装系统需要的包&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;# For Mac 
+# 先安装 [Xcode](http://developer.apple.com/xcode/) 开发工具，它将帮你安装好 Unix 环境需要的开发包
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;步骤1 － 安装 RVM&lt;/p&gt;
+
+&lt;p&gt;RVM 是干什么的这里就不解释了，后面你将会慢慢搞明白。&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ curl -L https://get.rvm.io | bash -s stable
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;期间可能会问你sudo管理员密码，以及自动通过homebrew安装依赖包，等待一段时间后就可以成功安装好 RVM。&lt;/p&gt;
+
+&lt;p&gt;然后，载入 RVM 环境（新开 Termal 就不用这么做了，会自动重新载入的）&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ source ~/.rvm/scripts/rvm
+检查一下是否安装正确
+
+$ rvm -v
+rvm 1.22.17 (stable) by Wayne E. Seguin &amp;lt;wayneeseguin@gmail.com&amp;gt;, Michal Papis &amp;lt;mpapis@gmail.com&amp;gt; [https://rvm.io/]
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;步骤2 － 用 RVM 安装 Ruby 环境&lt;/p&gt;
+
+&lt;p&gt;列出已知的ruby版本&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ rvm list known
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;可以选择现有的rvm版本来进行安装（下面以rvm 2.0.0版本的安装为例）&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ rvm install 2.0.0
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;同样继续等待漫长的下载，编译过程，完成以后，Ruby, Ruby Gems 就安装好了。&lt;/p&gt;
+
+&lt;p&gt;另附：&lt;/p&gt;
+
+&lt;p&gt;查询已经安装的ruby&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ rvm list
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;卸载一个已安装版本&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ rvm remove 1.9.2
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;步骤3 － 设置 Ruby 版本&lt;/p&gt;
+
+&lt;p&gt;RVM 装好以后，需要执行下面的命令将指定版本的 Ruby 设置为系统默认版本&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ rvm 2.0.0 --default
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;同样，也可以用其他版本号，前提是你有用 rvm install 安装过那个版本&lt;/p&gt;
+
+&lt;p&gt;这个时候你可以测试是否正确&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ ruby -v
+ruby 2.0.0p247 (2013-06-27 revision 41674) [x86_64-darwin13.0.0]
+
+$ gem -v
+2.1.6
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;这有可能是因为Ruby的默认源使用的是cocoapods.org，国内访问这个网址有时候会有问题，网上的一种解决方案是将远替换成淘宝的，替换方式如下：&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$gem source -r https://rubygems.org/
+$ gem source -a https://ruby.taobao.org
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;要想验证是否替换成功了，可以执行：&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ gem sources -l  
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;正常的输出结果：&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;CURRENT SOURCES　　　　　　　　　　　　
+
+http://ruby.taobao.org/　　　　　　　　　　　　
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;到这里就已经把Ruby环境成功的安装到了Mac OS X上，接下来就可以进行相应的开发使用了。&lt;/p&gt;
+
+&lt;p&gt;有了&lt;code class=&quot;highlighter-rouge&quot;&gt;Ruby&lt;/code&gt;环境, 我们就能够跑刚才的&lt;code class=&quot;highlighter-rouge&quot;&gt;Jekyll&lt;/code&gt;文档上的命令了. 但是跑出来的的网站好丑, 怎么办, 我们需要一套皮肤!!!&lt;/p&gt;
+
+&lt;h4 id=&quot;vno-jeklly&quot;&gt;Vno-Jeklly&lt;/h4&gt;
+
+&lt;p&gt;这里我们就选用&lt;code class=&quot;highlighter-rouge&quot;&gt;喵神&lt;/code&gt;开发的皮肤&lt;code class=&quot;highlighter-rouge&quot;&gt;Vno-Jeklly&lt;/code&gt;进行主题设置吧. 首先我们来看看&lt;code class=&quot;highlighter-rouge&quot;&gt;喵神&lt;/code&gt;的&lt;a href=&quot;http://vno.onevcat.com/2016/02/hello-world-vno/&quot;&gt;文档&lt;/a&gt;&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;Usage
+$ git clone https://github.com/onevcat/vno-jekyll.git your_site
+$ cd your_site
+$ bundler install
+$ bundler exec jekyll serve
+Your site with Vno Jekyll enabled should be accessible in http://127.0.0.1:4000.
+
+Configuration
+All configuration could be done in _config.yml. Remember you need to restart to serve the page when after changing the config file. Everything in the config file should be self-explanatory.
+
+Background image and avatar
+You could replace the background and avatar image in assets/images folder to change them.
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;To add new posts, simply add a file in the _posts directory that follows the convention YYYY-MM-DD-name-of-post.ext and includes the necessary front matter. Take a look at the source for this post to get an idea about how it works.
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;照做后访问&lt;code class=&quot;highlighter-rouge&quot;&gt;http://127.0.0.1:4000&lt;/code&gt;就能够看到欢迎页面.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/1229762-28ba4fd4a5218446.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;我们将其更改后&lt;code class=&quot;highlighter-rouge&quot;&gt;git push&lt;/code&gt;到刚才&lt;code class=&quot;highlighter-rouge&quot;&gt;GitHub Pages&lt;/code&gt;设置的仓库后, 我们就能够看到我们的博客站点啦!!&lt;/p&gt;
+
+&lt;h4 id=&quot;gh-pages&quot;&gt;gh-pages&lt;/h4&gt;
+
+&lt;p&gt;对了, 关注我的朋友们肯定知道我之前有一个&lt;code class=&quot;highlighter-rouge&quot;&gt;H5简历&lt;/code&gt;的一个系列, 我们现在就把它也搭建到&lt;code class=&quot;highlighter-rouge&quot;&gt;github&lt;/code&gt;上.&lt;/p&gt;
+
+&lt;p&gt;那怎么做呢?? &lt;code class=&quot;highlighter-rouge&quot;&gt;coderZsq.github.io&lt;/code&gt;这个&lt;code class=&quot;highlighter-rouge&quot;&gt;GitHub Pages&lt;/code&gt;只有一个啊… 好在还有&lt;code class=&quot;highlighter-rouge&quot;&gt;gh-pages&lt;/code&gt;能够帮我们完成这项任务.&lt;/p&gt;
+
+&lt;p&gt;什么是&lt;code class=&quot;highlighter-rouge&quot;&gt;gh-pages&lt;/code&gt;? 我们来看看&lt;a href=&quot;https://www.npmjs.com/package/gh-pages&quot;&gt;文档&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;原来是创建一个子分支来进行&lt;code class=&quot;highlighter-rouge&quot;&gt;GitHub Pages&lt;/code&gt;啊. &lt;code class=&quot;highlighter-rouge&quot;&gt;SOGA&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;以下截取网络&lt;code class=&quot;highlighter-rouge&quot;&gt;gh-pages分支搭建的文章&lt;/code&gt;:&lt;/p&gt;
+
+&lt;p&gt;在github上建立gh-pages分支&lt;/p&gt;
+
+&lt;p&gt;为什么要建立gh-pages分支呢，因为github项目的静态页面解析需要这个名字的分支&lt;/p&gt;
+
+&lt;p&gt;进入到你想要上传的文件夹下：&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;cd text
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;git初始化&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;git init
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;创建gh-pages分支&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;git checkout --orphan gh-pages
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;添加文件到暂存区&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;git add .
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;添加信息&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;git commit -m &quot;This is add message&quot;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;或者不写上面的&lt;code class=&quot;highlighter-rouge&quot;&gt;git add .&lt;/code&gt;直接写&lt;code class=&quot;highlighter-rouge&quot;&gt; git commit -a -m \&quot;First pages commit\&quot;&lt;/code&gt;这个&lt;code class=&quot;highlighter-rouge&quot;&gt;-a&lt;/code&gt;参数我查了之后说是对&lt;code class=&quot;highlighter-rouge&quot;&gt;git add .&lt;/code&gt;的替代，但我不建议大家使用。&lt;/p&gt;
+
+&lt;p&gt;添加仓库&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;git remote add origin git@github.com:username/project.git
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;部署你的项目到&lt;code class=&quot;highlighter-rouge&quot;&gt;github&lt;/code&gt;&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;git push origin gh-pages
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;我们通过&lt;a href=&quot;https://coderzsq.github.io/2017/07/Web-Vue%E9%A1%B9%E7%9B%AE%E9%80%9F%E8%BD%AC.htm%E9%9D%99%E6%80%81%E7%BD%91%E9%A1%B5/&quot;&gt;Web Vue项目速转.htm静态网页
+&lt;/a&gt;中的方法, 将我们的&lt;code class=&quot;highlighter-rouge&quot;&gt;Vue&lt;/code&gt;项目压成一个静态页面, 并推送到远程的&lt;code class=&quot;highlighter-rouge&quot;&gt;gh-pages&lt;/code&gt;分支, 就搞定啦!&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/1229762-e9c3edaac26e6e1b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;这样我们的简历也通过&lt;code class=&quot;highlighter-rouge&quot;&gt;GitHub Pages&lt;/code&gt;发布到线上啦!! 可以通过&lt;a href=&quot;https://coderzsq.github.io/coderZsq.webpack.js/#/&quot;&gt;https://coderzsq.github.io/coderZsq.webpack.js/#/&lt;/a&gt;进行访问!! 看这个路径就知道和之前创建方法的区别了.&lt;/p&gt;
+
+&lt;h4 id=&quot;最后&quot;&gt;最后&lt;/h4&gt;
+
+&lt;p&gt;到这里, 我感觉已经很详细的讲述了&lt;code class=&quot;highlighter-rouge&quot;&gt;GitHub Pages&lt;/code&gt;如何搭建了, 其实并没有什么技术含量, 只是因为&lt;code class=&quot;highlighter-rouge&quot;&gt;饱醉豚&lt;/code&gt;事件, 不想继续将文章挂靠在简书这个第三方平台了, 还是挂在&lt;code class=&quot;highlighter-rouge&quot;&gt;GitHub Pages&lt;/code&gt;上更为可靠.&lt;/p&gt;
+
+&lt;p&gt;当然简书这里我也会继续更新, 当然首发会在&lt;code class=&quot;highlighter-rouge&quot;&gt;GitHub Pages&lt;/code&gt;上, 简书和掘金只做同步处理. 我才不会因为&lt;code class=&quot;highlighter-rouge&quot;&gt;饱醉豚&lt;/code&gt;这种&lt;code class=&quot;highlighter-rouge&quot;&gt;无脑喷&lt;/code&gt;的影响就让我少了一个推广渠道, 正所谓&lt;code class=&quot;highlighter-rouge&quot;&gt;语言是思想的牢笼&lt;/code&gt;, 才不会和这种只能驾驭低等文字的人一般见识呢. 两般见识怎么样? &lt;code class=&quot;highlighter-rouge&quot;&gt;三板斧&lt;/code&gt;砍死你额!!!&lt;/p&gt;
+
+&lt;p&gt;诶… 砍砍杀杀这种见血的多不好, 诛心才是我们行走江湖的第一要诀不是么? … 诛什么心, 还是修心吧, 最近不是流行什么&lt;code class=&quot;highlighter-rouge&quot;&gt;佛系&lt;/code&gt;云云… &lt;code class=&quot;highlighter-rouge&quot;&gt;善哉&lt;/code&gt;…&lt;/p&gt;
+
+&lt;p&gt;最后声明: 以后文章首发地址更改为&lt;a href=&quot;https://github.com/coderZsq/coderZsq.github.io&quot;&gt;https://github.com/coderZsq/coderZsq.github.io&lt;/a&gt; 我这里精编了目录记录我的学习和成长, 虽然很&lt;code class=&quot;highlighter-rouge&quot;&gt;肤浅&lt;/code&gt;但是很开心~~&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/1229762-f3593bc6698ef19e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/1229762-3f8925783027b3fa.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;点击下方链接跳转!!&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://github.com/coderZsq/coderZsq.webpack.js&quot;&gt;🌟 简历源码 请点这里🌟 »&amp;gt; 喜欢的朋友请点喜欢 »&amp;gt; 下载源码的同学请送下小星星 »&amp;gt; 有闲钱的壕们可以进行打赏 »&amp;gt; 小弟会尽快推出更好的文章和大家分享 »&amp;gt; 你的激励就是我的动力!! &lt;/a&gt;&lt;/p&gt;
+</description>
+        <pubDate>Mon, 18 Dec 2017 15:46:00 +0800</pubDate>
+        <link>http://localhost:4000/2017/12/Web-%E5%B0%86%E5%8D%9A%E5%AE%A2%E8%BF%81%E7%A7%BB%E8%87%B3GitHubPages/</link>
+        <guid isPermaLink="true">http://localhost:4000/2017/12/Web-%E5%B0%86%E5%8D%9A%E5%AE%A2%E8%BF%81%E7%A7%BB%E8%87%B3GitHubPages/</guid>
+        
+        <category>前端开发</category>
+        
+        
+      </item>
     
       <item>
         <title>iOS 关于组件化Router设计的争辩</title>
@@ -4582,200 +4920,6 @@ gulp.task('serve', (cb) =&amp;gt; {
         <guid isPermaLink="true">http://localhost:4000/2017/09/Web-%E4%BD%BF%E7%94%A8gulp%E6%9E%84%E5%BB%BA%E5%89%8D%E7%AB%AF%E9%A1%B9%E7%9B%AE/</guid>
         
         <category>前端开发</category>
-        
-        
-      </item>
-    
-      <item>
-        <title>iOS 移动端生成工具开发</title>
-        <description>&lt;blockquote&gt;
-  &lt;p&gt;上个月的一篇&lt;a href=&quot;http://www.jianshu.com/p/b35d06cf189a&quot;&gt;移动端面向文档开发&lt;/a&gt;一文久违的被编辑推荐到了首页, 也引来了饿了么大神的关注, 虽然最后实力不济未被录用, 但也指明了我前进的方向. 从4月到现在从一个想法到一步步的实现, 感觉自己还是有充足的长进的, 今天我们继续来完善这个项目.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/1229762-6b2c8bed102c297f.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-
-&lt;h6 id=&quot;参考链接&quot;&gt;参考链接:&lt;/h6&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;http://www.jianshu.com/p/47d565bf200e&quot;&gt;iOS 执行.py脚本生成解耦架构&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;http://www.jianshu.com/p/d15379908582&quot;&gt;iOS 执行.py脚本生成UI层结构&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;http://www.jianshu.com/p/b35d06cf189a&quot;&gt;iOS 移动端面向文档开发&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;之前有写过一个python脚本的生成工具, 通过读取json文件进行代码的生成, 实际操作中部分使用者反映, json文件的可读性不是很好(明显是不熟悉json语法导致的), 以及需要生成多平台代码, 所以python并不是很熟练的我, 考虑再三还是写一个oc项目一劳永逸. 本文会涉及到一些平时开发并不会特别关注的知识点, 以及该生成工具的代码设计和使用方法.&lt;/p&gt;
-
-&lt;h4 id=&quot;选择项目类型&quot;&gt;选择项目类型&lt;/h4&gt;
-
-&lt;p&gt;第一个脑中闪现的想法就是使用Command Line Tool命令行工具了, 不就是代码生成吗, 还要开启模拟器? 这不是逗咩…&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/1229762-633eb57502c60a1f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;但我们需要读取Template模板文件, 由于模板文件是不可编译的文件, 所以我们并不能直接将其拖入项目中来, 然后我想那就通过相对路径的方法来读取文件吧, 可惜的是我找了一圈都没有获取当前路径的api, 只有sandbox, 沙盒…&lt;/p&gt;
-
-&lt;p&gt;我想命令行工具还有沙盒这玩意? 好吧, 我试试通过Bundle进行获取吧, 试了很久获取到的都是null, 无语… 到Stack Overflow上一问, 命令行工具不支持自制Bundle的读取, 好吧, 我认了. 但我感觉这只是一个链接的问题, 应该是可以读取的, 可惜找不到可执行的方法, 无奈只有放弃.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/1229762-6b1e477d06602050.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;被迫我们只能够选择Single View Application了, 只是万般无奈啊, 好吧, 对世事的妥协不也是生活中的一部分嘛…&lt;/p&gt;
-
-&lt;h4 id=&quot;选择配置文件&quot;&gt;选择配置文件&lt;/h4&gt;
-
-&lt;p&gt;在配置文件上的选择其实比较简单, 既然是oc的项目, 选择读取最为简单的plist是最好的选择. 同时也比较容易配置.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/1229762-d4c8b910298ae21a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;&quot; /&gt;
-&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/1229762-7df7f7846e1ef1e0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;进行了一些简单的配置, 这部分不是很清晰的同学可以前往 &lt;a href=&quot;http://www.jianshu.com/p/47d565bf200e&quot;&gt;http://www.jianshu.com/p/47d565bf200e&lt;/a&gt; 进行了解.&lt;/p&gt;
-
-&lt;p&gt;配置完plist后我们将之前的模板一起放入bundle并引入工程.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/1229762-ec6f1235005944b3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;知识点: 放入bundle的文件并不会进行编译, 仅作为资源文件存储.&lt;/p&gt;
-
-&lt;h4 id=&quot;选择设计模式&quot;&gt;选择设计模式&lt;/h4&gt;
-
-&lt;p&gt;对于设计模式来说, 确实是看过不少相关类型的书籍, 一些常用的设计模式也是手到擒来, 这不, 对于代码生成工具, 立马能够想到生成器模式, 哈哈, 是工厂模式和装饰模式.&lt;/p&gt;
-
-&lt;p&gt;其实对于这些设计模式的命名其实感觉挺误导人的, 什么责任链咯, 原型什么的, 其实看一遍代码就懂得东西被吹的神神道道, 也是醉了.&lt;/p&gt;
-
-&lt;p&gt;通过设计模式的选择后我们创建了&lt;code class=&quot;highlighter-rouge&quot;&gt;SQBuilder&lt;/code&gt;和&lt;code class=&quot;highlighter-rouge&quot;&gt;SQFileParser&lt;/code&gt;, 前者为工厂模式, 后者为装饰模式.&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;@interface&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;SQBuilder&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;NSObject&lt;/span&gt;
-
-&lt;span class=&quot;k&quot;&gt;@property&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;nonatomic&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;copy&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;NSString&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;user&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;@property&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;nonatomic&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;copy&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;NSString&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;prefix&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;@property&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;nonatomic&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;copy&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;NSString&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;module&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;@property&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;nonatomic&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;strong&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;NSDictionary&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;parameter&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;@property&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;nonatomic&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;strong&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;NSDictionary&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;dataList&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;@property&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;nonatomic&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;strong&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;NSArray&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;actionList&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-
-&lt;span class=&quot;k&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;runWithFileParser&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;NSDictionary&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;config&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;success&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;^&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)())&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;success&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;failure&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;^&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)())&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;failure&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-
-&lt;span class=&quot;k&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;build&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-
-&lt;span class=&quot;k&quot;&gt;@end&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;+ (SQBuilder *)builderWithType:(SQBuilderType)builderType {
-
-    switch (builderType) {
-        case SQBuilderTypeiOS:
-            return [SQBuilder_iOS new];
-            break;
-        case SQBuilderTypeAndroid:
-            return [SQBuilder_Android new];
-            break;
-        case SQBuilderTypeNone:
-            return [SQBuilder new];
-            break;
-        default:
-            break;
-    }
-}
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-&lt;p&gt;SQBuilder的头文件暴露了和plist中需要配置的属性以及加载SQFileParser文件解析类的方法. 通过工厂模式可以分配创建不同的类.&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;@interface&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;SQFileParser&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;NSObject&lt;/span&gt;
-
-&lt;span class=&quot;k&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;NSDictionary&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;parser_plist_r&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-
-&lt;span class=&quot;k&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;parser_rw&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;NSString&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;path&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;code&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;NSString&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;code&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;filename&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;NSString&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;filename&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;header&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;NSString&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;header&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;parameter&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;NSMutableArray&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;parameter&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-
-&lt;span class=&quot;k&quot;&gt;@end&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;[SQBuilder runWithFileParser:[SQFileParser parser_plist_r] success:^{
-    title = @&quot;Build Finished&quot;; message = @&quot;please view the floder on the desktop&quot;;
-} failure:^{
-    title = @&quot;Build Error!!!&quot;; message = @&quot;please enter the right builder type!!&quot;;
-}];
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-&lt;p&gt;SQFileParser的头文件暴露了读取不同文件类型的接口, 后续读取Excel表格类型仅需添加新的类型接口即可.&lt;/p&gt;
-
-&lt;h4 id=&quot;创建文件夹-api&quot;&gt;创建文件夹 Api&lt;/h4&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;NSFileManager * manager = [NSFileManager defaultManager];
-NSString * path = [NSString stringWithFormat:@&quot;/Users/%@/Desktop/%@&quot;, self.user, self.module];
-[manager createDirectoryAtPath:path withIntermediateDirectories:NO attributes:nil error:nil];
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-&lt;p&gt;oc中创建文件夹的方式, 能找到的就只有这个了, 而且只能读取绝对路径, 但又不能读取当前文件路径, mac机的user每台机器都不一样, 真是坑啊, 像文件读写这种东西还是python写最为稳妥.&lt;/p&gt;
-
-&lt;h4 id=&quot;sqfileparser-代码分析&quot;&gt;SQFileParser 代码分析&lt;/h4&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;+ (NSDictionary *)parser_plist_r {
-    
-    NSBundle * bundle = [NSBundle bundleWithPath:[[NSBundle mainBundle] pathForResource:@&quot;builder.bundle&quot; ofType:nil]];
-    return [NSDictionary dictionaryWithContentsOfFile:[bundle pathForResource:@&quot;config/config.plist&quot; ofType:nil]];
-}
-
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-&lt;p&gt;通过子bundle进行读取/config.plist配置文件, 知识点: 当读取bundle深层结构时需要添加文件路径.&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;+ (NSString *)parser_r:(NSString *)filename code:(NSString *)code {
-    
-    NSBundle * bundle = [NSBundle bundleWithPath:[[NSBundle mainBundle] pathForResource:@&quot;builder.bundle&quot; ofType:nil]];
-    return [NSMutableString stringWithContentsOfFile:[bundle pathForResource:[NSString stringWithFormat:@&quot;template/%@/%@&quot;, code, filename] ofType:nil] encoding:NSUTF8StringEncoding error:nil];
-}
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-&lt;p&gt;Templete文件的读取, 和上面的读取plist相同, 并没有什么不同之处.&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;static NSString * code;
-
-+ (NSString *)replaceThougth:(NSString *)templete parameter:(NSMutableArray *)parameter {
-    
-    __block NSString * temp = templete;
-    [[parameter firstObject] enumerateKeysAndObjectsUsingBlock:^(NSString *  _Nonnull key, NSString *  _Nonnull obj, BOOL * _Nonnull stop) {
-        temp = [templete stringByReplacingOccurrencesOfString:key withString:obj];
-    }];
-    [parameter removeObjectAtIndex:0];
-    if (parameter.count) {
-        [SQFileParser replaceThougth:temp parameter:parameter];
-    } else {
-        code = temp;
-    }
-    return code;
-}
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-&lt;p&gt;写入新文件, 这个就要好好讲讲了, NSString的&lt;code class=&quot;highlighter-rouge&quot;&gt;stringByReplacingOccurrencesOfString&lt;/code&gt;方法是会返回一个新的更改后的字符串但并不会改变原指针. 但如果需要替换很多处的话就需要链式调用多次, 真是丑, 一个字概括了所有的观点, 所以我在想有什么方法能够避免这个问题呢? 马上想的就是上述递归调用的方法啦, 哈哈.&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;+ (void)parser_rw:(NSString *)path code:(NSString *)code filename:(NSString *)filename header:(NSString *)header parameter:(NSMutableArray *)parameter {
-
-    NSString * arch = [[filename componentsSeparatedByString:@&quot;.&quot;]firstObject];
-    NSString * suffix = [[filename componentsSeparatedByString:@&quot;.&quot;]lastObject];
-    NSString * filename_r = [NSString stringWithFormat:@&quot;%@Template.%@&quot;, arch,suffix];
-    NSString * filename_w = [NSString stringWithFormat:@&quot;%@/%@%@.%@&quot;, path,header,arch,suffix];
-    NSString * template =  [SQFileParser parser_r:filename_r code:[code lowercaseString]];
-    [[SQFileParser replaceThougth:template parameter:parameter] writeToFile:filename_w atomically:YES encoding:NSUTF8StringEncoding error:nil];
-}
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-&lt;p&gt;这个方法是读写一体的, 根据拿到的配置参数, 拼接出输入文件名和输出文件名, 并进行文件的读取和写入.&lt;/p&gt;
-
-&lt;h4 id=&quot;sqbuilder&quot;&gt;SQBuilder&lt;/h4&gt;
-
-&lt;p&gt;这个其实就没什么好讲的了, 自己去看代码即可, 仅是读取配置参数并动态生成方法的逻辑代码了.&lt;/p&gt;
-
-&lt;h4 id=&quot;如何使用&quot;&gt;如何使用?&lt;/h4&gt;
-
-&lt;p&gt;&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/1229762-fc74bd0c6d91d2af.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;&quot; /&gt;
-&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/1229762-3440afd9c465ff1f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;打开终端输入pwd获取user信息,并填入plist配置文件, 并输入其他参数, 进行&lt;code class=&quot;highlighter-rouge&quot;&gt;Run&lt;/code&gt;即可将代码生成至桌面. 以后开发的时候只需要关注View层, 其他的都不需要操心啦~~&lt;/p&gt;
-
-&lt;p&gt;具体说明可以&lt;a href=&quot;https://github.com/coderZsq/coderZsq.project.oc&quot;&gt;下载SQTemplate&lt;/a&gt;来进行共同探讨.&lt;/p&gt;
-</description>
-        <pubDate>Mon, 21 Aug 2017 11:14:00 +0800</pubDate>
-        <link>http://localhost:4000/2017/08/iOS-%E7%A7%BB%E5%8A%A8%E7%AB%AF%E7%94%9F%E6%88%90%E5%B7%A5%E5%85%B7%E5%BC%80%E5%8F%91/</link>
-        <guid isPermaLink="true">http://localhost:4000/2017/08/iOS-%E7%A7%BB%E5%8A%A8%E7%AB%AF%E7%94%9F%E6%88%90%E5%B7%A5%E5%85%B7%E5%BC%80%E5%8F%91/</guid>
-        
-        <category>移动开发</category>
         
         
       </item>
