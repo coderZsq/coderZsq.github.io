@@ -15,10 +15,10 @@
 
 
 <br/>
-<br/>
 
+#### Latest: [Web 将博客迁移至GitHubPages](https://coderzsq.github.io/2017/12/Web-%E5%B0%86%E5%8D%9A%E5%AE%A2%E8%BF%81%E7%A7%BB%E8%87%B3GitHubPages/)
 
-## Focus areas: App 
+### Focus areas: App 
 
 
 | Technology stack |Language| GitHub repositorie  | Article |
@@ -36,11 +36,9 @@
 | UIWebView |<img src="https://img.shields.io/badge/language-Swift-F4AE59.svg"><br/><img src="https://img.shields.io/badge/language-JavaScript-EFDF70.svg">|[coderZsq.target.swift](https://github.com/coderZsq/coderZsq.target.swift)|[Hybird 说说与Web交互的那些事儿](https://coderzsq.github.io/2017/01/Hybird-%E8%AF%B4%E8%AF%B4%E4%B8%8EWeb%E4%BA%A4%E4%BA%92%E7%9A%84%E9%82%A3%E4%BA%9B%E4%BA%8B%E5%84%BF/)|
 |UIKit|<img src="https://img.shields.io/badge/language-Objective--C-5290F7.svg">|[coderZsq.project.oc](https://github.com/coderZsq/coderZsq.project.oc)|[iOS 做好开工前的准备](https://coderzsq.github.io/2016/05/iOS-%E5%81%9A%E5%A5%BD%E5%BC%80%E5%B7%A5%E5%89%8D%E7%9A%84%E5%87%86%E5%A4%87/)</br>[iOS 集成Reveal UI调试利器](https://coderzsq.github.io/2016/05/iOS-%E9%9B%86%E6%88%90Reveal-UI%E8%B0%83%E8%AF%95%E5%88%A9%E5%99%A8/)<br/>[iOS 投机流实现 无限轮播图](https://coderzsq.github.io/2016/06/iOS-%E6%8A%95%E6%9C%BA%E6%B5%81%E5%AE%9E%E7%8E%B0-%E6%97%A0%E9%99%90%E8%BD%AE%E6%92%AD%E5%9B%BE/)<br/>[iOS 会跳舞的TabbarController](https://coderzsq.github.io/2016/06/iOS-%E4%BC%9A%E8%B7%B3%E8%88%9E%E7%9A%84TabbarController/)<br/>[iOS 超Easy实现 渐变导航栏](https://coderzsq.github.io/2016/06/iOS-%E8%B6%85Easy%E5%AE%9E%E7%8E%B0-%E6%B8%90%E5%8F%98%E5%AF%BC%E8%88%AA%E6%A0%8F/)<br/>[iOS 狂霸酷炫拽之Button动效](https://coderzsq.github.io/2016/07/iOS-%E7%8B%82%E9%9C%B8%E9%85%B7%E7%82%AB%E6%8B%BD%E4%B9%8BButton%E5%8A%A8%E6%95%88/)<br/> [iOS 5行代码搞定全屏Pop转场](https://coderzsq.github.io/2016/07/iOS-5%E8%A1%8C%E4%BB%A3%E7%A0%81%E6%90%9E%E5%AE%9A%E5%85%A8%E5%B1%8FPop%E8%BD%AC%E5%9C%BA/)
 
-
-<br/>
 <br/>
 
-## Focus areas: Web 
+### Focus areas: Web 
 
 | Technology stack|Language | GitHub repositorie  | Article |
 |:-------:|:-------:|:------:|:------:|
@@ -50,15 +48,15 @@
 |Gulp|<img src="https://img.shields.io/badge/language-JavaScript-EFDF70.svg">||[Web 使用gulp构建前端项目](https://coderzsq.github.io/2017/09/Web-%E4%BD%BF%E7%94%A8gulp%E6%9E%84%E5%BB%BA%E5%89%8D%E7%AB%AF%E9%A1%B9%E7%9B%AE/)|
 |Vue|<img src="https://img.shields.io/badge/language-JavaScript-EFDF70.svg"><br/><img src="https://img.shields.io/badge/language-Vue-303E4E.svg">|[coderZsq.webpack.js](https://github.com/coderZsq/coderZsq.webpack.js)|[Web 是时候用前端写个简历了!](https://coderzsq.github.io/2017/07/Web-%E6%98%AF%E6%97%B6%E5%80%99%E7%94%A8%E5%89%8D%E7%AB%AF%E5%86%99%E4%B8%AA%E7%AE%80%E5%8E%86%E4%BA%86!/)<br/>[Web 前端项目要从基本布局开始](https://coderzsq.github.io/2017/07/Web-%E5%89%8D%E7%AB%AF%E9%A1%B9%E7%9B%AE%E8%A6%81%E4%BB%8E%E5%9F%BA%E6%9C%AC%E5%B8%83%E5%B1%80%E5%BC%80%E5%A7%8B/)<br/>[Web 简历一定要设计的美美的](https://coderzsq.github.io/2017/07/Web-%E7%AE%80%E5%8E%86%E4%B8%80%E5%AE%9A%E8%A6%81%E8%AE%BE%E8%AE%A1%E7%9A%84%E7%BE%8E%E7%BE%8E%E7%9A%84/)<br/>[Web 使用Vue代替陈旧的jQuery](https://coderzsq.github.io/2017/07/Web-%E4%BD%BF%E7%94%A8Vue%E4%BB%A3%E6%9B%BF%E9%99%88%E6%97%A7%E7%9A%84jQuery/)<br/>[Web Vue项目速转.htm静态网页](https://coderzsq.github.io/2017/07/Web-Vue%E9%A1%B9%E7%9B%AE%E9%80%9F%E8%BD%AC.htm%E9%9D%99%E6%80%81%E7%BD%91%E9%A1%B5/)|
 
-
-<br/>
 <br/>
 
-## Focus areas: Server 
+### Focus areas: Server 
 
 | Technology stack|Language | GitHub repositorie  | Article |
 |:-------:|:-------:|:------:|:------:|
 |Spring|<img src="https://img.shields.io/badge/language-Java-A8732F.svg">|[coderZsq.maven.java](https://github.com/coderZsq/coderZsq.maven.java)|[Server 入门后端你要学什么](https://coderzsq.github.io/2017/11/Server-%E5%85%A5%E9%97%A8%E5%90%8E%E7%AB%AF%E4%BD%A0%E8%A6%81%E5%AD%A6%E4%BB%80%E4%B9%88/)<br/>[Server 使用Spring来构建服务](https://coderzsq.github.io/2017/11/Server-%E4%BD%BF%E7%94%A8Spring%E6%9D%A5%E6%9E%84%E5%BB%BA%E6%9C%8D%E5%8A%A1/)|
 
 <br/>
-<br/>
+
+#### Reprint:
+本作品由 [Castie!](github.com/coderzsq) 创作，采用[知识共享署名 4.0 国际许可协议](https://creativecommons.org/licenses/by/4.0/)进行许可。
