@@ -59,4 +59,4 @@
 <br/>
 
 #### Reprint:
-本作品由 [Castie!](github.com/coderzsq) 创作，采用[知识共享署名 4.0 国际许可协议](https://creativecommons.org/licenses/by/4.0/)进行许可。
+本作品由 [Castie!](https://github.com/coderZsq) 创作，采用[知识共享署名 4.0 国际许可协议](https://creativecommons.org/licenses/by/4.0/)进行许可。
