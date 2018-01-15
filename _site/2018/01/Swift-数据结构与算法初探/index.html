@@ -146,7 +146,7 @@
             <article class="post-container post-container--single" itemscope itemtype="http://schema.org/BlogPosting">
   <header class="post-header">
     <div class="post-meta">
-      <time datetime="2018-01-15 10:24:00 +0800" itemprop="datePublished" class="post-meta__date date">2018-01-15</time> &#8226; <span class="post-meta__tags tags">移动开发</span>
+      <time datetime="2018-01-15 16:48:00 +0800" itemprop="datePublished" class="post-meta__date date">2018-01-15</time> &#8226; <span class="post-meta__tags tags">移动开发</span>
     </div>
     <h1 class="post-title">Swift 数据结构与算法初探</h1>
   </header>
@@ -1293,6 +1293,100 @@
 </code></pre>
 </div>
 <p>kruskal算法就比较复杂了, 首先我们要将所有边放入待选边集合中, 然后在所有边中选出一条权值最小的边放入已选边集合中, 我们选定了边就选定了点并放入已选点集合, 如此往复, 选择次小的边并获取边和点, 重点是需要判断是否和之前已选的边形成闭环, 如果形成闭环则需要抛弃.需要涉及所有的点, 并合成一个点数组才算完成.</p>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>    <span class="k">let</span> <span class="nv">map_s</span> <span class="o">=</span> <span class="kt">Map</span><span class="o">&lt;</span><span class="kt">String</span><span class="o">&gt;</span><span class="p">(</span><span class="mi">8</span><span class="p">)</span>
+    <span class="n">map_s</span><span class="o">.</span><span class="nf">addNode</span><span class="p">(</span><span class="kt">Node</span><span class="o">&lt;</span><span class="kt">String</span><span class="o">&gt;</span><span class="p">(</span><span class="nv">data</span><span class="p">:</span> <span class="s">"A"</span><span class="p">))</span>
+    <span class="n">map_s</span><span class="o">.</span><span class="nf">addNode</span><span class="p">(</span><span class="kt">Node</span><span class="o">&lt;</span><span class="kt">String</span><span class="o">&gt;</span><span class="p">(</span><span class="nv">data</span><span class="p">:</span> <span class="s">"B"</span><span class="p">))</span>
+    <span class="n">map_s</span><span class="o">.</span><span class="nf">addNode</span><span class="p">(</span><span class="kt">Node</span><span class="o">&lt;</span><span class="kt">String</span><span class="o">&gt;</span><span class="p">(</span><span class="nv">data</span><span class="p">:</span> <span class="s">"C"</span><span class="p">))</span>
+    <span class="n">map_s</span><span class="o">.</span><span class="nf">addNode</span><span class="p">(</span><span class="kt">Node</span><span class="o">&lt;</span><span class="kt">String</span><span class="o">&gt;</span><span class="p">(</span><span class="nv">data</span><span class="p">:</span> <span class="s">"D"</span><span class="p">))</span>
+    <span class="n">map_s</span><span class="o">.</span><span class="nf">addNode</span><span class="p">(</span><span class="kt">Node</span><span class="o">&lt;</span><span class="kt">String</span><span class="o">&gt;</span><span class="p">(</span><span class="nv">data</span><span class="p">:</span> <span class="s">"E"</span><span class="p">))</span>
+    <span class="n">map_s</span><span class="o">.</span><span class="nf">addNode</span><span class="p">(</span><span class="kt">Node</span><span class="o">&lt;</span><span class="kt">String</span><span class="o">&gt;</span><span class="p">(</span><span class="nv">data</span><span class="p">:</span> <span class="s">"F"</span><span class="p">))</span>
+    <span class="n">map_s</span><span class="o">.</span><span class="nf">addNode</span><span class="p">(</span><span class="kt">Node</span><span class="o">&lt;</span><span class="kt">String</span><span class="o">&gt;</span><span class="p">(</span><span class="nv">data</span><span class="p">:</span> <span class="s">"G"</span><span class="p">))</span>
+    <span class="n">map_s</span><span class="o">.</span><span class="nf">addNode</span><span class="p">(</span><span class="kt">Node</span><span class="o">&lt;</span><span class="kt">String</span><span class="o">&gt;</span><span class="p">(</span><span class="nv">data</span><span class="p">:</span> <span class="s">"H"</span><span class="p">))</span>
+    
+    <span class="n">map_s</span><span class="o">.</span><span class="nf">setValueToMatrixForUndirectedGraph</span><span class="p">(</span><span class="nv">row</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="nv">col</span><span class="p">:</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="n">map_s</span><span class="o">.</span><span class="nf">setValueToMatrixForUndirectedGraph</span><span class="p">(</span><span class="nv">row</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="nv">col</span><span class="p">:</span> <span class="mi">3</span><span class="p">)</span>
+    <span class="n">map_s</span><span class="o">.</span><span class="nf">setValueToMatrixForUndirectedGraph</span><span class="p">(</span><span class="nv">row</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="nv">col</span><span class="p">:</span> <span class="mi">2</span><span class="p">)</span>
+    <span class="n">map_s</span><span class="o">.</span><span class="nf">setValueToMatrixForUndirectedGraph</span><span class="p">(</span><span class="nv">row</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="nv">col</span><span class="p">:</span> <span class="mi">5</span><span class="p">)</span>
+    <span class="n">map_s</span><span class="o">.</span><span class="nf">setValueToMatrixForUndirectedGraph</span><span class="p">(</span><span class="nv">row</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span> <span class="nv">col</span><span class="p">:</span> <span class="mi">6</span><span class="p">)</span>
+    <span class="n">map_s</span><span class="o">.</span><span class="nf">setValueToMatrixForUndirectedGraph</span><span class="p">(</span><span class="nv">row</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span> <span class="nv">col</span><span class="p">:</span> <span class="mi">7</span><span class="p">)</span>
+    <span class="n">map_s</span><span class="o">.</span><span class="nf">setValueToMatrixForUndirectedGraph</span><span class="p">(</span><span class="nv">row</span><span class="p">:</span> <span class="mi">6</span><span class="p">,</span> <span class="nv">col</span><span class="p">:</span> <span class="mi">7</span><span class="p">)</span>
+    <span class="n">map_s</span><span class="o">.</span><span class="nf">setValueToMatrixForUndirectedGraph</span><span class="p">(</span><span class="nv">row</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="nv">col</span><span class="p">:</span> <span class="mi">4</span><span class="p">)</span>
+    <span class="n">map_s</span><span class="o">.</span><span class="nf">setValueToMatrixForUndirectedGraph</span><span class="p">(</span><span class="nv">row</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span> <span class="nv">col</span><span class="p">:</span> <span class="mi">5</span><span class="p">)</span>
+
+    <span class="n">map_s</span><span class="o">.</span><span class="nf">printMatrix</span><span class="p">()</span>
+    <span class="cm">/*
+	︵
+	0 1 0 1 0 0 0 0 
+	1 0 1 0 0 1 0 0 
+	0 1 0 0 1 0 0 0 
+	1 0 0 0 0 0 1 1 
+	0 0 1 0 0 1 0 0 
+	0 1 0 0 1 0 0 0 
+	0 0 0 1 0 0 0 1 
+	0 0 0 1 0 0 1 0 
+	︶
+	*/</span>
+    <span class="n">map_s</span><span class="o">.</span><span class="nf">depthFirstTraverse</span><span class="p">(</span><span class="nv">loc</span><span class="p">:</span> <span class="mi">0</span><span class="p">)</span> <span class="c1">//(ABEFDGH)</span>
+    <span class="n">map_s</span><span class="o">.</span><span class="nf">resetNode</span><span class="p">()</span>
+    <span class="n">map_s</span><span class="o">.</span><span class="nf">breadthFirstTraverse</span><span class="p">(</span><span class="nv">loc</span><span class="p">:</span> <span class="mi">0</span><span class="p">)</span> <span class="c1">//(ABDCFGHE)</span>
+
+</code></pre>
+</div>
+<p>最后我们来使用下图这个数据结构, 可以看到图这个数据结构还是和之前所学挺不一样的. 看到了矩阵和深度优先和广度优先的差异.</p>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>    <span class="k">let</span> <span class="nv">map</span> <span class="o">=</span> <span class="kt">Map</span><span class="o">&lt;</span><span class="kt">String</span><span class="o">&gt;</span><span class="p">(</span><span class="mi">6</span><span class="p">)</span>
+    <span class="n">map</span><span class="o">.</span><span class="nf">addNode</span><span class="p">(</span><span class="kt">Node</span><span class="o">&lt;</span><span class="kt">String</span><span class="o">&gt;</span><span class="p">(</span><span class="nv">data</span><span class="p">:</span> <span class="s">"A"</span><span class="p">))</span>
+    <span class="n">map</span><span class="o">.</span><span class="nf">addNode</span><span class="p">(</span><span class="kt">Node</span><span class="o">&lt;</span><span class="kt">String</span><span class="o">&gt;</span><span class="p">(</span><span class="nv">data</span><span class="p">:</span> <span class="s">"B"</span><span class="p">))</span>
+    <span class="n">map</span><span class="o">.</span><span class="nf">addNode</span><span class="p">(</span><span class="kt">Node</span><span class="o">&lt;</span><span class="kt">String</span><span class="o">&gt;</span><span class="p">(</span><span class="nv">data</span><span class="p">:</span> <span class="s">"C"</span><span class="p">))</span>
+    <span class="n">map</span><span class="o">.</span><span class="nf">addNode</span><span class="p">(</span><span class="kt">Node</span><span class="o">&lt;</span><span class="kt">String</span><span class="o">&gt;</span><span class="p">(</span><span class="nv">data</span><span class="p">:</span> <span class="s">"D"</span><span class="p">))</span>
+    <span class="n">map</span><span class="o">.</span><span class="nf">addNode</span><span class="p">(</span><span class="kt">Node</span><span class="o">&lt;</span><span class="kt">String</span><span class="o">&gt;</span><span class="p">(</span><span class="nv">data</span><span class="p">:</span> <span class="s">"E"</span><span class="p">))</span>
+    <span class="n">map</span><span class="o">.</span><span class="nf">addNode</span><span class="p">(</span><span class="kt">Node</span><span class="o">&lt;</span><span class="kt">String</span><span class="o">&gt;</span><span class="p">(</span><span class="nv">data</span><span class="p">:</span> <span class="s">"F"</span><span class="p">))</span>
+        
+    <span class="n">map</span><span class="o">.</span><span class="nf">setValueToMatrixForUndirectedGraph</span><span class="p">(</span><span class="nv">row</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="nv">col</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="nv">val</span><span class="p">:</span> <span class="mi">6</span><span class="p">)</span>
+    <span class="n">map</span><span class="o">.</span><span class="nf">setValueToMatrixForUndirectedGraph</span><span class="p">(</span><span class="nv">row</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="nv">col</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span> <span class="nv">val</span><span class="p">:</span> <span class="mi">5</span><span class="p">)</span>
+    <span class="n">map</span><span class="o">.</span><span class="nf">setValueToMatrixForUndirectedGraph</span><span class="p">(</span><span class="nv">row</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="nv">col</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span> <span class="nv">val</span><span class="p">:</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="n">map</span><span class="o">.</span><span class="nf">setValueToMatrixForUndirectedGraph</span><span class="p">(</span><span class="nv">row</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="nv">col</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="nv">val</span><span class="p">:</span> <span class="mi">3</span><span class="p">)</span>
+    <span class="n">map</span><span class="o">.</span><span class="nf">setValueToMatrixForUndirectedGraph</span><span class="p">(</span><span class="nv">row</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="nv">col</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span> <span class="nv">val</span><span class="p">:</span> <span class="mi">2</span><span class="p">)</span>
+    <span class="n">map</span><span class="o">.</span><span class="nf">setValueToMatrixForUndirectedGraph</span><span class="p">(</span><span class="nv">row</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="nv">col</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span> <span class="nv">val</span><span class="p">:</span> <span class="mi">8</span><span class="p">)</span>
+    <span class="n">map</span><span class="o">.</span><span class="nf">setValueToMatrixForUndirectedGraph</span><span class="p">(</span><span class="nv">row</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="nv">col</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span> <span class="nv">val</span><span class="p">:</span> <span class="mi">7</span><span class="p">)</span>
+    <span class="n">map</span><span class="o">.</span><span class="nf">setValueToMatrixForUndirectedGraph</span><span class="p">(</span><span class="nv">row</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span> <span class="nv">col</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span> <span class="nv">val</span><span class="p">:</span> <span class="mi">4</span><span class="p">)</span>
+    <span class="n">map</span><span class="o">.</span><span class="nf">setValueToMatrixForUndirectedGraph</span><span class="p">(</span><span class="nv">row</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span> <span class="nv">col</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span> <span class="nv">val</span><span class="p">:</span> <span class="mi">2</span><span class="p">)</span>
+    <span class="n">map</span><span class="o">.</span><span class="nf">setValueToMatrixForUndirectedGraph</span><span class="p">(</span><span class="nv">row</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span> <span class="nv">col</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span> <span class="nv">val</span><span class="p">:</span> <span class="mi">9</span><span class="p">)</span>
+        
+    <span class="n">map</span><span class="o">.</span><span class="nf">printMatrix</span><span class="p">()</span>
+    <span class="cm">/*
+    ︵
+    0 6 0 0 5 1 
+    6 0 3 0 0 2 
+    0 3 0 7 0 8 
+    0 0 7 0 2 4 
+    5 0 0 2 0 9 
+    1 2 8 4 9 0 
+    ︶
+    */</span>
+    <span class="n">map</span><span class="o">.</span><span class="nf">primTree</span><span class="p">(</span><span class="nv">loc</span><span class="p">:</span> <span class="mi">0</span><span class="p">)</span>
+    <span class="cm">/*
+    0 5 1
+    5 1 2
+    1 2 3
+    5 3 4
+    3 4 2
+    AFBCDE
+    */</span>
+    <span class="n">map</span><span class="o">.</span><span class="nf">kruskalTree</span><span class="p">()</span>
+    <span class="cm">/*
+    0 5 1
+    1 5 2
+    3 4 2
+    1 2 3
+    3 5 4
+    */</span>
+
+</code></pre>
+</div>
+
+<p>接着我们来看看最小生成树的算法, 可以看到不管是那种算法, 都能够将最小生成树给算出来, 算法真是博大精深啊.</p>
 
 <p>数据结构关键是多练多思考, 有了好的算法思维, 才能够对以后的成长有所帮助!!</p>
 
