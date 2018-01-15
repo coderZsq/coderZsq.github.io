@@ -1,0 +1,1348 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <title>Castie! Notes</title>
+  <meta name="description" content="  去年对设计模式有了一些浅显的知识, 今年来学习下数据结构与算法, 为了学习以后的先进技术打好基础. 本文包括队列, 栈, 线性表, 树, 图, 五个部分来学习编程的基础, 也复习下Swift的语法.">
+  <meta name="author" content="Wei Wang">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Swift 数据结构与算法初探">
+  <meta name="twitter:description" content="  去年对设计模式有了一些浅显的知识, 今年来学习下数据结构与算法, 为了学习以后的先进技术打好基础. 本文包括队列, 栈, 线性表, 树, 图, 五个部分来学习编程的基础, 也复习下Swift的语法.">
+  
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Swift 数据结构与算法初探">
+  <meta property="og:description" content="  去年对设计模式有了一些浅显的知识, 今年来学习下数据结构与算法, 为了学习以后的先进技术打好基础. 本文包括队列, 栈, 线性表, 树, 图, 五个部分来学习编程的基础, 也复习下Swift的语法.">
+  
+  <link rel="icon" type="image/ico" href="/assets/images/favicon.ico" />
+  <link href="/assets/images/favicon.ico" rel="shortcut icon" type="image/ico">
+  
+  <link rel="stylesheet" href="/css/main.css">
+  <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+
+  <link rel="canonical" href="http://localhost:4000/2018/01/Swift-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95%E5%88%9D%E6%8E%A2/">
+  <link rel="alternate" type="application/rss+xml" title="Castie!" href="http://localhost:4000/feed.xml">
+  
+  <meta name="google-site-verification" content="1-1ZlHoRvM0T2FqPbW2S-qLgYXN6rsn52kErlMPd_gw" />
+  
+</head>
+
+
+  <body>
+
+    <span class="mobile btn-mobile-menu">
+        <i class="fa fa-list btn-mobile-menu__icon"></i>
+        <i class="fa fa-angle-up btn-mobile-close__icon hidden"></i>
+    </span>
+    
+    <header class="panel-cover panel-cover--collapsed" style="background-image: url('/assets/images/background-cover.jpg')">
+  <div class="panel-main">
+
+    <div class="panel-main__inner panel-inverted">
+    <div class="panel-main__content">
+
+        <a href="/#blog" title="前往 Castie! 的主页" class="blog-button"><img src="/assets/images/avatar.jpg" width="80" alt="Castie! logo" class="panel-cover__logo logo" /></a>
+        <h1 class="panel-cover__title panel-title"><a href="/#blog" title="link to homepage for Castie!" class="blog-button">Castie!</a></h1>
+        
+        <span class="panel-cover__subtitle panel-subtitle">正态分布, 优劣伴生</span>
+        
+        <hr class="panel-cover__divider" />
+        <p class="panel-cover__description">北冥有鱼，其名为鲲（kūn）。鲲之大，不知其几千里也；化而为鸟，其名为鹏。鹏之背，不知其几千里也；怒而飞，其翼若垂天之云。是鸟也，海运则将徙于南冥。南冥者，天池也。</p>
+        <hr class="panel-cover__divider panel-cover__divider--secondary" />
+        
+        
+        <p class="panel-cover__description">北海若曰：“井鼃不可以语于海者，拘于虚也；夏虫不可以语于冰者，笃于时也；曲士不可以语于道者，束于教也。今尔出于崖涘，观于大海，乃知尔丑，尔将可与语大理矣。</p>
+        
+        
+        <div class="navigation-wrapper">
+          <div>
+            <nav class="cover-navigation cover-navigation--primary">
+              <ul class="navigation">
+                <li class="navigation__item"><a href="/#blog" title="访问博客" class="blog-button">博客</a></li>
+                
+                  <li class="navigation__item"><a href="https://coderzsq.github.io/coderZsq.webpack.js/" target="_blank" title="我的简历">简历</a></li>
+                
+              </ul>
+            </nav>
+          </div>
+          
+          <div><nav class="cover-navigation navigation--social">
+  <ul class="navigation">
+
+    
+    <!-- jianshu-->
+    <li class="navigation__item">
+      <a href="http://www.jianshu.com/u/9d7fad1a4693" title="@coderZsq 的简书" target="_blank">
+        <i class='social fa fa-book'></i>
+        <span class="label">jianshu</span>
+      </a>
+    </li>
+    
+
+    
+    <!-- juejin-->
+    <li class="navigation__item">
+      <a href="https://juejin.im/user/57e735dfa22b9d00614eecb8" title="@coderZsq 的稀土掘金" target="_blank">
+        <i class='social fa fa-align-center'></i>
+        <span class="label">juejin</span>
+      </a>
+    </li>
+    
+
+  
+
+  
+  <!-- Github -->
+  <li class="navigation__item">
+    <a href="https://github.com/coderZsq" title="@coderZsq 的 Github" target="_blank">
+      <i class='social fa fa-github'></i>
+      <span class="label">Github</span>
+    </a>
+  </li>
+  
+
+  
+
+  
+
+  <!-- RSS -->
+  <li class="navigation__item">
+    <a href="/feed.xml" rel="author" title="RSS" target="_blank">
+      <i class='social fa fa-rss'></i>
+      <span class="label">RSS</span>
+    </a>
+  </li>
+
+  
+  <!-- Email -->
+  <li class="navigation__item">
+    <a href="mailto:a13701777868@gmail.com" title="Contact me">
+      <i class='social fa fa-envelope'></i>
+      <span class="label">Email</span>
+    </a>
+  </li>
+  
+
+  </ul>
+</nav>
+</div>
+        </div>
+      </div>
+    </div>
+    
+    
+    <div class="panel-cover--overlay cover-slate"></div>
+    
+  </div>
+</header>
+
+
+    <div class="content-wrapper">
+        <div class="content-wrapper__inner">
+            <article class="post-container post-container--single" itemscope itemtype="http://schema.org/BlogPosting">
+  <header class="post-header">
+    <div class="post-meta">
+      <time datetime="2018-01-15 10:24:00 +0800" itemprop="datePublished" class="post-meta__date date">2018-01-15</time> &#8226; <span class="post-meta__tags tags">移动开发</span>
+    </div>
+    <h1 class="post-title">Swift 数据结构与算法初探</h1>
+  </header>
+
+  <section class="post">
+    <blockquote>
+  <p>去年对设计模式有了一些浅显的知识, 今年来学习下数据结构与算法, 为了学习以后的先进技术打好基础. 本文包括队列, 栈, 线性表, 树, 图, 五个部分来学习编程的基础, 也复习下Swift的语法.</p>
+</blockquote>
+
+<p>数据结构和算法和设计模式相同, 属于编程的软实力, 并不局限于语言, 而着重于思想, 本文就是通过学习总结将C++实现的算法迁移到Swift的过程并了解具体的实现.</p>
+
+<h4 id="队列">队列</h4>
+
+<p>首先, 我们第一个就要学习的就是队列这个数据结构, 队列, 顾名思义就是排队, 也就是先进先出, 我们这里通过Swift来实现一个队列, 来更好的了解这个数据结构.</p>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>    <span class="kd">private</span> <span class="k">var</span> <span class="nv">capacity</span><span class="p">:</span> <span class="kt">Int</span> <span class="c1">//队列的容量大小限制.</span>
+    <span class="kd">private</span> <span class="kd">lazy</span> <span class="k">var</span> <span class="nv">head</span><span class="p">:</span> <span class="kt">Int</span> <span class="o">=</span> <span class="mi">0</span> <span class="c1">//队列头</span>
+    <span class="kd">private</span> <span class="kd">lazy</span> <span class="k">var</span> <span class="nv">tail</span><span class="p">:</span> <span class="kt">Int</span> <span class="o">=</span> <span class="mi">0</span> <span class="c1">//队列尾 </span>
+    <span class="kd">private</span> <span class="kd">lazy</span> <span class="k">var</span> <span class="nv">length</span><span class="p">:</span> <span class="kt">Int</span> <span class="o">=</span> <span class="mi">0</span> <span class="c1">//队列长度</span>
+    <span class="kd">private</span> <span class="kd">lazy</span> <span class="k">var</span> <span class="nv">queue</span><span class="p">:</span> <span class="p">[</span><span class="kt">Element</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="kt">Element</span><span class="p">]()</span> <span class="c1">//队列数组</span>
+</code></pre>
+</div>
+
+<p>我们需要定义一些成员变量来控制这个队列, 我们实现的这个队列比较特殊, 并不是一个线性队列, 而是环形队列, 这样的队列更加适合我们的程序.</p>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>    <span class="nf">init</span><span class="p">(</span><span class="n">_</span> <span class="nv">queueCapacity</span><span class="p">:</span> <span class="kt">Int</span> <span class="o">=</span> <span class="mi">16</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">capacity</span> <span class="o">=</span> <span class="n">queueCapacity</span>
+    <span class="p">}</span>
+    
+    <span class="kd">func</span> <span class="nf">clear</span><span class="p">()</span> <span class="p">{</span>
+        <span class="n">head</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="n">tail</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="n">length</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="p">}</span>
+    
+    <span class="kd">func</span> <span class="nf">isEmpty</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kt">Bool</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="n">length</span> <span class="o">==</span> <span class="mi">0</span> <span class="p">?</span> <span class="nv">true</span> <span class="p">:</span> <span class="kc">false</span>
+    <span class="p">}</span>
+    
+    <span class="kd">func</span> <span class="nf">isFull</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kt">Bool</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="n">length</span> <span class="o">==</span> <span class="n">capacity</span> <span class="p">?</span> <span class="nv">true</span> <span class="p">:</span> <span class="kc">false</span>
+    <span class="p">}</span>
+    
+    <span class="kd">func</span> <span class="nf">size</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kt">Int</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="n">length</span>
+    <span class="p">}</span>
+
+</code></pre>
+</div>
+<p>实现了初始化和一些必要的函数, 这里很容易理解就不过多赘述.</p>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>    <span class="kd">@discardableResult</span> <span class="kd">func</span> <span class="nf">entry</span><span class="p">(</span><span class="n">_</span> <span class="nv">element</span><span class="p">:</span> <span class="kt">Element</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Bool</span> <span class="p">{</span>
+        <span class="k">guard</span> <span class="o">!</span><span class="nf">isFull</span><span class="p">()</span> <span class="k">else</span> <span class="p">{</span> <span class="k">return</span> <span class="kc">false</span> <span class="p">}</span>
+        <span class="n">queue</span><span class="o">.</span><span class="nf">append</span><span class="p">(</span><span class="n">element</span><span class="p">)</span>
+        <span class="n">queue</span><span class="p">[</span><span class="n">tail</span><span class="p">]</span> <span class="o">=</span> <span class="n">element</span>
+        <span class="n">tail</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="n">tail</span> <span class="o">%=</span> <span class="n">capacity</span>
+        <span class="n">length</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="k">return</span> <span class="kc">true</span>
+    <span class="p">}</span>
+    
+    <span class="kd">@discardableResult</span> <span class="kd">func</span> <span class="nf">depart</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kt">Element</span><span class="p">?</span> <span class="p">{</span>
+        <span class="k">guard</span> <span class="o">!</span><span class="nf">isEmpty</span><span class="p">()</span> <span class="k">else</span> <span class="p">{</span> <span class="k">return</span> <span class="kc">nil</span> <span class="p">}</span>
+        <span class="k">let</span> <span class="nv">element</span> <span class="o">=</span> <span class="n">queue</span><span class="p">[</span><span class="n">head</span><span class="p">]</span>
+        <span class="n">head</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="n">head</span> <span class="o">%=</span> <span class="n">capacity</span>
+        <span class="n">length</span> <span class="o">-=</span> <span class="mi">1</span>
+        <span class="k">return</span> <span class="n">element</span>
+    <span class="p">}</span>
+</code></pre>
+</div>
+
+<p>这是对于队列这个数据结构最为重要的两个函数, 进入队列和离开队列, 其实也非常容易理解, 由于是环形队列所以关键点在于<code class="highlighter-rouge">tail %= capacity</code>和<code class="highlighter-rouge">head %= capacity</code>上, 对于取余数的概念其实和之前的<a href="https://coderzsq.github.io/2016/06/iOS-%E6%8A%95%E6%9C%BA%E6%B5%81%E5%AE%9E%E7%8E%B0-%E6%97%A0%E9%99%90%E8%BD%AE%E6%92%AD%E5%9B%BE/">投机流轮播图</a>那篇类似理解即可.</p>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>    <span class="kd">func</span> <span class="nf">traverse</span><span class="p">()</span> <span class="p">{</span>
+        <span class="nf">print</span><span class="p">(</span><span class="s">"︵"</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="k">in</span> <span class="n">head</span><span class="o">..&lt;</span><span class="n">length</span> <span class="o">+</span> <span class="n">head</span> <span class="p">{</span>
+            <span class="nf">print</span><span class="p">(</span><span class="n">queue</span><span class="p">[</span><span class="n">i</span> <span class="o">%</span> <span class="n">capacity</span><span class="p">])</span>
+        <span class="p">}</span>
+        <span class="nf">print</span><span class="p">(</span><span class="s">"︶"</span><span class="p">)</span>
+    <span class="p">}</span>
+</code></pre>
+</div>
+<p>队列遍历的函数, 也和取余数一样, 环形队列的好处和TCP滑动窗口也类似, 可以作为参考.</p>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>    <span class="k">let</span> <span class="nv">queue_i</span> <span class="o">=</span> <span class="kt">Queue</span><span class="o">&lt;</span><span class="kt">Int</span><span class="o">&gt;</span><span class="p">()</span>
+    <span class="n">queue_i</span><span class="o">.</span><span class="nf">entry</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">queue_i</span><span class="o">.</span><span class="nf">entry</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+    <span class="n">queue_i</span><span class="o">.</span><span class="nf">entry</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+    <span class="n">queue_i</span><span class="o">.</span><span class="nf">traverse</span><span class="p">()</span> <span class="c1">// (1, 2, 3)</span>
+    
+    <span class="nf">print</span><span class="p">(</span><span class="n">queue_i</span><span class="o">.</span><span class="nf">depart</span><span class="p">()</span><span class="o">!</span><span class="p">)</span> <span class="c1">//1</span>
+    <span class="n">queue_i</span><span class="o">.</span><span class="nf">traverse</span><span class="p">()</span> <span class="c1">//(2, 3)</span>
+    
+    <span class="nf">print</span><span class="p">(</span><span class="n">queue_i</span><span class="o">.</span><span class="nf">depart</span><span class="p">()</span><span class="o">!</span><span class="p">)</span> <span class="c1">//2</span>
+    <span class="n">queue_i</span><span class="o">.</span><span class="nf">traverse</span><span class="p">()</span> <span class="c1">//(3)</span>
+    
+    <span class="n">queue_i</span><span class="o">.</span><span class="nf">entry</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
+    <span class="n">queue_i</span><span class="o">.</span><span class="nf">entry</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+    <span class="n">queue_i</span><span class="o">.</span><span class="nf">traverse</span><span class="p">()</span> <span class="c1">//(3, 4, 5)</span>
+    
+    <span class="nf">print</span><span class="p">(</span><span class="n">queue_i</span><span class="o">.</span><span class="nf">depart</span><span class="p">()</span><span class="o">!</span><span class="p">)</span> <span class="c1">//3</span>
+    <span class="n">queue_i</span><span class="o">.</span><span class="nf">traverse</span><span class="p">()</span> <span class="c1">//(4, 5)</span>
+</code></pre>
+</div>
+
+<p>队列的实现十分简单, 我们来用一下这个数据结构, 可以看到的确遵循了先进先出的原则, 这也就是队列这个数据结构了.</p>
+
+<h4 id="栈">栈</h4>
+
+<p>接下来, 我们来说说栈, 有了队列的基础, 我们学习栈也并不是那么的费劲, 队列是先进先出, 而队列是先进后出, 区别也就在于此.</p>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>    <span class="kd">private</span> <span class="k">var</span> <span class="nv">capacity</span><span class="p">:</span> <span class="kt">Int</span> <span class="c1">//栈容量</span>
+    <span class="kd">private</span> <span class="kd">lazy</span> <span class="k">var</span> <span class="nv">peek</span><span class="p">:</span> <span class="kt">Int</span> <span class="o">=</span> <span class="mi">0</span> <span class="c1">//栈顶</span>
+    <span class="kd">private</span> <span class="kd">lazy</span> <span class="k">var</span> <span class="nv">buffer</span><span class="p">:</span> <span class="p">[</span><span class="kt">Element</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="kt">Element</span><span class="p">]()</span> <span class="c1">//栈缓冲区</span>
+</code></pre>
+</div>
+
+<p>和学习队列相同, 我们也将成员变量列出来, 能够更好的了解这个数据结构.</p>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>    <span class="kd">@discardableResult</span> <span class="kd">func</span> <span class="nf">push</span><span class="p">(</span><span class="n">_</span> <span class="nv">element</span><span class="p">:</span> <span class="kt">Element</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Bool</span> <span class="p">{</span>
+        <span class="k">guard</span> <span class="o">!</span><span class="nf">isFull</span><span class="p">()</span> <span class="k">else</span> <span class="p">{</span> <span class="k">return</span> <span class="kc">false</span> <span class="p">}</span>
+        <span class="n">buffer</span><span class="o">.</span><span class="nf">append</span><span class="p">(</span><span class="n">element</span><span class="p">)</span>
+        <span class="n">buffer</span><span class="p">[</span><span class="n">peek</span><span class="p">]</span> <span class="o">=</span> <span class="n">element</span>
+        <span class="n">peek</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="k">return</span> <span class="kc">true</span>
+    <span class="p">}</span>
+    
+    <span class="kd">@discardableResult</span> <span class="kd">func</span> <span class="nf">pop</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kt">Element</span><span class="p">?</span> <span class="p">{</span>
+        <span class="k">guard</span> <span class="o">!</span><span class="nf">isEmpty</span><span class="p">()</span> <span class="k">else</span> <span class="p">{</span> <span class="k">return</span> <span class="kc">nil</span> <span class="p">}</span>
+        <span class="n">peek</span> <span class="o">-=</span> <span class="mi">1</span>
+        <span class="k">return</span> <span class="n">buffer</span><span class="p">[</span><span class="n">peek</span><span class="p">]</span>
+    <span class="p">}</span>
+</code></pre>
+</div>
+<p>判空, 判满, 清空, 构造之类的基础函数就带过了, 可以去<a href="https://github.com/coderZsq/coderZsq.target.swift">github</a>上看代码, 我们这里聚焦栈的关键函数, 进栈和出栈. 嗯,看代码就能够了解, 也不过多讲解了.</p>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>    <span class="kd">func</span> <span class="nf">traverse</span><span class="p">(</span><span class="nv">reversed</span><span class="p">:</span> <span class="kt">Bool</span> <span class="o">=</span> <span class="kc">false</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nf">print</span><span class="p">(</span><span class="s">"︵"</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">reversed</span> <span class="p">{</span>
+            <span class="k">for</span> <span class="n">i</span> <span class="nf">in</span> <span class="p">(</span><span class="mi">0</span><span class="o">..&lt;</span><span class="n">peek</span><span class="p">)</span><span class="o">.</span><span class="nf">reversed</span><span class="p">()</span> <span class="p">{</span>
+                <span class="nf">print</span><span class="p">(</span><span class="n">buffer</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+            <span class="p">}</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+            <span class="k">for</span> <span class="n">i</span> <span class="k">in</span> <span class="mi">0</span><span class="o">..&lt;</span><span class="n">peek</span> <span class="p">{</span>
+                <span class="nf">print</span><span class="p">(</span><span class="n">buffer</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+        <span class="nf">print</span><span class="p">(</span><span class="s">"︶"</span><span class="p">)</span>
+    <span class="p">}</span>
+</code></pre>
+</div>
+<p>遍历函数, 正序遍历和倒序遍历, 嗯. 也很容易理解.</p>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>    <span class="k">let</span> <span class="nv">stack_i</span> <span class="o">=</span> <span class="kt">Stack</span><span class="o">&lt;</span><span class="kt">Int</span><span class="o">&gt;</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+    <span class="n">stack_i</span><span class="o">.</span><span class="nf">push</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">stack_i</span><span class="o">.</span><span class="nf">push</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+    <span class="n">stack_i</span><span class="o">.</span><span class="nf">push</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+    <span class="n">stack_i</span><span class="o">.</span><span class="nf">push</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
+    <span class="n">stack_i</span><span class="o">.</span><span class="nf">traverse</span><span class="p">()</span> <span class="c1">//(1, 2, 3)</span>
+
+    <span class="nf">print</span><span class="p">(</span><span class="n">stack_i</span><span class="o">.</span><span class="nf">pop</span><span class="p">()</span><span class="o">!</span><span class="p">)</span> <span class="c1">//3</span>
+    <span class="n">stack_i</span><span class="o">.</span><span class="nf">traverse</span><span class="p">()</span> <span class="c1">//(1, 2)</span>
+
+    <span class="n">stack_i</span><span class="o">.</span><span class="nf">push</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+    <span class="n">stack_i</span><span class="o">.</span><span class="nf">push</span><span class="p">(</span><span class="mi">6</span><span class="p">)</span>
+    <span class="n">stack_i</span><span class="o">.</span><span class="nf">traverse</span><span class="p">()</span> <span class="c1">//(1, 2, 5)</span>
+
+    <span class="nf">print</span><span class="p">(</span><span class="n">stack_i</span><span class="o">.</span><span class="nf">pop</span><span class="p">()</span><span class="o">!</span><span class="p">)</span> <span class="c1">//5</span>
+    <span class="n">stack_i</span><span class="o">.</span><span class="nf">traverse</span><span class="p">()</span> <span class="c1">//(1, 2)</span>
+</code></pre>
+</div>
+<p>我们也来实际使用下栈这个数据结构, 可以看到和队列不同, 栈是遵循先进后出的原则就类似于做电梯, 先进去的人最后出来. 这里为什么进栈4个元素, 打印只有3个, 是因为我们的容量限制为3, 到达容量限制就无法入栈, 就和电梯超载发出警报类似.</p>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>    <span class="kd">func</span> <span class="nf">converse</span><span class="p">(</span><span class="n">_</span> <span class="nv">origin</span><span class="p">:</span> <span class="kt">Int</span> <span class="p">,</span> <span class="nv">format</span><span class="p">:</span> <span class="kt">Int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">String</span> <span class="p">{</span>
+        <span class="k">let</span> <span class="nv">stack</span> <span class="o">=</span> <span class="kt">Stack</span><span class="o">&lt;</span><span class="kt">Int</span><span class="o">&gt;</span><span class="p">(</span><span class="mi">30</span><span class="p">)</span>
+        <span class="k">var</span> <span class="nv">ori</span> <span class="o">=</span> <span class="n">origin</span>
+        <span class="k">var</span> <span class="nv">mod</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="k">var</span> <span class="nv">char</span> <span class="o">=</span> <span class="p">[</span><span class="s">"0"</span><span class="p">,</span><span class="s">"1"</span><span class="p">,</span><span class="s">"2"</span><span class="p">,</span><span class="s">"3"</span><span class="p">,</span><span class="s">"4"</span><span class="p">,</span><span class="s">"5"</span><span class="p">,</span><span class="s">"6"</span><span class="p">,</span><span class="s">"7"</span><span class="p">,</span><span class="s">"8"</span><span class="p">,</span><span class="s">"9"</span><span class="p">,</span>
+                    <span class="s">"A"</span><span class="p">,</span><span class="s">"B"</span><span class="p">,</span><span class="s">"C"</span><span class="p">,</span><span class="s">"D"</span><span class="p">,</span><span class="s">"E"</span><span class="p">,</span><span class="s">"F"</span><span class="p">]</span>
+        <span class="k">var</span> <span class="nv">conversed</span> <span class="o">=</span> <span class="s">""</span>
+        <span class="k">while</span> <span class="n">ori</span> <span class="o">!=</span> <span class="mi">0</span> <span class="p">{</span>
+            <span class="n">mod</span> <span class="o">=</span> <span class="n">ori</span> <span class="o">%</span> <span class="n">format</span>
+            <span class="n">stack</span><span class="o">.</span><span class="nf">push</span><span class="p">(</span><span class="n">mod</span><span class="p">)</span>
+            <span class="n">ori</span> <span class="o">/=</span> <span class="n">format</span>
+        <span class="p">}</span>
+        <span class="k">while</span> <span class="o">!</span><span class="n">stack</span><span class="o">.</span><span class="nf">isEmpty</span><span class="p">()</span> <span class="p">{</span>
+            <span class="k">guard</span> <span class="k">let</span> <span class="nv">index</span> <span class="o">=</span> <span class="n">stack</span><span class="o">.</span><span class="nf">pop</span><span class="p">()</span> <span class="k">else</span> <span class="p">{</span> <span class="k">continue</span> <span class="p">}</span>
+            <span class="n">conversed</span> <span class="o">+=</span> <span class="n">char</span><span class="p">[</span><span class="n">index</span><span class="p">]</span>
+        <span class="p">}</span>
+        <span class="n">stack</span><span class="o">.</span><span class="nf">clear</span><span class="p">()</span>
+        <span class="k">return</span> <span class="s">"(</span><span class="se">\(</span><span class="n">conversed</span><span class="se">)</span><span class="s">)"</span>
+    <span class="p">}</span>
+    <span class="nf">print</span><span class="p">(</span><span class="nf">converse</span><span class="p">(</span><span class="mi">1000</span><span class="p">,</span> <span class="nv">format</span><span class="p">:</span> <span class="mi">2</span><span class="p">))</span> <span class="c1">//(1111101000)</span>
+    <span class="nf">print</span><span class="p">(</span><span class="nf">converse</span><span class="p">(</span><span class="mi">1000</span><span class="p">,</span> <span class="nv">format</span><span class="p">:</span> <span class="mi">8</span><span class="p">))</span> <span class="c1">//(1750)</span>
+    <span class="nf">print</span><span class="p">(</span><span class="nf">converse</span><span class="p">(</span><span class="mi">1000</span><span class="p">,</span> <span class="nv">format</span><span class="p">:</span> <span class="mi">10</span><span class="p">))</span> <span class="c1">//(1000)</span>
+    <span class="nf">print</span><span class="p">(</span><span class="nf">converse</span><span class="p">(</span><span class="mi">123456789</span><span class="p">,</span> <span class="nv">format</span><span class="p">:</span> <span class="mi">16</span><span class="p">))</span> <span class="c1">//(75BCD15)</span>
+</code></pre>
+</div>
+<p>栈这个数据结构可以做到非常多的事情, 比如说转换进制, 上面就是进制转换中栈的应用.</p>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>    <span class="kd">func</span> <span class="nf">match</span><span class="p">(</span><span class="n">_</span> <span class="nv">brackets</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Bool</span> <span class="p">{</span>
+        <span class="k">let</span> <span class="nv">stack</span> <span class="o">=</span> <span class="kt">Stack</span><span class="o">&lt;</span><span class="kt">Character</span><span class="o">&gt;</span><span class="p">(</span><span class="mi">30</span><span class="p">)</span>
+        <span class="k">let</span> <span class="nv">needStack</span> <span class="o">=</span> <span class="kt">Stack</span><span class="o">&lt;</span><span class="kt">Character</span><span class="o">&gt;</span><span class="p">(</span><span class="mi">30</span><span class="p">)</span>
+        <span class="k">var</span> <span class="nv">currentNeed</span> <span class="o">=</span> <span class="kt">Character</span><span class="p">(</span><span class="s">" "</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="k">in</span> <span class="mi">0</span><span class="o">..&lt;</span><span class="n">brackets</span><span class="o">.</span><span class="n">count</span> <span class="p">{</span>
+            <span class="k">let</span> <span class="nv">char</span> <span class="o">=</span> <span class="n">brackets</span><span class="p">[</span><span class="n">brackets</span><span class="o">.</span><span class="nf">index</span><span class="p">(</span><span class="n">brackets</span><span class="o">.</span><span class="n">startIndex</span><span class="p">,</span> <span class="nv">offsetBy</span><span class="p">:</span> <span class="n">i</span><span class="p">)]</span>
+            <span class="k">if</span>  <span class="n">char</span> <span class="o">!=</span> <span class="n">currentNeed</span> <span class="p">{</span>
+                <span class="n">stack</span><span class="o">.</span><span class="nf">push</span><span class="p">(</span><span class="n">char</span><span class="p">)</span>
+                <span class="k">switch</span> <span class="n">char</span> <span class="p">{</span>
+                <span class="k">case</span> <span class="s">"["</span><span class="p">:</span>
+                    <span class="k">if</span> <span class="n">currentNeed</span> <span class="o">!=</span> <span class="kt">Character</span><span class="p">(</span><span class="s">" "</span><span class="p">)</span> <span class="p">{</span>
+                        <span class="n">needStack</span><span class="o">.</span><span class="nf">push</span><span class="p">(</span><span class="n">currentNeed</span><span class="p">)</span>
+                    <span class="p">}</span>
+                    <span class="n">currentNeed</span> <span class="o">=</span> <span class="s">"]"</span>
+                    <span class="k">break</span>
+                <span class="k">case</span> <span class="s">"("</span><span class="p">:</span>
+                    <span class="k">if</span> <span class="n">currentNeed</span> <span class="o">!=</span> <span class="kt">Character</span><span class="p">(</span><span class="s">" "</span><span class="p">)</span> <span class="p">{</span>
+                        <span class="n">needStack</span><span class="o">.</span><span class="nf">push</span><span class="p">(</span><span class="n">currentNeed</span><span class="p">)</span>
+                    <span class="p">}</span>
+                    <span class="n">currentNeed</span> <span class="o">=</span> <span class="s">")"</span>
+                    <span class="k">break</span>
+                <span class="k">default</span><span class="p">:</span>
+                    <span class="k">return</span> <span class="kc">false</span>
+                <span class="p">}</span>
+            <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+                <span class="n">stack</span><span class="o">.</span><span class="nf">pop</span><span class="p">()</span>
+                <span class="k">guard</span> <span class="k">let</span> <span class="nv">need</span> <span class="o">=</span> <span class="n">needStack</span><span class="o">.</span><span class="nf">pop</span><span class="p">()</span> <span class="k">else</span> <span class="p">{</span> <span class="n">currentNeed</span> <span class="o">=</span> <span class="kt">Character</span><span class="p">(</span><span class="s">" "</span><span class="p">);</span> <span class="k">continue</span> <span class="p">}</span>
+                <span class="n">currentNeed</span> <span class="o">=</span> <span class="n">need</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+        <span class="k">return</span> <span class="n">stack</span><span class="o">.</span><span class="nf">isEmpty</span><span class="p">()</span>
+    <span class="p">}</span>
+    <span class="nf">print</span><span class="p">(</span><span class="nf">match</span><span class="p">(</span><span class="s">"[]()[]()[]"</span><span class="p">)</span> <span class="p">?</span> <span class="s">"match"</span> <span class="p">:</span> <span class="s">"not match"</span><span class="p">)</span> <span class="c1">//match</span>
+</code></pre>
+</div>
+<p>不仅可以转换进制, 还可以判断括号的匹配, 这里就需要2个栈的应用, 最后判断栈是否为空来推断是否匹配.</p>
+
+<h4 id="线性表">线性表</h4>
+
+<p>数据结构从线性表这里开始难易程度上了一个台阶, 对于线性表来说, 栈和队列感觉就是闹着玩的, 好了, 我们来说说线性表.</p>
+
+<p>线性表分为, 数组和链表, 数组就是连续的内存地址, 而链表则是不连续的内存地址通过指针指向来串联, 比如每个保险箱里有一把能够打开下一个保险箱的钥匙, 而下一个保险箱内又有一把指向下下一个保险箱的钥匙, 如此往复, 便是链表.</p>
+
+<h5 id="数组">数组</h5>
+
+<p>我们来先说说数组这个数据结构, 对于一般我们开发来说, 数组是我们最为常用的容器类了, 但我们真的了解数组的实现过程么, 来看看吧.</p>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>    <span class="kd">private</span> <span class="k">var</span> <span class="nv">capacity</span><span class="p">:</span> <span class="kt">Int</span>  <span class="o">=</span> <span class="mi">0</span> <span class="c1">//数组容量</span>
+    <span class="kd">private</span> <span class="kd">lazy</span> <span class="k">var</span> <span class="nv">length</span><span class="p">:</span> <span class="kt">Int</span> <span class="o">=</span> <span class="mi">0</span> <span class="c1">//数组长度</span>
+    <span class="kd">private</span> <span class="kd">lazy</span> <span class="k">var</span> <span class="nv">list</span><span class="p">:</span> <span class="p">[</span><span class="kt">Element</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="kt">Element</span><span class="p">]()</span> <span class="c1">//数组</span>
+</code></pre>
+</div>
+<p>这里的<code class="highlighter-rouge">list</code>成员变量, 我们可以理解成为一段连续的内存地址即可.</p>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>    <span class="kd">func</span> <span class="nf">getElement</span><span class="p">(</span><span class="n">loc</span> <span class="nv">index</span><span class="p">:</span> <span class="kt">Int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Element</span><span class="p">?</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="n">index</span> <span class="o">&lt;</span> <span class="mi">0</span> <span class="o">||</span> <span class="n">index</span> <span class="o">&gt;=</span> <span class="n">capacity</span> <span class="o">||</span> <span class="n">length</span> <span class="o">==</span> <span class="mi">0</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="kc">nil</span>
+        <span class="p">}</span>
+        <span class="k">return</span> <span class="n">list</span><span class="p">[</span><span class="n">index</span><span class="p">]</span>
+    <span class="p">}</span>
+    
+    <span class="kd">func</span> <span class="nf">locate</span><span class="p">(</span><span class="n">of</span> <span class="nv">element</span><span class="p">:</span> <span class="kt">Element</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Int</span> <span class="p">{</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="k">in</span> <span class="mi">0</span><span class="o">..&lt;</span><span class="n">length</span> <span class="p">{</span>
+            <span class="k">if</span> <span class="n">list</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">==</span> <span class="n">element</span> <span class="p">{</span>
+                <span class="k">return</span> <span class="n">i</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+        <span class="k">return</span> <span class="o">-</span><span class="mi">1</span>
+    <span class="p">}</span>
+</code></pre>
+</div>
+<p>数组比之前学的队列和栈复杂点, 我们先来看看取元素和定位元素的函数的实现, 嗯. 还是理解尚可.</p>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>    <span class="kd">func</span> <span class="nf">prior</span><span class="p">(</span><span class="n">of</span> <span class="nv">element</span><span class="p">:</span> <span class="kt">Element</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Element</span><span class="p">?</span> <span class="p">{</span>
+        <span class="k">let</span> <span class="nv">temp</span> <span class="o">=</span> <span class="nf">locate</span><span class="p">(</span><span class="nv">of</span><span class="p">:</span> <span class="n">element</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">temp</span> <span class="o">==</span> <span class="o">-</span><span class="mi">1</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="kc">nil</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+            <span class="k">if</span> <span class="n">temp</span> <span class="o">==</span> <span class="mi">0</span> <span class="p">{</span>
+                <span class="k">return</span> <span class="kc">nil</span>
+            <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+                <span class="k">return</span> <span class="n">list</span><span class="p">[</span><span class="n">temp</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+    
+    <span class="kd">func</span> <span class="nf">next</span><span class="p">(</span><span class="n">of</span> <span class="nv">element</span><span class="p">:</span> <span class="kt">Element</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Element</span><span class="p">?</span> <span class="p">{</span>
+        <span class="k">let</span> <span class="nv">temp</span> <span class="o">=</span> <span class="nf">locate</span><span class="p">(</span><span class="nv">of</span><span class="p">:</span> <span class="n">element</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">temp</span> <span class="o">==</span> <span class="o">-</span><span class="mi">1</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="kc">nil</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+            <span class="k">if</span> <span class="n">temp</span> <span class="o">==</span> <span class="n">length</span> <span class="o">-</span> <span class="mi">1</span> <span class="p">{</span>
+                <span class="k">return</span> <span class="kc">nil</span>
+            <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+                <span class="k">return</span> <span class="n">list</span><span class="p">[</span><span class="n">temp</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+</code></pre>
+</div>
+<p>接着我们来看看获取元素的前后元素的函数, 通过偏移下标来获取前后元素, 并做了界限控制, 没什么可多说的.</p>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>    <span class="kd">@discardableResult</span> <span class="kd">func</span> <span class="nf">insert</span><span class="p">(</span><span class="n">loc</span> <span class="nv">index</span><span class="p">:</span> <span class="kt">Int</span><span class="p">,</span> <span class="nv">element</span><span class="p">:</span> <span class="kt">Element</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Bool</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="n">index</span> <span class="o">&lt;</span> <span class="mi">0</span> <span class="o">||</span> <span class="n">index</span> <span class="o">&gt;</span> <span class="n">length</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="kc">false</span>
+        <span class="p">}</span>
+        <span class="n">list</span><span class="o">.</span><span class="nf">append</span><span class="p">(</span><span class="n">element</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="nf">in</span> <span class="p">(</span><span class="n">index</span><span class="o">..&lt;</span><span class="n">length</span><span class="p">)</span><span class="o">.</span><span class="nf">reversed</span><span class="p">()</span> <span class="p">{</span>
+            <span class="n">list</span><span class="p">[</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">list</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+        <span class="p">}</span>
+        <span class="n">list</span><span class="p">[</span><span class="n">index</span><span class="p">]</span> <span class="o">=</span> <span class="n">element</span>
+        <span class="n">length</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="k">return</span> <span class="kc">true</span>
+    <span class="p">}</span>
+    
+    <span class="kd">@discardableResult</span> <span class="kd">func</span> <span class="nf">delete</span><span class="p">(</span><span class="n">loc</span> <span class="nv">index</span><span class="p">:</span> <span class="kt">Int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Element</span><span class="p">?</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="n">index</span> <span class="o">&lt;</span> <span class="mi">0</span> <span class="o">||</span> <span class="n">index</span> <span class="o">&gt;=</span> <span class="n">length</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="kc">nil</span>
+        <span class="p">}</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="nf">in</span> <span class="p">(</span><span class="n">index</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span><span class="o">..&lt;</span><span class="n">length</span> <span class="p">{</span>
+            <span class="n">list</span><span class="p">[</span><span class="n">i</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">list</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+        <span class="p">}</span>
+        <span class="n">length</span> <span class="o">-=</span> <span class="mi">1</span>
+        <span class="k">return</span> <span class="n">list</span><span class="p">[</span><span class="n">index</span><span class="p">]</span>
+    <span class="p">}</span>
+</code></pre>
+</div>
+
+<p>来说说核心函数, 插入与删除的实现, 其实也是通过偏移指针来完成的, 可以说因为数组是一段连续的内存地址, 只需要偏移指针就可以定位并获取到这段内存地址中的任意数据.</p>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>        <span class="k">let</span> <span class="nv">list_i</span> <span class="o">=</span> <span class="kt">List1</span><span class="o">&lt;</span><span class="kt">Int</span><span class="o">&gt;</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+        <span class="n">list_i</span><span class="o">.</span><span class="nf">insert</span><span class="p">(</span><span class="nv">loc</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="nv">element</span><span class="p">:</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="n">list_i</span><span class="o">.</span><span class="nf">insert</span><span class="p">(</span><span class="nv">loc</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="nv">element</span><span class="p">:</span> <span class="mi">2</span><span class="p">)</span>
+        <span class="n">list_i</span><span class="o">.</span><span class="nf">insert</span><span class="p">(</span><span class="nv">loc</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="nv">element</span><span class="p">:</span> <span class="mi">3</span><span class="p">)</span>
+        <span class="n">list_i</span><span class="o">.</span><span class="nf">insert</span><span class="p">(</span><span class="nv">loc</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span> <span class="nv">element</span><span class="p">:</span> <span class="mi">4</span><span class="p">)</span>
+        <span class="n">list_i</span><span class="o">.</span><span class="nf">insert</span><span class="p">(</span><span class="nv">loc</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span> <span class="nv">element</span><span class="p">:</span> <span class="mi">5</span><span class="p">)</span>
+        <span class="n">list_i</span><span class="o">.</span><span class="nf">insert</span><span class="p">(</span><span class="nv">loc</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span> <span class="nv">element</span><span class="p">:</span> <span class="mi">6</span><span class="p">)</span>
+        <span class="n">list_i</span><span class="o">.</span><span class="nf">insert</span><span class="p">(</span><span class="nv">loc</span><span class="p">:</span> <span class="mi">6</span><span class="p">,</span> <span class="nv">element</span><span class="p">:</span> <span class="mi">7</span><span class="p">)</span>
+        <span class="n">list_i</span><span class="o">.</span><span class="nf">traverse</span><span class="p">()</span> <span class="c1">//(1, 2, 3, 4, 5, 6, 7)</span>
+        
+        <span class="n">list_i</span><span class="o">.</span><span class="nf">delete</span><span class="p">(</span><span class="nv">loc</span><span class="p">:</span> <span class="mi">3</span><span class="p">)</span>
+        <span class="n">list_i</span><span class="o">.</span><span class="nf">delete</span><span class="p">(</span><span class="nv">loc</span><span class="p">:</span> <span class="mi">2</span><span class="p">)</span>
+        <span class="n">list_i</span><span class="o">.</span><span class="nf">traverse</span><span class="p">()</span> <span class="c1">//(1, 2, 5, 6, 7)</span>
+        
+        <span class="nf">print</span><span class="p">(</span><span class="n">list_i</span><span class="o">.</span><span class="nf">prior</span><span class="p">(</span><span class="nv">of</span><span class="p">:</span> <span class="mi">6</span><span class="p">)</span><span class="o">!</span><span class="p">)</span> <span class="c1">//5</span>
+        <span class="nf">print</span><span class="p">(</span><span class="n">list_i</span><span class="o">.</span><span class="nf">next</span><span class="p">(</span><span class="nv">of</span><span class="p">:</span> <span class="mi">1</span><span class="p">)</span><span class="o">!</span><span class="p">)</span> <span class="c1">//2</span>
+        <span class="nf">print</span><span class="p">(</span><span class="n">list_i</span><span class="o">.</span><span class="nf">getElement</span><span class="p">(</span><span class="nv">loc</span><span class="p">:</span> <span class="mi">2</span><span class="p">)</span><span class="o">!</span><span class="p">)</span> <span class="c1">//5</span>
+</code></pre>
+</div>
+<p>我们来使用一下数组这个数据结构, 嗯, 和平时用的NSArray没有什么太大区别, 但了解了内部实现逻辑, 可以更好的定义自己的数据结构并进行功能的扩展.</p>
+
+<h5 id="链表">链表</h5>
+
+<p>链表这个数据结构我在iOS和Web开发中基本没有用到过, 可能有的数组比如NSMutableArray或List是用链表实现的? 这点没有验证过不能瞎说, 但我们可以知道链表在数据量大的情况下性能优于数组, 接下来我们来看下链表这个数据结构吧.</p>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>    <span class="k">var</span> <span class="nv">data</span><span class="p">:</span> <span class="kt">Element</span><span class="p">?</span> <span class="c1">//节点数据</span>
+    <span class="c1">// for list</span>
+    <span class="k">var</span> <span class="nv">next</span><span class="p">:</span> <span class="kt">Node</span><span class="p">?</span> <span class="c1">//节点指针, 指向下一个节点</span>
+</code></pre>
+</div>
+<p>说道链表, 我们需要有一个节点Node类来存储数据和指针.</p>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>    <span class="kd">private</span> <span class="k">var</span> <span class="nv">head</span><span class="p">:</span> <span class="kt">Node</span><span class="o">&lt;</span><span class="kt">Element</span><span class="o">&gt;</span> <span class="c1">//头节点</span>
+    <span class="kd">private</span> <span class="kd">lazy</span> <span class="k">var</span> <span class="nv">length</span><span class="p">:</span> <span class="kt">Int</span> <span class="o">=</span> <span class="mi">0</span> <span class="c1">//链表长度</span>
+</code></pre>
+</div>
+<p>有了节点, 我们来定义一下链表所需要的成员属性吧.</p>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>    <span class="kd">func</span> <span class="nf">getElement</span><span class="p">(</span><span class="n">loc</span> <span class="nv">index</span><span class="p">:</span> <span class="kt">Int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Node</span><span class="o">&lt;</span><span class="kt">Element</span><span class="o">&gt;</span><span class="p">?</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="n">index</span> <span class="o">&lt;</span> <span class="mi">0</span> <span class="o">||</span> <span class="n">index</span> <span class="o">&gt;=</span> <span class="n">length</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="kc">nil</span>
+        <span class="p">}</span>
+        <span class="k">var</span> <span class="nv">currentNode</span> <span class="o">=</span> <span class="n">head</span>
+        <span class="k">for</span> <span class="n">_</span> <span class="k">in</span> <span class="mi">0</span><span class="o">...</span><span class="n">index</span> <span class="p">{</span>
+            <span class="k">guard</span> <span class="k">let</span> <span class="nv">node</span> <span class="o">=</span> <span class="n">currentNode</span><span class="o">.</span><span class="n">next</span> <span class="k">else</span> <span class="p">{</span> <span class="k">continue</span> <span class="p">}</span>
+            <span class="n">currentNode</span> <span class="o">=</span> <span class="n">node</span>
+        <span class="p">}</span>
+        <span class="k">let</span> <span class="nv">node</span> <span class="o">=</span> <span class="kt">Node</span><span class="o">&lt;</span><span class="kt">Element</span><span class="o">&gt;</span><span class="p">()</span>
+        <span class="n">node</span><span class="o">.</span><span class="n">data</span> <span class="o">=</span> <span class="n">currentNode</span><span class="o">.</span><span class="n">data</span>
+        <span class="k">return</span> <span class="n">node</span>
+    <span class="p">}</span>
+    
+    <span class="kd">func</span> <span class="nf">locate</span><span class="p">(</span><span class="n">of</span> <span class="nv">node</span><span class="p">:</span> <span class="kt">Node</span><span class="o">&lt;</span><span class="kt">Element</span><span class="o">&gt;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Int</span> <span class="p">{</span>
+        <span class="k">var</span> <span class="nv">currentNode</span> <span class="o">=</span> <span class="n">head</span>
+        <span class="k">var</span> <span class="nv">count</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="k">while</span> <span class="n">currentNode</span><span class="o">.</span><span class="n">next</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
+            <span class="n">currentNode</span> <span class="o">=</span> <span class="n">currentNode</span><span class="o">.</span><span class="n">next</span><span class="o">!</span>
+            <span class="k">if</span> <span class="n">currentNode</span><span class="o">.</span><span class="n">data</span> <span class="o">==</span> <span class="n">node</span><span class="o">.</span><span class="n">data</span> <span class="p">{</span>
+                <span class="k">return</span> <span class="n">count</span>
+            <span class="p">}</span>
+            <span class="n">count</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="p">}</span>
+        <span class="k">return</span> <span class="o">-</span><span class="mi">1</span>
+    <span class="p">}</span>
+</code></pre>
+</div>
+<p>与数组的不同, 链表的获取及定位函数, 是以节点指针指向进行操作的.</p>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>    <span class="kd">func</span> <span class="nf">prior</span><span class="p">(</span><span class="n">of</span> <span class="nv">node</span><span class="p">:</span> <span class="kt">Node</span><span class="o">&lt;</span><span class="kt">Element</span><span class="o">&gt;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Node</span><span class="o">&lt;</span><span class="kt">Element</span><span class="o">&gt;</span><span class="p">?</span> <span class="p">{</span>
+        <span class="k">var</span> <span class="nv">currentNode</span> <span class="o">=</span> <span class="n">head</span>
+        <span class="k">var</span> <span class="nv">tempNode</span><span class="p">:</span> <span class="kt">Node</span><span class="o">&lt;</span><span class="kt">Element</span><span class="o">&gt;</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span>
+        <span class="k">while</span> <span class="n">currentNode</span><span class="o">.</span><span class="n">next</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
+            <span class="n">tempNode</span> <span class="o">=</span> <span class="n">currentNode</span>
+            <span class="n">currentNode</span> <span class="o">=</span> <span class="n">currentNode</span><span class="o">.</span><span class="n">next</span><span class="o">!</span>
+            <span class="k">if</span> <span class="n">currentNode</span><span class="o">.</span><span class="n">data</span> <span class="o">==</span> <span class="n">node</span><span class="o">.</span><span class="n">data</span> <span class="p">{</span>
+                <span class="k">guard</span> <span class="k">let</span> <span class="nv">tempNode</span> <span class="o">=</span> <span class="n">tempNode</span> <span class="k">else</span> <span class="p">{</span> <span class="k">continue</span> <span class="p">}</span>
+                <span class="k">if</span> <span class="n">tempNode</span> <span class="o">==</span> <span class="n">head</span> <span class="p">{</span>
+                    <span class="k">return</span> <span class="kc">nil</span>
+                <span class="p">}</span>
+                <span class="k">let</span> <span class="nv">node</span> <span class="o">=</span> <span class="kt">Node</span><span class="o">&lt;</span><span class="kt">Element</span><span class="o">&gt;</span><span class="p">()</span>
+                <span class="n">node</span><span class="o">.</span><span class="n">data</span> <span class="o">=</span> <span class="n">tempNode</span><span class="o">.</span><span class="n">data</span>
+                <span class="k">return</span> <span class="n">node</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+        <span class="k">return</span> <span class="kc">nil</span>
+    <span class="p">}</span>
+    
+    <span class="kd">func</span> <span class="nf">next</span><span class="p">(</span><span class="n">of</span> <span class="nv">node</span><span class="p">:</span> <span class="kt">Node</span><span class="o">&lt;</span><span class="kt">Element</span><span class="o">&gt;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Node</span><span class="o">&lt;</span><span class="kt">Element</span><span class="o">&gt;</span><span class="p">?</span> <span class="p">{</span>
+        <span class="k">var</span> <span class="nv">currentNode</span> <span class="o">=</span> <span class="n">head</span>
+        <span class="k">while</span> <span class="n">currentNode</span><span class="o">.</span><span class="n">next</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
+            <span class="n">currentNode</span> <span class="o">=</span> <span class="n">currentNode</span><span class="o">.</span><span class="n">next</span><span class="o">!</span>
+            <span class="k">if</span> <span class="n">currentNode</span><span class="o">.</span><span class="n">data</span> <span class="o">==</span> <span class="n">node</span><span class="o">.</span><span class="n">data</span> <span class="p">{</span>
+                <span class="k">if</span> <span class="n">currentNode</span><span class="o">.</span><span class="n">next</span> <span class="o">==</span> <span class="kc">nil</span> <span class="p">{</span>
+                    <span class="k">return</span> <span class="kc">nil</span>
+                <span class="p">}</span>
+                <span class="k">guard</span> <span class="k">let</span> <span class="nv">data</span> <span class="o">=</span> <span class="n">currentNode</span><span class="o">.</span><span class="n">next</span><span class="p">?</span><span class="o">.</span><span class="n">data</span> <span class="k">else</span> <span class="p">{</span> <span class="k">continue</span> <span class="p">}</span>
+                <span class="k">let</span> <span class="nv">node</span> <span class="o">=</span> <span class="kt">Node</span><span class="o">&lt;</span><span class="kt">Element</span><span class="o">&gt;</span><span class="p">()</span>
+                <span class="n">node</span><span class="o">.</span><span class="n">data</span> <span class="o">=</span> <span class="n">data</span>
+                <span class="k">return</span> <span class="n">node</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+        <span class="k">return</span> <span class="kc">nil</span>
+    <span class="p">}</span>
+</code></pre>
+</div>
+<p>同理, 获取前后元素也是通过节点指针进行操作的, 以头节点为基点, 通过多次指向指向获取响应元素及下标.</p>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>    <span class="kd">@discardableResult</span> <span class="kd">func</span> <span class="nf">insert</span><span class="p">(</span><span class="n">loc</span> <span class="nv">index</span><span class="p">:</span> <span class="kt">Int</span><span class="p">,</span> <span class="nv">node</span><span class="p">:</span> <span class="kt">Node</span><span class="o">&lt;</span><span class="kt">Element</span><span class="o">&gt;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Bool</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="n">index</span> <span class="o">&lt;</span> <span class="mi">0</span> <span class="o">||</span> <span class="n">index</span> <span class="o">&gt;=</span> <span class="n">length</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="kc">false</span>
+        <span class="p">}</span>
+        <span class="k">var</span> <span class="nv">currentNode</span> <span class="o">=</span> <span class="n">head</span>
+        <span class="k">for</span> <span class="n">_</span> <span class="k">in</span> <span class="mi">0</span><span class="o">..&lt;</span><span class="n">index</span> <span class="p">{</span>
+            <span class="k">guard</span> <span class="k">let</span> <span class="nv">nextNode</span> <span class="o">=</span> <span class="n">currentNode</span><span class="o">.</span><span class="n">next</span> <span class="k">else</span> <span class="p">{</span> <span class="k">continue</span> <span class="p">}</span>
+            <span class="n">currentNode</span> <span class="o">=</span> <span class="n">nextNode</span>
+        <span class="p">}</span>
+        <span class="k">let</span> <span class="nv">newNode</span> <span class="o">=</span> <span class="kt">Node</span><span class="o">&lt;</span><span class="kt">Element</span><span class="o">&gt;</span><span class="p">()</span>
+        <span class="n">newNode</span><span class="o">.</span><span class="n">data</span> <span class="o">=</span> <span class="n">node</span><span class="o">.</span><span class="n">data</span>
+        <span class="n">newNode</span><span class="o">.</span><span class="n">next</span> <span class="o">=</span> <span class="n">currentNode</span><span class="o">.</span><span class="n">next</span>
+        <span class="n">currentNode</span><span class="o">.</span><span class="n">next</span> <span class="o">=</span> <span class="n">newNode</span>
+        <span class="n">length</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="k">return</span> <span class="kc">true</span>
+    <span class="p">}</span>
+    
+    <span class="kd">@discardableResult</span> <span class="kd">func</span> <span class="nf">delete</span><span class="p">(</span><span class="n">loc</span> <span class="nv">index</span><span class="p">:</span> <span class="kt">Int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Node</span><span class="o">&lt;</span><span class="kt">Element</span><span class="o">&gt;</span><span class="p">?</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="n">index</span> <span class="o">&lt;</span> <span class="mi">0</span> <span class="o">||</span> <span class="n">index</span> <span class="o">&gt;=</span> <span class="n">length</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="kc">nil</span>
+        <span class="p">}</span>
+        <span class="k">var</span> <span class="nv">currentNode</span> <span class="o">=</span> <span class="n">head</span>
+        <span class="k">var</span> <span class="nv">currentNodeBefore</span><span class="p">:</span> <span class="kt">Node</span><span class="o">&lt;</span><span class="kt">Element</span><span class="o">&gt;</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span>
+        <span class="k">for</span> <span class="n">_</span> <span class="k">in</span> <span class="mi">0</span><span class="o">...</span><span class="n">index</span> <span class="p">{</span>
+            <span class="n">currentNodeBefore</span> <span class="o">=</span> <span class="n">currentNode</span>
+            <span class="k">guard</span> <span class="k">let</span> <span class="nv">nextNode</span> <span class="o">=</span> <span class="n">currentNode</span><span class="o">.</span><span class="n">next</span> <span class="k">else</span> <span class="p">{</span> <span class="k">continue</span> <span class="p">}</span>
+            <span class="n">currentNode</span> <span class="o">=</span> <span class="n">nextNode</span>
+        <span class="p">}</span>
+        <span class="n">currentNodeBefore</span><span class="p">?</span><span class="o">.</span><span class="n">next</span> <span class="o">=</span> <span class="n">currentNode</span><span class="o">.</span><span class="n">next</span>
+        <span class="k">let</span> <span class="nv">node</span> <span class="o">=</span> <span class="kt">Node</span><span class="o">&lt;</span><span class="kt">Element</span><span class="o">&gt;</span><span class="p">()</span>
+        <span class="n">node</span><span class="o">.</span><span class="n">data</span> <span class="o">=</span> <span class="n">currentNode</span><span class="o">.</span><span class="n">data</span>
+        <span class="n">length</span> <span class="o">-=</span> <span class="mi">1</span>
+        <span class="k">return</span> <span class="n">node</span>
+    <span class="p">}</span>
+</code></pre>
+</div>
+<p>插入和删除的核心操作也是同理, 通过<code class="highlighter-rouge">next</code>节点指向变换, 进行插入和删除.</p>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>    <span class="kd">@discardableResult</span> <span class="kd">func</span> <span class="nf">insertHead</span><span class="p">(</span><span class="nv">node</span><span class="p">:</span> <span class="kt">Node</span><span class="o">&lt;</span><span class="kt">Element</span><span class="o">&gt;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Bool</span> <span class="p">{</span>
+        <span class="k">let</span> <span class="nv">temp</span> <span class="o">=</span> <span class="n">head</span><span class="o">.</span><span class="n">next</span>
+        <span class="k">let</span> <span class="nv">newNode</span> <span class="o">=</span> <span class="kt">Node</span><span class="o">&lt;</span><span class="kt">Element</span><span class="o">&gt;</span><span class="p">()</span>
+        <span class="n">newNode</span><span class="o">.</span><span class="n">data</span> <span class="o">=</span> <span class="n">node</span><span class="o">.</span><span class="n">data</span>
+        <span class="n">head</span><span class="o">.</span><span class="n">next</span> <span class="o">=</span> <span class="n">newNode</span>
+        <span class="n">newNode</span><span class="o">.</span><span class="n">next</span> <span class="o">=</span> <span class="n">temp</span>
+        <span class="n">length</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="k">return</span> <span class="kc">true</span>
+    <span class="p">}</span>
+    
+    <span class="kd">@discardableResult</span> <span class="kd">func</span> <span class="nf">insertTail</span><span class="p">(</span><span class="nv">node</span><span class="p">:</span> <span class="kt">Node</span><span class="o">&lt;</span><span class="kt">Element</span><span class="o">&gt;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Bool</span> <span class="p">{</span>
+        <span class="k">var</span> <span class="nv">currentNode</span> <span class="o">=</span> <span class="n">head</span>
+        <span class="k">while</span> <span class="n">currentNode</span><span class="o">.</span><span class="n">next</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
+            <span class="n">currentNode</span> <span class="o">=</span> <span class="n">currentNode</span><span class="o">.</span><span class="n">next</span><span class="o">!</span>
+        <span class="p">}</span>
+        <span class="k">let</span> <span class="nv">newNode</span> <span class="o">=</span> <span class="kt">Node</span><span class="o">&lt;</span><span class="kt">Element</span><span class="o">&gt;</span><span class="p">()</span>
+        <span class="n">newNode</span><span class="o">.</span><span class="n">data</span> <span class="o">=</span> <span class="n">node</span><span class="o">.</span><span class="n">data</span>
+        <span class="n">newNode</span><span class="o">.</span><span class="n">next</span> <span class="o">=</span> <span class="kc">nil</span>
+        <span class="n">currentNode</span><span class="o">.</span><span class="n">next</span> <span class="o">=</span> <span class="n">newNode</span>
+        <span class="n">length</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="k">return</span> <span class="kc">true</span>
+    <span class="p">}</span>
+</code></pre>
+</div>
+<p>我们这里多了一步插入头节点和尾节点的操作, 其实原理也是相同的, 就是改变节点指针的指向, 重要的东西多说几遍.</p>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>        <span class="k">let</span> <span class="nv">list_i</span> <span class="o">=</span> <span class="kt">List2</span><span class="o">&lt;</span><span class="kt">Int</span><span class="o">&gt;</span><span class="p">()</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="k">in</span> <span class="mi">1</span><span class="o">...</span><span class="mi">7</span> <span class="p">{</span>
+            <span class="n">list_i</span><span class="o">.</span><span class="nf">insertTail</span><span class="p">(</span><span class="nv">node</span><span class="p">:</span> <span class="kt">Node</span><span class="o">&lt;</span><span class="kt">Int</span><span class="o">&gt;</span><span class="p">(</span><span class="nv">data</span><span class="p">:</span> <span class="n">i</span><span class="p">))</span>
+        <span class="p">}</span>
+        <span class="n">list_i</span><span class="o">.</span><span class="nf">traverse</span><span class="p">()</span> <span class="c1">//(1, 2, 3, 4, 5, 6, 7)</span>
+        
+        <span class="n">list_i</span><span class="o">.</span><span class="nf">getElement</span><span class="p">(</span><span class="nv">loc</span><span class="p">:</span> <span class="mi">2</span><span class="p">)?</span><span class="o">.</span><span class="nf">printNode</span><span class="p">()</span> <span class="c1">//3</span>
+        
+        <span class="k">let</span> <span class="nv">node_i</span> <span class="o">=</span> <span class="kt">Node</span><span class="o">&lt;</span><span class="kt">Int</span><span class="o">&gt;</span><span class="p">(</span><span class="nv">data</span><span class="p">:</span> <span class="mi">1024</span><span class="p">)</span>
+        <span class="n">list_i</span><span class="o">.</span><span class="nf">insert</span><span class="p">(</span><span class="nv">loc</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span> <span class="nv">node</span><span class="p">:</span> <span class="n">node_i</span><span class="p">)</span>
+        <span class="n">list_i</span><span class="o">.</span><span class="nf">traverse</span><span class="p">()</span> <span class="c1">//(1, 2, 3, 4, 5, 1024, 6, 7)</span>
+        
+        <span class="nf">print</span><span class="p">(</span><span class="n">list_i</span><span class="o">.</span><span class="nf">locate</span><span class="p">(</span><span class="nv">of</span><span class="p">:</span> <span class="n">node_i</span><span class="p">))</span> <span class="c1">//5</span>
+        <span class="nf">print</span><span class="p">(</span><span class="n">list_i</span><span class="o">.</span><span class="nf">size</span><span class="p">())</span> <span class="c1">//8</span>
+        
+        <span class="n">list_i</span><span class="o">.</span><span class="nf">prior</span><span class="p">(</span><span class="nv">of</span><span class="p">:</span> <span class="n">node_i</span><span class="p">)?</span><span class="o">.</span><span class="nf">printNode</span><span class="p">()</span> <span class="c1">//5</span>
+        <span class="n">list_i</span><span class="o">.</span><span class="nf">next</span><span class="p">(</span><span class="nv">of</span><span class="p">:</span> <span class="n">node_i</span><span class="p">)?</span><span class="o">.</span><span class="nf">printNode</span><span class="p">()</span> <span class="c1">//6</span>
+        <span class="n">list_i</span><span class="o">.</span><span class="nf">delete</span><span class="p">(</span><span class="nv">loc</span><span class="p">:</span> <span class="mi">5</span><span class="p">)?</span><span class="o">.</span><span class="nf">printNode</span><span class="p">()</span> <span class="c1">//1024</span>
+        
+        <span class="n">list_i</span><span class="o">.</span><span class="nf">traverse</span><span class="p">()</span> <span class="c1">//(1, 2, 3, 4, 5, 6, 7)</span>
+</code></pre>
+</div>
+<p>以上是链表这个数据结构的使用情况, 可以感觉到FMDB就是采用类似链表的形式吧.</p>
+
+<h4 id="树">树</h4>
+
+<p>二叉树, 听的挺多, 做业务几乎也是没有用到过, 所谓二叉树, 就是从头节点向下有不超过两个的自己点, 向下伸展即为二叉树,</p>
+
+<h5 id="数组树">数组树</h5>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>    <span class="kd">private</span> <span class="k">var</span> <span class="nv">tree</span><span class="p">:</span> <span class="p">[</span><span class="kt">Any</span><span class="p">]</span> <span class="c1">//树数组</span>
+    <span class="kd">private</span> <span class="k">var</span> <span class="nv">capacity</span><span class="p">:</span> <span class="kt">Int</span> <span class="c1">//树容量</span>
+</code></pre>
+</div>
+<p>我们先来看一下数组树这个数据结构我们需要哪些数据成员属性,</p>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>    <span class="nf">init</span><span class="p">(</span><span class="n">_</span> <span class="nv">treeCapacity</span><span class="p">:</span> <span class="kt">Int</span><span class="p">,</span> <span class="nv">root</span><span class="p">:</span> <span class="kt">Element</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">capacity</span> <span class="o">=</span> <span class="n">treeCapacity</span>
+        <span class="n">tree</span> <span class="o">=</span> <span class="p">[</span><span class="kt">Any</span><span class="p">](</span><span class="nv">repeating</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="nv">count</span><span class="p">:</span> <span class="n">treeCapacity</span><span class="p">)</span>
+        <span class="n">tree</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">root</span>
+    <span class="p">}</span>
+    
+    <span class="kd">func</span> <span class="nf">searchNode</span><span class="p">(</span><span class="n">loc</span> <span class="nv">index</span><span class="p">:</span> <span class="kt">Int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Element</span><span class="p">?</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="n">index</span> <span class="o">&lt;</span> <span class="mi">0</span> <span class="o">||</span> <span class="n">index</span> <span class="o">&gt;=</span> <span class="n">capacity</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="kc">nil</span>
+        <span class="p">}</span>
+        <span class="k">if</span> <span class="n">tree</span><span class="p">[</span><span class="n">index</span><span class="p">]</span> <span class="k">as?</span> <span class="kt">Int</span> <span class="o">==</span> <span class="mi">0</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="kc">nil</span>
+        <span class="p">}</span>
+        <span class="k">return</span> <span class="n">tree</span><span class="p">[</span><span class="n">index</span><span class="p">]</span> <span class="k">as?</span> <span class="kt">Element</span>
+    <span class="p">}</span>
+</code></pre>
+</div>
+<p>初始化构造时, 将数组树中的所有元素以0占位, 并将外部传入的元素赋值到数组树的第0个下标, 作为树根. 搜索节点的算法其实和数组这个数据结构相同, 通过下标来查询.</p>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>    <span class="kd">@discardableResult</span> <span class="kd">func</span> <span class="nf">addNode</span><span class="p">(</span><span class="n">loc</span> <span class="nv">index</span><span class="p">:</span> <span class="kt">Int</span><span class="p">,</span> <span class="nv">direction</span><span class="p">:</span> <span class="kt">Direction</span><span class="p">,</span> <span class="nv">node</span><span class="p">:</span> <span class="kt">Element</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Bool</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="n">index</span> <span class="o">&lt;</span> <span class="mi">0</span> <span class="o">||</span> <span class="n">index</span> <span class="o">&gt;=</span> <span class="n">capacity</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="kc">false</span>
+        <span class="p">}</span>
+        <span class="k">if</span> <span class="n">tree</span><span class="p">[</span><span class="n">index</span><span class="p">]</span> <span class="k">as?</span> <span class="kt">Int</span> <span class="o">==</span> <span class="mi">0</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="kc">false</span>
+        <span class="p">}</span>
+        <span class="k">switch</span> <span class="n">direction</span> <span class="p">{</span>
+        <span class="k">case</span> <span class="o">.</span><span class="nv">left</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">index</span> <span class="o">*</span> <span class="mi">2</span> <span class="o">+</span> <span class="mi">1</span> <span class="o">&gt;=</span> <span class="n">capacity</span> <span class="p">{</span>
+                <span class="k">return</span> <span class="kc">false</span>
+            <span class="p">}</span>
+            <span class="k">if</span> <span class="n">tree</span><span class="p">[</span><span class="n">index</span> <span class="o">*</span> <span class="mi">2</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span> <span class="k">as?</span> <span class="kt">Int</span> <span class="o">!=</span> <span class="mi">0</span> <span class="p">{</span>
+                <span class="k">return</span> <span class="kc">false</span>
+            <span class="p">}</span>
+            <span class="n">tree</span><span class="p">[</span><span class="n">index</span> <span class="o">*</span> <span class="mi">2</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">node</span>
+        <span class="k">case</span> <span class="o">.</span><span class="nv">right</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">index</span> <span class="o">*</span> <span class="mi">2</span> <span class="o">+</span> <span class="mi">2</span> <span class="o">&gt;=</span> <span class="n">capacity</span> <span class="p">{</span>
+                <span class="k">return</span> <span class="kc">false</span>
+            <span class="p">}</span>
+            <span class="k">if</span> <span class="n">tree</span><span class="p">[</span><span class="n">index</span> <span class="o">*</span> <span class="mi">2</span> <span class="o">+</span> <span class="mi">2</span><span class="p">]</span> <span class="k">as?</span> <span class="kt">Int</span> <span class="o">!=</span> <span class="mi">0</span> <span class="p">{</span>
+                <span class="k">return</span> <span class="kc">false</span>
+            <span class="p">}</span>
+            <span class="n">tree</span><span class="p">[</span><span class="n">index</span> <span class="o">*</span> <span class="mi">2</span> <span class="o">+</span> <span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="n">node</span>
+        <span class="p">}</span>
+        <span class="k">return</span> <span class="kc">true</span>
+    <span class="p">}</span>
+    
+    <span class="kd">@discardableResult</span> <span class="kd">func</span> <span class="nf">deleteNode</span><span class="p">(</span><span class="n">loc</span> <span class="nv">index</span><span class="p">:</span> <span class="kt">Int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Bool</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="n">index</span> <span class="o">&lt;</span> <span class="mi">0</span> <span class="o">||</span> <span class="n">index</span> <span class="o">&gt;=</span> <span class="n">capacity</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="kc">false</span>
+        <span class="p">}</span>
+        <span class="k">if</span> <span class="n">tree</span><span class="p">[</span><span class="n">index</span><span class="p">]</span> <span class="k">as?</span> <span class="kt">Int</span> <span class="o">==</span> <span class="mi">0</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="kc">false</span>
+        <span class="p">}</span>
+        <span class="n">tree</span><span class="p">[</span><span class="n">index</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="nf">deleteNode</span><span class="p">(</span><span class="nv">loc</span><span class="p">:</span> <span class="n">index</span> <span class="o">*</span> <span class="mi">2</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="nf">deleteNode</span><span class="p">(</span><span class="nv">loc</span><span class="p">:</span> <span class="n">index</span> <span class="o">*</span> <span class="mi">2</span> <span class="o">+</span> <span class="mi">2</span><span class="p">)</span>
+        <span class="k">return</span> <span class="kc">true</span>
+    <span class="p">}</span>
+</code></pre>
+</div>
+<p>添加及删除节点, 添加的时候用了一个简单的数学公式, 因为是二叉树所以<code class="highlighter-rouge">index * 2</code>, 左边子节点为 <code class="highlighter-rouge">+1</code>, 右边子节点为<code class="highlighter-rouge">+2</code>. 删除节点的时候使用了递归, 也同样使用了这个公式.</p>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>        <span class="k">let</span> <span class="nv">tree_i</span> <span class="o">=</span> <span class="kt">Tree1</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="nv">root</span><span class="p">:</span> <span class="kt">Node</span><span class="o">&lt;</span><span class="kt">Int</span><span class="o">&gt;</span><span class="p">(</span><span class="nv">data</span><span class="p">:</span> <span class="mi">3</span><span class="p">))</span>
+        <span class="n">tree_i</span><span class="o">.</span><span class="nf">addNode</span><span class="p">(</span><span class="nv">loc</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="nv">direction</span><span class="p">:</span> <span class="o">.</span><span class="k">right</span><span class="p">,</span> <span class="nv">node</span><span class="p">:</span> <span class="kt">Node</span><span class="o">&lt;</span><span class="kt">Int</span><span class="o">&gt;</span><span class="p">(</span><span class="nv">data</span><span class="p">:</span> <span class="mi">4</span><span class="p">))</span>
+        <span class="n">tree_i</span><span class="o">.</span><span class="nf">addNode</span><span class="p">(</span><span class="nv">loc</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="nv">direction</span><span class="p">:</span> <span class="o">.</span><span class="k">left</span><span class="p">,</span> <span class="nv">node</span><span class="p">:</span> <span class="kt">Node</span><span class="o">&lt;</span><span class="kt">Int</span><span class="o">&gt;</span><span class="p">(</span><span class="nv">data</span><span class="p">:</span> <span class="mi">5</span><span class="p">))</span>
+        <span class="n">tree_i</span><span class="o">.</span><span class="nf">addNode</span><span class="p">(</span><span class="nv">loc</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span> <span class="nv">direction</span><span class="p">:</span> <span class="o">.</span><span class="k">right</span><span class="p">,</span> <span class="nv">node</span><span class="p">:</span> <span class="kt">Node</span><span class="o">&lt;</span><span class="kt">Int</span><span class="o">&gt;</span><span class="p">(</span><span class="nv">data</span><span class="p">:</span> <span class="mi">6</span><span class="p">))</span>
+        
+        <span class="n">tree_i</span><span class="o">.</span><span class="nf">traverse</span><span class="p">()</span> <span class="c1">//(304005000000600)</span>
+        
+        <span class="n">tree_i</span><span class="o">.</span><span class="nf">searchNode</span><span class="p">(</span><span class="nv">loc</span><span class="p">:</span> <span class="mi">5</span><span class="p">)?</span><span class="o">.</span><span class="nf">printNode</span><span class="p">()</span> <span class="c1">//5</span>
+        <span class="n">tree_i</span><span class="o">.</span><span class="nf">deleteNode</span><span class="p">(</span><span class="nv">loc</span><span class="p">:</span> <span class="mi">2</span><span class="p">)</span>
+        
+        <span class="n">tree_i</span><span class="o">.</span><span class="nf">traverse</span><span class="p">()</span> <span class="c1">//(300000000000000)</span>
+        
+</code></pre>
+</div>
+<p>可以看到数组树就是以第一个下标作为第一个节点, 后面的以0占位, 如果是子节点, 则显示子节点的数据, 没有子节点就是0.</p>
+
+<h5 id="链表树">链表树</h5>
+
+<p>学会了数组树, 我们来看看链表树到底是一个怎么会事, 可能想象也就知道, 是通过链表的形式进行树的延伸, 而不是以0占位吧. 看看是什么歌情况吧.</p>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>    <span class="c1">// for tree</span>
+    <span class="k">var</span> <span class="nv">index</span><span class="p">:</span> <span class="kt">Int</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">var</span> <span class="nv">leftChild</span><span class="p">:</span> <span class="kt">Node</span><span class="p">?</span>
+    <span class="k">var</span> <span class="nv">rightChild</span><span class="p">:</span> <span class="kt">Node</span><span class="p">?</span>
+    <span class="k">var</span> <span class="nv">parent</span><span class="p">:</span> <span class="kt">Node</span><span class="p">?</span>
+</code></pre>
+</div>
+
+<p>首先, 我们先在树的节点上定义一下所需要的元素, 和之前链表的节点类似, 只是一个指针变成了三个.</p>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>    <span class="kd">func</span> <span class="nf">searchNode</span><span class="p">(</span><span class="nv">nodeIndex</span><span class="p">:</span> <span class="kt">Int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Node</span><span class="o">&lt;</span><span class="kt">Element</span><span class="o">&gt;</span><span class="p">?</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="n">index</span> <span class="o">==</span> <span class="n">nodeIndex</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="k">self</span>
+        <span class="p">}</span>
+        <span class="k">var</span> <span class="nv">temp</span><span class="p">:</span> <span class="kt">Node</span><span class="o">&lt;</span><span class="kt">Element</span><span class="o">&gt;</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span>
+        <span class="k">if</span> <span class="n">leftChild</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
+            <span class="k">if</span> <span class="n">leftChild</span><span class="p">?</span><span class="o">.</span><span class="n">index</span> <span class="o">==</span> <span class="n">nodeIndex</span> <span class="p">{</span>
+                <span class="k">return</span> <span class="n">leftChild</span>
+            <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+                <span class="n">temp</span> <span class="o">=</span> <span class="n">leftChild</span><span class="p">?</span><span class="o">.</span><span class="nf">searchNode</span><span class="p">(</span><span class="nv">nodeIndex</span><span class="p">:</span> <span class="n">nodeIndex</span><span class="p">)</span>
+                <span class="k">if</span> <span class="n">temp</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
+                    <span class="k">return</span> <span class="n">temp</span>
+                <span class="p">}</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+        <span class="k">if</span> <span class="n">rightChild</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
+            <span class="k">if</span> <span class="n">rightChild</span><span class="p">?</span><span class="o">.</span><span class="n">index</span> <span class="o">==</span> <span class="n">nodeIndex</span> <span class="p">{</span>
+                <span class="k">return</span> <span class="n">rightChild</span>
+            <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+                <span class="n">temp</span> <span class="o">=</span> <span class="n">rightChild</span><span class="p">?</span><span class="o">.</span><span class="nf">searchNode</span><span class="p">(</span><span class="nv">nodeIndex</span><span class="p">:</span> <span class="n">nodeIndex</span><span class="p">)</span>
+                <span class="k">if</span> <span class="n">temp</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
+                    <span class="k">return</span> <span class="n">temp</span>
+                <span class="p">}</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+        <span class="k">return</span> <span class="kc">nil</span>
+    <span class="p">}</span>
+</code></pre>
+</div>
+
+<p>还需要在节点中添加搜索节点的方法, 因为是链表, 所以节点自身也成为了链表的一部分, 所以搜索的逻辑写入在节点中是非常合适的.</p>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>    <span class="kd">func</span> <span class="nf">deleteNode</span><span class="p">()</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="n">leftChild</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
+            <span class="n">leftChild</span><span class="p">?</span><span class="o">.</span><span class="nf">deleteNode</span><span class="p">()</span>
+        <span class="p">}</span>
+        <span class="k">if</span> <span class="n">rightChild</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
+            <span class="n">rightChild</span><span class="p">?</span><span class="o">.</span><span class="nf">deleteNode</span><span class="p">()</span>
+        <span class="p">}</span>
+        <span class="k">if</span> <span class="n">parent</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
+            <span class="k">if</span> <span class="n">parent</span><span class="p">?</span><span class="o">.</span><span class="n">leftChild</span> <span class="o">==</span> <span class="k">self</span> <span class="p">{</span>
+                <span class="n">parent</span><span class="p">?</span><span class="o">.</span><span class="n">leftChild</span> <span class="o">=</span> <span class="kc">nil</span>
+            <span class="p">}</span>
+            <span class="k">if</span> <span class="n">parent</span><span class="p">?</span><span class="o">.</span><span class="n">rightChild</span> <span class="o">==</span> <span class="k">self</span> <span class="p">{</span>
+                <span class="n">parent</span><span class="p">?</span><span class="o">.</span><span class="n">rightChild</span> <span class="o">=</span> <span class="kc">nil</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+        <span class="n">parent</span> <span class="o">=</span> <span class="kc">nil</span>
+    <span class="p">}</span>
+</code></pre>
+</div>
+<p>还需要添加删除节点的函数在节点中进行递归.</p>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>    <span class="kd">enum</span> <span class="kt">PrintType</span> <span class="p">{</span>
+        <span class="k">case</span> <span class="n">dafault</span>
+        <span class="k">case</span> <span class="n">preorder</span>
+        <span class="k">case</span> <span class="n">inorder</span>
+        <span class="k">case</span> <span class="n">postorder</span>
+    <span class="p">}</span>
+    
+    <span class="kd">func</span> <span class="nf">printNode</span><span class="p">(</span><span class="n">_</span> <span class="nv">type</span><span class="p">:</span> <span class="kt">PrintType</span> <span class="o">=</span> <span class="o">.</span><span class="n">dafault</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">guard</span> <span class="k">let</span> <span class="nv">data</span> <span class="o">=</span> <span class="n">data</span> <span class="k">else</span> <span class="p">{</span> <span class="k">return</span> <span class="p">}</span>
+        <span class="k">switch</span> <span class="n">type</span> <span class="p">{</span>
+        <span class="k">case</span> <span class="o">.</span><span class="nv">dafault</span><span class="p">:</span>
+            <span class="nf">print</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+        <span class="k">case</span> <span class="o">.</span><span class="nv">preorder</span><span class="p">:</span>
+            <span class="nf">print</span><span class="p">(</span><span class="s">"</span><span class="se">\(</span><span class="n">index</span><span class="se">)</span><span class="s">, </span><span class="se">\(</span><span class="n">data</span><span class="se">)</span><span class="s">"</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">leftChild</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
+                <span class="n">leftChild</span><span class="p">?</span><span class="o">.</span><span class="nf">printNode</span><span class="p">(</span><span class="o">.</span><span class="n">preorder</span><span class="p">)</span>
+            <span class="p">}</span>
+            <span class="k">if</span> <span class="n">rightChild</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
+                <span class="n">rightChild</span><span class="p">?</span><span class="o">.</span><span class="nf">printNode</span><span class="p">(</span><span class="o">.</span><span class="n">preorder</span><span class="p">)</span>
+            <span class="p">}</span>
+        <span class="k">case</span> <span class="o">.</span><span class="nv">inorder</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">leftChild</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
+                <span class="n">leftChild</span><span class="p">?</span><span class="o">.</span><span class="nf">printNode</span><span class="p">(</span><span class="o">.</span><span class="n">inorder</span><span class="p">)</span>
+            <span class="p">}</span>
+            <span class="nf">print</span><span class="p">(</span><span class="s">"</span><span class="se">\(</span><span class="n">index</span><span class="se">)</span><span class="s">, </span><span class="se">\(</span><span class="n">data</span><span class="se">)</span><span class="s">"</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">rightChild</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
+                <span class="n">rightChild</span><span class="p">?</span><span class="o">.</span><span class="nf">printNode</span><span class="p">(</span><span class="o">.</span><span class="n">inorder</span><span class="p">)</span>
+            <span class="p">}</span>
+        <span class="k">case</span> <span class="o">.</span><span class="nv">postorder</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">leftChild</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
+                <span class="n">leftChild</span><span class="p">?</span><span class="o">.</span><span class="nf">printNode</span><span class="p">(</span><span class="o">.</span><span class="n">postorder</span><span class="p">)</span>
+            <span class="p">}</span>
+            <span class="k">if</span> <span class="n">rightChild</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
+                <span class="n">rightChild</span><span class="p">?</span><span class="o">.</span><span class="nf">printNode</span><span class="p">(</span><span class="o">.</span><span class="n">postorder</span><span class="p">)</span>
+            <span class="p">}</span>
+            <span class="nf">print</span><span class="p">(</span><span class="s">"</span><span class="se">\(</span><span class="n">index</span><span class="se">)</span><span class="s">, </span><span class="se">\(</span><span class="n">data</span><span class="se">)</span><span class="s">"</span><span class="p">)</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+</code></pre>
+</div>
+<p>节点中, 我们最后需要加入打印节点的方法, 这里通过枚举判断是前序遍历, 中序遍历还是后序遍历.</p>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>    <span class="kd">private</span> <span class="k">var</span> <span class="nv">root</span><span class="p">:</span> <span class="kt">Node</span><span class="o">&lt;</span><span class="kt">Element</span><span class="o">&gt;</span> <span class="c1">//头节点</span>
+    
+    <span class="nf">init</span><span class="p">(</span><span class="n">root</span> <span class="nv">node</span><span class="p">:</span> <span class="kt">Node</span><span class="o">&lt;</span><span class="kt">Element</span><span class="o">&gt;</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">root</span> <span class="o">=</span> <span class="n">node</span>
+    <span class="p">}</span>
+    
+    <span class="kd">func</span> <span class="nf">searchNode</span><span class="p">(</span><span class="n">loc</span> <span class="nv">index</span><span class="p">:</span> <span class="kt">Int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Node</span><span class="o">&lt;</span><span class="kt">Element</span><span class="o">&gt;</span><span class="p">?</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="n">root</span><span class="o">.</span><span class="nf">searchNode</span><span class="p">(</span><span class="nv">nodeIndex</span><span class="p">:</span> <span class="n">index</span><span class="p">)</span>
+    <span class="p">}</span>
+</code></pre>
+</div>
+<p>有了刚才的节点支持, 我们在链表树中的操作就轻松多了, 只需要导入一个头节点, 搜索节点也只需要调用刚才节点中的饿搜索方法.</p>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>    <span class="kd">func</span> <span class="nf">preorderTraversal</span><span class="p">()</span> <span class="p">{</span>
+        <span class="nf">print</span><span class="p">(</span><span class="s">"︵"</span><span class="p">)</span>
+        <span class="n">root</span><span class="o">.</span><span class="nf">printNode</span><span class="p">(</span><span class="o">.</span><span class="n">preorder</span><span class="p">)</span>
+        <span class="nf">print</span><span class="p">(</span><span class="s">"︶"</span><span class="p">)</span>
+    <span class="p">}</span>
+    
+    <span class="kd">func</span> <span class="nf">inorderTraversal</span><span class="p">()</span> <span class="p">{</span>
+        <span class="nf">print</span><span class="p">(</span><span class="s">"︵"</span><span class="p">)</span>
+        <span class="n">root</span><span class="o">.</span><span class="nf">printNode</span><span class="p">(</span><span class="o">.</span><span class="n">inorder</span><span class="p">)</span>
+        <span class="nf">print</span><span class="p">(</span><span class="s">"︶"</span><span class="p">)</span>
+    <span class="p">}</span>
+    
+    <span class="kd">func</span> <span class="nf">postorderTraversal</span><span class="p">()</span> <span class="p">{</span>
+        <span class="nf">print</span><span class="p">(</span><span class="s">"︵"</span><span class="p">)</span>
+        <span class="n">root</span><span class="o">.</span><span class="nf">printNode</span><span class="p">(</span><span class="o">.</span><span class="n">postorder</span><span class="p">)</span>
+        <span class="nf">print</span><span class="p">(</span><span class="s">"︶"</span><span class="p">)</span>
+    <span class="p">}</span>
+</code></pre>
+</div>
+<p>前序遍历, 后序遍历, 中序遍历只需要传入不同的枚举即可, 逻辑都在刚才的节点函数中实现了.</p>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>    <span class="kd">@discardableResult</span>  <span class="kd">func</span> <span class="nf">addNode</span><span class="p">(</span><span class="n">loc</span> <span class="nv">index</span><span class="p">:</span> <span class="kt">Int</span><span class="p">,</span> <span class="nv">direction</span><span class="p">:</span> <span class="kt">Direction</span><span class="p">,</span> <span class="nv">node</span><span class="p">:</span> <span class="kt">Node</span><span class="o">&lt;</span><span class="kt">Element</span><span class="o">&gt;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Bool</span> <span class="p">{</span>
+        <span class="k">guard</span> <span class="k">let</span> <span class="nv">temp</span> <span class="o">=</span> <span class="nf">searchNode</span><span class="p">(</span><span class="nv">loc</span><span class="p">:</span> <span class="n">index</span><span class="p">)</span> <span class="k">else</span> <span class="p">{</span> <span class="k">return</span> <span class="kc">false</span> <span class="p">}</span>
+        <span class="k">let</span> <span class="nv">newNode</span> <span class="o">=</span> <span class="kt">Node</span><span class="o">&lt;</span><span class="kt">Element</span><span class="o">&gt;</span><span class="p">()</span>
+        <span class="n">newNode</span><span class="o">.</span><span class="n">index</span> <span class="o">=</span> <span class="n">node</span><span class="o">.</span><span class="n">index</span>
+        <span class="n">newNode</span><span class="o">.</span><span class="n">data</span> <span class="o">=</span> <span class="n">node</span><span class="o">.</span><span class="n">data</span>
+        <span class="n">newNode</span><span class="o">.</span><span class="n">parent</span> <span class="o">=</span> <span class="n">temp</span>
+        <span class="k">if</span> <span class="n">direction</span> <span class="o">==</span> <span class="o">.</span><span class="k">left</span> <span class="p">{</span>
+            <span class="n">temp</span><span class="o">.</span><span class="n">leftChild</span> <span class="o">=</span> <span class="n">newNode</span>
+        <span class="p">}</span>
+        <span class="k">if</span> <span class="n">direction</span> <span class="o">==</span> <span class="o">.</span><span class="k">right</span> <span class="p">{</span>
+            <span class="n">temp</span><span class="o">.</span><span class="n">rightChild</span> <span class="o">=</span> <span class="n">newNode</span>
+        <span class="p">}</span>
+        <span class="k">return</span> <span class="kc">true</span>
+    <span class="p">}</span>
+    
+    <span class="kd">@discardableResult</span> <span class="kd">func</span> <span class="nf">deleteNode</span><span class="p">(</span><span class="n">loc</span> <span class="nv">index</span><span class="p">:</span> <span class="kt">Int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Node</span><span class="o">&lt;</span><span class="kt">Element</span><span class="o">&gt;</span><span class="p">?</span> <span class="p">{</span>
+        <span class="k">guard</span> <span class="k">let</span> <span class="nv">temp</span> <span class="o">=</span> <span class="nf">searchNode</span><span class="p">(</span><span class="nv">loc</span><span class="p">:</span> <span class="n">index</span><span class="p">)</span> <span class="k">else</span> <span class="p">{</span> <span class="k">return</span> <span class="kc">nil</span> <span class="p">}</span>
+        <span class="n">temp</span><span class="o">.</span><span class="nf">deleteNode</span><span class="p">()</span>
+        <span class="k">return</span> <span class="n">temp</span>
+    <span class="p">}</span>
+</code></pre>
+</div>
+<p>删除节点也是调用了节点中的递归方法, 值得注意的只有添加节点的方法, 我们可以看到, 添加节点做的就是像子节点指针进行赋值, 并通过搜索方法定位到该赋值的节点.</p>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="k">let</span> <span class="nv">tree_i</span> <span class="o">=</span> <span class="kt">Tree2</span><span class="p">(</span><span class="nv">root</span><span class="p">:</span> <span class="kt">Node</span><span class="o">&lt;</span><span class="kt">Int</span><span class="o">&gt;</span><span class="p">(</span><span class="nv">data</span><span class="p">:</span> <span class="mi">0</span><span class="p">))</span>
+<span class="n">tree_i</span><span class="o">.</span><span class="nf">addNode</span><span class="p">(</span><span class="nv">loc</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="nv">direction</span><span class="p">:</span> <span class="o">.</span><span class="k">right</span><span class="p">,</span> <span class="nv">node</span><span class="p">:</span> <span class="kt">Node</span><span class="o">&lt;</span><span class="kt">Int</span><span class="o">&gt;</span><span class="p">(</span><span class="nv">index</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="nv">data</span><span class="p">:</span> <span class="mi">4</span><span class="p">))</span>
+<span class="n">tree_i</span><span class="o">.</span><span class="nf">addNode</span><span class="p">(</span><span class="nv">loc</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="nv">direction</span><span class="p">:</span> <span class="o">.</span><span class="k">left</span><span class="p">,</span> <span class="nv">node</span><span class="p">:</span> <span class="kt">Node</span><span class="o">&lt;</span><span class="kt">Int</span><span class="o">&gt;</span><span class="p">(</span><span class="nv">index</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="nv">data</span><span class="p">:</span> <span class="mi">5</span><span class="p">))</span>
+<span class="n">tree_i</span><span class="o">.</span><span class="nf">addNode</span><span class="p">(</span><span class="nv">loc</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="nv">direction</span><span class="p">:</span> <span class="o">.</span><span class="k">right</span><span class="p">,</span> <span class="nv">node</span><span class="p">:</span> <span class="kt">Node</span><span class="o">&lt;</span><span class="kt">Int</span><span class="o">&gt;</span><span class="p">(</span><span class="nv">index</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span> <span class="nv">data</span><span class="p">:</span> <span class="mi">6</span><span class="p">))</span>
+        
+<span class="n">tree_i</span><span class="o">.</span><span class="nf">preorderTraversal</span><span class="p">()</span>
+<span class="n">tree_i</span><span class="o">.</span><span class="nf">inorderTraversal</span><span class="p">()</span>
+<span class="n">tree_i</span><span class="o">.</span><span class="nf">postorderTraversal</span><span class="p">()</span>
+        
+<span class="cm">/*
+︵
+0, 0
+1, 4
+2, 5
+3, 6
+︶
+︵
+0, 0
+2, 5
+3, 6
+1, 4
+︶
+︵
+3, 6
+2, 5
+1, 4
+0, 0
+︶
+*/</span>
+        
+<span class="n">tree_i</span><span class="o">.</span><span class="nf">searchNode</span><span class="p">(</span><span class="nv">loc</span><span class="p">:</span> <span class="mi">3</span><span class="p">)?</span><span class="o">.</span><span class="nf">printNode</span><span class="p">()</span> <span class="c1">//6</span>
+<span class="n">tree_i</span><span class="o">.</span><span class="nf">deleteNode</span><span class="p">(</span><span class="nv">loc</span><span class="p">:</span> <span class="mi">1</span><span class="p">)</span>
+        
+<span class="n">tree_i</span><span class="o">.</span><span class="nf">preorderTraversal</span><span class="p">()</span> <span class="c1">//(0,0)</span>
+<span class="n">tree_i</span><span class="o">.</span><span class="nf">inorderTraversal</span><span class="p">()</span> <span class="c1">//(0,0)</span>
+<span class="n">tree_i</span><span class="o">.</span><span class="nf">postorderTraversal</span><span class="p">()</span> <span class="c1">//(0,0)</span>
+</code></pre>
+</div>
+
+<p>链表树和数组树的使用也是如出一辙, 就和数组和链表的关系一样, 一个是下标索引, 一个是指针指向.</p>
+
+<h4 id="图">图</h4>
+
+<p>终于要讲到最为关键的一个数据结构了, 图, 刚学习的时候对于图真的有点不好理解, 什么是图, 嗯…. 不好描述. 不好描述就用画的吧.</p>
+
+<p><img src="http://upload-images.jianshu.io/upload_images/1229762-bff946b3d80a3711.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="" /></p>
+
+<p>上面的轨道交通图, 就是一个非常好的一个无向图, 可以说是图这个数据结构的完美写照, 比如说要从静安寺到陆家嘴再到人民广场再到徐家汇再到世纪大道的最近距离, 就是最小生成树算法. 算法我们等会说, 我们先来看看图这个数据结构.</p>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>    <span class="c1">// for map</span>
+    <span class="k">var</span> <span class="nv">visited</span><span class="p">:</span> <span class="kt">Bool</span> <span class="o">=</span> <span class="kc">false</span> <span class="c1">//是否访问</span>
+</code></pre>
+</div>
+<p>我们需要在节点中添加是否访问的字段</p>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>    <span class="kd">class</span> <span class="kt">Edge</span> <span class="p">{</span>
+        <span class="k">var</span> <span class="nv">nodeIndexA</span><span class="p">:</span> <span class="kt">Int</span> <span class="c1">//点A</span>
+        <span class="k">var</span> <span class="nv">nodeIndexB</span><span class="p">:</span> <span class="kt">Int</span> <span class="c1">//点B</span>
+        <span class="k">var</span> <span class="nv">weightValue</span><span class="p">:</span> <span class="kt">Int</span> <span class="c1">//边的权重</span>
+        <span class="k">var</span> <span class="nv">selected</span><span class="p">:</span> <span class="kt">Bool</span> <span class="o">=</span> <span class="kc">false</span> <span class="c1">//是否选择此边</span>
+        
+        <span class="nf">init</span><span class="p">(</span><span class="n">nodeIndexA</span> <span class="kt">A</span><span class="p">:</span> <span class="kt">Int</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">nodeIndexB</span> <span class="kt">B</span><span class="p">:</span> <span class="kt">Int</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">weightValue</span> <span class="kt">Val</span><span class="p">:</span> <span class="kt">Int</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">nodeIndexA</span> <span class="o">=</span> <span class="kt">A</span>
+            <span class="n">nodeIndexB</span> <span class="o">=</span> <span class="kt">B</span>
+            <span class="n">weightValue</span> <span class="o">=</span> <span class="kt">Val</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+</code></pre>
+</div>
+<p>还需要创建一个边的类, 并声明以上成员属性.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>    private var capacity: Int //图的容量
+    private var matrix: [Int] //图的矩阵
+    private var edge: [Edge] //边的集合
+    private lazy var count: Int = 0 //图的数量
+    private lazy var map: [Node&lt;Element&gt;] = [Node&lt;Element&gt;]() //图集合
+    
+    init(_ mapCapacity: Int) {
+        capacity = mapCapacity
+        matrix = [Int](repeating: 0, count: capacity * capacity)
+        edge = [Edge](repeating: Edge(), count: capacity - 1)
+    }
+</code></pre>
+</div>
+<p>定义上述成员属性, 并进行初始化.</p>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>    <span class="kd">@discardableResult</span> <span class="kd">func</span> <span class="nf">addNode</span><span class="p">(</span><span class="n">_</span> <span class="nv">node</span><span class="p">:</span> <span class="kt">Node</span><span class="o">&lt;</span><span class="kt">Element</span><span class="o">&gt;</span><span class="p">?)</span> <span class="o">-&gt;</span> <span class="kt">Bool</span> <span class="p">{</span>
+        <span class="k">guard</span> <span class="k">let</span> <span class="nv">node</span> <span class="o">=</span> <span class="n">node</span> <span class="k">else</span> <span class="p">{</span> <span class="k">return</span> <span class="kc">false</span> <span class="p">}</span>
+        <span class="n">map</span><span class="o">.</span><span class="nf">append</span><span class="p">(</span><span class="n">node</span><span class="p">)</span>
+        <span class="n">map</span><span class="p">[</span><span class="n">count</span><span class="p">]</span><span class="o">.</span><span class="n">data</span> <span class="o">=</span> <span class="n">node</span><span class="o">.</span><span class="n">data</span>
+        <span class="n">count</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="k">return</span> <span class="kc">true</span>
+    <span class="p">}</span>
+    
+    <span class="kd">func</span> <span class="nf">resetNode</span><span class="p">()</span> <span class="p">{</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="k">in</span> <span class="mi">0</span><span class="o">..&lt;</span><span class="n">count</span> <span class="p">{</span>
+            <span class="n">map</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">visited</span> <span class="o">=</span> <span class="kc">false</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+</code></pre>
+</div>
+<p>添加节点和重置节点的函数, 没什么好说, 请回顾数组篇.</p>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>    <span class="kd">@discardableResult</span> <span class="kd">func</span> <span class="nf">setValueToMatrixForDirectedGraph</span><span class="p">(</span><span class="nv">row</span><span class="p">:</span> <span class="kt">Int</span><span class="p">,</span> <span class="nv">col</span><span class="p">:</span> <span class="kt">Int</span><span class="p">,</span> <span class="nv">val</span><span class="p">:</span> <span class="kt">Int</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Bool</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="n">row</span> <span class="o">&lt;</span> <span class="mi">0</span> <span class="o">||</span> <span class="n">row</span> <span class="o">&gt;=</span> <span class="n">capacity</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="kc">false</span>
+        <span class="p">}</span>
+        <span class="k">if</span> <span class="n">col</span> <span class="o">&lt;</span> <span class="mi">0</span> <span class="o">||</span> <span class="n">col</span> <span class="o">&gt;=</span> <span class="n">capacity</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="kc">false</span>
+        <span class="p">}</span>
+        <span class="n">matrix</span><span class="p">[</span><span class="n">row</span> <span class="o">*</span> <span class="n">capacity</span> <span class="o">+</span> <span class="n">col</span><span class="p">]</span> <span class="o">=</span> <span class="n">val</span>
+        <span class="k">return</span> <span class="kc">true</span>
+    <span class="p">}</span>
+    
+    <span class="kd">@discardableResult</span> <span class="kd">func</span> <span class="nf">setValueToMatrixForUndirectedGraph</span><span class="p">(</span><span class="nv">row</span><span class="p">:</span> <span class="kt">Int</span><span class="p">,</span> <span class="nv">col</span><span class="p">:</span> <span class="kt">Int</span><span class="p">,</span> <span class="nv">val</span><span class="p">:</span> <span class="kt">Int</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Bool</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="n">row</span> <span class="o">&lt;</span> <span class="mi">0</span> <span class="o">||</span> <span class="n">row</span> <span class="o">&gt;=</span> <span class="n">capacity</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="kc">false</span>
+        <span class="p">}</span>
+        <span class="k">if</span> <span class="n">col</span> <span class="o">&lt;</span> <span class="mi">0</span> <span class="o">||</span> <span class="n">col</span> <span class="o">&gt;=</span> <span class="n">capacity</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="kc">false</span>
+        <span class="p">}</span>
+        <span class="n">matrix</span><span class="p">[</span><span class="n">row</span> <span class="o">*</span> <span class="n">capacity</span> <span class="o">+</span> <span class="n">col</span><span class="p">]</span> <span class="o">=</span> <span class="n">val</span>
+        <span class="n">matrix</span><span class="p">[</span><span class="n">col</span> <span class="o">*</span> <span class="n">capacity</span> <span class="o">+</span> <span class="n">row</span><span class="p">]</span> <span class="o">=</span> <span class="n">val</span>
+        <span class="k">return</span> <span class="kc">true</span>
+    <span class="p">}</span>
+</code></pre>
+</div>
+<p>单边图和无向图的区别, 即是矩阵中的展示区别.</p>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>    <span class="kd">func</span> <span class="nf">depthFirstTraverse</span><span class="p">(</span><span class="n">loc</span> <span class="nv">index</span><span class="p">:</span> <span class="kt">Int</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nf">print</span><span class="p">(</span><span class="s">"︵"</span><span class="p">)</span>
+        <span class="kd">func</span> <span class="nf">depthFirstTraverseImpl</span><span class="p">(</span><span class="n">loc</span> <span class="nv">index</span><span class="p">:</span> <span class="kt">Int</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">guard</span> <span class="k">let</span> <span class="nv">data</span> <span class="o">=</span> <span class="n">map</span><span class="p">[</span><span class="n">index</span><span class="p">]</span><span class="o">.</span><span class="n">data</span> <span class="k">else</span> <span class="p">{</span> <span class="k">return</span> <span class="p">}</span>
+            <span class="nf">print</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+            <span class="n">map</span><span class="p">[</span><span class="n">index</span><span class="p">]</span><span class="o">.</span><span class="n">visited</span> <span class="o">=</span> <span class="kc">true</span>
+            <span class="k">for</span> <span class="n">i</span> <span class="k">in</span> <span class="mi">0</span><span class="o">..&lt;</span><span class="n">capacity</span> <span class="p">{</span>
+                <span class="k">let</span> <span class="nv">value</span> <span class="o">=</span> <span class="nf">getValueFromMatrix</span><span class="p">(</span><span class="nv">row</span><span class="p">:</span> <span class="n">index</span><span class="p">,</span> <span class="nv">col</span><span class="p">:</span> <span class="n">i</span><span class="p">)</span>
+                <span class="k">if</span> <span class="n">value</span> <span class="o">==</span> <span class="mi">1</span> <span class="p">{</span>
+                    <span class="k">if</span> <span class="n">map</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">visited</span> <span class="p">{</span>
+                        <span class="k">continue</span>
+                    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+                        <span class="nf">depthFirstTraverseImpl</span><span class="p">(</span><span class="nv">loc</span><span class="p">:</span> <span class="n">i</span><span class="p">)</span>
+                    <span class="p">}</span>
+                <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+                    <span class="k">continue</span>
+                <span class="p">}</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+        <span class="nf">depthFirstTraverseImpl</span><span class="p">(</span><span class="nv">loc</span><span class="p">:</span> <span class="n">index</span><span class="p">)</span>
+        <span class="nf">print</span><span class="p">(</span><span class="s">"︶"</span><span class="p">)</span>
+    <span class="p">}</span>
+</code></pre>
+</div>
+<p>深度优先遍历, 就是纵向的结构进行遍历.</p>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>    <span class="kd">func</span> <span class="nf">breadthFirstTraverse</span><span class="p">(</span><span class="n">loc</span> <span class="nv">index</span><span class="p">:</span> <span class="kt">Int</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nf">print</span><span class="p">(</span><span class="s">"︵"</span><span class="p">)</span>
+        <span class="k">guard</span> <span class="k">let</span> <span class="nv">data</span> <span class="o">=</span> <span class="n">map</span><span class="p">[</span><span class="n">index</span><span class="p">]</span><span class="o">.</span><span class="n">data</span> <span class="k">else</span> <span class="p">{</span> <span class="k">return</span> <span class="p">}</span>
+        <span class="nf">print</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+        <span class="n">map</span><span class="p">[</span><span class="n">index</span><span class="p">]</span><span class="o">.</span><span class="n">visited</span> <span class="o">=</span> <span class="kc">true</span>
+        <span class="k">var</span> <span class="nv">temp</span> <span class="o">=</span> <span class="p">[</span><span class="kt">Int</span><span class="p">]()</span>
+        <span class="n">temp</span><span class="o">.</span><span class="nf">append</span><span class="p">(</span><span class="n">index</span><span class="p">)</span>
+        <span class="kd">func</span> <span class="nf">breadthFirstTraverseImpl</span><span class="p">(</span><span class="nv">preTemp</span><span class="p">:</span> <span class="p">[</span><span class="kt">Int</span><span class="p">])</span> <span class="p">{</span>
+            <span class="k">var</span> <span class="nv">temp</span> <span class="o">=</span> <span class="p">[</span><span class="kt">Int</span><span class="p">]()</span>
+            <span class="k">for</span> <span class="n">i</span> <span class="k">in</span> <span class="mi">0</span><span class="o">..&lt;</span><span class="n">preTemp</span><span class="o">.</span><span class="n">count</span> <span class="p">{</span>
+                <span class="k">for</span> <span class="n">j</span> <span class="k">in</span> <span class="mi">0</span><span class="o">..&lt;</span><span class="n">capacity</span> <span class="p">{</span>
+                    <span class="k">let</span> <span class="nv">value</span> <span class="o">=</span> <span class="nf">getValueFromMatrix</span><span class="p">(</span><span class="nv">row</span><span class="p">:</span> <span class="n">preTemp</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="nv">col</span><span class="p">:</span> <span class="n">j</span><span class="p">)</span>
+                    <span class="k">if</span> <span class="n">value</span> <span class="o">!=</span> <span class="mi">0</span> <span class="p">{</span>
+                        <span class="k">if</span> <span class="n">map</span><span class="p">[</span><span class="n">j</span><span class="p">]</span><span class="o">.</span><span class="n">visited</span> <span class="p">{</span>
+                            <span class="k">continue</span>
+                        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+                            <span class="k">guard</span> <span class="k">let</span> <span class="nv">data</span> <span class="o">=</span> <span class="n">map</span><span class="p">[</span><span class="n">j</span><span class="p">]</span><span class="o">.</span><span class="n">data</span> <span class="k">else</span> <span class="p">{</span> <span class="k">return</span> <span class="p">}</span>
+                            <span class="nf">print</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+                            <span class="n">map</span><span class="p">[</span><span class="n">j</span><span class="p">]</span><span class="o">.</span><span class="n">visited</span> <span class="o">=</span> <span class="kc">true</span>
+                            <span class="n">temp</span><span class="o">.</span><span class="nf">append</span><span class="p">(</span><span class="n">j</span><span class="p">)</span>
+                        <span class="p">}</span>
+                    <span class="p">}</span>
+                <span class="p">}</span>
+            <span class="p">}</span>
+            <span class="k">if</span> <span class="n">temp</span><span class="o">.</span><span class="n">count</span> <span class="o">==</span> <span class="mi">0</span> <span class="p">{</span>
+                <span class="k">return</span>
+            <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+                <span class="nf">breadthFirstTraverseImpl</span><span class="p">(</span><span class="nv">preTemp</span><span class="p">:</span> <span class="n">temp</span><span class="p">)</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+        <span class="nf">breadthFirstTraverseImpl</span><span class="p">(</span><span class="nv">preTemp</span><span class="p">:</span> <span class="n">temp</span><span class="p">)</span>
+        <span class="nf">print</span><span class="p">(</span><span class="s">"︶"</span><span class="p">)</span>
+    <span class="p">}</span>
+</code></pre>
+</div>
+<p>广度优先遍历, 就是一层层的进行遍历, 先得到第一层的根节点, 再第二层, 第三层, 以此类推.</p>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>    <span class="kd">private</span> <span class="kd">func</span> <span class="nf">getValueFromMatrix</span><span class="p">(</span><span class="nv">row</span><span class="p">:</span> <span class="kt">Int</span><span class="p">,</span> <span class="nv">col</span><span class="p">:</span> <span class="kt">Int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Int</span><span class="p">?</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="n">row</span> <span class="o">&lt;</span> <span class="mi">0</span> <span class="o">||</span> <span class="n">row</span> <span class="o">&gt;=</span> <span class="n">capacity</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="kc">nil</span>
+        <span class="p">}</span>
+        <span class="k">if</span> <span class="n">col</span> <span class="o">&lt;</span> <span class="mi">0</span> <span class="o">||</span> <span class="n">col</span> <span class="o">&gt;=</span> <span class="n">capacity</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="kc">nil</span>
+        <span class="p">}</span>
+        <span class="k">return</span> <span class="n">matrix</span><span class="p">[</span><span class="n">row</span> <span class="o">*</span> <span class="n">capacity</span> <span class="o">+</span> <span class="n">col</span><span class="p">]</span>
+    <span class="p">}</span>
+</code></pre>
+</div>
+<p>从矩阵中获取值的函数, 嗯… 做了边界控制.</p>
+
+<h5 id="最小生成树算法">最小生成树算法</h5>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>    func primTree(loc index: Int) {
+        var edgeCount = 0
+        var edgeBuffers = [Edge]()
+        var nodeIndexes = [Int]()
+        var primTreePath = [Element]()
+        
+        nodeIndexes.append(index)
+        map[index].visited = true
+        primTreePath.append(map[index].data!)
+        
+        while edgeCount &lt; capacity - 1 {
+            guard let index: Int = nodeIndexes.last else { continue }
+            for i in 0..&lt;capacity {
+                guard let value = getValueFromMatrix(row: index, col: i) else { continue }
+                if value != 0 {
+                    if map[i].visited {
+                        continue
+                    } else {
+                        edgeBuffers.append(Edge(nodeIndexA: index, nodeIndexB: i, weightValue: value))
+                    }
+                }
+            }
+            
+            let edgeIndex = getMinEdge(buffers: edgeBuffers)
+            edgeBuffers[edgeIndex].selected = true
+            
+            print(edgeBuffers[edgeIndex].nodeIndexA, edgeBuffers[edgeIndex].nodeIndexB, edgeBuffers[edgeIndex].weightValue)
+            
+            edge[edgeCount] = edgeBuffers[edgeIndex]
+            edgeCount += 1
+            
+            let nextNodeIndex = edgeBuffers[edgeIndex].nodeIndexB
+            nodeIndexes.append(nextNodeIndex)
+            map[nextNodeIndex].visited = true
+            
+            primTreePath.append(map[nextNodeIndex].data!)
+        }
+        for node in primTreePath {
+            print("\(node)", terminator: "")
+        }
+        print()
+    }
+
+</code></pre>
+</div>
+<p>prim算法, 核心思想是获取所有的边放入待选边集合, 并根据所有的边的权重获取最小权重的边放入边集合, 这步需要判断是都点是否访问过.如此往复就可生成最小生成树.</p>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>    <span class="kd">func</span> <span class="nf">kruskalTree</span><span class="p">()</span> <span class="p">{</span>
+        <span class="k">var</span> <span class="nv">edgeCount</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="k">var</span> <span class="nv">edgeBuffers</span> <span class="o">=</span> <span class="p">[</span><span class="kt">Edge</span><span class="p">]()</span>
+        <span class="k">var</span> <span class="nv">nodeIndexes</span> <span class="o">=</span> <span class="p">[[</span><span class="kt">Int</span><span class="p">]]()</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="k">in</span> <span class="mi">0</span><span class="o">..&lt;</span><span class="n">capacity</span> <span class="p">{</span>
+            <span class="k">for</span> <span class="n">j</span> <span class="k">in</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="o">..&lt;</span><span class="n">capacity</span> <span class="p">{</span>
+                <span class="k">guard</span> <span class="k">let</span> <span class="nv">value</span> <span class="o">=</span> <span class="nf">getValueFromMatrix</span><span class="p">(</span><span class="nv">row</span><span class="p">:</span> <span class="n">i</span><span class="p">,</span> <span class="nv">col</span><span class="p">:</span> <span class="n">j</span><span class="p">)</span> <span class="k">else</span> <span class="p">{</span> <span class="k">continue</span> <span class="p">}</span>
+                <span class="k">if</span> <span class="n">value</span> <span class="o">!=</span> <span class="mi">0</span> <span class="p">{</span>
+                    <span class="n">edgeBuffers</span><span class="o">.</span><span class="nf">append</span><span class="p">(</span><span class="kt">Edge</span><span class="p">(</span><span class="nv">nodeIndexA</span><span class="p">:</span> <span class="n">i</span><span class="p">,</span> <span class="nv">nodeIndexB</span><span class="p">:</span> <span class="n">j</span><span class="p">,</span> <span class="nv">weightValue</span><span class="p">:</span> <span class="n">value</span><span class="p">))</span>
+                <span class="p">}</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+        <span class="k">while</span> <span class="n">edgeCount</span> <span class="o">&lt;</span> <span class="n">capacity</span> <span class="o">-</span> <span class="mi">1</span> <span class="p">{</span>
+            <span class="k">let</span> <span class="nv">minEdgeIndex</span> <span class="o">=</span> <span class="nf">getMinEdge</span><span class="p">(</span><span class="nv">buffers</span><span class="p">:</span> <span class="n">edgeBuffers</span><span class="p">)</span>
+            <span class="n">edgeBuffers</span><span class="p">[</span><span class="n">minEdgeIndex</span><span class="p">]</span><span class="o">.</span><span class="n">selected</span> <span class="o">=</span> <span class="kc">true</span>
+            <span class="k">let</span> <span class="nv">nodeAIndex</span> <span class="o">=</span> <span class="n">edgeBuffers</span><span class="p">[</span><span class="n">minEdgeIndex</span><span class="p">]</span><span class="o">.</span><span class="n">nodeIndexA</span>
+            <span class="k">let</span> <span class="nv">nodeBIndex</span> <span class="o">=</span> <span class="n">edgeBuffers</span><span class="p">[</span><span class="n">minEdgeIndex</span><span class="p">]</span><span class="o">.</span><span class="n">nodeIndexB</span>
+            <span class="k">var</span> <span class="nv">nodeAIsInSet</span> <span class="o">=</span> <span class="kc">false</span>
+            <span class="k">var</span> <span class="nv">nodeBIsInSet</span> <span class="o">=</span> <span class="kc">false</span>
+            <span class="k">var</span> <span class="nv">nodeAInSetLabel</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
+            <span class="k">var</span> <span class="nv">nodeBInSetLabel</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
+            <span class="k">for</span> <span class="n">i</span> <span class="k">in</span> <span class="mi">0</span><span class="o">..&lt;</span><span class="n">nodeIndexes</span><span class="o">.</span><span class="n">count</span> <span class="p">{</span>
+                <span class="n">nodeAIsInSet</span> <span class="o">=</span> <span class="nf">isInSet</span><span class="p">(</span><span class="n">nodeIndexes</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">nodeAIndex</span><span class="p">)</span>
+                <span class="k">if</span> <span class="n">nodeAIsInSet</span> <span class="p">{</span>
+                    <span class="n">nodeAInSetLabel</span> <span class="o">=</span> <span class="n">i</span>
+                <span class="p">}</span>
+            <span class="p">}</span>
+            <span class="k">for</span> <span class="n">i</span> <span class="k">in</span> <span class="mi">0</span><span class="o">..&lt;</span><span class="n">nodeIndexes</span><span class="o">.</span><span class="n">count</span> <span class="p">{</span>
+                <span class="n">nodeBIsInSet</span> <span class="o">=</span> <span class="nf">isInSet</span><span class="p">(</span><span class="n">nodeIndexes</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">nodeBIndex</span><span class="p">)</span>
+                <span class="k">if</span> <span class="n">nodeBIsInSet</span> <span class="p">{</span>
+                    <span class="n">nodeBInSetLabel</span> <span class="o">=</span> <span class="n">i</span>
+                <span class="p">}</span>
+            <span class="p">}</span>
+            <span class="k">if</span> <span class="n">nodeAInSetLabel</span> <span class="o">==</span> <span class="o">-</span><span class="mi">1</span> <span class="o">&amp;&amp;</span> <span class="n">nodeBInSetLabel</span> <span class="o">==</span> <span class="o">-</span><span class="mi">1</span> <span class="p">{</span>
+                <span class="k">var</span> <span class="nv">vec</span> <span class="o">=</span> <span class="p">[</span><span class="kt">Int</span><span class="p">]()</span>
+                <span class="n">vec</span><span class="o">.</span><span class="nf">append</span><span class="p">(</span><span class="n">nodeAIndex</span><span class="p">)</span>
+                <span class="n">vec</span><span class="o">.</span><span class="nf">append</span><span class="p">(</span><span class="n">nodeBIndex</span><span class="p">)</span>
+                <span class="n">nodeIndexes</span><span class="o">.</span><span class="nf">append</span><span class="p">(</span><span class="n">vec</span><span class="p">)</span>
+            <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="n">nodeAInSetLabel</span> <span class="o">==</span> <span class="o">-</span><span class="mi">1</span> <span class="o">&amp;&amp;</span> <span class="n">nodeAInSetLabel</span> <span class="o">!=</span> <span class="o">-</span><span class="mi">1</span> <span class="p">{</span>
+                <span class="n">nodeIndexes</span><span class="p">[</span><span class="n">nodeBInSetLabel</span><span class="p">]</span><span class="o">.</span><span class="nf">append</span><span class="p">(</span><span class="n">nodeAIndex</span><span class="p">)</span>
+            <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="n">nodeAInSetLabel</span> <span class="o">!=</span> <span class="o">-</span><span class="mi">1</span> <span class="o">&amp;&amp;</span> <span class="n">nodeAInSetLabel</span> <span class="o">==</span> <span class="o">-</span><span class="mi">1</span> <span class="p">{</span>
+                <span class="n">nodeIndexes</span><span class="p">[</span><span class="n">nodeAInSetLabel</span><span class="p">]</span><span class="o">.</span><span class="nf">append</span><span class="p">(</span><span class="n">nodeBIndex</span><span class="p">)</span>
+            <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="n">nodeAInSetLabel</span> <span class="o">!=</span> <span class="o">-</span><span class="mi">1</span> <span class="o">&amp;&amp;</span> <span class="n">nodeBInSetLabel</span> <span class="o">!=</span> <span class="o">-</span><span class="mi">1</span> <span class="o">&amp;&amp;</span> <span class="n">nodeAInSetLabel</span> <span class="o">!=</span> <span class="n">nodeBInSetLabel</span> <span class="p">{</span>
+                <span class="n">nodeIndexes</span><span class="p">[</span><span class="n">nodeAInSetLabel</span><span class="p">]</span> <span class="o">=</span>
+                    <span class="nf">mergeNodeSets</span><span class="p">(</span><span class="n">nodeIndexes</span><span class="p">[</span><span class="n">nodeAInSetLabel</span><span class="p">],</span> <span class="n">nodeIndexes</span><span class="p">[</span><span class="n">nodeBInSetLabel</span><span class="p">])</span>
+                <span class="k">for</span> <span class="n">i</span> <span class="k">in</span> <span class="n">nodeBInSetLabel</span><span class="o">..&lt;</span><span class="n">nodeIndexes</span><span class="o">.</span><span class="n">count</span><span class="o">-</span><span class="mi">1</span> <span class="p">{</span>
+                    <span class="n">nodeIndexes</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">nodeIndexes</span><span class="p">[</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span>
+                <span class="p">}</span>
+            <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="n">nodeAInSetLabel</span> <span class="o">!=</span> <span class="o">-</span><span class="mi">1</span> <span class="o">&amp;&amp;</span> <span class="n">nodeBInSetLabel</span> <span class="o">!=</span> <span class="o">-</span><span class="mi">1</span> <span class="o">&amp;&amp;</span> <span class="n">nodeAInSetLabel</span> <span class="o">==</span> <span class="n">nodeBInSetLabel</span> <span class="p">{</span>
+                <span class="k">continue</span>
+            <span class="p">}</span>
+            <span class="n">edge</span><span class="p">[</span><span class="n">edgeCount</span><span class="p">]</span> <span class="o">=</span> <span class="n">edgeBuffers</span><span class="p">[</span><span class="n">minEdgeIndex</span><span class="p">]</span>
+            <span class="n">edgeCount</span> <span class="o">+=</span> <span class="mi">1</span>
+            <span class="nf">print</span><span class="p">(</span><span class="n">edgeBuffers</span><span class="p">[</span><span class="n">minEdgeIndex</span><span class="p">]</span><span class="o">.</span><span class="n">nodeIndexA</span><span class="p">,</span> <span class="n">edgeBuffers</span><span class="p">[</span><span class="n">minEdgeIndex</span><span class="p">]</span><span class="o">.</span><span class="n">nodeIndexB</span><span class="p">,</span> <span class="n">edgeBuffers</span><span class="p">[</span><span class="n">minEdgeIndex</span><span class="p">]</span><span class="o">.</span><span class="n">weightValue</span><span class="p">)</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+    
+    <span class="kd">private</span> <span class="kd">func</span> <span class="nf">getMinEdge</span><span class="p">(</span><span class="n">buffers</span> <span class="nv">edgeBuffers</span><span class="p">:</span> <span class="p">[</span><span class="kt">Edge</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="kt">Int</span> <span class="p">{</span>
+        <span class="k">var</span> <span class="nv">minWeight</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="k">var</span> <span class="nv">edgeIndex</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="k">var</span> <span class="nv">i</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="k">for</span> <span class="n">_</span> <span class="k">in</span> <span class="mi">0</span><span class="o">..&lt;</span><span class="n">edgeBuffers</span><span class="o">.</span><span class="n">count</span> <span class="p">{</span>
+            <span class="k">if</span> <span class="o">!</span><span class="n">edgeBuffers</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">selected</span> <span class="p">{</span>
+                <span class="n">minWeight</span> <span class="o">=</span> <span class="n">edgeBuffers</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">weightValue</span>
+                <span class="n">edgeIndex</span> <span class="o">=</span> <span class="n">i</span>
+                <span class="k">break</span>
+            <span class="p">}</span>
+            <span class="n">i</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="p">}</span>
+        <span class="k">if</span> <span class="n">minWeight</span> <span class="o">==</span> <span class="mi">0</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="o">-</span><span class="mi">1</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="k">for</span> <span class="n">_</span> <span class="k">in</span> <span class="n">i</span><span class="o">..&lt;</span><span class="n">edgeBuffers</span><span class="o">.</span><span class="n">count</span> <span class="p">{</span>
+            <span class="k">if</span> <span class="n">edgeBuffers</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">selected</span> <span class="p">{</span>
+                <span class="n">i</span> <span class="o">+=</span> <span class="mi">1</span>
+                <span class="k">continue</span>
+            <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+                <span class="k">if</span> <span class="n">minWeight</span> <span class="o">&gt;</span> <span class="n">edgeBuffers</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">weightValue</span> <span class="p">{</span>
+                    <span class="n">minWeight</span> <span class="o">=</span> <span class="n">edgeBuffers</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">weightValue</span>
+                    <span class="n">edgeIndex</span> <span class="o">=</span> <span class="n">i</span>
+                <span class="p">}</span>
+            <span class="p">}</span>
+            <span class="n">i</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="p">}</span>
+        <span class="k">return</span> <span class="n">edgeIndex</span>
+    <span class="p">}</span>
+    
+    <span class="kd">private</span> <span class="kd">func</span> <span class="nf">isInSet</span><span class="p">(</span><span class="n">_</span> <span class="nv">nodeSet</span><span class="p">:[</span><span class="kt">Int</span><span class="p">],</span> <span class="n">_</span> <span class="nv">target</span><span class="p">:</span> <span class="kt">Int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Bool</span> <span class="p">{</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="k">in</span> <span class="mi">0</span><span class="o">..&lt;</span><span class="n">nodeSet</span><span class="o">.</span><span class="n">count</span> <span class="p">{</span>
+            <span class="k">if</span> <span class="n">nodeSet</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">==</span> <span class="n">target</span> <span class="p">{</span>
+                <span class="k">return</span> <span class="kc">true</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+        <span class="k">return</span> <span class="kc">false</span>
+    <span class="p">}</span>
+    
+    <span class="kd">private</span> <span class="kd">func</span> <span class="nf">mergeNodeSets</span><span class="p">(</span><span class="n">_</span> <span class="nv">nodeSetA</span><span class="p">:</span> <span class="p">[</span><span class="kt">Int</span><span class="p">],</span> <span class="n">_</span> <span class="nv">nodeSetB</span><span class="p">:</span> <span class="p">[</span><span class="kt">Int</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="p">[</span><span class="kt">Int</span><span class="p">]</span> <span class="p">{</span>
+        <span class="k">var</span> <span class="nv">nodeSet</span> <span class="o">=</span> <span class="p">[</span><span class="kt">Int</span><span class="p">]()</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="k">in</span> <span class="mi">0</span><span class="o">..&lt;</span><span class="n">nodeSetB</span><span class="o">.</span><span class="n">count</span> <span class="p">{</span>
+            <span class="n">nodeSet</span><span class="o">.</span><span class="nf">append</span><span class="p">(</span><span class="n">nodeSetB</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+        <span class="p">}</span>
+        <span class="k">return</span> <span class="n">nodeSet</span>
+    <span class="p">}</span>
+
+</code></pre>
+</div>
+<p>kruskal算法就比较复杂了, 首先我们要将所有边放入待选边集合中, 然后在所有边中选出一条权值最小的边放入已选边集合中, 我们选定了边就选定了点并放入已选点集合, 如此往复, 选择次小的边并获取边和点, 重点是需要判断是否和之前已选的边形成闭环, 如果形成闭环则需要抛弃.需要涉及所有的点, 并合成一个点数组才算完成.</p>
+
+<p>数据结构关键是多练多思考, 有了好的算法思维, 才能够对以后的成长有所帮助!!</p>
+
+<p><img src="http://upload-images.jianshu.io/upload_images/1229762-3f8925783027b3fa.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="点击下方链接跳转!!" /></p>
+
+<p><a href="https://github.com/coderZsq/coderZsq.target.swift">🌟 简历源码 请点这里🌟 »&gt; 喜欢的朋友请点喜欢 »&gt; 下载源码的同学请送下小星星 »&gt; 有闲钱的壕们可以进行打赏 »&gt; 小弟会尽快推出更好的文章和大家分享 »&gt; 你的激励就是我的动力!! </a></p>
+
+  </section>
+</article>
+
+<section class="read-more">
+   
+   
+   
+   
+   <div class="read-more-item">
+       <span class="read-more-item-dim">更早的文章</span>
+       <h2 class="post-list__post-title post-title"><a href="/2017/12/Web-%E5%B0%86%E5%8D%9A%E5%AE%A2%E8%BF%81%E7%A7%BB%E8%87%B3GitHubPages/" title="link to Web 将博客迁移至GitHubPages">Web 将博客迁移至GitHubPages</a></h2>
+       <p class="excerpt">  前段时间简书饱醉豚诋毁程序员的事件导致大量我关注的大佬纷纷同一时间离开简书, 为了表示了对在简书CEO简叔的一文饱醉豚对简书的意义的无声的抗议吧.对于这个事件有些大佬很愤慨, 比如饱且撑着中收录的长文, 也有些默默的迁移到其他平台, 留下一段链接, 不带走一片云彩.当然简书官方眼看事情闹大, 可能是想尽快平息事件, 连续发布了两篇公告 --&gt; 关于简书签约作者饱醉豚违反简书社区原则的公示说明, 关于「作者饱醉豚违反简书社区规则」事件的后续处理公告.当然先在这里吐个槽:牢记简书 “...&hellip;</p>
+       <div class="post-list__meta"><time datetime="2017-12-18 22:23:00 +0800" class="post-list__meta--date date">2017-12-18</time> &#8226; <span class="post-list__meta--tags tags">前端开发</span><a class="btn-border-small" href=/2017/12/Web-%E5%B0%86%E5%8D%9A%E5%AE%A2%E8%BF%81%E7%A7%BB%E8%87%B3GitHubPages/>继续阅读</a></div>
+   </div>
+   
+</section>
+
+<section class="post-comments">
+  
+  
+  
+  
+</section>
+
+
+            <section class="footer">
+    <footer>
+    	<span class="footer__copyright">本站点采用<a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">知识共享 署名-非商业性使用-相同方式共享 4.0 国际 许可协议</a></span>
+        <span class="footer__copyright">由 <a href="https://jekyllrb.com">Jekyll</a> 于 2018-01-15 生成，感谢 <a href="https://www.digitalocean.com/?refcode=30ed2d146762">Digital Ocean</a> 为本站提供稳定的 VPS 服务</span>
+        <span class="footer__copyright">本站由 <a href="https://github.com/coderZsq">@Castie!</a> 创建，采用 <a href="https://github.com/onevcat/vno-jekyll">Vno - Jekyll</a> 作为主题，您可以在 GitHub 找到<a href="https://github.com/onevcat/OneV-s-Den">本站源码</a> - &copy; 2018</span>
+    </footer>
+</section>
+
+        </div>
+    </div>
+    
+    <script type="text/javascript" src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+
+<script type="text/javascript" src="/js/main.js"></script>
+
+
+
+    
+  </body>
+
+</html>
