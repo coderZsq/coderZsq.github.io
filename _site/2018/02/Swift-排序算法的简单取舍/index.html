@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <title>Castie! Notes</title>
+  <meta name="description" content="  对于排序算法, 通常简单的, 为大家所熟知的有, 选择排序, 冒泡排序, 快速排序, 当然还有哈希, 桶排序之类的, 本文仅比较最为常见的选择, 冒泡和快排.">
+  <meta name="author" content="Wei Wang">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Swift 排序算法的简单取舍">
+  <meta name="twitter:description" content="  对于排序算法, 通常简单的, 为大家所熟知的有, 选择排序, 冒泡排序, 快速排序, 当然还有哈希, 桶排序之类的, 本文仅比较最为常见的选择, 冒泡和快排.">
+  
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Swift 排序算法的简单取舍">
+  <meta property="og:description" content="  对于排序算法, 通常简单的, 为大家所熟知的有, 选择排序, 冒泡排序, 快速排序, 当然还有哈希, 桶排序之类的, 本文仅比较最为常见的选择, 冒泡和快排.">
+  
+  <link rel="icon" type="image/ico" href="/assets/images/favicon.ico" />
+  <link href="/assets/images/favicon.ico" rel="shortcut icon" type="image/ico">
+  
+  <link rel="stylesheet" href="/css/main.css">
+  <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+
+  <link rel="canonical" href="http://localhost:4000/2018/02/Swift-%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95%E7%9A%84%E7%AE%80%E5%8D%95%E5%8F%96%E8%88%8D/">
+  <link rel="alternate" type="application/rss+xml" title="Castie!" href="http://localhost:4000/feed.xml">
+  
+  <meta name="google-site-verification" content="1-1ZlHoRvM0T2FqPbW2S-qLgYXN6rsn52kErlMPd_gw" />
+  
+</head>
+
+
+  <body>
+
+    <span class="mobile btn-mobile-menu">
+        <i class="fa fa-list btn-mobile-menu__icon"></i>
+        <i class="fa fa-angle-up btn-mobile-close__icon hidden"></i>
+    </span>
+    
+    <header class="panel-cover panel-cover--collapsed" style="background-image: url('/assets/images/background-cover.jpg')">
+  <div class="panel-main">
+
+    <div class="panel-main__inner panel-inverted">
+    <div class="panel-main__content">
+
+        <a href="/#blog" title="前往 Castie! 的主页" class="blog-button"><img src="/assets/images/avatar.jpg" width="80" alt="Castie! logo" class="panel-cover__logo logo" /></a>
+        <h1 class="panel-cover__title panel-title"><a href="/#blog" title="link to homepage for Castie!" class="blog-button">Castie!</a></h1>
+        
+        <span class="panel-cover__subtitle panel-subtitle">正态分布, 优劣伴生</span>
+        
+        <hr class="panel-cover__divider" />
+        <p class="panel-cover__description">北冥有鱼，其名为鲲（kūn）。鲲之大，不知其几千里也；化而为鸟，其名为鹏。鹏之背，不知其几千里也；怒而飞，其翼若垂天之云。是鸟也，海运则将徙于南冥。南冥者，天池也。</p>
+        <hr class="panel-cover__divider panel-cover__divider--secondary" />
+        
+        
+        <p class="panel-cover__description">北海若曰：“井鼃不可以语于海者，拘于虚也；夏虫不可以语于冰者，笃于时也；曲士不可以语于道者，束于教也。今尔出于崖涘，观于大海，乃知尔丑，尔将可与语大理矣。</p>
+        
+        
+        <div class="navigation-wrapper">
+          <div>
+            <nav class="cover-navigation cover-navigation--primary">
+              <ul class="navigation">
+                <li class="navigation__item"><a href="/#blog" title="访问博客" class="blog-button">博客</a></li>
+                
+                  <li class="navigation__item"><a href="https://coderzsq.github.io/coderZsq.webpack.js/" target="_blank" title="我的简历">简历</a></li>
+                
+              </ul>
+            </nav>
+          </div>
+          
+          <div><nav class="cover-navigation navigation--social">
+  <ul class="navigation">
+
+    
+    <!-- jianshu-->
+    <li class="navigation__item">
+      <a href="http://www.jianshu.com/u/9d7fad1a4693" title="@coderZsq 的简书" target="_blank">
+        <i class='social fa fa-book'></i>
+        <span class="label">jianshu</span>
+      </a>
+    </li>
+    
+
+    
+    <!-- juejin-->
+    <li class="navigation__item">
+      <a href="https://juejin.im/user/57e735dfa22b9d00614eecb8" title="@coderZsq 的稀土掘金" target="_blank">
+        <i class='social fa fa-align-center'></i>
+        <span class="label">juejin</span>
+      </a>
+    </li>
+    
+
+  
+
+  
+  <!-- Github -->
+  <li class="navigation__item">
+    <a href="https://github.com/coderZsq" title="@coderZsq 的 Github" target="_blank">
+      <i class='social fa fa-github'></i>
+      <span class="label">Github</span>
+    </a>
+  </li>
+  
+
+  
+
+  
+
+  <!-- RSS -->
+  <li class="navigation__item">
+    <a href="/feed.xml" rel="author" title="RSS" target="_blank">
+      <i class='social fa fa-rss'></i>
+      <span class="label">RSS</span>
+    </a>
+  </li>
+
+  
+  <!-- Email -->
+  <li class="navigation__item">
+    <a href="mailto:a13701777868@gmail.com" title="Contact me">
+      <i class='social fa fa-envelope'></i>
+      <span class="label">Email</span>
+    </a>
+  </li>
+  
+
+  </ul>
+</nav>
+</div>
+        </div>
+      </div>
+    </div>
+    
+    
+    <div class="panel-cover--overlay cover-slate"></div>
+    
+  </div>
+</header>
+
+
+    <div class="content-wrapper">
+        <div class="content-wrapper__inner">
+            <article class="post-container post-container--single" itemscope itemtype="http://schema.org/BlogPosting">
+  <header class="post-header">
+    <div class="post-meta">
+      <time datetime="2018-02-28 12:48:00 +0800" itemprop="datePublished" class="post-meta__date date">2018-02-28</time> &#8226; <span class="post-meta__tags tags">移动开发</span>
+    </div>
+    <h1 class="post-title">Swift 排序算法的简单取舍</h1>
+  </header>
+
+  <section class="post">
+    <blockquote>
+  <p>对于排序算法, 通常简单的, 为大家所熟知的有, 选择排序, 冒泡排序, 快速排序, 当然还有哈希, 桶排序之类的, 本文仅比较最为常见的选择, 冒泡和快排.</p>
+</blockquote>
+
+<p>对于iOS开发者来说, 算法的实现过程其实并不怎么关心, 因为只需要调用高级接口就可以得到系统最优的算法, 但了解轮子背后的原理才能更好的取舍, 不是么?</p>
+
+<h4 id="选择排序">选择排序</h4>
+
+<p>我们以<code class="highlighter-rouge">[9, 8, 7, 6, 5]</code>举例.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>[9, 8, 7, 6, 5]
+</code></pre>
+</div>
+<p>第一次扫描, 扫描每一个数, 如比第一个数小则交换, 直到找到最小的数, 将其交换至下标0.</p>
+<div class="highlighter-rouge"><pre class="highlight"><code>[8, 9, 7, 6, 5]
+[7, 9, 8, 6, 5]
+[6, 9, 8, 7, 5]
+[5, 9, 8, 7, 6]
+</code></pre>
+</div>
+
+<p>第二次扫描, 由于确定了第一个数, 则从第二个数开始扫描, 逻辑同上取得次小的数交换至下标1.</p>
+<div class="highlighter-rouge"><pre class="highlight"><code>[5, 8, 9, 7, 6]
+[5, 7, 9, 8, 6]
+[5, 6, 9, 8, 7]
+</code></pre>
+</div>
+<p>第三次扫描, 跳过两个数, 从第三个数开始扫描, 并交换取得下标2.</p>
+<div class="highlighter-rouge"><pre class="highlight"><code>[5, 6, 8, 9, 7]
+[5, 6, 7, 9, 8]
+</code></pre>
+</div>
+
+<p>第四次扫描, 套用上述逻辑取得下标3.</p>
+<div class="highlighter-rouge"><pre class="highlight"><code>[5, 6, 7, 8, 9]
+</code></pre>
+</div>
+<p>由于最后只有一位数, 不需要交换, 则无需扫描.</p>
+
+<p>了解了逻辑, 我们来看代码该怎么写;</p>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="kd">func</span> <span class="nf">selectSort</span><span class="p">(</span><span class="nv">list</span><span class="p">:</span> <span class="k">inout</span> <span class="p">[</span><span class="kt">Int</span><span class="p">])</span> <span class="p">{</span>
+    
+    <span class="k">let</span> <span class="nv">n</span> <span class="o">=</span> <span class="n">list</span><span class="o">.</span><span class="n">count</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="k">in</span> <span class="mi">0</span><span class="o">..&lt;</span><span class="p">(</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">var</span> <span class="nv">j</span> <span class="o">=</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">1</span>
+        <span class="k">for</span> <span class="n">_</span> <span class="k">in</span> <span class="n">j</span><span class="o">..&lt;</span><span class="n">n</span> <span class="p">{</span>
+            <span class="k">if</span> <span class="n">list</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">list</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="p">{</span>
+                <span class="n">list</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">^=</span> <span class="n">list</span><span class="p">[</span><span class="n">j</span><span class="p">]</span>
+                <span class="n">list</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">^=</span> <span class="n">list</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+                <span class="n">list</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">^=</span> <span class="n">list</span><span class="p">[</span><span class="n">j</span><span class="p">]</span>
+            <span class="p">}</span>
+            <span class="n">j</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+<p>外层循环取从<code class="highlighter-rouge">0</code>扫描到<code class="highlighter-rouge">n-1</code>, <code class="highlighter-rouge">i</code>代表了扫描推进的次数.</p>
+
+<p>内层循环从<code class="highlighter-rouge">i+1</code>, 扫描到最后一位, 逐个比较, 如果比<code class="highlighter-rouge">i</code>小则交换.</p>
+
+<h4 id="选择排序优化">选择排序(优化)</h4>
+
+<p>上述我们通过了非常简单的逻辑阐述了选择排序, 果然, 算法没有想象中难吧. 接下来, 我们来看看如何优化这个排序算法.</p>
+
+<p>我们同样以<code class="highlighter-rouge">[9, 8, 7, 6, 5]</code>举例.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>[9, 8, 7, 6, 5]
+</code></pre>
+</div>
+<p>第一次扫描, 和之前一样扫描, 但只记住最小值的下标, 退出内层循环时交换.</p>
+<div class="highlighter-rouge"><pre class="highlight"><code>[5, 8, 7, 6, 9]
+</code></pre>
+</div>
+<p>第二次扫描, 确定第一位最小值后推进一格, 逻辑同上进行交换.</p>
+<div class="highlighter-rouge"><pre class="highlight"><code>[5, 6, 7, 8, 9]
+</code></pre>
+</div>
+
+<p>我们可以明显的看到优化的效果, 交换的次数降低了, 因为我们不是每次交换数值, 而是用指针记录后跳出内层循环后进行交换.</p>
+
+<p>我们来看下代码该如何优化:</p>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="kd">func</span> <span class="nf">optimizationSelectSort</span><span class="p">(</span><span class="nv">list</span><span class="p">:</span> <span class="k">inout</span> <span class="p">[</span><span class="kt">Int</span><span class="p">])</span> <span class="p">{</span>
+    
+    <span class="k">let</span> <span class="nv">n</span> <span class="o">=</span> <span class="n">list</span><span class="o">.</span><span class="n">count</span>
+    <span class="k">var</span> <span class="nv">idx</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="k">in</span> <span class="mi">0</span><span class="o">..&lt;</span><span class="p">(</span><span class="n">n</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">idx</span> <span class="o">=</span> <span class="n">i</span><span class="p">;</span>
+        <span class="k">var</span> <span class="nv">j</span> <span class="o">=</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">1</span>
+        <span class="k">for</span> <span class="n">_</span> <span class="k">in</span> <span class="n">j</span><span class="o">..&lt;</span><span class="n">n</span> <span class="p">{</span>
+            <span class="k">if</span> <span class="n">list</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">list</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="p">{</span>
+                <span class="n">idx</span> <span class="o">=</span> <span class="n">j</span><span class="p">;</span>
+            <span class="p">}</span>
+            <span class="n">j</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="p">}</span>
+        <span class="k">if</span> <span class="n">idx</span> <span class="o">!=</span> <span class="n">i</span> <span class="p">{</span>
+            <span class="n">list</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">^=</span> <span class="n">list</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span>
+            <span class="n">list</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span> <span class="o">^=</span> <span class="n">list</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+            <span class="n">list</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">^=</span> <span class="n">list</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<p>通过<code class="highlighter-rouge">idx</code>记录最小值的下标, 如果下标和当前值不等则交换数值.</p>
+
+<h4 id="冒泡排序">冒泡排序</h4>
+
+<p>接下来我们来看冒泡排序, 同样以<code class="highlighter-rouge">[9, 8, 7, 6, 5]</code>为例.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>[9, 8, 7, 6, 5]
+</code></pre>
+</div>
+<p>第一次扫描, 同样扫描每一个数, 不同的是, 有两个指针同时向前走, 如果<code class="highlighter-rouge">n&gt;n-1</code>则交换. 确定最末值为最大值.</p>
+<div class="highlighter-rouge"><pre class="highlight"><code>[8, 9, 7, 6, 5]
+[8, 7, 9, 6, 5]
+[8, 7, 6, 9, 5]
+[8, 7, 6, 5, 9]
+</code></pre>
+</div>
+<p>第二次扫描, 从头进行扫描, 由于以确定最末尾为最大值, 则少扫描一位.</p>
+<div class="highlighter-rouge"><pre class="highlight"><code>[7, 8, 6, 5, 9]
+[7, 6, 8, 5, 9]
+[7, 6, 5, 8, 9]
+</code></pre>
+</div>
+<p>第三次扫描, 和上述逻辑相同.</p>
+<div class="highlighter-rouge"><pre class="highlight"><code>[6, 7, 5, 8, 9]
+[6, 5, 7, 8, 9]
+</code></pre>
+</div>
+<p>第四次扫描, 得到排序完成的值.</p>
+<div class="highlighter-rouge"><pre class="highlight"><code>[5, 6, 7, 8, 9]
+</code></pre>
+</div>
+
+<p>上述可能不好理解, 多看几遍应该可以.</p>
+
+<p>如果还是理解不能, 我们就来看看代码吧;</p>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="kd">func</span> <span class="nf">popSort</span><span class="p">(</span><span class="nv">list</span><span class="p">:</span> <span class="k">inout</span> <span class="p">[</span><span class="kt">Int</span><span class="p">])</span> <span class="p">{</span>
+
+    <span class="k">let</span> <span class="nv">n</span> <span class="o">=</span> <span class="n">list</span><span class="o">.</span><span class="n">count</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="k">in</span> <span class="mi">0</span><span class="o">..&lt;</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span> <span class="p">{</span>
+        <span class="k">var</span> <span class="nv">j</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="k">for</span> <span class="n">_</span> <span class="k">in</span> <span class="mi">0</span><span class="o">..&lt;</span><span class="p">(</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="o">-</span><span class="n">i</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">if</span> <span class="n">list</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">list</span><span class="p">[</span><span class="n">j</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="p">{</span>
+                <span class="n">list</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">^=</span> <span class="n">list</span><span class="p">[</span><span class="n">j</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span>
+                <span class="n">list</span><span class="p">[</span><span class="n">j</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="o">^=</span> <span class="n">list</span><span class="p">[</span><span class="n">j</span><span class="p">]</span>
+                <span class="n">list</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">^=</span> <span class="n">list</span><span class="p">[</span><span class="n">j</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span>
+            <span class="p">}</span>
+            <span class="n">j</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<p>外层循环同样从<code class="highlighter-rouge">0</code>扫描到<code class="highlighter-rouge">n-1</code>, 这点不赘述.</p>
+
+<p>内层循环从头也就是<code class="highlighter-rouge">0</code>扫描到<code class="highlighter-rouge">n-1-i</code>, 也就是每次扫描少扫一位, 应为每次都会确定最末位为最大值.</p>
+
+<h4 id="冒泡排序优化">冒泡排序(优化)</h4>
+
+<p>冒泡排序的优化就没有选择排序的优化那么给力了, 还有可能产生负优化, 慎用!!</p>
+
+<p>这次我们用<code class="highlighter-rouge">[5, 6, 7, 9, 8]</code>来举例.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="gd">--- scope of: popsort ---
+</span>[5, 6, 7, 9, 8]
+[5, 6, 7, 8, 9]
+
+
+
+
+
+
+
+
+<span class="gd">--- scope of: opt_popsort ---
+</span>[5, 6, 7, 9, 8]
+[5, 6, 7, 8, 9]
+
+
+
+</code></pre>
+</div>
+<p>这个优化并不是特别直观, 最好运行我的源码. 优化来自于如果已经排序完成则不用扫描空转. 上面的空行就是空转.</p>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="kd">func</span> <span class="nf">optimizationPopSort</span><span class="p">(</span><span class="nv">list</span><span class="p">:</span> <span class="k">inout</span> <span class="p">[</span><span class="kt">Int</span><span class="p">])</span> <span class="p">{</span>
+
+    <span class="k">let</span> <span class="nv">n</span> <span class="o">=</span> <span class="n">list</span><span class="o">.</span><span class="n">count</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="k">in</span> <span class="mi">0</span><span class="o">..&lt;</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span> <span class="p">{</span>
+        <span class="k">var</span> <span class="nv">flag</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="k">var</span> <span class="nv">j</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="k">for</span> <span class="n">_</span> <span class="k">in</span> <span class="mi">0</span><span class="o">..&lt;</span><span class="p">(</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="o">-</span><span class="n">i</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">if</span> <span class="n">list</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">list</span><span class="p">[</span><span class="n">j</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="p">{</span>
+                <span class="n">list</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">^=</span> <span class="n">list</span><span class="p">[</span><span class="n">j</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span>
+                <span class="n">list</span><span class="p">[</span><span class="n">j</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="o">^=</span> <span class="n">list</span><span class="p">[</span><span class="n">j</span><span class="p">]</span>
+                <span class="n">list</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">^=</span> <span class="n">list</span><span class="p">[</span><span class="n">j</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span>
+                <span class="n">flag</span> <span class="o">=</span> <span class="mi">1</span>
+            <span class="p">}</span>
+            <span class="n">j</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="p">}</span>
+        <span class="k">if</span> <span class="n">flag</span> <span class="o">==</span> <span class="mi">0</span> <span class="p">{</span>
+            <span class="k">break</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+<p>就是加了一个标志位来判断是否跳出扫描.</p>
+
+<h4 id="快速排序">快速排序</h4>
+
+<p>快速排序, 不是特别好举例, 但是最重要的一个排序.</p>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="kd">func</span> <span class="nf">quickSort</span><span class="p">(</span><span class="nv">list</span><span class="p">:</span> <span class="k">inout</span> <span class="p">[</span><span class="kt">Int</span><span class="p">])</span> <span class="p">{</span>
+
+    <span class="kd">func</span> <span class="nf">sort</span><span class="p">(</span><span class="nv">list</span><span class="p">:</span> <span class="k">inout</span> <span class="p">[</span><span class="kt">Int</span><span class="p">],</span> <span class="nv">low</span><span class="p">:</span> <span class="kt">Int</span><span class="p">,</span> <span class="nv">high</span><span class="p">:</span> <span class="kt">Int</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="n">low</span> <span class="o">&lt;</span> <span class="n">high</span> <span class="p">{</span>
+            <span class="k">let</span> <span class="nv">pivot</span> <span class="o">=</span> <span class="n">list</span><span class="p">[</span><span class="n">low</span><span class="p">]</span>
+            <span class="k">var</span> <span class="nv">l</span> <span class="o">=</span> <span class="n">low</span><span class="p">;</span> <span class="k">var</span> <span class="nv">h</span> <span class="o">=</span> <span class="n">high</span>
+            <span class="k">while</span> <span class="n">l</span> <span class="o">&lt;</span> <span class="n">h</span> <span class="p">{</span>
+                <span class="k">while</span> <span class="n">list</span><span class="p">[</span><span class="n">h</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="n">pivot</span> <span class="o">&amp;&amp;</span> <span class="n">l</span> <span class="o">&lt;</span> <span class="n">h</span> <span class="p">{</span><span class="n">h</span> <span class="o">-=</span> <span class="mi">1</span><span class="p">}</span>
+                <span class="n">list</span><span class="p">[</span><span class="n">l</span><span class="p">]</span> <span class="o">=</span> <span class="n">list</span><span class="p">[</span><span class="n">h</span><span class="p">]</span>
+                <span class="k">while</span> <span class="n">list</span><span class="p">[</span><span class="n">l</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="n">pivot</span> <span class="o">&amp;&amp;</span> <span class="n">l</span> <span class="o">&lt;</span> <span class="n">h</span> <span class="p">{</span><span class="n">l</span> <span class="o">+=</span> <span class="mi">1</span><span class="p">}</span>
+                <span class="n">list</span><span class="p">[</span><span class="n">h</span><span class="p">]</span> <span class="o">=</span> <span class="n">list</span><span class="p">[</span><span class="n">l</span><span class="p">]</span>
+            <span class="p">}</span>
+            <span class="n">list</span><span class="p">[</span><span class="n">h</span><span class="p">]</span> <span class="o">=</span> <span class="n">pivot</span>
+            <span class="nf">sort</span><span class="p">(</span><span class="nv">list</span><span class="p">:</span> <span class="o">&amp;</span><span class="n">list</span><span class="p">,</span> <span class="nv">low</span><span class="p">:</span> <span class="n">low</span><span class="p">,</span> <span class="nv">high</span><span class="p">:</span> <span class="n">l</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+            <span class="nf">sort</span><span class="p">(</span><span class="nv">list</span><span class="p">:</span> <span class="o">&amp;</span><span class="n">list</span><span class="p">,</span> <span class="nv">low</span><span class="p">:</span> <span class="n">l</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="nv">high</span><span class="p">:</span> <span class="n">high</span><span class="p">)</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+    <span class="nf">sort</span><span class="p">(</span><span class="nv">list</span><span class="p">:</span> <span class="o">&amp;</span><span class="n">list</span><span class="p">,</span> <span class="nv">low</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="nv">high</span><span class="p">:</span> <span class="n">list</span><span class="o">.</span><span class="n">count</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<p>我们直接看代码就能看出, 我们将下标<code class="highlighter-rouge">0</code>作为标尺, 进行扫描, 比其大的排右面, 比其小的排左边, 用递归的方式进行排序而成, 由于一次扫描后同时进行了模糊排序, 效率极高.</p>
+
+<h4 id="排序取舍">排序取舍</h4>
+
+<p>我们将上述所有的排序算法和系统的排序进行了比较, 以10000个随机数为例.</p>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="nf">scope</span><span class="p">(</span><span class="nv">of</span><span class="p">:</span> <span class="s">"sort"</span><span class="p">,</span> <span class="nv">execute</span><span class="p">:</span> <span class="kc">true</span><span class="p">)</span> <span class="p">{</span>
+    
+    <span class="nf">scope</span><span class="p">(</span><span class="nv">of</span><span class="p">:</span> <span class="s">"systemsort"</span><span class="p">,</span> <span class="nv">execute</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span> <span class="nv">action</span><span class="p">:</span> <span class="p">{</span>
+        <span class="k">let</span> <span class="nv">list</span> <span class="o">=</span> <span class="nf">randomList</span><span class="p">(</span><span class="mi">10000</span><span class="p">)</span>
+        <span class="n">timing</span> <span class="p">{</span><span class="n">_</span> <span class="o">=</span> <span class="n">list</span><span class="o">.</span><span class="nf">sorted</span><span class="p">()}</span>
+<span class="c1">//        print(list.sorted())</span>
+    <span class="p">})</span>
+    
+    <span class="nf">scope</span><span class="p">(</span><span class="nv">of</span><span class="p">:</span> <span class="s">"systemsort2"</span><span class="p">,</span> <span class="nv">execute</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span> <span class="nv">action</span><span class="p">:</span> <span class="p">{</span>
+        <span class="k">let</span> <span class="nv">list</span> <span class="o">=</span> <span class="nf">randomList</span><span class="p">(</span><span class="mi">10000</span><span class="p">)</span>
+        <span class="n">timing</span> <span class="p">{</span><span class="n">_</span> <span class="o">=</span> <span class="n">list</span><span class="o">.</span><span class="n">sorted</span> <span class="p">{</span><span class="nv">$0</span> <span class="o">&lt;</span> <span class="nv">$1</span><span class="p">}}</span>
+<span class="c1">//        print(list.sorted {$0 &lt; $1})</span>
+    <span class="p">})</span>
+    
+    <span class="nf">scope</span><span class="p">(</span><span class="nv">of</span><span class="p">:</span> <span class="s">"selectsort"</span><span class="p">,</span> <span class="nv">execute</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span> <span class="nv">action</span><span class="p">:</span> <span class="p">{</span>
+        <span class="k">var</span> <span class="nv">list</span> <span class="o">=</span> <span class="nf">randomList</span><span class="p">(</span><span class="mi">10000</span><span class="p">)</span>
+        <span class="n">timing</span> <span class="p">{</span><span class="nf">selectSort</span><span class="p">(</span><span class="nv">list</span><span class="p">:</span> <span class="o">&amp;</span><span class="n">list</span><span class="p">)}</span>
+<span class="c1">//        print(list)</span>
+    <span class="p">})</span>
+
+    <span class="nf">scope</span><span class="p">(</span><span class="nv">of</span><span class="p">:</span> <span class="s">"opt_selectsort"</span><span class="p">,</span> <span class="nv">execute</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span> <span class="nv">action</span><span class="p">:</span> <span class="p">{</span>
+        <span class="k">var</span> <span class="nv">list</span> <span class="o">=</span> <span class="nf">randomList</span><span class="p">(</span><span class="mi">10000</span><span class="p">)</span>
+        <span class="n">timing</span> <span class="p">{</span><span class="nf">optimizationSelectSort</span><span class="p">(</span><span class="nv">list</span><span class="p">:</span> <span class="o">&amp;</span><span class="n">list</span><span class="p">)}</span>
+<span class="c1">//        print(list)</span>
+    <span class="p">})</span>
+
+    <span class="nf">scope</span><span class="p">(</span><span class="nv">of</span><span class="p">:</span> <span class="s">"popsort"</span><span class="p">,</span> <span class="nv">execute</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span> <span class="nv">action</span><span class="p">:</span> <span class="p">{</span>
+        <span class="k">var</span> <span class="nv">list</span> <span class="o">=</span> <span class="nf">randomList</span><span class="p">(</span><span class="mi">10000</span><span class="p">)</span>
+        <span class="n">timing</span> <span class="p">{</span><span class="nf">popSort</span><span class="p">(</span><span class="nv">list</span><span class="p">:</span> <span class="o">&amp;</span><span class="n">list</span><span class="p">)}</span>
+<span class="c1">//        print(list)</span>
+    <span class="p">})</span>
+
+    <span class="nf">scope</span><span class="p">(</span><span class="nv">of</span><span class="p">:</span> <span class="s">"opt_popsort"</span><span class="p">,</span> <span class="nv">execute</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span> <span class="nv">action</span><span class="p">:</span> <span class="p">{</span>
+        <span class="k">var</span> <span class="nv">list</span> <span class="o">=</span> <span class="nf">randomList</span><span class="p">(</span><span class="mi">10000</span><span class="p">)</span>
+        <span class="n">timing</span> <span class="p">{</span><span class="nf">optimizationPopSort</span><span class="p">(</span><span class="nv">list</span><span class="p">:</span> <span class="o">&amp;</span><span class="n">list</span><span class="p">)}</span>
+<span class="c1">//        print(list)</span>
+    <span class="p">})</span>
+
+    <span class="nf">scope</span><span class="p">(</span><span class="nv">of</span><span class="p">:</span> <span class="s">"quicksort"</span><span class="p">,</span> <span class="nv">execute</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span> <span class="nv">action</span><span class="p">:</span> <span class="p">{</span>
+        <span class="k">var</span> <span class="nv">list</span> <span class="o">=</span> <span class="nf">randomList</span><span class="p">(</span><span class="mi">10000</span><span class="p">)</span>
+        <span class="n">timing</span> <span class="p">{</span><span class="nf">quickSort</span><span class="p">(</span><span class="nv">list</span><span class="p">:</span> <span class="o">&amp;</span><span class="n">list</span><span class="p">)}</span>
+<span class="c1">//        print(list)</span>
+    <span class="p">})</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="gd">--- scope of: sort ---
+--- scope of: systemsort ---
+</span>timing: 0.010432243347168
+<span class="gd">--- scope of: systemsort2 ---
+</span>timing: 0.00398015975952148
+<span class="gd">--- scope of: selectsort ---
+</span>timing: 2.67806816101074
+<span class="gd">--- scope of: opt_selectsort ---
+</span>timing: 0.431572914123535
+<span class="gd">--- scope of: popsort ---
+</span>timing: 3.39597702026367
+<span class="gd">--- scope of: opt_popsort ---
+</span>timing: 3.59421491622925
+<span class="gd">--- scope of: quicksort ---
+</span>timing: 0.00454998016357422
+
+</code></pre>
+</div>
+<p>我们可以看到, 其中我写的快排是效率最高的, 和系统的排序是一个数量级的, 而选择比冒泡的效率要高, 而令人疑惑的是同样是系统的排序加上<code class="highlighter-rouge"><span class="p">{</span><span class="err">$0</span><span class="w"> </span><span class="err">&lt;</span><span class="w"> </span><span class="err">$1</span><span class="p">}</span></code>比较规则, 效率会有数量级的提升.</p>
+
+<p>现在大家知道如何选择排序算法了么?</p>
+
+<h4 id="二分搜索">二分搜索</h4>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="kd">@discardableResult</span> <span class="kd">func</span> <span class="nf">binSearch</span><span class="p">(</span><span class="nv">list</span><span class="p">:</span> <span class="p">[</span><span class="kt">Int</span><span class="p">],</span> <span class="nv">find</span><span class="p">:</span> <span class="kt">Int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Int</span> <span class="p">{</span>
+
+    <span class="k">var</span> <span class="nv">low</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">high</span> <span class="o">=</span> <span class="n">list</span><span class="o">.</span><span class="n">count</span> <span class="o">-</span> <span class="mi">1</span>
+    <span class="k">while</span> <span class="n">low</span> <span class="o">&lt;=</span> <span class="n">high</span> <span class="p">{</span>
+        <span class="k">let</span> <span class="nv">mid</span> <span class="o">=</span> <span class="p">(</span><span class="n">low</span> <span class="o">+</span> <span class="n">high</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span>
+        <span class="k">if</span> <span class="n">find</span> <span class="o">==</span> <span class="n">list</span><span class="p">[</span><span class="n">mid</span><span class="p">]</span> <span class="p">{</span><span class="k">return</span> <span class="n">mid</span><span class="p">}</span>
+        <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">find</span> <span class="o">&gt;</span> <span class="n">list</span><span class="p">[</span><span class="n">mid</span><span class="p">])</span> <span class="p">{</span><span class="n">low</span> <span class="o">=</span> <span class="n">mid</span> <span class="o">+</span> <span class="mi">1</span><span class="p">}</span>
+        <span class="k">else</span> <span class="p">{</span><span class="n">high</span> <span class="o">=</span> <span class="n">mid</span> <span class="o">-</span> <span class="mi">1</span><span class="p">}</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="o">-</span><span class="mi">1</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="kd">@discardableResult</span> <span class="kd">func</span> <span class="nf">recursiveBinSearch</span><span class="p">(</span><span class="nv">list</span><span class="p">:</span> <span class="p">[</span><span class="kt">Int</span><span class="p">],</span> <span class="nv">find</span><span class="p">:</span> <span class="kt">Int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Int</span> <span class="p">{</span>
+    
+    <span class="kd">func</span> <span class="nf">search</span><span class="p">(</span><span class="nv">list</span><span class="p">:</span> <span class="p">[</span><span class="kt">Int</span><span class="p">],</span> <span class="nv">low</span><span class="p">:</span> <span class="kt">Int</span><span class="p">,</span> <span class="nv">high</span><span class="p">:</span> <span class="kt">Int</span><span class="p">,</span> <span class="nv">find</span><span class="p">:</span> <span class="kt">Int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Int</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="n">low</span> <span class="o">&lt;=</span> <span class="n">high</span> <span class="p">{</span>
+            <span class="k">let</span> <span class="nv">mid</span> <span class="o">=</span> <span class="p">(</span><span class="n">low</span> <span class="o">+</span> <span class="n">high</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span>
+            <span class="k">if</span> <span class="n">find</span> <span class="o">==</span> <span class="n">list</span><span class="p">[</span><span class="n">mid</span><span class="p">]</span> <span class="p">{</span><span class="k">return</span> <span class="n">mid</span><span class="p">}</span>
+            <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">find</span> <span class="o">&gt;</span> <span class="n">list</span><span class="p">[</span><span class="n">mid</span><span class="p">])</span> <span class="p">{</span>
+                <span class="k">return</span> <span class="nf">search</span><span class="p">(</span><span class="nv">list</span><span class="p">:</span> <span class="n">list</span><span class="p">,</span> <span class="nv">low</span><span class="p">:</span> <span class="n">mid</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="nv">high</span><span class="p">:</span> <span class="n">high</span><span class="p">,</span> <span class="nv">find</span><span class="p">:</span> <span class="n">find</span><span class="p">)</span>
+            <span class="p">}</span>
+            <span class="k">else</span> <span class="p">{</span>
+                <span class="k">return</span> <span class="nf">search</span><span class="p">(</span><span class="nv">list</span><span class="p">:</span> <span class="n">list</span><span class="p">,</span> <span class="nv">low</span><span class="p">:</span> <span class="n">low</span><span class="p">,</span> <span class="nv">high</span><span class="p">:</span> <span class="n">mid</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="nv">find</span><span class="p">:</span> <span class="n">find</span><span class="p">)</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+        <span class="k">return</span> <span class="o">-</span><span class="mi">1</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="nf">search</span><span class="p">(</span><span class="nv">list</span><span class="p">:</span> <span class="n">list</span><span class="p">,</span> <span class="nv">low</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="nv">high</span><span class="p">:</span> <span class="n">list</span><span class="o">.</span><span class="n">count</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="nv">find</span><span class="p">:</span> <span class="n">find</span><span class="p">)</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<p>二分搜索的原理就不多说了, 就是折半折半再折半, 这种搜索算法的关键就是要<code class="highlighter-rouge">有序</code>, 所以配合上合适的排序算法才是最重要的!</p>
+
+<p><img src="http://upload-images.jianshu.io/upload_images/1229762-3f8925783027b3fa.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="点击下方链接跳转!!" /></p>
+
+<p><a href="https://github.com/coderZsq/coderZsq.target.swift">🌟 简历源码 请点这里🌟 »&gt; 喜欢的朋友请点喜欢 »&gt; 下载源码的同学请送下小星星 »&gt; 有闲钱的壕们可以进行打赏 »&gt; 小弟会尽快推出更好的文章和大家分享 »&gt; 你的激励就是我的动力!! </a></p>
+
+  </section>
+</article>
+
+<section class="read-more">
+   
+   
+   
+   
+   <div class="read-more-item">
+       <span class="read-more-item-dim">更早的文章</span>
+       <h2 class="post-list__post-title post-title"><a href="/2018/01/Swift-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95%E5%88%9D%E6%8E%A2/" title="link to Swift 数据结构与算法初探">Swift 数据结构与算法初探</a></h2>
+       <p class="excerpt">  去年对设计模式有了一些浅显的知识, 今年来学习下数据结构与算法, 为了学习以后的先进技术打好基础. 本文包括队列, 栈, 线性表, 树, 图, 五个部分来学习编程的基础, 也复习下Swift的语法.数据结构和算法和设计模式相同, 属于编程的软实力, 并不局限于语言, 而着重于思想, 本文就是通过学习总结将C++实现的算法迁移到Swift的过程并了解具体的实现.队列首先, 我们第一个就要学习的就是队列这个数据结构, 队列, 顾名思义就是排队, 也就是先进先出, 我们这里通过Swift来实...&hellip;</p>
+       <div class="post-list__meta"><time datetime="2018-01-15 16:48:00 +0800" class="post-list__meta--date date">2018-01-15</time> &#8226; <span class="post-list__meta--tags tags">移动开发</span><a class="btn-border-small" href=/2018/01/Swift-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95%E5%88%9D%E6%8E%A2/>继续阅读</a></div>
+   </div>
+   
+</section>
+
+<section class="post-comments">
+  
+  
+  
+  
+</section>
+
+
+            <section class="footer">
+    <footer>
+    	<span class="footer__copyright">本站点采用<a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">知识共享 署名-非商业性使用-相同方式共享 4.0 国际 许可协议</a></span>
+        <span class="footer__copyright">由 <a href="https://jekyllrb.com">Jekyll</a> 于 2018-02-28 生成，感谢 <a href="https://www.digitalocean.com/?refcode=30ed2d146762">Digital Ocean</a> 为本站提供稳定的 VPS 服务</span>
+        <span class="footer__copyright">本站由 <a href="https://github.com/coderZsq">@Castie!</a> 创建，采用 <a href="https://github.com/onevcat/vno-jekyll">Vno - Jekyll</a> 作为主题，您可以在 GitHub 找到<a href="https://github.com/onevcat/OneV-s-Den">本站源码</a> - &copy; 2018</span>
+    </footer>
+</section>
+
+        </div>
+    </div>
+    
+    <script type="text/javascript" src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+
+<script type="text/javascript" src="/js/main.js"></script>
+
+
+
+    
+  </body>
+
+</html>
