@@ -1,0 +1,1152 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <title>Castie! Notes</title>
+  <meta name="description" content="  GitHub Repo：coderZsq.target.swiftFollow: coderZsq · GitHubResume: https://coderzsq.github.io/coderZsq.webpack.js/#/">
+  <meta name="author" content="Wei Wang">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Swift 美团iOS面试败北感悟">
+  <meta name="twitter:description" content="  GitHub Repo：coderZsq.target.swiftFollow: coderZsq · GitHubResume: https://coderzsq.github.io/coderZsq.webpack.js/#/">
+  
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Swift 美团iOS面试败北感悟">
+  <meta property="og:description" content="  GitHub Repo：coderZsq.target.swiftFollow: coderZsq · GitHubResume: https://coderzsq.github.io/coderZsq.webpack.js/#/">
+  
+  <link rel="icon" type="image/ico" href="/assets/images/favicon.ico" />
+  <link href="/assets/images/favicon.ico" rel="shortcut icon" type="image/ico">
+  
+  <link rel="stylesheet" href="/css/main.css">
+  <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+
+  <link rel="canonical" href="http://localhost:4000/2018/04/Swift-%E7%BE%8E%E5%9B%A2iOS%E9%9D%A2%E8%AF%95%E8%B4%A5%E5%8C%97%E6%84%9F%E6%82%9F/">
+  <link rel="alternate" type="application/rss+xml" title="Castie!" href="http://localhost:4000/feed.xml">
+  
+  <meta name="google-site-verification" content="1-1ZlHoRvM0T2FqPbW2S-qLgYXN6rsn52kErlMPd_gw" />
+  
+</head>
+
+
+  <body>
+
+    <span class="mobile btn-mobile-menu">
+        <i class="fa fa-list btn-mobile-menu__icon"></i>
+        <i class="fa fa-angle-up btn-mobile-close__icon hidden"></i>
+    </span>
+    
+    <header class="panel-cover panel-cover--collapsed" style="background-image: url('/assets/images/background-cover.jpg')">
+  <div class="panel-main">
+
+    <div class="panel-main__inner panel-inverted">
+    <div class="panel-main__content">
+
+        <a href="/#blog" title="前往 Castie! 的主页" class="blog-button"><img src="/assets/images/avatar.jpg" width="80" alt="Castie! logo" class="panel-cover__logo logo" /></a>
+        <h1 class="panel-cover__title panel-title"><a href="/#blog" title="link to homepage for Castie!" class="blog-button">Castie!</a></h1>
+        
+        <span class="panel-cover__subtitle panel-subtitle">正态分布, 优劣伴生</span>
+        
+        <hr class="panel-cover__divider" />
+        <p class="panel-cover__description">北冥有鱼，其名为鲲（kūn）。鲲之大，不知其几千里也；化而为鸟，其名为鹏。鹏之背，不知其几千里也；怒而飞，其翼若垂天之云。是鸟也，海运则将徙于南冥。南冥者，天池也。</p>
+        <hr class="panel-cover__divider panel-cover__divider--secondary" />
+        
+        
+        <p class="panel-cover__description">北海若曰：“井鼃不可以语于海者，拘于虚也；夏虫不可以语于冰者，笃于时也；曲士不可以语于道者，束于教也。今尔出于崖涘，观于大海，乃知尔丑，尔将可与语大理矣。</p>
+        
+        
+        <div class="navigation-wrapper">
+          <div>
+            <nav class="cover-navigation cover-navigation--primary">
+              <ul class="navigation">
+                <li class="navigation__item"><a href="/#blog" title="访问博客" class="blog-button">博客</a></li>
+                
+                  <li class="navigation__item"><a href="https://coderzsq.github.io/coderZsq.webpack.js/" target="_blank" title="我的简历">简历</a></li>
+                
+              </ul>
+            </nav>
+          </div>
+          
+          <div><nav class="cover-navigation navigation--social">
+  <ul class="navigation">
+
+    
+    <!-- jianshu-->
+    <li class="navigation__item">
+      <a href="http://www.jianshu.com/u/9d7fad1a4693" title="@coderZsq 的简书" target="_blank">
+        <i class='social fa fa-book'></i>
+        <span class="label">jianshu</span>
+      </a>
+    </li>
+    
+
+    
+    <!-- juejin-->
+    <li class="navigation__item">
+      <a href="https://juejin.im/user/57e735dfa22b9d00614eecb8" title="@coderZsq 的稀土掘金" target="_blank">
+        <i class='social fa fa-align-center'></i>
+        <span class="label">juejin</span>
+      </a>
+    </li>
+    
+
+  
+
+  
+  <!-- Github -->
+  <li class="navigation__item">
+    <a href="https://github.com/coderZsq" title="@coderZsq 的 Github" target="_blank">
+      <i class='social fa fa-github'></i>
+      <span class="label">Github</span>
+    </a>
+  </li>
+  
+
+  
+
+  
+
+  <!-- RSS -->
+  <li class="navigation__item">
+    <a href="/feed.xml" rel="author" title="RSS" target="_blank">
+      <i class='social fa fa-rss'></i>
+      <span class="label">RSS</span>
+    </a>
+  </li>
+
+  
+  <!-- Email -->
+  <li class="navigation__item">
+    <a href="mailto:a13701777868@gmail.com" title="Contact me">
+      <i class='social fa fa-envelope'></i>
+      <span class="label">Email</span>
+    </a>
+  </li>
+  
+
+  </ul>
+</nav>
+</div>
+        </div>
+      </div>
+    </div>
+    
+    
+    <div class="panel-cover--overlay cover-slate"></div>
+    
+  </div>
+</header>
+
+
+    <div class="content-wrapper">
+        <div class="content-wrapper__inner">
+            <article class="post-container post-container--single" itemscope itemtype="http://schema.org/BlogPosting">
+  <header class="post-header">
+    <div class="post-meta">
+      <time datetime="2018-04-14 01:16:00 +0800" itemprop="datePublished" class="post-meta__date date">2018-04-14</time> &#8226; <span class="post-meta__tags tags">移动开发</span>
+    </div>
+    <h1 class="post-title">Swift 美团iOS面试败北感悟</h1>
+  </header>
+
+  <section class="post">
+    <blockquote>
+  <p>GitHub Repo：<a href="https://github.com/coderZsq/coderZsq.target.swift">coderZsq.target.swift</a>
+<br />Follow: <a href="https://github.com/coderZsq">coderZsq · GitHub</a>
+<br />Resume: <a href="https://coderzsq.github.io/coderZsq.webpack.js/#/">https://coderzsq.github.io/coderZsq.webpack.js/#/</a></p>
+</blockquote>
+
+<h4 id="日常扯淡">日常扯淡</h4>
+
+<p>从去年开始, 我就一直有尝试的面试些<code class="highlighter-rouge">大公司</code>, 因为对于一个<code class="highlighter-rouge">半路出家</code>(非计算机专业), 靠着<code class="highlighter-rouge">MJ视频</code>入门的<code class="highlighter-rouge">iOS菜鸡玩家</code>, 经过了<code class="highlighter-rouge">3年</code>的摸爬滚打, 终于也渐渐的可以做一些简单的<code class="highlighter-rouge">前端</code>, <code class="highlighter-rouge">后端</code>, <code class="highlighter-rouge">移动端</code>的交互, 但想要继续深入就感觉<code class="highlighter-rouge">瓶颈</code>越发的明显, <code class="highlighter-rouge">基础的薄弱</code>导致很难上升, 所以能够进入一家<code class="highlighter-rouge">大型成熟</code>互联网公司就成为了我最近的目标, 原因很简单, 这是<code class="highlighter-rouge">最为有效</code>的学习成长的方式.</p>
+
+<p>去年<code class="highlighter-rouge">7月</code>, 第一次面试大公司: <code class="highlighter-rouge">饿了么</code>, 收到大公司的召唤非常的兴奋, 觉得自己翻身的机会终于要来了, 兴冲冲的跑去面试, 以为会和一般初级<code class="highlighter-rouge">iOS</code>面试的题目相同, 没有做任何的准备, 其实也不知道准备什么, 记得那时候聊的是:</p>
+
+<ol>
+  <li>UI方面: <code class="highlighter-rouge">如何避免卡顿掉帧</code>, <code class="highlighter-rouge">异步渲染</code>.</li>
+  <li>性能方面: <code class="highlighter-rouge">性能优化</code>, <code class="highlighter-rouge">Vsync</code>, <code class="highlighter-rouge">CPU / GPU</code></li>
+  <li>网络方面: 如何进行请求<code class="highlighter-rouge">缓存策略</code>.</li>
+  <li>安全方面: <code class="highlighter-rouge">lild重签名</code>, <code class="highlighter-rouge">Mach-O</code>.</li>
+  <li>前端方面: 如何避免<code class="highlighter-rouge">DOM</code>重绘.</li>
+  <li>后端方面: 如何进行<code class="highlighter-rouge">负载均衡</code>的处理.</li>
+</ol>
+
+<p>还有一些极端的情况, 由于时间久远已经记不太清了, 反正这次面试给我的感觉就是, 靠… 我简直就是个垃圾啊~ 当时记得内推我的架构师建议我扎实一下<code class="highlighter-rouge">iOS的基本功</code>, 然后就推荐了基本书: <code class="highlighter-rouge">计算机网络</code>, <code class="highlighter-rouge">操作系统原理</code>, <code class="highlighter-rouge">HTTP权威指南</code>, <code class="highlighter-rouge">TCP/IP权威指南</code>, <code class="highlighter-rouge">深入解析Max OS X &amp; iOS 操作系统</code>… 这些书, 除了<code class="highlighter-rouge">HTTP权威指南</code>我咬着牙看完了, 其他的对于我来说简直就是天书, 根本消化不良啊.</p>
+
+<p>去年<code class="highlighter-rouge">12月</code>, 第二次面试大公司: <code class="highlighter-rouge">京东</code>, 由于有了上一次的经验, 我变得非常的淡定, 知道自己肯定会被大公司所淘汰, 和<code class="highlighter-rouge">优等专业生</code>有着<code class="highlighter-rouge">不可逾越</code>的<code class="highlighter-rouge">天堑</code>, 比较吃惊的是, 进入京东的大楼需要用<code class="highlighter-rouge">身份证</code>换取<code class="highlighter-rouge">临时门禁</code>… 那时候的面试题就比饿了么的柔和的多了, 虽然当时还是回答不出.</p>
+
+<ol>
+  <li>Runtime: <code class="highlighter-rouge">isa</code>, <code class="highlighter-rouge">消息转发</code>, <code class="highlighter-rouge">弱引用表</code>.</li>
+  <li>Runloop: <code class="highlighter-rouge">mode</code>, <code class="highlighter-rouge">timer</code>.</li>
+  <li>Block: <code class="highlighter-rouge">__block</code>, <code class="highlighter-rouge">__forwording</code>.</li>
+  <li>Property: <code class="highlighter-rouge">assign</code>, <code class="highlighter-rouge">weak</code>, <code class="highlighter-rouge">copy</code>.</li>
+  <li>Category: <code class="highlighter-rouge">assoc</code>, <code class="highlighter-rouge">load</code></li>
+</ol>
+
+<p>现在想想, 这TM才是面试<code class="highlighter-rouge">iOS</code>啊, 只可惜, 那时候并不具备这些知识, 可惜了了. 之后我就对<code class="highlighter-rouge">C++</code>, <code class="highlighter-rouge">ASM</code>, <code class="highlighter-rouge">Linux</code>, 这三方面进行了学习, 也学习了些<code class="highlighter-rouge">MACH-O</code>, <code class="highlighter-rouge">逆向</code>的相关的知识, 以备后面的面试机会.</p>
+
+<p>第三次就是<code class="highlighter-rouge">这周三</code>面试<code class="highlighter-rouge">美团</code>了, 我准备了所有我能够准备的面试题内容, <code class="highlighter-rouge">底层原理</code>, <code class="highlighter-rouge">逆向安全</code>, <code class="highlighter-rouge">多线程与锁</code>, <code class="highlighter-rouge">内存布局</code>, <code class="highlighter-rouge">UI性能优化</code>等, 果不其然, 足足<code class="highlighter-rouge">1个小时</code>的电话面试, 我轻松通过, 问的就是些我准备好的<code class="highlighter-rouge">底层知识</code>, 让我觉得机会终于来了, 可是…. 当我现场面试后… 题目全部是上机题…</p>
+
+<ol>
+  <li>设计一个网络框架, 如何进行不同数据解析的设计(header, body), 并能够进行自定义, 重连机制如何处理, 状态码错误转发机制的处理, 如何避免回调地狱, 实现<code class="highlighter-rouge">Promise</code>的自实现.</li>
+  <li>根据<code class="highlighter-rouge">UIControl</code>实现<code class="highlighter-rouge">UIButton</code>….</li>
+  <li>找到两个排序数组的中位数…</li>
+  <li>pow(double, double)函数的自实现….</li>
+</ol>
+
+<p>果然,<code class="highlighter-rouge">网络</code>, <code class="highlighter-rouge">UI</code>, <code class="highlighter-rouge">算法</code>… 好吧, 第一次做上机题, 瞬间就蒙了… 然后就是面试官在旁边不停的笑… 不停的笑… 可能是他对我友好的一种方式吧… 最后的面试结论是, 我的<code class="highlighter-rouge">知识面</code>还是<code class="highlighter-rouge">比较广</code>的, <code class="highlighter-rouge">做过的东西</code>也是<code class="highlighter-rouge">挺多</code>的, 但是在<code class="highlighter-rouge">知识深度</code>方面还是比较欠缺.</p>
+
+<p>后来得知, 他们招聘的是<code class="highlighter-rouge">技术专家</code>的职级, 觉得我的技术水平达不到要求, 不能给与录取, 当然被拒我是当场就知道了, 也觉得<code class="highlighter-rouge">美团</code>和<code class="highlighter-rouge">饿了么</code>的两次面试经历都和我的水平相差甚远… 可是, 我只是想进入大公司学习, 就一定要<code class="highlighter-rouge">成为专家</code>才行么? 现在<code class="highlighter-rouge">初中高级</code>, <code class="highlighter-rouge">资深</code>都不需要了, 直接专家么…, 我的猎头朋友和我说, <code class="highlighter-rouge">3-1</code>的级别就是对标阿里<code class="highlighter-rouge">P6/P7</code>, 我选择去死啊…..</p>
+
+<p>有了这次的面试经验后, 我的策略也发生了改变, 不再追求大公司的光环了, 做人<code class="highlighter-rouge">开心一点</code>不好么, 非要<code class="highlighter-rouge">像机器一样思考</code>? <code class="highlighter-rouge">活的像个算法</code>一样是不是感觉缺少了些重要的东西? 和朋友们<code class="highlighter-rouge">吹吹牛逼</code>的日子不快活么, 偏要用功学习? 这里想到了最近听到的两句话, <code class="highlighter-rouge">最好的产品体验就是要让用户不用思考</code>, <code class="highlighter-rouge">认知即痛苦, 无知即极乐</code>, 人真是矛盾, 价值观的一念之差, 差之毫厘失之千里啊….</p>
+
+<h4 id="美团面试题1-自实现powdouble-double">美团面试题1 自实现pow(double, double)</h4>
+
+<p>这道题目上机的时候非常的蒙, 因为幂是<code class="highlighter-rouge">double</code>, 完全不知道如何下手, 面试官就降低难度使用整型.</p>
+
+<h5 id="解法1">解法1</h5>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="kd">func</span> <span class="nf">_pow_1</span><span class="p">(</span><span class="n">_</span> <span class="nv">base</span><span class="p">:</span> <span class="kt">Int</span><span class="p">,</span> <span class="n">_</span> <span class="nv">exponent</span><span class="p">:</span> <span class="kt">Int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Int</span> <span class="p">{</span>
+
+    <span class="k">if</span> <span class="n">exponent</span> <span class="o">&lt;</span> <span class="mi">0</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="mi">0</span>
+    <span class="p">}</span>
+    <span class="k">if</span> <span class="n">exponent</span> <span class="o">==</span> <span class="mi">0</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="mi">0</span>
+    <span class="p">}</span>
+    <span class="k">if</span> <span class="n">exponent</span> <span class="o">==</span> <span class="mi">1</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="n">base</span>
+    <span class="p">}</span>
+    
+    <span class="k">var</span> <span class="nv">result</span> <span class="o">=</span> <span class="n">base</span>
+    <span class="k">for</span> <span class="n">_</span> <span class="k">in</span> <span class="mi">1</span><span class="o">..&lt;</span><span class="n">exponent</span> <span class="p">{</span>
+        <span class="n">result</span> <span class="o">*=</span> <span class="n">base</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="n">result</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<p>然后, 第一次做算法题的我, 只能想到通过最为粗糙的办法解答, 就是一个循环, 我也知道这不是面试官所期许的答案, 但这有什么办法呢…</p>
+
+<h5 id="解法2">解法2</h5>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="kd">func</span> <span class="nf">_pow_2</span><span class="p">(</span><span class="n">_</span> <span class="nv">base</span><span class="p">:</span> <span class="kt">Double</span><span class="p">,</span> <span class="n">_</span> <span class="nv">exponent</span><span class="p">:</span> <span class="kt">Int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Double</span> <span class="p">{</span>
+    
+    <span class="k">if</span> <span class="n">exponent</span> <span class="o">&lt;</span> <span class="mi">0</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="mi">0</span>
+    <span class="p">}</span>
+    <span class="k">if</span> <span class="n">exponent</span> <span class="o">==</span> <span class="mi">0</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="mi">0</span>
+    <span class="p">}</span>
+    <span class="k">var</span> <span class="nv">ans</span><span class="p">:</span><span class="kt">Double</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">last_pow</span> <span class="o">=</span> <span class="n">base</span><span class="p">,</span> <span class="n">exp</span> <span class="o">=</span> <span class="n">exponent</span>
+    
+    <span class="k">while</span> <span class="n">exp</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">exp</span> <span class="o">&amp;</span> <span class="mi">1</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">0</span> <span class="p">{</span>
+            <span class="n">ans</span> <span class="o">=</span> <span class="n">ans</span> <span class="o">*</span> <span class="n">last_pow</span>
+        <span class="p">}</span>
+        <span class="n">exp</span> <span class="o">=</span> <span class="n">exp</span> <span class="o">&gt;&gt;</span> <span class="mi">1</span>
+        <span class="n">last_pow</span> <span class="o">=</span> <span class="n">last_pow</span> <span class="o">*</span> <span class="n">last_pow</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="n">ans</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<p>这个是我在网上翻阅资料后的另一种看似比较好的解答方式.</p>
+
+<h5 id="解法3">解法3</h5>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="kd">func</span> <span class="nf">_pow_3</span><span class="p">(</span><span class="n">_</span> <span class="nv">base</span><span class="p">:</span> <span class="kt">Double</span><span class="p">,</span> <span class="n">_</span> <span class="nv">exponent</span><span class="p">:</span> <span class="kt">Int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Double</span> <span class="p">{</span>
+
+    <span class="k">var</span> <span class="nv">isNegative</span> <span class="o">=</span> <span class="kc">false</span>
+    <span class="k">var</span> <span class="nv">exp</span> <span class="o">=</span> <span class="n">exponent</span>
+    <span class="k">if</span> <span class="n">exp</span> <span class="o">&lt;</span> <span class="mi">0</span> <span class="p">{</span>
+        <span class="n">isNegative</span> <span class="o">=</span> <span class="kc">true</span>
+        <span class="n">exp</span> <span class="o">=</span> <span class="o">-</span><span class="n">exp</span>
+    <span class="p">}</span>
+    <span class="k">let</span> <span class="nv">result</span> <span class="o">=</span> <span class="nf">_pow_2</span><span class="p">(</span><span class="n">base</span><span class="p">,</span> <span class="n">exp</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">isNegative</span> <span class="p">?</span> <span class="mi">1</span> <span class="o">/</span> <span class="nv">result</span> <span class="p">:</span> <span class="n">result</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<p>这个仅仅是加了一个负值判断…. 但是幂是<code class="highlighter-rouge">double</code>的仍然是毫无头绪, 需要请大佬和大神<code class="highlighter-rouge">不吝赐教</code>.</p>
+
+<h4 id="美团面试题2-findmediansortedarrays">美团面试题2 findMedianSortedArrays</h4>
+
+<p>这是一道LeetCode的原题, 但是我至今还没有刷过算法题库… 也是平生第一次面试的时候遇到算法题. 题目的意思是找到两个排序数组的中位数.</p>
+
+<h5 id="解法1-1">解法1</h5>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="kd">func</span> <span class="nf">findMedianSortedArrays_1</span><span class="p">(</span><span class="n">_</span> <span class="nv">array1</span><span class="p">:</span> <span class="p">[</span><span class="kt">Int</span><span class="p">],</span> <span class="n">_</span> <span class="nv">array2</span><span class="p">:</span> <span class="p">[</span><span class="kt">Int</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="kt">Double</span> <span class="p">{</span>
+    
+    <span class="k">var</span> <span class="nv">array</span> <span class="o">=</span> <span class="p">[</span><span class="kt">Int</span><span class="p">]()</span>
+    <span class="n">array</span><span class="o">.</span><span class="nf">append</span><span class="p">(</span><span class="nv">contentsOf</span><span class="p">:</span> <span class="n">array1</span><span class="p">)</span>
+    <span class="n">array</span><span class="o">.</span><span class="nf">append</span><span class="p">(</span><span class="nv">contentsOf</span><span class="p">:</span> <span class="n">array2</span><span class="p">)</span>
+    
+    <span class="nf">quickSort</span><span class="p">(</span><span class="nv">list</span><span class="p">:</span> <span class="o">&amp;</span><span class="n">array</span><span class="p">)</span>
+    
+    <span class="k">let</span> <span class="nv">b</span> <span class="o">=</span> <span class="n">array</span><span class="o">.</span><span class="n">count</span> <span class="o">%</span> <span class="mi">2</span>
+    <span class="k">let</span> <span class="nv">c</span> <span class="o">=</span> <span class="n">array</span><span class="o">.</span><span class="n">count</span>
+    <span class="k">var</span> <span class="nv">result</span> <span class="o">=</span> <span class="mf">0.0</span><span class="p">;</span>
+    <span class="k">if</span>  <span class="n">b</span> <span class="o">==</span> <span class="mi">1</span>  <span class="p">{</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="kt">Double</span><span class="p">(</span><span class="n">array</span><span class="p">[</span><span class="n">c</span> <span class="o">/</span> <span class="mi">2</span><span class="p">])</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+        <span class="k">let</span> <span class="nv">n1</span> <span class="o">=</span> <span class="n">array</span><span class="p">[</span><span class="n">c</span> <span class="o">/</span> <span class="mi">2</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span>
+        <span class="k">let</span> <span class="nv">n2</span> <span class="o">=</span> <span class="n">array</span><span class="p">[</span><span class="n">c</span> <span class="o">/</span> <span class="mi">2</span><span class="p">]</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="kt">Double</span><span class="p">((</span><span class="n">n1</span> <span class="o">+</span> <span class="n">n2</span><span class="p">))</span> <span class="o">/</span> <span class="mf">2.0</span>
+    <span class="p">}</span>
+    
+    <span class="k">return</span> <span class="n">result</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+<p>第一次做算法题, 只能无视算法复杂度, 能够完成就算是不错了, 要什么自行车…</p>
+
+<h5 id="解法2-1">解法2</h5>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="kd">func</span> <span class="nf">findMedianSortedArrays_2</span><span class="p">(</span><span class="n">_</span> <span class="nv">array1</span><span class="p">:</span> <span class="p">[</span><span class="kt">Int</span><span class="p">],</span> <span class="n">_</span> <span class="nv">array2</span><span class="p">:</span> <span class="p">[</span><span class="kt">Int</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="kt">Double</span> <span class="p">{</span>
+    
+    <span class="k">let</span> <span class="nv">c1</span> <span class="o">=</span> <span class="n">array1</span><span class="o">.</span><span class="n">count</span><span class="p">,</span> <span class="n">c2</span> <span class="o">=</span> <span class="n">array2</span><span class="o">.</span><span class="n">count</span>
+    <span class="k">var</span> <span class="nv">a1</span> <span class="o">=</span> <span class="n">array1</span><span class="p">,</span> <span class="n">a2</span> <span class="o">=</span> <span class="n">array2</span>
+    <span class="k">if</span> <span class="n">c1</span> <span class="o">&lt;=</span> <span class="mi">0</span> <span class="o">&amp;&amp;</span> <span class="n">c2</span> <span class="o">&lt;=</span> <span class="mi">0</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="mf">0.0</span>
+    <span class="p">}</span>
+    
+    <span class="kd">func</span> <span class="nf">findKth</span><span class="p">(</span><span class="n">_</span> <span class="nv">nums1</span><span class="p">:</span> <span class="k">inout</span> <span class="p">[</span><span class="kt">Int</span><span class="p">],</span> <span class="nv">i</span><span class="p">:</span> <span class="kt">Int</span><span class="p">,</span> <span class="n">_</span> <span class="nv">nums2</span><span class="p">:</span> <span class="k">inout</span> <span class="p">[</span><span class="kt">Int</span><span class="p">],</span> <span class="nv">j</span><span class="p">:</span> <span class="kt">Int</span><span class="p">,</span> <span class="nv">k</span><span class="p">:</span> <span class="kt">Int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Double</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="n">nums1</span><span class="o">.</span><span class="n">count</span> <span class="o">-</span> <span class="n">i</span> <span class="o">&gt;</span> <span class="n">nums2</span><span class="o">.</span><span class="n">count</span> <span class="o">-</span> <span class="n">j</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="nf">findKth</span><span class="p">(</span><span class="o">&amp;</span><span class="n">nums2</span><span class="p">,</span> <span class="nv">i</span><span class="p">:</span> <span class="n">j</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">nums1</span><span class="p">,</span> <span class="nv">j</span><span class="p">:</span> <span class="n">i</span><span class="p">,</span> <span class="nv">k</span><span class="p">:</span> <span class="n">k</span><span class="p">)</span>
+        <span class="p">}</span>
+        <span class="k">if</span> <span class="n">nums1</span><span class="o">.</span><span class="n">count</span> <span class="o">==</span> <span class="n">i</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="kt">Double</span><span class="p">(</span><span class="n">nums2</span><span class="p">[</span><span class="n">j</span> <span class="o">+</span> <span class="n">k</span> <span class="o">-</span> <span class="mi">1</span><span class="p">])</span>
+        <span class="p">}</span>
+        <span class="k">if</span> <span class="n">k</span> <span class="o">==</span> <span class="mi">1</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="kt">Double</span><span class="p">(</span><span class="nf">min</span><span class="p">(</span><span class="n">nums1</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">nums2</span><span class="p">[</span><span class="n">j</span><span class="p">]))</span>
+        <span class="p">}</span>
+        <span class="k">let</span> <span class="nv">pa</span> <span class="o">=</span> <span class="nf">min</span><span class="p">(</span><span class="n">i</span> <span class="o">+</span> <span class="n">k</span> <span class="o">/</span> <span class="mi">2</span><span class="p">,</span> <span class="n">nums1</span><span class="o">.</span><span class="n">count</span><span class="p">),</span> <span class="n">pb</span> <span class="o">=</span> <span class="n">j</span> <span class="o">+</span> <span class="n">k</span> <span class="o">-</span> <span class="n">pa</span> <span class="o">+</span> <span class="n">i</span>
+        <span class="k">if</span> <span class="n">nums1</span><span class="p">[</span><span class="n">pa</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">nums2</span><span class="p">[</span><span class="n">pb</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="nf">findKth</span><span class="p">(</span><span class="o">&amp;</span><span class="n">nums1</span><span class="p">,</span> <span class="nv">i</span><span class="p">:</span> <span class="n">pa</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">nums2</span><span class="p">,</span> <span class="nv">j</span><span class="p">:</span> <span class="n">j</span><span class="p">,</span> <span class="nv">k</span><span class="p">:</span> <span class="n">k</span> <span class="o">-</span> <span class="n">pa</span> <span class="o">+</span> <span class="n">i</span><span class="p">)</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="n">nums1</span><span class="p">[</span><span class="n">pa</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">nums2</span><span class="p">[</span><span class="n">pb</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="nf">findKth</span><span class="p">(</span><span class="o">&amp;</span><span class="n">nums1</span><span class="p">,</span> <span class="nv">i</span><span class="p">:</span> <span class="n">i</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">nums2</span><span class="p">,</span> <span class="nv">j</span><span class="p">:</span> <span class="n">pb</span><span class="p">,</span> <span class="nv">k</span><span class="p">:</span> <span class="n">k</span> <span class="o">-</span> <span class="n">pb</span> <span class="o">+</span> <span class="n">j</span><span class="p">)</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="kt">Double</span><span class="p">(</span><span class="n">nums1</span><span class="p">[</span><span class="n">pa</span> <span class="o">-</span> <span class="mi">1</span><span class="p">])</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+    
+    <span class="k">let</span> <span class="nv">total</span> <span class="o">=</span> <span class="n">c1</span> <span class="o">+</span> <span class="n">c2</span>
+    <span class="k">if</span> <span class="n">total</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">1</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="nf">findKth</span><span class="p">(</span><span class="o">&amp;</span><span class="n">a1</span><span class="p">,</span> <span class="nv">i</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">a2</span><span class="p">,</span> <span class="nv">j</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="nv">k</span><span class="p">:</span> <span class="n">total</span> <span class="o">/</span> <span class="mi">2</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+        <span class="nf">return</span> <span class="p">(</span><span class="nf">findKth</span><span class="p">(</span><span class="o">&amp;</span><span class="n">a1</span><span class="p">,</span> <span class="nv">i</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">a2</span><span class="p">,</span> <span class="nv">j</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="nv">k</span><span class="p">:</span> <span class="n">total</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span> <span class="o">+</span> <span class="nf">findKth</span><span class="p">(</span><span class="o">&amp;</span><span class="n">a1</span><span class="p">,</span> <span class="nv">i</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">a2</span><span class="p">,</span> <span class="nv">j</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="nv">k</span><span class="p">:</span> <span class="n">total</span> <span class="o">/</span> <span class="mi">2</span> <span class="o">+</span> <span class="mi">1</span><span class="p">))</span> <span class="o">/</span> <span class="mf">2.0</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<p>这个是我在网上查资料的时候的答案… 还没理清是个什么思路, 反正面试官提示分而治之, 掐头去尾…  也不知道是不是最优算法.</p>
+
+<h5 id="解法3-1">解法3</h5>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="kd">func</span> <span class="nf">findMedianSortedArrays_3</span><span class="p">(</span><span class="n">_</span> <span class="nv">array1</span><span class="p">:</span> <span class="p">[</span><span class="kt">Int</span><span class="p">],</span> <span class="n">_</span> <span class="nv">array2</span><span class="p">:</span> <span class="p">[</span><span class="kt">Int</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="kt">Double</span> <span class="p">{</span>
+    
+    <span class="k">let</span> <span class="nv">total</span> <span class="o">=</span> <span class="n">array1</span><span class="o">.</span><span class="n">count</span> <span class="o">+</span> <span class="n">array2</span><span class="o">.</span><span class="n">count</span>
+    <span class="k">let</span> <span class="nv">index</span> <span class="o">=</span> <span class="n">total</span> <span class="o">/</span> <span class="mi">2</span>
+    <span class="k">let</span> <span class="nv">count</span> <span class="o">=</span> <span class="n">array1</span><span class="o">.</span><span class="n">count</span> <span class="o">&lt;</span> <span class="n">array2</span><span class="o">.</span><span class="n">count</span> <span class="p">?</span> <span class="n">array2</span><span class="o">.</span><span class="nv">count</span> <span class="p">:</span> <span class="n">array1</span><span class="o">.</span><span class="n">count</span>
+    <span class="k">var</span> <span class="nv">array</span> <span class="o">=</span> <span class="p">[</span><span class="kt">Int</span><span class="p">]()</span>
+    
+    <span class="k">var</span> <span class="nv">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">j</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="k">for</span> <span class="n">_</span> <span class="k">in</span> <span class="mi">0</span><span class="o">...</span><span class="n">count</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="n">array</span><span class="o">.</span><span class="n">count</span> <span class="o">&gt;=</span> <span class="n">index</span> <span class="o">+</span> <span class="mi">1</span> <span class="p">{</span>
+            <span class="k">break</span>
+        <span class="p">}</span>
+        <span class="k">if</span> <span class="n">array1</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">array2</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="p">{</span>
+            <span class="n">array</span><span class="o">.</span><span class="nf">append</span><span class="p">(</span><span class="n">array1</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+            <span class="n">i</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+            <span class="n">array</span><span class="o">.</span><span class="nf">append</span><span class="p">(</span><span class="n">array2</span><span class="p">[</span><span class="n">j</span><span class="p">])</span>
+            <span class="n">j</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="n">total</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">1</span> <span class="p">?</span> <span class="kt">Double</span><span class="p">(</span><span class="n">array</span><span class="p">[</span><span class="n">index</span><span class="p">])</span> <span class="p">:</span> <span class="kt">Double</span><span class="p">(</span><span class="n">array</span><span class="p">[</span><span class="n">index</span><span class="p">]</span> <span class="o">+</span> <span class="n">array</span><span class="p">[</span><span class="n">index</span> <span class="o">-</span> <span class="mi">1</span><span class="p">])</span> <span class="o">*</span> <span class="mf">0.5</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<p>这个是请教霜神(<a href="https://github.com/halfrost">@halfrost-一缕殇流化隐半边冰霜</a>)后给的思路, 的确很好实现. 但霜神谦虚的说不是最优解….</p>
+
+<h5 id="奇数测试">奇数测试</h5>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="k">var</span> <span class="nv">array1</span> <span class="o">=</span> <span class="nf">randomList</span><span class="p">(</span><span class="mi">1000001</span><span class="p">)</span>
+<span class="k">var</span> <span class="nv">array2</span> <span class="o">=</span> <span class="nf">randomList</span><span class="p">(</span><span class="mi">1000000</span><span class="p">)</span>
+<span class="nf">quickSort</span><span class="p">(</span><span class="nv">list</span><span class="p">:</span> <span class="o">&amp;</span><span class="n">array1</span><span class="p">)</span>
+<span class="nf">quickSort</span><span class="p">(</span><span class="nv">list</span><span class="p">:</span> <span class="o">&amp;</span><span class="n">array2</span><span class="p">)</span>
+<span class="nf">print</span><span class="p">(</span><span class="nf">findMedianSortedArrays_1</span><span class="p">(</span><span class="n">array1</span><span class="p">,</span> <span class="n">array2</span><span class="p">))</span>
+<span class="nf">print</span><span class="p">(</span><span class="nf">findMedianSortedArrays_2</span><span class="p">(</span><span class="n">array1</span><span class="p">,</span> <span class="n">array2</span><span class="p">))</span>
+<span class="nf">print</span><span class="p">(</span><span class="nf">findMedianSortedArrays_3</span><span class="p">(</span><span class="n">array1</span><span class="p">,</span> <span class="n">array2</span><span class="p">))</span>
+</code></pre>
+</div>
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="o">---</span> <span class="n">scope</span> <span class="nv">of</span><span class="p">:</span> <span class="n">findMedianSortedArrays</span> <span class="o">---</span>
+<span class="mf">500045.0</span>
+<span class="mf">500045.0</span>
+<span class="mf">500045.0</span>
+</code></pre>
+</div>
+
+<h5 id="偶数测试">偶数测试</h5>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="k">var</span> <span class="nv">array1</span> <span class="o">=</span> <span class="nf">randomList</span><span class="p">(</span><span class="mi">1000001</span><span class="p">)</span>
+<span class="k">var</span> <span class="nv">array2</span> <span class="o">=</span> <span class="nf">randomList</span><span class="p">(</span><span class="mi">1000000</span><span class="p">)</span>
+<span class="nf">quickSort</span><span class="p">(</span><span class="nv">list</span><span class="p">:</span> <span class="o">&amp;</span><span class="n">array1</span><span class="p">)</span>
+<span class="nf">quickSort</span><span class="p">(</span><span class="nv">list</span><span class="p">:</span> <span class="o">&amp;</span><span class="n">array2</span><span class="p">)</span>
+<span class="nf">print</span><span class="p">(</span><span class="nf">findMedianSortedArrays_1</span><span class="p">(</span><span class="n">array1</span><span class="p">,</span> <span class="n">array2</span><span class="p">))</span>
+<span class="nf">print</span><span class="p">(</span><span class="nf">findMedianSortedArrays_2</span><span class="p">(</span><span class="n">array1</span><span class="p">,</span> <span class="n">array2</span><span class="p">))</span>
+<span class="nf">print</span><span class="p">(</span><span class="nf">findMedianSortedArrays_3</span><span class="p">(</span><span class="n">array1</span><span class="p">,</span> <span class="n">array2</span><span class="p">))</span>
+</code></pre>
+</div>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="o">---</span> <span class="n">scope</span> <span class="nv">of</span><span class="p">:</span> <span class="n">findMedianSortedArrays</span> <span class="o">---</span>
+<span class="mf">499665.5</span>
+<span class="mf">499665.5</span>
+<span class="mf">499665.5</span>
+</code></pre>
+</div>
+
+<h5 id="耗时比较">耗时比较</h5>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="o">---</span> <span class="n">scope</span> <span class="nv">of</span><span class="p">:</span> <span class="n">findMedianSortedArrays_1</span> <span class="o">---</span>
+<span class="nv">timing</span><span class="p">:</span> <span class="mf">2.50845623016357</span>
+<span class="o">---</span> <span class="n">scope</span> <span class="nv">of</span><span class="p">:</span> <span class="n">findMedianSortedArrays_2</span> <span class="o">---</span>
+<span class="nv">timing</span><span class="p">:</span> <span class="mf">1.28746032714844e-05</span>
+<span class="o">---</span> <span class="n">scope</span> <span class="nv">of</span><span class="p">:</span> <span class="n">findMedianSortedArrays_3</span> <span class="o">---</span>
+<span class="nv">timing</span><span class="p">:</span> <span class="mf">0.0358490943908691</span>
+</code></pre>
+</div>
+
+<p>可以看出网上查资料的答案是三种解法里性能最高的算法, 霜神的思路和网上的答案差了三个数量级, 而我写的差了五个数量级…. 果然我写的果然是最为垃圾的算法….</p>
+
+<h4 id="美团面试题3-uicontorl---uibutton">美团面试题3 UIContorl -&gt; UIButton</h4>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="kd">protocol</span> <span class="kt">ButtonInterface</span> <span class="p">{</span>
+    <span class="kd">func</span> <span class="nf">setTitle</span><span class="p">(</span><span class="n">_</span> <span class="nv">title</span><span class="p">:</span> <span class="kt">String</span><span class="p">);</span>
+    <span class="kd">func</span> <span class="nf">setTitleColor</span><span class="p">(</span><span class="n">_</span> <span class="nv">titleColor</span><span class="p">:</span> <span class="kt">UIColor</span><span class="p">);</span>
+    <span class="kd">func</span> <span class="nf">setTitleEdgeInsets</span><span class="p">(</span><span class="n">_</span> <span class="nv">edgeInsets</span><span class="p">:</span> <span class="kt">UIEdgeInsets</span><span class="p">);</span>
+    <span class="kd">func</span> <span class="nf">setImage</span><span class="p">(</span><span class="n">_</span> <span class="nv">image</span><span class="p">:</span> <span class="kt">UIImage</span><span class="p">);</span>
+    <span class="kd">func</span> <span class="nf">setBackgroundImage</span><span class="p">(</span><span class="n">_</span> <span class="nv">image</span><span class="p">:</span> <span class="kt">UIImage</span><span class="p">);</span>
+    <span class="kd">func</span> <span class="nf">setImageEdgeInsets</span><span class="p">(</span><span class="n">_</span> <span class="nv">edgeInsets</span><span class="p">:</span> <span class="kt">UIEdgeInsets</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="kd">class</span> <span class="kt">Button</span><span class="p">:</span> <span class="kt">UIControl</span><span class="p">,</span> <span class="kt">ButtonInterface</span> <span class="p">{</span> 
+
+<span class="p">}</span>
+</code></pre>
+</div>
+<p>以上就是面试时候的原题, 一开始根本不知道是要让我做些什么, 说是只要让我把上面的方法全部实现就好了, 就像实现一个自己的UIButton… 一开始, 我以为是要我用<code class="highlighter-rouge">CALayer</code>来实现, 吓的我瑟瑟发抖… 还好不是… 然后, 我就按照自己平时自定义控件的写法, 写了一个<code class="highlighter-rouge">UIImageView</code>, 一个<code class="highlighter-rouge">UILabel</code>, 然后布局赋值… 就看到面试官对着我笑着说, 你以为这道题这么简单么… 这么简单么…</p>
+
+<p>然后说, 你知道<code class="highlighter-rouge">UIButton setTitle</code>的时候才会创建<code class="highlighter-rouge">UILabel</code>, <code class="highlighter-rouge">setImage</code>的时候才会创建<code class="highlighter-rouge">UIImageView</code>, 你为什么吧<code class="highlighter-rouge">frame</code>给写死… 不知道<code class="highlighter-rouge">UIView</code>有<code class="highlighter-rouge">sizeToFit</code>么, 你怎么不实现<code class="highlighter-rouge">sizeThatFits</code>, 你是完全不会用吧… 你知道<code class="highlighter-rouge">UIButton</code>用<code class="highlighter-rouge">AutoLayout</code>布局的时候只要设置<code class="highlighter-rouge">origin</code>坐标, 宽高就可以自适应了, 你自定义的时候怎么不实现呢? <code class="highlighter-rouge">setBackgroundImage</code>和<code class="highlighter-rouge">setImageEdgeInsets</code>你就不要做了吧, 反正你也不会…</p>
+
+<p>我想说的是,谁没事放着<code class="highlighter-rouge">UIButton</code>不用, 用<code class="highlighter-rouge">UIContorl</code>这种东西… 就为了一个<code class="highlighter-rouge">target-action</code>的设计模式么… 我每次在想思路的时候一直打断我, 可能这是面试官的一种策略吧… 算了不吐槽了, 还是尽力实现吧.</p>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="kd">import</span> <span class="kt">UIKit</span>
+
+<span class="kd">protocol</span> <span class="kt">ButtonInterface</span> <span class="p">{</span>
+    <span class="kd">func</span> <span class="nf">setTitle</span><span class="p">(</span><span class="n">_</span> <span class="nv">title</span><span class="p">:</span> <span class="kt">String</span><span class="p">);</span>
+    <span class="kd">func</span> <span class="nf">setTitleColor</span><span class="p">(</span><span class="n">_</span> <span class="nv">titleColor</span><span class="p">:</span> <span class="kt">UIColor</span><span class="p">);</span>
+    <span class="kd">func</span> <span class="nf">setTitleEdgeInsets</span><span class="p">(</span><span class="n">_</span> <span class="nv">edgeInsets</span><span class="p">:</span> <span class="kt">UIEdgeInsets</span><span class="p">);</span>
+    <span class="kd">func</span> <span class="nf">setImage</span><span class="p">(</span><span class="n">_</span> <span class="nv">image</span><span class="p">:</span> <span class="kt">UIImage</span><span class="p">);</span>
+    <span class="kd">func</span> <span class="nf">setBackgroundImage</span><span class="p">(</span><span class="n">_</span> <span class="nv">image</span><span class="p">:</span> <span class="kt">UIImage</span><span class="p">);</span>
+    <span class="kd">func</span> <span class="nf">setImageEdgeInsets</span><span class="p">(</span><span class="n">_</span> <span class="nv">edgeInsets</span><span class="p">:</span> <span class="kt">UIEdgeInsets</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="kd">class</span> <span class="kt">Button</span><span class="p">:</span> <span class="kt">UIControl</span><span class="p">,</span> <span class="kt">ButtonInterface</span> <span class="p">{</span>
+
+    <span class="kd">lazy</span> <span class="k">var</span> <span class="nv">titleLabel</span><span class="p">:</span> <span class="kt">UILabel</span> <span class="o">=</span> <span class="kt">UILabel</span><span class="p">()</span>
+    <span class="kd">lazy</span> <span class="k">var</span> <span class="nv">imageView</span><span class="p">:</span> <span class="kt">UIImageView</span> <span class="o">=</span> <span class="kt">UIImageView</span><span class="p">()</span>
+    <span class="kd">lazy</span> <span class="k">var</span> <span class="nv">backgroundImageView</span><span class="p">:</span> <span class="kt">UIImageView</span> <span class="o">=</span> <span class="kt">UIImageView</span><span class="p">()</span>
+    
+    <span class="k">var</span> <span class="nv">titleLabelIsCreated</span> <span class="o">=</span> <span class="kc">false</span>
+    <span class="k">var</span> <span class="nv">imageViewIsCreated</span> <span class="o">=</span> <span class="kc">false</span>
+    <span class="k">var</span> <span class="nv">backgroundImageViewCreated</span> <span class="o">=</span> <span class="kc">false</span>
+    
+    <span class="kd">internal</span> <span class="kd">func</span> <span class="nf">setTitle</span><span class="p">(</span><span class="n">_</span> <span class="nv">text</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="o">!</span><span class="n">titleLabelIsCreated</span> <span class="p">{</span>
+            <span class="nf">addSubview</span><span class="p">(</span><span class="n">titleLabel</span><span class="p">)</span>
+            <span class="n">titleLabelIsCreated</span> <span class="o">=</span> <span class="kc">true</span>
+        <span class="p">}</span>
+        <span class="n">titleLabel</span><span class="o">.</span><span class="n">text</span> <span class="o">=</span> <span class="n">text</span>
+    <span class="p">}</span>
+
+    <span class="kd">internal</span> <span class="kd">func</span> <span class="nf">setTitleColor</span><span class="p">(</span><span class="n">_</span> <span class="nv">textColor</span><span class="p">:</span> <span class="kt">UIColor</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="o">!</span><span class="n">titleLabelIsCreated</span> <span class="p">{</span>
+            <span class="k">return</span>
+        <span class="p">}</span>
+        <span class="n">titleLabel</span><span class="o">.</span><span class="n">textColor</span> <span class="o">=</span> <span class="n">textColor</span>
+    <span class="p">}</span>
+    
+    <span class="kd">internal</span> <span class="kd">func</span> <span class="nf">setTitleEdgeInsets</span><span class="p">(</span><span class="n">_</span> <span class="nv">edgeInsets</span><span class="p">:</span> <span class="kt">UIEdgeInsets</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="o">!</span><span class="n">titleLabelIsCreated</span> <span class="p">{</span>
+            <span class="k">return</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+    
+    <span class="kd">internal</span> <span class="kd">func</span> <span class="nf">setImage</span><span class="p">(</span><span class="n">_</span> <span class="nv">image</span><span class="p">:</span> <span class="kt">UIImage</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="o">!</span><span class="n">imageViewIsCreated</span> <span class="p">{</span>
+            <span class="nf">addSubview</span><span class="p">(</span><span class="n">imageView</span><span class="p">)</span>
+            <span class="n">imageViewIsCreated</span> <span class="o">=</span> <span class="kc">true</span>
+        <span class="p">}</span>
+        <span class="n">imageView</span><span class="o">.</span><span class="n">image</span> <span class="o">=</span> <span class="n">image</span>
+    <span class="p">}</span>
+    
+    <span class="kd">internal</span> <span class="kd">func</span> <span class="nf">setBackgroundImage</span><span class="p">(</span><span class="n">_</span> <span class="nv">image</span><span class="p">:</span> <span class="kt">UIImage</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="o">!</span><span class="n">backgroundImageViewCreated</span> <span class="p">{</span>
+            <span class="nf">addSubview</span><span class="p">(</span><span class="n">backgroundImageView</span><span class="p">)</span>
+            <span class="nf">insertSubview</span><span class="p">(</span><span class="n">backgroundImageView</span><span class="p">,</span> <span class="nv">at</span><span class="p">:</span> <span class="mi">0</span><span class="p">)</span>
+            <span class="n">backgroundImageViewCreated</span> <span class="o">=</span> <span class="kc">true</span>
+        <span class="p">}</span>
+        <span class="n">backgroundImageView</span><span class="o">.</span><span class="n">image</span> <span class="o">=</span> <span class="n">image</span>
+    <span class="p">}</span>
+    
+    <span class="kd">internal</span> <span class="kd">func</span> <span class="nf">setImageEdgeInsets</span><span class="p">(</span><span class="n">_</span> <span class="nv">edgeInsets</span><span class="p">:</span> <span class="kt">UIEdgeInsets</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="o">!</span><span class="n">imageViewIsCreated</span> <span class="p">{</span>
+            <span class="k">return</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+    
+    <span class="k">override</span> <span class="kd">func</span> <span class="nf">sizeThatFits</span><span class="p">(</span><span class="n">_</span> <span class="nv">size</span><span class="p">:</span> <span class="kt">CGSize</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">CGSize</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="n">titleLabelIsCreated</span> <span class="o">&amp;&amp;</span> <span class="o">!</span><span class="n">imageViewIsCreated</span> <span class="o">&amp;&amp;</span> <span class="o">!</span><span class="n">backgroundImageViewCreated</span> <span class="p">{</span>
+            <span class="k">let</span> <span class="nv">text</span><span class="p">:</span> <span class="kt">NSString</span><span class="p">?</span> <span class="o">=</span> <span class="n">titleLabel</span><span class="o">.</span><span class="n">text</span> <span class="k">as</span> <span class="kt">NSString</span><span class="p">?</span>
+            <span class="k">let</span> <span class="nv">titleLabelW</span><span class="p">:</span> <span class="kt">CGFloat</span> <span class="o">=</span> <span class="n">text</span><span class="p">?</span><span class="o">.</span><span class="nf">boundingRect</span><span class="p">(</span><span class="nv">with</span><span class="p">:</span> <span class="kt">CGSize</span><span class="p">(</span><span class="nv">width</span><span class="p">:</span> <span class="kt">CGFloat</span><span class="p">(</span><span class="kt">MAXFLOAT</span><span class="p">),</span> <span class="nv">height</span><span class="p">:</span> <span class="n">bounds</span><span class="o">.</span><span class="n">height</span><span class="p">),</span> <span class="nv">options</span><span class="p">:</span> <span class="kt">NSStringDrawingOptions</span><span class="o">.</span><span class="n">usesLineFragmentOrigin</span><span class="p">,</span> <span class="nv">attributes</span><span class="p">:</span> <span class="p">[</span><span class="kt">NSAttributedStringKey</span><span class="o">.</span><span class="nv">font</span> <span class="p">:</span> <span class="n">titleLabel</span><span class="o">.</span><span class="n">font</span><span class="p">],</span> <span class="nv">context</span><span class="p">:</span> <span class="kc">nil</span><span class="p">)</span><span class="o">.</span><span class="n">size</span><span class="o">.</span><span class="n">width</span> <span class="p">??</span> <span class="mf">0.0</span>
+            <span class="k">let</span> <span class="nv">titleLabelH</span><span class="p">:</span> <span class="kt">CGFloat</span> <span class="o">=</span> <span class="n">text</span><span class="p">?</span><span class="o">.</span><span class="nf">boundingRect</span><span class="p">(</span><span class="nv">with</span><span class="p">:</span> <span class="kt">CGSize</span><span class="p">(</span><span class="nv">width</span><span class="p">:</span> <span class="n">titleLabelW</span><span class="p">,</span> <span class="nv">height</span><span class="p">:</span> <span class="kt">CGFloat</span><span class="p">(</span><span class="kt">MAXFLOAT</span><span class="p">)),</span> <span class="nv">options</span><span class="p">:</span> <span class="kt">NSStringDrawingOptions</span><span class="o">.</span><span class="n">usesLineFragmentOrigin</span><span class="p">,</span> <span class="nv">attributes</span><span class="p">:</span> <span class="p">[</span><span class="kt">NSAttributedStringKey</span><span class="o">.</span><span class="nv">font</span> <span class="p">:</span> <span class="n">titleLabel</span><span class="o">.</span><span class="n">font</span><span class="p">],</span> <span class="nv">context</span><span class="p">:</span> <span class="kc">nil</span><span class="p">)</span><span class="o">.</span><span class="n">size</span><span class="o">.</span><span class="n">height</span> <span class="p">??</span> <span class="mf">0.0</span>
+            <span class="k">return</span> <span class="kt">CGSize</span><span class="p">(</span><span class="nv">width</span><span class="p">:</span> <span class="n">titleLabelW</span><span class="p">,</span> <span class="nv">height</span><span class="p">:</span> <span class="n">titleLabelH</span> <span class="o">+</span> <span class="mi">10</span><span class="p">)</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="o">!</span><span class="n">titleLabelIsCreated</span> <span class="o">&amp;&amp;</span> <span class="n">imageViewIsCreated</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="n">imageView</span><span class="o">.</span><span class="n">image</span><span class="p">?</span><span class="o">.</span><span class="n">size</span> <span class="p">??</span> <span class="kt">CGSize</span><span class="o">.</span><span class="n">zero</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="n">titleLabelIsCreated</span> <span class="o">&amp;&amp;</span> <span class="n">imageViewIsCreated</span> <span class="p">{</span>
+            <span class="k">let</span> <span class="nv">text</span><span class="p">:</span> <span class="kt">NSString</span><span class="p">?</span> <span class="o">=</span> <span class="n">titleLabel</span><span class="o">.</span><span class="n">text</span> <span class="k">as</span> <span class="kt">NSString</span><span class="p">?</span>
+            <span class="k">let</span> <span class="nv">titleLabelW</span><span class="p">:</span> <span class="kt">CGFloat</span> <span class="o">=</span> <span class="n">text</span><span class="p">?</span><span class="o">.</span><span class="nf">boundingRect</span><span class="p">(</span><span class="nv">with</span><span class="p">:</span> <span class="kt">CGSize</span><span class="p">(</span><span class="nv">width</span><span class="p">:</span> <span class="kt">CGFloat</span><span class="p">(</span><span class="kt">MAXFLOAT</span><span class="p">),</span> <span class="nv">height</span><span class="p">:</span> <span class="n">bounds</span><span class="o">.</span><span class="n">height</span><span class="p">),</span> <span class="nv">options</span><span class="p">:</span> <span class="kt">NSStringDrawingOptions</span><span class="o">.</span><span class="n">usesLineFragmentOrigin</span><span class="p">,</span> <span class="nv">attributes</span><span class="p">:</span> <span class="p">[</span><span class="kt">NSAttributedStringKey</span><span class="o">.</span><span class="nv">font</span> <span class="p">:</span> <span class="n">titleLabel</span><span class="o">.</span><span class="n">font</span><span class="p">],</span> <span class="nv">context</span><span class="p">:</span> <span class="kc">nil</span><span class="p">)</span><span class="o">.</span><span class="n">size</span><span class="o">.</span><span class="n">width</span> <span class="p">??</span> <span class="mf">0.0</span>
+            <span class="k">let</span> <span class="nv">titleLabelH</span><span class="p">:</span> <span class="kt">CGFloat</span> <span class="o">=</span> <span class="n">text</span><span class="p">?</span><span class="o">.</span><span class="nf">boundingRect</span><span class="p">(</span><span class="nv">with</span><span class="p">:</span> <span class="kt">CGSize</span><span class="p">(</span><span class="nv">width</span><span class="p">:</span> <span class="n">titleLabelW</span><span class="p">,</span> <span class="nv">height</span><span class="p">:</span> <span class="kt">CGFloat</span><span class="p">(</span><span class="kt">MAXFLOAT</span><span class="p">)),</span> <span class="nv">options</span><span class="p">:</span> <span class="kt">NSStringDrawingOptions</span><span class="o">.</span><span class="n">usesLineFragmentOrigin</span><span class="p">,</span> <span class="nv">attributes</span><span class="p">:</span> <span class="p">[</span><span class="kt">NSAttributedStringKey</span><span class="o">.</span><span class="nv">font</span> <span class="p">:</span> <span class="n">titleLabel</span><span class="o">.</span><span class="n">font</span><span class="p">],</span> <span class="nv">context</span><span class="p">:</span> <span class="kc">nil</span><span class="p">)</span><span class="o">.</span><span class="n">size</span><span class="o">.</span><span class="n">height</span> <span class="p">??</span> <span class="mf">0.0</span>
+            <span class="k">let</span> <span class="nv">imageViewW</span><span class="p">:</span> <span class="kt">CGFloat</span> <span class="o">=</span> <span class="n">imageView</span><span class="o">.</span><span class="n">image</span><span class="p">?</span><span class="o">.</span><span class="n">size</span><span class="o">.</span><span class="n">width</span> <span class="p">??</span> <span class="mf">0.0</span>
+            <span class="k">let</span> <span class="nv">imageViewH</span><span class="p">:</span> <span class="kt">CGFloat</span> <span class="o">=</span> <span class="n">imageView</span><span class="o">.</span><span class="n">image</span><span class="p">?</span><span class="o">.</span><span class="n">size</span><span class="o">.</span><span class="n">height</span> <span class="p">??</span> <span class="mf">0.0</span>
+            <span class="k">return</span> <span class="kt">CGSize</span><span class="p">(</span><span class="nv">width</span><span class="p">:</span> <span class="n">titleLabelW</span> <span class="o">+</span> <span class="n">imageViewW</span><span class="p">,</span> <span class="nv">height</span><span class="p">:</span> <span class="n">imageViewH</span> <span class="o">&gt;</span> <span class="n">titleLabelH</span> <span class="p">?</span> <span class="nv">imageViewH</span> <span class="p">:</span> <span class="n">titleLabelH</span><span class="p">)</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="n">backgroundImageView</span><span class="o">.</span><span class="n">image</span><span class="p">?</span><span class="o">.</span><span class="n">size</span> <span class="p">??</span> <span class="kt">CGSize</span><span class="o">.</span><span class="n">zero</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+    
+    <span class="k">override</span> <span class="kd">func</span> <span class="nf">layoutSubviews</span><span class="p">()</span> <span class="p">{</span>
+        <span class="k">super</span><span class="o">.</span><span class="nf">layoutSubviews</span><span class="p">()</span>
+
+        <span class="k">if</span> <span class="n">titleLabelIsCreated</span> <span class="o">&amp;&amp;</span> <span class="o">!</span><span class="n">imageViewIsCreated</span> <span class="p">{</span>
+            <span class="n">titleLabel</span><span class="o">.</span><span class="n">frame</span> <span class="o">=</span> <span class="n">bounds</span>
+            <span class="n">titleLabel</span><span class="o">.</span><span class="n">textAlignment</span> <span class="o">=</span> <span class="o">.</span><span class="n">center</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="o">!</span><span class="n">titleLabelIsCreated</span> <span class="o">&amp;&amp;</span> <span class="n">imageViewIsCreated</span> <span class="p">{</span>
+            <span class="k">let</span> <span class="nv">y</span><span class="p">:</span> <span class="kt">CGFloat</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+            <span class="k">let</span> <span class="nv">width</span><span class="p">:</span> <span class="kt">CGFloat</span> <span class="o">=</span> <span class="n">imageView</span><span class="o">.</span><span class="n">image</span><span class="p">?</span><span class="o">.</span><span class="n">size</span><span class="o">.</span><span class="n">width</span> <span class="p">??</span> <span class="mi">0</span><span class="p">;</span>
+            <span class="k">let</span> <span class="nv">x</span><span class="p">:</span> <span class="kt">CGFloat</span> <span class="o">=</span> <span class="p">(</span><span class="n">bounds</span><span class="o">.</span><span class="n">width</span> <span class="o">-</span> <span class="n">width</span><span class="p">)</span> <span class="o">*</span> <span class="mf">0.5</span><span class="p">;</span>
+            <span class="k">let</span> <span class="nv">height</span><span class="p">:</span> <span class="kt">CGFloat</span> <span class="o">=</span> <span class="n">bounds</span><span class="o">.</span><span class="n">height</span><span class="p">;</span>
+            <span class="n">imageView</span><span class="o">.</span><span class="n">frame</span> <span class="o">=</span> <span class="kt">CGRect</span><span class="p">(</span><span class="nv">x</span><span class="p">:</span> <span class="n">x</span><span class="p">,</span> <span class="nv">y</span><span class="p">:</span> <span class="n">y</span><span class="p">,</span> <span class="nv">width</span><span class="p">:</span> <span class="n">width</span><span class="p">,</span> <span class="nv">height</span><span class="p">:</span> <span class="n">height</span><span class="p">)</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="n">titleLabelIsCreated</span> <span class="o">&amp;&amp;</span> <span class="n">imageViewIsCreated</span> <span class="p">{</span>
+            <span class="k">let</span> <span class="nv">imageViewY</span><span class="p">:</span> <span class="kt">CGFloat</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+            <span class="k">let</span> <span class="nv">imageViewW</span><span class="p">:</span> <span class="kt">CGFloat</span> <span class="o">=</span> <span class="n">imageView</span><span class="o">.</span><span class="n">image</span><span class="p">?</span><span class="o">.</span><span class="n">size</span><span class="o">.</span><span class="n">width</span> <span class="p">??</span> <span class="mi">0</span><span class="p">;</span>
+            <span class="k">let</span> <span class="nv">imageViewH</span><span class="p">:</span> <span class="kt">CGFloat</span> <span class="o">=</span> <span class="n">bounds</span><span class="o">.</span><span class="n">height</span><span class="p">;</span>
+            <span class="k">let</span> <span class="nv">text</span><span class="p">:</span> <span class="kt">NSString</span><span class="p">?</span> <span class="o">=</span> <span class="n">titleLabel</span><span class="o">.</span><span class="n">text</span> <span class="k">as</span> <span class="kt">NSString</span><span class="p">?</span>
+            <span class="k">let</span> <span class="nv">titleLabelW</span><span class="p">:</span> <span class="kt">CGFloat</span> <span class="o">=</span> <span class="n">text</span><span class="p">?</span><span class="o">.</span><span class="nf">boundingRect</span><span class="p">(</span><span class="nv">with</span><span class="p">:</span> <span class="kt">CGSize</span><span class="p">(</span><span class="nv">width</span><span class="p">:</span> <span class="kt">CGFloat</span><span class="p">(</span><span class="kt">MAXFLOAT</span><span class="p">),</span> <span class="nv">height</span><span class="p">:</span> <span class="n">bounds</span><span class="o">.</span><span class="n">height</span><span class="p">),</span> <span class="nv">options</span><span class="p">:</span> <span class="kt">NSStringDrawingOptions</span><span class="o">.</span><span class="n">usesLineFragmentOrigin</span><span class="p">,</span> <span class="nv">attributes</span><span class="p">:</span> <span class="p">[</span><span class="kt">NSAttributedStringKey</span><span class="o">.</span><span class="nv">font</span> <span class="p">:</span> <span class="n">titleLabel</span><span class="o">.</span><span class="n">font</span><span class="p">],</span> <span class="nv">context</span><span class="p">:</span> <span class="kc">nil</span><span class="p">)</span><span class="o">.</span><span class="n">size</span><span class="o">.</span><span class="n">width</span> <span class="p">??</span> <span class="mf">0.0</span>
+            <span class="k">let</span> <span class="nv">titleLabelH</span><span class="p">:</span> <span class="kt">CGFloat</span> <span class="o">=</span> <span class="n">text</span><span class="p">?</span><span class="o">.</span><span class="nf">boundingRect</span><span class="p">(</span><span class="nv">with</span><span class="p">:</span> <span class="kt">CGSize</span><span class="p">(</span><span class="nv">width</span><span class="p">:</span> <span class="n">titleLabelW</span><span class="p">,</span> <span class="nv">height</span><span class="p">:</span> <span class="kt">CGFloat</span><span class="p">(</span><span class="kt">MAXFLOAT</span><span class="p">)),</span> <span class="nv">options</span><span class="p">:</span> <span class="kt">NSStringDrawingOptions</span><span class="o">.</span><span class="n">usesLineFragmentOrigin</span><span class="p">,</span> <span class="nv">attributes</span><span class="p">:</span> <span class="p">[</span><span class="kt">NSAttributedStringKey</span><span class="o">.</span><span class="nv">font</span> <span class="p">:</span> <span class="n">titleLabel</span><span class="o">.</span><span class="n">font</span><span class="p">],</span> <span class="nv">context</span><span class="p">:</span> <span class="kc">nil</span><span class="p">)</span><span class="o">.</span><span class="n">size</span><span class="o">.</span><span class="n">height</span> <span class="p">??</span> <span class="mf">0.0</span>
+            <span class="k">let</span> <span class="nv">imageViewX</span><span class="p">:</span> <span class="kt">CGFloat</span> <span class="o">=</span> <span class="p">(</span><span class="n">bounds</span><span class="o">.</span><span class="n">width</span> <span class="o">-</span> <span class="n">imageViewW</span> <span class="o">-</span> <span class="n">titleLabelW</span><span class="p">)</span> <span class="o">*</span> <span class="mf">0.5</span><span class="p">;</span>
+            <span class="k">let</span> <span class="nv">titleLabelX</span><span class="p">:</span> <span class="kt">CGFloat</span> <span class="o">=</span> <span class="n">imageViewX</span> <span class="o">+</span> <span class="n">imageViewW</span>
+            <span class="k">let</span> <span class="nv">titleLabelY</span> <span class="o">=</span> <span class="p">(</span><span class="n">bounds</span><span class="o">.</span><span class="n">height</span> <span class="o">-</span> <span class="n">titleLabelH</span><span class="p">)</span> <span class="o">*</span> <span class="mf">0.5</span>
+            <span class="n">titleLabel</span><span class="o">.</span><span class="n">frame</span> <span class="o">=</span> <span class="kt">CGRect</span><span class="p">(</span><span class="nv">x</span><span class="p">:</span> <span class="n">titleLabelX</span><span class="p">,</span> <span class="nv">y</span><span class="p">:</span> <span class="n">titleLabelY</span><span class="p">,</span> <span class="nv">width</span><span class="p">:</span> <span class="n">titleLabelW</span><span class="p">,</span> <span class="nv">height</span><span class="p">:</span> <span class="n">titleLabelH</span><span class="p">)</span>
+            <span class="n">imageView</span><span class="o">.</span><span class="n">frame</span> <span class="o">=</span> <span class="kt">CGRect</span><span class="p">(</span><span class="nv">x</span><span class="p">:</span> <span class="n">imageViewX</span><span class="p">,</span> <span class="nv">y</span><span class="p">:</span> <span class="n">imageViewY</span><span class="p">,</span> <span class="nv">width</span><span class="p">:</span> <span class="n">imageViewW</span><span class="p">,</span> <span class="nv">height</span><span class="p">:</span> <span class="n">imageViewH</span><span class="p">)</span>
+        <span class="p">}</span>
+        
+        <span class="k">if</span> <span class="n">backgroundImageViewCreated</span> <span class="p">{</span>
+            <span class="n">backgroundImageView</span><span class="o">.</span><span class="n">frame</span> <span class="o">=</span> <span class="n">bounds</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<p>虽然实现了部分的功能, 但是<code class="highlighter-rouge">AutoLayout</code>和<code class="highlighter-rouge">EdgeInsets</code>的功能还是没有思路, 还请各位大佬解惑.</p>
+
+<h5 id="测试对比">测试对比</h5>
+
+<p>我们用自己自实现的<code class="highlighter-rouge">Button</code>和<code class="highlighter-rouge">UIButton</code>进行对比.</p>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="kd">class</span> <span class="kt">ViewController</span><span class="p">:</span> <span class="kt">UIViewController</span> <span class="p">{</span>
+
+    <span class="k">override</span> <span class="kd">func</span> <span class="nf">loadView</span><span class="p">()</span> <span class="p">{</span>
+        <span class="k">super</span><span class="o">.</span><span class="nf">loadView</span><span class="p">();</span>
+        
+        <span class="k">let</span> <span class="nv">uibutton</span> <span class="o">=</span> <span class="kt">UIButton</span><span class="p">()</span>
+        <span class="n">uibutton</span><span class="o">.</span><span class="n">layer</span><span class="o">.</span><span class="n">borderWidth</span> <span class="o">=</span> <span class="mi">1</span>
+        <span class="n">uibutton</span><span class="o">.</span><span class="n">layer</span><span class="o">.</span><span class="n">borderColor</span> <span class="o">=</span> <span class="kt">UIColor</span><span class="o">.</span><span class="n">black</span><span class="o">.</span><span class="n">cgColor</span>
+        
+        <span class="n">uibutton</span><span class="o">.</span><span class="n">frame</span> <span class="o">=</span> <span class="kt">CGRect</span><span class="p">(</span><span class="nv">x</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="nv">y</span><span class="p">:</span> <span class="mi">100</span><span class="p">,</span> <span class="nv">width</span><span class="p">:</span> <span class="n">view</span><span class="o">.</span><span class="n">bounds</span><span class="o">.</span><span class="n">width</span><span class="p">,</span> <span class="nv">height</span><span class="p">:</span> <span class="mi">40</span><span class="p">)</span>
+        <span class="n">uibutton</span><span class="o">.</span><span class="nf">setTitle</span><span class="p">(</span><span class="s">"github.com/coderZsq"</span><span class="p">,</span> <span class="nv">for</span><span class="p">:</span> <span class="o">.</span><span class="n">normal</span><span class="p">)</span>
+        <span class="n">uibutton</span><span class="o">.</span><span class="nf">setTitleColor</span><span class="p">(</span><span class="o">.</span><span class="n">red</span><span class="p">,</span> <span class="nv">for</span><span class="p">:</span> <span class="o">.</span><span class="n">normal</span><span class="p">)</span>
+        <span class="n">uibutton</span><span class="o">.</span><span class="n">titleEdgeInsets</span> <span class="o">=</span> <span class="kt">UIEdgeInsetsMake</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+        <span class="n">uibutton</span><span class="o">.</span><span class="nf">setImage</span><span class="p">(</span><span class="kt">UIImage</span><span class="p">(</span><span class="nv">named</span><span class="p">:</span> <span class="s">"avatar"</span><span class="p">),</span> <span class="nv">for</span><span class="p">:</span> <span class="o">.</span><span class="n">normal</span><span class="p">)</span>
+        <span class="n">uibutton</span><span class="o">.</span><span class="nf">setBackgroundImage</span><span class="p">(</span><span class="kt">UIImage</span><span class="p">(</span><span class="nv">named</span><span class="p">:</span> <span class="s">"avatar"</span><span class="p">),</span> <span class="nv">for</span><span class="p">:</span> <span class="o">.</span><span class="n">normal</span><span class="p">)</span>
+        <span class="n">uibutton</span><span class="o">.</span><span class="n">imageEdgeInsets</span> <span class="o">=</span> <span class="kt">UIEdgeInsetsMake</span><span class="p">(</span><span class="o">-</span><span class="mi">10</span><span class="p">,</span> <span class="o">-</span><span class="mi">10</span><span class="p">,</span> <span class="o">-</span><span class="mi">10</span><span class="p">,</span> <span class="o">-</span><span class="mi">10</span><span class="p">)</span>
+        <span class="n">view</span><span class="o">.</span><span class="nf">addSubview</span><span class="p">(</span><span class="n">uibutton</span><span class="p">)</span>
+        <span class="n">uibutton</span><span class="o">.</span><span class="nf">sizeToFit</span><span class="p">()</span>
+        
+        <span class="k">let</span> <span class="nv">button</span> <span class="o">=</span> <span class="kt">Button</span><span class="p">()</span>
+        <span class="n">button</span><span class="o">.</span><span class="n">layer</span><span class="o">.</span><span class="n">borderWidth</span> <span class="o">=</span> <span class="mi">1</span>
+        <span class="n">button</span><span class="o">.</span><span class="n">layer</span><span class="o">.</span><span class="n">borderColor</span> <span class="o">=</span> <span class="kt">UIColor</span><span class="o">.</span><span class="n">black</span><span class="o">.</span><span class="n">cgColor</span>
+        
+        <span class="n">button</span><span class="o">.</span><span class="n">frame</span> <span class="o">=</span> <span class="kt">CGRect</span><span class="p">(</span><span class="nv">x</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="nv">y</span><span class="p">:</span> <span class="mi">350</span><span class="p">,</span> <span class="nv">width</span><span class="p">:</span> <span class="n">view</span><span class="o">.</span><span class="n">bounds</span><span class="o">.</span><span class="n">width</span><span class="p">,</span> <span class="nv">height</span><span class="p">:</span> <span class="mi">40</span><span class="p">)</span>
+        <span class="n">button</span><span class="o">.</span><span class="nf">setTitle</span><span class="p">(</span><span class="s">"github.com/coderZsq"</span><span class="p">)</span>
+        <span class="n">button</span><span class="o">.</span><span class="nf">setTitleColor</span><span class="p">(</span><span class="o">.</span><span class="n">red</span><span class="p">)</span>
+        <span class="n">button</span><span class="o">.</span><span class="nf">setTitleEdgeInsets</span><span class="p">(</span><span class="kt">UIEdgeInsetsMake</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
+        <span class="n">button</span><span class="o">.</span><span class="nf">setImage</span><span class="p">(</span><span class="kt">UIImage</span><span class="p">(</span><span class="nv">named</span><span class="p">:</span> <span class="s">"avatar"</span><span class="p">)</span> <span class="p">??</span> <span class="kt">UIImage</span><span class="p">());</span>
+        <span class="n">button</span><span class="o">.</span><span class="nf">setBackgroundImage</span><span class="p">(</span><span class="kt">UIImage</span><span class="p">(</span><span class="nv">named</span><span class="p">:</span> <span class="s">"avatar"</span><span class="p">)</span> <span class="p">??</span> <span class="kt">UIImage</span><span class="p">())</span>
+        <span class="n">button</span><span class="o">.</span><span class="nf">setImageEdgeInsets</span><span class="p">(</span><span class="kt">UIEdgeInsetsMake</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
+        <span class="n">view</span><span class="o">.</span><span class="nf">addSubview</span><span class="p">(</span><span class="n">button</span><span class="p">)</span>
+        <span class="n">button</span><span class="o">.</span><span class="nf">sizeToFit</span><span class="p">()</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<h6 id="零实现">零实现</h6>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>
+        <span class="k">let</span> <span class="nv">uibutton</span> <span class="o">=</span> <span class="kt">UIButton</span><span class="p">()</span>
+        <span class="n">uibutton</span><span class="o">.</span><span class="n">layer</span><span class="o">.</span><span class="n">borderWidth</span> <span class="o">=</span> <span class="mi">1</span>
+        <span class="n">uibutton</span><span class="o">.</span><span class="n">layer</span><span class="o">.</span><span class="n">borderColor</span> <span class="o">=</span> <span class="kt">UIColor</span><span class="o">.</span><span class="n">black</span><span class="o">.</span><span class="n">cgColor</span>
+        
+        <span class="n">uibutton</span><span class="o">.</span><span class="n">frame</span> <span class="o">=</span> <span class="kt">CGRect</span><span class="p">(</span><span class="nv">x</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="nv">y</span><span class="p">:</span> <span class="mi">100</span><span class="p">,</span> <span class="nv">width</span><span class="p">:</span> <span class="n">view</span><span class="o">.</span><span class="n">bounds</span><span class="o">.</span><span class="n">width</span><span class="p">,</span> <span class="nv">height</span><span class="p">:</span> <span class="mi">40</span><span class="p">)</span>
+<span class="c1">//        uibutton.setTitle("github.com/coderZsq", for: .normal)</span>
+<span class="c1">//        uibutton.setTitleColor(.red, for: .normal)</span>
+<span class="c1">//        uibutton.titleEdgeInsets = UIEdgeInsetsMake(0, 0, 0, 0)</span>
+<span class="c1">//        uibutton.setImage(UIImage(named: "avatar"), for: .normal)</span>
+<span class="c1">//        uibutton.setBackgroundImage(UIImage(named: "avatar"), for: .normal)</span>
+<span class="c1">//        uibutton.imageEdgeInsets = UIEdgeInsetsMake(-10, -10, -10, -10)</span>
+        <span class="n">view</span><span class="o">.</span><span class="nf">addSubview</span><span class="p">(</span><span class="n">uibutton</span><span class="p">)</span>
+<span class="c1">//        uibutton.sizeToFit()</span>
+        
+        <span class="k">let</span> <span class="nv">button</span> <span class="o">=</span> <span class="kt">Button</span><span class="p">()</span>
+        <span class="n">button</span><span class="o">.</span><span class="n">layer</span><span class="o">.</span><span class="n">borderWidth</span> <span class="o">=</span> <span class="mi">1</span>
+        <span class="n">button</span><span class="o">.</span><span class="n">layer</span><span class="o">.</span><span class="n">borderColor</span> <span class="o">=</span> <span class="kt">UIColor</span><span class="o">.</span><span class="n">black</span><span class="o">.</span><span class="n">cgColor</span>
+        
+        <span class="n">button</span><span class="o">.</span><span class="n">frame</span> <span class="o">=</span> <span class="kt">CGRect</span><span class="p">(</span><span class="nv">x</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="nv">y</span><span class="p">:</span> <span class="mi">350</span><span class="p">,</span> <span class="nv">width</span><span class="p">:</span> <span class="n">view</span><span class="o">.</span><span class="n">bounds</span><span class="o">.</span><span class="n">width</span><span class="p">,</span> <span class="nv">height</span><span class="p">:</span> <span class="mi">40</span><span class="p">)</span>
+<span class="c1">//        button.setTitle("github.com/coderZsq")</span>
+<span class="c1">//        button.setTitleColor(.red)</span>
+<span class="c1">//        button.setTitleEdgeInsets(UIEdgeInsetsMake(0, 0, 0, 0))</span>
+<span class="c1">//        button.setImage(UIImage(named: "avatar") ?? UIImage());</span>
+<span class="c1">//        button.setBackgroundImage(UIImage(named: "avatar") ?? UIImage())</span>
+<span class="c1">//        button.setImageEdgeInsets(UIEdgeInsetsMake(0, 0, 0, 0))</span>
+        <span class="n">view</span><span class="o">.</span><span class="nf">addSubview</span><span class="p">(</span><span class="n">button</span><span class="p">)</span>
+<span class="c1">//        button.sizeToFit()</span>
+
+</code></pre>
+</div>
+
+<p><img src="https://upload-images.jianshu.io/upload_images/11636671-fb55800f09cf87fa.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" width="375" style="margin: clear: both; display: block; margin:auto; 0;" /></p>
+
+<p><img src="https://upload-images.jianshu.io/upload_images/11636671-4f08aac99576e2a3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="" /></p>
+
+<h5 id="settitle--settitlecolor">setTitle &amp;&amp; setTitleColor</h5>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>        <span class="k">let</span> <span class="nv">uibutton</span> <span class="o">=</span> <span class="kt">UIButton</span><span class="p">()</span>
+        <span class="n">uibutton</span><span class="o">.</span><span class="n">layer</span><span class="o">.</span><span class="n">borderWidth</span> <span class="o">=</span> <span class="mi">1</span>
+        <span class="n">uibutton</span><span class="o">.</span><span class="n">layer</span><span class="o">.</span><span class="n">borderColor</span> <span class="o">=</span> <span class="kt">UIColor</span><span class="o">.</span><span class="n">black</span><span class="o">.</span><span class="n">cgColor</span>
+        
+        <span class="n">uibutton</span><span class="o">.</span><span class="n">frame</span> <span class="o">=</span> <span class="kt">CGRect</span><span class="p">(</span><span class="nv">x</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="nv">y</span><span class="p">:</span> <span class="mi">100</span><span class="p">,</span> <span class="nv">width</span><span class="p">:</span> <span class="n">view</span><span class="o">.</span><span class="n">bounds</span><span class="o">.</span><span class="n">width</span><span class="p">,</span> <span class="nv">height</span><span class="p">:</span> <span class="mi">40</span><span class="p">)</span>
+        <span class="n">uibutton</span><span class="o">.</span><span class="nf">setTitle</span><span class="p">(</span><span class="s">"github.com/coderZsq"</span><span class="p">,</span> <span class="nv">for</span><span class="p">:</span> <span class="o">.</span><span class="n">normal</span><span class="p">)</span>
+        <span class="n">uibutton</span><span class="o">.</span><span class="nf">setTitleColor</span><span class="p">(</span><span class="o">.</span><span class="n">red</span><span class="p">,</span> <span class="nv">for</span><span class="p">:</span> <span class="o">.</span><span class="n">normal</span><span class="p">)</span>
+<span class="c1">//        uibutton.titleEdgeInsets = UIEdgeInsetsMake(0, 0, 0, 0)</span>
+<span class="c1">//        uibutton.setImage(UIImage(named: "avatar"), for: .normal)</span>
+<span class="c1">//        uibutton.setBackgroundImage(UIImage(named: "avatar"), for: .normal)</span>
+<span class="c1">//        uibutton.imageEdgeInsets = UIEdgeInsetsMake(-10, -10, -10, -10)</span>
+        <span class="n">view</span><span class="o">.</span><span class="nf">addSubview</span><span class="p">(</span><span class="n">uibutton</span><span class="p">)</span>
+<span class="c1">//        uibutton.sizeToFit()</span>
+        
+        <span class="k">let</span> <span class="nv">button</span> <span class="o">=</span> <span class="kt">Button</span><span class="p">()</span>
+        <span class="n">button</span><span class="o">.</span><span class="n">layer</span><span class="o">.</span><span class="n">borderWidth</span> <span class="o">=</span> <span class="mi">1</span>
+        <span class="n">button</span><span class="o">.</span><span class="n">layer</span><span class="o">.</span><span class="n">borderColor</span> <span class="o">=</span> <span class="kt">UIColor</span><span class="o">.</span><span class="n">black</span><span class="o">.</span><span class="n">cgColor</span>
+        
+        <span class="n">button</span><span class="o">.</span><span class="n">frame</span> <span class="o">=</span> <span class="kt">CGRect</span><span class="p">(</span><span class="nv">x</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="nv">y</span><span class="p">:</span> <span class="mi">350</span><span class="p">,</span> <span class="nv">width</span><span class="p">:</span> <span class="n">view</span><span class="o">.</span><span class="n">bounds</span><span class="o">.</span><span class="n">width</span><span class="p">,</span> <span class="nv">height</span><span class="p">:</span> <span class="mi">40</span><span class="p">)</span>
+        <span class="n">button</span><span class="o">.</span><span class="nf">setTitle</span><span class="p">(</span><span class="s">"github.com/coderZsq"</span><span class="p">)</span>
+        <span class="n">button</span><span class="o">.</span><span class="nf">setTitleColor</span><span class="p">(</span><span class="o">.</span><span class="n">red</span><span class="p">)</span>
+<span class="c1">//        button.setTitleEdgeInsets(UIEdgeInsetsMake(0, 0, 0, 0))</span>
+<span class="c1">//        button.setImage(UIImage(named: "avatar") ?? UIImage());</span>
+<span class="c1">//        button.setBackgroundImage(UIImage(named: "avatar") ?? UIImage())</span>
+<span class="c1">//        button.setImageEdgeInsets(UIEdgeInsetsMake(0, 0, 0, 0))</span>
+        <span class="n">view</span><span class="o">.</span><span class="nf">addSubview</span><span class="p">(</span><span class="n">button</span><span class="p">)</span>
+<span class="c1">//        button.sizeToFit()</span>
+    <span class="p">}</span>
+</code></pre>
+</div>
+
+<p><img src="https://upload-images.jianshu.io/upload_images/11636671-6584a84db4eb2cd9.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240 " width="375" style="margin: clear: both; display: block; margin:auto; 0;" /></p>
+
+<p><img src="https://upload-images.jianshu.io/upload_images/11636671-123ff7bd6cf882e3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="" /></p>
+
+<h5 id="settitle--settitlecolor--sizetofit">setTitle &amp;&amp; setTitleColor &amp;&amp; sizeToFit</h5>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>        <span class="k">let</span> <span class="nv">uibutton</span> <span class="o">=</span> <span class="kt">UIButton</span><span class="p">()</span>
+        <span class="n">uibutton</span><span class="o">.</span><span class="n">layer</span><span class="o">.</span><span class="n">borderWidth</span> <span class="o">=</span> <span class="mi">1</span>
+        <span class="n">uibutton</span><span class="o">.</span><span class="n">layer</span><span class="o">.</span><span class="n">borderColor</span> <span class="o">=</span> <span class="kt">UIColor</span><span class="o">.</span><span class="n">black</span><span class="o">.</span><span class="n">cgColor</span>
+        
+        <span class="n">uibutton</span><span class="o">.</span><span class="n">frame</span> <span class="o">=</span> <span class="kt">CGRect</span><span class="p">(</span><span class="nv">x</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="nv">y</span><span class="p">:</span> <span class="mi">100</span><span class="p">,</span> <span class="nv">width</span><span class="p">:</span> <span class="n">view</span><span class="o">.</span><span class="n">bounds</span><span class="o">.</span><span class="n">width</span><span class="p">,</span> <span class="nv">height</span><span class="p">:</span> <span class="mi">40</span><span class="p">)</span>
+        <span class="n">uibutton</span><span class="o">.</span><span class="nf">setTitle</span><span class="p">(</span><span class="s">"github.com/coderZsq"</span><span class="p">,</span> <span class="nv">for</span><span class="p">:</span> <span class="o">.</span><span class="n">normal</span><span class="p">)</span>
+        <span class="n">uibutton</span><span class="o">.</span><span class="nf">setTitleColor</span><span class="p">(</span><span class="o">.</span><span class="n">red</span><span class="p">,</span> <span class="nv">for</span><span class="p">:</span> <span class="o">.</span><span class="n">normal</span><span class="p">)</span>
+<span class="c1">//        uibutton.titleEdgeInsets = UIEdgeInsetsMake(0, 0, 0, 0)</span>
+<span class="c1">//        uibutton.setImage(UIImage(named: "avatar"), for: .normal)</span>
+<span class="c1">//        uibutton.setBackgroundImage(UIImage(named: "avatar"), for: .normal)</span>
+<span class="c1">//        uibutton.imageEdgeInsets = UIEdgeInsetsMake(-10, -10, -10, -10)</span>
+        <span class="n">view</span><span class="o">.</span><span class="nf">addSubview</span><span class="p">(</span><span class="n">uibutton</span><span class="p">)</span>
+        <span class="n">uibutton</span><span class="o">.</span><span class="nf">sizeToFit</span><span class="p">()</span>
+        
+        <span class="k">let</span> <span class="nv">button</span> <span class="o">=</span> <span class="kt">Button</span><span class="p">()</span>
+        <span class="n">button</span><span class="o">.</span><span class="n">layer</span><span class="o">.</span><span class="n">borderWidth</span> <span class="o">=</span> <span class="mi">1</span>
+        <span class="n">button</span><span class="o">.</span><span class="n">layer</span><span class="o">.</span><span class="n">borderColor</span> <span class="o">=</span> <span class="kt">UIColor</span><span class="o">.</span><span class="n">black</span><span class="o">.</span><span class="n">cgColor</span>
+        
+        <span class="n">button</span><span class="o">.</span><span class="n">frame</span> <span class="o">=</span> <span class="kt">CGRect</span><span class="p">(</span><span class="nv">x</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="nv">y</span><span class="p">:</span> <span class="mi">350</span><span class="p">,</span> <span class="nv">width</span><span class="p">:</span> <span class="n">view</span><span class="o">.</span><span class="n">bounds</span><span class="o">.</span><span class="n">width</span><span class="p">,</span> <span class="nv">height</span><span class="p">:</span> <span class="mi">40</span><span class="p">)</span>
+        <span class="n">button</span><span class="o">.</span><span class="nf">setTitle</span><span class="p">(</span><span class="s">"github.com/coderZsq"</span><span class="p">)</span>
+        <span class="n">button</span><span class="o">.</span><span class="nf">setTitleColor</span><span class="p">(</span><span class="o">.</span><span class="n">red</span><span class="p">)</span>
+<span class="c1">//        button.setTitleEdgeInsets(UIEdgeInsetsMake(0, 0, 0, 0))</span>
+<span class="c1">//        button.setImage(UIImage(named: "avatar") ?? UIImage());</span>
+<span class="c1">//        button.setBackgroundImage(UIImage(named: "avatar") ?? UIImage())</span>
+<span class="c1">//        button.setImageEdgeInsets(UIEdgeInsetsMake(0, 0, 0, 0))</span>
+        <span class="n">view</span><span class="o">.</span><span class="nf">addSubview</span><span class="p">(</span><span class="n">button</span><span class="p">)</span>
+        <span class="n">button</span><span class="o">.</span><span class="nf">sizeToFit</span><span class="p">()</span>
+</code></pre>
+</div>
+<p><img src="https://upload-images.jianshu.io/upload_images/11636671-9f840cca4125a1e9.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240 " width="375" style="margin: clear: both; display: block; margin:auto; 0;" /></p>
+
+<p><img src="https://upload-images.jianshu.io/upload_images/11636671-ca0b9c1b1c1eb264.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="" /></p>
+
+<h5 id="setimage">setImage</h5>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>        <span class="k">let</span> <span class="nv">uibutton</span> <span class="o">=</span> <span class="kt">UIButton</span><span class="p">()</span>
+        <span class="n">uibutton</span><span class="o">.</span><span class="n">layer</span><span class="o">.</span><span class="n">borderWidth</span> <span class="o">=</span> <span class="mi">1</span>
+        <span class="n">uibutton</span><span class="o">.</span><span class="n">layer</span><span class="o">.</span><span class="n">borderColor</span> <span class="o">=</span> <span class="kt">UIColor</span><span class="o">.</span><span class="n">black</span><span class="o">.</span><span class="n">cgColor</span>
+        
+        <span class="n">uibutton</span><span class="o">.</span><span class="n">frame</span> <span class="o">=</span> <span class="kt">CGRect</span><span class="p">(</span><span class="nv">x</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="nv">y</span><span class="p">:</span> <span class="mi">100</span><span class="p">,</span> <span class="nv">width</span><span class="p">:</span> <span class="n">view</span><span class="o">.</span><span class="n">bounds</span><span class="o">.</span><span class="n">width</span><span class="p">,</span> <span class="nv">height</span><span class="p">:</span> <span class="mi">40</span><span class="p">)</span>
+<span class="c1">//        uibutton.setTitle("github.com/coderZsq", for: .normal)</span>
+<span class="c1">//        uibutton.setTitleColor(.red, for: .normal)</span>
+<span class="c1">//        uibutton.titleEdgeInsets = UIEdgeInsetsMake(0, 0, 0, 0)</span>
+        <span class="n">uibutton</span><span class="o">.</span><span class="nf">setImage</span><span class="p">(</span><span class="kt">UIImage</span><span class="p">(</span><span class="nv">named</span><span class="p">:</span> <span class="s">"avatar"</span><span class="p">),</span> <span class="nv">for</span><span class="p">:</span> <span class="o">.</span><span class="n">normal</span><span class="p">)</span>
+<span class="c1">//        uibutton.setBackgroundImage(UIImage(named: "avatar"), for: .normal)</span>
+<span class="c1">//        uibutton.imageEdgeInsets = UIEdgeInsetsMake(-10, -10, -10, -10)</span>
+        <span class="n">view</span><span class="o">.</span><span class="nf">addSubview</span><span class="p">(</span><span class="n">uibutton</span><span class="p">)</span>
+<span class="c1">//        uibutton.sizeToFit()</span>
+        
+        <span class="k">let</span> <span class="nv">button</span> <span class="o">=</span> <span class="kt">Button</span><span class="p">()</span>
+        <span class="n">button</span><span class="o">.</span><span class="n">layer</span><span class="o">.</span><span class="n">borderWidth</span> <span class="o">=</span> <span class="mi">1</span>
+        <span class="n">button</span><span class="o">.</span><span class="n">layer</span><span class="o">.</span><span class="n">borderColor</span> <span class="o">=</span> <span class="kt">UIColor</span><span class="o">.</span><span class="n">black</span><span class="o">.</span><span class="n">cgColor</span>
+        
+        <span class="n">button</span><span class="o">.</span><span class="n">frame</span> <span class="o">=</span> <span class="kt">CGRect</span><span class="p">(</span><span class="nv">x</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="nv">y</span><span class="p">:</span> <span class="mi">350</span><span class="p">,</span> <span class="nv">width</span><span class="p">:</span> <span class="n">view</span><span class="o">.</span><span class="n">bounds</span><span class="o">.</span><span class="n">width</span><span class="p">,</span> <span class="nv">height</span><span class="p">:</span> <span class="mi">40</span><span class="p">)</span>
+<span class="c1">//        button.setTitle("github.com/coderZsq")</span>
+<span class="c1">//        button.setTitleColor(.red)</span>
+<span class="c1">//        button.setTitleEdgeInsets(UIEdgeInsetsMake(0, 0, 0, 0))</span>
+        <span class="n">button</span><span class="o">.</span><span class="nf">setImage</span><span class="p">(</span><span class="kt">UIImage</span><span class="p">(</span><span class="nv">named</span><span class="p">:</span> <span class="s">"avatar"</span><span class="p">)</span> <span class="p">??</span> <span class="kt">UIImage</span><span class="p">());</span>
+<span class="c1">//        button.setBackgroundImage(UIImage(named: "avatar") ?? UIImage())</span>
+<span class="c1">//        button.setImageEdgeInsets(UIEdgeInsetsMake(0, 0, 0, 0))</span>
+        <span class="n">view</span><span class="o">.</span><span class="nf">addSubview</span><span class="p">(</span><span class="n">button</span><span class="p">)</span>
+<span class="c1">//        button.sizeToFit()</span>
+</code></pre>
+</div>
+
+<p><img src="https://upload-images.jianshu.io/upload_images/11636671-28ba6e470c2668f0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" width="375" style="margin: clear: both; display: block; margin:auto; 0;" /></p>
+
+<p><img src="https://upload-images.jianshu.io/upload_images/11636671-e15a0a190a2769d2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="" /></p>
+
+<h5 id="setimage--sizetofit">setImage &amp;&amp; sizeToFit</h5>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>        <span class="k">let</span> <span class="nv">uibutton</span> <span class="o">=</span> <span class="kt">UIButton</span><span class="p">()</span>
+        <span class="n">uibutton</span><span class="o">.</span><span class="n">layer</span><span class="o">.</span><span class="n">borderWidth</span> <span class="o">=</span> <span class="mi">1</span>
+        <span class="n">uibutton</span><span class="o">.</span><span class="n">layer</span><span class="o">.</span><span class="n">borderColor</span> <span class="o">=</span> <span class="kt">UIColor</span><span class="o">.</span><span class="n">black</span><span class="o">.</span><span class="n">cgColor</span>
+        
+        <span class="n">uibutton</span><span class="o">.</span><span class="n">frame</span> <span class="o">=</span> <span class="kt">CGRect</span><span class="p">(</span><span class="nv">x</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="nv">y</span><span class="p">:</span> <span class="mi">100</span><span class="p">,</span> <span class="nv">width</span><span class="p">:</span> <span class="n">view</span><span class="o">.</span><span class="n">bounds</span><span class="o">.</span><span class="n">width</span><span class="p">,</span> <span class="nv">height</span><span class="p">:</span> <span class="mi">40</span><span class="p">)</span>
+<span class="c1">//        uibutton.setTitle("github.com/coderZsq", for: .normal)</span>
+<span class="c1">//        uibutton.setTitleColor(.red, for: .normal)</span>
+<span class="c1">//        uibutton.titleEdgeInsets = UIEdgeInsetsMake(0, 0, 0, 0)</span>
+        <span class="n">uibutton</span><span class="o">.</span><span class="nf">setImage</span><span class="p">(</span><span class="kt">UIImage</span><span class="p">(</span><span class="nv">named</span><span class="p">:</span> <span class="s">"avatar"</span><span class="p">),</span> <span class="nv">for</span><span class="p">:</span> <span class="o">.</span><span class="n">normal</span><span class="p">)</span>
+<span class="c1">//        uibutton.setBackgroundImage(UIImage(named: "avatar"), for: .normal)</span>
+<span class="c1">//        uibutton.imageEdgeInsets = UIEdgeInsetsMake(-10, -10, -10, -10)</span>
+        <span class="n">view</span><span class="o">.</span><span class="nf">addSubview</span><span class="p">(</span><span class="n">uibutton</span><span class="p">)</span>
+        <span class="n">uibutton</span><span class="o">.</span><span class="nf">sizeToFit</span><span class="p">()</span>
+        
+        <span class="k">let</span> <span class="nv">button</span> <span class="o">=</span> <span class="kt">Button</span><span class="p">()</span>
+        <span class="n">button</span><span class="o">.</span><span class="n">layer</span><span class="o">.</span><span class="n">borderWidth</span> <span class="o">=</span> <span class="mi">1</span>
+        <span class="n">button</span><span class="o">.</span><span class="n">layer</span><span class="o">.</span><span class="n">borderColor</span> <span class="o">=</span> <span class="kt">UIColor</span><span class="o">.</span><span class="n">black</span><span class="o">.</span><span class="n">cgColor</span>
+        
+        <span class="n">button</span><span class="o">.</span><span class="n">frame</span> <span class="o">=</span> <span class="kt">CGRect</span><span class="p">(</span><span class="nv">x</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="nv">y</span><span class="p">:</span> <span class="mi">350</span><span class="p">,</span> <span class="nv">width</span><span class="p">:</span> <span class="n">view</span><span class="o">.</span><span class="n">bounds</span><span class="o">.</span><span class="n">width</span><span class="p">,</span> <span class="nv">height</span><span class="p">:</span> <span class="mi">40</span><span class="p">)</span>
+<span class="c1">//        button.setTitle("github.com/coderZsq")</span>
+<span class="c1">//        button.setTitleColor(.red)</span>
+<span class="c1">//        button.setTitleEdgeInsets(UIEdgeInsetsMake(0, 0, 0, 0))</span>
+        <span class="n">button</span><span class="o">.</span><span class="nf">setImage</span><span class="p">(</span><span class="kt">UIImage</span><span class="p">(</span><span class="nv">named</span><span class="p">:</span> <span class="s">"avatar"</span><span class="p">)</span> <span class="p">??</span> <span class="kt">UIImage</span><span class="p">());</span>
+<span class="c1">//        button.setBackgroundImage(UIImage(named: "avatar") ?? UIImage())</span>
+<span class="c1">//        button.setImageEdgeInsets(UIEdgeInsetsMake(0, 0, 0, 0))</span>
+        <span class="n">view</span><span class="o">.</span><span class="nf">addSubview</span><span class="p">(</span><span class="n">button</span><span class="p">)</span>
+        <span class="n">button</span><span class="o">.</span><span class="nf">sizeToFit</span><span class="p">()</span>
+</code></pre>
+</div>
+
+<p><img src="https://upload-images.jianshu.io/upload_images/11636671-e7b7c940f3aa2c6a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" width="375" style="margin: clear: both; display: block; margin:auto; 0;" /></p>
+
+<p><img src="https://upload-images.jianshu.io/upload_images/11636671-1a133ba1fc4dc72e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="" /></p>
+
+<h5 id="setbackgroundimage">setBackgroundImage</h5>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>        <span class="k">let</span> <span class="nv">uibutton</span> <span class="o">=</span> <span class="kt">UIButton</span><span class="p">()</span>
+        <span class="n">uibutton</span><span class="o">.</span><span class="n">layer</span><span class="o">.</span><span class="n">borderWidth</span> <span class="o">=</span> <span class="mi">1</span>
+        <span class="n">uibutton</span><span class="o">.</span><span class="n">layer</span><span class="o">.</span><span class="n">borderColor</span> <span class="o">=</span> <span class="kt">UIColor</span><span class="o">.</span><span class="n">black</span><span class="o">.</span><span class="n">cgColor</span>
+        
+        <span class="n">uibutton</span><span class="o">.</span><span class="n">frame</span> <span class="o">=</span> <span class="kt">CGRect</span><span class="p">(</span><span class="nv">x</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="nv">y</span><span class="p">:</span> <span class="mi">100</span><span class="p">,</span> <span class="nv">width</span><span class="p">:</span> <span class="n">view</span><span class="o">.</span><span class="n">bounds</span><span class="o">.</span><span class="n">width</span><span class="p">,</span> <span class="nv">height</span><span class="p">:</span> <span class="mi">40</span><span class="p">)</span>
+<span class="c1">//        uibutton.setTitle("github.com/coderZsq", for: .normal)</span>
+<span class="c1">//        uibutton.setTitleColor(.red, for: .normal)</span>
+<span class="c1">//        uibutton.titleEdgeInsets = UIEdgeInsetsMake(0, 0, 0, 0)</span>
+<span class="c1">//        uibutton.setImage(UIImage(named: "avatar"), for: .normal)</span>
+        <span class="n">uibutton</span><span class="o">.</span><span class="nf">setBackgroundImage</span><span class="p">(</span><span class="kt">UIImage</span><span class="p">(</span><span class="nv">named</span><span class="p">:</span> <span class="s">"avatar"</span><span class="p">),</span> <span class="nv">for</span><span class="p">:</span> <span class="o">.</span><span class="n">normal</span><span class="p">)</span>
+<span class="c1">//        uibutton.imageEdgeInsets = UIEdgeInsetsMake(-10, -10, -10, -10)</span>
+        <span class="n">view</span><span class="o">.</span><span class="nf">addSubview</span><span class="p">(</span><span class="n">uibutton</span><span class="p">)</span>
+<span class="c1">//        uibutton.sizeToFit()</span>
+        
+        <span class="k">let</span> <span class="nv">button</span> <span class="o">=</span> <span class="kt">Button</span><span class="p">()</span>
+        <span class="n">button</span><span class="o">.</span><span class="n">layer</span><span class="o">.</span><span class="n">borderWidth</span> <span class="o">=</span> <span class="mi">1</span>
+        <span class="n">button</span><span class="o">.</span><span class="n">layer</span><span class="o">.</span><span class="n">borderColor</span> <span class="o">=</span> <span class="kt">UIColor</span><span class="o">.</span><span class="n">black</span><span class="o">.</span><span class="n">cgColor</span>
+        
+        <span class="n">button</span><span class="o">.</span><span class="n">frame</span> <span class="o">=</span> <span class="kt">CGRect</span><span class="p">(</span><span class="nv">x</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="nv">y</span><span class="p">:</span> <span class="mi">350</span><span class="p">,</span> <span class="nv">width</span><span class="p">:</span> <span class="n">view</span><span class="o">.</span><span class="n">bounds</span><span class="o">.</span><span class="n">width</span><span class="p">,</span> <span class="nv">height</span><span class="p">:</span> <span class="mi">40</span><span class="p">)</span>
+<span class="c1">//        button.setTitle("github.com/coderZsq")</span>
+<span class="c1">//        button.setTitleColor(.red)</span>
+<span class="c1">//        button.setTitleEdgeInsets(UIEdgeInsetsMake(0, 0, 0, 0))</span>
+<span class="c1">//        button.setImage(UIImage(named: "avatar") ?? UIImage());</span>
+        <span class="n">button</span><span class="o">.</span><span class="nf">setBackgroundImage</span><span class="p">(</span><span class="kt">UIImage</span><span class="p">(</span><span class="nv">named</span><span class="p">:</span> <span class="s">"avatar"</span><span class="p">)</span> <span class="p">??</span> <span class="kt">UIImage</span><span class="p">())</span>
+<span class="c1">//        button.setImageEdgeInsets(UIEdgeInsetsMake(0, 0, 0, 0))</span>
+        <span class="n">view</span><span class="o">.</span><span class="nf">addSubview</span><span class="p">(</span><span class="n">button</span><span class="p">)</span>
+<span class="c1">//        button.sizeToFit()</span>
+
+</code></pre>
+</div>
+<p><img src="https://upload-images.jianshu.io/upload_images/11636671-225cd27a56dd1cc9.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" width="375" style="margin: clear: both; display: block; margin:auto; 0;" /></p>
+
+<p><img src="https://upload-images.jianshu.io/upload_images/11636671-d159cbbd7c26dd36.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="" /></p>
+
+<p>这里, 我们看到和系统的实现不一样, 因为我直接在渲染(<code class="highlighter-rouge">display</code>)设置了<code class="highlighter-rouge">bitmap</code>, 而不是像系统添加了一个新的<code class="highlighter-rouge">view</code>. 这样的性能消耗会少些… (以修改 为了下面的问题)</p>
+
+<h5 id="setbackgroundimage--sizetofit">setBackgroundImage &amp;&amp; sizeToFit</h5>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>        <span class="k">let</span> <span class="nv">uibutton</span> <span class="o">=</span> <span class="kt">UIButton</span><span class="p">()</span>
+        <span class="n">uibutton</span><span class="o">.</span><span class="n">layer</span><span class="o">.</span><span class="n">borderWidth</span> <span class="o">=</span> <span class="mi">1</span>
+        <span class="n">uibutton</span><span class="o">.</span><span class="n">layer</span><span class="o">.</span><span class="n">borderColor</span> <span class="o">=</span> <span class="kt">UIColor</span><span class="o">.</span><span class="n">black</span><span class="o">.</span><span class="n">cgColor</span>
+        
+        <span class="n">uibutton</span><span class="o">.</span><span class="n">frame</span> <span class="o">=</span> <span class="kt">CGRect</span><span class="p">(</span><span class="nv">x</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="nv">y</span><span class="p">:</span> <span class="mi">100</span><span class="p">,</span> <span class="nv">width</span><span class="p">:</span> <span class="n">view</span><span class="o">.</span><span class="n">bounds</span><span class="o">.</span><span class="n">width</span><span class="p">,</span> <span class="nv">height</span><span class="p">:</span> <span class="mi">40</span><span class="p">)</span>
+<span class="c1">//        uibutton.setTitle("github.com/coderZsq", for: .normal)</span>
+<span class="c1">//        uibutton.setTitleColor(.red, for: .normal)</span>
+<span class="c1">//        uibutton.titleEdgeInsets = UIEdgeInsetsMake(0, 0, 0, 0)</span>
+<span class="c1">//        uibutton.setImage(UIImage(named: "avatar"), for: .normal)</span>
+        <span class="n">uibutton</span><span class="o">.</span><span class="nf">setBackgroundImage</span><span class="p">(</span><span class="kt">UIImage</span><span class="p">(</span><span class="nv">named</span><span class="p">:</span> <span class="s">"avatar"</span><span class="p">),</span> <span class="nv">for</span><span class="p">:</span> <span class="o">.</span><span class="n">normal</span><span class="p">)</span>
+<span class="c1">//        uibutton.imageEdgeInsets = UIEdgeInsetsMake(-10, -10, -10, -10)</span>
+        <span class="n">view</span><span class="o">.</span><span class="nf">addSubview</span><span class="p">(</span><span class="n">uibutton</span><span class="p">)</span>
+        <span class="n">uibutton</span><span class="o">.</span><span class="nf">sizeToFit</span><span class="p">()</span>
+        
+        <span class="k">let</span> <span class="nv">button</span> <span class="o">=</span> <span class="kt">Button</span><span class="p">()</span>
+        <span class="n">button</span><span class="o">.</span><span class="n">layer</span><span class="o">.</span><span class="n">borderWidth</span> <span class="o">=</span> <span class="mi">1</span>
+        <span class="n">button</span><span class="o">.</span><span class="n">layer</span><span class="o">.</span><span class="n">borderColor</span> <span class="o">=</span> <span class="kt">UIColor</span><span class="o">.</span><span class="n">black</span><span class="o">.</span><span class="n">cgColor</span>
+        
+        <span class="n">button</span><span class="o">.</span><span class="n">frame</span> <span class="o">=</span> <span class="kt">CGRect</span><span class="p">(</span><span class="nv">x</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="nv">y</span><span class="p">:</span> <span class="mi">350</span><span class="p">,</span> <span class="nv">width</span><span class="p">:</span> <span class="n">view</span><span class="o">.</span><span class="n">bounds</span><span class="o">.</span><span class="n">width</span><span class="p">,</span> <span class="nv">height</span><span class="p">:</span> <span class="mi">40</span><span class="p">)</span>
+<span class="c1">//        button.setTitle("github.com/coderZsq")</span>
+<span class="c1">//        button.setTitleColor(.red)</span>
+<span class="c1">//        button.setTitleEdgeInsets(UIEdgeInsetsMake(0, 0, 0, 0))</span>
+<span class="c1">//        button.setImage(UIImage(named: "avatar") ?? UIImage());</span>
+        <span class="n">button</span><span class="o">.</span><span class="nf">setBackgroundImage</span><span class="p">(</span><span class="kt">UIImage</span><span class="p">(</span><span class="nv">named</span><span class="p">:</span> <span class="s">"avatar"</span><span class="p">)</span> <span class="p">??</span> <span class="kt">UIImage</span><span class="p">())</span>
+<span class="c1">//        button.setImageEdgeInsets(UIEdgeInsetsMake(0, 0, 0, 0))</span>
+        <span class="n">view</span><span class="o">.</span><span class="nf">addSubview</span><span class="p">(</span><span class="n">button</span><span class="p">)</span>
+        <span class="n">button</span><span class="o">.</span><span class="nf">sizeToFit</span><span class="p">()</span>
+
+</code></pre>
+</div>
+
+<p><img src="https://upload-images.jianshu.io/upload_images/11636671-ebfac013f2cf0fba.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" width="375" style="margin: clear: both; display: block; margin:auto; 0;" /></p>
+
+<p><img src="https://upload-images.jianshu.io/upload_images/11636671-61eca35402d681f2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="" /></p>
+
+<h5 id="settitle--settitlecolor--setimage">setTitle &amp;&amp; setTitleColor &amp;&amp; setImage</h5>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>        <span class="k">let</span> <span class="nv">uibutton</span> <span class="o">=</span> <span class="kt">UIButton</span><span class="p">()</span>
+        <span class="n">uibutton</span><span class="o">.</span><span class="n">layer</span><span class="o">.</span><span class="n">borderWidth</span> <span class="o">=</span> <span class="mi">1</span>
+        <span class="n">uibutton</span><span class="o">.</span><span class="n">layer</span><span class="o">.</span><span class="n">borderColor</span> <span class="o">=</span> <span class="kt">UIColor</span><span class="o">.</span><span class="n">black</span><span class="o">.</span><span class="n">cgColor</span>
+        
+        <span class="n">uibutton</span><span class="o">.</span><span class="n">frame</span> <span class="o">=</span> <span class="kt">CGRect</span><span class="p">(</span><span class="nv">x</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="nv">y</span><span class="p">:</span> <span class="mi">100</span><span class="p">,</span> <span class="nv">width</span><span class="p">:</span> <span class="n">view</span><span class="o">.</span><span class="n">bounds</span><span class="o">.</span><span class="n">width</span><span class="p">,</span> <span class="nv">height</span><span class="p">:</span> <span class="mi">40</span><span class="p">)</span>
+        <span class="n">uibutton</span><span class="o">.</span><span class="nf">setTitle</span><span class="p">(</span><span class="s">"github.com/coderZsq"</span><span class="p">,</span> <span class="nv">for</span><span class="p">:</span> <span class="o">.</span><span class="n">normal</span><span class="p">)</span>
+        <span class="n">uibutton</span><span class="o">.</span><span class="nf">setTitleColor</span><span class="p">(</span><span class="o">.</span><span class="n">red</span><span class="p">,</span> <span class="nv">for</span><span class="p">:</span> <span class="o">.</span><span class="n">normal</span><span class="p">)</span>
+<span class="c1">//        uibutton.titleEdgeInsets = UIEdgeInsetsMake(0, 0, 0, 0)</span>
+        <span class="n">uibutton</span><span class="o">.</span><span class="nf">setImage</span><span class="p">(</span><span class="kt">UIImage</span><span class="p">(</span><span class="nv">named</span><span class="p">:</span> <span class="s">"avatar"</span><span class="p">),</span> <span class="nv">for</span><span class="p">:</span> <span class="o">.</span><span class="n">normal</span><span class="p">)</span>
+<span class="c1">//        uibutton.setBackgroundImage(UIImage(named: "avatar"), for: .normal)</span>
+<span class="c1">//        uibutton.imageEdgeInsets = UIEdgeInsetsMake(-10, -10, -10, -10)</span>
+        <span class="n">view</span><span class="o">.</span><span class="nf">addSubview</span><span class="p">(</span><span class="n">uibutton</span><span class="p">)</span>
+<span class="c1">//        uibutton.sizeToFit()</span>
+        
+        <span class="k">let</span> <span class="nv">button</span> <span class="o">=</span> <span class="kt">Button</span><span class="p">()</span>
+        <span class="n">button</span><span class="o">.</span><span class="n">layer</span><span class="o">.</span><span class="n">borderWidth</span> <span class="o">=</span> <span class="mi">1</span>
+        <span class="n">button</span><span class="o">.</span><span class="n">layer</span><span class="o">.</span><span class="n">borderColor</span> <span class="o">=</span> <span class="kt">UIColor</span><span class="o">.</span><span class="n">black</span><span class="o">.</span><span class="n">cgColor</span>
+        
+        <span class="n">button</span><span class="o">.</span><span class="n">frame</span> <span class="o">=</span> <span class="kt">CGRect</span><span class="p">(</span><span class="nv">x</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="nv">y</span><span class="p">:</span> <span class="mi">350</span><span class="p">,</span> <span class="nv">width</span><span class="p">:</span> <span class="n">view</span><span class="o">.</span><span class="n">bounds</span><span class="o">.</span><span class="n">width</span><span class="p">,</span> <span class="nv">height</span><span class="p">:</span> <span class="mi">40</span><span class="p">)</span>
+        <span class="n">button</span><span class="o">.</span><span class="nf">setTitle</span><span class="p">(</span><span class="s">"github.com/coderZsq"</span><span class="p">)</span>
+        <span class="n">button</span><span class="o">.</span><span class="nf">setTitleColor</span><span class="p">(</span><span class="o">.</span><span class="n">red</span><span class="p">)</span>
+<span class="c1">//        button.setTitleEdgeInsets(UIEdgeInsetsMake(0, 0, 0, 0))</span>
+        <span class="n">button</span><span class="o">.</span><span class="nf">setImage</span><span class="p">(</span><span class="kt">UIImage</span><span class="p">(</span><span class="nv">named</span><span class="p">:</span> <span class="s">"avatar"</span><span class="p">)</span> <span class="p">??</span> <span class="kt">UIImage</span><span class="p">());</span>
+<span class="c1">//        button.setBackgroundImage(UIImage(named: "avatar") ?? UIImage())</span>
+<span class="c1">//        button.setImageEdgeInsets(UIEdgeInsetsMake(0, 0, 0, 0))</span>
+        <span class="n">view</span><span class="o">.</span><span class="nf">addSubview</span><span class="p">(</span><span class="n">button</span><span class="p">)</span>
+<span class="c1">//        button.sizeToFit()</span>
+
+</code></pre>
+</div>
+<p><img src="https://upload-images.jianshu.io/upload_images/11636671-7cfb49d8547f49ea.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" width="375" style="margin: clear: both; display: block; margin:auto; 0;" /></p>
+
+<p><img src="https://upload-images.jianshu.io/upload_images/11636671-c25a35f303ba012f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="" /></p>
+
+<h5 id="settitle--settitlecolor--setimage--sizetofit">setTitle &amp;&amp; setTitleColor &amp;&amp; setImage &amp;&amp; sizeToFit</h5>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>        <span class="k">let</span> <span class="nv">uibutton</span> <span class="o">=</span> <span class="kt">UIButton</span><span class="p">()</span>
+        <span class="n">uibutton</span><span class="o">.</span><span class="n">layer</span><span class="o">.</span><span class="n">borderWidth</span> <span class="o">=</span> <span class="mi">1</span>
+        <span class="n">uibutton</span><span class="o">.</span><span class="n">layer</span><span class="o">.</span><span class="n">borderColor</span> <span class="o">=</span> <span class="kt">UIColor</span><span class="o">.</span><span class="n">black</span><span class="o">.</span><span class="n">cgColor</span>
+        
+        <span class="n">uibutton</span><span class="o">.</span><span class="n">frame</span> <span class="o">=</span> <span class="kt">CGRect</span><span class="p">(</span><span class="nv">x</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="nv">y</span><span class="p">:</span> <span class="mi">100</span><span class="p">,</span> <span class="nv">width</span><span class="p">:</span> <span class="n">view</span><span class="o">.</span><span class="n">bounds</span><span class="o">.</span><span class="n">width</span><span class="p">,</span> <span class="nv">height</span><span class="p">:</span> <span class="mi">40</span><span class="p">)</span>
+        <span class="n">uibutton</span><span class="o">.</span><span class="nf">setTitle</span><span class="p">(</span><span class="s">"github.com/coderZsq"</span><span class="p">,</span> <span class="nv">for</span><span class="p">:</span> <span class="o">.</span><span class="n">normal</span><span class="p">)</span>
+        <span class="n">uibutton</span><span class="o">.</span><span class="nf">setTitleColor</span><span class="p">(</span><span class="o">.</span><span class="n">red</span><span class="p">,</span> <span class="nv">for</span><span class="p">:</span> <span class="o">.</span><span class="n">normal</span><span class="p">)</span>
+<span class="c1">//        uibutton.titleEdgeInsets = UIEdgeInsetsMake(0, 0, 0, 0)</span>
+        <span class="n">uibutton</span><span class="o">.</span><span class="nf">setImage</span><span class="p">(</span><span class="kt">UIImage</span><span class="p">(</span><span class="nv">named</span><span class="p">:</span> <span class="s">"avatar"</span><span class="p">),</span> <span class="nv">for</span><span class="p">:</span> <span class="o">.</span><span class="n">normal</span><span class="p">)</span>
+<span class="c1">//        uibutton.setBackgroundImage(UIImage(named: "avatar"), for: .normal)</span>
+<span class="c1">//        uibutton.imageEdgeInsets = UIEdgeInsetsMake(-10, -10, -10, -10)</span>
+        <span class="n">view</span><span class="o">.</span><span class="nf">addSubview</span><span class="p">(</span><span class="n">uibutton</span><span class="p">)</span>
+        <span class="n">uibutton</span><span class="o">.</span><span class="nf">sizeToFit</span><span class="p">()</span>
+        
+        <span class="k">let</span> <span class="nv">button</span> <span class="o">=</span> <span class="kt">Button</span><span class="p">()</span>
+        <span class="n">button</span><span class="o">.</span><span class="n">layer</span><span class="o">.</span><span class="n">borderWidth</span> <span class="o">=</span> <span class="mi">1</span>
+        <span class="n">button</span><span class="o">.</span><span class="n">layer</span><span class="o">.</span><span class="n">borderColor</span> <span class="o">=</span> <span class="kt">UIColor</span><span class="o">.</span><span class="n">black</span><span class="o">.</span><span class="n">cgColor</span>
+        
+        <span class="n">button</span><span class="o">.</span><span class="n">frame</span> <span class="o">=</span> <span class="kt">CGRect</span><span class="p">(</span><span class="nv">x</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="nv">y</span><span class="p">:</span> <span class="mi">350</span><span class="p">,</span> <span class="nv">width</span><span class="p">:</span> <span class="n">view</span><span class="o">.</span><span class="n">bounds</span><span class="o">.</span><span class="n">width</span><span class="p">,</span> <span class="nv">height</span><span class="p">:</span> <span class="mi">40</span><span class="p">)</span>
+        <span class="n">button</span><span class="o">.</span><span class="nf">setTitle</span><span class="p">(</span><span class="s">"github.com/coderZsq"</span><span class="p">)</span>
+        <span class="n">button</span><span class="o">.</span><span class="nf">setTitleColor</span><span class="p">(</span><span class="o">.</span><span class="n">red</span><span class="p">)</span>
+<span class="c1">//        button.setTitleEdgeInsets(UIEdgeInsetsMake(0, 0, 0, 0))</span>
+        <span class="n">button</span><span class="o">.</span><span class="nf">setImage</span><span class="p">(</span><span class="kt">UIImage</span><span class="p">(</span><span class="nv">named</span><span class="p">:</span> <span class="s">"avatar"</span><span class="p">)</span> <span class="p">??</span> <span class="kt">UIImage</span><span class="p">());</span>
+<span class="c1">//        button.setBackgroundImage(UIImage(named: "avatar") ?? UIImage())</span>
+<span class="c1">//        button.setImageEdgeInsets(UIEdgeInsetsMake(0, 0, 0, 0))</span>
+        <span class="n">view</span><span class="o">.</span><span class="nf">addSubview</span><span class="p">(</span><span class="n">button</span><span class="p">)</span>
+        <span class="n">button</span><span class="o">.</span><span class="nf">sizeToFit</span><span class="p">()</span>
+</code></pre>
+</div>
+<p><img src="https://upload-images.jianshu.io/upload_images/11636671-352191a9f8df2e95.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" width="375" style="margin: clear: both; display: block; margin:auto; 0;" /></p>
+
+<p><img src="https://upload-images.jianshu.io/upload_images/11636671-03c6dd992d3329bb.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="" /></p>
+
+<h5 id="settitle--settitlecolor--setbackgroundimage">setTitle &amp;&amp; setTitleColor &amp;&amp; setBackgroundImage</h5>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>
+        <span class="k">let</span> <span class="nv">uibutton</span> <span class="o">=</span> <span class="kt">UIButton</span><span class="p">()</span>
+        <span class="n">uibutton</span><span class="o">.</span><span class="n">layer</span><span class="o">.</span><span class="n">borderWidth</span> <span class="o">=</span> <span class="mi">1</span>
+        <span class="n">uibutton</span><span class="o">.</span><span class="n">layer</span><span class="o">.</span><span class="n">borderColor</span> <span class="o">=</span> <span class="kt">UIColor</span><span class="o">.</span><span class="n">black</span><span class="o">.</span><span class="n">cgColor</span>
+        
+        <span class="n">uibutton</span><span class="o">.</span><span class="n">frame</span> <span class="o">=</span> <span class="kt">CGRect</span><span class="p">(</span><span class="nv">x</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="nv">y</span><span class="p">:</span> <span class="mi">100</span><span class="p">,</span> <span class="nv">width</span><span class="p">:</span> <span class="n">view</span><span class="o">.</span><span class="n">bounds</span><span class="o">.</span><span class="n">width</span><span class="p">,</span> <span class="nv">height</span><span class="p">:</span> <span class="mi">40</span><span class="p">)</span>
+        <span class="n">uibutton</span><span class="o">.</span><span class="nf">setTitle</span><span class="p">(</span><span class="s">"github.com/coderZsq"</span><span class="p">,</span> <span class="nv">for</span><span class="p">:</span> <span class="o">.</span><span class="n">normal</span><span class="p">)</span>
+        <span class="n">uibutton</span><span class="o">.</span><span class="nf">setTitleColor</span><span class="p">(</span><span class="o">.</span><span class="n">red</span><span class="p">,</span> <span class="nv">for</span><span class="p">:</span> <span class="o">.</span><span class="n">normal</span><span class="p">)</span>
+<span class="c1">//        uibutton.titleEdgeInsets = UIEdgeInsetsMake(0, 0, 0, 0)</span>
+<span class="c1">//        uibutton.setImage(UIImage(named: "avatar"), for: .normal)</span>
+        <span class="n">uibutton</span><span class="o">.</span><span class="nf">setBackgroundImage</span><span class="p">(</span><span class="kt">UIImage</span><span class="p">(</span><span class="nv">named</span><span class="p">:</span> <span class="s">"avatar"</span><span class="p">),</span> <span class="nv">for</span><span class="p">:</span> <span class="o">.</span><span class="n">normal</span><span class="p">)</span>
+<span class="c1">//        uibutton.imageEdgeInsets = UIEdgeInsetsMake(-10, -10, -10, -10)</span>
+        <span class="n">view</span><span class="o">.</span><span class="nf">addSubview</span><span class="p">(</span><span class="n">uibutton</span><span class="p">)</span>
+<span class="c1">//        uibutton.sizeToFit()</span>
+        
+        <span class="k">let</span> <span class="nv">button</span> <span class="o">=</span> <span class="kt">Button</span><span class="p">()</span>
+        <span class="n">button</span><span class="o">.</span><span class="n">layer</span><span class="o">.</span><span class="n">borderWidth</span> <span class="o">=</span> <span class="mi">1</span>
+        <span class="n">button</span><span class="o">.</span><span class="n">layer</span><span class="o">.</span><span class="n">borderColor</span> <span class="o">=</span> <span class="kt">UIColor</span><span class="o">.</span><span class="n">black</span><span class="o">.</span><span class="n">cgColor</span>
+        
+        <span class="n">button</span><span class="o">.</span><span class="n">frame</span> <span class="o">=</span> <span class="kt">CGRect</span><span class="p">(</span><span class="nv">x</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="nv">y</span><span class="p">:</span> <span class="mi">350</span><span class="p">,</span> <span class="nv">width</span><span class="p">:</span> <span class="n">view</span><span class="o">.</span><span class="n">bounds</span><span class="o">.</span><span class="n">width</span><span class="p">,</span> <span class="nv">height</span><span class="p">:</span> <span class="mi">40</span><span class="p">)</span>
+        <span class="n">button</span><span class="o">.</span><span class="nf">setTitle</span><span class="p">(</span><span class="s">"github.com/coderZsq"</span><span class="p">)</span>
+        <span class="n">button</span><span class="o">.</span><span class="nf">setTitleColor</span><span class="p">(</span><span class="o">.</span><span class="n">red</span><span class="p">)</span>
+<span class="c1">//        button.setTitleEdgeInsets(UIEdgeInsetsMake(0, 0, 0, 0))</span>
+<span class="c1">//        button.setImage(UIImage(named: "avatar") ?? UIImage());</span>
+        <span class="n">button</span><span class="o">.</span><span class="nf">setBackgroundImage</span><span class="p">(</span><span class="kt">UIImage</span><span class="p">(</span><span class="nv">named</span><span class="p">:</span> <span class="s">"avatar"</span><span class="p">)</span> <span class="p">??</span> <span class="kt">UIImage</span><span class="p">())</span>
+<span class="c1">//        button.setImageEdgeInsets(UIEdgeInsetsMake(0, 0, 0, 0))</span>
+        <span class="n">view</span><span class="o">.</span><span class="nf">addSubview</span><span class="p">(</span><span class="n">button</span><span class="p">)</span>
+<span class="c1">//        button.sizeToFit()</span>
+</code></pre>
+</div>
+
+<p><img src="https://upload-images.jianshu.io/upload_images/11636671-dc957aa3c3c3034b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" width="375" style="margin: clear: both; display: block; margin:auto; 0;" /></p>
+
+<p><img src="https://upload-images.jianshu.io/upload_images/11636671-b408fa42d0d37d45.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="" /></p>
+
+<h5 id="settitle--settitlecolor--setbackgroundimage--sizetofit">setTitle &amp;&amp; setTitleColor &amp;&amp; setBackgroundImage &amp;&amp; sizeToFit</h5>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>        <span class="k">let</span> <span class="nv">uibutton</span> <span class="o">=</span> <span class="kt">UIButton</span><span class="p">()</span>
+        <span class="n">uibutton</span><span class="o">.</span><span class="n">layer</span><span class="o">.</span><span class="n">borderWidth</span> <span class="o">=</span> <span class="mi">1</span>
+        <span class="n">uibutton</span><span class="o">.</span><span class="n">layer</span><span class="o">.</span><span class="n">borderColor</span> <span class="o">=</span> <span class="kt">UIColor</span><span class="o">.</span><span class="n">black</span><span class="o">.</span><span class="n">cgColor</span>
+        
+        <span class="n">uibutton</span><span class="o">.</span><span class="n">frame</span> <span class="o">=</span> <span class="kt">CGRect</span><span class="p">(</span><span class="nv">x</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="nv">y</span><span class="p">:</span> <span class="mi">100</span><span class="p">,</span> <span class="nv">width</span><span class="p">:</span> <span class="n">view</span><span class="o">.</span><span class="n">bounds</span><span class="o">.</span><span class="n">width</span><span class="p">,</span> <span class="nv">height</span><span class="p">:</span> <span class="mi">40</span><span class="p">)</span>
+        <span class="n">uibutton</span><span class="o">.</span><span class="nf">setTitle</span><span class="p">(</span><span class="s">"github.com/coderZsq"</span><span class="p">,</span> <span class="nv">for</span><span class="p">:</span> <span class="o">.</span><span class="n">normal</span><span class="p">)</span>
+        <span class="n">uibutton</span><span class="o">.</span><span class="nf">setTitleColor</span><span class="p">(</span><span class="o">.</span><span class="n">red</span><span class="p">,</span> <span class="nv">for</span><span class="p">:</span> <span class="o">.</span><span class="n">normal</span><span class="p">)</span>
+<span class="c1">//        uibutton.titleEdgeInsets = UIEdgeInsetsMake(0, 0, 0, 0)</span>
+<span class="c1">//        uibutton.setImage(UIImage(named: "avatar"), for: .normal)</span>
+        <span class="n">uibutton</span><span class="o">.</span><span class="nf">setBackgroundImage</span><span class="p">(</span><span class="kt">UIImage</span><span class="p">(</span><span class="nv">named</span><span class="p">:</span> <span class="s">"avatar"</span><span class="p">),</span> <span class="nv">for</span><span class="p">:</span> <span class="o">.</span><span class="n">normal</span><span class="p">)</span>
+<span class="c1">//        uibutton.imageEdgeInsets = UIEdgeInsetsMake(-10, -10, -10, -10)</span>
+        <span class="n">view</span><span class="o">.</span><span class="nf">addSubview</span><span class="p">(</span><span class="n">uibutton</span><span class="p">)</span>
+        <span class="n">uibutton</span><span class="o">.</span><span class="nf">sizeToFit</span><span class="p">()</span>
+        
+        <span class="k">let</span> <span class="nv">button</span> <span class="o">=</span> <span class="kt">Button</span><span class="p">()</span>
+        <span class="n">button</span><span class="o">.</span><span class="n">layer</span><span class="o">.</span><span class="n">borderWidth</span> <span class="o">=</span> <span class="mi">1</span>
+        <span class="n">button</span><span class="o">.</span><span class="n">layer</span><span class="o">.</span><span class="n">borderColor</span> <span class="o">=</span> <span class="kt">UIColor</span><span class="o">.</span><span class="n">black</span><span class="o">.</span><span class="n">cgColor</span>
+        
+        <span class="n">button</span><span class="o">.</span><span class="n">frame</span> <span class="o">=</span> <span class="kt">CGRect</span><span class="p">(</span><span class="nv">x</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="nv">y</span><span class="p">:</span> <span class="mi">350</span><span class="p">,</span> <span class="nv">width</span><span class="p">:</span> <span class="n">view</span><span class="o">.</span><span class="n">bounds</span><span class="o">.</span><span class="n">width</span><span class="p">,</span> <span class="nv">height</span><span class="p">:</span> <span class="mi">40</span><span class="p">)</span>
+        <span class="n">button</span><span class="o">.</span><span class="nf">setTitle</span><span class="p">(</span><span class="s">"github.com/coderZsq"</span><span class="p">)</span>
+        <span class="n">button</span><span class="o">.</span><span class="nf">setTitleColor</span><span class="p">(</span><span class="o">.</span><span class="n">red</span><span class="p">)</span>
+<span class="c1">//        button.setTitleEdgeInsets(UIEdgeInsetsMake(0, 0, 0, 0))</span>
+<span class="c1">//        button.setImage(UIImage(named: "avatar") ?? UIImage());</span>
+        <span class="n">button</span><span class="o">.</span><span class="nf">setBackgroundImage</span><span class="p">(</span><span class="kt">UIImage</span><span class="p">(</span><span class="nv">named</span><span class="p">:</span> <span class="s">"avatar"</span><span class="p">)</span> <span class="p">??</span> <span class="kt">UIImage</span><span class="p">())</span>
+<span class="c1">//        button.setImageEdgeInsets(UIEdgeInsetsMake(0, 0, 0, 0))</span>
+        <span class="n">view</span><span class="o">.</span><span class="nf">addSubview</span><span class="p">(</span><span class="n">button</span><span class="p">)</span>
+        <span class="n">button</span><span class="o">.</span><span class="nf">sizeToFit</span><span class="p">()</span>
+</code></pre>
+</div>
+
+<p><img src="https://upload-images.jianshu.io/upload_images/11636671-f4d9a0f40a339954.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" width="375" style="margin: clear: both; display: block; margin:auto; 0;" /></p>
+
+<p><img src="https://upload-images.jianshu.io/upload_images/11636671-cf4793ab1b271189.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="" /></p>
+
+<h5 id="settitle--settitlecolor--setimage--setbackgroundimage">setTitle &amp;&amp; setTitleColor &amp;&amp; setImage &amp;&amp; setBackgroundImage</h5>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>        <span class="k">let</span> <span class="nv">uibutton</span> <span class="o">=</span> <span class="kt">UIButton</span><span class="p">()</span>
+        <span class="n">uibutton</span><span class="o">.</span><span class="n">layer</span><span class="o">.</span><span class="n">borderWidth</span> <span class="o">=</span> <span class="mi">1</span>
+        <span class="n">uibutton</span><span class="o">.</span><span class="n">layer</span><span class="o">.</span><span class="n">borderColor</span> <span class="o">=</span> <span class="kt">UIColor</span><span class="o">.</span><span class="n">black</span><span class="o">.</span><span class="n">cgColor</span>
+        
+        <span class="n">uibutton</span><span class="o">.</span><span class="n">frame</span> <span class="o">=</span> <span class="kt">CGRect</span><span class="p">(</span><span class="nv">x</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="nv">y</span><span class="p">:</span> <span class="mi">100</span><span class="p">,</span> <span class="nv">width</span><span class="p">:</span> <span class="n">view</span><span class="o">.</span><span class="n">bounds</span><span class="o">.</span><span class="n">width</span><span class="p">,</span> <span class="nv">height</span><span class="p">:</span> <span class="mi">40</span><span class="p">)</span>
+        <span class="n">uibutton</span><span class="o">.</span><span class="nf">setTitle</span><span class="p">(</span><span class="s">"github.com/coderZsq"</span><span class="p">,</span> <span class="nv">for</span><span class="p">:</span> <span class="o">.</span><span class="n">normal</span><span class="p">)</span>
+        <span class="n">uibutton</span><span class="o">.</span><span class="nf">setTitleColor</span><span class="p">(</span><span class="o">.</span><span class="n">red</span><span class="p">,</span> <span class="nv">for</span><span class="p">:</span> <span class="o">.</span><span class="n">normal</span><span class="p">)</span>
+<span class="c1">//        uibutton.titleEdgeInsets = UIEdgeInsetsMake(0, 0, 0, 0)</span>
+        <span class="n">uibutton</span><span class="o">.</span><span class="nf">setImage</span><span class="p">(</span><span class="kt">UIImage</span><span class="p">(</span><span class="nv">named</span><span class="p">:</span> <span class="s">"avatar"</span><span class="p">),</span> <span class="nv">for</span><span class="p">:</span> <span class="o">.</span><span class="n">normal</span><span class="p">)</span>
+        <span class="n">uibutton</span><span class="o">.</span><span class="nf">setBackgroundImage</span><span class="p">(</span><span class="kt">UIImage</span><span class="p">(</span><span class="nv">named</span><span class="p">:</span> <span class="s">"avatar"</span><span class="p">),</span> <span class="nv">for</span><span class="p">:</span> <span class="o">.</span><span class="n">normal</span><span class="p">)</span>
+<span class="c1">//        uibutton.imageEdgeInsets = UIEdgeInsetsMake(-10, -10, -10, -10)</span>
+        <span class="n">view</span><span class="o">.</span><span class="nf">addSubview</span><span class="p">(</span><span class="n">uibutton</span><span class="p">)</span>
+<span class="c1">//        uibutton.sizeToFit()</span>
+        
+        <span class="k">let</span> <span class="nv">button</span> <span class="o">=</span> <span class="kt">Button</span><span class="p">()</span>
+        <span class="n">button</span><span class="o">.</span><span class="n">layer</span><span class="o">.</span><span class="n">borderWidth</span> <span class="o">=</span> <span class="mi">1</span>
+        <span class="n">button</span><span class="o">.</span><span class="n">layer</span><span class="o">.</span><span class="n">borderColor</span> <span class="o">=</span> <span class="kt">UIColor</span><span class="o">.</span><span class="n">black</span><span class="o">.</span><span class="n">cgColor</span>
+        
+        <span class="n">button</span><span class="o">.</span><span class="n">frame</span> <span class="o">=</span> <span class="kt">CGRect</span><span class="p">(</span><span class="nv">x</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="nv">y</span><span class="p">:</span> <span class="mi">350</span><span class="p">,</span> <span class="nv">width</span><span class="p">:</span> <span class="n">view</span><span class="o">.</span><span class="n">bounds</span><span class="o">.</span><span class="n">width</span><span class="p">,</span> <span class="nv">height</span><span class="p">:</span> <span class="mi">40</span><span class="p">)</span>
+        <span class="n">button</span><span class="o">.</span><span class="nf">setTitle</span><span class="p">(</span><span class="s">"github.com/coderZsq"</span><span class="p">)</span>
+        <span class="n">button</span><span class="o">.</span><span class="nf">setTitleColor</span><span class="p">(</span><span class="o">.</span><span class="n">red</span><span class="p">)</span>
+<span class="c1">//        button.setTitleEdgeInsets(UIEdgeInsetsMake(0, 0, 0, 0))</span>
+        <span class="n">button</span><span class="o">.</span><span class="nf">setImage</span><span class="p">(</span><span class="kt">UIImage</span><span class="p">(</span><span class="nv">named</span><span class="p">:</span> <span class="s">"avatar"</span><span class="p">)</span> <span class="p">??</span> <span class="kt">UIImage</span><span class="p">());</span>
+        <span class="n">button</span><span class="o">.</span><span class="nf">setBackgroundImage</span><span class="p">(</span><span class="kt">UIImage</span><span class="p">(</span><span class="nv">named</span><span class="p">:</span> <span class="s">"avatar"</span><span class="p">)</span> <span class="p">??</span> <span class="kt">UIImage</span><span class="p">())</span>
+<span class="c1">//        button.setImageEdgeInsets(UIEdgeInsetsMake(0, 0, 0, 0))</span>
+        <span class="n">view</span><span class="o">.</span><span class="nf">addSubview</span><span class="p">(</span><span class="n">button</span><span class="p">)</span>
+<span class="c1">//        button.sizeToFit()</span>
+</code></pre>
+</div>
+
+<p><img src="https://upload-images.jianshu.io/upload_images/11636671-f6d3f4e1945dc6e3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" width="375" style="margin: clear: both; display: block; margin:auto; 0;" /></p>
+
+<p><img src="https://upload-images.jianshu.io/upload_images/11636671-1d71e2e020f9d511.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="" /></p>
+
+<h5 id="settitle--settitlecolor--setimage--setbackgroundimage--sizetofit">setTitle &amp;&amp; setTitleColor &amp;&amp; setImage &amp;&amp; setBackgroundImage &amp;&amp; sizeToFit</h5>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>        <span class="k">let</span> <span class="nv">uibutton</span> <span class="o">=</span> <span class="kt">UIButton</span><span class="p">()</span>
+        <span class="n">uibutton</span><span class="o">.</span><span class="n">layer</span><span class="o">.</span><span class="n">borderWidth</span> <span class="o">=</span> <span class="mi">1</span>
+        <span class="n">uibutton</span><span class="o">.</span><span class="n">layer</span><span class="o">.</span><span class="n">borderColor</span> <span class="o">=</span> <span class="kt">UIColor</span><span class="o">.</span><span class="n">black</span><span class="o">.</span><span class="n">cgColor</span>
+        
+        <span class="n">uibutton</span><span class="o">.</span><span class="n">frame</span> <span class="o">=</span> <span class="kt">CGRect</span><span class="p">(</span><span class="nv">x</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="nv">y</span><span class="p">:</span> <span class="mi">100</span><span class="p">,</span> <span class="nv">width</span><span class="p">:</span> <span class="n">view</span><span class="o">.</span><span class="n">bounds</span><span class="o">.</span><span class="n">width</span><span class="p">,</span> <span class="nv">height</span><span class="p">:</span> <span class="mi">40</span><span class="p">)</span>
+        <span class="n">uibutton</span><span class="o">.</span><span class="nf">setTitle</span><span class="p">(</span><span class="s">"github.com/coderZsq"</span><span class="p">,</span> <span class="nv">for</span><span class="p">:</span> <span class="o">.</span><span class="n">normal</span><span class="p">)</span>
+        <span class="n">uibutton</span><span class="o">.</span><span class="nf">setTitleColor</span><span class="p">(</span><span class="o">.</span><span class="n">red</span><span class="p">,</span> <span class="nv">for</span><span class="p">:</span> <span class="o">.</span><span class="n">normal</span><span class="p">)</span>
+<span class="c1">//        uibutton.titleEdgeInsets = UIEdgeInsetsMake(0, 0, 0, 0)</span>
+        <span class="n">uibutton</span><span class="o">.</span><span class="nf">setImage</span><span class="p">(</span><span class="kt">UIImage</span><span class="p">(</span><span class="nv">named</span><span class="p">:</span> <span class="s">"avatar"</span><span class="p">),</span> <span class="nv">for</span><span class="p">:</span> <span class="o">.</span><span class="n">normal</span><span class="p">)</span>
+        <span class="n">uibutton</span><span class="o">.</span><span class="nf">setBackgroundImage</span><span class="p">(</span><span class="kt">UIImage</span><span class="p">(</span><span class="nv">named</span><span class="p">:</span> <span class="s">"avatar"</span><span class="p">),</span> <span class="nv">for</span><span class="p">:</span> <span class="o">.</span><span class="n">normal</span><span class="p">)</span>
+<span class="c1">//        uibutton.imageEdgeInsets = UIEdgeInsetsMake(-10, -10, -10, -10)</span>
+        <span class="n">view</span><span class="o">.</span><span class="nf">addSubview</span><span class="p">(</span><span class="n">uibutton</span><span class="p">)</span>
+        <span class="n">uibutton</span><span class="o">.</span><span class="nf">sizeToFit</span><span class="p">()</span>
+        
+        <span class="k">let</span> <span class="nv">button</span> <span class="o">=</span> <span class="kt">Button</span><span class="p">()</span>
+        <span class="n">button</span><span class="o">.</span><span class="n">layer</span><span class="o">.</span><span class="n">borderWidth</span> <span class="o">=</span> <span class="mi">1</span>
+        <span class="n">button</span><span class="o">.</span><span class="n">layer</span><span class="o">.</span><span class="n">borderColor</span> <span class="o">=</span> <span class="kt">UIColor</span><span class="o">.</span><span class="n">black</span><span class="o">.</span><span class="n">cgColor</span>
+        
+        <span class="n">button</span><span class="o">.</span><span class="n">frame</span> <span class="o">=</span> <span class="kt">CGRect</span><span class="p">(</span><span class="nv">x</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="nv">y</span><span class="p">:</span> <span class="mi">350</span><span class="p">,</span> <span class="nv">width</span><span class="p">:</span> <span class="n">view</span><span class="o">.</span><span class="n">bounds</span><span class="o">.</span><span class="n">width</span><span class="p">,</span> <span class="nv">height</span><span class="p">:</span> <span class="mi">40</span><span class="p">)</span>
+        <span class="n">button</span><span class="o">.</span><span class="nf">setTitle</span><span class="p">(</span><span class="s">"github.com/coderZsq"</span><span class="p">)</span>
+        <span class="n">button</span><span class="o">.</span><span class="nf">setTitleColor</span><span class="p">(</span><span class="o">.</span><span class="n">red</span><span class="p">)</span>
+<span class="c1">//        button.setTitleEdgeInsets(UIEdgeInsetsMake(0, 0, 0, 0))</span>
+        <span class="n">button</span><span class="o">.</span><span class="nf">setImage</span><span class="p">(</span><span class="kt">UIImage</span><span class="p">(</span><span class="nv">named</span><span class="p">:</span> <span class="s">"avatar"</span><span class="p">)</span> <span class="p">??</span> <span class="kt">UIImage</span><span class="p">());</span>
+        <span class="n">button</span><span class="o">.</span><span class="nf">setBackgroundImage</span><span class="p">(</span><span class="kt">UIImage</span><span class="p">(</span><span class="nv">named</span><span class="p">:</span> <span class="s">"avatar"</span><span class="p">)</span> <span class="p">??</span> <span class="kt">UIImage</span><span class="p">())</span>
+<span class="c1">//        button.setImageEdgeInsets(UIEdgeInsetsMake(0, 0, 0, 0))</span>
+        <span class="n">view</span><span class="o">.</span><span class="nf">addSubview</span><span class="p">(</span><span class="n">button</span><span class="p">)</span>
+        <span class="n">button</span><span class="o">.</span><span class="nf">sizeToFit</span><span class="p">()</span>
+</code></pre>
+</div>
+
+<p><img src="https://upload-images.jianshu.io/upload_images/11636671-7d482305716e8add.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" width="375" style="margin: clear: both; display: block; margin:auto; 0;" /></p>
+
+<p><img src="https://upload-images.jianshu.io/upload_images/11636671-c0f8c80362b7383f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="" /></p>
+
+<p>这道题还没有实现的就是<code class="highlighter-rouge">AutoLayout</code>和<code class="highlighter-rouge">EdgeInsets</code>, 还有就是在<code class="highlighter-rouge">sizeToFit</code>算的最佳尺寸和系统的最佳尺寸有细微出入, 还有就是<code class="highlighter-rouge">UIImageView</code>和<code class="highlighter-rouge">UILabel</code>的先后加载的问题.</p>
+
+<h4 id="美团面试题4-网络架构实现">美团面试题4 网络架构实现</h4>
+
+<p>这道题真是戳中我的软肋, 网络与多线程是我最为薄弱的地方, 现在对线程的理解应该已经不错了, 但是网络还是有所欠缺的, 所以, 我会在今后学习<code class="highlighter-rouge">Linux</code>和精读<code class="highlighter-rouge">AFNetWorking</code> &amp;&amp; <code class="highlighter-rouge">SDWebImage</code>后, 自己写一个网络架构来进行自我提升.</p>
+
+<h4 id="美团面试总结">美团面试总结</h4>
+
+<p>对于两道算法题, 我没有什么太多想讲的, <code class="highlighter-rouge">技不如人吧</code>, 可是算法题这种东西在<code class="highlighter-rouge">iOS</code>上用处其实不是很大, 我就不信那些没有刷过算法题的同学, 面对一道从没有见过的算法题能够一下子<code class="highlighter-rouge">从容</code>的写出<code class="highlighter-rouge">最优解</code>的. 还有就是<code class="highlighter-rouge">UI</code>的那道题目, 坑吧, 谁会去放着好好的现成的不用, 去恶心自己, 还一定要一样… 我都问过面试官好几遍, 到底想要做什么功能… 回答只有, 我不在乎你怎么写, 只要和系统的一样就好了…. 产品附体了么….</p>
+
+<p>好吧… 技不如人, 被挂了也是理所当然… 不会找什么借口… 听美团的朋友说, 现在只招技术专家, 其他低职级的名额紧缩都不招了… 诶… 随缘吧…</p>
+
+<p>最后 本文中所有的源码都可以在github上找到:</p>
+<blockquote>
+  <p>GitHub Repo：<a href="https://github.com/coderZsq/coderZsq.target.swift">coderZsq.target.swift</a>
+<br />Follow: <a href="https://github.com/coderZsq">coderZsq · GitHub</a>
+<br />Resume: <a href="https://coderzsq.github.io/coderZsq.webpack.js/#/">https://coderzsq.github.io/coderZsq.webpack.js/#/</a></p>
+</blockquote>
+
+
+  </section>
+</article>
+
+<section class="read-more">
+   
+   
+   
+   
+   <div class="read-more-item">
+       <span class="read-more-item-dim">更早的文章</span>
+       <h2 class="post-list__post-title post-title"><a href="/2018/03/C++-%E4%B8%80%E6%8A%8A%E5%89%96%E6%9E%90OC%E5%BA%95%E5%B1%82%E7%9A%84%E5%86%9B%E5%88%80/" title="link to C++ 一把剖析OC底层的军刀">C++ 一把剖析OC底层的军刀</a></h2>
+       <p class="excerpt">  GitHub Repo：coderZsq.github.ioFollow: coderZsq · GitHubResume: https://coderzsq.github.io/coderZsq.webpack.js/#/日常扯淡明天就要出国了, 所以本来想将.md的旅行攻略放到网上共享的, 就使用了简书的.md编译器, 没想到的是, 用完之后我的账号就被冻结了….  尊敬的简书用户您好，由于您有可能违反了简书社区管理规定（包括但不仅限于违反法律法规，不友善行为，发布垃圾信息，恶意行...&hellip;</p>
+       <div class="post-list__meta"><time datetime="2018-03-17 14:16:00 +0800" class="post-list__meta--date date">2018-03-17</time> &#8226; <span class="post-list__meta--tags tags">移动开发</span><a class="btn-border-small" href=/2018/03/C++-%E4%B8%80%E6%8A%8A%E5%89%96%E6%9E%90OC%E5%BA%95%E5%B1%82%E7%9A%84%E5%86%9B%E5%88%80/>继续阅读</a></div>
+   </div>
+   
+</section>
+
+<section class="post-comments">
+  
+  
+  
+  
+</section>
+
+
+            <section class="footer">
+    <footer>
+    	<span class="footer__copyright">本站点采用<a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">知识共享 署名-非商业性使用-相同方式共享 4.0 国际 许可协议</a></span>
+        <span class="footer__copyright">由 <a href="https://jekyllrb.com">Jekyll</a> 于 2018-04-14 生成，感谢 <a href="https://www.digitalocean.com/?refcode=30ed2d146762">Digital Ocean</a> 为本站提供稳定的 VPS 服务</span>
+        <span class="footer__copyright">本站由 <a href="https://github.com/coderZsq">@Castie!</a> 创建，采用 <a href="https://github.com/onevcat/vno-jekyll">Vno - Jekyll</a> 作为主题，您可以在 GitHub 找到<a href="https://github.com/onevcat/OneV-s-Den">本站源码</a> - &copy; 2018</span>
+    </footer>
+</section>
+
+        </div>
+    </div>
+    
+    <script type="text/javascript" src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+
+<script type="text/javascript" src="/js/main.js"></script>
+
+
+
+    
+  </body>
+
+</html>
