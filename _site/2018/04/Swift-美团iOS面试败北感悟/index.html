@@ -1184,6 +1184,87 @@
 
 <p>现已达到完全相同, 接下来就是要解决<code class="highlighter-rouge">AutoLayout</code>和<code class="highlighter-rouge">EdgeInsets</code>的问题.</p>
 
+<h4 id="update2">update2</h4>
+
+<p>通过 nib 进行创建..</p>
+
+<p><img src="https://upload-images.jianshu.io/upload_images/11636671-d9bccff6fc983210.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="" />
+实现方法:</p>
+
+<p>1.判断是否是从nib中创建</p>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>    <span class="k">var</span> <span class="nv">createdFromNib</span> <span class="o">=</span> <span class="kc">false</span>
+    
+    <span class="k">override</span> <span class="nf">init</span><span class="p">(</span><span class="nv">frame</span><span class="p">:</span> <span class="kt">CGRect</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">super</span><span class="o">.</span><span class="nf">init</span><span class="p">(</span><span class="nv">frame</span><span class="p">:</span> <span class="n">frame</span><span class="p">)</span>
+    <span class="p">}</span>
+    
+    <span class="kd">required</span> <span class="nf">init</span><span class="p">?(</span><span class="n">coder</span> <span class="nv">aDecoder</span><span class="p">:</span> <span class="kt">NSCoder</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">super</span><span class="o">.</span><span class="nf">init</span><span class="p">(</span><span class="nv">coder</span><span class="p">:</span> <span class="n">aDecoder</span><span class="p">)</span>
+        <span class="n">createdFromNib</span> <span class="o">=</span> <span class="kc">true</span>
+    <span class="p">}</span>
+</code></pre>
+</div>
+
+<p>2.重写系统实现函数<code class="highlighter-rouge">intrinsicContentSize</code>并返回最佳尺寸</p>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>    <span class="k">override</span> <span class="k">var</span> <span class="nv">intrinsicContentSize</span><span class="p">:</span> <span class="kt">CGSize</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="nf">bestSize</span><span class="p">()</span>
+    <span class="p">}</span>
+    
+    <span class="kd">func</span> <span class="nf">bestSize</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kt">CGSize</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="n">titleLabelIsCreated</span> <span class="o">&amp;&amp;</span> <span class="o">!</span><span class="n">imageViewIsCreated</span> <span class="o">&amp;&amp;</span> <span class="o">!</span><span class="n">backgroundImageViewCreated</span> <span class="p">{</span>
+            <span class="k">let</span> <span class="nv">text</span><span class="p">:</span> <span class="kt">NSString</span><span class="p">?</span> <span class="o">=</span> <span class="n">titleLabel</span><span class="o">.</span><span class="n">text</span> <span class="k">as</span> <span class="kt">NSString</span><span class="p">?</span>
+            <span class="k">let</span> <span class="nv">titleLabelW</span><span class="p">:</span> <span class="kt">CGFloat</span> <span class="o">=</span> <span class="n">text</span><span class="p">?</span><span class="o">.</span><span class="nf">boundingRect</span><span class="p">(</span><span class="nv">with</span><span class="p">:</span> <span class="kt">CGSize</span><span class="p">(</span><span class="nv">width</span><span class="p">:</span> <span class="kt">CGFloat</span><span class="p">(</span><span class="kt">MAXFLOAT</span><span class="p">),</span> <span class="nv">height</span><span class="p">:</span> <span class="n">bounds</span><span class="o">.</span><span class="n">height</span><span class="p">),</span> <span class="nv">options</span><span class="p">:</span> <span class="kt">NSStringDrawingOptions</span><span class="o">.</span><span class="n">usesLineFragmentOrigin</span><span class="p">,</span> <span class="nv">attributes</span><span class="p">:</span> <span class="p">[</span><span class="kt">NSAttributedStringKey</span><span class="o">.</span><span class="nv">font</span> <span class="p">:</span> <span class="n">titleLabel</span><span class="o">.</span><span class="n">font</span><span class="p">],</span> <span class="nv">context</span><span class="p">:</span> <span class="kc">nil</span><span class="p">)</span><span class="o">.</span><span class="n">size</span><span class="o">.</span><span class="n">width</span> <span class="p">??</span> <span class="mf">0.0</span>
+            <span class="k">let</span> <span class="nv">titleLabelH</span><span class="p">:</span> <span class="kt">CGFloat</span> <span class="o">=</span> <span class="n">text</span><span class="p">?</span><span class="o">.</span><span class="nf">boundingRect</span><span class="p">(</span><span class="nv">with</span><span class="p">:</span> <span class="kt">CGSize</span><span class="p">(</span><span class="nv">width</span><span class="p">:</span> <span class="n">titleLabelW</span><span class="p">,</span> <span class="nv">height</span><span class="p">:</span> <span class="kt">CGFloat</span><span class="p">(</span><span class="kt">MAXFLOAT</span><span class="p">)),</span> <span class="nv">options</span><span class="p">:</span> <span class="kt">NSStringDrawingOptions</span><span class="o">.</span><span class="n">usesLineFragmentOrigin</span><span class="p">,</span> <span class="nv">attributes</span><span class="p">:</span> <span class="p">[</span><span class="kt">NSAttributedStringKey</span><span class="o">.</span><span class="nv">font</span> <span class="p">:</span> <span class="n">titleLabel</span><span class="o">.</span><span class="n">font</span><span class="p">],</span> <span class="nv">context</span><span class="p">:</span> <span class="kc">nil</span><span class="p">)</span><span class="o">.</span><span class="n">size</span><span class="o">.</span><span class="n">height</span> <span class="p">??</span> <span class="mf">0.0</span>
+            <span class="k">return</span> <span class="kt">CGSize</span><span class="p">(</span><span class="nv">width</span><span class="p">:</span> <span class="n">titleLabelW</span><span class="p">,</span> <span class="nv">height</span><span class="p">:</span> <span class="n">titleLabelH</span> <span class="o">+</span> <span class="mi">10</span><span class="p">)</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="o">!</span><span class="n">titleLabelIsCreated</span> <span class="o">&amp;&amp;</span> <span class="n">imageViewIsCreated</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="n">imageView</span><span class="o">.</span><span class="n">image</span><span class="p">?</span><span class="o">.</span><span class="n">size</span> <span class="p">??</span> <span class="kt">CGSize</span><span class="o">.</span><span class="n">zero</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="n">titleLabelIsCreated</span> <span class="o">&amp;&amp;</span> <span class="n">imageViewIsCreated</span> <span class="p">{</span>
+            <span class="k">let</span> <span class="nv">text</span><span class="p">:</span> <span class="kt">NSString</span><span class="p">?</span> <span class="o">=</span> <span class="n">titleLabel</span><span class="o">.</span><span class="n">text</span> <span class="k">as</span> <span class="kt">NSString</span><span class="p">?</span>
+            <span class="k">let</span> <span class="nv">titleLabelW</span><span class="p">:</span> <span class="kt">CGFloat</span> <span class="o">=</span> <span class="n">text</span><span class="p">?</span><span class="o">.</span><span class="nf">boundingRect</span><span class="p">(</span><span class="nv">with</span><span class="p">:</span> <span class="kt">CGSize</span><span class="p">(</span><span class="nv">width</span><span class="p">:</span> <span class="kt">CGFloat</span><span class="p">(</span><span class="kt">MAXFLOAT</span><span class="p">),</span> <span class="nv">height</span><span class="p">:</span> <span class="n">bounds</span><span class="o">.</span><span class="n">height</span><span class="p">),</span> <span class="nv">options</span><span class="p">:</span> <span class="kt">NSStringDrawingOptions</span><span class="o">.</span><span class="n">usesLineFragmentOrigin</span><span class="p">,</span> <span class="nv">attributes</span><span class="p">:</span> <span class="p">[</span><span class="kt">NSAttributedStringKey</span><span class="o">.</span><span class="nv">font</span> <span class="p">:</span> <span class="n">titleLabel</span><span class="o">.</span><span class="n">font</span><span class="p">],</span> <span class="nv">context</span><span class="p">:</span> <span class="kc">nil</span><span class="p">)</span><span class="o">.</span><span class="n">size</span><span class="o">.</span><span class="n">width</span> <span class="p">??</span> <span class="mf">0.0</span>
+            <span class="k">let</span> <span class="nv">titleLabelH</span><span class="p">:</span> <span class="kt">CGFloat</span> <span class="o">=</span> <span class="n">text</span><span class="p">?</span><span class="o">.</span><span class="nf">boundingRect</span><span class="p">(</span><span class="nv">with</span><span class="p">:</span> <span class="kt">CGSize</span><span class="p">(</span><span class="nv">width</span><span class="p">:</span> <span class="n">titleLabelW</span><span class="p">,</span> <span class="nv">height</span><span class="p">:</span> <span class="kt">CGFloat</span><span class="p">(</span><span class="kt">MAXFLOAT</span><span class="p">)),</span> <span class="nv">options</span><span class="p">:</span> <span class="kt">NSStringDrawingOptions</span><span class="o">.</span><span class="n">usesLineFragmentOrigin</span><span class="p">,</span> <span class="nv">attributes</span><span class="p">:</span> <span class="p">[</span><span class="kt">NSAttributedStringKey</span><span class="o">.</span><span class="nv">font</span> <span class="p">:</span> <span class="n">titleLabel</span><span class="o">.</span><span class="n">font</span><span class="p">],</span> <span class="nv">context</span><span class="p">:</span> <span class="kc">nil</span><span class="p">)</span><span class="o">.</span><span class="n">size</span><span class="o">.</span><span class="n">height</span> <span class="p">??</span> <span class="mf">0.0</span>
+            <span class="k">let</span> <span class="nv">imageViewW</span><span class="p">:</span> <span class="kt">CGFloat</span> <span class="o">=</span> <span class="n">imageView</span><span class="o">.</span><span class="n">image</span><span class="p">?</span><span class="o">.</span><span class="n">size</span><span class="o">.</span><span class="n">width</span> <span class="p">??</span> <span class="mf">0.0</span>
+            <span class="k">let</span> <span class="nv">imageViewH</span><span class="p">:</span> <span class="kt">CGFloat</span> <span class="o">=</span> <span class="n">imageView</span><span class="o">.</span><span class="n">image</span><span class="p">?</span><span class="o">.</span><span class="n">size</span><span class="o">.</span><span class="n">height</span> <span class="p">??</span> <span class="mf">0.0</span>
+            <span class="k">return</span> <span class="kt">CGSize</span><span class="p">(</span><span class="nv">width</span><span class="p">:</span> <span class="n">titleLabelW</span> <span class="o">+</span> <span class="n">imageViewW</span><span class="p">,</span> <span class="nv">height</span><span class="p">:</span> <span class="n">imageViewH</span> <span class="o">&gt;</span> <span class="n">titleLabelH</span> <span class="p">?</span> <span class="nv">imageViewH</span> <span class="p">:</span> <span class="n">titleLabelH</span><span class="p">)</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="n">backgroundImageView</span><span class="o">.</span><span class="n">image</span><span class="p">?</span><span class="o">.</span><span class="n">size</span> <span class="p">??</span> <span class="kt">CGSize</span><span class="o">.</span><span class="n">zero</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+</code></pre>
+</div>
+
+<p>3.布局时判断即可</p>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>    <span class="k">override</span> <span class="kd">func</span> <span class="nf">layoutSubviews</span><span class="p">()</span> <span class="p">{</span>
+        <span class="k">super</span><span class="o">.</span><span class="nf">layoutSubviews</span><span class="p">()</span>
+
+        <span class="k">if</span> <span class="n">createdFromNib</span> <span class="p">{</span>
+            <span class="n">frame</span><span class="o">.</span><span class="n">size</span> <span class="o">=</span> <span class="n">intrinsicContentSize</span>
+        <span class="p">}</span>
+        <span class="o">...</span>
+   <span class="p">}</span>
+</code></pre>
+</div>
+
+<p>4.测试一下, 不加sizetofit</p>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>        <span class="n">nib_button</span><span class="o">.</span><span class="n">layer</span><span class="o">.</span><span class="n">borderWidth</span> <span class="o">=</span> <span class="mi">1</span>
+        <span class="n">nib_button</span><span class="o">.</span><span class="n">layer</span><span class="o">.</span><span class="n">borderColor</span> <span class="o">=</span> <span class="kt">UIColor</span><span class="o">.</span><span class="n">black</span><span class="o">.</span><span class="n">cgColor</span>
+        
+        <span class="n">nib_button</span><span class="o">.</span><span class="nf">setTitle</span><span class="p">(</span><span class="s">"github.com/coderZsq"</span><span class="p">)</span>
+        <span class="n">nib_button</span><span class="o">.</span><span class="nf">setTitleColor</span><span class="p">(</span><span class="o">.</span><span class="n">red</span><span class="p">)</span>
+<span class="c1">//        nib_button.setTitleEdgeInsets(.zero)</span>
+        <span class="n">nib_button</span><span class="o">.</span><span class="nf">setImage</span><span class="p">(</span><span class="kt">UIImage</span><span class="p">(</span><span class="nv">named</span><span class="p">:</span> <span class="s">"avatar"</span><span class="p">)</span> <span class="p">??</span> <span class="kt">UIImage</span><span class="p">())</span>
+<span class="c1">//        nib_button.setBackgroundImage(UIImage(named: "avatar") ?? UIImage())</span>
+        <span class="n">nib_button</span><span class="o">.</span><span class="nf">setImageEdgeInsets</span><span class="p">(</span><span class="o">.</span><span class="n">zero</span><span class="p">)</span>
+</code></pre>
+</div>
+
+<p><img src="https://upload-images.jianshu.io/upload_images/11636671-734064598a696d1b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" width="375" style="margin: clear: both; display: block; margin:auto; 0;" /></p>
+
+<p>一样的完美, 攻克了<code class="highlighter-rouge">AutoLayout</code>, 接下来就是<code class="highlighter-rouge">EdgeInsets</code>啦~~~</p>
+
 <h4 id="美团面试题4-网络架构实现">美团面试题4 网络架构实现</h4>
 
 <p>这道题真是戳中我的软肋, 网络与多线程是我最为薄弱的地方, 现在对线程的理解应该已经不错了, 但是网络还是有所欠缺的, 所以, 我会在今后学习<code class="highlighter-rouge">Linux</code>和精读<code class="highlighter-rouge">AFNetWorking</code> &amp;&amp; <code class="highlighter-rouge">SDWebImage</code>后, 自己写一个网络架构来进行自我提升.</p>
@@ -1230,7 +1311,7 @@
             <section class="footer">
     <footer>
     	<span class="footer__copyright">本站点采用<a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">知识共享 署名-非商业性使用-相同方式共享 4.0 国际 许可协议</a></span>
-        <span class="footer__copyright">由 <a href="https://jekyllrb.com">Jekyll</a> 于 2018-04-14 生成，感谢 <a href="https://www.digitalocean.com/?refcode=30ed2d146762">Digital Ocean</a> 为本站提供稳定的 VPS 服务</span>
+        <span class="footer__copyright">由 <a href="https://jekyllrb.com">Jekyll</a> 于 2018-04-19 生成，感谢 <a href="https://www.digitalocean.com/?refcode=30ed2d146762">Digital Ocean</a> 为本站提供稳定的 VPS 服务</span>
         <span class="footer__copyright">本站由 <a href="https://github.com/coderZsq">@Castie!</a> 创建，采用 <a href="https://github.com/onevcat/vno-jekyll">Vno - Jekyll</a> 作为主题，您可以在 GitHub 找到<a href="https://github.com/onevcat/OneV-s-Den">本站源码</a> - &copy; 2018</span>
     </footer>
 </section>
