@@ -5,8 +5,8 @@
     <description>北冥有鱼，其名为鲲（kūn）。鲲之大，不知其几千里也；化而为鸟，其名为鹏。鹏之背，不知其几千里也；怒而飞，其翼若垂天之云。是鸟也，海运则将徙于南冥。南冥者，天池也。</description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Thu, 19 Apr 2018 15:59:47 +0800</pubDate>
-    <lastBuildDate>Thu, 19 Apr 2018 15:59:47 +0800</lastBuildDate>
+    <pubDate>Fri, 20 Apr 2018 17:17:10 +0800</pubDate>
+    <lastBuildDate>Fri, 20 Apr 2018 17:17:10 +0800</lastBuildDate>
     <generator>Jekyll v3.4.0</generator>
     
       <item>
@@ -1123,6 +1123,14 @@
 &lt;p&gt;&lt;img src=&quot;https://upload-images.jianshu.io/upload_images/11636671-734064598a696d1b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; width=&quot;375&quot; style=&quot;margin: clear: both; display: block; margin:auto; 0;&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;一样的完美, 攻克了&lt;code class=&quot;highlighter-rouge&quot;&gt;AutoLayout&lt;/code&gt;, 接下来就是&lt;code class=&quot;highlighter-rouge&quot;&gt;EdgeInsets&lt;/code&gt;啦~~~&lt;/p&gt;
+
+&lt;h5 id=&quot;update3&quot;&gt;update3&lt;/h5&gt;
+
+&lt;p&gt;一直理解错了, &lt;code class=&quot;highlighter-rouge&quot;&gt;intrinsicContentSize &lt;/code&gt;这个方法是在添加约束后生效, 不管是&lt;code class=&quot;highlighter-rouge&quot;&gt;nib&lt;/code&gt;还是&lt;code class=&quot;highlighter-rouge&quot;&gt;手动约束&lt;/code&gt;, 都会生效.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://upload-images.jianshu.io/upload_images/11636671-490db95b24a79dc1.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;所以&lt;code class=&quot;highlighter-rouge&quot;&gt;update2&lt;/code&gt;中只需实现第二步即可, 并不需要其他的判断.&lt;/p&gt;
 
 &lt;h4 id=&quot;美团面试题4-网络架构实现&quot;&gt;美团面试题4 网络架构实现&lt;/h4&gt;
 
