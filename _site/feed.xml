@@ -5,12 +5,12 @@
     <description>北冥有鱼，其名为鲲（kūn）。鲲之大，不知其几千里也；化而为鸟，其名为鹏。鹏之背，不知其几千里也；怒而飞，其翼若垂天之云。是鸟也，海运则将徙于南冥。南冥者，天池也。</description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Fri, 20 Apr 2018 17:17:10 +0800</pubDate>
-    <lastBuildDate>Fri, 20 Apr 2018 17:17:10 +0800</lastBuildDate>
+    <pubDate>Fri, 20 Apr 2018 19:31:10 +0800</pubDate>
+    <lastBuildDate>Fri, 20 Apr 2018 19:31:10 +0800</lastBuildDate>
     <generator>Jekyll v3.4.0</generator>
     
       <item>
-        <title>Swift 美团iOS面试败北感悟</title>
+        <title>Swift 第二梯队iOS面试败北感悟</title>
         <description>&lt;blockquote&gt;
   &lt;p&gt;GitHub Repo：&lt;a href=&quot;https://github.com/coderZsq/coderZsq.target.swift&quot;&gt;coderZsq.target.swift&lt;/a&gt;
 &lt;br /&gt;Follow: &lt;a href=&quot;https://github.com/coderZsq&quot;&gt;coderZsq · GitHub&lt;/a&gt;
@@ -46,7 +46,7 @@
 
 &lt;p&gt;现在想想, 这TM才是面试&lt;code class=&quot;highlighter-rouge&quot;&gt;iOS&lt;/code&gt;啊, 只可惜, 那时候并不具备这些知识, 可惜了了. 之后我就对&lt;code class=&quot;highlighter-rouge&quot;&gt;C++&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;ASM&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;Linux&lt;/code&gt;, 这三方面进行了学习, 也学习了些&lt;code class=&quot;highlighter-rouge&quot;&gt;MACH-O&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;逆向&lt;/code&gt;的相关的知识, 以备后面的面试机会.&lt;/p&gt;
 
-&lt;p&gt;第三次就是&lt;code class=&quot;highlighter-rouge&quot;&gt;这周三&lt;/code&gt;面试&lt;code class=&quot;highlighter-rouge&quot;&gt;美团&lt;/code&gt;了, 我准备了所有我能够准备的面试题内容, &lt;code class=&quot;highlighter-rouge&quot;&gt;底层原理&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;逆向安全&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;多线程与锁&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;内存布局&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;UI性能优化&lt;/code&gt;等, 果不其然, 足足&lt;code class=&quot;highlighter-rouge&quot;&gt;1个小时&lt;/code&gt;的电话面试, 我轻松通过, 问的就是些我准备好的&lt;code class=&quot;highlighter-rouge&quot;&gt;底层知识&lt;/code&gt;, 让我觉得机会终于来了, 可是…. 当我现场面试后… 题目全部是上机题…&lt;/p&gt;
+&lt;p&gt;第三次就是&lt;code class=&quot;highlighter-rouge&quot;&gt;这周三&lt;/code&gt;面试&lt;code class=&quot;highlighter-rouge&quot;&gt;第二梯队&lt;/code&gt;了, 我准备了所有我能够准备的面试题内容, &lt;code class=&quot;highlighter-rouge&quot;&gt;底层原理&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;逆向安全&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;多线程与锁&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;内存布局&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;UI性能优化&lt;/code&gt;等, 果不其然, 足足&lt;code class=&quot;highlighter-rouge&quot;&gt;1个小时&lt;/code&gt;的电话面试, 我轻松通过, 问的就是些我准备好的&lt;code class=&quot;highlighter-rouge&quot;&gt;底层知识&lt;/code&gt;, 让我觉得机会终于来了, 可是…. 当我现场面试后… 题目全部是上机题…&lt;/p&gt;
 
 &lt;ol&gt;
   &lt;li&gt;设计一个网络框架, 如何进行不同数据解析的设计(header, body), 并能够进行自定义, 重连机制如何处理, 状态码错误转发机制的处理, 如何避免回调地狱, 实现&lt;code class=&quot;highlighter-rouge&quot;&gt;Promise&lt;/code&gt;的自实现.&lt;/li&gt;
@@ -61,7 +61,7 @@
 
 &lt;p&gt;有了这次的面试经验后, 我的策略也发生了改变, 不再追求大公司的光环了, 做人&lt;code class=&quot;highlighter-rouge&quot;&gt;开心一点&lt;/code&gt;不好么, 非要&lt;code class=&quot;highlighter-rouge&quot;&gt;像机器一样思考&lt;/code&gt;? &lt;code class=&quot;highlighter-rouge&quot;&gt;活的像个算法&lt;/code&gt;一样是不是感觉缺少了些重要的东西? 和朋友们&lt;code class=&quot;highlighter-rouge&quot;&gt;吹吹牛逼&lt;/code&gt;的日子不快活么, 偏要用功学习? 这里想到了最近听到的两句话, &lt;code class=&quot;highlighter-rouge&quot;&gt;最好的产品体验就是要让用户不用思考&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;认知即痛苦, 无知即极乐&lt;/code&gt;, 人真是矛盾, 价值观的一念之差, 差之毫厘失之千里啊….&lt;/p&gt;
 
-&lt;h4 id=&quot;美团面试题1-自实现powdouble-double&quot;&gt;美团面试题1 自实现pow(double, double)&lt;/h4&gt;
+&lt;h4 id=&quot;第二梯队面试题1-自实现powdouble-double&quot;&gt;第二梯队面试题1 自实现pow(double, double)&lt;/h4&gt;
 
 &lt;p&gt;这道题目上机的时候非常的蒙, 因为幂是&lt;code class=&quot;highlighter-rouge&quot;&gt;double&lt;/code&gt;, 完全不知道如何下手, 面试官就降低难度使用整型.&lt;/p&gt;
 
@@ -134,7 +134,7 @@
 
 &lt;p&gt;这个仅仅是加了一个负值判断…. 但是幂是&lt;code class=&quot;highlighter-rouge&quot;&gt;double&lt;/code&gt;的仍然是毫无头绪, 需要请大佬和大神&lt;code class=&quot;highlighter-rouge&quot;&gt;不吝赐教&lt;/code&gt;.&lt;/p&gt;
 
-&lt;h4 id=&quot;美团面试题2-findmediansortedarrays&quot;&gt;美团面试题2 findMedianSortedArrays&lt;/h4&gt;
+&lt;h4 id=&quot;第二梯队面试题2-findmediansortedarrays&quot;&gt;第二梯队面试题2 findMedianSortedArrays&lt;/h4&gt;
 
 &lt;p&gt;这是一道LeetCode的原题, 但是我至今还没有刷过算法题库… 也是平生第一次面试的时候遇到算法题. 题目的意思是找到两个排序数组的中位数.&lt;/p&gt;
 
@@ -351,7 +351,7 @@
 
 &lt;p&gt;沿着霜神的思路和面试官给的提示, 给出了上面的算法, 但是&lt;code class=&quot;highlighter-rouge&quot;&gt;解法3&lt;/code&gt;的数量级是相同的&lt;/p&gt;
 
-&lt;h4 id=&quot;美团面试题3-uicontorl---uibutton&quot;&gt;美团面试题3 UIContorl -&amp;gt; UIButton&lt;/h4&gt;
+&lt;h4 id=&quot;第二梯队面试题3-uicontorl---uibutton&quot;&gt;第二梯队面试题3 UIContorl -&amp;gt; UIButton&lt;/h4&gt;
 
 &lt;div class=&quot;language-swift highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;protocol&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;ButtonInterface&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
     &lt;span class=&quot;kd&quot;&gt;func&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;setTitle&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;_&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;title&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;String&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
@@ -1132,11 +1132,11 @@
 
 &lt;p&gt;所以&lt;code class=&quot;highlighter-rouge&quot;&gt;update2&lt;/code&gt;中只需实现第二步即可, 并不需要其他的判断.&lt;/p&gt;
 
-&lt;h4 id=&quot;美团面试题4-网络架构实现&quot;&gt;美团面试题4 网络架构实现&lt;/h4&gt;
+&lt;h4 id=&quot;第二梯队面试题4-网络架构实现&quot;&gt;第二梯队面试题4 网络架构实现&lt;/h4&gt;
 
 &lt;p&gt;这道题真是戳中我的软肋, 网络与多线程是我最为薄弱的地方, 现在对线程的理解应该已经不错了, 但是网络还是有所欠缺的, 所以, 我会在今后学习&lt;code class=&quot;highlighter-rouge&quot;&gt;Linux&lt;/code&gt;和精读&lt;code class=&quot;highlighter-rouge&quot;&gt;AFNetWorking&lt;/code&gt; &amp;amp;&amp;amp; &lt;code class=&quot;highlighter-rouge&quot;&gt;SDWebImage&lt;/code&gt;后, 自己写一个网络架构来进行自我提升.&lt;/p&gt;
 
-&lt;h4 id=&quot;美团面试总结&quot;&gt;美团面试总结&lt;/h4&gt;
+&lt;h4 id=&quot;第二梯队面试总结&quot;&gt;第二梯队面试总结&lt;/h4&gt;
 
 &lt;p&gt;对于两道算法题, 我没有什么太多想讲的, &lt;code class=&quot;highlighter-rouge&quot;&gt;技不如人吧&lt;/code&gt;, 可是算法题这种东西在&lt;code class=&quot;highlighter-rouge&quot;&gt;iOS&lt;/code&gt;上用处其实不是很大, 我就不信那些没有刷过算法题的同学, 面对一道从没有见过的算法题能够一下子&lt;code class=&quot;highlighter-rouge&quot;&gt;从容&lt;/code&gt;的写出&lt;code class=&quot;highlighter-rouge&quot;&gt;最优解&lt;/code&gt;的. 还有就是&lt;code class=&quot;highlighter-rouge&quot;&gt;UI&lt;/code&gt;的那道题目, 坑吧, 谁会去放着好好的现成的不用, 去恶心自己, 还一定要一样… 我都问过面试官好几遍, 到底想要做什么功能… 回答只有, 我不在乎你怎么写, 只要和系统的一样就好了…. 产品附体了么….&lt;/p&gt;
 
@@ -1151,8 +1151,8 @@
 
 </description>
         <pubDate>Sat, 14 Apr 2018 01:16:00 +0800</pubDate>
-        <link>http://localhost:4000/2018/04/Swift-%E7%BE%8E%E5%9B%A2iOS%E9%9D%A2%E8%AF%95%E8%B4%A5%E5%8C%97%E6%84%9F%E6%82%9F/</link>
-        <guid isPermaLink="true">http://localhost:4000/2018/04/Swift-%E7%BE%8E%E5%9B%A2iOS%E9%9D%A2%E8%AF%95%E8%B4%A5%E5%8C%97%E6%84%9F%E6%82%9F/</guid>
+        <link>http://localhost:4000/2018/04/Swift-%E7%AC%AC%E4%BA%8C%E6%A2%AF%E9%98%9FiOS%E9%9D%A2%E8%AF%95%E8%B4%A5%E5%8C%97%E6%84%9F%E6%82%9F/</link>
+        <guid isPermaLink="true">http://localhost:4000/2018/04/Swift-%E7%AC%AC%E4%BA%8C%E6%A2%AF%E9%98%9FiOS%E9%9D%A2%E8%AF%95%E8%B4%A5%E5%8C%97%E6%84%9F%E6%82%9F/</guid>
         
         <category>移动开发</category>
         
