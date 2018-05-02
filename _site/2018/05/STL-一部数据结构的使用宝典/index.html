@@ -1,0 +1,1492 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <title>Castie! Notes</title>
+  <meta name="description" content="  GitHub Repo：coderZsq.github.ioFollow: coderZsq · GitHubResume: https://coderzsq.github.io/coderZsq.webpack.js/#/">
+  <meta name="author" content="Wei Wang">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="STL 一部数据结构的使用宝典">
+  <meta name="twitter:description" content="  GitHub Repo：coderZsq.github.ioFollow: coderZsq · GitHubResume: https://coderzsq.github.io/coderZsq.webpack.js/#/">
+  
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="STL 一部数据结构的使用宝典">
+  <meta property="og:description" content="  GitHub Repo：coderZsq.github.ioFollow: coderZsq · GitHubResume: https://coderzsq.github.io/coderZsq.webpack.js/#/">
+  
+  <link rel="icon" type="image/ico" href="/assets/images/favicon.ico" />
+  <link href="/assets/images/favicon.ico" rel="shortcut icon" type="image/ico">
+  
+  <link rel="stylesheet" href="/css/main.css">
+  <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+
+  <link rel="canonical" href="http://localhost:4000/2018/05/STL-%E4%B8%80%E9%83%A8%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E7%9A%84%E4%BD%BF%E7%94%A8%E5%AE%9D%E5%85%B8/">
+  <link rel="alternate" type="application/rss+xml" title="Castie!" href="http://localhost:4000/feed.xml">
+  
+  <meta name="google-site-verification" content="1-1ZlHoRvM0T2FqPbW2S-qLgYXN6rsn52kErlMPd_gw" />
+  
+</head>
+
+
+  <body>
+
+    <span class="mobile btn-mobile-menu">
+        <i class="fa fa-list btn-mobile-menu__icon"></i>
+        <i class="fa fa-angle-up btn-mobile-close__icon hidden"></i>
+    </span>
+    
+    <header class="panel-cover panel-cover--collapsed" style="background-image: url('/assets/images/background-cover.jpg')">
+  <div class="panel-main">
+
+    <div class="panel-main__inner panel-inverted">
+    <div class="panel-main__content">
+
+        <a href="/#blog" title="前往 Castie! 的主页" class="blog-button"><img src="/assets/images/avatar.jpg" width="80" alt="Castie! logo" class="panel-cover__logo logo" /></a>
+        <h1 class="panel-cover__title panel-title"><a href="/#blog" title="link to homepage for Castie!" class="blog-button">Castie!</a></h1>
+        
+        <span class="panel-cover__subtitle panel-subtitle">正态分布, 优劣伴生</span>
+        
+        <hr class="panel-cover__divider" />
+        <p class="panel-cover__description">北冥有鱼，其名为鲲（kūn）。鲲之大，不知其几千里也；化而为鸟，其名为鹏。鹏之背，不知其几千里也；怒而飞，其翼若垂天之云。是鸟也，海运则将徙于南冥。南冥者，天池也。</p>
+        <hr class="panel-cover__divider panel-cover__divider--secondary" />
+        
+        
+        <p class="panel-cover__description">北海若曰：“井鼃不可以语于海者，拘于虚也；夏虫不可以语于冰者，笃于时也；曲士不可以语于道者，束于教也。今尔出于崖涘，观于大海，乃知尔丑，尔将可与语大理矣。</p>
+        
+        
+        <div class="navigation-wrapper">
+          <div>
+            <nav class="cover-navigation cover-navigation--primary">
+              <ul class="navigation">
+                <li class="navigation__item"><a href="/#blog" title="访问博客" class="blog-button">博客</a></li>
+                
+                  <li class="navigation__item"><a href="https://coderzsq.github.io/coderZsq.webpack.js/" target="_blank" title="我的简历">简历</a></li>
+                
+              </ul>
+            </nav>
+          </div>
+          
+          <div><nav class="cover-navigation navigation--social">
+  <ul class="navigation">
+
+    
+    <!-- jianshu-->
+    <li class="navigation__item">
+      <a href="http://www.jianshu.com/u/9d7fad1a4693" title="@coderZsq 的简书" target="_blank">
+        <i class='social fa fa-book'></i>
+        <span class="label">jianshu</span>
+      </a>
+    </li>
+    
+
+    
+    <!-- juejin-->
+    <li class="navigation__item">
+      <a href="https://juejin.im/user/57e735dfa22b9d00614eecb8" title="@coderZsq 的稀土掘金" target="_blank">
+        <i class='social fa fa-align-center'></i>
+        <span class="label">juejin</span>
+      </a>
+    </li>
+    
+
+  
+
+  
+  <!-- Github -->
+  <li class="navigation__item">
+    <a href="https://github.com/coderZsq" title="@coderZsq 的 Github" target="_blank">
+      <i class='social fa fa-github'></i>
+      <span class="label">Github</span>
+    </a>
+  </li>
+  
+
+  
+
+  
+
+  <!-- RSS -->
+  <li class="navigation__item">
+    <a href="/feed.xml" rel="author" title="RSS" target="_blank">
+      <i class='social fa fa-rss'></i>
+      <span class="label">RSS</span>
+    </a>
+  </li>
+
+  
+  <!-- Email -->
+  <li class="navigation__item">
+    <a href="mailto:a13701777868@gmail.com" title="Contact me">
+      <i class='social fa fa-envelope'></i>
+      <span class="label">Email</span>
+    </a>
+  </li>
+  
+
+  </ul>
+</nav>
+</div>
+        </div>
+      </div>
+    </div>
+    
+    
+    <div class="panel-cover--overlay cover-slate"></div>
+    
+  </div>
+</header>
+
+
+    <div class="content-wrapper">
+        <div class="content-wrapper__inner">
+            <article class="post-container post-container--single" itemscope itemtype="http://schema.org/BlogPosting">
+  <header class="post-header">
+    <div class="post-meta">
+      <time datetime="2018-05-02 17:08:00 +0800" itemprop="datePublished" class="post-meta__date date">2018-05-02</time> &#8226; <span class="post-meta__tags tags">移动开发</span>
+    </div>
+    <h1 class="post-title">STL 一部数据结构的使用宝典</h1>
+  </header>
+
+  <section class="post">
+    <blockquote>
+  <p>GitHub Repo：<a href="https://github.com/coderZsq/coderZsq.github.io">coderZsq.github.io</a>
+<br />Follow: <a href="https://github.com/coderZsq">coderZsq · GitHub</a>
+<br />Resume: <a href="https://coderzsq.github.io/coderZsq.webpack.js/#/">https://coderzsq.github.io/coderZsq.webpack.js/#/</a></p>
+</blockquote>
+
+<h4 id="日常扯淡">日常扯淡</h4>
+
+<p>一些STL的代码片段, 记录而已.</p>
+
+<h4 id="c-作者的建议">C++ 作者的建议</h4>
+
+<ol>
+  <li>在C++中几乎不需要用宏, 用const和enum定义显式的常量, 用inline避免函数调用的额外开销, 用模板去刻画一组函数或类型, 用namespace去避免命名冲突.</li>
+  <li>不要在你需要变量之前去声明, 以保证你能立即对它进行初始化.</li>
+  <li>不要用malloc, new运算会做的更好.</li>
+  <li>避免使用void*, 指针算数, 联合和强制, 大多数情况下, 强制类型转换是设计错误的指示器.</li>
+  <li>尽量少用数组和C风格的字符串, 标准库中的string和vector可以简化程序.</li>
+  <li>更加重要的是, 试着将程序考虑为一组由类和对象表示的互相作用的概念年, 而不是一堆数据结构和一些可以拨弄的二进制.</li>
+</ol>
+
+<h4 id="stl">STL</h4>
+
+<div class="language-cpp highlighter-rouge"><pre class="highlight"><code><span class="cp">#include &lt;iostream&gt;
+#include &lt;vector&gt;
+#include &lt;algorithm&gt;
+#include &lt;functional&gt;
+</span>
+<span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">Compare</span> <span class="p">{</span>
+<span class="k">public</span><span class="o">:</span>
+    <span class="kt">bool</span> <span class="k">operator</span><span class="p">()(</span><span class="kt">int</span> <span class="n">i</span><span class="p">,</span> <span class="kt">int</span> <span class="n">j</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">j</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">};</span>
+
+<span class="k">class</span> <span class="nc">myCompare</span> <span class="p">{</span>
+<span class="k">public</span><span class="o">:</span>
+    <span class="kt">bool</span> <span class="k">operator</span><span class="p">()(</span><span class="kt">int</span> <span class="o">&amp;</span> <span class="n">v</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="n">v</span> <span class="o">&gt;</span> <span class="mi">5</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">};</span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">int</span> <span class="n">argc</span><span class="p">,</span> <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span> <span class="n">argv</span><span class="p">[])</span> <span class="p">{</span>
+
+
+    <span class="kt">int</span> <span class="n">arr</span><span class="p">[</span><span class="mi">10</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">10</span><span class="p">};</span>
+    <span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="p">,</span> <span class="n">allocator</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;&gt;</span> <span class="n">vi</span><span class="p">;</span>
+    <span class="n">vi</span><span class="p">.</span><span class="n">assign</span><span class="p">(</span><span class="n">arr</span><span class="p">,</span> <span class="n">arr</span><span class="o">+</span><span class="mi">10</span><span class="p">);</span>
+    
+    <span class="kt">int</span> <span class="o">*</span><span class="n">p</span><span class="p">;</span>
+    <span class="k">for</span> <span class="p">(</span><span class="n">p</span> <span class="o">=</span> <span class="n">arr</span><span class="p">;</span> <span class="n">p</span> <span class="o">!=</span> <span class="n">arr</span><span class="o">+</span><span class="mi">10</span><span class="p">;</span> <span class="n">p</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">cout</span><span class="o">&lt;&lt;*</span><span class="n">p</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
+    <span class="p">}</span>
+    
+    <span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="p">,</span> <span class="n">allocator</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;&gt;::</span><span class="n">iterator</span> <span class="n">itr</span><span class="p">;</span>
+    <span class="k">for</span> <span class="p">(</span><span class="n">itr</span> <span class="o">=</span> <span class="n">vi</span><span class="p">.</span><span class="n">begin</span><span class="p">();</span> <span class="n">itr</span> <span class="o">!=</span> <span class="n">vi</span><span class="p">.</span><span class="n">end</span><span class="p">();</span> <span class="o">++</span><span class="n">itr</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">cout</span><span class="o">&lt;&lt;*</span><span class="n">itr</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
+    <span class="p">}</span>
+    
+    <span class="n">sort</span><span class="p">(</span><span class="n">vi</span><span class="p">.</span><span class="n">begin</span><span class="p">(),</span> <span class="n">vi</span><span class="p">.</span><span class="n">end</span><span class="p">(),</span> <span class="n">Compare</span><span class="p">());</span>
+    <span class="k">for</span> <span class="p">(</span><span class="k">auto</span> <span class="o">&amp;</span> <span class="n">i</span><span class="o">:</span> <span class="n">vi</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">cout</span><span class="o">&lt;&lt;</span><span class="n">i</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
+    <span class="p">}</span>
+    
+<span class="c1">//    int count = count_if(vi.begin(), vi.end(),myCompare());
+</span>    
+    <span class="kt">int</span> <span class="n">count</span> <span class="o">=</span> <span class="n">count_if</span><span class="p">(</span><span class="n">vi</span><span class="p">.</span><span class="n">begin</span><span class="p">(),</span> <span class="n">vi</span><span class="p">.</span><span class="n">end</span><span class="p">(),</span><span class="n">bind</span><span class="p">(</span><span class="n">greater</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="p">(),</span> <span class="n">std</span><span class="o">::</span><span class="n">placeholders</span><span class="o">::</span><span class="n">_1</span><span class="p">,</span><span class="mi">5</span><span class="p">));</span>
+    <span class="n">cout</span><span class="o">&lt;&lt;</span><span class="s">"count = "</span><span class="o">&lt;&lt;</span><span class="n">count</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
+    
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="p">}</span>
+
+</code></pre>
+</div>
+
+<h4 id="container">Container</h4>
+
+<div class="language-cpp highlighter-rouge"><pre class="highlight"><code><span class="k">class</span> <span class="nc">A</span> <span class="p">{</span>
+<span class="k">public</span><span class="o">:</span>
+    <span class="n">A</span><span class="p">()</span> <span class="p">{</span>
+        <span class="n">cout</span><span class="o">&lt;&lt;</span><span class="s">"无参构造函数 "</span><span class="o">&lt;&lt;</span><span class="k">this</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="n">A</span><span class="p">(</span><span class="kt">int</span> <span class="n">d</span> <span class="o">=</span> <span class="mi">100</span><span class="p">)</span><span class="o">:</span><span class="n">_data</span><span class="p">(</span><span class="n">d</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">cout</span><span class="o">&lt;&lt;</span><span class="s">"有参构造函数 "</span><span class="o">&lt;&lt;</span><span class="k">this</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="o">~</span><span class="n">A</span><span class="p">()</span> <span class="p">{</span>
+        <span class="n">cout</span><span class="o">&lt;&lt;</span><span class="s">"析构函数 "</span><span class="o">&lt;&lt;</span><span class="k">this</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="n">A</span><span class="p">(</span><span class="k">const</span> <span class="n">A</span> <span class="o">&amp;</span> <span class="n">another</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">cout</span><span class="o">&lt;&lt;</span><span class="k">this</span><span class="o">&lt;&lt;</span><span class="s">" 构造拷贝自 "</span><span class="o">&lt;&lt;&amp;</span><span class="n">another</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="n">A</span> <span class="o">&amp;</span> <span class="k">operator</span><span class="o">=</span><span class="p">(</span><span class="k">const</span> <span class="n">A</span> <span class="o">&amp;</span> <span class="n">another</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">cout</span><span class="o">&lt;&lt;</span><span class="k">this</span><span class="o">&lt;&lt;</span><span class="s">" 赋值拷贝自 "</span><span class="o">&lt;&lt;&amp;</span><span class="n">another</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
+        <span class="k">return</span> <span class="o">*</span><span class="k">this</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="kt">int</span> <span class="n">getData</span><span class="p">()</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="n">_data</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="kt">void</span> <span class="n">setData</span><span class="p">(</span><span class="kt">int</span> <span class="n">d</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">_data</span> <span class="o">=</span> <span class="n">d</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="k">private</span><span class="o">:</span>
+    <span class="kt">int</span> <span class="n">_data</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">int</span> <span class="n">argc</span><span class="p">,</span> <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span> <span class="n">argv</span><span class="p">[])</span> <span class="p">{</span>
+
+    <span class="n">A</span> <span class="n">a</span><span class="p">(</span><span class="mi">10</span><span class="p">);</span>
+    <span class="n">cout</span><span class="o">&lt;&lt;</span><span class="n">a</span><span class="p">.</span><span class="n">getData</span><span class="p">()</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
+    <span class="p">{</span>
+        <span class="n">vector</span><span class="o">&lt;</span><span class="n">A</span><span class="o">&gt;</span> <span class="n">va</span><span class="p">;</span>
+        <span class="n">va</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span><span class="n">a</span><span class="p">);</span>
+        <span class="n">va</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="n">setData</span><span class="p">(</span><span class="mi">20</span><span class="p">);</span>
+        <span class="n">cout</span><span class="o">&lt;&lt;</span><span class="n">va</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="n">getData</span><span class="p">()</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="n">cout</span><span class="o">&lt;&lt;</span><span class="n">a</span><span class="p">.</span><span class="n">getData</span><span class="p">()</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
+    <span class="n">cout</span><span class="o">&lt;&lt;</span><span class="s">"++++++++++++++++++"</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
+
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<h4 id="vector">Vector</h4>
+
+<div class="language-cpp highlighter-rouge"><pre class="highlight"><code><span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">int</span> <span class="n">argc</span><span class="p">,</span> <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span> <span class="n">argv</span><span class="p">[])</span> <span class="p">{</span>
+
+    <span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">vi</span> <span class="o">=</span> <span class="p">{</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">10</span><span class="p">};</span>
+<span class="c">#if 0
+    cout&lt;&lt;"front "&lt;&lt;vi.front()&lt;&lt;endl;
+    cout&lt;&lt;"end   "&lt;&lt;vi.back()&lt;&lt;endl;
+    vi.push_back(100);
+    vi.pop_back();
+    cout&lt;&lt;"front "&lt;&lt;vi.front()&lt;&lt;endl;
+    cout&lt;&lt;"end   "&lt;&lt;vi.back()&lt;&lt;endl;
+
+    vi.insert(vi.begin(), 10000);
+    cout&lt;&lt;"front "&lt;&lt;vi.front()&lt;&lt;endl;
+    cout&lt;&lt;"end   "&lt;&lt;vi.back()&lt;&lt;endl;
+#endif
+</span>    <span class="n">vi</span><span class="p">.</span><span class="n">erase</span><span class="p">(</span><span class="n">vi</span><span class="p">.</span><span class="n">end</span><span class="p">()</span> <span class="o">-</span> <span class="mi">1</span><span class="p">);</span>
+    <span class="n">cout</span><span class="o">&lt;&lt;</span><span class="s">"front "</span><span class="o">&lt;&lt;</span><span class="n">vi</span><span class="p">.</span><span class="n">front</span><span class="p">()</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
+    <span class="n">cout</span><span class="o">&lt;&lt;</span><span class="s">"end   "</span><span class="o">&lt;&lt;</span><span class="n">vi</span><span class="p">.</span><span class="n">back</span><span class="p">()</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
+    
+    <span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;::</span><span class="n">iterator</span> <span class="n">itr</span><span class="p">;</span>
+    <span class="k">for</span> <span class="p">(</span><span class="n">itr</span> <span class="o">=</span> <span class="n">vi</span><span class="p">.</span><span class="n">begin</span><span class="p">();</span> <span class="n">itr</span> <span class="o">!=</span> <span class="n">vi</span><span class="p">.</span><span class="n">end</span><span class="p">();</span> <span class="o">++</span><span class="n">itr</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">cout</span><span class="o">&lt;&lt;*</span><span class="n">itr</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<div class="language-cpp highlighter-rouge"><pre class="highlight"><code><span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">int</span> <span class="n">argc</span><span class="p">,</span> <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span> <span class="n">argv</span><span class="p">[])</span> <span class="p">{</span>
+
+<span class="c1">//    vector&lt;int&gt; vi(10, 2);
+//    vector&lt;int&gt; vi {1, 2, 3, 4, 5, 6, 7};
+</span>    <span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">vi</span> <span class="o">=</span> <span class="p">{</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">};</span>
+    <span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">vi2</span><span class="p">(</span><span class="n">vi</span><span class="p">);</span>
+    <span class="n">cout</span><span class="o">&lt;&lt;</span><span class="n">vi2</span><span class="p">.</span><span class="n">size</span><span class="p">()</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
+    
+    <span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;::</span><span class="n">iterator</span> <span class="n">itr</span><span class="p">;</span>
+    <span class="k">for</span> <span class="p">(</span><span class="n">itr</span> <span class="o">=</span> <span class="n">vi2</span><span class="p">.</span><span class="n">begin</span><span class="p">();</span> <span class="n">itr</span> <span class="o">!=</span> <span class="n">vi2</span><span class="p">.</span><span class="n">end</span><span class="p">();</span> <span class="o">++</span><span class="n">itr</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">cout</span><span class="o">&lt;&lt;*</span><span class="n">itr</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
+    <span class="p">}</span>
+    
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<div class="language-cpp highlighter-rouge"><pre class="highlight"><code><span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">int</span> <span class="n">argc</span><span class="p">,</span> <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span> <span class="n">argv</span><span class="p">[])</span> <span class="p">{</span>
+
+    <span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">vi</span><span class="p">;</span>
+    <span class="n">cout</span><span class="o">&lt;&lt;</span><span class="n">vi</span><span class="p">.</span><span class="n">size</span><span class="p">()</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">vi</span><span class="p">.</span><span class="n">empty</span><span class="p">())</span> <span class="p">{</span>
+        <span class="n">cout</span><span class="o">&lt;&lt;</span><span class="s">"is empty"</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="n">vi</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span><span class="mi">10</span><span class="p">);</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">vi</span><span class="p">.</span><span class="n">empty</span><span class="p">())</span> <span class="p">{</span>
+        <span class="n">cout</span><span class="o">&lt;&lt;</span><span class="s">"is empty"</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="n">cout</span><span class="o">&lt;&lt;</span><span class="n">vi</span><span class="p">.</span><span class="n">max_size</span><span class="p">()</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
+
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<div class="language-cpp highlighter-rouge"><pre class="highlight"><code><span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">int</span> <span class="n">argc</span><span class="p">,</span> <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span> <span class="n">argv</span><span class="p">[])</span> <span class="p">{</span>
+
+    <span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">vi</span><span class="p">;</span>
+    <span class="n">vi</span><span class="p">.</span><span class="n">reserve</span><span class="p">(</span><span class="mi">10</span><span class="p">);</span>
+    <span class="n">cout</span><span class="o">&lt;&lt;</span><span class="s">"size: "</span><span class="o">&lt;&lt;</span><span class="n">vi</span><span class="p">.</span><span class="n">size</span><span class="p">()</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
+    <span class="n">cout</span><span class="o">&lt;&lt;</span><span class="s">"capacity: "</span><span class="o">&lt;&lt;</span><span class="n">vi</span><span class="p">.</span><span class="n">capacity</span><span class="p">()</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
+    <span class="n">vi</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+    <span class="n">cout</span><span class="o">&lt;&lt;</span><span class="s">"size: "</span><span class="o">&lt;&lt;</span><span class="n">vi</span><span class="p">.</span><span class="n">size</span><span class="p">()</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
+    <span class="n">cout</span><span class="o">&lt;&lt;</span><span class="s">"capacity: "</span><span class="o">&lt;&lt;</span><span class="n">vi</span><span class="p">.</span><span class="n">capacity</span><span class="p">()</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
+    <span class="n">vi</span><span class="p">.</span><span class="n">shrink_to_fit</span><span class="p">();</span>
+    <span class="n">cout</span><span class="o">&lt;&lt;</span><span class="s">"size: "</span><span class="o">&lt;&lt;</span><span class="n">vi</span><span class="p">.</span><span class="n">size</span><span class="p">()</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
+    <span class="n">cout</span><span class="o">&lt;&lt;</span><span class="s">"capacity: "</span><span class="o">&lt;&lt;</span><span class="n">vi</span><span class="p">.</span><span class="n">capacity</span><span class="p">()</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
+    
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<div class="language-cpp highlighter-rouge"><pre class="highlight"><code><span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">int</span> <span class="n">argc</span><span class="p">,</span> <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span> <span class="n">argv</span><span class="p">[])</span> <span class="p">{</span>
+
+    <span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">vi</span> <span class="o">=</span> <span class="p">{</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">};</span>
+    <span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">vi2</span> <span class="o">=</span> <span class="p">{</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">4</span><span class="p">};</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">vi</span> <span class="o">==</span> <span class="n">vi2</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">cout</span><span class="o">&lt;&lt;</span><span class="s">"=="</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+        <span class="n">cout</span><span class="o">&lt;&lt;</span><span class="s">"!="</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">vi</span> <span class="o">&gt;</span> <span class="n">vi2</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">cout</span><span class="o">&lt;&lt;</span><span class="s">"&gt;"</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+        <span class="n">cout</span><span class="o">&lt;&lt;</span><span class="s">"&lt;"</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
+    <span class="p">}</span>
+    
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<div class="language-cpp highlighter-rouge"><pre class="highlight"><code><span class="c1">//能用容器内部的算法, 不要用std::的算法
+</span>
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">int</span> <span class="n">argc</span><span class="p">,</span> <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span> <span class="n">argv</span><span class="p">[])</span> <span class="p">{</span>
+
+    <span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">vi</span><span class="p">;</span>
+    <span class="n">vi</span> <span class="o">=</span> <span class="p">{</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">};</span>
+    <span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">vi2</span><span class="p">;</span>
+    <span class="n">vi2</span> <span class="o">=</span> <span class="n">vi</span><span class="p">;</span>
+    
+    <span class="n">vi2</span><span class="p">.</span><span class="n">assign</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
+    <span class="k">for</span> <span class="p">(</span><span class="k">auto</span> <span class="o">&amp;</span> <span class="n">i</span><span class="o">:</span> <span class="n">vi2</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">cout</span><span class="o">&lt;&lt;</span><span class="n">i</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
+    <span class="p">}</span>
+    
+    <span class="n">vi2</span><span class="p">.</span><span class="n">assign</span><span class="p">(</span><span class="n">vi</span><span class="p">.</span><span class="n">begin</span><span class="p">(),</span> <span class="n">vi</span><span class="p">.</span><span class="n">end</span><span class="p">());</span>
+    <span class="k">for</span> <span class="p">(</span><span class="k">auto</span> <span class="o">&amp;</span> <span class="n">i</span><span class="o">:</span> <span class="n">vi2</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">cout</span><span class="o">&lt;&lt;</span><span class="n">i</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
+    <span class="p">}</span>
+    
+    <span class="n">vi2</span><span class="p">.</span><span class="n">assign</span><span class="p">({</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">});</span>
+    <span class="k">for</span> <span class="p">(</span><span class="k">auto</span> <span class="o">&amp;</span> <span class="n">i</span><span class="o">:</span> <span class="n">vi2</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">cout</span><span class="o">&lt;&lt;</span><span class="n">i</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
+    <span class="p">}</span>
+    
+    <span class="n">vi</span><span class="p">.</span><span class="n">swap</span><span class="p">(</span><span class="n">vi2</span><span class="p">);</span>
+    <span class="n">swap</span><span class="p">(</span><span class="n">vi</span><span class="p">,</span> <span class="n">vi2</span><span class="p">);</span>
+    
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<div class="language-cpp highlighter-rouge"><pre class="highlight"><code><span class="c1">//random access 内存连续的容器
+</span>
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">int</span> <span class="n">argc</span><span class="p">,</span> <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span> <span class="n">argv</span><span class="p">[])</span> <span class="p">{</span>
+
+    <span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">vi</span><span class="p">;</span>
+    <span class="n">vi</span> <span class="o">=</span> <span class="p">{</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">};</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">vi</span><span class="p">.</span><span class="n">size</span><span class="p">();</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">cout</span><span class="o">&lt;&lt;</span><span class="n">vi</span><span class="p">.</span><span class="n">at</span><span class="p">(</span><span class="n">i</span><span class="p">)</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
+    <span class="p">}</span>
+    
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<div class="language-cpp highlighter-rouge"><pre class="highlight"><code><span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">int</span> <span class="n">argc</span><span class="p">,</span> <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span> <span class="n">argv</span><span class="p">[])</span> <span class="p">{</span>
+
+    <span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">vi</span><span class="p">;</span>
+    <span class="n">vi</span> <span class="o">=</span> <span class="p">{</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">};</span>
+    <span class="k">for</span> <span class="p">(</span><span class="k">auto</span> <span class="n">itr</span> <span class="o">=</span> <span class="n">vi</span><span class="p">.</span><span class="n">crbegin</span><span class="p">();</span> <span class="n">itr</span> <span class="o">!=</span> <span class="n">vi</span><span class="p">.</span><span class="n">crend</span><span class="p">();</span> <span class="o">++</span><span class="n">itr</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">cout</span><span class="o">&lt;&lt;*</span><span class="n">itr</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
+    <span class="p">}</span>
+    
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<div class="language-cpp highlighter-rouge"><pre class="highlight"><code><span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">int</span> <span class="n">argc</span><span class="p">,</span> <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span> <span class="n">argv</span><span class="p">[])</span> <span class="p">{</span>
+
+    <span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">vi</span><span class="p">;</span>
+    <span class="n">vi</span> <span class="o">=</span> <span class="p">{</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">};</span>
+    <span class="n">vi</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span><span class="mi">100</span><span class="p">);</span>
+    <span class="k">for</span> <span class="p">(</span><span class="k">auto</span> <span class="o">&amp;</span> <span class="n">i</span><span class="o">:</span> <span class="n">vi</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">cout</span><span class="o">&lt;&lt;</span><span class="n">i</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="k">while</span> <span class="p">(</span><span class="o">!</span><span class="n">vi</span><span class="p">.</span><span class="n">empty</span><span class="p">())</span> <span class="p">{</span>
+        <span class="n">cout</span><span class="o">&lt;&lt;</span><span class="n">vi</span><span class="p">.</span><span class="n">back</span><span class="p">()</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
+        <span class="n">vi</span><span class="p">.</span><span class="n">pop_back</span><span class="p">();</span>
+    <span class="p">}</span>
+    <span class="n">cout</span><span class="o">&lt;&lt;</span><span class="n">vi</span><span class="p">.</span><span class="n">size</span><span class="p">()</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
+    
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<div class="language-cpp highlighter-rouge"><pre class="highlight"><code><span class="kt">void</span> <span class="nf">printv</span><span class="p">(</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="o">&amp;</span> <span class="n">v</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">for</span> <span class="p">(</span><span class="k">auto</span> <span class="o">&amp;</span> <span class="n">i</span><span class="o">:</span> <span class="n">v</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">cout</span><span class="o">&lt;&lt;</span><span class="n">i</span><span class="o">&lt;&lt;</span><span class="s">" "</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="n">cout</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="o">&lt;&lt;</span><span class="s">"================="</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">int</span> <span class="n">argc</span><span class="p">,</span> <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span> <span class="n">argv</span><span class="p">[])</span> <span class="p">{</span>
+
+    <span class="kt">int</span> <span class="n">arr</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span><span class="mi">888</span><span class="p">,</span> <span class="mi">888</span><span class="p">,</span> <span class="mi">888</span><span class="p">};</span>
+    <span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">vi</span><span class="p">;</span>
+    <span class="n">vi</span> <span class="o">=</span> <span class="p">{</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">};</span>
+<span class="c1">//    vi.insert(vi.begin() + 1, 1000);
+//    vi.insert(vi.begin(), 5, 999);
+//    vi.insert(vi.begin(), arr, arr+3);
+</span>    <span class="n">vi</span><span class="p">.</span><span class="n">insert</span><span class="p">(</span><span class="n">vi</span><span class="p">.</span><span class="n">begin</span><span class="p">(),</span> <span class="p">{</span><span class="mi">777</span><span class="p">,</span> <span class="mi">777</span><span class="p">,</span> <span class="mi">777</span><span class="p">});</span>
+<span class="c1">//    vi.erase(vi.begin(), vi.begin()+3);
+</span>    <span class="n">vi</span><span class="p">.</span><span class="n">resize</span><span class="p">(</span><span class="mi">19</span><span class="p">,</span> <span class="mi">66666</span><span class="p">);</span>
+    
+    <span class="n">printv</span><span class="p">(</span><span class="n">vi</span><span class="p">);</span>
+    
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<div class="language-cpp highlighter-rouge"><pre class="highlight"><code><span class="kt">void</span> <span class="nf">printv</span><span class="p">(</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="o">&amp;</span> <span class="n">v</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">for</span> <span class="p">(</span><span class="k">auto</span> <span class="o">&amp;</span> <span class="n">i</span><span class="o">:</span> <span class="n">v</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">cout</span><span class="o">&lt;&lt;</span><span class="n">i</span><span class="o">&lt;&lt;</span><span class="s">" "</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="n">cout</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="o">&lt;&lt;</span><span class="s">"================="</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">int</span> <span class="n">argc</span><span class="p">,</span> <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span> <span class="n">argv</span><span class="p">[])</span> <span class="p">{</span>
+
+    <span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">vi</span><span class="p">;</span>
+    <span class="n">vi</span> <span class="o">=</span> <span class="p">{</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">};</span>
+    <span class="k">auto</span> <span class="n">itr</span> <span class="o">=</span> <span class="n">find</span><span class="p">(</span><span class="n">vi</span><span class="p">.</span><span class="n">begin</span><span class="p">(),</span> <span class="n">vi</span><span class="p">.</span><span class="n">end</span><span class="p">(),</span> <span class="mi">5</span><span class="p">);</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">itr</span> <span class="o">==</span> <span class="n">vi</span><span class="p">.</span><span class="n">end</span><span class="p">())</span> <span class="p">{</span>
+        <span class="n">cout</span><span class="o">&lt;&lt;</span><span class="s">"find none"</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+        <span class="n">cout</span><span class="o">&lt;&lt;</span><span class="s">"find"</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
+        <span class="n">vi</span><span class="p">.</span><span class="n">erase</span><span class="p">(</span><span class="n">itr</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="n">printv</span><span class="p">(</span><span class="n">vi</span><span class="p">);</span>
+    
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<div class="language-cpp highlighter-rouge"><pre class="highlight"><code><span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">int</span> <span class="n">argc</span><span class="p">,</span> <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span> <span class="n">argv</span><span class="p">[])</span> <span class="p">{</span>
+
+    <span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">vi</span><span class="p">;</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">10</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">vi</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span><span class="n">i</span><span class="p">);</span>
+        <span class="n">cout</span><span class="o">&lt;&lt;</span><span class="s">"size: "</span><span class="o">&lt;&lt;</span><span class="n">vi</span><span class="p">.</span><span class="n">size</span><span class="p">()</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
+        <span class="n">cout</span><span class="o">&lt;&lt;</span><span class="s">"capacity: "</span><span class="o">&lt;&lt;</span><span class="n">vi</span><span class="p">.</span><span class="n">capacity</span><span class="p">()</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="n">vi</span><span class="p">.</span><span class="n">shrink_to_fit</span><span class="p">();</span>
+    <span class="n">cout</span><span class="o">&lt;&lt;</span><span class="s">"size: "</span><span class="o">&lt;&lt;</span><span class="n">vi</span><span class="p">.</span><span class="n">size</span><span class="p">()</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
+    <span class="n">cout</span><span class="o">&lt;&lt;</span><span class="s">"capacity: "</span><span class="o">&lt;&lt;</span><span class="n">vi</span><span class="p">.</span><span class="n">capacity</span><span class="p">()</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
+    
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<div class="language-cpp highlighter-rouge"><pre class="highlight"><code><span class="c1">//capacity &gt;= size;
+//resize size的大小, capacity 中会变大不会变小
+//capacity &gt; size =&gt; capacity = size
+</span>
+<span class="c1">//预留空间, 而不是申请空间
+</span>
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">int</span> <span class="n">argc</span><span class="p">,</span> <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span> <span class="n">argv</span><span class="p">[])</span> <span class="p">{</span>
+
+    <span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">vi</span> <span class="o">=</span> <span class="p">{</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">};</span>
+    <span class="n">cout</span><span class="o">&lt;&lt;</span><span class="n">vi</span><span class="p">.</span><span class="n">capacity</span><span class="p">()</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
+    <span class="n">vi</span><span class="p">.</span><span class="n">resize</span><span class="p">(</span><span class="mi">10</span><span class="p">);</span>
+    <span class="n">vi</span><span class="p">.</span><span class="n">resize</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+    <span class="n">vi</span><span class="p">.</span><span class="n">shrink_to_fit</span><span class="p">();</span>
+    <span class="n">cout</span><span class="o">&lt;&lt;</span><span class="n">vi</span><span class="p">.</span><span class="n">capacity</span><span class="p">()</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
+
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<div class="language-cpp highlighter-rouge"><pre class="highlight"><code><span class="c1">//resize &gt; cursize push_back
+//resize &lt; cursize pop_back
+</span>
+<span class="c1">//预留空间, 而不是申请空间
+//reserve 预留空间, 而不构造, resize 一定会发生构造和析构行为
+</span>
+<span class="k">class</span> <span class="nc">A</span> <span class="p">{</span>
+<span class="k">public</span><span class="o">:</span>
+    <span class="n">A</span><span class="p">()</span> <span class="p">{</span>
+        <span class="n">cout</span><span class="o">&lt;&lt;</span><span class="s">"无参构造函数 "</span><span class="o">&lt;&lt;</span><span class="k">this</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="n">A</span><span class="p">(</span><span class="kt">int</span> <span class="n">d</span><span class="p">)</span><span class="o">:</span><span class="n">_data</span><span class="p">(</span><span class="n">d</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">cout</span><span class="o">&lt;&lt;</span><span class="s">"有参构造函数 "</span><span class="o">&lt;&lt;</span><span class="k">this</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="o">~</span><span class="n">A</span><span class="p">()</span> <span class="p">{</span>
+        <span class="n">cout</span><span class="o">&lt;&lt;</span><span class="s">"析构函数 "</span><span class="o">&lt;&lt;</span><span class="k">this</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="n">A</span><span class="p">(</span><span class="k">const</span> <span class="n">A</span> <span class="o">&amp;</span> <span class="n">another</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">cout</span><span class="o">&lt;&lt;</span><span class="k">this</span><span class="o">&lt;&lt;</span><span class="s">" 构造拷贝自 "</span><span class="o">&lt;&lt;&amp;</span><span class="n">another</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="n">A</span> <span class="o">&amp;</span> <span class="k">operator</span><span class="o">=</span><span class="p">(</span><span class="k">const</span> <span class="n">A</span> <span class="o">&amp;</span> <span class="n">another</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">cout</span><span class="o">&lt;&lt;</span><span class="k">this</span><span class="o">&lt;&lt;</span><span class="s">" 赋值拷贝自 "</span><span class="o">&lt;&lt;&amp;</span><span class="n">another</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
+        <span class="k">return</span> <span class="o">*</span><span class="k">this</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="kt">int</span> <span class="n">getData</span><span class="p">()</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="n">_data</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="kt">void</span> <span class="n">setData</span><span class="p">(</span><span class="kt">int</span> <span class="n">d</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">_data</span> <span class="o">=</span> <span class="n">d</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="k">private</span><span class="o">:</span>
+    <span class="kt">int</span> <span class="n">_data</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">int</span> <span class="n">argc</span><span class="p">,</span> <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span> <span class="n">argv</span><span class="p">[])</span> <span class="p">{</span>
+    
+    <span class="n">vector</span><span class="o">&lt;</span><span class="n">A</span><span class="o">&gt;</span> <span class="n">va</span><span class="p">;</span>
+    <span class="n">va</span><span class="p">.</span><span class="n">reserve</span><span class="p">(</span><span class="mi">100</span><span class="p">);</span>
+    <span class="n">A</span> <span class="n">a</span><span class="p">;</span>
+    <span class="n">va</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span><span class="n">a</span><span class="p">);</span>
+    <span class="n">va</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span><span class="n">a</span><span class="p">);</span>
+    <span class="n">va</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span><span class="n">a</span><span class="p">);</span>
+    <span class="p">{</span>
+        <span class="n">va</span><span class="p">.</span><span class="n">resize</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span> <span class="c1">//push_back() | pop_back()
+</span>    <span class="p">}</span>
+    
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<div class="language-cpp highlighter-rouge"><pre class="highlight"><code><span class="k">class</span> <span class="nc">A</span> <span class="p">{</span>
+<span class="k">public</span><span class="o">:</span>
+    <span class="n">A</span><span class="p">()</span> <span class="p">{</span>
+        <span class="n">cout</span><span class="o">&lt;&lt;</span><span class="s">"无参构造函数 "</span><span class="o">&lt;&lt;</span><span class="k">this</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="n">A</span><span class="p">(</span><span class="kt">int</span> <span class="n">d</span><span class="p">)</span><span class="o">:</span><span class="n">_data</span><span class="p">(</span><span class="n">d</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">cout</span><span class="o">&lt;&lt;</span><span class="s">"有参构造函数 "</span><span class="o">&lt;&lt;</span><span class="k">this</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="o">~</span><span class="n">A</span><span class="p">()</span> <span class="p">{</span>
+        <span class="n">cout</span><span class="o">&lt;&lt;</span><span class="s">"析构函数 "</span><span class="o">&lt;&lt;</span><span class="k">this</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="n">A</span><span class="p">(</span><span class="k">const</span> <span class="n">A</span> <span class="o">&amp;</span> <span class="n">another</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">cout</span><span class="o">&lt;&lt;</span><span class="k">this</span><span class="o">&lt;&lt;</span><span class="s">" 构造拷贝自 "</span><span class="o">&lt;&lt;&amp;</span><span class="n">another</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="n">A</span> <span class="o">&amp;</span> <span class="k">operator</span><span class="o">=</span><span class="p">(</span><span class="k">const</span> <span class="n">A</span> <span class="o">&amp;</span> <span class="n">another</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">cout</span><span class="o">&lt;&lt;</span><span class="k">this</span><span class="o">&lt;&lt;</span><span class="s">" 赋值拷贝自 "</span><span class="o">&lt;&lt;&amp;</span><span class="n">another</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
+        <span class="k">return</span> <span class="o">*</span><span class="k">this</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="kt">int</span> <span class="n">getData</span><span class="p">()</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="n">_data</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="kt">void</span> <span class="n">setData</span><span class="p">(</span><span class="kt">int</span> <span class="n">d</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">_data</span> <span class="o">=</span> <span class="n">d</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="k">private</span><span class="o">:</span>
+    <span class="kt">int</span> <span class="n">_data</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">int</span> <span class="n">argc</span><span class="p">,</span> <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span> <span class="n">argv</span><span class="p">[])</span> <span class="p">{</span>
+    
+    <span class="n">vector</span><span class="o">&lt;</span><span class="n">A</span><span class="o">*&gt;</span> <span class="n">vap</span><span class="p">;</span>
+    <span class="n">vap</span><span class="p">.</span><span class="n">reserve</span><span class="p">(</span><span class="mi">10</span><span class="p">);</span>
+    <span class="n">A</span> <span class="o">*</span><span class="n">pa</span> <span class="o">=</span> <span class="k">new</span> <span class="n">A</span><span class="p">;</span>
+    <span class="n">vap</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span><span class="n">pa</span><span class="p">);</span>
+    <span class="k">delete</span> <span class="n">pa</span><span class="p">;</span>
+    
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<div class="language-cpp highlighter-rouge"><pre class="highlight"><code><span class="c1">//怎么来看迭代器, 就是一个智能指针, 重载了 operator* operator-&gt;
+</span>
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">int</span> <span class="n">argc</span><span class="p">,</span> <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span> <span class="n">argv</span><span class="p">[])</span> <span class="p">{</span>
+    
+    <span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">vi</span> <span class="o">=</span> <span class="p">{</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">10</span><span class="p">};</span>
+    <span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;::</span><span class="n">iterator</span> <span class="n">itr</span><span class="p">;</span>
+    <span class="k">for</span> <span class="p">(</span><span class="n">itr</span> <span class="o">=</span> <span class="n">vi</span><span class="p">.</span><span class="n">begin</span><span class="p">();</span> <span class="n">itr</span> <span class="o">!=</span> <span class="n">vi</span><span class="p">.</span><span class="n">end</span><span class="p">();</span> <span class="p">)</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="p">((</span><span class="o">*</span><span class="n">itr</span><span class="p">)</span> <span class="o">%</span> <span class="mi">2</span><span class="p">))</span> <span class="p">{</span>
+            <span class="n">vi</span><span class="p">.</span><span class="n">erase</span><span class="p">(</span><span class="n">itr</span><span class="p">);</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+            <span class="n">cout</span><span class="o">&lt;&lt;*</span><span class="n">itr</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
+            <span class="o">++</span><span class="n">itr</span><span class="p">;</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<div class="language-cpp highlighter-rouge"><pre class="highlight"><code><span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">int</span> <span class="n">argc</span><span class="p">,</span> <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span> <span class="n">argv</span><span class="p">[])</span> <span class="p">{</span>
+    
+    <span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">vi</span> <span class="o">=</span> <span class="p">{</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">10</span><span class="p">};</span>
+<span class="c1">//    auto itr = vi.insert(vi.begin(), 100);
+//    cout&lt;&lt;*itr&lt;&lt;endl;
+</span>    
+    <span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;::</span><span class="n">iterator</span> <span class="n">itr</span><span class="p">;</span>
+    <span class="k">for</span> <span class="p">(</span><span class="n">itr</span> <span class="o">=</span> <span class="n">vi</span><span class="p">.</span><span class="n">begin</span><span class="p">();</span> <span class="n">itr</span> <span class="o">!=</span> <span class="n">vi</span><span class="p">.</span><span class="n">end</span><span class="p">();)</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="o">*</span><span class="n">itr</span> <span class="o">%</span> <span class="mi">2</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">itr</span> <span class="o">=</span> <span class="n">vi</span><span class="p">.</span><span class="n">insert</span><span class="p">(</span><span class="n">itr</span><span class="p">,</span> <span class="mi">100</span><span class="p">);</span>
+            <span class="n">itr</span> <span class="o">+=</span> <span class="mi">2</span><span class="p">;</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+            <span class="o">++</span><span class="n">itr</span><span class="p">;</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+    <span class="k">for</span> <span class="p">(</span><span class="k">auto</span> <span class="o">&amp;</span> <span class="n">i</span><span class="o">:</span> <span class="n">vi</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">cout</span><span class="o">&lt;&lt;</span><span class="n">i</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<div class="language-cpp highlighter-rouge"><pre class="highlight"><code><span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">int</span> <span class="n">argc</span><span class="p">,</span> <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span> <span class="n">argv</span><span class="p">[])</span> <span class="p">{</span>
+
+    <span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">t</span><span class="p">(</span><span class="mi">5</span><span class="p">);</span>
+    <span class="n">vector</span><span class="o">&lt;</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;&gt;</span> <span class="n">tt</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="n">t</span><span class="p">);</span>
+    
+    <span class="n">cout</span><span class="o">&lt;&lt;</span><span class="n">tt</span><span class="p">.</span><span class="n">size</span><span class="p">()</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
+    <span class="n">cout</span><span class="o">&lt;&lt;</span><span class="n">tt</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="n">size</span><span class="p">()</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
+    <span class="n">cout</span><span class="o">&lt;&lt;</span><span class="n">tt</span><span class="p">[</span><span class="mi">1</span><span class="p">].</span><span class="n">size</span><span class="p">()</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
+    <span class="n">cout</span><span class="o">&lt;&lt;</span><span class="n">tt</span><span class="p">[</span><span class="mi">2</span><span class="p">].</span><span class="n">size</span><span class="p">()</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
+    <span class="n">cout</span><span class="o">&lt;&lt;</span><span class="n">tt</span><span class="p">[</span><span class="mi">3</span><span class="p">].</span><span class="n">size</span><span class="p">()</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
+    <span class="n">cout</span><span class="o">&lt;&lt;</span><span class="n">tt</span><span class="p">[</span><span class="mi">4</span><span class="p">].</span><span class="n">size</span><span class="p">()</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
+
+    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">5</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">j</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">j</span> <span class="o">&lt;</span> <span class="mi">5</span><span class="p">;</span> <span class="n">j</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">cout</span><span class="o">&lt;&lt;</span><span class="p">(</span><span class="n">tt</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="mi">100</span><span class="p">)</span><span class="o">&lt;&lt;</span><span class="s">" "</span><span class="p">;</span>
+        <span class="p">}</span>
+        <span class="n">cout</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
+    <span class="p">}</span>
+    
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<div class="language-cpp highlighter-rouge"><pre class="highlight"><code><span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">int</span> <span class="n">argc</span><span class="p">,</span> <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span> <span class="n">argv</span><span class="p">[])</span> <span class="p">{</span>
+
+    <span class="n">srand</span><span class="p">(</span><span class="n">time</span><span class="p">(</span><span class="nb">nullptr</span><span class="p">));</span>
+    
+    <span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">t</span><span class="p">;</span>
+    <span class="n">vector</span><span class="o">&lt;</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;&gt;</span> <span class="n">tt</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="n">t</span><span class="p">);</span>
+ 
+    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">5</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">j</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">j</span> <span class="o">&lt;</span> <span class="n">rand</span><span class="p">()</span><span class="o">%</span><span class="mi">20</span><span class="p">;</span> <span class="n">j</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">tt</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">push_back</span><span class="p">(</span><span class="n">j</span><span class="p">);</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+    
+    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">5</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">j</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">j</span> <span class="o">&lt;</span> <span class="n">tt</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">size</span><span class="p">();</span> <span class="n">j</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">cout</span><span class="o">&lt;&lt;</span><span class="n">tt</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span><span class="o">&lt;&lt;</span><span class="s">" "</span><span class="p">;</span>
+        <span class="p">}</span>
+        <span class="n">cout</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
+    <span class="p">}</span>
+    
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<div class="language-cpp highlighter-rouge"><pre class="highlight"><code><span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">int</span> <span class="n">argc</span><span class="p">,</span> <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span> <span class="n">argv</span><span class="p">[])</span> <span class="p">{</span>
+
+    <span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">vi</span> <span class="o">=</span> <span class="p">{</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">};</span>
+    
+<span class="c1">//    vector&lt;int&gt;::iterator itr;
+//    vector&lt;int&gt;::reverse_iterator itr;
+//    vector&lt;int&gt;::const_iterator itr;
+</span>    <span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;::</span><span class="n">const_reverse_iterator</span> <span class="n">itr</span><span class="p">;</span>
+    
+    <span class="k">for</span> <span class="p">(</span><span class="n">itr</span> <span class="o">=</span> <span class="n">vi</span><span class="p">.</span><span class="n">crbegin</span><span class="p">();</span> <span class="n">itr</span> <span class="o">!=</span> <span class="n">vi</span><span class="p">.</span><span class="n">crend</span><span class="p">();</span> <span class="o">++</span><span class="n">itr</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">cout</span><span class="o">&lt;&lt;*</span><span class="n">itr</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
+    <span class="p">}</span>
+    
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+
+</code></pre>
+</div>
+
+<div class="language-cpp highlighter-rouge"><pre class="highlight"><code><span class="c1">// .erase(std::remove) vector
+</span>
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">int</span> <span class="n">argc</span><span class="p">,</span> <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span> <span class="n">argv</span><span class="p">[])</span> <span class="p">{</span>
+
+    <span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">vi</span> <span class="o">=</span> <span class="p">{</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">5</span> <span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">10</span><span class="p">};</span>
+    <span class="k">auto</span> <span class="n">itr</span> <span class="o">=</span> <span class="n">vi</span><span class="p">.</span><span class="n">begin</span><span class="p">();</span>
+<span class="c1">//    for (; itr != vi.end();) {
+//        if (*itr == 5) {
+//            itr = vi.erase(itr);
+//        } else {
+//            ++itr;
+//        }
+//    }
+</span>    <span class="n">cout</span><span class="o">&lt;&lt;</span><span class="n">vi</span><span class="p">.</span><span class="n">size</span><span class="p">()</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
+    <span class="n">dump</span><span class="p">(</span><span class="n">vi</span><span class="p">);</span>
+    <span class="n">vi</span><span class="p">.</span><span class="n">erase</span><span class="p">(</span><span class="n">remove</span><span class="p">(</span><span class="n">vi</span><span class="p">.</span><span class="n">begin</span><span class="p">(),</span> <span class="n">vi</span><span class="p">.</span><span class="n">end</span><span class="p">(),</span> <span class="mi">5</span><span class="p">),</span> <span class="n">vi</span><span class="p">.</span><span class="n">end</span><span class="p">());</span>
+    <span class="n">cout</span><span class="o">&lt;&lt;</span><span class="n">vi</span><span class="p">.</span><span class="n">size</span><span class="p">()</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
+    <span class="n">dump</span><span class="p">(</span><span class="n">vi</span><span class="p">);</span>
+
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<h4 id="list">List</h4>
+
+<div class="language-cpp highlighter-rouge"><pre class="highlight"><code><span class="kt">void</span> <span class="nf">printl</span><span class="p">(</span><span class="n">list</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="o">&amp;</span> <span class="n">li</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">for</span> <span class="p">(</span><span class="k">auto</span> <span class="o">&amp;</span> <span class="n">i</span> <span class="o">:</span> <span class="n">li</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">cout</span><span class="o">&lt;&lt;</span><span class="n">i</span><span class="o">&lt;&lt;</span><span class="s">" "</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="n">cout</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">int</span> <span class="n">argc</span><span class="p">,</span> <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span> <span class="n">argv</span><span class="p">[])</span> <span class="p">{</span>
+
+    <span class="n">list</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">li</span> <span class="o">=</span> <span class="p">{</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">10</span><span class="p">};</span>
+    <span class="n">cout</span><span class="o">&lt;&lt;</span><span class="n">li</span><span class="p">.</span><span class="n">front</span><span class="p">()</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
+    <span class="n">cout</span><span class="o">&lt;&lt;</span><span class="n">li</span><span class="p">.</span><span class="n">back</span><span class="p">()</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
+    
+    <span class="n">printl</span><span class="p">(</span><span class="n">li</span><span class="p">);</span>
+<span class="c1">//    li.push_back(999);
+//    li.pop_back();
+//    li.push_front(999);
+//    li.pop_front();
+//    li.insert(li.begin(), 999);
+//    li.erase(li.begin());
+</span>    <span class="n">li</span><span class="p">.</span><span class="n">remove</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
+    <span class="n">printl</span><span class="p">(</span><span class="n">li</span><span class="p">);</span>
+
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<div class="language-cpp highlighter-rouge"><pre class="highlight"><code><span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">int</span> <span class="n">argc</span><span class="p">,</span> <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span> <span class="n">argv</span><span class="p">[])</span> <span class="p">{</span>
+
+    <span class="kt">int</span> <span class="n">arr</span><span class="p">[</span><span class="mi">10</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">};</span>
+    <span class="n">list</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">li</span><span class="p">(</span><span class="n">arr</span><span class="p">,</span> <span class="n">arr</span><span class="o">+</span><span class="mi">4</span><span class="p">);</span>
+    <span class="n">printl</span><span class="p">(</span><span class="n">li</span><span class="p">);</span>
+    
+<span class="c1">//    list&lt;int&gt; li2(li);
+</span>    <span class="n">list</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">li2</span><span class="p">(</span><span class="n">li</span><span class="p">.</span><span class="n">begin</span><span class="p">(),</span> <span class="n">li</span><span class="p">.</span><span class="n">end</span><span class="p">());</span>
+    <span class="n">printl</span><span class="p">(</span><span class="n">li</span><span class="p">);</span>
+    
+    <span class="n">cout</span><span class="o">&lt;&lt;</span><span class="n">li2</span><span class="p">.</span><span class="n">size</span><span class="p">()</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
+    <span class="k">while</span> <span class="p">(</span><span class="o">!</span><span class="n">li2</span><span class="p">.</span><span class="n">empty</span><span class="p">())</span> <span class="p">{</span>
+        <span class="n">cout</span><span class="o">&lt;&lt;</span><span class="n">li2</span><span class="p">.</span><span class="n">back</span><span class="p">()</span><span class="o">&lt;&lt;</span><span class="s">" "</span><span class="p">;</span>
+        <span class="n">li2</span><span class="p">.</span><span class="n">pop_back</span><span class="p">();</span>
+    <span class="p">}</span>
+    <span class="n">cout</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
+    <span class="n">cout</span><span class="o">&lt;&lt;</span><span class="n">li2</span><span class="p">.</span><span class="n">size</span><span class="p">()</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
+
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<div class="language-cpp highlighter-rouge"><pre class="highlight"><code><span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">int</span> <span class="n">argc</span><span class="p">,</span> <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span> <span class="n">argv</span><span class="p">[])</span> <span class="p">{</span>
+
+    <span class="n">list</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">li</span> <span class="o">=</span> <span class="p">{</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">};</span>
+    <span class="n">list</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">li2</span> <span class="o">=</span> <span class="p">{</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">};</span>
+    
+    <span class="k">if</span> <span class="p">(</span><span class="n">li</span> <span class="o">==</span> <span class="n">li2</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">cout</span><span class="o">&lt;&lt;</span><span class="s">"=="</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+        <span class="n">cout</span><span class="o">&lt;&lt;</span><span class="s">"!="</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
+    <span class="p">}</span>
+    
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<div class="language-cpp highlighter-rouge"><pre class="highlight"><code><span class="k">class</span> <span class="nc">A</span> <span class="p">{</span>
+<span class="k">public</span><span class="o">:</span>
+    <span class="n">A</span><span class="p">()</span> <span class="p">{</span>
+        <span class="n">cout</span><span class="o">&lt;&lt;</span><span class="s">"无参构造函数 "</span><span class="o">&lt;&lt;</span><span class="k">this</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="n">A</span><span class="p">(</span><span class="kt">int</span> <span class="n">d</span><span class="p">)</span><span class="o">:</span><span class="n">_data</span><span class="p">(</span><span class="n">d</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">cout</span><span class="o">&lt;&lt;</span><span class="s">"有参构造函数 "</span><span class="o">&lt;&lt;</span><span class="k">this</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="n">A</span><span class="p">(</span><span class="k">const</span> <span class="n">A</span> <span class="o">&amp;</span> <span class="n">another</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">this</span><span class="o">-&gt;</span><span class="n">_data</span> <span class="o">=</span> <span class="n">another</span><span class="p">.</span><span class="n">_data</span><span class="p">;</span>
+        <span class="n">cout</span><span class="o">&lt;&lt;</span><span class="k">this</span><span class="o">&lt;&lt;</span><span class="s">" 构造拷贝自 "</span><span class="o">&lt;&lt;&amp;</span><span class="n">another</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="n">A</span> <span class="o">&amp;</span> <span class="k">operator</span><span class="o">=</span><span class="p">(</span><span class="k">const</span> <span class="n">A</span> <span class="o">&amp;</span> <span class="n">another</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="k">this</span> <span class="o">!=</span> <span class="o">&amp;</span><span class="n">another</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">this</span><span class="o">-&gt;</span><span class="n">_data</span> <span class="o">=</span> <span class="n">another</span><span class="p">.</span><span class="n">_data</span><span class="p">;</span>
+        <span class="p">}</span>
+        <span class="n">cout</span><span class="o">&lt;&lt;</span><span class="k">this</span><span class="o">&lt;&lt;</span><span class="s">" 赋值拷贝自 "</span><span class="o">&lt;&lt;&amp;</span><span class="n">another</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
+        <span class="k">return</span> <span class="o">*</span><span class="k">this</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="k">friend</span> <span class="kt">bool</span> <span class="k">operator</span><span class="o">==</span> <span class="p">(</span><span class="k">const</span> <span class="n">A</span> <span class="o">&amp;</span> <span class="n">one</span><span class="p">,</span> <span class="k">const</span> <span class="n">A</span> <span class="o">&amp;</span> <span class="n">another</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">one</span><span class="p">.</span><span class="n">_data</span> <span class="o">==</span> <span class="n">another</span><span class="p">.</span><span class="n">_data</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="nb">true</span><span class="p">;</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="nb">false</span><span class="p">;</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+    <span class="o">~</span><span class="n">A</span><span class="p">()</span> <span class="p">{</span>
+        <span class="n">cout</span><span class="o">&lt;&lt;</span><span class="s">"析构函数 "</span><span class="o">&lt;&lt;</span><span class="k">this</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="k">private</span><span class="o">:</span>
+    <span class="kt">int</span> <span class="n">_data</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">int</span> <span class="n">argc</span><span class="p">,</span> <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span> <span class="n">argv</span><span class="p">[])</span> <span class="p">{</span>
+
+    <span class="n">list</span><span class="o">&lt;</span><span class="n">A</span><span class="o">&gt;</span> <span class="n">li</span> <span class="o">=</span> <span class="p">{</span><span class="n">A</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span> <span class="n">A</span><span class="p">(</span><span class="mi">2</span><span class="p">),</span> <span class="n">A</span><span class="p">(</span><span class="mi">3</span><span class="p">),</span> <span class="n">A</span><span class="p">(</span><span class="mi">4</span><span class="p">)};</span>
+    <span class="n">list</span><span class="o">&lt;</span><span class="n">A</span><span class="o">&gt;</span> <span class="n">li2</span> <span class="o">=</span> <span class="p">{</span><span class="n">A</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span> <span class="n">A</span><span class="p">(</span><span class="mi">2</span><span class="p">),</span> <span class="n">A</span><span class="p">(</span><span class="mi">3</span><span class="p">),</span> <span class="n">A</span><span class="p">(</span><span class="mi">4</span><span class="p">)};</span>
+    
+    <span class="k">if</span> <span class="p">(</span><span class="n">li</span> <span class="o">==</span> <span class="n">li2</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">cout</span><span class="o">&lt;&lt;</span><span class="s">"=="</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+        <span class="n">cout</span><span class="o">&lt;&lt;</span><span class="s">"!="</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
+    <span class="p">}</span>
+    
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<div class="language-cpp highlighter-rouge"><pre class="highlight"><code><span class="k">class</span> <span class="nc">A</span> <span class="p">{</span>
+<span class="k">public</span><span class="o">:</span>
+    <span class="n">A</span><span class="p">()</span> <span class="p">{</span>
+        <span class="n">cout</span><span class="o">&lt;&lt;</span><span class="s">"无参构造函数 "</span><span class="o">&lt;&lt;</span><span class="k">this</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="n">A</span><span class="p">(</span><span class="kt">int</span> <span class="n">d</span><span class="p">)</span><span class="o">:</span><span class="n">_data</span><span class="p">(</span><span class="n">d</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">cout</span><span class="o">&lt;&lt;</span><span class="s">"有参构造函数 "</span><span class="o">&lt;&lt;</span><span class="k">this</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="n">A</span><span class="p">(</span><span class="k">const</span> <span class="n">A</span> <span class="o">&amp;</span> <span class="n">another</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">this</span><span class="o">-&gt;</span><span class="n">_data</span> <span class="o">=</span> <span class="n">another</span><span class="p">.</span><span class="n">_data</span><span class="p">;</span>
+        <span class="n">cout</span><span class="o">&lt;&lt;</span><span class="k">this</span><span class="o">&lt;&lt;</span><span class="s">" 构造拷贝自 "</span><span class="o">&lt;&lt;&amp;</span><span class="n">another</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="n">A</span> <span class="o">&amp;</span> <span class="k">operator</span><span class="o">=</span><span class="p">(</span><span class="k">const</span> <span class="n">A</span> <span class="o">&amp;</span> <span class="n">another</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="k">this</span> <span class="o">!=</span> <span class="o">&amp;</span><span class="n">another</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">this</span><span class="o">-&gt;</span><span class="n">_data</span> <span class="o">=</span> <span class="n">another</span><span class="p">.</span><span class="n">_data</span><span class="p">;</span>
+        <span class="p">}</span>
+        <span class="n">cout</span><span class="o">&lt;&lt;</span><span class="k">this</span><span class="o">&lt;&lt;</span><span class="s">" 赋值拷贝自 "</span><span class="o">&lt;&lt;&amp;</span><span class="n">another</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
+        <span class="k">return</span> <span class="o">*</span><span class="k">this</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="k">friend</span> <span class="kt">bool</span> <span class="k">operator</span><span class="o">==</span> <span class="p">(</span><span class="k">const</span> <span class="n">A</span> <span class="o">&amp;</span> <span class="n">one</span><span class="p">,</span> <span class="k">const</span> <span class="n">A</span> <span class="o">&amp;</span> <span class="n">another</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">one</span><span class="p">.</span><span class="n">_data</span> <span class="o">==</span> <span class="n">another</span><span class="p">.</span><span class="n">_data</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="nb">true</span><span class="p">;</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="nb">false</span><span class="p">;</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+    <span class="kt">void</span> <span class="n">dump</span><span class="p">()</span> <span class="p">{</span>
+        <span class="n">cout</span><span class="o">&lt;&lt;</span><span class="n">_data</span><span class="o">&lt;&lt;</span><span class="s">" "</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="o">~</span><span class="n">A</span><span class="p">()</span> <span class="p">{</span>
+        <span class="n">cout</span><span class="o">&lt;&lt;</span><span class="s">"析构函数 "</span><span class="o">&lt;&lt;</span><span class="k">this</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="k">private</span><span class="o">:</span>
+    <span class="kt">int</span> <span class="n">_data</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">int</span> <span class="n">argc</span><span class="p">,</span> <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span> <span class="n">argv</span><span class="p">[])</span> <span class="p">{</span>
+
+    <span class="n">list</span><span class="o">&lt;</span><span class="n">A</span><span class="o">&gt;</span> <span class="n">la</span><span class="p">;</span>
+    <span class="n">la</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span><span class="n">A</span><span class="p">(</span><span class="mi">1</span><span class="p">));</span>
+    <span class="n">la</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span><span class="n">A</span><span class="p">(</span><span class="mi">100</span><span class="p">));</span>
+    <span class="n">la</span><span class="p">.</span><span class="n">emplace</span><span class="p">(</span><span class="n">la</span><span class="p">.</span><span class="n">begin</span><span class="p">(),</span> <span class="mi">200</span><span class="p">);</span>
+    <span class="n">la</span><span class="p">.</span><span class="n">emplace_back</span><span class="p">(</span><span class="mi">300</span><span class="p">);</span>
+    <span class="n">la</span><span class="p">.</span><span class="n">emplace_front</span><span class="p">(</span><span class="mi">400</span><span class="p">);</span>
+    
+    <span class="k">for</span> <span class="p">(</span><span class="k">auto</span> <span class="o">&amp;</span> <span class="n">obj</span><span class="o">:</span> <span class="n">la</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">obj</span><span class="p">.</span><span class="n">dump</span><span class="p">();</span>
+    <span class="p">}</span>
+    <span class="n">cout</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
+    
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<div class="language-cpp highlighter-rouge"><pre class="highlight"><code><span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">int</span> <span class="n">argc</span><span class="p">,</span> <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span> <span class="n">argv</span><span class="p">[])</span> <span class="p">{</span>
+
+    <span class="n">list</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">li</span> <span class="o">=</span> <span class="p">{</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">9</span><span class="p">};</span>
+<span class="c1">//    list&lt;int&gt;::iterator itr = li.begin();
+//    advance(itr, 1);
+//    li.erase(li.begin(), itr);
+//    li.erase(li.begin(), ++li.begin());
+</span>    <span class="n">li</span><span class="p">.</span><span class="n">erase</span><span class="p">(</span><span class="n">li</span><span class="p">.</span><span class="n">begin</span><span class="p">(),</span> <span class="n">li</span><span class="p">.</span><span class="n">end</span><span class="p">());</span>
+    <span class="n">dump</span><span class="p">(</span><span class="n">li</span><span class="p">);</span>
+    
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<div class="language-cpp highlighter-rouge"><pre class="highlight"><code><span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">int</span> <span class="n">argc</span><span class="p">,</span> <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span> <span class="n">argv</span><span class="p">[])</span> <span class="p">{</span>
+    
+    <span class="n">list</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">li</span> <span class="o">=</span> <span class="p">{</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">9</span><span class="p">};</span>
+<span class="c1">//    li.remove(5);
+</span>    <span class="n">li</span><span class="p">.</span><span class="n">remove_if</span><span class="p">([](</span><span class="kt">int</span> <span class="n">x</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">if</span><span class="p">(</span><span class="n">x</span> <span class="o">&gt;=</span> <span class="mi">5</span><span class="p">)</span>
+            <span class="k">return</span> <span class="nb">true</span><span class="p">;</span>
+        <span class="k">else</span>
+            <span class="k">return</span> <span class="nb">false</span><span class="p">;</span>
+    <span class="p">});</span>
+    <span class="n">dump</span><span class="p">(</span><span class="n">li</span><span class="p">);</span>
+    
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<div class="language-cpp highlighter-rouge"><pre class="highlight"><code><span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">int</span> <span class="n">argc</span><span class="p">,</span> <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span> <span class="n">argv</span><span class="p">[])</span> <span class="p">{</span>
+    
+    <span class="n">greater</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="p">()(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">);</span>
+    <span class="kt">int</span> <span class="n">arr</span><span class="p">[</span><span class="mi">10</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">10</span><span class="p">};</span>
+    <span class="n">sort</span><span class="p">(</span><span class="n">arr</span><span class="p">,</span> <span class="n">arr</span><span class="o">+</span><span class="mi">10</span><span class="p">,</span> <span class="n">greater</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="p">());</span>
+    <span class="k">for</span> <span class="p">(</span><span class="k">auto</span> <span class="o">&amp;</span> <span class="n">i</span><span class="o">:</span> <span class="n">arr</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">cout</span><span class="o">&lt;&lt;</span><span class="n">i</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">vi</span><span class="p">(</span><span class="n">arr</span><span class="p">,</span> <span class="n">arr</span> <span class="o">+</span> <span class="mi">10</span><span class="p">);</span>
+    <span class="n">sort</span><span class="p">(</span><span class="n">vi</span><span class="p">.</span><span class="n">begin</span><span class="p">(),</span> <span class="n">vi</span><span class="p">.</span><span class="n">end</span><span class="p">(),</span> <span class="n">less</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="p">());</span>
+    <span class="k">for</span> <span class="p">(</span><span class="k">auto</span> <span class="o">&amp;</span> <span class="n">i</span><span class="o">:</span> <span class="n">vi</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">cout</span><span class="o">&lt;&lt;</span><span class="n">i</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="n">list</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">li</span><span class="p">(</span><span class="n">arr</span><span class="p">,</span> <span class="n">arr</span> <span class="o">+</span> <span class="mi">10</span><span class="p">);</span>
+    <span class="n">li</span><span class="p">.</span><span class="n">sort</span><span class="p">();</span>
+    <span class="k">for</span> <span class="p">(</span><span class="k">auto</span> <span class="o">&amp;</span> <span class="n">i</span><span class="o">:</span> <span class="n">li</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">cout</span><span class="o">&lt;&lt;</span><span class="n">i</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
+    <span class="p">}</span>
+    
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<div class="language-cpp highlighter-rouge"><pre class="highlight"><code><span class="k">class</span> <span class="nc">A</span> <span class="p">{</span>
+<span class="k">public</span><span class="o">:</span>
+    <span class="n">A</span><span class="p">()</span> <span class="p">{</span>
+        <span class="n">cout</span><span class="o">&lt;&lt;</span><span class="s">"无参构造函数 "</span><span class="o">&lt;&lt;</span><span class="k">this</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="n">A</span><span class="p">(</span><span class="kt">int</span> <span class="n">d</span><span class="p">)</span><span class="o">:</span><span class="n">_data</span><span class="p">(</span><span class="n">d</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">cout</span><span class="o">&lt;&lt;</span><span class="s">"有参构造函数 "</span><span class="o">&lt;&lt;</span><span class="k">this</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="n">A</span><span class="p">(</span><span class="k">const</span> <span class="n">A</span> <span class="o">&amp;</span> <span class="n">another</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">this</span><span class="o">-&gt;</span><span class="n">_data</span> <span class="o">=</span> <span class="n">another</span><span class="p">.</span><span class="n">_data</span><span class="p">;</span>
+        <span class="n">cout</span><span class="o">&lt;&lt;</span><span class="k">this</span><span class="o">&lt;&lt;</span><span class="s">" 构造拷贝自 "</span><span class="o">&lt;&lt;&amp;</span><span class="n">another</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="n">A</span> <span class="o">&amp;</span> <span class="k">operator</span><span class="o">=</span><span class="p">(</span><span class="k">const</span> <span class="n">A</span> <span class="o">&amp;</span> <span class="n">another</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="k">this</span> <span class="o">!=</span> <span class="o">&amp;</span><span class="n">another</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">this</span><span class="o">-&gt;</span><span class="n">_data</span> <span class="o">=</span> <span class="n">another</span><span class="p">.</span><span class="n">_data</span><span class="p">;</span>
+        <span class="p">}</span>
+        <span class="n">cout</span><span class="o">&lt;&lt;</span><span class="k">this</span><span class="o">&lt;&lt;</span><span class="s">" 赋值拷贝自 "</span><span class="o">&lt;&lt;&amp;</span><span class="n">another</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
+        <span class="k">return</span> <span class="o">*</span><span class="k">this</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="k">friend</span> <span class="kt">bool</span> <span class="k">operator</span><span class="o">==</span> <span class="p">(</span><span class="k">const</span> <span class="n">A</span> <span class="o">&amp;</span> <span class="n">one</span><span class="p">,</span> <span class="k">const</span> <span class="n">A</span> <span class="o">&amp;</span> <span class="n">another</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">one</span><span class="p">.</span><span class="n">_data</span> <span class="o">==</span> <span class="n">another</span><span class="p">.</span><span class="n">_data</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="nb">true</span><span class="p">;</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="nb">false</span><span class="p">;</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+    <span class="kt">void</span> <span class="n">dump</span><span class="p">()</span> <span class="p">{</span>
+        <span class="n">cout</span><span class="o">&lt;&lt;</span><span class="n">_data</span><span class="o">&lt;&lt;</span><span class="s">" "</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="k">friend</span> <span class="kt">bool</span> <span class="k">operator</span><span class="o">&lt;</span><span class="p">(</span><span class="k">const</span> <span class="n">A</span> <span class="o">&amp;</span> <span class="n">one</span><span class="p">,</span> <span class="k">const</span> <span class="n">A</span> <span class="o">&amp;</span> <span class="n">another</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">one</span><span class="p">.</span><span class="n">_data</span> <span class="o">==</span> <span class="n">another</span><span class="p">.</span><span class="n">_data</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="nb">true</span><span class="p">;</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="nb">false</span><span class="p">;</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+    <span class="o">~</span><span class="n">A</span><span class="p">()</span> <span class="p">{</span>
+        <span class="n">cout</span><span class="o">&lt;&lt;</span><span class="s">"析构函数 "</span><span class="o">&lt;&lt;</span><span class="k">this</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="k">private</span><span class="o">:</span>
+    <span class="kt">int</span> <span class="n">_data</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">int</span> <span class="n">argc</span><span class="p">,</span> <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span> <span class="n">argv</span><span class="p">[])</span> <span class="p">{</span>
+
+    <span class="n">srand</span><span class="p">(</span><span class="n">time</span><span class="p">(</span><span class="nb">nullptr</span><span class="p">));</span>
+    <span class="n">list</span><span class="o">&lt;</span><span class="n">A</span><span class="o">&gt;</span> <span class="n">la</span><span class="p">;</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">10</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">la</span><span class="p">.</span><span class="n">emplace_back</span><span class="p">(</span><span class="n">rand</span><span class="p">()</span> <span class="o">%</span> <span class="mi">100</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="n">la</span><span class="p">.</span><span class="n">sort</span><span class="p">();</span>
+    <span class="k">for</span> <span class="p">(</span><span class="k">auto</span> <span class="o">&amp;</span> <span class="n">obj</span><span class="o">:</span> <span class="n">la</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">obj</span><span class="p">.</span><span class="n">dump</span><span class="p">();</span>
+    <span class="p">}</span>
+    <span class="n">cout</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
+    
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<div class="language-cpp highlighter-rouge"><pre class="highlight"><code><span class="k">class</span> <span class="nc">g</span> <span class="p">{</span>
+<span class="k">public</span><span class="o">:</span>
+    <span class="kt">bool</span> <span class="k">operator</span><span class="p">()(</span><span class="kt">int</span> <span class="n">x</span><span class="p">)</span> <span class="k">const</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">x</span> <span class="o">&gt;</span> <span class="mi">5</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="nb">true</span><span class="p">;</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="nb">false</span><span class="p">;</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+    <span class="k">typedef</span> <span class="kt">int</span> <span class="n">argument_type</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">int</span> <span class="n">argc</span><span class="p">,</span> <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span> <span class="n">argv</span><span class="p">[])</span> <span class="p">{</span>
+
+    <span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">vi</span> <span class="o">=</span> <span class="p">{</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">10</span><span class="p">};</span>
+    <span class="kt">int</span> <span class="n">count</span> <span class="o">=</span> <span class="n">count_if</span><span class="p">(</span><span class="n">vi</span><span class="p">.</span><span class="n">begin</span><span class="p">(),</span> <span class="n">vi</span><span class="p">.</span><span class="n">end</span><span class="p">(),</span> <span class="n">not1</span><span class="p">(</span><span class="n">g</span><span class="p">()));</span>
+    <span class="n">cout</span><span class="o">&lt;&lt;</span><span class="n">count</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
+    
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<div class="language-cpp highlighter-rouge"><pre class="highlight"><code><span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span>
+<span class="k">using</span> <span class="k">namespace</span> <span class="n">placeholders</span><span class="p">;</span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">int</span> <span class="n">argc</span><span class="p">,</span> <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span> <span class="n">argv</span><span class="p">[])</span> <span class="p">{</span>
+
+    <span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">vi</span> <span class="o">=</span> <span class="p">{</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">10</span><span class="p">};</span>
+    <span class="kt">int</span> <span class="n">count</span> <span class="o">=</span> <span class="n">count_if</span><span class="p">(</span><span class="n">vi</span><span class="p">.</span><span class="n">begin</span><span class="p">(),</span> <span class="n">vi</span><span class="p">.</span><span class="n">end</span><span class="p">(),</span> <span class="n">bind</span><span class="p">(</span><span class="n">greater</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="p">(),</span> <span class="n">_1</span><span class="p">,</span> <span class="mi">5</span><span class="p">));</span>
+    <span class="n">cout</span><span class="o">&lt;&lt;</span><span class="n">count</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
+    
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<div class="language-cpp highlighter-rouge"><pre class="highlight"><code><span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span>
+<span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="o">::</span><span class="n">placeholders</span><span class="p">;</span>
+
+<span class="k">struct</span> <span class="n">mygreat</span> <span class="p">{</span>
+    <span class="kt">int</span> <span class="k">operator</span><span class="p">()(</span><span class="kt">int</span> <span class="n">x</span><span class="p">,</span> <span class="kt">int</span> <span class="n">y</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">cout</span><span class="o">&lt;&lt;</span><span class="s">"x: "</span><span class="o">&lt;&lt;</span><span class="n">x</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
+        <span class="n">cout</span><span class="o">&lt;&lt;</span><span class="s">"y: "</span><span class="o">&lt;&lt;</span><span class="n">y</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
+        <span class="k">return</span> <span class="n">x</span> <span class="o">&lt;</span> <span class="n">y</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">};</span>
+
+<span class="c1">//bind1st bind2nd
+</span>
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">int</span> <span class="n">argc</span><span class="p">,</span> <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span> <span class="n">argv</span><span class="p">[])</span> <span class="p">{</span>
+
+    <span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">vi</span> <span class="o">=</span> <span class="p">{</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">22</span><span class="p">,</span> <span class="mi">33</span><span class="p">,</span> <span class="mi">44</span><span class="p">,</span> <span class="mi">55</span><span class="p">,</span> <span class="mi">66</span><span class="p">,</span> <span class="mi">77</span><span class="p">};</span>
+<span class="c1">//    int count1 = count_if(vi.begin(), vi.end(), bind1st(greater&lt;int&gt;(), 10));
+//    int count2 = count_if(vi.begin(), vi.end(), bind2nd(greater&lt;int&gt;(), 10));
+//    cout&lt;&lt;count1&lt;&lt;"-"&lt;&lt;count2&lt;&lt;endl;
+</span>    
+    <span class="kt">int</span> <span class="n">count1</span> <span class="o">=</span> <span class="n">count_if</span><span class="p">(</span><span class="n">vi</span><span class="p">.</span><span class="n">begin</span><span class="p">(),</span> <span class="n">vi</span><span class="p">.</span><span class="n">end</span><span class="p">(),</span> <span class="n">bind</span><span class="p">(</span><span class="n">greater</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="p">(),</span> <span class="mi">10</span><span class="p">,</span> <span class="n">_1</span><span class="p">));</span>
+    <span class="kt">int</span> <span class="n">count2</span> <span class="o">=</span> <span class="n">count_if</span><span class="p">(</span><span class="n">vi</span><span class="p">.</span><span class="n">begin</span><span class="p">(),</span> <span class="n">vi</span><span class="p">.</span><span class="n">end</span><span class="p">(),</span> <span class="n">bind</span><span class="p">(</span><span class="n">greater</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="p">(),</span> <span class="n">_1</span><span class="p">,</span> <span class="mi">10</span><span class="p">));</span>
+    <span class="kt">int</span> <span class="n">count3</span> <span class="o">=</span> <span class="n">count_if</span><span class="p">(</span><span class="n">vi</span><span class="p">.</span><span class="n">begin</span><span class="p">(),</span> <span class="n">vi</span><span class="p">.</span><span class="n">end</span><span class="p">(),</span> <span class="n">bind</span><span class="p">(</span><span class="n">mygreat</span><span class="p">(),</span> <span class="n">_1</span><span class="p">,</span> <span class="mi">10</span><span class="p">));</span>
+
+    <span class="n">cout</span><span class="o">&lt;&lt;</span><span class="n">count1</span><span class="o">&lt;&lt;</span><span class="s">"-"</span><span class="o">&lt;&lt;</span><span class="n">count2</span><span class="o">&lt;&lt;</span><span class="s">"-"</span><span class="o">&lt;&lt;</span><span class="n">count3</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
+
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<div class="language-cpp highlighter-rouge"><pre class="highlight"><code><span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">int</span> <span class="n">argc</span><span class="p">,</span> <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span> <span class="n">argv</span><span class="p">[])</span> <span class="p">{</span>
+    
+    <span class="n">list</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">li</span> <span class="o">=</span> <span class="p">{</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">9</span><span class="p">};</span>
+<span class="c1">//    li.sort();
+</span>    <span class="n">li</span><span class="p">.</span><span class="n">unique</span><span class="p">([](</span><span class="kt">int</span> <span class="n">x</span><span class="p">,</span> <span class="kt">int</span> <span class="n">y</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">x</span> <span class="o">==</span> <span class="n">y</span> <span class="o">&amp;&amp;</span> <span class="n">y</span> <span class="o">%</span> <span class="mi">2</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="nb">true</span><span class="p">;</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="nb">false</span><span class="p">;</span>
+        <span class="p">}</span>
+    <span class="p">});</span>
+    <span class="n">dump</span><span class="p">(</span><span class="n">li</span><span class="p">);</span>
+    
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<div class="language-cpp highlighter-rouge"><pre class="highlight"><code><span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">int</span> <span class="n">argc</span><span class="p">,</span> <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span> <span class="n">argv</span><span class="p">[])</span> <span class="p">{</span>
+    
+    <span class="n">list</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">li1</span> <span class="o">=</span> <span class="p">{</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">7</span><span class="p">};</span>
+    <span class="n">list</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">li2</span> <span class="o">=</span> <span class="p">{</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">10</span><span class="p">};</span>
+<span class="c1">//    li1.splice(li1.begin(), li2);
+//    li1.splice(li1.end(), li2, li2.begin());
+//    auto itr = li1.begin();
+//    advance(itr, 2);
+//    li1.splice(itr, li2, li2.begin(), li2.end());
+//    li1.reverse();
+</span>    <span class="n">li1</span><span class="p">.</span><span class="n">sort</span><span class="p">();</span>
+    <span class="n">li2</span><span class="p">.</span><span class="n">sort</span><span class="p">();</span>
+    <span class="n">li1</span><span class="p">.</span><span class="n">merge</span><span class="p">(</span><span class="n">li2</span><span class="p">);</span>
+    <span class="n">dump</span><span class="p">(</span><span class="n">li1</span><span class="p">);</span>
+    <span class="n">dump</span><span class="p">(</span><span class="n">li2</span><span class="p">);</span>
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<h4 id="deque">Deque</h4>
+
+<div class="language-cpp highlighter-rouge"><pre class="highlight"><code><span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">int</span> <span class="n">argc</span><span class="p">,</span> <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span> <span class="n">argv</span><span class="p">[])</span> <span class="p">{</span>
+    
+    <span class="n">deque</span><span class="o">&lt;</span><span class="kt">char</span><span class="o">&gt;</span> <span class="n">dc</span><span class="p">;</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kt">char</span> <span class="n">ch</span> <span class="o">=</span> <span class="sc">'a'</span><span class="p">;</span> <span class="n">ch</span> <span class="o">&lt;=</span> <span class="sc">'z'</span><span class="p">;</span> <span class="n">ch</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">dc</span><span class="p">.</span><span class="n">push_front</span><span class="p">(</span><span class="n">ch</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="k">while</span> <span class="p">(</span><span class="o">!</span><span class="n">dc</span><span class="p">.</span><span class="n">empty</span><span class="p">())</span> <span class="p">{</span>
+        <span class="n">cout</span><span class="o">&lt;&lt;</span><span class="n">dc</span><span class="p">.</span><span class="n">front</span><span class="p">()</span><span class="o">&lt;&lt;</span><span class="s">" "</span><span class="p">;</span>
+        <span class="n">dc</span><span class="p">.</span><span class="n">pop_front</span><span class="p">();</span>
+    <span class="p">}</span>
+    
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<div class="language-cpp highlighter-rouge"><pre class="highlight"><code><span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">int</span> <span class="n">argc</span><span class="p">,</span> <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span> <span class="n">argv</span><span class="p">[])</span> <span class="p">{</span>
+    
+    <span class="n">deque</span><span class="o">&lt;</span><span class="kt">char</span><span class="o">&gt;</span> <span class="n">dc</span><span class="p">;</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kt">char</span> <span class="n">ch</span> <span class="o">=</span> <span class="sc">'a'</span><span class="p">;</span> <span class="n">ch</span> <span class="o">&lt;=</span> <span class="sc">'z'</span><span class="p">;</span> <span class="n">ch</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">dc</span><span class="p">.</span><span class="n">push_front</span><span class="p">(</span><span class="n">ch</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="k">while</span> <span class="p">(</span><span class="o">!</span><span class="n">dc</span><span class="p">.</span><span class="n">empty</span><span class="p">())</span> <span class="p">{</span>
+        <span class="n">cout</span><span class="o">&lt;&lt;</span><span class="n">dc</span><span class="p">.</span><span class="n">back</span><span class="p">()</span><span class="o">&lt;&lt;</span><span class="s">" "</span><span class="p">;</span>
+        <span class="n">dc</span><span class="p">.</span><span class="n">pop_back</span><span class="p">();</span>
+    <span class="p">}</span>
+    
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<h4 id="stack">Stack</h4>
+
+<div class="language-cpp highlighter-rouge"><pre class="highlight"><code><span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">int</span> <span class="n">argc</span><span class="p">,</span> <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span> <span class="n">argv</span><span class="p">[])</span> <span class="p">{</span>
+    
+    <span class="n">stack</span><span class="o">&lt;</span><span class="kt">char</span><span class="o">&gt;</span> <span class="n">si</span><span class="p">;</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kt">char</span> <span class="n">ch</span> <span class="o">=</span> <span class="sc">'a'</span><span class="p">;</span> <span class="n">ch</span> <span class="o">&lt;=</span> <span class="sc">'z'</span><span class="p">;</span> <span class="n">ch</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">si</span><span class="p">.</span><span class="n">push</span><span class="p">(</span><span class="n">ch</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="k">while</span> <span class="p">(</span><span class="o">!</span><span class="n">si</span><span class="p">.</span><span class="n">empty</span><span class="p">())</span> <span class="p">{</span>
+        <span class="n">cout</span><span class="o">&lt;&lt;</span><span class="n">si</span><span class="p">.</span><span class="n">top</span><span class="p">()</span><span class="o">&lt;&lt;</span><span class="s">" "</span><span class="p">;</span>
+        <span class="n">si</span><span class="p">.</span><span class="n">pop</span><span class="p">();</span>
+    <span class="p">}</span>
+    
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<h4 id="queue">Queue</h4>
+
+<div class="language-cpp highlighter-rouge"><pre class="highlight"><code><span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">int</span> <span class="n">argc</span><span class="p">,</span> <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span> <span class="n">argv</span><span class="p">[])</span> <span class="p">{</span>
+    
+    <span class="n">queue</span><span class="o">&lt;</span><span class="kt">char</span><span class="o">&gt;</span> <span class="n">qc</span><span class="p">;</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kt">char</span> <span class="n">ch</span> <span class="o">=</span> <span class="sc">'a'</span><span class="p">;</span> <span class="n">ch</span> <span class="o">&lt;=</span> <span class="sc">'z'</span><span class="p">;</span> <span class="n">ch</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">qc</span><span class="p">.</span><span class="n">push</span><span class="p">(</span><span class="n">ch</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="k">while</span> <span class="p">(</span><span class="o">!</span><span class="n">qc</span><span class="p">.</span><span class="n">empty</span><span class="p">())</span> <span class="p">{</span>
+        <span class="n">cout</span><span class="o">&lt;&lt;</span><span class="n">qc</span><span class="p">.</span><span class="n">front</span><span class="p">()</span><span class="o">&lt;&lt;</span><span class="s">" "</span><span class="p">;</span>
+        <span class="n">qc</span><span class="p">.</span><span class="n">pop</span><span class="p">();</span>
+    <span class="p">}</span>
+    
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<div class="language-cpp highlighter-rouge"><pre class="highlight"><code><span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">int</span> <span class="n">argc</span><span class="p">,</span> <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span> <span class="n">argv</span><span class="p">[])</span> <span class="p">{</span>
+    
+    <span class="n">priority_queue</span><span class="o">&lt;</span><span class="kt">int</span><span class="p">,</span> <span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="p">,</span> <span class="n">greater</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;&gt;</span> <span class="n">pqi</span><span class="p">;</span>
+    <span class="n">pqi</span><span class="p">.</span><span class="n">push</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+    <span class="n">pqi</span><span class="p">.</span><span class="n">push</span><span class="p">(</span><span class="mi">3</span><span class="p">);</span>
+    <span class="n">pqi</span><span class="p">.</span><span class="n">push</span><span class="p">(</span><span class="mi">5</span><span class="p">);</span>
+    <span class="n">pqi</span><span class="p">.</span><span class="n">push</span><span class="p">(</span><span class="mi">7</span><span class="p">);</span>
+    <span class="n">pqi</span><span class="p">.</span><span class="n">push</span><span class="p">(</span><span class="mi">9</span><span class="p">);</span>
+    <span class="n">pqi</span><span class="p">.</span><span class="n">push</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
+    <span class="n">pqi</span><span class="p">.</span><span class="n">push</span><span class="p">(</span><span class="mi">4</span><span class="p">);</span>
+    <span class="n">pqi</span><span class="p">.</span><span class="n">push</span><span class="p">(</span><span class="mi">6</span><span class="p">);</span>
+    <span class="n">pqi</span><span class="p">.</span><span class="n">push</span><span class="p">(</span><span class="mi">8</span><span class="p">);</span>
+
+    <span class="k">while</span> <span class="p">(</span><span class="o">!</span><span class="n">pqi</span><span class="p">.</span><span class="n">empty</span><span class="p">())</span> <span class="p">{</span>
+        <span class="n">cout</span><span class="o">&lt;&lt;</span><span class="n">pqi</span><span class="p">.</span><span class="n">top</span><span class="p">()</span><span class="o">&lt;&lt;</span><span class="s">" "</span><span class="p">;</span>
+        <span class="n">pqi</span><span class="p">.</span><span class="n">pop</span><span class="p">();</span>
+    <span class="p">}</span>
+    
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<h4 id="map">Map</h4>
+
+<div class="language-cpp highlighter-rouge"><pre class="highlight"><code><span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">int</span> <span class="n">argc</span><span class="p">,</span> <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span> <span class="n">argv</span><span class="p">[])</span> <span class="p">{</span>
+    
+    <span class="n">map</span><span class="o">&lt;</span><span class="kt">int</span><span class="p">,</span> <span class="n">string</span><span class="p">,</span> <span class="n">less</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;&gt;</span> <span class="n">mis</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="n">pair</span><span class="o">&lt;</span><span class="kt">int</span><span class="p">,</span> <span class="n">string</span><span class="o">&gt;</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s">"aaa"</span><span class="p">),</span>
+        <span class="n">pair</span><span class="o">&lt;</span><span class="kt">int</span><span class="p">,</span> <span class="n">string</span><span class="o">&gt;</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="s">"bbb"</span><span class="p">),</span>
+        <span class="n">pair</span><span class="o">&lt;</span><span class="kt">int</span><span class="p">,</span> <span class="n">string</span><span class="o">&gt;</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="s">"ccc"</span><span class="p">),</span>
+        <span class="n">pair</span><span class="o">&lt;</span><span class="kt">int</span><span class="p">,</span> <span class="n">string</span><span class="o">&gt;</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="s">"ddd"</span><span class="p">)</span>
+    <span class="p">};</span>
+    
+    <span class="n">mis</span><span class="p">.</span><span class="n">insert</span><span class="p">(</span><span class="n">pair</span><span class="o">&lt;</span><span class="kt">int</span><span class="p">,</span> <span class="n">string</span><span class="o">&gt;</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="s">"eee"</span><span class="p">));</span>
+    <span class="n">mis</span><span class="p">.</span><span class="n">insert</span><span class="p">(</span><span class="n">map</span><span class="o">&lt;</span><span class="kt">int</span><span class="p">,</span> <span class="n">string</span><span class="o">&gt;::</span><span class="n">value_type</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="s">"fff"</span><span class="p">));</span>
+    <span class="n">mis</span><span class="p">.</span><span class="n">insert</span><span class="p">(</span><span class="n">make_pair</span><span class="p">(</span><span class="mi">7</span><span class="p">,</span> <span class="s">"ggg"</span><span class="p">));</span>
+    
+    <span class="n">mis</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span> <span class="o">=</span> <span class="s">"xxx"</span><span class="p">;</span>
+    <span class="n">mis</span><span class="p">[</span><span class="mi">100</span><span class="p">]</span> <span class="o">=</span> <span class="s">"yyy"</span><span class="p">;</span>
+    
+    <span class="n">map</span><span class="o">&lt;</span><span class="kt">int</span><span class="p">,</span> <span class="n">string</span><span class="o">&gt;::</span><span class="n">iterator</span> <span class="n">itr</span><span class="p">;</span>
+    <span class="k">for</span> <span class="p">(</span><span class="n">itr</span> <span class="o">=</span> <span class="n">mis</span><span class="p">.</span><span class="n">begin</span><span class="p">();</span> <span class="n">itr</span> <span class="o">!=</span> <span class="n">mis</span><span class="p">.</span><span class="n">end</span><span class="p">();</span> <span class="o">++</span><span class="n">itr</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">//        cout&lt;&lt;itr-&gt;first&lt;&lt;" : "&lt;&lt;itr-&gt;second&lt;&lt;endl;
+</span>        <span class="n">cout</span><span class="o">&lt;&lt;</span><span class="p">(</span><span class="o">*</span><span class="n">itr</span><span class="p">).</span><span class="n">first</span><span class="o">&lt;&lt;</span><span class="s">" : "</span><span class="o">&lt;&lt;</span><span class="p">(</span><span class="o">*</span><span class="n">itr</span><span class="p">).</span><span class="n">second</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
+    <span class="p">}</span>
+    
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<div class="language-cpp highlighter-rouge"><pre class="highlight"><code><span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">int</span> <span class="n">argc</span><span class="p">,</span> <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span> <span class="n">argv</span><span class="p">[])</span> <span class="p">{</span>
+    
+    <span class="n">multimap</span><span class="o">&lt;</span><span class="kt">int</span><span class="p">,</span> <span class="n">string</span><span class="p">,</span> <span class="n">less</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;&gt;</span> <span class="n">mis</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="n">pair</span><span class="o">&lt;</span><span class="kt">int</span><span class="p">,</span> <span class="n">string</span><span class="o">&gt;</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s">"aaa"</span><span class="p">),</span>
+        <span class="n">pair</span><span class="o">&lt;</span><span class="kt">int</span><span class="p">,</span> <span class="n">string</span><span class="o">&gt;</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="s">"bbb"</span><span class="p">),</span>
+        <span class="n">pair</span><span class="o">&lt;</span><span class="kt">int</span><span class="p">,</span> <span class="n">string</span><span class="o">&gt;</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="s">"ccc"</span><span class="p">),</span>
+        <span class="n">pair</span><span class="o">&lt;</span><span class="kt">int</span><span class="p">,</span> <span class="n">string</span><span class="o">&gt;</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="s">"ddd"</span><span class="p">)</span>
+    <span class="p">};</span>
+    
+    <span class="n">mis</span><span class="p">.</span><span class="n">insert</span><span class="p">(</span><span class="n">pair</span><span class="o">&lt;</span><span class="kt">int</span><span class="p">,</span> <span class="n">string</span><span class="o">&gt;</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="s">"eee"</span><span class="p">));</span>
+    <span class="n">mis</span><span class="p">.</span><span class="n">insert</span><span class="p">(</span><span class="n">map</span><span class="o">&lt;</span><span class="kt">int</span><span class="p">,</span> <span class="n">string</span><span class="o">&gt;::</span><span class="n">value_type</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="s">"fff"</span><span class="p">));</span>
+    <span class="n">mis</span><span class="p">.</span><span class="n">insert</span><span class="p">(</span><span class="n">make_pair</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="s">"ggg"</span><span class="p">));</span>
+    
+    <span class="n">multimap</span><span class="o">&lt;</span><span class="kt">int</span><span class="p">,</span> <span class="n">string</span><span class="o">&gt;::</span><span class="n">iterator</span> <span class="n">itr</span><span class="p">;</span>
+    <span class="k">for</span> <span class="p">(</span><span class="n">itr</span> <span class="o">=</span> <span class="n">mis</span><span class="p">.</span><span class="n">begin</span><span class="p">();</span> <span class="n">itr</span> <span class="o">!=</span> <span class="n">mis</span><span class="p">.</span><span class="n">end</span><span class="p">();</span> <span class="o">++</span><span class="n">itr</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">//        cout&lt;&lt;itr-&gt;first&lt;&lt;" : "&lt;&lt;itr-&gt;second&lt;&lt;endl;
+</span>        <span class="n">cout</span><span class="o">&lt;&lt;</span><span class="p">(</span><span class="o">*</span><span class="n">itr</span><span class="p">).</span><span class="n">first</span><span class="o">&lt;&lt;</span><span class="s">" : "</span><span class="o">&lt;&lt;</span><span class="p">(</span><span class="o">*</span><span class="n">itr</span><span class="p">).</span><span class="n">second</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
+    <span class="p">}</span>
+    
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<div class="language-cpp highlighter-rouge"><pre class="highlight"><code><span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">int</span> <span class="n">argc</span><span class="p">,</span> <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span> <span class="n">argv</span><span class="p">[])</span> <span class="p">{</span>
+    
+    <span class="n">multimap</span><span class="o">&lt;</span><span class="kt">int</span><span class="p">,</span> <span class="n">string</span><span class="p">,</span> <span class="n">less</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;&gt;</span> <span class="n">mis</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="n">pair</span><span class="o">&lt;</span><span class="kt">int</span><span class="p">,</span> <span class="n">string</span><span class="o">&gt;</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s">"aaa"</span><span class="p">),</span>
+        <span class="n">pair</span><span class="o">&lt;</span><span class="kt">int</span><span class="p">,</span> <span class="n">string</span><span class="o">&gt;</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="s">"bbb"</span><span class="p">),</span>
+        <span class="n">pair</span><span class="o">&lt;</span><span class="kt">int</span><span class="p">,</span> <span class="n">string</span><span class="o">&gt;</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="s">"ccc"</span><span class="p">),</span>
+        <span class="n">pair</span><span class="o">&lt;</span><span class="kt">int</span><span class="p">,</span> <span class="n">string</span><span class="o">&gt;</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="s">"ddd"</span><span class="p">)</span>
+    <span class="p">};</span>
+    
+    <span class="n">mis</span><span class="p">.</span><span class="n">insert</span><span class="p">(</span><span class="n">mis</span><span class="p">.</span><span class="n">find</span><span class="p">(</span><span class="mi">100</span><span class="p">),</span> <span class="n">pair</span><span class="o">&lt;</span><span class="kt">int</span><span class="p">,</span> <span class="n">string</span><span class="o">&gt;</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="s">"ddd"</span><span class="p">));</span>
+    <span class="n">mis</span><span class="p">.</span><span class="n">insert</span><span class="p">(</span><span class="n">mis</span><span class="p">.</span><span class="n">find</span><span class="p">(</span><span class="mi">100</span><span class="p">),</span> <span class="n">pair</span><span class="o">&lt;</span><span class="kt">int</span><span class="p">,</span> <span class="n">string</span><span class="o">&gt;</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="s">"ddd"</span><span class="p">));</span>
+    <span class="n">mis</span><span class="p">.</span><span class="n">insert</span><span class="p">(</span><span class="n">mis</span><span class="p">.</span><span class="n">find</span><span class="p">(</span><span class="mi">100</span><span class="p">),</span> <span class="n">pair</span><span class="o">&lt;</span><span class="kt">int</span><span class="p">,</span> <span class="n">string</span><span class="o">&gt;</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="s">"ddd"</span><span class="p">));</span>
+<span class="c1">//    mis.erase(100);
+</span>    <span class="k">auto</span> <span class="n">it</span> <span class="o">=</span> <span class="n">mis</span><span class="p">.</span><span class="n">find</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">it</span> <span class="o">!=</span> <span class="n">mis</span><span class="p">.</span><span class="n">end</span><span class="p">())</span> <span class="p">{</span>
+        <span class="n">mis</span><span class="p">.</span><span class="n">erase</span><span class="p">(</span><span class="n">it</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="c1">//    mis.erase(mis.begin());
+//    mis.clear();
+</span>    
+    <span class="n">multimap</span><span class="o">&lt;</span><span class="kt">int</span><span class="p">,</span> <span class="n">string</span><span class="o">&gt;::</span><span class="n">iterator</span> <span class="n">itr</span><span class="p">;</span>
+    <span class="k">for</span> <span class="p">(</span><span class="n">itr</span> <span class="o">=</span> <span class="n">mis</span><span class="p">.</span><span class="n">begin</span><span class="p">();</span> <span class="n">itr</span> <span class="o">!=</span> <span class="n">mis</span><span class="p">.</span><span class="n">end</span><span class="p">();</span> <span class="o">++</span><span class="n">itr</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">//        cout&lt;&lt;itr-&gt;first&lt;&lt;" : "&lt;&lt;itr-&gt;second&lt;&lt;endl;
+</span>        <span class="n">cout</span><span class="o">&lt;&lt;</span><span class="p">(</span><span class="o">*</span><span class="n">itr</span><span class="p">).</span><span class="n">first</span><span class="o">&lt;&lt;</span><span class="s">" : "</span><span class="o">&lt;&lt;</span><span class="p">(</span><span class="o">*</span><span class="n">itr</span><span class="p">).</span><span class="n">second</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="n">cout</span><span class="o">&lt;&lt;</span><span class="n">mis</span><span class="p">.</span><span class="n">count</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
+    
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<div class="language-cpp highlighter-rouge"><pre class="highlight"><code><span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">int</span> <span class="n">argc</span><span class="p">,</span> <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span> <span class="n">argv</span><span class="p">[])</span> <span class="p">{</span>
+    
+    <span class="n">map</span><span class="o">&lt;</span><span class="kt">int</span><span class="p">,</span> <span class="n">string</span><span class="p">,</span> <span class="n">less</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;&gt;</span> <span class="n">mis</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="n">pair</span><span class="o">&lt;</span><span class="kt">int</span><span class="p">,</span> <span class="n">string</span><span class="o">&gt;</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s">"a"</span><span class="p">),</span>
+        <span class="n">pair</span><span class="o">&lt;</span><span class="kt">int</span><span class="p">,</span> <span class="n">string</span><span class="o">&gt;</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="s">"ab"</span><span class="p">),</span>
+        <span class="n">pair</span><span class="o">&lt;</span><span class="kt">int</span><span class="p">,</span> <span class="n">string</span><span class="o">&gt;</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="s">"abc"</span><span class="p">),</span>
+        <span class="n">pair</span><span class="o">&lt;</span><span class="kt">int</span><span class="p">,</span> <span class="n">string</span><span class="o">&gt;</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="s">"abcd"</span><span class="p">),</span>
+        <span class="n">pair</span><span class="o">&lt;</span><span class="kt">int</span><span class="p">,</span> <span class="n">string</span><span class="o">&gt;</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="s">"abcde"</span><span class="p">),</span>
+        <span class="n">pair</span><span class="o">&lt;</span><span class="kt">int</span><span class="p">,</span> <span class="n">string</span><span class="o">&gt;</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="s">"abcdef"</span><span class="p">),</span>
+        <span class="n">pair</span><span class="o">&lt;</span><span class="kt">int</span><span class="p">,</span> <span class="n">string</span><span class="o">&gt;</span><span class="p">(</span><span class="mi">7</span><span class="p">,</span> <span class="s">"abcdefg"</span><span class="p">),</span>
+        <span class="n">pair</span><span class="o">&lt;</span><span class="kt">int</span><span class="p">,</span> <span class="n">string</span><span class="o">&gt;</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="s">"abcdefgh"</span><span class="p">),</span>
+        <span class="n">pair</span><span class="o">&lt;</span><span class="kt">int</span><span class="p">,</span> <span class="n">string</span><span class="o">&gt;</span><span class="p">(</span><span class="mi">9</span><span class="p">,</span> <span class="s">"abcdefghi"</span><span class="p">),</span>
+        <span class="n">pair</span><span class="o">&lt;</span><span class="kt">int</span><span class="p">,</span> <span class="n">string</span><span class="o">&gt;</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="s">"abcdefghij"</span><span class="p">)</span>
+    <span class="p">};</span>
+    
+    <span class="k">auto</span> <span class="n">lowitr</span> <span class="o">=</span> <span class="n">mis</span><span class="p">.</span><span class="n">lower_bound</span><span class="p">(</span><span class="mi">5</span><span class="p">);</span>
+    <span class="k">auto</span> <span class="n">upperitr</span> <span class="o">=</span> <span class="n">mis</span><span class="p">.</span><span class="n">upper_bound</span><span class="p">(</span><span class="mi">7</span><span class="p">);</span>
+    
+    <span class="n">cout</span><span class="o">&lt;&lt;</span><span class="s">"low: "</span><span class="o">&lt;&lt;</span><span class="n">lowitr</span><span class="o">-&gt;</span><span class="n">first</span><span class="o">&lt;&lt;</span><span class="s">" upper: "</span><span class="o">&lt;&lt;</span><span class="n">upperitr</span><span class="o">-&gt;</span><span class="n">first</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
+    <span class="c1">//循环删除最好不要用遍历的方式.
+//    for (auto itr = lowitr; itr != upperitr;) {
+//        itr = mis.erase(itr);
+//    }
+</span>    <span class="n">mis</span><span class="p">.</span><span class="n">erase</span><span class="p">(</span><span class="n">lowitr</span><span class="p">,</span> <span class="n">upperitr</span><span class="p">);</span>
+    
+    <span class="n">map</span><span class="o">&lt;</span><span class="kt">int</span><span class="p">,</span> <span class="n">string</span><span class="o">&gt;::</span><span class="n">iterator</span> <span class="n">itr</span><span class="p">;</span>
+    <span class="k">for</span> <span class="p">(</span><span class="n">itr</span> <span class="o">=</span> <span class="n">mis</span><span class="p">.</span><span class="n">begin</span><span class="p">();</span> <span class="n">itr</span> <span class="o">!=</span> <span class="n">mis</span><span class="p">.</span><span class="n">end</span><span class="p">();</span> <span class="o">++</span><span class="n">itr</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">cout</span><span class="o">&lt;&lt;</span><span class="n">itr</span><span class="o">-&gt;</span><span class="n">first</span><span class="o">&lt;&lt;</span><span class="s">" : "</span><span class="o">&lt;&lt;</span><span class="n">itr</span><span class="o">-&gt;</span><span class="n">second</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
+    <span class="p">}</span>
+    
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<div class="language-cpp highlighter-rouge"><pre class="highlight"><code><span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">int</span> <span class="n">argc</span><span class="p">,</span> <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span> <span class="n">argv</span><span class="p">[])</span> <span class="p">{</span>
+    
+    <span class="n">multimap</span><span class="o">&lt;</span><span class="kt">int</span><span class="p">,</span> <span class="n">string</span><span class="p">,</span> <span class="n">less</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;&gt;</span> <span class="n">mis</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="n">pair</span><span class="o">&lt;</span><span class="kt">int</span><span class="p">,</span> <span class="n">string</span><span class="o">&gt;</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s">"a"</span><span class="p">),</span>
+        <span class="n">pair</span><span class="o">&lt;</span><span class="kt">int</span><span class="p">,</span> <span class="n">string</span><span class="o">&gt;</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="s">"ab"</span><span class="p">),</span>
+        <span class="n">pair</span><span class="o">&lt;</span><span class="kt">int</span><span class="p">,</span> <span class="n">string</span><span class="o">&gt;</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="s">"abc"</span><span class="p">),</span>
+        <span class="n">pair</span><span class="o">&lt;</span><span class="kt">int</span><span class="p">,</span> <span class="n">string</span><span class="o">&gt;</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="s">"abcd"</span><span class="p">),</span>
+        <span class="n">pair</span><span class="o">&lt;</span><span class="kt">int</span><span class="p">,</span> <span class="n">string</span><span class="o">&gt;</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="s">"a"</span><span class="p">),</span>
+        <span class="n">pair</span><span class="o">&lt;</span><span class="kt">int</span><span class="p">,</span> <span class="n">string</span><span class="o">&gt;</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="s">"b"</span><span class="p">),</span>
+        <span class="n">pair</span><span class="o">&lt;</span><span class="kt">int</span><span class="p">,</span> <span class="n">string</span><span class="o">&gt;</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="s">"c"</span><span class="p">),</span>
+        <span class="n">pair</span><span class="o">&lt;</span><span class="kt">int</span><span class="p">,</span> <span class="n">string</span><span class="o">&gt;</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="s">"d"</span><span class="p">),</span>
+        <span class="n">pair</span><span class="o">&lt;</span><span class="kt">int</span><span class="p">,</span> <span class="n">string</span><span class="o">&gt;</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="s">"abcdef"</span><span class="p">),</span>
+        <span class="n">pair</span><span class="o">&lt;</span><span class="kt">int</span><span class="p">,</span> <span class="n">string</span><span class="o">&gt;</span><span class="p">(</span><span class="mi">7</span><span class="p">,</span> <span class="s">"abcdefg"</span><span class="p">),</span>
+        <span class="n">pair</span><span class="o">&lt;</span><span class="kt">int</span><span class="p">,</span> <span class="n">string</span><span class="o">&gt;</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="s">"abcdefgh"</span><span class="p">),</span>
+        <span class="n">pair</span><span class="o">&lt;</span><span class="kt">int</span><span class="p">,</span> <span class="n">string</span><span class="o">&gt;</span><span class="p">(</span><span class="mi">9</span><span class="p">,</span> <span class="s">"abcdefghi"</span><span class="p">),</span>
+        <span class="n">pair</span><span class="o">&lt;</span><span class="kt">int</span><span class="p">,</span> <span class="n">string</span><span class="o">&gt;</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="s">"abcdefghij"</span><span class="p">)</span>
+    <span class="p">};</span>
+    
+<span class="c1">//    auto range = mis.equal_range(5);
+</span>    <span class="n">pair</span><span class="o">&lt;</span><span class="n">map</span><span class="o">&lt;</span><span class="kt">int</span><span class="p">,</span> <span class="n">string</span><span class="o">&gt;::</span><span class="n">iterator</span><span class="p">,</span> <span class="n">map</span><span class="o">&lt;</span><span class="kt">int</span><span class="p">,</span> <span class="n">string</span><span class="o">&gt;::</span><span class="n">iterator</span><span class="o">&gt;</span> <span class="n">range</span> <span class="o">=</span> <span class="n">mis</span><span class="p">.</span><span class="n">equal_range</span><span class="p">(</span><span class="mi">5</span><span class="p">);</span>
+    <span class="n">cout</span><span class="o">&lt;&lt;</span><span class="s">"low: "</span><span class="o">&lt;&lt;</span><span class="n">range</span><span class="p">.</span><span class="n">first</span><span class="o">-&gt;</span><span class="n">first</span><span class="o">&lt;&lt;</span><span class="s">" uppper: "</span><span class="o">&lt;&lt;</span><span class="n">range</span><span class="p">.</span><span class="n">second</span><span class="o">-&gt;</span><span class="n">first</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
+    <span class="n">cout</span><span class="o">&lt;&lt;</span><span class="s">"low: "</span><span class="o">&lt;&lt;</span><span class="n">range</span><span class="p">.</span><span class="n">first</span><span class="o">-&gt;</span><span class="n">first</span><span class="o">&lt;&lt;</span><span class="s">" :"</span><span class="o">&lt;&lt;</span><span class="n">range</span><span class="p">.</span><span class="n">first</span><span class="o">-&gt;</span><span class="n">second</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
+    <span class="n">cout</span><span class="o">&lt;&lt;</span><span class="s">"low: "</span><span class="o">&lt;&lt;</span><span class="n">range</span><span class="p">.</span><span class="n">second</span><span class="o">-&gt;</span><span class="n">first</span><span class="o">&lt;&lt;</span><span class="s">" :"</span><span class="o">&lt;&lt;</span><span class="n">range</span><span class="p">.</span><span class="n">second</span><span class="o">-&gt;</span><span class="n">second</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
+
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<h4 id="set">Set</h4>
+
+<div class="language-cpp highlighter-rouge"><pre class="highlight"><code><span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">int</span> <span class="n">argc</span><span class="p">,</span> <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span> <span class="n">argv</span><span class="p">[])</span> <span class="p">{</span>
+    
+    <span class="n">set</span><span class="o">&lt;</span><span class="n">string</span><span class="p">,</span> <span class="n">greater</span><span class="o">&lt;</span><span class="n">string</span><span class="o">&gt;&gt;</span> <span class="n">ss</span><span class="p">;</span>
+    <span class="n">ss</span><span class="p">.</span><span class="n">insert</span><span class="p">(</span><span class="s">"a"</span><span class="p">);</span>
+    <span class="n">ss</span><span class="p">.</span><span class="n">insert</span><span class="p">(</span><span class="s">"b"</span><span class="p">);</span>
+    <span class="n">ss</span><span class="p">.</span><span class="n">insert</span><span class="p">(</span><span class="s">"c"</span><span class="p">);</span>
+    <span class="n">ss</span><span class="p">.</span><span class="n">insert</span><span class="p">(</span><span class="s">"d"</span><span class="p">);</span>
+    <span class="n">ss</span><span class="p">.</span><span class="n">insert</span><span class="p">(</span><span class="s">"e"</span><span class="p">);</span>
+    <span class="n">ss</span><span class="p">.</span><span class="n">insert</span><span class="p">(</span><span class="s">"f"</span><span class="p">);</span>
+
+    <span class="k">for</span> <span class="p">(</span><span class="k">auto</span> <span class="o">&amp;</span> <span class="n">s</span><span class="o">:</span> <span class="n">ss</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">cout</span><span class="o">&lt;&lt;</span><span class="n">s</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
+    <span class="p">}</span>
+    
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<h4 id="最后">最后</h4>
+
+<p>更多新鲜文章可以关注并<code class="highlighter-rouge">Star</code>, 我们一起学习.</p>
+
+<blockquote>
+  <p>GitHub Repo：<a href="https://github.com/coderZsq/coderZsq.github.io">coderZsq.github.io</a>
+<br />Follow: <a href="https://github.com/coderZsq">coderZsq · GitHub</a></p>
+</blockquote>
+
+  </section>
+</article>
+
+<section class="read-more">
+   
+   
+   
+   
+   <div class="read-more-item">
+       <span class="read-more-item-dim">更早的文章</span>
+       <h2 class="post-list__post-title post-title"><a href="/2018/04/C++-%E4%B8%80%E6%8A%8A%E5%8D%8D%E8%A7%A3OC%E5%BA%95%E5%B1%82%E7%9A%84%E6%96%A9%E9%AD%84%E5%88%80/" title="link to C++ 一把卍解OC底层的斩魄刀">C++ 一把卍解OC底层的斩魄刀</a></h2>
+       <p class="excerpt">  GitHub Repo：coderZsq.github.ioFollow: coderZsq · GitHubResume: https://coderzsq.github.io/coderZsq.webpack.js/#/日常扯淡本期没什么好扯淡的, 这篇文章留着自己看.C++ 作者的建议  在C++中几乎不需要用宏, 用const和enum定义显式的常量, 用inline避免函数调用的额外开销, 用模板去刻画一组函数或类型, 用namespace去避免命名冲突.  不要在你需要变量...&hellip;</p>
+       <div class="post-list__meta"><time datetime="2018-04-24 17:18:00 +0800" class="post-list__meta--date date">2018-04-24</time> &#8226; <span class="post-list__meta--tags tags">移动开发</span><a class="btn-border-small" href=/2018/04/C++-%E4%B8%80%E6%8A%8A%E5%8D%8D%E8%A7%A3OC%E5%BA%95%E5%B1%82%E7%9A%84%E6%96%A9%E9%AD%84%E5%88%80/>继续阅读</a></div>
+   </div>
+   
+</section>
+
+<section class="post-comments">
+  
+  
+  
+  
+</section>
+
+
+            <section class="footer">
+    <footer>
+    	<span class="footer__copyright">本站点采用<a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">知识共享 署名-非商业性使用-相同方式共享 4.0 国际 许可协议</a></span>
+        <span class="footer__copyright">由 <a href="https://jekyllrb.com">Jekyll</a> 于 2018-05-02 生成，感谢 <a href="https://www.digitalocean.com/?refcode=30ed2d146762">Digital Ocean</a> 为本站提供稳定的 VPS 服务</span>
+        <span class="footer__copyright">本站由 <a href="https://github.com/coderZsq">@Castie!</a> 创建，采用 <a href="https://github.com/onevcat/vno-jekyll">Vno - Jekyll</a> 作为主题，您可以在 GitHub 找到<a href="https://github.com/onevcat/OneV-s-Den">本站源码</a> - &copy; 2018</span>
+    </footer>
+</section>
+
+        </div>
+    </div>
+    
+    <script type="text/javascript" src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+
+<script type="text/javascript" src="/js/main.js"></script>
+
+
+
+    
+  </body>
+
+</html>
