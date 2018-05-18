@@ -381,7 +381,7 @@ class ViewController: UIViewController {
 
 可以看到的是, 终端打印的矩阵和界面上显示的是一一对应的, 从`北大老师`学到的外面包一圈的方法也是特别好用的.
 
-##### 测试
+#### 算法测试
 
 ```swift
     init(matrix: Matrix) {
