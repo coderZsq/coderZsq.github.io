@@ -5,8 +5,8 @@
     <description>北冥有鱼，其名为鲲（kūn）。鲲之大，不知其几千里也；化而为鸟，其名为鹏。鹏之背，不知其几千里也；怒而飞，其翼若垂天之云。是鸟也，海运则将徙于南冥。南冥者，天池也。</description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Sat, 19 May 2018 00:54:04 +0800</pubDate>
-    <lastBuildDate>Sat, 19 May 2018 00:54:04 +0800</lastBuildDate>
+    <pubDate>Sat, 19 May 2018 01:15:25 +0800</pubDate>
+    <lastBuildDate>Sat, 19 May 2018 01:15:25 +0800</lastBuildDate>
     <generator>Jekyll v3.4.0</generator>
     
       <item>
@@ -388,7 +388,7 @@
 
 &lt;p&gt;可以看到的是, 终端打印的矩阵和界面上显示的是一一对应的, 从&lt;code class=&quot;highlighter-rouge&quot;&gt;北大老师&lt;/code&gt;学到的外面包一圈的方法也是特别好用的.&lt;/p&gt;
 
-&lt;h5 id=&quot;测试&quot;&gt;测试&lt;/h5&gt;
+&lt;h4 id=&quot;算法测试&quot;&gt;算法测试&lt;/h4&gt;
 
 &lt;div class=&quot;language-swift highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;    &lt;span class=&quot;nf&quot;&gt;init&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;matrix&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;Matrix&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
         &lt;span class=&quot;k&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;matrix&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;matrix&lt;/span&gt;
