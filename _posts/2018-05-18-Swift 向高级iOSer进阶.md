@@ -470,12 +470,112 @@ PUZZLE #1
 
 <img src="https://upload-images.jianshu.io/upload_images/11636671-da37f8fa3f13b5bc.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" width="375" style="margin: clear: both; display: block; margin:auto; 0;"/>
 
+#### 更新算法
+
+
+为了不用每次都跑到另一个程序去运行算法, 我新增了`Hint`提示功能, 每盘游戏都可以点击提示, 看到提示显示的深色按钮点击对应位置的灯, 即可点亮所有的灯.
+
+![](https://upload-images.jianshu.io/upload_images/11636671-8bd5b20fb48944aa.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+
+添加这个功能其实也很简单, 只需要新建一个`Popver`控制器即可, 使用对应算法, 映射到`向量`即可.
+
+```swift
+import UIKit
+
+class HintViewController: UIViewController {
+
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        if let fittedSize = topLevelView?.sizeThatFits(UILayoutFittingCompressedSize) {
+            preferredContentSize = CGSize(width: fittedSize.width + 30, height: fittedSize.height + 30)
+        }
+    }
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        if presentationController is UIPopoverPresentationController {
+            view.backgroundColor = .clear
+        }        
+    }
+    @IBOutlet var hints: [UIButton]! {
+        didSet {
+            for (index, hint) in hints.enumerated() {
+                hint.setBackgroundImage(UIColor.yellow.toImage, for: .normal)
+                hint.setBackgroundImage(UIColor.darkGray.toImage, for: .selected)
+                hint.isSelected = switchs?.hints[index] == 1 ? true : false
+            }
+        }
+    }
+    @IBOutlet weak var topLevelView: UIStackView!
+    var switchs: LightSwitch?
+}
+
+```
+新增控制器, 就是显示提示的控制器
+
+```swift
+    @IBOutlet weak var hintButton: UIButton!
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "Show Hint", let destination = segue.destination.contents as? HintViewController,
+            let ppc = destination.popoverPresentationController {
+            ppc.delegate = self
+            ppc.sourceRect = hintButton.bounds
+            destination.switchs = switchs
+        }
+    }
+    
+    func adaptivePresentationStyle(for controller: UIPresentationController, traitCollection: UITraitCollection) -> UIModalPresentationStyle {
+        return .none
+    }
+
+```
+原先控制器的`Segue`设置, 让`iphone`默认不适配
+
+```swift
+    mutating func guess() -> Bool {
+        for r in 1..<matrix.rows {
+            for c in 1..<matrix.columns + 1 {
+                press[r + 1][c] = (puzzle[r][c] + press[r][c] + press[r - 1][c] + press[r][c - 1] + press[r][c + 1]) % 2
+            }
+        }
+        for c in 1..<matrix.columns + 1 {
+            if (press[matrix.rows][c - 1] + press[matrix.rows][c] + press[matrix.rows][c + 1] + press[matrix.rows - 1][c]) % 2 != puzzle[matrix.rows][c] {
+                return false
+            }
+        }
+        return true
+    }
+    
+    mutating func enumerate() {
+        var c = 1
+        for _ in 1..<matrix.columns + 1 {
+            press[1][c] = 0
+            while (guess() == false) {
+                press[1][1] += 1
+                c = 1
+                while press[1][c] > 1 {
+                    press[1][c] = 0
+                    c += 1
+                    press[1][c] += 1
+                }
+            }
+            c += 1
+        }
+    }
+```
+在`Model`中加入核心算法即可
+
+<img src="https://upload-images.jianshu.io/upload_images/11636671-252a374e84a40898.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" width="375" style="margin: clear: both; display: block; margin:auto; 0;"/>
+
+这个`Demo`可能是全网唯一的`熄灯问题`的`UI`版本吧, 给自己一个赞~
+
 经过好几次测试, 可以看见, `算法是正确`的, 我也学到了这个算法`背后的思维`, 更通过了写了一个`Demo`来证明了算法的正确性. 这个`Demo`的难点在于`向量`和`矩阵`之间的互相转换, 这里为什么不说`一维数组`和`二维数组`呢? , 原因在于`吴恩达`的机器学习课程中也教会了我一些比较厉害的算法, 比如`梯度下降`之类的.
 
 好了, 现在写文章没有之前频繁了, 原因在于之前那些文章都`太水`, `太肤浅`, 写了对自己也没有太大的意义, 被人看到也只会觉得是垃圾而已... 所以在我`第五阶段的学习`后, 希望能够有机会进入一家大厂继续深造吧!
 
 
-最后 本文中所有的源码都可以在github上找到:
+最后 本文中所有的源码都可以在github上找到 -> `UIAlgorithm`
 >GitHub Repo：[coderZsq.target.swift](https://github.com/coderZsq/coderZsq.target.swift)
 <br/>Follow: [coderZsq · GitHub](https://github.com/coderZsq)
 <br/>Resume: [https://coderzsq.github.io/coderZsq.webpack.js/#/](https://coderzsq.github.io/coderZsq.webpack.js/#/)

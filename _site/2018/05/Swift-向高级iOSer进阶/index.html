@@ -618,11 +618,110 @@
 
 <p><img src="https://upload-images.jianshu.io/upload_images/11636671-da37f8fa3f13b5bc.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" width="375" style="margin: clear: both; display: block; margin:auto; 0;" /></p>
 
+<h4 id="更新算法">更新算法</h4>
+
+<p>为了不用每次都跑到另一个程序去运行算法, 我新增了<code class="highlighter-rouge">Hint</code>提示功能, 每盘游戏都可以点击提示, 看到提示显示的深色按钮点击对应位置的灯, 即可点亮所有的灯.</p>
+
+<p><img src="https://upload-images.jianshu.io/upload_images/11636671-8bd5b20fb48944aa.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="" /></p>
+
+<p>添加这个功能其实也很简单, 只需要新建一个<code class="highlighter-rouge">Popver</code>控制器即可, 使用对应算法, 映射到<code class="highlighter-rouge">向量</code>即可.</p>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="kd">import</span> <span class="kt">UIKit</span>
+
+<span class="kd">class</span> <span class="kt">HintViewController</span><span class="p">:</span> <span class="kt">UIViewController</span> <span class="p">{</span>
+
+    <span class="k">override</span> <span class="kd">func</span> <span class="nf">viewDidLayoutSubviews</span><span class="p">()</span> <span class="p">{</span>
+        <span class="k">super</span><span class="o">.</span><span class="nf">viewDidLayoutSubviews</span><span class="p">()</span>
+        <span class="k">if</span> <span class="k">let</span> <span class="nv">fittedSize</span> <span class="o">=</span> <span class="n">topLevelView</span><span class="p">?</span><span class="o">.</span><span class="nf">sizeThatFits</span><span class="p">(</span><span class="kt">UILayoutFittingCompressedSize</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">preferredContentSize</span> <span class="o">=</span> <span class="kt">CGSize</span><span class="p">(</span><span class="nv">width</span><span class="p">:</span> <span class="n">fittedSize</span><span class="o">.</span><span class="n">width</span> <span class="o">+</span> <span class="mi">30</span><span class="p">,</span> <span class="nv">height</span><span class="p">:</span> <span class="n">fittedSize</span><span class="o">.</span><span class="n">height</span> <span class="o">+</span> <span class="mi">30</span><span class="p">)</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="k">override</span> <span class="kd">func</span> <span class="nf">viewDidLoad</span><span class="p">()</span> <span class="p">{</span>
+        <span class="k">super</span><span class="o">.</span><span class="nf">viewDidLoad</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">presentationController</span> <span class="k">is</span> <span class="kt">UIPopoverPresentationController</span> <span class="p">{</span>
+            <span class="n">view</span><span class="o">.</span><span class="n">backgroundColor</span> <span class="o">=</span> <span class="o">.</span><span class="n">clear</span>
+        <span class="p">}</span>        
+    <span class="p">}</span>
+    <span class="kd">@IBOutlet</span> <span class="k">var</span> <span class="nv">hints</span><span class="p">:</span> <span class="p">[</span><span class="kt">UIButton</span><span class="p">]</span><span class="o">!</span> <span class="p">{</span>
+        <span class="k">didSet</span> <span class="p">{</span>
+            <span class="k">for</span> <span class="p">(</span><span class="n">index</span><span class="p">,</span> <span class="n">hint</span><span class="p">)</span> <span class="k">in</span> <span class="n">hints</span><span class="o">.</span><span class="nf">enumerated</span><span class="p">()</span> <span class="p">{</span>
+                <span class="n">hint</span><span class="o">.</span><span class="nf">setBackgroundImage</span><span class="p">(</span><span class="kt">UIColor</span><span class="o">.</span><span class="n">yellow</span><span class="o">.</span><span class="n">toImage</span><span class="p">,</span> <span class="nv">for</span><span class="p">:</span> <span class="o">.</span><span class="n">normal</span><span class="p">)</span>
+                <span class="n">hint</span><span class="o">.</span><span class="nf">setBackgroundImage</span><span class="p">(</span><span class="kt">UIColor</span><span class="o">.</span><span class="n">darkGray</span><span class="o">.</span><span class="n">toImage</span><span class="p">,</span> <span class="nv">for</span><span class="p">:</span> <span class="o">.</span><span class="n">selected</span><span class="p">)</span>
+                <span class="n">hint</span><span class="o">.</span><span class="n">isSelected</span> <span class="o">=</span> <span class="n">switchs</span><span class="p">?</span><span class="o">.</span><span class="n">hints</span><span class="p">[</span><span class="n">index</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span> <span class="p">?</span> <span class="nv">true</span> <span class="p">:</span> <span class="kc">false</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+    <span class="kd">@IBOutlet</span> <span class="k">weak</span> <span class="k">var</span> <span class="nv">topLevelView</span><span class="p">:</span> <span class="kt">UIStackView</span><span class="o">!</span>
+    <span class="k">var</span> <span class="nv">switchs</span><span class="p">:</span> <span class="kt">LightSwitch</span><span class="p">?</span>
+<span class="p">}</span>
+
+</code></pre>
+</div>
+<p>新增控制器, 就是显示提示的控制器</p>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>    <span class="kd">@IBOutlet</span> <span class="k">weak</span> <span class="k">var</span> <span class="nv">hintButton</span><span class="p">:</span> <span class="kt">UIButton</span><span class="o">!</span>
+    
+    <span class="k">override</span> <span class="kd">func</span> <span class="nf">prepare</span><span class="p">(</span><span class="k">for</span> <span class="nv">segue</span><span class="p">:</span> <span class="kt">UIStoryboardSegue</span><span class="p">,</span> <span class="nv">sender</span><span class="p">:</span> <span class="kt">Any</span><span class="p">?)</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="n">segue</span><span class="o">.</span><span class="n">identifier</span> <span class="o">==</span> <span class="s">"Show Hint"</span><span class="p">,</span> <span class="k">let</span> <span class="nv">destination</span> <span class="o">=</span> <span class="n">segue</span><span class="o">.</span><span class="n">destination</span><span class="o">.</span><span class="n">contents</span> <span class="k">as?</span> <span class="kt">HintViewController</span><span class="p">,</span>
+            <span class="k">let</span> <span class="nv">ppc</span> <span class="o">=</span> <span class="n">destination</span><span class="o">.</span><span class="n">popoverPresentationController</span> <span class="p">{</span>
+            <span class="n">ppc</span><span class="o">.</span><span class="n">delegate</span> <span class="o">=</span> <span class="k">self</span>
+            <span class="n">ppc</span><span class="o">.</span><span class="n">sourceRect</span> <span class="o">=</span> <span class="n">hintButton</span><span class="o">.</span><span class="n">bounds</span>
+            <span class="n">destination</span><span class="o">.</span><span class="n">switchs</span> <span class="o">=</span> <span class="n">switchs</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+    
+    <span class="kd">func</span> <span class="nf">adaptivePresentationStyle</span><span class="p">(</span><span class="k">for</span> <span class="nv">controller</span><span class="p">:</span> <span class="kt">UIPresentationController</span><span class="p">,</span> <span class="nv">traitCollection</span><span class="p">:</span> <span class="kt">UITraitCollection</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">UIModalPresentationStyle</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="o">.</span><span class="k">none</span>
+    <span class="p">}</span>
+
+</code></pre>
+</div>
+<p>原先控制器的<code class="highlighter-rouge">Segue</code>设置, 让<code class="highlighter-rouge">iphone</code>默认不适配</p>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code>    <span class="k">mutating</span> <span class="kd">func</span> <span class="nf">guess</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kt">Bool</span> <span class="p">{</span>
+        <span class="k">for</span> <span class="n">r</span> <span class="k">in</span> <span class="mi">1</span><span class="o">..&lt;</span><span class="n">matrix</span><span class="o">.</span><span class="n">rows</span> <span class="p">{</span>
+            <span class="k">for</span> <span class="n">c</span> <span class="k">in</span> <span class="mi">1</span><span class="o">..&lt;</span><span class="n">matrix</span><span class="o">.</span><span class="n">columns</span> <span class="o">+</span> <span class="mi">1</span> <span class="p">{</span>
+                <span class="n">press</span><span class="p">[</span><span class="n">r</span> <span class="o">+</span> <span class="mi">1</span><span class="p">][</span><span class="n">c</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">puzzle</span><span class="p">[</span><span class="n">r</span><span class="p">][</span><span class="n">c</span><span class="p">]</span> <span class="o">+</span> <span class="n">press</span><span class="p">[</span><span class="n">r</span><span class="p">][</span><span class="n">c</span><span class="p">]</span> <span class="o">+</span> <span class="n">press</span><span class="p">[</span><span class="n">r</span> <span class="o">-</span> <span class="mi">1</span><span class="p">][</span><span class="n">c</span><span class="p">]</span> <span class="o">+</span> <span class="n">press</span><span class="p">[</span><span class="n">r</span><span class="p">][</span><span class="n">c</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">press</span><span class="p">[</span><span class="n">r</span><span class="p">][</span><span class="n">c</span> <span class="o">+</span> <span class="mi">1</span><span class="p">])</span> <span class="o">%</span> <span class="mi">2</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+        <span class="k">for</span> <span class="n">c</span> <span class="k">in</span> <span class="mi">1</span><span class="o">..&lt;</span><span class="n">matrix</span><span class="o">.</span><span class="n">columns</span> <span class="o">+</span> <span class="mi">1</span> <span class="p">{</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">press</span><span class="p">[</span><span class="n">matrix</span><span class="o">.</span><span class="n">rows</span><span class="p">][</span><span class="n">c</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">press</span><span class="p">[</span><span class="n">matrix</span><span class="o">.</span><span class="n">rows</span><span class="p">][</span><span class="n">c</span><span class="p">]</span> <span class="o">+</span> <span class="n">press</span><span class="p">[</span><span class="n">matrix</span><span class="o">.</span><span class="n">rows</span><span class="p">][</span><span class="n">c</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">press</span><span class="p">[</span><span class="n">matrix</span><span class="o">.</span><span class="n">rows</span> <span class="o">-</span> <span class="mi">1</span><span class="p">][</span><span class="n">c</span><span class="p">])</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">!=</span> <span class="n">puzzle</span><span class="p">[</span><span class="n">matrix</span><span class="o">.</span><span class="n">rows</span><span class="p">][</span><span class="n">c</span><span class="p">]</span> <span class="p">{</span>
+                <span class="k">return</span> <span class="kc">false</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+        <span class="k">return</span> <span class="kc">true</span>
+    <span class="p">}</span>
+    
+    <span class="k">mutating</span> <span class="kd">func</span> <span class="nf">enumerate</span><span class="p">()</span> <span class="p">{</span>
+        <span class="k">var</span> <span class="nv">c</span> <span class="o">=</span> <span class="mi">1</span>
+        <span class="k">for</span> <span class="n">_</span> <span class="k">in</span> <span class="mi">1</span><span class="o">..&lt;</span><span class="n">matrix</span><span class="o">.</span><span class="n">columns</span> <span class="o">+</span> <span class="mi">1</span> <span class="p">{</span>
+            <span class="n">press</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="n">c</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+            <span class="k">while</span> <span class="p">(</span><span class="nf">guess</span><span class="p">()</span> <span class="o">==</span> <span class="kc">false</span><span class="p">)</span> <span class="p">{</span>
+                <span class="n">press</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span> <span class="o">+=</span> <span class="mi">1</span>
+                <span class="n">c</span> <span class="o">=</span> <span class="mi">1</span>
+                <span class="k">while</span> <span class="n">press</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="n">c</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">1</span> <span class="p">{</span>
+                    <span class="n">press</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="n">c</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+                    <span class="n">c</span> <span class="o">+=</span> <span class="mi">1</span>
+                    <span class="n">press</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="n">c</span><span class="p">]</span> <span class="o">+=</span> <span class="mi">1</span>
+                <span class="p">}</span>
+            <span class="p">}</span>
+            <span class="n">c</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+</code></pre>
+</div>
+<p>在<code class="highlighter-rouge">Model</code>中加入核心算法即可</p>
+
+<p><img src="https://upload-images.jianshu.io/upload_images/11636671-252a374e84a40898.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" width="375" style="margin: clear: both; display: block; margin:auto; 0;" /></p>
+
+<p>这个<code class="highlighter-rouge">Demo</code>可能是全网唯一的<code class="highlighter-rouge">熄灯问题</code>的<code class="highlighter-rouge">UI</code>版本吧, 给自己一个赞~</p>
+
 <p>经过好几次测试, 可以看见, <code class="highlighter-rouge">算法是正确</code>的, 我也学到了这个算法<code class="highlighter-rouge">背后的思维</code>, 更通过了写了一个<code class="highlighter-rouge">Demo</code>来证明了算法的正确性. 这个<code class="highlighter-rouge">Demo</code>的难点在于<code class="highlighter-rouge">向量</code>和<code class="highlighter-rouge">矩阵</code>之间的互相转换, 这里为什么不说<code class="highlighter-rouge">一维数组</code>和<code class="highlighter-rouge">二维数组</code>呢? , 原因在于<code class="highlighter-rouge">吴恩达</code>的机器学习课程中也教会了我一些比较厉害的算法, 比如<code class="highlighter-rouge">梯度下降</code>之类的.</p>
 
 <p>好了, 现在写文章没有之前频繁了, 原因在于之前那些文章都<code class="highlighter-rouge">太水</code>, <code class="highlighter-rouge">太肤浅</code>, 写了对自己也没有太大的意义, 被人看到也只会觉得是垃圾而已… 所以在我<code class="highlighter-rouge">第五阶段的学习</code>后, 希望能够有机会进入一家大厂继续深造吧!</p>
 
-<p>最后 本文中所有的源码都可以在github上找到:</p>
+<p>最后 本文中所有的源码都可以在github上找到 -&gt; <code class="highlighter-rouge">UIAlgorithm</code></p>
 <blockquote>
   <p>GitHub Repo：<a href="https://github.com/coderZsq/coderZsq.target.swift">coderZsq.target.swift</a>
 <br />Follow: <a href="https://github.com/coderZsq">coderZsq · GitHub</a>
