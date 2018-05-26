@@ -14,7 +14,7 @@ highlighter: rouge
 markdown: kramdown
 
 # supported colors: blue, green, purple, red, orange or slate. If you need clear, leave it empty.
-cover_color: slate
+cover_color: 
 
 # The blog button should not be removed.
 blog_button:
@@ -24,8 +24,6 @@ blog_button:
 # Navigation buttons in the front page.
 nav:
     - {title: 简历, description: 我的简历, url: 'https://coderzsq.github.io/coderZsq.webpack.js/'}
-    # - {title: 简书, description: 我的简书, url: 'http://www.jianshu.com/u/9d7fad1a4693'}
-    # - {title: 掘金, description: 我的掘金, url: 'https://juejin.im/user/57e735dfa22b9d00614eecb8'}
 
 # Pagination
 gems: [jekyll-paginate]
@@ -41,7 +39,6 @@ comment:
 social:
     #weibo: onevcat
     github: coderZsq
-    jianshu: coderZsq
     juejin: coderZsq
     #twitter: onevcat
     #gplus: 107108267983477358170
