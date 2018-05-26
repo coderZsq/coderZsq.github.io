@@ -18,7 +18,7 @@
 
 #### Latest: [Swift 进阶 | 看得见的算法](https://coderzsq.github.io/2018/05/Swift-%E8%BF%9B%E9%98%B6-%E7%9C%8B%E5%BE%97%E8%A7%81%E7%9A%84%E7%AE%97%E6%B3%95/)
 
-### Focus areas: App 
+### Focus areas: Native 
 
 
 | Technology stack |Language| GitHub repositorie  | Article |
