@@ -703,6 +703,31 @@
 
 <p><img src="https://upload-images.jianshu.io/upload_images/12332870-295d67198a0610ba.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="" /></p>
 
+<p>我尝试了一下将绘图上下文传入其他线程并渲染:</p>
+
+<div class="language-objc highlighter-rouge"><pre class="highlight"><code>    <span class="k">for</span> <span class="p">(</span><span class="n">Element</span> <span class="o">*</span> <span class="n">element</span> <span class="k">in</span> <span class="n">_layout</span><span class="p">.</span><span class="n">imageElements</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">UIImage</span> <span class="o">*</span> <span class="n">image</span> <span class="o">=</span> <span class="p">(</span><span class="n">UIImage</span> <span class="o">*</span><span class="p">)[</span><span class="n">ComponentCell</span><span class="p">.</span><span class="n">asyncReusePool</span> <span class="nf">dequeueReusableObject</span><span class="p">];</span>
+        <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">image</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">NSString</span> <span class="o">*</span> <span class="n">url</span> <span class="o">=</span> <span class="n">element</span><span class="p">.</span><span class="n">value</span><span class="p">;</span>
+            <span class="p">[</span><span class="n">url</span> <span class="nf">preDecodeThroughQueue</span><span class="p">:</span><span class="n">concurrentQueue</span> <span class="nf">completion</span><span class="p">:</span><span class="o">^</span><span class="p">(</span><span class="n">UIImage</span> <span class="o">*</span> <span class="n">image</span><span class="p">)</span> <span class="p">{</span>
+                <span class="p">[</span><span class="n">ComponentCell</span><span class="p">.</span><span class="n">asyncReusePool</span> <span class="nf">addUsingObject</span><span class="p">:</span><span class="n">image</span><span class="p">];</span>
+                <span class="n">CGContextDrawImage</span><span class="p">(</span><span class="n">context</span><span class="p">,</span> <span class="n">element</span><span class="p">.</span><span class="n">frame</span><span class="p">,</span> <span class="n">image</span><span class="p">.</span><span class="n">CGImage</span><span class="p">);</span>
+                <span class="n">completion</span><span class="p">(</span><span class="nb">YES</span><span class="p">);</span>
+            <span class="p">}];</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+            <span class="p">[</span><span class="n">image</span> <span class="nf">drawInRect</span><span class="p">:</span><span class="n">element</span><span class="p">.</span><span class="n">frame</span><span class="p">];</span>
+            <span class="n">completion</span><span class="p">(</span><span class="nb">YES</span><span class="p">);</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+    <span class="p">[</span><span class="n">_asyncReusePool</span> <span class="nf">reset</span><span class="p">];</span>
+</code></pre>
+</div>
+<p>可惜的是, 使用<code class="highlighter-rouge">CGContextDrawImage</code>传入当前上下文也不能解决这个问题, 原因是上一个线程的上下文已经过期了…</p>
+
+<p><img src="https://upload-images.jianshu.io/upload_images/12332870-9cf9655bf41931b0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="" /></p>
+
+<p>然而在原以为是因为<code class="highlighter-rouge">子线程销毁</code>导致的<code class="highlighter-rouge">上下文过期</code>, 在我用<code class="highlighter-rouge">Runloop</code>做了一个常驻线程后, 一样没有效果… 真是醉了… 谁知道上下文过期会是什么造成的么?</p>
+
 <p>如果有大佬能够不吝赐教, 必定感恩在心~~</p>
 
 <p>最后 本文中所有的源码都可以在github上找到 -&gt; <a href="https://github.com/coderZsq/coderZsq.project.ios/tree/master/SQPerformance">SQPerformance</a></p>
@@ -740,7 +765,7 @@
             <section class="footer">
     <footer>
     	<span class="footer__copyright">本站点采用<a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">知识共享 署名-非商业性使用-相同方式共享 4.0 国际 许可协议</a></span>
-        <span class="footer__copyright">由 <a href="https://jekyllrb.com">Jekyll</a> 于 2018-07-08 生成，感谢 <a href="https://www.digitalocean.com/?refcode=30ed2d146762">Digital Ocean</a> 为本站提供稳定的 VPS 服务</span>
+        <span class="footer__copyright">由 <a href="https://jekyllrb.com">Jekyll</a> 于 2018-07-11 生成，感谢 <a href="https://www.digitalocean.com/?refcode=30ed2d146762">Digital Ocean</a> 为本站提供稳定的 VPS 服务</span>
         <span class="footer__copyright">本站由 <a href="https://github.com/coderZsq">@Castie!</a> 创建，采用 <a href="https://github.com/onevcat/vno-jekyll">Vno - Jekyll</a> 作为主题，您可以在 GitHub 找到<a href="https://github.com/onevcat/OneV-s-Den">本站源码</a> - &copy; 2018</span>
     </footer>
 </section>
