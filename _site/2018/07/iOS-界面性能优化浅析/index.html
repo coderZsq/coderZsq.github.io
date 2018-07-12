@@ -726,9 +726,123 @@
 
 <p><img src="https://upload-images.jianshu.io/upload_images/12332870-9cf9655bf41931b0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="" /></p>
 
+<h4 id="常驻线程">常驻线程</h4>
+
+<p>碰到这个问题, 首先想到的就是可能是在上一条线程挂了之后, <code class="highlighter-rouge">context</code>失效导致的, 那我们可以使用<code class="highlighter-rouge">runloop</code>开启一条常驻线程来保住这个上下文.</p>
+
+<div class="language-objc highlighter-rouge"><pre class="highlight"><code><span class="cp">#import "PermenantThread.h"
+</span>
+<span class="k">@interface</span> <span class="nc">Thread</span> <span class="p">:</span> <span class="nc">NSThread</span>
+<span class="k">@end</span>
+
+<span class="k">@implementation</span> <span class="nc">Thread</span>
+<span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="n">dealloc</span> <span class="p">{</span>
+    <span class="n">NSLog</span><span class="p">(</span><span class="s">@"%s"</span><span class="p">,</span> <span class="n">__func__</span><span class="p">);</span>
+<span class="p">}</span>
+<span class="k">@end</span>
+
+<span class="k">@interface</span> <span class="nc">PermenantThread</span><span class="p">()</span>
+<span class="k">@property</span> <span class="p">(</span><span class="n">strong</span><span class="p">,</span> <span class="n">nonatomic</span><span class="p">)</span> <span class="n">Thread</span> <span class="o">*</span><span class="n">innerThread</span><span class="p">;</span>
+<span class="k">@end</span>
+
+<span class="k">@implementation</span> <span class="nc">PermenantThread</span>
+
+<span class="k">-</span> <span class="p">(</span><span class="n">instancetype</span><span class="p">)</span><span class="n">init</span>
+<span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">self</span> <span class="o">=</span> <span class="p">[</span><span class="n">super</span> <span class="nf">init</span><span class="p">])</span> <span class="p">{</span>
+        <span class="n">self</span><span class="p">.</span><span class="n">innerThread</span> <span class="o">=</span> <span class="p">[[</span><span class="n">Thread</span> <span class="nf">alloc</span><span class="p">]</span> <span class="nf">initWithBlock</span><span class="p">:</span><span class="o">^</span><span class="p">{</span>
+            <span class="n">CFRunLoopSourceContext</span> <span class="n">context</span> <span class="o">=</span> <span class="p">{</span><span class="mi">0</span><span class="p">};</span>
+            <span class="n">CFRunLoopSourceRef</span> <span class="n">source</span> <span class="o">=</span> <span class="n">CFRunLoopSourceCreate</span><span class="p">(</span><span class="n">kCFAllocatorDefault</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">context</span><span class="p">);</span>
+            <span class="n">CFRunLoopAddSource</span><span class="p">(</span><span class="n">CFRunLoopGetCurrent</span><span class="p">(),</span> <span class="n">source</span><span class="p">,</span> <span class="n">kCFRunLoopDefaultMode</span><span class="p">);</span>
+            <span class="n">CFRelease</span><span class="p">(</span><span class="n">source</span><span class="p">);</span>
+            <span class="n">CFRunLoopRunInMode</span><span class="p">(</span><span class="n">kCFRunLoopDefaultMode</span><span class="p">,</span> <span class="mf">1.0e10</span><span class="p">,</span> <span class="nb">false</span><span class="p">);</span>
+        <span class="p">}];</span>
+        <span class="p">[</span><span class="n">self</span><span class="p">.</span><span class="n">innerThread</span> <span class="nf">start</span><span class="p">];</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="n">self</span><span class="p">;</span>
+<span class="p">}</span>
+
+
+<span class="o">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="n">executeTask</span><span class="o">:</span><span class="p">(</span><span class="n">PermenantThreadTask</span><span class="p">)</span><span class="n">task</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">self</span><span class="p">.</span><span class="n">innerThread</span> <span class="o">||</span> <span class="o">!</span><span class="n">task</span><span class="p">)</span> <span class="k">return</span><span class="p">;</span>
+    <span class="p">[</span><span class="n">self</span> <span class="nf">performSelector</span><span class="p">:</span><span class="k">@selector</span><span class="p">(</span><span class="nf">__executeTask</span><span class="p">:)</span> <span class="n">onThread</span><span class="o">:</span><span class="n">self</span><span class="p">.</span><span class="n">innerThread</span> <span class="n">withObject</span><span class="o">:</span><span class="n">task</span> <span class="n">waitUntilDone</span><span class="o">:</span><span class="nb">NO</span><span class="p">];</span>
+<span class="p">}</span>
+
+<span class="o">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="n">stop</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">self</span><span class="p">.</span><span class="n">innerThread</span><span class="p">)</span> <span class="k">return</span><span class="p">;</span>
+    <span class="p">[</span><span class="n">self</span> <span class="nf">performSelector</span><span class="p">:</span><span class="k">@selector</span><span class="p">(</span><span class="n">__stop</span><span class="p">)</span> <span class="nf">onThread</span><span class="p">:</span><span class="n">self</span><span class="p">.</span><span class="n">innerThread</span> <span class="n">withObject</span><span class="o">:</span><span class="nb">nil</span> <span class="n">waitUntilDone</span><span class="o">:</span><span class="nb">YES</span><span class="p">];</span>
+<span class="p">}</span>
+
+<span class="o">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="n">dealloc</span> <span class="p">{</span>
+    <span class="n">NSLog</span><span class="p">(</span><span class="s">@"%s"</span><span class="p">,</span> <span class="n">__func__</span><span class="p">);</span>
+    <span class="p">[</span><span class="n">self</span> <span class="nf">stop</span><span class="p">];</span>
+<span class="p">}</span>
+
+<span class="o">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="n">__stop</span> <span class="p">{</span>
+    <span class="n">CFRunLoopStop</span><span class="p">(</span><span class="n">CFRunLoopGetCurrent</span><span class="p">());</span>
+    <span class="n">self</span><span class="p">.</span><span class="n">innerThread</span> <span class="o">=</span> <span class="nb">nil</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="o">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="n">__executeTask</span><span class="o">:</span><span class="p">(</span><span class="n">PermenantThreadTask</span><span class="p">)</span><span class="n">task</span> <span class="p">{</span>
+    <span class="n">task</span><span class="p">();</span>
+<span class="p">}</span>
+
+<span class="k">@end</span>
+
+</code></pre>
+</div>
+
 <p>然而在原以为是因为<code class="highlighter-rouge">子线程销毁</code>导致的<code class="highlighter-rouge">上下文过期</code>, 在我用<code class="highlighter-rouge">Runloop</code>做了一个常驻线程后, 一样没有效果… 真是醉了… 谁知道上下文过期会是什么造成的么?</p>
 
-<p>如果有大佬能够不吝赐教, 必定感恩在心~~</p>
+<h4 id="解决方法">解决方法</h4>
+
+<p>查了一些资料和问了一些大佬, 得到各种反馈的解决方案, <code class="highlighter-rouge">dispath_async_f</code>这个函数是没有用的, 传递的上下文和绘图上下文并没有关系, 所以这个是不对的, 最后尝试使用自建上下文解决了这个问题.</p>
+
+<div class="language-objc highlighter-rouge"><pre class="highlight"><code><span class="n">CGColorSpaceRef</span> <span class="n">colorSpace</span> <span class="o">=</span> <span class="n">CGColorSpaceCreateDeviceRGB</span><span class="p">();</span>
+<span class="n">CGContextRef</span> <span class="n">context</span> <span class="o">=</span> <span class="n">CGBitmapContextCreate</span><span class="p">(</span><span class="nb">NULL</span><span class="p">,</span> <span class="n">contextSize</span><span class="p">.</span><span class="n">width</span><span class="p">,</span> <span class="n">contextSize</span><span class="p">.</span><span class="n">height</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="n">contextSize</span><span class="p">.</span><span class="n">width</span> <span class="o">*</span> <span class="mi">4</span><span class="p">,</span> <span class="n">colorSpace</span><span class="p">,</span> <span class="n">kCGImageAlphaPremultipliedFirst</span> <span class="o">|</span> <span class="n">kCGImageByteOrderDefault</span><span class="p">);</span>
+<span class="n">CGColorSpaceRelease</span><span class="p">(</span><span class="n">colorSpace</span><span class="p">);</span>
+<span class="n">CGAffineTransform</span> <span class="n">normalState</span> <span class="o">=</span> <span class="n">CGContextGetCTM</span><span class="p">(</span><span class="n">context</span><span class="p">);</span>
+<span class="n">CGContextTranslateCTM</span><span class="p">(</span><span class="n">context</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">bounds</span><span class="p">.</span><span class="n">size</span><span class="p">.</span><span class="n">height</span><span class="p">);</span>
+<span class="n">CGContextScaleCTM</span><span class="p">(</span><span class="n">context</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">);</span>
+<span class="n">CGContextConcatCTM</span><span class="p">(</span><span class="n">context</span><span class="p">,</span> <span class="n">normalState</span><span class="p">);</span>
+<span class="k">if</span> <span class="p">(</span><span class="n">backgroundColor</span> <span class="o">&amp;&amp;</span> <span class="n">backgroundColor</span> <span class="o">!=</span> <span class="p">[</span><span class="n">UIColor</span> <span class="nf">clearColor</span><span class="p">])</span> <span class="p">{</span>
+    <span class="n">CGContextSetFillColorWithColor</span><span class="p">(</span><span class="n">context</span><span class="p">,</span> <span class="n">backgroundColor</span><span class="p">.</span><span class="n">CGColor</span><span class="p">);</span>
+    <span class="n">CGContextFillRect</span><span class="p">(</span><span class="n">context</span><span class="p">,</span> <span class="n">bounds</span><span class="p">);</span>
+<span class="p">}</span>
+<span class="n">UIGraphicsPushContext</span><span class="p">(</span><span class="n">context</span><span class="p">);</span>
+</code></pre>
+</div>
+<p>绘图的时候不使用<code class="highlighter-rouge">drawInRect</code>, 而使用<code class="highlighter-rouge">CGContextDrawImage</code>的API</p>
+
+<div class="language-objc highlighter-rouge"><pre class="highlight"><code>    <span class="n">dispatch_group_t</span> <span class="n">group</span> <span class="o">=</span> <span class="n">dispatch_group_create</span><span class="p">();</span>
+    <span class="n">dispatch_queue_t</span> <span class="n">concurrentQueue</span> <span class="o">=</span> <span class="n">dispatch_queue_create</span><span class="p">(</span><span class="s">"concurrent"</span><span class="p">,</span> <span class="n">DISPATCH_QUEUE_CONCURRENT</span><span class="p">);</span>
+    <span class="k">for</span> <span class="p">(</span><span class="n">Element</span> <span class="o">*</span> <span class="n">element</span> <span class="k">in</span> <span class="n">_layout</span><span class="p">.</span><span class="n">imageElements</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">UIImage</span> <span class="o">*</span> <span class="n">image</span> <span class="o">=</span> <span class="p">(</span><span class="n">UIImage</span> <span class="o">*</span><span class="p">)[</span><span class="n">ComponentCell</span><span class="p">.</span><span class="n">asyncReusePool</span> <span class="nf">dequeueReusableObject</span><span class="p">];</span>
+        <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">image</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">dispatch_group_enter</span><span class="p">(</span><span class="n">group</span><span class="p">);</span>
+            <span class="n">dispatch_group_async</span><span class="p">(</span><span class="n">group</span><span class="p">,</span> <span class="n">concurrentQueue</span><span class="p">,</span> <span class="o">^</span><span class="p">{</span>
+                <span class="n">NSString</span> <span class="o">*</span> <span class="n">url</span> <span class="o">=</span> <span class="n">element</span><span class="p">.</span><span class="n">value</span><span class="p">;</span>
+                <span class="p">[</span><span class="n">url</span> <span class="nf">preDecodeWithCGCoordinateSystem</span><span class="p">:</span><span class="nb">YES</span> <span class="nf">completion</span><span class="p">:</span><span class="o">^</span><span class="p">(</span><span class="n">UIImage</span> <span class="o">*</span> <span class="n">image</span><span class="p">)</span> <span class="p">{</span>
+                    <span class="p">[</span><span class="n">ComponentCell</span><span class="p">.</span><span class="n">asyncReusePool</span> <span class="nf">addUsingObject</span><span class="p">:</span><span class="n">image</span><span class="p">];</span>
+                    <span class="n">CGContextDrawImage</span><span class="p">(</span><span class="n">context</span><span class="p">,</span> <span class="n">element</span><span class="p">.</span><span class="n">frame</span><span class="p">,</span> <span class="n">image</span><span class="p">.</span><span class="n">CGImage</span><span class="p">);</span>
+<span class="c1">//                    completion(YES);
+</span>                <span class="p">}];</span>
+                <span class="n">dispatch_group_leave</span><span class="p">(</span><span class="n">group</span><span class="p">);</span>
+            <span class="p">});</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+            <span class="n">CGContextDrawImage</span><span class="p">(</span><span class="n">context</span><span class="p">,</span> <span class="n">element</span><span class="p">.</span><span class="n">frame</span><span class="p">,</span> <span class="n">image</span><span class="p">.</span><span class="n">CGImage</span><span class="p">);</span>
+            <span class="n">completion</span><span class="p">(</span><span class="nb">YES</span><span class="p">);</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+    <span class="n">dispatch_group_notify</span><span class="p">(</span><span class="n">group</span><span class="p">,</span> <span class="n">concurrentQueue</span><span class="p">,</span> <span class="o">^</span><span class="p">{</span>
+        <span class="n">completion</span><span class="p">(</span><span class="nb">YES</span><span class="p">);</span>
+    <span class="p">});</span>
+    <span class="p">[</span><span class="n">_asyncReusePool</span> <span class="nf">reset</span><span class="p">];</span>
+</code></pre>
+</div>
+<p>由于是异步绘制, 每下载一张图片就进行绘制, 会造成一直刷帧, 所以使用线程组来进行统一绘制.</p>
+
+<p>这里还有一个坑就是 <code class="highlighter-rouge">drawInRect</code>和<code class="highlighter-rouge">CGContextDrawImage </code>的绘制坐标系不一样, 所以需要加一下判断即可.</p>
 
 <p>最后 本文中所有的源码都可以在github上找到 -&gt; <a href="https://github.com/coderZsq/coderZsq.project.ios/tree/master/SQPerformance">SQPerformance</a></p>
 <blockquote>
@@ -765,7 +879,7 @@
             <section class="footer">
     <footer>
     	<span class="footer__copyright">本站点采用<a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">知识共享 署名-非商业性使用-相同方式共享 4.0 国际 许可协议</a></span>
-        <span class="footer__copyright">由 <a href="https://jekyllrb.com">Jekyll</a> 于 2018-07-11 生成，感谢 <a href="https://www.digitalocean.com/?refcode=30ed2d146762">Digital Ocean</a> 为本站提供稳定的 VPS 服务</span>
+        <span class="footer__copyright">由 <a href="https://jekyllrb.com">Jekyll</a> 于 2018-07-12 生成，感谢 <a href="https://www.digitalocean.com/?refcode=30ed2d146762">Digital Ocean</a> 为本站提供稳定的 VPS 服务</span>
         <span class="footer__copyright">本站由 <a href="https://github.com/coderZsq">@Castie!</a> 创建，采用 <a href="https://github.com/onevcat/vno-jekyll">Vno - Jekyll</a> 作为主题，您可以在 GitHub 找到<a href="https://github.com/onevcat/OneV-s-Den">本站源码</a> - &copy; 2018</span>
     </footer>
 </section>
