@@ -18,13 +18,13 @@
 
 #### Latest: [iOS 界面性能优化浅析](https://coderzsq.github.io/2018/07/iOS-%E7%95%8C%E9%9D%A2%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E6%B5%85%E6%9E%90/)
 
-### Focus areas: Native 
+### 📱Moblie-end 
 
 
 | Category |Language| Repository  | Article |
 |:-------:|:-------:|:------:|:-------:|
 |Performance|<img src="https://img.shields.io/badge/language-Objective--C-5290F7.svg">|[coderZsq.project.ios](https://github.com/coderZsq/coderZsq.project.ios)|[iOS 界面性能优化浅析](https://coderzsq.github.io/2018/07/iOS-%E7%95%8C%E9%9D%A2%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E6%B5%85%E6%9E%90/)|
-| Principle |<img src="https://img.shields.io/badge/language-C++-E2597D.svg">|[coderZsq.practice.native](https://github.com/coderZsq/coderZsq.practice.native)|[C++ 一把窥探OC底层的利刃](https://coderzsq.github.io/2018/03/C++-%E4%B8%80%E6%8A%8A%E7%AA%A5%E6%8E%A2OC%E5%BA%95%E5%B1%82%E7%9A%84%E5%88%A9%E5%88%83/)<br/>[C++ 一把剖析OC底层的军刀](https://coderzsq.github.io/2018/03/C++-%E4%B8%80%E6%8A%8A%E5%89%96%E6%9E%90OC%E5%BA%95%E5%B1%82%E7%9A%84%E5%86%9B%E5%88%80/)<br/> [C++ 一把卍解OC底层的斩魄刀](https://coderzsq.github.io/2018/04/C++-%E4%B8%80%E6%8A%8A%E5%8D%8D%E8%A7%A3OC%E5%BA%95%E5%B1%82%E7%9A%84%E6%96%A9%E9%AD%84%E5%88%80/)<br/> [STL 一部数据结构的使用宝典](https://coderzsq.github.io/2018/05/STL-%E4%B8%80%E9%83%A8%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E7%9A%84%E4%BD%BF%E7%94%A8%E5%AE%9D%E5%85%B8/)|
+| Principle |<img src="https://img.shields.io/badge/language-C++-E2597D.svg">||[C++ 一把窥探OC底层的利刃](https://coderzsq.github.io/2018/03/C++-%E4%B8%80%E6%8A%8A%E7%AA%A5%E6%8E%A2OC%E5%BA%95%E5%B1%82%E7%9A%84%E5%88%A9%E5%88%83/)<br/>[C++ 一把剖析OC底层的军刀](https://coderzsq.github.io/2018/03/C++-%E4%B8%80%E6%8A%8A%E5%89%96%E6%9E%90OC%E5%BA%95%E5%B1%82%E7%9A%84%E5%86%9B%E5%88%80/)<br/> [C++ 一把卍解OC底层的斩魄刀](https://coderzsq.github.io/2018/04/C++-%E4%B8%80%E6%8A%8A%E5%8D%8D%E8%A7%A3OC%E5%BA%95%E5%B1%82%E7%9A%84%E6%96%A9%E9%AD%84%E5%88%80/)<br/> [STL 一部数据结构的使用宝典](https://coderzsq.github.io/2018/05/STL-%E4%B8%80%E9%83%A8%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E7%9A%84%E4%BD%BF%E7%94%A8%E5%AE%9D%E5%85%B8/)|
 |Algorithm|<img src="https://img.shields.io/badge/language-Swift-F4AE59.svg">|[coderZsq.practice.native](https://github.com/coderZsq/coderZsq.practice.native)|[Swift 数据结构与算法初探](https://coderzsq.github.io/2018/01/Swift-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95%E5%88%9D%E6%8E%A2/)<br/>[Swift 排序算法的简单取舍](https://coderzsq.github.io/2018/02/Swift-%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95%E7%9A%84%E7%AE%80%E5%8D%95%E5%8F%96%E8%88%8D/)<br/>[Swift 第二梯队iOS面试败北感悟](https://coderzsq.github.io/2018/04/Swift-%E7%AC%AC%E4%BA%8C%E6%A2%AF%E9%98%9FiOS%E9%9D%A2%E8%AF%95%E8%B4%A5%E5%8C%97%E6%84%9F%E6%82%9F/)<br/>[Swift 进阶 : 看得见的算法](https://coderzsq.github.io/2018/05/Swift-%E8%BF%9B%E9%98%B6-%E7%9C%8B%E5%BE%97%E8%A7%81%E7%9A%84%E7%AE%97%E6%B3%95/)| 
 |Router|<img src="https://img.shields.io/badge/language-Swift-F4AE59.svg">||[iOS 关于组件化Router设计的争辩](https://coderzsq.github.io/2017/11/iOS-%E5%85%B3%E4%BA%8E%E7%BB%84%E4%BB%B6%E5%8C%96Router%E8%AE%BE%E8%AE%A1%E7%9A%84%E4%BA%89%E8%BE%A9/)|
 |HTTP|<img src="https://img.shields.io/badge/language-Swift-F4AE59.svg">||[iOS 通俗易懂的HTTP网络](https://coderzsq.github.io/2017/08/iOS-%E9%80%9A%E4%BF%97%E6%98%93%E6%87%82%E7%9A%84HTTP%E7%BD%91%E7%BB%9C/)|
@@ -41,7 +41,7 @@
 
 <br/>
 
-### Focus areas: Web 
+### 🖥️ Front-end 
 
 | Category|Language | Repository  | Article |
 |:-------:|:-------:|:------:|:------:|
@@ -53,7 +53,7 @@
 
 <br/>
 
-### Focus areas: Server 
+### 🗄️ Back-end 
 
 | Category|Language | Repository  | Article |
 |:-------:|:-------:|:------:|:------:|
