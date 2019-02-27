@@ -1,0 +1,604 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <title>Castie! Notes</title>
+  <meta name="description" content="  GitHub Repo：coderZsq.project.iosFollow: coderZsq · GitHubResume: https://coderzsq.github.io/coderZsq.practice.web/">
+  <meta name="author" content="Wei Wang">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="iOS 有效「阅读源码」的一些思考">
+  <meta name="twitter:description" content="  GitHub Repo：coderZsq.project.iosFollow: coderZsq · GitHubResume: https://coderzsq.github.io/coderZsq.practice.web/">
+  
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="iOS 有效「阅读源码」的一些思考">
+  <meta property="og:description" content="  GitHub Repo：coderZsq.project.iosFollow: coderZsq · GitHubResume: https://coderzsq.github.io/coderZsq.practice.web/">
+  
+  <link rel="icon" type="image/ico" href="/assets/images/favicon.ico" />
+  <link href="/assets/images/favicon.ico" rel="shortcut icon" type="image/ico">
+  
+  <link rel="stylesheet" href="/css/main.css">
+  <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+
+  <link rel="canonical" href="http://localhost:4000/2019/02/iOS-%E6%9C%89%E6%95%88-%E9%98%85%E8%AF%BB%E6%BA%90%E7%A0%81-%E7%9A%84%E4%B8%80%E4%BA%9B%E6%80%9D%E8%80%83/">
+  <link rel="alternate" type="application/rss+xml" title="Castie!" href="http://localhost:4000/feed.xml">
+  
+  <meta name="google-site-verification" content="1-1ZlHoRvM0T2FqPbW2S-qLgYXN6rsn52kErlMPd_gw" />
+  
+</head>
+
+
+  <body>
+
+    <span class="mobile btn-mobile-menu">
+        <i class="fa fa-list btn-mobile-menu__icon"></i>
+        <i class="fa fa-angle-up btn-mobile-close__icon hidden"></i>
+    </span>
+    
+    <header class="panel-cover panel-cover--collapsed" style="background-image: url('/assets/images/background-cover.jpg')">
+  <div class="panel-main">
+
+    <div class="panel-main__inner panel-inverted">
+    <div class="panel-main__content">
+
+        <a href="/#blog" title="前往 Castie! 的主页" class="blog-button"><img src="/assets/images/avatar.jpg" width="80" alt="Castie! logo" class="panel-cover__logo logo" /></a>
+        <h1 class="panel-cover__title panel-title"><a href="/#blog" title="link to homepage for Castie!" class="blog-button">Castie!</a></h1>
+        
+        <span class="panel-cover__subtitle panel-subtitle">正态分布, 优劣伴生</span>
+        
+        <hr class="panel-cover__divider" />
+        <p class="panel-cover__description">北冥有鱼，其名为鲲（kūn）。鲲之大，不知其几千里也；化而为鸟，其名为鹏。鹏之背，不知其几千里也；怒而飞，其翼若垂天之云。是鸟也，海运则将徙于南冥。南冥者，天池也。</p>
+        <hr class="panel-cover__divider panel-cover__divider--secondary" />
+        
+        
+        <p class="panel-cover__description">北海若曰：“井鼃不可以语于海者，拘于虚也；夏虫不可以语于冰者，笃于时也；曲士不可以语于道者，束于教也。今尔出于崖涘，观于大海，乃知尔丑，尔将可与语大理矣。</p>
+        
+        
+        <div class="navigation-wrapper">
+          <div>
+            <nav class="cover-navigation cover-navigation--primary">
+              <ul class="navigation">
+                <li class="navigation__item"><a href="/#blog" title="访问博客" class="blog-button">博客</a></li>
+                
+                  <li class="navigation__item"><a href="https://coderzsq.github.io/coderZsq.practice.web/" target="_blank" title="我的简历">简历</a></li>
+                
+              </ul>
+            </nav>
+          </div>
+          
+          <div><nav class="cover-navigation navigation--social">
+  <ul class="navigation">
+
+    
+    <!-- juejin-->
+    <li class="navigation__item">
+      <a href="https://juejin.im/user/57e735dfa22b9d00614eecb8/posts" title="@coderZsq 的稀土掘金" target="_blank">
+        <i class='social fa fa-book'></i>
+        <span class="label">juejin</span>
+      </a>
+    </li>
+    
+
+  
+
+  
+  <!-- Github -->
+  <li class="navigation__item">
+    <a href="https://github.com/coderZsq" title="@coderZsq 的 Github" target="_blank">
+      <i class='social fa fa-github'></i>
+      <span class="label">Github</span>
+    </a>
+  </li>
+  
+
+  
+
+  
+
+  <!-- RSS -->
+  <li class="navigation__item">
+    <a href="/feed.xml" rel="author" title="RSS" target="_blank">
+      <i class='social fa fa-rss'></i>
+      <span class="label">RSS</span>
+    </a>
+  </li>
+
+  
+  <!-- Email -->
+  <li class="navigation__item">
+    <a href="mailto:a13701777868@gmail.com" title="Contact me">
+      <i class='social fa fa-envelope'></i>
+      <span class="label">Email</span>
+    </a>
+  </li>
+  
+
+  </ul>
+</nav>
+</div>
+        </div>
+      </div>
+    </div>
+    
+    
+    <div class="panel-cover--overlay cover-disabled"></div>
+    
+  </div>
+</header>
+
+
+    <div class="content-wrapper">
+        <div class="content-wrapper__inner">
+            <article class="post-container post-container--single" itemscope itemtype="http://schema.org/BlogPosting">
+  <header class="post-header">
+    <div class="post-meta">
+      <time datetime="2019-02-27 23:13:00 +0800" itemprop="datePublished" class="post-meta__date date">2019-02-27</time> &#8226; <span class="post-meta__tags tags">移动开发</span>
+    </div>
+    <h1 class="post-title">iOS 有效「阅读源码」的一些思考</h1>
+  </header>
+
+  <section class="post">
+    <blockquote>
+  <p>GitHub Repo：<a href="https://github.com/coderZsq/coderZsq.project.ios">coderZsq.project.ios</a>
+<br />Follow: <a href="https://github.com/coderZsq">coderZsq · GitHub</a>
+<br />Resume: <a href="https://coderzsq.github.io/coderZsq.practice.web/">https://coderzsq.github.io/coderZsq.practice.web/</a></p>
+</blockquote>
+
+<h2 id="日常扯淡">日常扯淡</h2>
+
+<p>上一篇是第一次写纯阅读类文章, 没有贴出的任何的代码块, 也没有写任何关于技术实现, 但反响出乎意料的好, 不仅获得了掘金的年度征文人气奖, 也得到了iOS大神南峰子的肯定并转载到了知识小集, 对此只有感恩和加倍的努力.</p>
+
+<p>是的, 上一篇所提出的三个问题, 的确是每个开发者都该认真思考的, 但光有价值观, 没有方法论可不行, 有好多读者私信我想要知道前方的路在哪, 想必这也是困扰你许久的症结.</p>
+
+<p>所以这一篇, 我们来谈谈如何进行快速的学习并使知识为我所用, 想要学习真正的技术, 光看技术博客可不行, 这一点在上一篇文章也有所涉及, 如何有效的学习技术, 必然的途径就是看官方文档和阅读优秀的三方源码.</p>
+
+<h2 id="源码区别">源码区别</h2>
+
+<p>首先我们要了解官方源码和三方源码的区别, 到底看官方源码还是优秀的三方源码对成长的效率高, 这里要理解一个概念, 官方源码, 顾名思义对于iOS来说, 就是系统级别的代码, 就是官方会一直维护支持的, 而三方源码就是优秀的开发者开源出来的代码, 可能很优秀, 但并不能保证长时间的有效更新, 打个比方当你的iPhoneXs屏幕破碎了, 你可以到苹果天才吧进行维修, 或者到一些小作坊进行维修, 这里可以类比优秀的三方源码就是手艺高超的手艺人.</p>
+
+<p>知道了区别, 我的建议是先看官方的源码, 这里不仅仅是iOS, 因为所有的三方源码都是大部分都是参照官方源码进行设计的, 也不乏优秀的三方源码被苹果爸爸相中集成到官方源码中, 但这毕竟是少数, 而且我对于三方源码一直是持有保留意见的.</p>
+
+<h2 id="难易程度">难易程度</h2>
+
+<p>怎么选源码对学习的效率也有讲究么? 是的, 而且大有关系, 如果你是iOS开发, 想必你肯定用过AFNetWorking, SDWebImage, 这种牛逼哄哄的框架, 但如果你基础不是很扎实, 就算官方给出了架构文档, 你是不是感觉也无从下手? 就算看了个大概, 也不知道为什么要这样设计, 当然这两个框架网上有太多的文章来进行源码解读, 我也不会作出狂贴代码这种那么Low的事情, 因为所有的选择都是在特定的上下文之下才能观其端倪, 这也就是场景的重要性, 简单来说, 就是要输出倒逼输入, 在场景中想问题, 逆向思考, 你会得出不一样的结论.</p>
+
+<p>还有很重要的一点是, 那你所看的源码需要和那你的能力所匹配, 比如说, 你并不懂C++, 而要看runtime源码你就会感觉很蛋疼, 如果你不懂汇编, 看消息发送那段就算有注释都自觉天书.</p>
+
+<p>所以我的建议是可以看一些比你能力强一点点的, 稍微努努力能够够着的源码, 如果你感觉什么源码都入手困难的话, 可能你的语言基础太过薄弱, 还是乘早转行吧, 因为现在的环境下, 看不了源码几乎没有什么生存空间了.</p>
+
+<h2 id="一些趣事">一些趣事</h2>
+
+<p>入手之前, 我们先要了解一个概念, 并不是只有1000star以上的源码才有阅读的必要, 阅读和使用是两个不同的概念, 使用在项目中我们需要的是稳定性, 所以没有大量验证的代码是不能集成到项目中去的, 而阅读就不一样, 阅读是用来学习思想的, 理解了别人写的代码, 自己写一个, 就会觉得所谓的三方库也就不过尔尔.</p>
+
+<p>这里挑选一个库ZIKViper, 可能大家并不了解这个库, 也跟别提用过这个库了, 在github上也就不到200个star, 作者也好像不怎么维护这个库了, 但这都不是重点, 重点是这我们能够从这个源码中学习到一些关于Viper架构优秀的设计思路, 以及将这些经验运用到自己的项目中去, 这才是我们看源码应该有的角度.</p>
+
+<p>为什么选这个源码, 首先最近拟定要进行架构升级, 我之前也写过一篇关于架构的文章, 但现在回看还是非常幼稚和脆弱的, 但是这也证明了我的成长, 当你感觉过去的代码你看不下去了, 恭喜你, 你进步了.</p>
+
+<p>有缘的是, 在我写之前的架构的时候还和ZIKViper的作者有一次交流, 我将交流整理成文章放在了网上可以点击查阅: <a href="https://juejin.im/entry/5a24bc6d518825619a02836f">iOS 关于组件化Router设计的争辩</a>, 希望对你有所帮助.</p>
+
+<h2 id="了解概念">了解概念</h2>
+
+<p>既然选择了一个源码, 在入手之前, 我们需要了解这个库到底是用来做什么的, 即场景的重要性. 可以看下相关库的README.md.</p>
+
+<p>VIPER简介</p>
+
+<p>VIPER的全称是View-Interactor-Presenter-Entity-Router。示意图如下：</p>
+
+<p><img src="https://upload-images.jianshu.io/upload_images/12332870-46989ca03d3a28ce.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="" /></p>
+
+<p>相比MVX架构，VIPER多出了两个东西：Interactor（交互器）和Router（路由）。</p>
+
+<p>各部分职责如下：</p>
+
+<p>View
+提供完整的视图，负责视图的组合、布局、更新
+向Presenter提供更新视图的接口
+将View相关的事件发送给Presenter
+Presenter
+接收并处理来自View的事件
+向Interactor请求调用业务逻辑
+向Interactor提供View中的数据
+接收并处理来自Interactor的数据回调事件
+通知View进行更新操作
+通过Router跳转到其他View
+Router
+提供View之间的跳转功能，减少了模块间的耦合
+初始化VIPER的各个模块
+Interactor
+维护主要的业务逻辑功能，向Presenter提供现有的业务用例
+维护、获取、更新Entity
+当有业务相关的事件发生时，处理事件，并通知Presenter
+Entity
+和Model一样的数据模型
+和MVX的区别
+VIPER把MVC中的Controller进一步拆分成了Presenter、Router和Interactor。和MVP中负责业务逻辑的Presenter不同，VIPER的Presenter的主要工作是在View和Interactor之间传递事件，并管理一些View的展示逻辑，主要的业务逻辑实现代码都放在了Interactor里。Interactor的设计里提出了”用例”的概念，也就是把每一个会出现的业务流程封装好，这样可测试性会大大提高。而Router则进一步解决了不同模块之间的耦合。所以，VIPER和上面几个MVX相比，多总结出了几个需要维护的东西：</p>
+
+<p>View事件管理
+数据事件管理
+事件和业务的转化
+总结每个业务用例
+模块内分层隔离
+模块间通信
+而这里面，还可以进一步细分一些职责。VIPER实际上已经把Controller的概念淡化了，这拆分出来的几个部分，都有很明确的单一职责，有些部分之间是完全隔绝的，在开发时就应该清晰地区分它们各自的职责，而不是将它们视为一个Controller。</p>
+
+<p>优点
+VIPER的特色就是职责明确，粒度细，隔离关系明确，这样能带来很多优点：</p>
+
+<p>可测试性好。UI测试和业务逻辑测试可以各自单独进行。
+易于迭代。各部分遵循单一职责，可以很明确地知道新的代码应该放在哪里。
+隔离程度高，耦合程度低。一个模块的代码不容易影响到另一个模块。
+易于团队合作。各部分分工明确，团队合作时易于统一代码风格，可以快速接手别人的代码。</p>
+
+<p>好了, 以上都是抄的, 都是Zuikyo的文字, 我仅仅是粘贴使用, 想必他也不会介意的吧hhh</p>
+
+<h2 id="准备入手">准备入手</h2>
+
+<p>了解了源码的概念, 我们就该开始着手阅读了, 首先将库克隆岛本地, pod install什么的常规操作我就不说了.</p>
+
+<p>首先我们要看的是主文件</p>
+
+<div class="language-objc highlighter-rouge"><pre class="highlight"><code><span class="cp">#import &lt;UIKit/UIKit.h&gt;
+#import "SQViperView.h"
+#import "SQViperViewEventHandler.h"
+#import "SQViperPresenter.h"
+#import "SQViperInteractor.h"
+#import "SQViperWireframe.h"
+#import "SQViperRouter.h"
+#import "SQViperViewPrivate.h"
+#import "SQViperPresenterPrivate.h"
+#import "SQViperInteractorPrivate.h"
+#import "SQViperWireframePrivate.h"
+#import "NSObject+SQViperAssembly.h"
+#import "UIViewController+SQViperRouter.h"
+</span>
+<span class="n">FOUNDATION_EXPORT</span> <span class="kt">double</span> <span class="n">SQViperVersionNumber</span><span class="p">;</span>
+
+<span class="n">FOUNDATION_EXPORT</span> <span class="k">const</span> <span class="kt">unsigned</span> <span class="kt">char</span> <span class="n">SQViperVersionString</span><span class="p">[];</span>
+</code></pre>
+</div>
+<blockquote>
+  <p>这里你会发现和ZIK的前缀不同, 没关系, 我就是抄的, 在学习别人源码的过程中, 最有效的方法就是把别人的代码从新敲上一遍, 你会有不同的感悟, 在此声明我一直都是原创的簇拥者, 此篇文章所表达的意思是如何学习源码, 这里仅仅是代码举例.</p>
+</blockquote>
+
+<p>你是不是也发现了优秀的代码都是极为的相似, 优秀是有范式, 有迹可循的.</p>
+
+<h2 id="重点分析">重点分析</h2>
+
+<p>我这里不会长篇的贴代码进行解读, 想必看到这里, 你一定是有一定经验阅读源码的人, 所以文末放出地址, 自己去看就是了.</p>
+
+<p>这里我们重点关注的是为什么要这样设计, 这样设计的好处在哪里.</p>
+
+<p>看了主头文件, 我们可以发现所有协议后有加上Private字样. 以SQViperView举例.</p>
+
+<div class="language-objc highlighter-rouge"><pre class="highlight"><code><span class="cp">#import &lt;UIKit/UIKit.h&gt;
+</span>
+<span class="n">NS_ASSUME_NONNULL_BEGIN</span>
+
+<span class="k">@protocol</span> <span class="nc">SQViperViewEventHandler</span><span class="p">;</span>
+
+<span class="k">@protocol</span> <span class="nc">SQViperView</span> <span class="o">&lt;</span><span class="n">NSObject</span><span class="o">&gt;</span>
+
+<span class="o">-</span> <span class="p">(</span><span class="n">nullable</span> <span class="n">UIViewController</span> <span class="o">*</span><span class="p">)</span><span class="n">routeSource</span><span class="p">;</span>
+
+<span class="k">@property</span> <span class="p">(</span><span class="n">nonatomic</span><span class="p">,</span> <span class="n">readonly</span><span class="p">,</span> <span class="n">strong</span><span class="p">)</span> <span class="n">id</span><span class="o">&lt;</span><span class="n">SQViperViewEventHandler</span><span class="o">&gt;</span> <span class="n">eventHandler</span><span class="p">;</span>
+
+<span class="k">@optional</span>
+<span class="k">@property</span> <span class="p">(</span><span class="n">nonatomic</span><span class="p">,</span> <span class="n">readonly</span><span class="p">,</span> <span class="n">strong</span><span class="p">)</span> <span class="n">id</span> <span class="n">viewDataSource</span><span class="p">;</span>
+
+<span class="k">@end</span>
+
+<span class="n">NS_ASSUME_NONNULL_END</span>
+</code></pre>
+</div>
+<div class="language-objc highlighter-rouge"><pre class="highlight"><code><span class="cp">#import "SQViperView.h"
+</span>
+<span class="n">NS_ASSUME_NONNULL_BEGIN</span>
+
+<span class="k">@protocol</span> <span class="nc">SQViperViewEventHandler</span><span class="p">;</span>
+
+<span class="k">@protocol</span> <span class="nc">SQViperViewPrivate</span> <span class="o">&lt;</span><span class="n">SQViperView</span><span class="o">&gt;</span>
+
+<span class="o">-</span> <span class="p">(</span><span class="n">id</span><span class="o">&lt;</span><span class="n">SQViperViewEventHandler</span><span class="o">&gt;</span><span class="p">)</span><span class="n">eventHandler</span><span class="p">;</span>
+
+<span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">setEventHandler</span><span class="p">:(</span><span class="n">id</span><span class="o">&lt;</span><span class="n">SQViperViewEventHandler</span><span class="o">&gt;</span><span class="p">)</span><span class="nv">eventHandler</span><span class="p">;</span>
+
+<span class="k">@optional</span>
+<span class="o">-</span> <span class="p">(</span><span class="n">id</span><span class="p">)</span><span class="n">viewDataSource</span><span class="p">;</span>
+
+<span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">setViewDataSource</span><span class="p">:(</span><span class="n">id</span><span class="p">)</span><span class="nv">viewDataSource</span><span class="p">;</span>
+
+<span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">setRouteSource</span><span class="p">:(</span><span class="n">UIViewController</span> <span class="o">*</span><span class="p">)</span><span class="nv">routeSource</span><span class="p">;</span>
+
+<span class="k">@end</span>
+
+<span class="n">NS_ASSUME_NONNULL_END</span>
+</code></pre>
+</div>
+
+<p>这里很清楚的就能够看到, 这是表示权限问题, 也就是只读和读写的问题, 这个在架构设计上尤为重要, 也是工作经验的体现.</p>
+
+<div class="language-objc highlighter-rouge"><pre class="highlight"><code><span class="cp">#import "NSObject+SQViperAssembly.h"
+</span>
+<span class="k">@implementation</span> <span class="nc">NSObject</span> <span class="p">(</span><span class="nl">SQViperAssembly</span><span class="p">)</span>
+
+<span class="k">+</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">assembleViperForView</span><span class="p">:(</span><span class="n">id</span><span class="o">&lt;</span><span class="n">SQViperViewPrivate</span><span class="o">&gt;</span><span class="p">)</span><span class="nv">view</span> <span class="nf">presenter</span><span class="p">:(</span><span class="n">id</span><span class="o">&lt;</span><span class="n">SQViperPresenterPrivate</span><span class="o">&gt;</span><span class="p">)</span><span class="nv">presenter</span> <span class="nf">interactor</span><span class="p">:(</span><span class="n">id</span><span class="o">&lt;</span><span class="n">SQViperInteractorPrivate</span><span class="o">&gt;</span><span class="p">)</span><span class="nv">interactor</span> <span class="nf">wireframe</span><span class="p">:(</span><span class="n">id</span><span class="o">&lt;</span><span class="n">SQViperWireframePrivate</span><span class="o">&gt;</span><span class="p">)</span><span class="nv">wireframe</span> <span class="nf">router</span><span class="p">:(</span><span class="n">id</span><span class="o">&lt;</span><span class="n">SQViperRouter</span><span class="o">&gt;</span><span class="p">)</span><span class="nv">router</span> <span class="p">{</span>
+    
+    <span class="n">NSParameterAssert</span><span class="p">([</span><span class="n">view</span> <span class="nf">conformsToProtocol</span><span class="p">:</span><span class="k">@protocol</span><span class="err">(</span><span class="nc">SQViperView</span><span class="p">)]);</span>
+    <span class="n">NSParameterAssert</span><span class="p">([</span><span class="n">presenter</span> <span class="nf">conformsToProtocol</span><span class="p">:</span><span class="k">@protocol</span><span class="err">(</span><span class="nc">SQViperPresenter</span><span class="p">)]);</span>
+    <span class="n">NSParameterAssert</span><span class="p">([</span><span class="n">interactor</span> <span class="nf">conformsToProtocol</span><span class="p">:</span><span class="k">@protocol</span><span class="err">(</span><span class="nc">SQViperInteractor</span><span class="p">)]);</span>
+    <span class="n">NSParameterAssert</span><span class="p">([</span><span class="n">wireframe</span> <span class="nf">conformsToProtocol</span><span class="p">:</span><span class="k">@protocol</span><span class="err">(</span><span class="nc">SQViperWireframe</span><span class="p">)]);</span>
+    <span class="n">NSParameterAssert</span><span class="p">([</span><span class="n">router</span> <span class="nf">conformsToProtocol</span><span class="p">:</span><span class="k">@protocol</span><span class="err">(</span><span class="nc">SQViperRouter</span><span class="p">)]);</span>
+    
+    <span class="n">NSAssert3</span><span class="p">(</span><span class="n">interactor</span><span class="p">.</span><span class="n">eventHandler</span> <span class="o">==</span> <span class="nb">nil</span><span class="p">,</span> <span class="s">@"Interactor (%@)'s eventHandler (%@) already exists when assemble viper for new eventHandler"</span><span class="p">,</span> <span class="n">interactor</span><span class="p">,</span> <span class="n">interactor</span><span class="p">.</span><span class="n">eventHandler</span><span class="p">,</span> <span class="n">presenter</span><span class="p">);</span>
+    <span class="n">NSAssert3</span><span class="p">(</span><span class="n">interactor</span><span class="p">.</span><span class="n">dataSource</span> <span class="o">==</span> <span class="nb">nil</span><span class="p">,</span> <span class="s">@"Interactor (%@)'s dataSource (%@) already exists when assemble viper for new dataSource"</span><span class="p">,</span> <span class="n">interactor</span><span class="p">,</span> <span class="n">interactor</span><span class="p">.</span><span class="n">dataSource</span><span class="p">,</span> <span class="n">presenter</span><span class="p">);</span>
+    
+    <span class="n">interactor</span><span class="p">.</span><span class="n">eventHandler</span> <span class="o">=</span> <span class="n">presenter</span><span class="p">;</span>
+    <span class="n">interactor</span><span class="p">.</span><span class="n">dataSource</span> <span class="o">=</span> <span class="n">presenter</span><span class="p">;</span>
+    
+    <span class="n">NSAssert3</span><span class="p">(</span><span class="n">wireframe</span><span class="p">.</span><span class="n">view</span> <span class="o">==</span> <span class="nb">nil</span><span class="p">,</span> <span class="s">@"Wireframe (%@)'s view (%@) already exists when assemble viper for new view"</span><span class="p">,</span> <span class="n">wireframe</span><span class="p">,</span> <span class="n">wireframe</span><span class="p">.</span><span class="n">view</span><span class="p">,</span> <span class="n">view</span><span class="p">);</span>
+    
+    <span class="n">wireframe</span><span class="p">.</span><span class="n">view</span> <span class="o">=</span> <span class="n">view</span><span class="p">;</span>
+    <span class="n">wireframe</span><span class="p">.</span><span class="n">router</span> <span class="o">=</span> <span class="n">router</span><span class="p">;</span>
+    
+    <span class="n">NSAssert3</span><span class="p">(</span><span class="n">presenter</span><span class="p">.</span><span class="n">interactor</span> <span class="o">==</span> <span class="nb">nil</span><span class="p">,</span> <span class="s">@"Presenter (%@)'s interactor already exists when assemble viper for new interactor"</span><span class="p">,</span> <span class="n">presenter</span><span class="p">,</span> <span class="n">presenter</span><span class="p">.</span><span class="n">interactor</span><span class="p">,</span> <span class="n">interactor</span><span class="p">);</span>
+    <span class="n">NSAssert3</span><span class="p">(</span><span class="n">presenter</span><span class="p">.</span><span class="n">view</span> <span class="o">==</span> <span class="nb">nil</span><span class="p">,</span> <span class="s">@"Presenter (%@)'s view already exists when assemble viper for new view"</span><span class="p">,</span> <span class="n">presenter</span><span class="p">,</span> <span class="n">presenter</span><span class="p">.</span><span class="n">view</span><span class="p">,</span> <span class="n">view</span><span class="p">);</span>
+    <span class="n">NSAssert3</span><span class="p">(</span><span class="n">presenter</span><span class="p">.</span><span class="n">wireframe</span> <span class="o">==</span> <span class="nb">nil</span><span class="p">,</span> <span class="s">@"Presenter (%@)'s wireframe (%@) already exists assemble viper for new router"</span><span class="p">,</span> <span class="n">presenter</span><span class="p">,</span> <span class="n">presenter</span><span class="p">.</span><span class="n">wireframe</span><span class="p">,</span> <span class="n">self</span><span class="p">);</span>
+    
+    <span class="n">presenter</span><span class="p">.</span><span class="n">interactor</span> <span class="o">=</span> <span class="n">interactor</span><span class="p">;</span>
+    <span class="n">presenter</span><span class="p">.</span><span class="n">view</span> <span class="o">=</span> <span class="n">view</span><span class="p">;</span>
+    <span class="n">presenter</span><span class="p">.</span><span class="n">wireframe</span> <span class="o">=</span> <span class="n">wireframe</span><span class="p">;</span>
+    
+    <span class="k">if</span> <span class="p">([</span><span class="n">view</span> <span class="nf">respondsToSelector</span><span class="p">:</span><span class="k">@selector</span><span class="p">(</span><span class="n">viewDataSource</span><span class="p">)]</span> <span class="o">&amp;&amp;</span>
+        <span class="p">[</span><span class="n">view</span> <span class="nf">respondsToSelector</span><span class="p">:</span><span class="k">@selector</span><span class="p">(</span><span class="nf">setViewDataSource</span><span class="p">:)])</span> <span class="p">{</span>
+        <span class="n">NSAssert3</span><span class="p">(</span><span class="n">view</span><span class="p">.</span><span class="n">viewDataSource</span> <span class="o">==</span> <span class="nb">nil</span><span class="p">,</span> <span class="s">@"View (%@)'s viewDataSource (%@) already exists when assemble viper for new viewDataSource"</span><span class="p">,</span> <span class="n">view</span><span class="p">,</span> <span class="n">view</span><span class="p">.</span><span class="n">viewDataSource</span><span class="p">,</span> <span class="n">presenter</span><span class="p">);</span>
+        <span class="n">view</span><span class="p">.</span><span class="n">viewDataSource</span> <span class="o">=</span> <span class="n">presenter</span><span class="p">;</span>
+    <span class="p">}</span>
+    
+    <span class="n">NSAssert3</span><span class="p">(</span><span class="n">view</span><span class="p">.</span><span class="n">eventHandler</span> <span class="o">==</span> <span class="nb">nil</span><span class="p">,</span> <span class="s">@"View (%@)'s eventHandler (%@) already exists when assemble viper for new eventHandler"</span><span class="p">,</span> <span class="n">view</span><span class="p">,</span> <span class="n">view</span><span class="p">.</span><span class="n">eventHandler</span><span class="p">,</span> <span class="n">presenter</span><span class="p">);</span>
+    
+    <span class="n">view</span><span class="p">.</span><span class="n">eventHandler</span> <span class="o">=</span> <span class="n">presenter</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="k">@end</span>
+</code></pre>
+</div>
+<p>这个分类很好的将架构的所有逻辑结构进行了组装, 堪称是这个源码的精髓所在.</p>
+
+<p>其他的就没有什么值得称道的东西了, 毕竟这是一份简单的源码. 我们的关注点在思想上.</p>
+
+<p>这里要说的是, 根据不同的源码了解分析出其关键点, 并了解设计思路.</p>
+
+<h2 id="动手实践">动手实践</h2>
+
+<p>所谓实践才是检验真理的唯一标准, 所以一般优秀的三方源码都会有demo作为参考, 所以想要学习的同学, 可以自行查阅.</p>
+
+<p>我这里对比之前我写的容量增肌项目, 对比写了一个Viper版本的作为对照, 也会把碰到的问题分享给大家.</p>
+
+<div class="language-objc highlighter-rouge"><pre class="highlight"><code><span class="cp">#import "SQTrainingCapacityViewController.h"
+#import "SQTrainingCapacityCell.h"
+#import "SQTrainingCapacityHeaderView.h"
+#import "SQTrainingCapacityFooterView.h"
+#import "SQTrainingCapacityCellPresenter.h"
+#import "SQTrainingCapacityDataSource.h"
+#import "SQTrainingCapacityViewEventHandler.h"
+</span>
+<span class="k">@interface</span> <span class="nc">SQTrainingCapacityViewController</span> <span class="p">()</span>
+
+<span class="k">@property</span> <span class="p">(</span><span class="n">nonatomic</span><span class="p">,</span> <span class="n">strong</span><span class="p">)</span> <span class="n">NSMutableArray</span> <span class="o">*</span><span class="n">dataSource</span><span class="p">;</span>
+<span class="k">@property</span> <span class="p">(</span><span class="n">nonatomic</span><span class="p">,</span> <span class="n">weak</span><span class="p">)</span> <span class="n">SQTrainingCapacityFooterView</span> <span class="o">*</span> <span class="n">footerView</span><span class="p">;</span>
+
+<span class="k">@end</span>
+
+<span class="k">@implementation</span> <span class="nc">SQTrainingCapacityViewController</span>
+
+<span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="n">setupData</span> <span class="p">{</span>
+    <span class="n">_dataSource</span> <span class="o">=</span> <span class="p">[</span><span class="n">NSMutableArray</span> <span class="nf">array</span><span class="p">];</span>
+<span class="p">}</span>
+
+<span class="o">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="n">fetchDataSource</span> <span class="p">{</span>
+    <span class="n">NSArray</span> <span class="o">*</span><span class="n">dataSource</span> <span class="o">=</span> <span class="p">[(</span><span class="n">id</span><span class="o">&lt;</span><span class="n">SQTrainingCapacityDataSource</span><span class="o">&gt;</span><span class="p">)</span><span class="n">self</span><span class="p">.</span><span class="n">viewDataSource</span> <span class="nf">fetchDataSourceFromDB</span><span class="p">];</span>
+    <span class="p">[</span><span class="n">self</span><span class="p">.</span><span class="n">dataSource</span> <span class="nf">removeAllObjects</span><span class="p">];</span>
+    <span class="p">[</span><span class="n">self</span><span class="p">.</span><span class="n">dataSource</span> <span class="nf">addObjectsFromArray</span><span class="p">:</span><span class="n">dataSource</span><span class="p">];</span>
+<span class="p">}</span>
+
+<span class="o">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="n">setupUI</span> <span class="p">{</span>
+    <span class="p">[</span><span class="n">self</span> <span class="nf">setupRightBarButtonItem</span><span class="p">];</span>
+    <span class="p">[</span><span class="n">self</span> <span class="nf">setupTableView</span><span class="p">];</span>
+<span class="p">}</span>
+
+<span class="o">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="n">setupRightBarButtonItem</span> <span class="p">{</span>
+    <span class="p">[</span><span class="n">self</span> <span class="nf">setRightBarButtonItem</span><span class="p">:(</span><span class="n">UIBarButtonSystemItemAdd</span><span class="p">)</span> <span class="nf">target</span><span class="p">:</span><span class="n">self</span> <span class="n">action</span><span class="o">:</span><span class="k">@selector</span><span class="p">(</span><span class="n">addTraningAction</span><span class="p">)];</span>
+<span class="p">}</span>
+
+<span class="o">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="n">setRightBarButtonItem</span><span class="o">:</span><span class="p">(</span><span class="n">UIBarButtonSystemItem</span><span class="p">)</span><span class="n">item</span> <span class="n">target</span><span class="o">:</span><span class="p">(</span><span class="n">nullable</span> <span class="n">id</span><span class="p">)</span><span class="n">target</span> <span class="n">action</span><span class="o">:</span><span class="p">(</span><span class="n">nullable</span> <span class="n">SEL</span><span class="p">)</span><span class="n">action</span> <span class="p">{</span>
+    <span class="n">self</span><span class="p">.</span><span class="n">navigationItem</span><span class="p">.</span><span class="n">rightBarButtonItem</span> <span class="o">=</span> <span class="p">[[</span><span class="n">UIBarButtonItem</span> <span class="nf">alloc</span><span class="p">]</span><span class="nf">initWithBarButtonSystemItem</span><span class="p">:</span><span class="n">item</span> <span class="nf">target</span><span class="p">:</span><span class="n">target</span> <span class="n">action</span><span class="o">:</span><span class="n">action</span><span class="p">];</span>
+<span class="p">}</span>
+
+<span class="o">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="n">setupTableView</span> <span class="p">{</span>
+    <span class="n">self</span><span class="p">.</span><span class="n">tableView</span><span class="p">.</span><span class="n">tableHeaderView</span> <span class="o">=</span> <span class="p">[</span><span class="n">SQTrainingCapacityHeaderView</span> <span class="nf">headerView</span><span class="p">];</span>
+    <span class="n">SQTrainingCapacityFooterView</span> <span class="o">*</span> <span class="n">footerView</span> <span class="o">=</span> <span class="p">[</span><span class="n">SQTrainingCapacityFooterView</span> <span class="nf">footerView</span><span class="p">];</span>
+    <span class="n">footerView</span><span class="p">.</span><span class="n">totalCapacityLabel</span><span class="p">.</span><span class="n">text</span> <span class="o">=</span> <span class="p">[(</span><span class="n">id</span><span class="o">&lt;</span><span class="n">SQTrainingCapacityDataSource</span><span class="o">&gt;</span><span class="p">)</span><span class="n">self</span><span class="p">.</span><span class="n">viewDataSource</span> <span class="nf">totalCapacity</span><span class="p">];</span>
+    <span class="n">self</span><span class="p">.</span><span class="n">tableView</span><span class="p">.</span><span class="n">tableFooterView</span> <span class="o">=</span> <span class="n">footerView</span><span class="p">;</span>
+    <span class="n">self</span><span class="p">.</span><span class="n">footerView</span> <span class="o">=</span> <span class="n">footerView</span><span class="p">;</span>
+    <span class="p">[</span><span class="n">self</span><span class="p">.</span><span class="n">tableView</span> <span class="nf">registerNib</span><span class="p">:[</span><span class="n">UINib</span> <span class="nf">nibWithNibName</span><span class="p">:</span><span class="s">@"SQTrainingCapacityCell"</span> <span class="nf">bundle</span><span class="p">:[</span><span class="n">NSBundle</span> <span class="nf">bundleForClass</span><span class="p">:</span><span class="n">self</span><span class="p">.</span><span class="n">class</span><span class="p">]]</span> <span class="n">forCellReuseIdentifier</span><span class="o">:</span><span class="s">@"TrainingCapacity"</span><span class="p">];</span>
+    <span class="p">[</span><span class="n">self</span> <span class="nf">setupDataSource</span><span class="p">:</span><span class="n">self</span><span class="p">.</span><span class="n">dataSource</span> <span class="nf">loadCell</span><span class="p">:</span><span class="o">^</span><span class="n">UITableViewCell</span> <span class="o">*</span><span class="p">(</span><span class="n">UITableView</span> <span class="o">*</span> <span class="n">_Nonnull</span> <span class="n">tableView</span><span class="p">,</span> <span class="n">NSIndexPath</span> <span class="o">*</span> <span class="n">_Nonnull</span> <span class="n">indexPath</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="p">[</span><span class="n">tableView</span> <span class="nf">dequeueReusableCellWithIdentifier</span><span class="p">:</span><span class="s">@"TrainingCapacity"</span> <span class="nf">forIndexPath</span><span class="p">:</span><span class="n">indexPath</span><span class="p">];</span>
+    <span class="p">}</span> <span class="n">loadCellHeight</span><span class="o">:^</span><span class="n">CGFloat</span><span class="p">(</span><span class="n">id</span>  <span class="n">_Nonnull</span> <span class="n">model</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="mi">160</span><span class="p">;</span>
+    <span class="p">}</span> <span class="n">bind</span><span class="o">:^</span><span class="p">(</span><span class="n">UITableViewCell</span> <span class="o">*</span> <span class="n">_Nonnull</span> <span class="n">cell</span><span class="p">,</span> <span class="n">id</span>  <span class="n">_Nonnull</span> <span class="n">model</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">SQTrainingCapacityCell</span> <span class="o">*</span> <span class="n">c</span> <span class="o">=</span> <span class="p">(</span><span class="n">SQTrainingCapacityCell</span> <span class="o">*</span><span class="p">)</span><span class="n">cell</span><span class="p">;</span>
+        <span class="n">SQTrainingCapacityCellPresenter</span> <span class="o">*</span> <span class="n">p</span> <span class="o">=</span> <span class="p">(</span><span class="n">SQTrainingCapacityCellPresenter</span> <span class="o">*</span> <span class="p">)</span><span class="n">model</span><span class="p">;</span>
+        <span class="p">[</span><span class="n">p</span> <span class="nf">bindToCell</span><span class="p">:</span><span class="n">c</span><span class="p">];</span>
+    <span class="p">}];</span>
+<span class="p">}</span>
+
+<span class="o">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="n">addTraningAction</span> <span class="p">{</span>
+    <span class="p">[(</span><span class="n">id</span><span class="o">&lt;</span><span class="n">SQTrainingCapacityViewEventHandler</span><span class="o">&gt;</span><span class="p">)</span><span class="n">self</span><span class="p">.</span><span class="n">eventHandler</span> <span class="nf">didTouchNavigationBarAddButton</span><span class="p">];</span>
+<span class="p">}</span>
+
+<span class="o">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="n">tableView</span><span class="o">:</span><span class="p">(</span><span class="n">UITableView</span> <span class="o">*</span><span class="p">)</span><span class="n">tableView</span> <span class="n">commitEditingStyle</span><span class="o">:</span><span class="p">(</span><span class="n">UITableViewCellEditingStyle</span><span class="p">)</span><span class="n">editingStyle</span> <span class="n">forRowAtIndexPath</span><span class="o">:</span><span class="p">(</span><span class="n">NSIndexPath</span> <span class="o">*</span><span class="p">)</span><span class="n">indexPath</span> <span class="p">{</span>
+    <span class="p">[(</span><span class="n">id</span><span class="o">&lt;</span><span class="n">SQTrainingCapacityViewEventHandler</span><span class="o">&gt;</span><span class="p">)</span><span class="n">self</span><span class="p">.</span><span class="n">eventHandler</span> <span class="nf">handleCommitEditingAtIndexPath</span><span class="p">:</span><span class="n">indexPath</span><span class="p">];</span>
+<span class="p">}</span>
+
+<span class="k">@end</span>
+</code></pre>
+</div>
+<p>这里仅仅贴出控制器的代码, 我们可以看到, 在Viper架构下, 获取数据和操作逻辑都通过协议进行传递, 没有任何冗余的代码, 分层清晰明了.</p>
+
+<div class="language-objc highlighter-rouge"><pre class="highlight"><code><span class="cp">#import "SQTrainingCapacityPresenter.h"
+#import "SQTrainingCapacityViewProtocol.h"
+#import "SQTrainingCapacityInteractorInput.h"
+#import "SQTrainingCapacityWireframeInput.h"
+#import "SQTrainingCapacityNotification.h"
+</span>
+<span class="k">@interface</span> <span class="nc">SQTrainingCapacityPresenter</span> <span class="p">()</span>
+
+<span class="k">@property</span> <span class="p">(</span><span class="n">nonatomic</span><span class="p">,</span> <span class="n">weak</span><span class="p">)</span> <span class="n">id</span><span class="o">&lt;</span><span class="n">SQTrainingCapacityViewProtocol</span><span class="o">&gt;</span> <span class="n">view</span><span class="p">;</span>
+<span class="k">@property</span> <span class="p">(</span><span class="n">nonatomic</span><span class="p">,</span> <span class="n">strong</span><span class="p">)</span> <span class="n">id</span><span class="o">&lt;</span><span class="n">SQTrainingCapacityInteractorInput</span><span class="o">&gt;</span> <span class="n">interactor</span><span class="p">;</span>
+<span class="k">@property</span> <span class="p">(</span><span class="n">nonatomic</span><span class="p">,</span> <span class="n">strong</span><span class="p">)</span> <span class="n">id</span><span class="o">&lt;</span><span class="n">SQTrainingCapacityWireframeInput</span><span class="o">&gt;</span> <span class="n">wireframe</span><span class="p">;</span>
+
+<span class="k">@end</span>
+
+<span class="k">@implementation</span> <span class="nc">SQTrainingCapacityPresenter</span>
+
+<span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="n">handleViewReady</span> <span class="p">{</span>
+    <span class="n">NSAssert</span><span class="p">(</span><span class="n">self</span><span class="p">.</span><span class="n">wireframe</span><span class="p">,</span> <span class="s">@"Router should be initlized when view is ready."</span><span class="p">);</span>
+    <span class="n">NSAssert</span><span class="p">([</span><span class="n">self</span><span class="p">.</span><span class="n">view</span> <span class="nf">conformsToProtocol</span><span class="p">:</span><span class="k">@protocol</span><span class="err">(</span><span class="nc">SQViperView</span><span class="p">)],</span> <span class="s">@"Presenter should be attach to a view"</span><span class="p">);</span>
+    <span class="n">NSAssert</span><span class="p">([</span><span class="n">self</span><span class="p">.</span><span class="n">interactor</span> <span class="nf">conformsToProtocol</span><span class="p">:</span><span class="k">@protocol</span><span class="err">(</span><span class="nc">SQViperInteractor</span><span class="p">)],</span> <span class="s">@"Interactor should be initlized when view is ready."</span><span class="p">);</span>
+    <span class="p">[[</span><span class="n">NSNotificationCenter</span> <span class="nf">defaultCenter</span><span class="p">]</span> <span class="nf">addObserver</span><span class="p">:</span><span class="n">self</span> <span class="nf">selector</span><span class="p">:</span><span class="k">@selector</span><span class="p">(</span><span class="n">keyboardWillShow</span><span class="o">:</span><span class="p">)</span> <span class="n">name</span><span class="o">:</span><span class="n">UIKeyboardWillShowNotification</span> <span class="n">object</span><span class="o">:</span><span class="nb">nil</span><span class="p">];</span>
+    <span class="p">[[</span><span class="n">NSNotificationCenter</span> <span class="nf">defaultCenter</span><span class="p">]</span><span class="nf">addObserver</span><span class="p">:</span><span class="n">self</span> <span class="nf">selector</span><span class="p">:</span><span class="k">@selector</span><span class="p">(</span><span class="n">keyboardWillHide</span><span class="o">:</span><span class="p">)</span> <span class="n">name</span><span class="o">:</span><span class="n">UIKeyboardWillHideNotification</span> <span class="n">object</span><span class="o">:</span><span class="nb">nil</span><span class="p">];</span>
+    <span class="p">[</span><span class="n">self</span><span class="p">.</span><span class="n">interactor</span> <span class="nf">loadDataSourceWithTitle</span><span class="p">:</span><span class="n">self</span><span class="p">.</span><span class="n">view</span><span class="p">.</span><span class="n">title</span> <span class="nf">type</span><span class="p">:</span><span class="n">self</span><span class="p">.</span><span class="n">view</span><span class="p">.</span><span class="n">type</span><span class="p">];</span>
+    <span class="p">[</span><span class="n">self</span><span class="p">.</span><span class="n">view</span> <span class="nf">fetchDataSource</span><span class="p">];</span>
+<span class="p">}</span>
+
+<span class="o">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="n">handleViewWillAppear</span><span class="o">:</span><span class="p">(</span><span class="n">BOOL</span><span class="p">)</span><span class="n">animated</span> <span class="p">{</span>
+    <span class="n">NSLog</span><span class="p">(</span><span class="s">@"%s"</span><span class="p">,</span> <span class="n">__func__</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="o">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="n">handleViewDidAppear</span><span class="o">:</span><span class="p">(</span><span class="n">BOOL</span><span class="p">)</span><span class="n">animated</span> <span class="p">{</span>
+    <span class="n">NSLog</span><span class="p">(</span><span class="s">@"%s"</span><span class="p">,</span> <span class="n">__func__</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="o">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="n">handleViewWillDisappear</span><span class="o">:</span><span class="p">(</span><span class="n">BOOL</span><span class="p">)</span><span class="n">animated</span> <span class="p">{</span>
+    <span class="n">NSLog</span><span class="p">(</span><span class="s">@"%s"</span><span class="p">,</span> <span class="n">__func__</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="o">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="n">handleViewDidDisappear</span><span class="o">:</span><span class="p">(</span><span class="n">BOOL</span><span class="p">)</span><span class="n">animated</span> <span class="p">{</span>
+    <span class="n">NSLog</span><span class="p">(</span><span class="s">@"%s"</span><span class="p">,</span> <span class="n">__func__</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="o">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="n">handleViewRemoved</span> <span class="p">{</span>
+    <span class="n">NSLog</span><span class="p">(</span><span class="s">@"%s"</span><span class="p">,</span> <span class="n">__func__</span><span class="p">);</span>
+    <span class="p">[</span><span class="n">self</span><span class="p">.</span><span class="n">interactor</span> <span class="nf">storeDataSourceWithTitle</span><span class="p">:</span><span class="n">self</span><span class="p">.</span><span class="n">view</span><span class="p">.</span><span class="n">title</span> <span class="nf">type</span><span class="p">:</span><span class="n">self</span><span class="p">.</span><span class="n">view</span><span class="p">.</span><span class="n">type</span> <span class="n">dataSource</span><span class="o">:</span><span class="n">self</span><span class="p">.</span><span class="n">fetchDataSourceFromDB</span><span class="p">];</span>
+    <span class="p">[[</span><span class="n">NSNotificationCenter</span> <span class="nf">defaultCenter</span><span class="p">]</span> <span class="nf">removeObserver</span><span class="p">:</span><span class="n">self</span><span class="p">];</span>
+<span class="p">}</span>
+
+<span class="o">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="n">handleCommitEditingAtIndexPath</span><span class="o">:</span><span class="p">(</span><span class="n">NSIndexPath</span> <span class="o">*</span><span class="p">)</span><span class="n">indexPath</span> <span class="p">{</span>
+    <span class="n">NSMutableArray</span> <span class="o">*</span><span class="n">tempDataSource</span> <span class="o">=</span> <span class="n">self</span><span class="p">.</span><span class="n">fetchDataSourceFromDB</span><span class="p">.</span><span class="n">mutableCopy</span><span class="p">;</span>
+    <span class="p">[</span><span class="n">tempDataSource</span> <span class="nf">removeObjectAtIndex</span><span class="p">:</span><span class="n">indexPath</span><span class="p">.</span><span class="n">row</span><span class="p">];</span>
+    <span class="p">[</span><span class="n">self</span><span class="p">.</span><span class="n">interactor</span> <span class="nf">storeDataSourceWithTitle</span><span class="p">:</span><span class="n">self</span><span class="p">.</span><span class="n">view</span><span class="p">.</span><span class="n">title</span> <span class="nf">type</span><span class="p">:</span><span class="n">self</span><span class="p">.</span><span class="n">view</span><span class="p">.</span><span class="n">type</span> <span class="n">dataSource</span><span class="o">:</span><span class="n">tempDataSource</span><span class="p">];</span>
+    <span class="p">[</span><span class="n">self</span><span class="p">.</span><span class="n">view</span> <span class="nf">fetchDataSource</span><span class="p">];</span>
+    <span class="p">[</span><span class="n">self</span><span class="p">.</span><span class="n">view</span><span class="p">.</span><span class="n">tableView</span> <span class="nf">deleteRowsAtIndexPaths</span><span class="p">:@[</span><span class="n">indexPath</span><span class="p">]</span> <span class="nf">withRowAnimation</span><span class="p">:</span><span class="n">UITableViewRowAnimationFade</span><span class="p">];</span>
+    <span class="n">self</span><span class="p">.</span><span class="n">view</span><span class="p">.</span><span class="n">footerView</span><span class="p">.</span><span class="n">totalCapacityLabel</span><span class="p">.</span><span class="n">text</span> <span class="o">=</span> <span class="n">self</span><span class="p">.</span><span class="n">totalCapacity</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="o">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="n">didTouchNavigationBarAddButton</span> <span class="p">{</span>
+    <span class="p">[</span><span class="n">self</span><span class="p">.</span><span class="n">interactor</span> <span class="nf">addTrainingAction</span><span class="p">];</span>
+    <span class="p">[</span><span class="n">self</span><span class="p">.</span><span class="n">view</span> <span class="nf">fetchDataSource</span><span class="p">];</span>
+    <span class="p">[</span><span class="n">self</span><span class="p">.</span><span class="n">view</span><span class="p">.</span><span class="n">tableView</span> <span class="nf">insertRowsAtIndexPaths</span><span class="p">:@[[</span><span class="n">NSIndexPath</span> <span class="nf">indexPathForRow</span><span class="p">:</span><span class="n">self</span><span class="p">.</span><span class="n">fetchDataSourceFromDB</span><span class="p">.</span><span class="n">count</span> <span class="o">-</span> <span class="mi">1</span> <span class="nf">inSection</span><span class="p">:</span><span class="mi">0</span><span class="p">]]</span> <span class="n">withRowAnimation</span><span class="o">:</span><span class="p">(</span><span class="n">UITableViewRowAnimationLeft</span><span class="p">)];</span>
+<span class="p">}</span>
+
+<span class="o">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="n">didTouchNavigationBarDoneButton</span> <span class="p">{</span>
+    <span class="p">[</span><span class="n">self</span><span class="p">.</span><span class="n">view</span><span class="p">.</span><span class="n">tableView</span> <span class="nf">endEditing</span><span class="p">:</span><span class="nb">YES</span><span class="p">];</span>
+    <span class="p">[[</span><span class="n">NSNotificationCenter</span> <span class="nf">defaultCenter</span><span class="p">]</span><span class="nf">postNotificationName</span><span class="p">:</span><span class="n">SQTrainingCapacityBindToModelNotification</span> <span class="nf">object</span><span class="p">:</span><span class="nb">nil</span><span class="p">];</span>
+    <span class="n">self</span><span class="p">.</span><span class="n">view</span><span class="p">.</span><span class="n">footerView</span><span class="p">.</span><span class="n">totalCapacityLabel</span><span class="p">.</span><span class="n">text</span> <span class="o">=</span> <span class="n">self</span><span class="p">.</span><span class="n">totalCapacity</span><span class="p">;</span>
+    <span class="p">[</span><span class="n">self</span><span class="p">.</span><span class="n">view</span><span class="p">.</span><span class="n">tableView</span> <span class="nf">reloadData</span><span class="p">];</span>
+<span class="p">}</span>
+
+<span class="o">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="n">keyboardWillShow</span><span class="o">:</span><span class="p">(</span><span class="n">NSNotification</span> <span class="o">*</span><span class="p">)</span><span class="n">sender</span> <span class="p">{</span>
+    <span class="p">[</span><span class="n">self</span><span class="p">.</span><span class="n">view</span> <span class="nf">setRightBarButtonItem</span><span class="p">:(</span><span class="n">UIBarButtonSystemItemDone</span><span class="p">)</span> <span class="nf">target</span><span class="p">:</span><span class="n">self</span> <span class="n">action</span><span class="o">:</span><span class="k">@selector</span><span class="p">(</span><span class="n">didTouchNavigationBarDoneButton</span><span class="p">)];</span>
+<span class="p">}</span>
+
+<span class="o">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="n">keyboardWillHide</span><span class="o">:</span><span class="p">(</span><span class="n">NSNotification</span> <span class="o">*</span><span class="p">)</span><span class="n">sender</span> <span class="p">{</span>
+    <span class="p">[</span><span class="n">self</span><span class="p">.</span><span class="n">view</span> <span class="nf">setRightBarButtonItem</span><span class="p">:(</span><span class="n">UIBarButtonSystemItemAdd</span><span class="p">)</span> <span class="nf">target</span><span class="p">:</span><span class="n">self</span> <span class="n">action</span><span class="o">:</span><span class="k">@selector</span><span class="p">(</span><span class="n">didTouchNavigationBarAddButton</span><span class="p">)];</span>
+<span class="p">}</span>
+
+<span class="o">-</span> <span class="p">(</span><span class="n">NSString</span> <span class="o">*</span><span class="p">)</span><span class="n">totalCapacity</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="n">self</span><span class="p">.</span><span class="n">interactor</span><span class="p">.</span><span class="n">totalCapacity</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="o">-</span> <span class="p">(</span><span class="n">NSArray</span> <span class="o">*</span><span class="p">)</span><span class="n">fetchDataSourceFromDB</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="n">self</span><span class="p">.</span><span class="n">interactor</span><span class="p">.</span><span class="n">fetchDataSource</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="k">@end</span>
+</code></pre>
+</div>
+<p>协调整个架构的presenter, 逻辑一下子也清晰了很多, 和之前的进行对比, 你会更好的了解这个架构.</p>
+
+<p>如何实践, 文档是讲不清楚的, 需要大家阅读源码和动手实践</p>
+
+<p><img src="https://upload-images.jianshu.io/upload_images/12332870-93cb62441e592591.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="" /></p>
+
+<p>GitHub: <a href="https://github.com/coderZsq">https://github.com/coderZsq</a></p>
+
+<p>项目地址: <a href="https://github.com/coderZsq/coderZsq.project.ios">https://github.com/coderZsq/coderZsq.project.ios</a></p>
+
+<p>笔记地址: <a href="https://github.com/coderZsq/coderZsq.practice.native">https://github.com/coderZsq/coderZsq.practice.native</a></p>
+
+<h2 id="写在最后">写在最后</h2>
+
+<p>这篇分析了如何阅读源码的全过程, 简单来说就是, 确定场景, 了解概念, 重点分析, 动手实践, 这些东西说说简单, 实际操作中还是有很多的精妙之处的</p>
+
+<p>以上.</p>
+
+  </section>
+</article>
+
+<section class="read-more">
+   
+   
+   
+   
+   <div class="read-more-item">
+       <span class="read-more-item-dim">更早的文章</span>
+       <h2 class="post-list__post-title post-title"><a href="/2019/01/iOS-%E5%BC%80%E5%8F%91%E8%80%85%E8%AF%A5%E8%AE%A4%E7%9C%9F%E6%80%9D%E8%80%83%E7%9A%84-%E4%B8%89%E4%B8%AA%E9%97%AE%E9%A2%98/" title="link to iOS 开发者该认真思考的「三个问题」">iOS 开发者该认真思考的「三个问题」</a></h2>
+       <p class="excerpt">  GitHub Repo：coderZsq.project.iosFollow: coderZsq · GitHubResume: https://coderzsq.github.io/coderZsq.practice.web/日常扯淡大半年没有更新文章了, 可能是对自己写的内容有要求吧, 不想写一些如OC底层, 逆向入门这些像内容洗稿,东拼西凑的伪原创, 修修改改换换顺序就又是一篇完全没有意义的文章. 如果你获取技术大部分的手段是看技术博客的话, 是的, 是时候调整你的视角, 扩展你...&hellip;</p>
+       <div class="post-list__meta"><time datetime="2019-01-10 17:00:00 +0800" class="post-list__meta--date date">2019-01-10</time> &#8226; <span class="post-list__meta--tags tags">移动开发</span><a class="btn-border-small" href=/2019/01/iOS-%E5%BC%80%E5%8F%91%E8%80%85%E8%AF%A5%E8%AE%A4%E7%9C%9F%E6%80%9D%E8%80%83%E7%9A%84-%E4%B8%89%E4%B8%AA%E9%97%AE%E9%A2%98/>继续阅读</a></div>
+   </div>
+   
+</section>
+
+<section class="post-comments">
+  
+  
+  
+  
+</section>
+
+
+            <section class="footer">
+    <footer>
+    	<span class="footer__copyright">本站点采用<a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">知识共享 署名-非商业性使用-相同方式共享 4.0 国际 许可协议</a></span>
+        <span class="footer__copyright">由 <a href="https://jekyllrb.com">Jekyll</a> 于 2019-02-27 生成，感谢 <a href="https://www.digitalocean.com/?refcode=30ed2d146762">Digital Ocean</a> 为本站提供稳定的 VPS 服务</span>
+        <span class="footer__copyright">本站由 <a href="https://github.com/coderZsq">@Castie!</a> 创建，采用 <a href="https://github.com/onevcat/vno-jekyll">Vno - Jekyll</a> 作为主题，您可以在 GitHub 找到<a href="https://github.com/onevcat/OneV-s-Den">本站源码</a> - &copy; 2019</span>
+    </footer>
+</section>
+
+        </div>
+    </div>
+    
+    <script type="text/javascript" src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+
+<script type="text/javascript" src="/js/main.js"></script>
+
+
+
+    
+  </body>
+
+</html>
