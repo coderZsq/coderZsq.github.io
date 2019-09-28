@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <title>Castie! Notes</title>
+  <meta name="description" content="  看过我去年文章的同学们一定知道对于动画方面还是有点心得体会的, 对于核心动画的学习, 之前我看的是iOS Core Animation的翻译版, 看完感觉真的学到了不少东西, 不过这本书已经有点时日了, 我们需要与时俱进学习最前沿的技术.代码见:github">
+  <meta name="author" content="Wei Wang">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Animations 核心动画什么的要研究透!">
+  <meta name="twitter:description" content="  看过我去年文章的同学们一定知道对于动画方面还是有点心得体会的, 对于核心动画的学习, 之前我看的是iOS Core Animation的翻译版, 看完感觉真的学到了不少东西, 不过这本书已经有点时日了, 我们需要与时俱进学习最前沿的技术.代码见:github">
+  
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Animations 核心动画什么的要研究透!">
+  <meta property="og:description" content="  看过我去年文章的同学们一定知道对于动画方面还是有点心得体会的, 对于核心动画的学习, 之前我看的是iOS Core Animation的翻译版, 看完感觉真的学到了不少东西, 不过这本书已经有点时日了, 我们需要与时俱进学习最前沿的技术.代码见:github">
+  
+  <link rel="icon" type="image/ico" href="/assets/images/favicon.ico" />
+  <link href="/assets/images/favicon.ico" rel="shortcut icon" type="image/ico">
+  
+  <link rel="stylesheet" href="/css/main.css">
+  <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+
+  <link rel="canonical" href="http://localhost:4000/2017/04/Animations-%E6%A0%B8%E5%BF%83%E5%8A%A8%E7%94%BB%E4%BB%80%E4%B9%88%E7%9A%84%E8%A6%81%E7%A0%94%E7%A9%B6%E9%80%8F!/">
+  <link rel="alternate" type="application/rss+xml" title="Castie!" href="http://localhost:4000/feed.xml">
+  
+  <meta name="google-site-verification" content="1-1ZlHoRvM0T2FqPbW2S-qLgYXN6rsn52kErlMPd_gw" />
+  
+</head>
+
+
+  <body>
+
+    <span class="mobile btn-mobile-menu">
+        <i class="fa fa-list btn-mobile-menu__icon"></i>
+        <i class="fa fa-angle-up btn-mobile-close__icon hidden"></i>
+    </span>
+    
+    <header class="panel-cover panel-cover--collapsed" style="background-image: url('/assets/images/background-cover.jpg')">
+  <div class="panel-main">
+
+    <div class="panel-main__inner panel-inverted">
+    <div class="panel-main__content">
+
+        <a href="/#blog" title="前往 Castie! 的主页" class="blog-button"><img src="/assets/images/avatar.jpg" width="80" alt="Castie! logo" class="panel-cover__logo logo" /></a>
+        <h1 class="panel-cover__title panel-title"><a href="/#blog" title="link to homepage for Castie!" class="blog-button">Castie!</a></h1>
+        
+        <span class="panel-cover__subtitle panel-subtitle">正态分布, 优劣伴生</span>
+        
+        <hr class="panel-cover__divider" />
+        <p class="panel-cover__description">北冥有鱼，其名为鲲（kūn）。鲲之大，不知其几千里也；化而为鸟，其名为鹏。鹏之背，不知其几千里也；怒而飞，其翼若垂天之云。是鸟也，海运则将徙于南冥。南冥者，天池也。</p>
+        <hr class="panel-cover__divider panel-cover__divider--secondary" />
+        
+        
+        <p class="panel-cover__description">北海若曰：“井鼃不可以语于海者，拘于虚也；夏虫不可以语于冰者，笃于时也；曲士不可以语于道者，束于教也。今尔出于崖涘，观于大海，乃知尔丑，尔将可与语大理矣。</p>
+        
+        
+        <div class="navigation-wrapper">
+          <div>
+            <nav class="cover-navigation cover-navigation--primary">
+              <ul class="navigation">
+                <li class="navigation__item"><a href="/#blog" title="访问博客" class="blog-button">博客</a></li>
+                
+                  <li class="navigation__item"><a href="https://coderzsq.github.io/coderZsq.practice.web/" target="_blank" title="我的简历">简历</a></li>
+                
+              </ul>
+            </nav>
+          </div>
+          
+          <div><nav class="cover-navigation navigation--social">
+  <ul class="navigation">
+
+    
+    <!-- juejin-->
+    <li class="navigation__item">
+      <a href="https://juejin.im/user/57e735dfa22b9d00614eecb8/posts" title="@coderZsq 的稀土掘金" target="_blank">
+        <i class='social fa fa-book'></i>
+        <span class="label">juejin</span>
+      </a>
+    </li>
+    
+
+  
+
+  
+  <!-- Github -->
+  <li class="navigation__item">
+    <a href="https://github.com/coderZsq" title="@coderZsq 的 Github" target="_blank">
+      <i class='social fa fa-github'></i>
+      <span class="label">Github</span>
+    </a>
+  </li>
+  
+
+  
+
+  
+
+  <!-- RSS -->
+  <li class="navigation__item">
+    <a href="/feed.xml" rel="author" title="RSS" target="_blank">
+      <i class='social fa fa-rss'></i>
+      <span class="label">RSS</span>
+    </a>
+  </li>
+
+  
+  <!-- Email -->
+  <li class="navigation__item">
+    <a href="mailto:a13701777868@gmail.com" title="Contact me">
+      <i class='social fa fa-envelope'></i>
+      <span class="label">Email</span>
+    </a>
+  </li>
+  
+
+  </ul>
+</nav>
+</div>
+        </div>
+      </div>
+    </div>
+    
+    
+    <div class="panel-cover--overlay cover-disabled"></div>
+    
+  </div>
+</header>
+
+
+    <div class="content-wrapper">
+        <div class="content-wrapper__inner">
+            <article class="post-container post-container--single" itemscope itemtype="http://schema.org/BlogPosting">
+  <header class="post-header">
+    <div class="post-meta">
+      <time datetime="2017-04-27 10:44:00 +0800" itemprop="datePublished" class="post-meta__date date">2017-04-27</time> &#8226; <span class="post-meta__tags tags">移动开发</span>
+    </div>
+    <h1 class="post-title">Animations 核心动画什么的要研究透!</h1>
+  </header>
+
+  <section class="post">
+    <blockquote>
+  <p>看过我去年文章的同学们一定知道对于动画方面还是有点心得体会的, 对于核心动画的学习, 之前我看的是<a href="http://www.amazon.com/iOS-Core-Animation-Advanced-Techniques-ebook/dp/B00EHJCORC/ref=sr_1_1?ie=UTF8&amp;qid=1423192842&amp;sr=8-1&amp;keywords=Core+Animation+Advanced+Techniques">iOS Core Animation</a>的<a href="http://wiki.jikexueyuan.com/project/ios-core-animation/">翻译版</a>, 看完感觉真的学到了不少东西, 不过这本书已经有点时日了, 我们需要与时俱进学习最前沿的技术.代码见:<a href="https://github.com/coderZsq/coderZsq.target.swift">github</a></p>
+</blockquote>
+
+<p><img src="http://upload-images.jianshu.io/upload_images/1229762-8f8d322fd1b24ddb.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="" /></p>
+
+<p>和之前的View的动画一样, 这次Layer的核心动画, 我们也是先细讲API, 再进行项目实战, 这样会比较容易理解, 新入行的同学不会望而却步.其实刚学习核心动画的时候还有有点难度的, 先提两个注意点: 1) 相对于<code class="highlighter-rouge">view</code>的<code class="highlighter-rouge">center</code>, 对应于<code class="highlighter-rouge">layer</code>的<code class="highlighter-rouge">anchorPoint</code>为<code class="highlighter-rouge">(0.5, 0.5)</code>的<code class="highlighter-rouge">position</code>, <code class="highlighter-rouge">layer</code>中的<code class="highlighter-rouge">position</code>和<code class="highlighter-rouge">anchorPoint</code>其实是同一个点.2) <code class="highlighter-rouge">layer</code>的动画其实是假象而且会被打断, <code class="highlighter-rouge">view</code>的动画是直接操作节点的. 好了, 我们来看今天所要掌握的API:</p>
+
+<p>基础动画:</p>
+<div class="highlighter-rouge"><pre class="highlight"><code>@available(iOS 2.0, *)
+open class CABasicAnimation : CAPropertyAnimation 
+    open var fromValue: Any?
+    open var toValue: Any?
+</code></pre>
+</div>
+<ul>
+  <li>fromValue 根据<code class="highlighter-rouge">keyPath</code>设定原始值</li>
+  <li>toValue 根据<code class="highlighter-rouge">keyPath</code>设定目标值</li>
+</ul>
+
+<p>关键帧动画:</p>
+<div class="highlighter-rouge"><pre class="highlight"><code>@available(iOS 2.0, *)
+open class CAKeyframeAnimation : CAPropertyAnimation 
+    open var values: [Any]?
+    open var path: CGPath?
+    open var keyTimes: [NSNumber]?
+    open var timingFunctions: [CAMediaTimingFunction]?
+</code></pre>
+</div>
+<ul>
+  <li>values 关键帧 的值 [x, x, x, …]</li>
+  <li>path 关键帧路径, 贝塞尔曲线</li>
+  <li>keyTimes 每帧的耗时, 以秒作为计量单位</li>
+  <li>timingFunctions 缓冲函数</li>
+</ul>
+
+<p>动画组:</p>
+<div class="highlighter-rouge"><pre class="highlight"><code>@available(iOS 2.0, *)
+open class CAAnimationGroup : CAAnimation
+    open var animations: [CAAnimation]?
+</code></pre>
+</div>
+<ul>
+  <li>animations 动画组数组, 将<code class="highlighter-rouge">CAAnimation</code>填入数组 进行组动画</li>
+</ul>
+
+<p>弹簧动画:</p>
+<div class="highlighter-rouge"><pre class="highlight"><code>@available(iOS 9.0, *)
+open class CASpringAnimation : CABasicAnimation
+    open var mass: CGFloat 
+    open var stiffness: CGFloat
+    open var damping: CGFloat
+    open var initialVelocity: CGFloat
+</code></pre>
+</div>
+<ul>
+  <li>mass 物体的质量</li>
+  <li>stiffness 弹簧的刚度</li>
+  <li>damping 缓冲率 也称阻尼值</li>
+  <li>initialVelocity 初始速度</li>
+</ul>
+
+<p>动画代理, 进行操作监听</p>
+<div class="highlighter-rouge"><pre class="highlight"><code>public protocol CAAnimationDelegate : NSObjectProtocol
+    @available(iOS 2.0, *)
+    optional public func animationDidStart(_ anim: CAAnimation)
+    @available(iOS 2.0, *)
+    optional public func animationDidStop(_ anim: CAAnimation, finished flag: Bool)
+</code></pre>
+</div>
+<ul>
+  <li>animationDidStart 动画开始前调用</li>
+  <li>animationDidStop 动画结束后调用</li>
+</ul>
+
+<p>CAMediaTiming 协议</p>
+<div class="highlighter-rouge"><pre class="highlight"><code>public protocol CAMediaTiming 
+    public var beginTime: CFTimeInterval { get set }
+    public var duration: CFTimeInterval { get set }
+    public var speed: Float { get set }
+    public var repeatCount: Float { get set }
+    public var autoreverses: Bool { get set }
+    public var fillMode: String { get set }
+</code></pre>
+</div>
+<ul>
+  <li>beginTime 动画开始时间, 对比view动画的<code class="highlighter-rouge">delay</code></li>
+  <li>duration 动画持续时间</li>
+  <li>speed 动画速度 以倍率计算, 父层设置子层叠加</li>
+  <li>repeatCount 重复数量</li>
+  <li>autoreverses 自动翻转</li>
+  <li>fillMode 填充方式, 是否显示第一帧和最后一帧</li>
+</ul>
+
+<p>讲完API, 我们就来使用这些API进行实战, 和之前一样, 我们就通过Stroyboard搭建界面:
+<img src="http://upload-images.jianshu.io/upload_images/1229762-e3c718347ac66709.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="" /></p>
+
+<p>通过 @IBOutlet 进行关联</p>
+<div class="highlighter-rouge"><pre class="highlight"><code>    @IBOutlet var loginButton: UIButton! //登录按钮
+    @IBOutlet var heading: UILabel! //顶部标签
+    @IBOutlet var username: UITextField! //用户名输入框
+    @IBOutlet var password: UITextField! //密码输入框
+    
+    @IBOutlet var cloud1: UIImageView! // 四片云
+    @IBOutlet var cloud2: UIImageView!
+    @IBOutlet var cloud3: UIImageView!
+    @IBOutlet var cloud4: UIImageView!
+</code></pre>
+</div>
+
+<p>在控制器的view将要显示的时候进行动画设置:</p>
+<div class="highlighter-rouge"><pre class="highlight"><code>    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        let formGroup = CAAnimationGroup() //创建动画组
+        formGroup.duration = 0.5 //设置组动画时长为0.5秒
+        formGroup.fillMode = kCAFillModeBackwards //将填充模式设置为显示最后一帧
+        
+        let flyRight = CABasicAnimation(keyPath: "position.x") //创建基础动画, keyPath设置为横向位移
+        flyRight.fromValue = -view.bounds.size.width/2 //设置keyPath: "position.x"的起始位置
+        flyRight.toValue = view.bounds.size.width/2 //设置keyPath: "position.x"的目标位置
+        
+        let fadeFieldIn = CABasicAnimation(keyPath: "opacity") //创建基础动画, keyPath设置为透明率
+        fadeFieldIn.fromValue = 0.25 设置keyPath: "opacity"的起始值
+        fadeFieldIn.toValue = 1.0 设置keyPath: "opacity"的目标值
+        
+        formGroup.animations = [flyRight, fadeFieldIn] //将横向位移和透明率动画加入动画组
+        heading.layer.add(formGroup, forKey: nil) //将动画添加到layer层上
+        
+        formGroup.delegate = self //设置代理, 监听动画进程
+        formGroup.setValue("form", forKey: "name") //KVC设置属性
+        formGroup.setValue(username.layer, forKey: "layer") //KVC设置属性
+        
+        formGroup.beginTime = CACurrentMediaTime() + 0.3 //动画开始时间, 从现在+0.3秒
+        username.layer.add(formGroup, forKey: nil) //将动画添加到layer层上
+        
+        formGroup.setValue(password.layer, forKey: "layer") //KVC设置属性
+        formGroup.beginTime = CACurrentMediaTime() + 0.4 //动画开始时间, 从现在+0.4秒
+        password.layer.add(formGroup, forKey: nil) //将动画添加到layer层上
+        
+        let fadeIn = CABasicAnimation(keyPath: "opacity") 
+        fadeIn.fromValue = 0.0
+        fadeIn.toValue = 1.0
+        fadeIn.duration = 0.5
+        fadeIn.fillMode = kCAFillModeBackwards
+        fadeIn.beginTime = CACurrentMediaTime() + 0.5
+        cloud1.layer.add(fadeIn, forKey: nil)
+        
+        fadeIn.beginTime = CACurrentMediaTime() + 0.7
+        cloud2.layer.add(fadeIn, forKey: nil)
+        
+        fadeIn.beginTime = CACurrentMediaTime() + 0.9
+        cloud3.layer.add(fadeIn, forKey: nil)
+        
+        fadeIn.beginTime = CACurrentMediaTime() + 1.1
+        cloud4.layer.add(fadeIn, forKey: nil)
+    }
+</code></pre>
+</div>
+<p>在控制器的view已经显示的时候进行动画设置:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        let groupAnimation = CAAnimationGroup()
+        groupAnimation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseIn) //添加缓冲函数
+        groupAnimation.beginTime = CACurrentMediaTime() + 0.5
+        groupAnimation.duration = 0.5
+        groupAnimation.fillMode = kCAFillModeBackwards
+        
+        let scaleDown = CABasicAnimation(keyPath: "transform.scale")
+        scaleDown.fromValue = 3.5
+        scaleDown.toValue = 1.0
+        
+        let rotate = CABasicAnimation(keyPath: "transform.rotation")
+        rotate.fromValue = CGFloat(M_PI_4)
+        rotate.toValue = 0.0
+        
+        let fade = CABasicAnimation(keyPath: "opacity")
+        fade.fromValue = 0.0
+        fade.toValue = 1.0
+        
+        groupAnimation.animations = [scaleDown, rotate, fade]
+        loginButton.layer.add(groupAnimation, forKey: nil)
+        
+        animateCloud(layer: cloud1.layer)
+        animateCloud(layer: cloud2.layer)
+        animateCloud(layer: cloud3.layer)
+        animateCloud(layer: cloud4.layer)
+        
+        let flyLeft = CABasicAnimation(keyPath: "position.x")
+        flyLeft.fromValue = info.layer.position.x + view.frame.size.width
+        flyLeft.toValue = info.layer.position.x
+        flyLeft.duration = 5.0
+        flyLeft.repeatCount = 2.5
+        flyLeft.autoreverses = true
+        info.layer.add(flyLeft, forKey: "infoappear")
+        
+        let fadeLabelIn = CABasicAnimation(keyPath: "opacity")
+        fadeLabelIn.fromValue = 0.2
+        fadeLabelIn.toValue = 1.0
+        fadeLabelIn.duration = 4.5
+        info.layer.add(fadeLabelIn, forKey: "fadein")
+        
+        username.delegate = self
+        password.delegate = self
+    }
+</code></pre>
+</div>
+
+<p>当登录按钮点击的时候设置动画</p>
+<div class="highlighter-rouge"><pre class="highlight"><code>    @IBAction func login() {
+        view.endEditing(true)
+        
+        ...
+
+        let balloon = CALayer()
+        balloon.contents = UIImage(named: "balloon")!.cgImage //layer寄宿图设置
+        balloon.frame = CGRect(x: -50.0, y: 0.0, width:
+            50.0, height: 65.0)
+        view.layer.insertSublayer(balloon, below: username.layer)
+        
+        let flight = CAKeyframeAnimation(keyPath: "position") //添加关键帧动画
+        flight.duration = 12.0
+        flight.values = [ //NSValue结构值
+            CGPoint(x: -50, y: 0.0),
+            CGPoint(x: view.frame.width + 50.0, y: 160.0),
+            CGPoint(x: -50.0, y: loginButton.center.y)
+            ].map { NSValue(cgPoint: $0)} //进行map映射
+        flight.keyTimes = [0.0, 0.5, 1.0]
+        balloon.add(flight, forKey: nil)
+        balloon.position = CGPoint(x: -50.0, y: loginButton.center.y)
+    }
+</code></pre>
+</div>
+
+<p>对<code class="highlighter-rouge">CAAnimationDelegate</code>代理方法进行监听:</p>
+<div class="highlighter-rouge"><pre class="highlight"><code>extension ViewController: CAAnimationDelegate {
+    func animationDidStop(_ anim: CAAnimation, finished flag: Bool) { //当动画结束后调用
+        print("animation did finish")
+        
+        if let name = anim.value(forKey: "name") as? String {
+            if name == "form" { //拿到KVC的值
+                //form field found
+                let layer = anim.value(forKey: "layer") as? CALayer
+                anim.setValue(nil, forKey: "layer") //清空KVC设值
+                
+                let pulse = CASpringAnimation(keyPath: "transform.scale") //添加弹簧动画
+                pulse.damping = 7.5 //阻尼率为7.5
+                pulse.fromValue = 1.25
+                pulse.toValue = 1.0
+                pulse.duration = pulse.settlingDuration
+                layer?.add(pulse, forKey: nil)
+            }
+            
+            if name == "cloud" {
+                guard let layer = anim.value(forKey: "layer") as? CALayer else {
+                    return
+                }
+                
+                anim.setValue(nil, forKey: "layer")
+                
+                layer.position.x = -layer.bounds.width/2
+                delay(seconds: 0.5) {
+                    self.animateCloud(layer: layer)
+                }
+            }
+        }
+    }
+}
+</code></pre>
+</div>
+<p>对<code class="highlighter-rouge">UITextFieldDelegate</code>代理方法进行监听:</p>
+<div class="highlighter-rouge"><pre class="highlight"><code>extension ViewController: UITextFieldDelegate {
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        print(info.layer.animationKeys())
+        info.layer.removeAnimation(forKey: "infoappear") //当用户输入的时候移除动画
+    }
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        guard let text = textField.text else { return }
+        if text.characters.count &lt; 5 {
+            // add animations here
+            
+            let jump = CASpringAnimation(keyPath: "position.y") //当用户输入完成后添加弹簧动画
+            jump.initialVelocity = 100.0 //初始速度为100
+            jump.mass = 10.0 //layer的质量为10
+            jump.stiffness = 1500.0 //弹簧刚度为1500
+            jump.damping = 50.0 //阻尼率为50
+            jump.fromValue = textField.layer.position.y + 1.0
+            jump.toValue = textField.layer.position.y
+            jump.duration = jump.settlingDuration //持续时间设置为系统认为合理的时间
+            textField.layer.add(jump, forKey: nil)
+            
+            textField.layer.borderWidth = 3.0
+            textField.layer.borderColor = UIColor.clear.cgColor
+            
+            let flash = CASpringAnimation(keyPath: "borderColor")
+            flash.damping = 7.0
+            flash.stiffness = 200.0
+            flash.fromValue = UIColor(red: 1.0, green: 0.27, blue: 0.0, alpha: 1.0).cgColor
+            flash.toValue = UIColor.white.cgColor
+            flash.duration = flash.settlingDuration
+            textField.layer.add(flash, forKey: nil)
+        }
+    }
+}
+</code></pre>
+</div>
+<p>演示效果:</p>
+
+<p><img src="http://upload-images.jianshu.io/upload_images/1229762-d737971df1e1fdd9.gif?imageMogr2/auto-orient/strip" alt="" /></p>
+
+<p>About:</p>
+
+<p><img src="http://upload-images.jianshu.io/upload_images/1229762-3f8925783027b3fa.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="点击下方链接跳转!!" /></p>
+
+<p><a href="https://github.com/coderZsq/coderZsq.target.swift">🌟 源码 请点这里🌟 »&gt; 喜欢的朋友请点喜欢 »&gt; 下载源码的同学请送下小星星 »&gt; 有闲钱的壕们可以进行打赏 »&gt; 小弟会尽快推出更好的文章和大家分享 »&gt; 你的激励就是我的动力!! </a></p>
+
+  </section>
+</article>
+
+<section class="read-more">
+   
+   
+   <div class="read-more-item">
+       <span class="read-more-item-dim">最近的文章</span>
+       <h2 class="post-list__post-title post-title"><a href="/2017/05/Animations-%E8%87%AA%E5%AE%9A%E4%B9%89%E8%BD%AC%E5%9C%BA%E7%8E%B0%E5%B7%B2%E5%8A%A0%E5%85%A5%E8%B1%AA%E5%8D%8E%E5%8D%88%E9%A4%90/" title="link to Animations 自定义转场现已加入豪华午餐">Animations 自定义转场现已加入豪华午餐</a></h2>
+       <p class="excerpt">  经过了上周的基本动画和核心动画的理解, 我们今天来讲讲自定义转场动画, 自定义转场动画是iOS中比较高阶的动画形式了, 简单来说就是在切换控制器时发生的动画形式, 可以在Push/Pop ,Modal(present/dismiss)以及tabbar切换时进行动画. 代码见:github对于Modal(present/dismiss)以及tabbar切换的自定义动画可以看我之前的博客: Modal  请点击 –&gt; iOS 狂霸酷炫拽之Button动效Tabbar 请点击 –&gt...&hellip;</p>
+       <div class="post-list__meta"><time datetime="2017-05-02 11:23:00 +0800" class="post-list__meta--date date">2017-05-02</time> &#8226; <span class="post-list__meta--tags tags">移动开发</span><a class="btn-border-small" href=/2017/05/Animations-%E8%87%AA%E5%AE%9A%E4%B9%89%E8%BD%AC%E5%9C%BA%E7%8E%B0%E5%B7%B2%E5%8A%A0%E5%85%A5%E8%B1%AA%E5%8D%8E%E5%8D%88%E9%A4%90/>继续阅读</a></div>
+   </div>
+   
+   
+   
+   
+   <div class="read-more-item">
+       <span class="read-more-item-dim">更早的文章</span>
+       <h2 class="post-list__post-title post-title"><a href="/2017/04/Animations-%E4%BD%A0%E7%9C%9F%E7%9A%84%E4%BC%9A%E7%94%A8View%E7%9A%84%E5%8A%A8%E7%94%BB%E5%90%97/" title="link to Animations 你真的会用View的动画吗?">Animations 你真的会用View的动画吗?</a></h2>
+       <p class="excerpt">  RxSwift的学习我们先告一段落, 实在是太烧脑了, 今天我们换换脑子, 玩点轻松的动画, 去年我连载了一系列基于本人封装的Objective-C框架SQExtension展开的项目实战, 里面关于动画方面的涉及还是蛮多的以至于受到了腾讯的关注. 这个系列我们就来细讲动画, 一起走上进阶之路. 代码见:github对于动画方面除了最基本的View动画之外, 关于Layer的核心动画我都是看这篇wiki学的, 像去年连载的一些自定义转场动画是从Objc中学的. 这次买了Ray家的一系列...&hellip;</p>
+       <div class="post-list__meta"><time datetime="2017-04-26 11:58:00 +0800" class="post-list__meta--date date">2017-04-26</time> &#8226; <span class="post-list__meta--tags tags">移动开发</span><a class="btn-border-small" href=/2017/04/Animations-%E4%BD%A0%E7%9C%9F%E7%9A%84%E4%BC%9A%E7%94%A8View%E7%9A%84%E5%8A%A8%E7%94%BB%E5%90%97/>继续阅读</a></div>
+   </div>
+   
+</section>
+
+<section class="post-comments">
+  
+  
+  
+  
+</section>
+
+
+            <section class="footer">
+    <footer>
+    	<span class="footer__copyright">本站点采用<a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">知识共享 署名-非商业性使用-相同方式共享 4.0 国际 许可协议</a></span>
+        <span class="footer__copyright">由 <a href="https://jekyllrb.com">Jekyll</a> 于 2019-09-28 生成，感谢 <a href="https://www.digitalocean.com/?refcode=30ed2d146762">Digital Ocean</a> 为本站提供稳定的 VPS 服务</span>
+        <span class="footer__copyright">本站由 <a href="https://github.com/coderZsq">@Castie!</a> 创建，采用 <a href="https://github.com/onevcat/vno-jekyll">Vno - Jekyll</a> 作为主题，您可以在 GitHub 找到<a href="https://github.com/onevcat/OneV-s-Den">本站源码</a> - &copy; 2019</span>
+    </footer>
+</section>
+
+        </div>
+    </div>
+    
+    <script type="text/javascript" src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+
+<script type="text/javascript" src="/js/main.js"></script>
+
+
+
+    
+  </body>
+
+</html>

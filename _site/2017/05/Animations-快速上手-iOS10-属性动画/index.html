@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <title>Castie! Notes</title>
+  <meta name="description" content="  基础动画, 核心动画到自定义转场动画其实都不是什么新东西了, 所以我也是草草看一遍就能够读个大概, 但今天要说的UIViewPropertyAnimator, 是iOS10新的API, 其他的好处我还不太清楚, 但抽象动画逻辑和监控动画的进程上真的是方便很多.代码见:github">
+  <meta name="author" content="Wei Wang">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Animations 快速上手 iOS10 属性动画">
+  <meta name="twitter:description" content="  基础动画, 核心动画到自定义转场动画其实都不是什么新东西了, 所以我也是草草看一遍就能够读个大概, 但今天要说的UIViewPropertyAnimator, 是iOS10新的API, 其他的好处我还不太清楚, 但抽象动画逻辑和监控动画的进程上真的是方便很多.代码见:github">
+  
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Animations 快速上手 iOS10 属性动画">
+  <meta property="og:description" content="  基础动画, 核心动画到自定义转场动画其实都不是什么新东西了, 所以我也是草草看一遍就能够读个大概, 但今天要说的UIViewPropertyAnimator, 是iOS10新的API, 其他的好处我还不太清楚, 但抽象动画逻辑和监控动画的进程上真的是方便很多.代码见:github">
+  
+  <link rel="icon" type="image/ico" href="/assets/images/favicon.ico" />
+  <link href="/assets/images/favicon.ico" rel="shortcut icon" type="image/ico">
+  
+  <link rel="stylesheet" href="/css/main.css">
+  <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+
+  <link rel="canonical" href="http://localhost:4000/2017/05/Animations-%E5%BF%AB%E9%80%9F%E4%B8%8A%E6%89%8B-iOS10-%E5%B1%9E%E6%80%A7%E5%8A%A8%E7%94%BB/">
+  <link rel="alternate" type="application/rss+xml" title="Castie!" href="http://localhost:4000/feed.xml">
+  
+  <meta name="google-site-verification" content="1-1ZlHoRvM0T2FqPbW2S-qLgYXN6rsn52kErlMPd_gw" />
+  
+</head>
+
+
+  <body>
+
+    <span class="mobile btn-mobile-menu">
+        <i class="fa fa-list btn-mobile-menu__icon"></i>
+        <i class="fa fa-angle-up btn-mobile-close__icon hidden"></i>
+    </span>
+    
+    <header class="panel-cover panel-cover--collapsed" style="background-image: url('/assets/images/background-cover.jpg')">
+  <div class="panel-main">
+
+    <div class="panel-main__inner panel-inverted">
+    <div class="panel-main__content">
+
+        <a href="/#blog" title="前往 Castie! 的主页" class="blog-button"><img src="/assets/images/avatar.jpg" width="80" alt="Castie! logo" class="panel-cover__logo logo" /></a>
+        <h1 class="panel-cover__title panel-title"><a href="/#blog" title="link to homepage for Castie!" class="blog-button">Castie!</a></h1>
+        
+        <span class="panel-cover__subtitle panel-subtitle">正态分布, 优劣伴生</span>
+        
+        <hr class="panel-cover__divider" />
+        <p class="panel-cover__description">北冥有鱼，其名为鲲（kūn）。鲲之大，不知其几千里也；化而为鸟，其名为鹏。鹏之背，不知其几千里也；怒而飞，其翼若垂天之云。是鸟也，海运则将徙于南冥。南冥者，天池也。</p>
+        <hr class="panel-cover__divider panel-cover__divider--secondary" />
+        
+        
+        <p class="panel-cover__description">北海若曰：“井鼃不可以语于海者，拘于虚也；夏虫不可以语于冰者，笃于时也；曲士不可以语于道者，束于教也。今尔出于崖涘，观于大海，乃知尔丑，尔将可与语大理矣。</p>
+        
+        
+        <div class="navigation-wrapper">
+          <div>
+            <nav class="cover-navigation cover-navigation--primary">
+              <ul class="navigation">
+                <li class="navigation__item"><a href="/#blog" title="访问博客" class="blog-button">博客</a></li>
+                
+                  <li class="navigation__item"><a href="https://coderzsq.github.io/coderZsq.practice.web/" target="_blank" title="我的简历">简历</a></li>
+                
+              </ul>
+            </nav>
+          </div>
+          
+          <div><nav class="cover-navigation navigation--social">
+  <ul class="navigation">
+
+    
+    <!-- juejin-->
+    <li class="navigation__item">
+      <a href="https://juejin.im/user/57e735dfa22b9d00614eecb8/posts" title="@coderZsq 的稀土掘金" target="_blank">
+        <i class='social fa fa-book'></i>
+        <span class="label">juejin</span>
+      </a>
+    </li>
+    
+
+  
+
+  
+  <!-- Github -->
+  <li class="navigation__item">
+    <a href="https://github.com/coderZsq" title="@coderZsq 的 Github" target="_blank">
+      <i class='social fa fa-github'></i>
+      <span class="label">Github</span>
+    </a>
+  </li>
+  
+
+  
+
+  
+
+  <!-- RSS -->
+  <li class="navigation__item">
+    <a href="/feed.xml" rel="author" title="RSS" target="_blank">
+      <i class='social fa fa-rss'></i>
+      <span class="label">RSS</span>
+    </a>
+  </li>
+
+  
+  <!-- Email -->
+  <li class="navigation__item">
+    <a href="mailto:a13701777868@gmail.com" title="Contact me">
+      <i class='social fa fa-envelope'></i>
+      <span class="label">Email</span>
+    </a>
+  </li>
+  
+
+  </ul>
+</nav>
+</div>
+        </div>
+      </div>
+    </div>
+    
+    
+    <div class="panel-cover--overlay cover-disabled"></div>
+    
+  </div>
+</header>
+
+
+    <div class="content-wrapper">
+        <div class="content-wrapper__inner">
+            <article class="post-container post-container--single" itemscope itemtype="http://schema.org/BlogPosting">
+  <header class="post-header">
+    <div class="post-meta">
+      <time datetime="2017-05-03 11:04:00 +0800" itemprop="datePublished" class="post-meta__date date">2017-05-03</time> &#8226; <span class="post-meta__tags tags">移动开发</span>
+    </div>
+    <h1 class="post-title">Animations 快速上手 iOS10 属性动画</h1>
+  </header>
+
+  <section class="post">
+    <blockquote>
+  <p>基础动画, 核心动画到自定义转场动画其实都不是什么新东西了, 所以我也是草草看一遍就能够读个大概, 但今天要说的UIViewPropertyAnimator, 是iOS10新的API, 其他的好处我还不太清楚, 但抽象动画逻辑和监控动画的进程上真的是方便很多.代码见:<a href="https://github.com/coderZsq/coderZsq.target.swift">github</a></p>
+</blockquote>
+
+<p><img src="http://upload-images.jianshu.io/upload_images/1229762-8f8d322fd1b24ddb.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="" /></p>
+
+<p>对于属性动画来说, 真的是个新知识, 想必会用的还不多, 我也是近期才有涉及, 理解不周还望大伙指点一二, 之前我们要做一些稍微高级的动画都会使用核心动画的方法, 但是核心动画有一个致命的弱点, 就是假象和被打断, 所以iOS10出了新的API真的是造福我们这些开发者. 不多说, 先了解新的API:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>@available(iOS 10.0, *)
+open class UIViewPropertyAnimator : NSObject, UIViewImplicitlyAnimating, NSCopying
+  @NSCopying open var timingParameters: UITimingCurveProvider? { get }
+  open var duration: TimeInterval { get }
+  open var delay: TimeInterval { get }
+  open var isUserInteractionEnabled: Bool
+  open var isManualHitTestingEnabled: Bool
+  open var isInterruptible: Bool
+</code></pre>
+</div>
+<ul>
+  <li>timingParameters: 时间参数</li>
+  <li>duration: 持续时间</li>
+  <li>delay: 延迟时间</li>
+  <li>isUserInteractionEnabled: 是否可交互</li>
+  <li>isManualHitTestingEnabled: 是否启动手动测试</li>
+  <li>isInterruptible: 是否可被打断</li>
+</ul>
+
+<h5 id="构造方法">构造方法:</h5>
+<div class="highlighter-rouge"><pre class="highlight"><code>public init(duration: TimeInterval, timingParameters parameters: UITimingCurveProvider)
+</code></pre>
+</div>
+<ul>
+  <li>duration: 持续时间</li>
+  <li>timingParameters: 时间参数</li>
+</ul>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>public convenience init(duration: TimeInterval, curve: UIViewAnimationCurve, animations: (@escaping () -&gt; Swift.Void)? = nil)
+</code></pre>
+</div>
+<ul>
+  <li>duration: 持续时间</li>
+  <li>curve: 动画曲线</li>
+  <li>animations: 动画执行闭包</li>
+</ul>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>public convenience init(duration: TimeInterval, controlPoint1 point1: CGPoint, controlPoint2 point2: CGPoint, animations: (@escaping () -&gt; Swift.Void)? = nil)
+</code></pre>
+</div>
+<ul>
+  <li>duration: 持续时间</li>
+  <li>controlPoint1: 控制点1</li>
+  <li>controlPoint2: 控制点2</li>
+  <li>animations: 动画执行闭包</li>
+</ul>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>public convenience init(duration: TimeInterval, dampingRatio ratio: CGFloat, animations: (@escaping () -&gt; Swift.Void)? = nil)
+</code></pre>
+</div>
+<ul>
+  <li>duration: 持续时间</li>
+  <li>dampingRatio: 减震比率</li>
+  <li>animations: 动画执行闭包</li>
+</ul>
+
+<h5 id="运行属性动画方法">运行属性动画方法:</h5>
+<div class="highlighter-rouge"><pre class="highlight"><code>open class func runningPropertyAnimator(withDuration duration: TimeInterval, delay: TimeInterval, options: UIViewAnimationOptions = [], animations: @escaping () -&gt; Swift.Void, completion: (@escaping (UIViewAnimatingPosition) -&gt; Swift.Void)? = nil) -&gt; Self
+</code></pre>
+</div>
+<ul>
+  <li>duration: 持续时间</li>
+  <li>options: 动画选项</li>
+  <li>animations: 动画执行闭包</li>
+  <li>completion: 动画完成闭包</li>
+</ul>
+
+<h5 id="添加动画组方法">添加动画组方法:</h5>
+<div class="highlighter-rouge"><pre class="highlight"><code>open func addAnimations(_ animation: @escaping () -&gt; Swift.Void, delayFactor: CGFloat)
+</code></pre>
+</div>
+<ul>
+  <li>animation: 动画执行闭包</li>
+  <li>delayFactor: 延迟比率, 按照百分比计算 范围0~1</li>
+</ul>
+
+<h5 id="动画组完成方法">动画组完成方法:</h5>
+<div class="highlighter-rouge"><pre class="highlight"><code>open func addCompletion(_ completion: @escaping (UIViewAnimatingPosition) -&gt; Swift.Void)
+</code></pre>
+</div>
+<ul>
+  <li>completion: 完成执行闭包</li>
+</ul>
+
+<h5 id="继续动画方法">继续动画方法:</h5>
+<div class="highlighter-rouge"><pre class="highlight"><code>open func continueAnimation(withTimingParameters parameters: UITimingCurveProvider?, durationFactor: CGFloat)
+</code></pre>
+</div>
+<ul>
+  <li>withTimingParameters: 时间参数</li>
+  <li>durationFactor: 持续比率, 按照百分比计算 范围0~1</li>
+</ul>
+
+<h5 id="动画状态">动画状态:</h5>
+<div class="highlighter-rouge"><pre class="highlight"><code>@available(iOS 10.0, *)
+public enum UIViewAnimatingState : Int {
+    case inactive // The animation is not executing.
+    case active // The animation is executing.
+    case stopped // The animation has been stopped and has not transitioned to inactive.
+}
+</code></pre>
+</div>
+
+<h5 id="动画位置">动画位置:</h5>
+<div class="highlighter-rouge"><pre class="highlight"><code>@available(iOS 10.0, *)
+public enum UIViewAnimatingPosition : Int {
+    case end
+    case start
+    case current
+}
+</code></pre>
+</div>
+
+<h5 id="动画协议">动画协议:</h5>
+<div class="highlighter-rouge"><pre class="highlight"><code>public protocol UIViewAnimating : NSObjectProtocol
+@available(iOS 10.0, *)
+    public var state: UIViewAnimatingState { get }
+    public var isRunning: Bool { get }
+    public var isReversed: Bool { get set }
+    public var fractionComplete: CGFloat { get set }
+    public func startAnimation()
+    public func startAnimation(afterDelay delay: TimeInterval)
+    public func pauseAnimation()
+    public func stopAnimation(_ withoutFinishing: Bool)
+@available(iOS 10.0, *)
+    public func finishAnimation(at finalPosition: UIViewAnimatingPosition)
+</code></pre>
+</div>
+<ul>
+  <li>state: 动画状态</li>
+  <li>isRunning: 动画是否在执行</li>
+  <li>isReversed: 动画是否反向执行</li>
+  <li>fractionComplete: 分段完成 范围0~1</li>
+  <li>startAnimation: 开始执行动画</li>
+  <li>startAnimation(afterDelay:): 延迟执行动画</li>
+  <li>pauseAnimation: 暂停动画执行</li>
+  <li>finishAnimation: 完成动画知悉在某个动画位置</li>
+</ul>
+
+<h5 id="实战实例">实战实例:</h5>
+
+<p>这次的API有点多, 因为本人也是第一次接触所以把每个都尝试了一遍, 我们就来使用这些API进行实战, 和之前一样, 我们就通过Stroyboard搭建界面 (由于Demo代码较多, 只列举具体的动画部分)</p>
+
+<p><img src="http://upload-images.jianshu.io/upload_images/1229762-601e06af1266b6c6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="" /></p>
+
+<p>我们首先先将动画抽象到一个类中:</p>
+<div class="highlighter-rouge"><pre class="highlight"><code>class AnimatorFactory {
+    ...
+}
+</code></pre>
+</div>
+
+<p>添加缩放动画:</p>
+<div class="highlighter-rouge"><pre class="highlight"><code>  static func scaleUp(view: UIView) -&gt; UIViewPropertyAnimator {
+    let scale = UIViewPropertyAnimator(duration: 0.33, curve: .easeIn) //属性动画初始化
+    scale.addAnimations { //添加动画组
+      view.alpha = 1.0
+    }
+    scale.addAnimations({ //添加动画组
+      view.transform = .identity
+    }, delayFactor: 0.33) //延迟33%执行
+    scale.addCompletion {_ in //完成后打印
+      print("ready")
+    }
+    return scale
+  }
+</code></pre>
+</div>
+<p>添加摇晃动画:</p>
+<div class="highlighter-rouge"><pre class="highlight"><code>  @discardableResult //去除黄色警告
+  static func jiggle(view: UIView) -&gt; UIViewPropertyAnimator {
+    return UIViewPropertyAnimator.runningPropertyAnimator(withDuration: 0.33, delay: 0, //直接执行属性动画
+      animations: {
+
+        UIView.animateKeyframes(withDuration: 1, delay: 0, //关键帧动画
+          animations: {
+
+            UIView.addKeyframe(withRelativeStartTime: 0.0, relativeDuration: 0.25) {
+              view.transform = CGAffineTransform(rotationAngle: -.pi/8)
+            }
+            UIView.addKeyframe(withRelativeStartTime: 0.25, relativeDuration: 0.75) {
+              view.transform = CGAffineTransform(rotationAngle: +.pi/8)
+            }
+            UIView.addKeyframe(withRelativeStartTime: 0.75, relativeDuration: 1.0) {
+              view.transform = .identity
+            }
+          },
+          completion: nil
+        )
+      },
+      completion: {_ in
+        view.transform = .identity //完成后置空
+      }
+    )
+  }
+
+</code></pre>
+</div>
+
+<p>添加淡入淡出动画:</p>
+<div class="highlighter-rouge"><pre class="highlight"><code>  @discardableResult
+  static func fade(view: UIView, visible: Bool) -&gt; UIViewPropertyAnimator {
+    return UIViewPropertyAnimator.runningPropertyAnimator(withDuration: 0.5, delay: 0.1,
+      options: [.curveEaseOut], 
+      animations: {
+        view.alpha = visible ? 1 : 0
+      }
+    )
+  }
+</code></pre>
+</div>
+<p>添加约束动画:</p>
+<div class="highlighter-rouge"><pre class="highlight"><code>  @discardableResult
+  static func animateConstraint(view: UIView, constraint: NSLayoutConstraint, by: CGFloat) -&gt; UIViewPropertyAnimator {
+    let spring = UISpringTimingParameters(dampingRatio: 0.55) //这个和之前的弹簧动画类似
+    let animator = UIViewPropertyAnimator(duration: 1.0, timingParameters: spring)
+    animator.addAnimations {
+      constraint.constant += by //约束操作
+      view.layoutIfNeeded() //刷帧
+    }
+    return animator
+  }
+</code></pre>
+</div>
+<p>添加闪烁动画:</p>
+<div class="highlighter-rouge"><pre class="highlight"><code>  static func grow(view: UIVisualEffectView, blurView: UIVisualEffectView) -&gt; UIViewPropertyAnimator {
+    // 1
+    view.contentView.alpha = 0
+    view.transform = .identity
+
+    // 2
+    let animator = UIViewPropertyAnimator(duration: 0.5, curve: .easeIn)
+    
+    // 3
+    animator.addAnimations {
+      UIView.animateKeyframes(withDuration: 0.5, delay: 0.0, animations: {
+
+        UIView.addKeyframe(withRelativeStartTime: 0.0, relativeDuration: 1.0) {
+          blurView.effect = UIBlurEffect(style: .dark)
+          view.transform = CGAffineTransform(scaleX: 1.5, y: 1.5)
+        }
+
+        UIView.addKeyframe(withRelativeStartTime: 0.5, relativeDuration: 0.5) {
+          view.transform = view.transform.rotated(by: -.pi/8)
+        }
+      })
+    }
+    
+    // 4
+    animator.addCompletion {position in
+      switch position {
+        case .start:
+          blurView.effect = nil
+        case .end:
+          blurView.effect = UIBlurEffect(style: .dark)
+        default: break
+      }
+    }
+    return animator
+  }
+</code></pre>
+</div>
+<p>进行属性动画的调用;</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>@IBAction func toggleShowMore(_ sender: UIButton) {
+
+    self.showsMore = !self.showsMore
+
+    let animations = { //创建动画组闭包
+      self.widgetHeight.constant = self.showsMore ? 230 : 130
+      if let tableView = self.tableView {
+        tableView.beginUpdates() //进行tableView刷新动画
+        tableView.endUpdates()
+        tableView.layoutIfNeeded() //刷布局
+      }
+    }
+
+    let textTransition = { //View转场
+      UIView.transition(with: sender, duration: 0.25, options: .transitionCrossDissolve,
+        animations: {
+          sender.setTitle(self.showsMore ? "Show Less" : "Show More", for: .normal)
+        },
+        completion: nil
+      )
+    }
+
+    if let toggleHeightAnimator = toggleHeightAnimator, toggleHeightAnimator.isRunning { 
+      toggleHeightAnimator.addAnimations(animations)
+      toggleHeightAnimator.addAnimations(textTransition, delayFactor: 0.5)
+    } else {
+      let spring = UISpringTimingParameters(mass: 30, stiffness: 1000, damping: 300, initialVelocity: CGVector.zero)
+      toggleHeightAnimator = UIViewPropertyAnimator(duration: 0.0, timingParameters: spring) //初始化动画
+      toggleHeightAnimator?.addAnimations(animations) //添加动画组
+      toggleHeightAnimator?.addAnimations(textTransition, delayFactor: 0.5)
+      toggleHeightAnimator?.startAnimation() //开始动画
+    }
+
+    widgetView.expanded = showsMore
+    widgetView.reload()
+  }
+</code></pre>
+</div>
+<h5 id="演示效果">演示效果:</h5>
+
+<p><img src="http://upload-images.jianshu.io/upload_images/1229762-5be066f9e980f220.gif?imageMogr2/auto-orient/strip" alt="" /></p>
+
+<h5 id="about">About:</h5>
+
+<p><img src="http://upload-images.jianshu.io/upload_images/1229762-3f8925783027b3fa.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="点击下方链接跳转!!" /></p>
+
+<p><a href="https://github.com/coderZsq/coderZsq.target.swift">🌟 源码 请点这里🌟 »&gt; 喜欢的朋友请点喜欢 »&gt; 下载源码的同学请送下小星星 »&gt; 有闲钱的壕们可以进行打赏 »&gt; 小弟会尽快推出更好的文章和大家分享 »&gt; 你的激励就是我的动力!! </a></p>
+
+<p><a href="http://www.demodashi.com/demo/10639.html">百度云源码</a></p>
+
+  </section>
+</article>
+
+<section class="read-more">
+   
+   
+   <div class="read-more-item">
+       <span class="read-more-item-dim">最近的文章</span>
+       <h2 class="post-list__post-title post-title"><a href="/2017/05/SpriteKit-%E7%B3%BB%E7%BB%9F%E6%A1%86%E6%9E%B6%E4%B8%ADCocos2d-x%E7%9A%84%E6%80%A8%E5%BF%B5/" title="link to SpriteKit 系统框架中Cocos2d-x的怨念">SpriteKit 系统框架中Cocos2d-x的怨念</a></h2>
+       <p class="excerpt">  动画进阶之路就告一段落了, 其实关于动画还有一些知识没有涉及到, 比如说Layer子类的动画, m34的使用等等, 关于这些可以看iOS Core Animation的翻译版, 这里面介绍的很详细, 是非常好的入门书, 今天开始我们就进入一个全新的系列, SpriteKit, 之前巩固动画, 完全就是为了游戏的, 不多说, 代码见:github本期的内容就是使用SpriteKit实现一个简单的游戏, 通过一个游戏来进行SpriteKit的入门, 熟练2D游戏的API, 也可以更好的结合...&hellip;</p>
+       <div class="post-list__meta"><time datetime="2017-05-05 13:39:00 +0800" class="post-list__meta--date date">2017-05-05</time> &#8226; <span class="post-list__meta--tags tags">移动开发</span><a class="btn-border-small" href=/2017/05/SpriteKit-%E7%B3%BB%E7%BB%9F%E6%A1%86%E6%9E%B6%E4%B8%ADCocos2d-x%E7%9A%84%E6%80%A8%E5%BF%B5/>继续阅读</a></div>
+   </div>
+   
+   
+   
+   
+   <div class="read-more-item">
+       <span class="read-more-item-dim">更早的文章</span>
+       <h2 class="post-list__post-title post-title"><a href="/2017/05/Animations-%E8%87%AA%E5%AE%9A%E4%B9%89%E8%BD%AC%E5%9C%BA%E7%8E%B0%E5%B7%B2%E5%8A%A0%E5%85%A5%E8%B1%AA%E5%8D%8E%E5%8D%88%E9%A4%90/" title="link to Animations 自定义转场现已加入豪华午餐">Animations 自定义转场现已加入豪华午餐</a></h2>
+       <p class="excerpt">  经过了上周的基本动画和核心动画的理解, 我们今天来讲讲自定义转场动画, 自定义转场动画是iOS中比较高阶的动画形式了, 简单来说就是在切换控制器时发生的动画形式, 可以在Push/Pop ,Modal(present/dismiss)以及tabbar切换时进行动画. 代码见:github对于Modal(present/dismiss)以及tabbar切换的自定义动画可以看我之前的博客: Modal  请点击 –&gt; iOS 狂霸酷炫拽之Button动效Tabbar 请点击 –&gt...&hellip;</p>
+       <div class="post-list__meta"><time datetime="2017-05-02 11:23:00 +0800" class="post-list__meta--date date">2017-05-02</time> &#8226; <span class="post-list__meta--tags tags">移动开发</span><a class="btn-border-small" href=/2017/05/Animations-%E8%87%AA%E5%AE%9A%E4%B9%89%E8%BD%AC%E5%9C%BA%E7%8E%B0%E5%B7%B2%E5%8A%A0%E5%85%A5%E8%B1%AA%E5%8D%8E%E5%8D%88%E9%A4%90/>继续阅读</a></div>
+   </div>
+   
+</section>
+
+<section class="post-comments">
+  
+  
+  
+  
+</section>
+
+
+            <section class="footer">
+    <footer>
+    	<span class="footer__copyright">本站点采用<a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">知识共享 署名-非商业性使用-相同方式共享 4.0 国际 许可协议</a></span>
+        <span class="footer__copyright">由 <a href="https://jekyllrb.com">Jekyll</a> 于 2019-09-28 生成，感谢 <a href="https://www.digitalocean.com/?refcode=30ed2d146762">Digital Ocean</a> 为本站提供稳定的 VPS 服务</span>
+        <span class="footer__copyright">本站由 <a href="https://github.com/coderZsq">@Castie!</a> 创建，采用 <a href="https://github.com/onevcat/vno-jekyll">Vno - Jekyll</a> 作为主题，您可以在 GitHub 找到<a href="https://github.com/onevcat/OneV-s-Den">本站源码</a> - &copy; 2019</span>
+    </footer>
+</section>
+
+        </div>
+    </div>
+    
+    <script type="text/javascript" src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+
+<script type="text/javascript" src="/js/main.js"></script>
+
+
+
+    
+  </body>
+
+</html>

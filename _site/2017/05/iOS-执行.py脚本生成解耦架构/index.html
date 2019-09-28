@@ -1,0 +1,755 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <title>Castie! Notes</title>
+  <meta name="description" content="  刚刚学习完SpriteKit的第一章, 项目的需求就压过来了, 诶, 时间都去哪啦, 接着之前的热修复架构, 这次为了更加好的进行代码规范, 我们将之间的架构模式进行模板代码生成, 这里会用到一些简单的python, 没接触过的同学们可以先去了解下, 今天我就将零耦合代码生成工具分享与你.">
+  <meta name="author" content="Wei Wang">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="iOS 执行.py脚本生成解耦架构">
+  <meta name="twitter:description" content="  刚刚学习完SpriteKit的第一章, 项目的需求就压过来了, 诶, 时间都去哪啦, 接着之前的热修复架构, 这次为了更加好的进行代码规范, 我们将之间的架构模式进行模板代码生成, 这里会用到一些简单的python, 没接触过的同学们可以先去了解下, 今天我就将零耦合代码生成工具分享与你.">
+  
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="iOS 执行.py脚本生成解耦架构">
+  <meta property="og:description" content="  刚刚学习完SpriteKit的第一章, 项目的需求就压过来了, 诶, 时间都去哪啦, 接着之前的热修复架构, 这次为了更加好的进行代码规范, 我们将之间的架构模式进行模板代码生成, 这里会用到一些简单的python, 没接触过的同学们可以先去了解下, 今天我就将零耦合代码生成工具分享与你.">
+  
+  <link rel="icon" type="image/ico" href="/assets/images/favicon.ico" />
+  <link href="/assets/images/favicon.ico" rel="shortcut icon" type="image/ico">
+  
+  <link rel="stylesheet" href="/css/main.css">
+  <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+
+  <link rel="canonical" href="http://localhost:4000/2017/05/iOS-%E6%89%A7%E8%A1%8C.py%E8%84%9A%E6%9C%AC%E7%94%9F%E6%88%90%E8%A7%A3%E8%80%A6%E6%9E%B6%E6%9E%84/">
+  <link rel="alternate" type="application/rss+xml" title="Castie!" href="http://localhost:4000/feed.xml">
+  
+  <meta name="google-site-verification" content="1-1ZlHoRvM0T2FqPbW2S-qLgYXN6rsn52kErlMPd_gw" />
+  
+</head>
+
+
+  <body>
+
+    <span class="mobile btn-mobile-menu">
+        <i class="fa fa-list btn-mobile-menu__icon"></i>
+        <i class="fa fa-angle-up btn-mobile-close__icon hidden"></i>
+    </span>
+    
+    <header class="panel-cover panel-cover--collapsed" style="background-image: url('/assets/images/background-cover.jpg')">
+  <div class="panel-main">
+
+    <div class="panel-main__inner panel-inverted">
+    <div class="panel-main__content">
+
+        <a href="/#blog" title="前往 Castie! 的主页" class="blog-button"><img src="/assets/images/avatar.jpg" width="80" alt="Castie! logo" class="panel-cover__logo logo" /></a>
+        <h1 class="panel-cover__title panel-title"><a href="/#blog" title="link to homepage for Castie!" class="blog-button">Castie!</a></h1>
+        
+        <span class="panel-cover__subtitle panel-subtitle">正态分布, 优劣伴生</span>
+        
+        <hr class="panel-cover__divider" />
+        <p class="panel-cover__description">北冥有鱼，其名为鲲（kūn）。鲲之大，不知其几千里也；化而为鸟，其名为鹏。鹏之背，不知其几千里也；怒而飞，其翼若垂天之云。是鸟也，海运则将徙于南冥。南冥者，天池也。</p>
+        <hr class="panel-cover__divider panel-cover__divider--secondary" />
+        
+        
+        <p class="panel-cover__description">北海若曰：“井鼃不可以语于海者，拘于虚也；夏虫不可以语于冰者，笃于时也；曲士不可以语于道者，束于教也。今尔出于崖涘，观于大海，乃知尔丑，尔将可与语大理矣。</p>
+        
+        
+        <div class="navigation-wrapper">
+          <div>
+            <nav class="cover-navigation cover-navigation--primary">
+              <ul class="navigation">
+                <li class="navigation__item"><a href="/#blog" title="访问博客" class="blog-button">博客</a></li>
+                
+                  <li class="navigation__item"><a href="https://coderzsq.github.io/coderZsq.practice.web/" target="_blank" title="我的简历">简历</a></li>
+                
+              </ul>
+            </nav>
+          </div>
+          
+          <div><nav class="cover-navigation navigation--social">
+  <ul class="navigation">
+
+    
+    <!-- juejin-->
+    <li class="navigation__item">
+      <a href="https://juejin.im/user/57e735dfa22b9d00614eecb8/posts" title="@coderZsq 的稀土掘金" target="_blank">
+        <i class='social fa fa-book'></i>
+        <span class="label">juejin</span>
+      </a>
+    </li>
+    
+
+  
+
+  
+  <!-- Github -->
+  <li class="navigation__item">
+    <a href="https://github.com/coderZsq" title="@coderZsq 的 Github" target="_blank">
+      <i class='social fa fa-github'></i>
+      <span class="label">Github</span>
+    </a>
+  </li>
+  
+
+  
+
+  
+
+  <!-- RSS -->
+  <li class="navigation__item">
+    <a href="/feed.xml" rel="author" title="RSS" target="_blank">
+      <i class='social fa fa-rss'></i>
+      <span class="label">RSS</span>
+    </a>
+  </li>
+
+  
+  <!-- Email -->
+  <li class="navigation__item">
+    <a href="mailto:a13701777868@gmail.com" title="Contact me">
+      <i class='social fa fa-envelope'></i>
+      <span class="label">Email</span>
+    </a>
+  </li>
+  
+
+  </ul>
+</nav>
+</div>
+        </div>
+      </div>
+    </div>
+    
+    
+    <div class="panel-cover--overlay cover-disabled"></div>
+    
+  </div>
+</header>
+
+
+    <div class="content-wrapper">
+        <div class="content-wrapper__inner">
+            <article class="post-container post-container--single" itemscope itemtype="http://schema.org/BlogPosting">
+  <header class="post-header">
+    <div class="post-meta">
+      <time datetime="2017-05-10 16:50:00 +0800" itemprop="datePublished" class="post-meta__date date">2017-05-10</time> &#8226; <span class="post-meta__tags tags">移动开发</span>
+    </div>
+    <h1 class="post-title">iOS 执行.py脚本生成解耦架构</h1>
+  </header>
+
+  <section class="post">
+    <blockquote>
+  <p>刚刚学习完SpriteKit的第一章, 项目的需求就压过来了, 诶, 时间都去哪啦, 接着之前的热修复架构, 这次为了更加好的进行代码规范, 我们将之间的架构模式进行模板代码生成, 这里会用到一些简单的python, 没接触过的同学们可以先去了解下, 今天我就将零耦合代码生成工具分享与你.</p>
+</blockquote>
+
+<p><img src="http://upload-images.jianshu.io/upload_images/1229762-6b2c8bed102c297f.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="" /></p>
+
+<h6 id="参考链接">参考链接:</h6>
+
+<ul>
+  <li><a href="http://www.jianshu.com/p/5a03995a6ce1">Hybird 搭建零耦合架构从MVC开始</a></li>
+  <li><a href="http://www.jianshu.com/p/846b9f181cb7">Hybird 搭建后端Koa.js并过度到MVVM</a></li>
+  <li><a href="http://www.jianshu.com/p/8d4a84e3ddaa">Hybird 搭建前端Vue.js并升级至MVP</a></li>
+  <li><a href="http://www.jianshu.com/p/36314d0c0032">Hybird 搭建路由Router实现组件化</a></li>
+  <li><a href="http://www.jianshu.com/p/7054a694cfeb">Hybird 搭建客户端实时降级架构</a></li>
+</ul>
+
+<p>其实代码生成工具好久之前就想试试学着开发, 一直没有头绪和所谓的契机, 最近在学习算法的时候顺带学了下python, 发现python的写文件的代码之简洁, 再看看OC, 诶… 刚学iOS的时候还觉得OC是最好的语言, 说实话, 现在好久不敲OC, 都有些手生了.</p>
+
+<p>先按之前的架构写出对应OC模板 没看过Swift版的点击 –&gt; <a href="http://www.jianshu.com/p/7054a694cfeb">Hybird 搭建客户端实时降级架构</a></p>
+
+<h3 id="生成器目录结构">生成器目录结构</h3>
+<div class="highlighter-rouge"><pre class="highlight"><code>├── Template //模板文件
+│   ├── ControllerTemplate.h
+│   ├── ControllerTemplate.m
+│   ├── InterfaceTemplate.h
+│   ├── ModelTemplate.h
+│   ├── ModelTemplate.m
+│   ├── PresenterTemplate.h
+│   ├── PresenterTemplate.m
+│   ├── ViewModelTemplate.h
+│   ├── ViewModelTemplate.m
+│   ├── ViewTemplate.h
+│   └── ViewTemplate.m
+├── builder.py //生成器执行文件
+└── config.json //生成器配置文件
+</code></pre>
+</div>
+<h5 id="interfacetemplateh">InterfaceTemplate.h</h5>
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="cp">#import &lt;UIKit/UIKit.h&gt;
+</span>
+<span class="k">@protocol</span> <span class="err">&lt;#</span><span class="nc">Unit</span><span class="err">#</span><span class="o">&gt;</span><span class="n">ViewOperation</span> <span class="o">&lt;</span><span class="n">NSObject</span><span class="o">&gt;</span>
+<span class="o">&lt;</span><span class="err">#</span><span class="n">ViewOperation</span><span class="err">#</span><span class="o">&gt;</span>
+
+<span class="k">@end</span>
+
+<span class="k">@protocol</span> <span class="err">&lt;#</span><span class="nc">Unit</span><span class="err">#</span><span class="o">&gt;</span><span class="n">ModelInterface</span> <span class="o">&lt;</span><span class="n">NSObject</span><span class="o">&gt;</span>
+<span class="o">&lt;</span><span class="err">#</span><span class="n">ModelInterface</span><span class="err">#</span><span class="o">&gt;</span>
+
+<span class="k">@end</span>
+
+<span class="k">@protocol</span> <span class="err">&lt;#</span><span class="nc">Unit</span><span class="err">#</span><span class="o">&gt;</span><span class="n">ViewModelInterface</span> <span class="o">&lt;</span><span class="n">NSObject</span><span class="o">&gt;</span>
+
+<span class="k">@property</span> <span class="p">(</span><span class="n">nonatomic</span><span class="p">,</span><span class="n">strong</span><span class="p">)</span> <span class="n">id</span><span class="o">&lt;&lt;</span><span class="err">#</span><span class="n">Unit</span><span class="err">#</span><span class="o">&gt;</span><span class="n">ModelInterface</span><span class="o">&gt;</span> <span class="n">model</span><span class="p">;</span>
+
+<span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">initializeWithParameter</span><span class="p">:(</span><span class="n">NSDictionary</span> <span class="o">*</span><span class="p">)</span><span class="nv">parameter</span> <span class="nf">finishedCallBack</span><span class="p">:(</span><span class="kt">void</span><span class="p">(</span><span class="o">^</span><span class="p">)())</span><span class="nv">finishCallBack</span><span class="p">;</span>
+<span class="o">&lt;</span><span class="err">#</span><span class="n">ViewModelInterface</span><span class="err">#</span><span class="o">&gt;</span>
+<span class="k">@end</span>
+
+<span class="k">@protocol</span> <span class="err">&lt;#</span><span class="nc">Unit</span><span class="err">#</span><span class="o">&gt;</span><span class="n">ViewInterface</span> <span class="o">&lt;</span><span class="n">NSObject</span><span class="o">&gt;</span>
+
+<span class="k">@property</span> <span class="p">(</span><span class="n">nonatomic</span><span class="p">,</span><span class="n">strong</span><span class="p">)</span> <span class="n">id</span><span class="o">&lt;&lt;</span><span class="err">#</span><span class="n">Unit</span><span class="err">#</span><span class="o">&gt;</span><span class="n">ViewModelInterface</span><span class="o">&gt;</span> <span class="o">&lt;</span><span class="err">#</span><span class="n">unit</span><span class="err">#</span><span class="o">&gt;</span><span class="n">ViewModel</span><span class="p">;</span>
+<span class="k">@property</span> <span class="p">(</span><span class="n">nonatomic</span><span class="p">,</span><span class="n">strong</span><span class="p">)</span> <span class="n">id</span><span class="o">&lt;&lt;</span><span class="err">#</span><span class="n">Unit</span><span class="err">#</span><span class="o">&gt;</span><span class="n">ViewOperation</span><span class="o">&gt;</span> <span class="o">&lt;</span><span class="err">#</span><span class="n">unit</span><span class="err">#</span><span class="o">&gt;</span><span class="n">Operation</span><span class="p">;</span>
+
+<span class="k">@end</span>
+
+</code></pre>
+</div>
+<ul>
+  <li>InterfaceTemplate 是根据规则指定的一套协议, 用来进行解耦</li>
+  <li>ViewOperation view的用户交互方法规则</li>
+  <li>ModelInterface model的数据结构的规则</li>
+  <li>ViewModelInterface viewModel的数据获取规则</li>
+  <li>ViewInterface view的适配器模式</li>
+</ul>
+
+<h5 id="modeltemplateh">ModelTemplate.h</h5>
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="cp">#import &lt;Foundation/Foundation.h&gt;
+#import "&lt;#Unit#&gt;Interface.h"
+</span>
+<span class="k">@interface</span> <span class="err">&lt;#</span><span class="nc">Unit</span><span class="err">#</span><span class="o">&gt;</span><span class="n">Model</span> <span class="o">:</span> <span class="n">NSObject</span> <span class="o">&lt;&lt;</span><span class="err">#</span><span class="n">Unit</span><span class="err">#</span><span class="o">&gt;</span><span class="n">ModelInterface</span><span class="o">&gt;</span>
+<span class="o">&lt;</span><span class="err">#</span><span class="n">ModelInterface</span><span class="err">#</span><span class="o">&gt;</span>
+
+<span class="o">-</span> <span class="p">(</span><span class="n">instancetype</span><span class="p">)</span><span class="n">initWithDictionary</span><span class="o">:</span><span class="p">(</span><span class="n">NSDictionary</span> <span class="o">*</span><span class="p">)</span><span class="n">dictionary</span><span class="p">;</span>
+<span class="k">+</span> <span class="p">(</span><span class="o">&lt;</span><span class="err">#</span><span class="n">Unit</span><span class="err">#</span><span class="o">&gt;</span><span class="n">Model</span> <span class="o">*</span><span class="p">)</span><span class="nf">modelWithDictionary</span><span class="p">:(</span><span class="n">NSDictionary</span> <span class="o">*</span><span class="p">)</span><span class="nv">dictionary</span><span class="p">;</span>
+
+<span class="k">@end</span>
+</code></pre>
+</div>
+<h5 id="modeltemplatem">ModelTemplate.m</h5>
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="cp">#import "&lt;#Unit#&gt;Model.h"
+</span>
+<span class="k">@implementation</span> <span class="err">&lt;#</span><span class="nc">Unit</span><span class="err">#</span><span class="o">&gt;</span><span class="n">Model</span>
+
+<span class="o">-</span> <span class="p">(</span><span class="n">instancetype</span><span class="p">)</span><span class="n">initWithDictionary</span><span class="o">:</span><span class="p">(</span><span class="n">NSDictionary</span> <span class="o">*</span><span class="p">)</span><span class="n">dictionary</span> <span class="p">{</span>
+    
+    <span class="n">self</span> <span class="o">=</span> <span class="p">[</span><span class="n">super</span> <span class="nf">init</span><span class="p">];</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">self</span><span class="p">)</span> <span class="p">{</span>
+        <span class="p">[</span><span class="n">self</span> <span class="nf">setValuesForKeysWithDictionary</span><span class="p">:</span><span class="n">dictionary</span><span class="p">];</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="n">self</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="o">+</span> <span class="p">(</span><span class="o">&lt;</span><span class="err">#</span><span class="n">Unit</span><span class="err">#</span><span class="o">&gt;</span><span class="n">Model</span> <span class="o">*</span><span class="p">)</span><span class="n">modelWithDictionary</span><span class="o">:</span><span class="p">(</span><span class="n">NSDictionary</span> <span class="o">*</span><span class="p">)</span><span class="n">dictionary</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="p">[[</span><span class="o">&lt;</span><span class="err">#</span><span class="n">Unit</span><span class="err">#</span><span class="o">&gt;</span><span class="n">Model</span> <span class="nf">alloc</span><span class="p">]</span><span class="nf">initWithDictionary</span><span class="p">:</span><span class="n">dictionary</span><span class="p">];</span>
+<span class="p">}</span>
+
+<span class="k">@end</span>
+</code></pre>
+</div>
+<ul>
+  <li>简单的使用KVC进行映射, 也可以使用Runtime或第三方库</li>
+</ul>
+
+<h5 id="viewmodeltemplateh">ViewModelTemplate.h</h5>
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="cp">#import &lt;Foundation/Foundation.h&gt;
+#import "&lt;#Unit#&gt;Interface.h"
+</span>
+<span class="k">@interface</span> <span class="err">&lt;#</span><span class="nc">Unit</span><span class="err">#</span><span class="o">&gt;</span><span class="n">ViewModel</span> <span class="o">:</span> <span class="n">NSObject</span> <span class="o">&lt;&lt;</span><span class="err">#</span><span class="n">Unit</span><span class="err">#</span><span class="o">&gt;</span><span class="n">ViewModelInterface</span><span class="o">&gt;</span>
+
+<span class="k">@property</span> <span class="p">(</span><span class="n">nonatomic</span><span class="p">,</span><span class="n">strong</span><span class="p">)</span> <span class="n">id</span><span class="o">&lt;&lt;</span><span class="err">#</span><span class="n">Unit</span><span class="err">#</span><span class="o">&gt;</span><span class="n">ModelInterface</span><span class="o">&gt;</span> <span class="n">model</span><span class="p">;</span>
+
+<span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">initializeWithParameter</span><span class="p">:(</span><span class="n">NSDictionary</span> <span class="o">*</span><span class="p">)</span><span class="nv">parameter</span> <span class="nf">finishedCallBack</span><span class="p">:(</span><span class="kt">void</span><span class="p">(</span><span class="o">^</span><span class="p">)())</span><span class="nv">finishCallBack</span><span class="p">;</span>
+<span class="o">&lt;</span><span class="err">#</span><span class="n">ViewModelInterface</span><span class="err">#</span><span class="o">&gt;</span>
+
+<span class="k">@end</span>
+</code></pre>
+</div>
+<h5 id="viewmodeltemplatem">ViewModelTemplate.m</h5>
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="cp">#import "&lt;#Unit#&gt;ViewModel.h"
+#import "&lt;#Unit#&gt;Model.h"
+</span>
+<span class="k">@implementation</span> <span class="err">&lt;#</span><span class="nc">Unit</span><span class="err">#</span><span class="o">&gt;</span><span class="n">ViewModel</span>
+
+<span class="o">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="n">initializeWithParameter</span><span class="o">:</span><span class="p">(</span><span class="n">NSDictionary</span> <span class="o">*</span><span class="p">)</span><span class="n">parameter</span> <span class="n">finishedCallBack</span><span class="o">:</span><span class="p">(</span><span class="kt">void</span><span class="p">(</span><span class="o">^</span><span class="p">)())</span><span class="n">finishCallBack</span> <span class="p">{</span>
+
+<span class="p">}</span>
+<span class="o">&lt;</span><span class="err">#</span><span class="n">ViewModelImplementation</span><span class="err">#</span><span class="o">&gt;</span>
+
+<span class="k">@end</span>
+</code></pre>
+</div>
+<ul>
+  <li>仅新增初始化获取数据的方法, 其他的获取数据方法根据规则进行累加</li>
+</ul>
+
+<h5 id="presentertemplateh">PresenterTemplate.h</h5>
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="cp">#import &lt;UIKit/UIKit.h&gt;
+#import "&lt;#Unit#&gt;Interface.h"
+</span>
+<span class="k">@interface</span> <span class="err">&lt;#</span><span class="nc">Unit</span><span class="err">#</span><span class="o">&gt;</span><span class="n">Presenter</span> <span class="o">:</span> <span class="n">NSObject</span><span class="o">&lt;&lt;</span><span class="err">#</span><span class="n">Unit</span><span class="err">#</span><span class="o">&gt;</span><span class="n">ViewOperation</span><span class="o">&gt;</span>
+
+<span class="k">@property</span> <span class="p">(</span><span class="n">nonatomic</span><span class="p">,</span><span class="n">weak</span><span class="p">)</span> <span class="n">id</span><span class="o">&lt;&lt;</span><span class="err">#</span><span class="n">Unit</span><span class="err">#</span><span class="o">&gt;</span><span class="n">ViewInterface</span><span class="o">&gt;</span> <span class="o">&lt;</span><span class="err">#</span><span class="n">unit</span><span class="err">#</span><span class="o">&gt;</span><span class="n">View</span><span class="p">;</span>
+<span class="k">@property</span> <span class="p">(</span><span class="n">nonatomic</span><span class="p">,</span><span class="n">weak</span><span class="p">)</span> <span class="n">id</span><span class="o">&lt;&lt;</span><span class="err">#</span><span class="n">Unit</span><span class="err">#</span><span class="o">&gt;</span><span class="n">ViewModelInterface</span><span class="o">&gt;</span> <span class="o">&lt;</span><span class="err">#</span><span class="n">unit</span><span class="err">#</span><span class="o">&gt;</span><span class="n">ViewModel</span><span class="p">;</span>
+
+<span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="n">adapterWith</span><span class="o">&lt;</span><span class="err">#</span><span class="n">Unit</span><span class="err">#</span><span class="o">&gt;</span><span class="n">View</span><span class="o">:</span><span class="p">(</span><span class="n">id</span><span class="o">&lt;&lt;</span><span class="err">#</span><span class="n">Unit</span><span class="err">#</span><span class="o">&gt;</span><span class="n">ViewInterface</span><span class="o">&gt;</span><span class="p">)</span><span class="o">&lt;</span><span class="err">#</span><span class="n">unit</span><span class="err">#</span><span class="o">&gt;</span><span class="n">View</span> <span class="o">&lt;</span><span class="err">#</span><span class="n">unit</span><span class="err">#</span><span class="o">&gt;</span><span class="n">ViewModel</span><span class="o">:</span><span class="p">(</span><span class="n">id</span><span class="o">&lt;&lt;</span><span class="err">#</span><span class="n">Unit</span><span class="err">#</span><span class="o">&gt;</span><span class="n">ViewModelInterface</span><span class="o">&gt;</span><span class="p">)</span><span class="o">&lt;</span><span class="err">#</span><span class="n">unit</span><span class="err">#</span><span class="o">&gt;</span><span class="n">ViewModel</span><span class="p">;</span>
+
+<span class="k">@end</span>
+</code></pre>
+</div>
+<h5 id="presentertemplatem">PresenterTemplate.m</h5>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="cp">#import "&lt;#Unit#&gt;Presenter.h"
+</span>
+<span class="k">@implementation</span> <span class="err">&lt;#</span><span class="nc">Unit</span><span class="err">#</span><span class="o">&gt;</span><span class="n">Presenter</span>
+
+<span class="o">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="n">adapterWith</span><span class="o">&lt;</span><span class="err">#</span><span class="n">Unit</span><span class="err">#</span><span class="o">&gt;</span><span class="n">View</span><span class="o">:</span><span class="p">(</span><span class="n">id</span><span class="o">&lt;&lt;</span><span class="err">#</span><span class="n">Unit</span><span class="err">#</span><span class="o">&gt;</span><span class="n">ViewInterface</span><span class="o">&gt;</span><span class="p">)</span><span class="o">&lt;</span><span class="err">#</span><span class="n">unit</span><span class="err">#</span><span class="o">&gt;</span><span class="n">View</span> <span class="o">&lt;</span><span class="err">#</span><span class="n">unit</span><span class="err">#</span><span class="o">&gt;</span><span class="n">ViewModel</span><span class="o">:</span><span class="p">(</span><span class="n">id</span><span class="o">&lt;&lt;</span><span class="err">#</span><span class="n">Unit</span><span class="err">#</span><span class="o">&gt;</span><span class="n">ViewModelInterface</span><span class="o">&gt;</span><span class="p">)</span><span class="o">&lt;</span><span class="err">#</span><span class="n">unit</span><span class="err">#</span><span class="o">&gt;</span><span class="n">ViewModel</span> <span class="p">{</span>
+
+    <span class="n">_</span><span class="o">&lt;</span><span class="err">#</span><span class="n">unit</span><span class="err">#</span><span class="o">&gt;</span><span class="n">View</span> <span class="o">=</span> <span class="o">&lt;</span><span class="err">#</span><span class="n">unit</span><span class="err">#</span><span class="o">&gt;</span><span class="n">View</span><span class="p">;</span>
+    <span class="n">_</span><span class="o">&lt;</span><span class="err">#</span><span class="n">unit</span><span class="err">#</span><span class="o">&gt;</span><span class="n">ViewModel</span> <span class="o">=</span> <span class="o">&lt;</span><span class="err">#</span><span class="n">unit</span><span class="err">#</span><span class="o">&gt;</span><span class="n">ViewModel</span><span class="p">;</span>
+    <span class="p">[</span><span class="n">self</span> <span class="nf">dynamicBinding</span><span class="p">];</span>
+<span class="p">}</span>
+
+<span class="o">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="n">dynamicBinding</span> <span class="p">{</span>
+    
+    <span class="n">__weak</span> <span class="n">typeof</span><span class="p">(</span><span class="n">self</span><span class="p">)</span> <span class="n">_self</span> <span class="o">=</span> <span class="n">self</span><span class="p">;</span>
+    <span class="n">__weak</span> <span class="n">id</span><span class="o">&lt;&lt;</span><span class="err">#</span><span class="n">Unit</span><span class="err">#</span><span class="o">&gt;</span><span class="n">ViewModelInterface</span><span class="o">&gt;</span> <span class="n">__</span><span class="o">&lt;</span><span class="err">#</span><span class="n">unit</span><span class="err">#</span><span class="o">&gt;</span><span class="n">ViewModel</span> <span class="o">=</span> <span class="n">_</span><span class="o">&lt;</span><span class="err">#</span><span class="n">unit</span><span class="err">#</span><span class="o">&gt;</span><span class="n">ViewModel</span><span class="p">;</span>
+    <span class="p">[</span><span class="n">_</span><span class="o">&lt;</span><span class="err">#</span><span class="n">unit</span><span class="err">#</span><span class="o">&gt;</span><span class="n">ViewModel</span> <span class="nf">initializeWithParameter</span><span class="p">:</span><span class="nb">nil</span> <span class="nf">finishedCallBack</span><span class="p">:</span><span class="o">^</span><span class="p">{</span>
+        <span class="n">_self</span><span class="p">.</span><span class="o">&lt;</span><span class="err">#</span><span class="n">unit</span><span class="err">#</span><span class="o">&gt;</span><span class="n">View</span><span class="p">.</span><span class="o">&lt;</span><span class="err">#</span><span class="n">unit</span><span class="err">#</span><span class="o">&gt;</span><span class="n">ViewModel</span> <span class="o">=</span> <span class="n">__</span><span class="o">&lt;</span><span class="err">#</span><span class="n">unit</span><span class="err">#</span><span class="o">&gt;</span><span class="n">ViewModel</span><span class="p">;</span>
+        <span class="n">_self</span><span class="p">.</span><span class="o">&lt;</span><span class="err">#</span><span class="n">unit</span><span class="err">#</span><span class="o">&gt;</span><span class="n">View</span><span class="p">.</span><span class="o">&lt;</span><span class="err">#</span><span class="n">unit</span><span class="err">#</span><span class="o">&gt;</span><span class="n">Operation</span> <span class="o">=</span> <span class="n">_self</span><span class="p">;</span>
+    <span class="p">}];</span>
+<span class="p">}</span>
+
+<span class="o">&lt;</span><span class="err">#</span><span class="n">ViewOperation_m</span><span class="err">#</span><span class="o">&gt;</span>
+<span class="k">@end</span>
+
+</code></pre>
+</div>
+<ul>
+  <li>仅实现了viewModel和view之间初始化的解耦传输</li>
+</ul>
+
+<h5 id="viewtemplateh">ViewTemplate.h</h5>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="cp">#import &lt;UIKit/UIKit.h&gt;
+#import "&lt;#Unit#&gt;Interface.h"
+</span>
+<span class="k">@interface</span> <span class="err">&lt;#</span><span class="nc">Unit</span><span class="err">#</span><span class="o">&gt;</span><span class="n">View</span> <span class="o">:</span> <span class="n">UIView</span> <span class="o">&lt;&lt;</span><span class="err">#</span><span class="n">Unit</span><span class="err">#</span><span class="o">&gt;</span><span class="n">ViewInterface</span><span class="o">&gt;</span>
+
+<span class="k">@property</span> <span class="p">(</span><span class="n">nonatomic</span><span class="p">,</span><span class="n">strong</span><span class="p">)</span> <span class="n">id</span><span class="o">&lt;&lt;</span><span class="err">#</span><span class="n">Unit</span><span class="err">#</span><span class="o">&gt;</span><span class="n">ViewOperation</span><span class="o">&gt;</span> <span class="o">&lt;</span><span class="err">#</span><span class="n">unit</span><span class="err">#</span><span class="o">&gt;</span><span class="n">Operation</span><span class="p">;</span>
+<span class="k">@property</span> <span class="p">(</span><span class="n">nonatomic</span><span class="p">,</span><span class="n">strong</span><span class="p">)</span> <span class="n">id</span><span class="o">&lt;&lt;</span><span class="err">#</span><span class="n">Unit</span><span class="err">#</span><span class="o">&gt;</span><span class="n">ViewModelInterface</span><span class="o">&gt;</span> <span class="o">&lt;</span><span class="err">#</span><span class="n">unit</span><span class="err">#</span><span class="o">&gt;</span><span class="n">ViewModel</span><span class="p">;</span>
+
+<span class="k">@end</span>
+</code></pre>
+</div>
+<h5 id="viewtemplatem">ViewTemplate.m</h5>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="cp">#import "&lt;#Unit#&gt;View.h"
+</span>
+<span class="k">@interface</span> <span class="err">&lt;#</span><span class="nc">Unit</span><span class="err">#</span><span class="o">&gt;</span><span class="n">View</span> <span class="p">()</span> <span class="o">&lt;</span><span class="n">UITableViewDataSource</span><span class="p">,</span> <span class="n">UITableViewDelegate</span><span class="o">&gt;</span>
+
+<span class="k">@property</span> <span class="p">(</span><span class="n">nonatomic</span><span class="p">,</span><span class="n">strong</span><span class="p">)</span> <span class="n">UITableView</span> <span class="o">*</span> <span class="n">tableView</span><span class="p">;</span>
+
+<span class="k">@end</span>
+
+<span class="k">@implementation</span> <span class="err">&lt;#</span><span class="nc">Unit</span><span class="err">#</span><span class="o">&gt;</span><span class="n">View</span>
+
+<span class="o">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="n">dealloc</span> <span class="p">{</span>
+    <span class="n">NSLog</span><span class="p">(</span><span class="s">@"%@ - execute %s"</span><span class="p">,</span><span class="n">NSStringFromClass</span><span class="p">([</span><span class="n">self</span> <span class="nf">class</span><span class="p">]),</span><span class="n">__func__</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="o">-</span> <span class="p">(</span><span class="n">instancetype</span><span class="p">)</span><span class="n">initWithFrame</span><span class="o">:</span><span class="p">(</span><span class="n">CGRect</span><span class="p">)</span><span class="n">frame</span> <span class="p">{</span>
+    
+    <span class="n">self</span> <span class="o">=</span> <span class="p">[</span><span class="n">super</span> <span class="nf">initWithFrame</span><span class="p">:</span><span class="n">frame</span><span class="p">];</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">self</span><span class="p">)</span> <span class="p">{</span>
+        <span class="p">[</span><span class="n">self</span> <span class="nf">setupSubviews</span><span class="p">];</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="n">self</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="o">-</span> <span class="p">(</span><span class="n">instancetype</span><span class="p">)</span><span class="n">initWithCoder</span><span class="o">:</span><span class="p">(</span><span class="n">NSCoder</span> <span class="o">*</span><span class="p">)</span><span class="n">coder</span>  <span class="p">{</span>
+    
+    <span class="n">self</span> <span class="o">=</span> <span class="p">[</span><span class="n">super</span> <span class="nf">initWithCoder</span><span class="p">:</span><span class="n">coder</span><span class="p">];</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">self</span><span class="p">)</span> <span class="p">{</span>
+        <span class="p">[</span><span class="n">self</span> <span class="nf">setupSubviews</span><span class="p">];</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="n">self</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="o">-</span> <span class="p">(</span><span class="n">UITableView</span> <span class="o">*</span><span class="p">)</span><span class="n">tableView</span> <span class="p">{</span>
+    
+    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">_tableView</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">_tableView</span> <span class="o">=</span> <span class="p">[</span><span class="n">UITableView</span> <span class="nf">new</span><span class="p">];</span>
+        <span class="n">_tableView</span><span class="p">.</span><span class="n">dataSource</span> <span class="o">=</span> <span class="n">self</span><span class="p">;</span>
+        <span class="n">_tableView</span><span class="p">.</span><span class="n">delegate</span> <span class="o">=</span> <span class="n">self</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="n">_tableView</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="o">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="n">setupSubviews</span> <span class="p">{</span>
+    <span class="p">[</span><span class="n">self</span> <span class="nf">addSubview</span><span class="p">:</span><span class="n">self</span><span class="p">.</span><span class="n">tableView</span><span class="p">];</span>
+<span class="p">}</span>
+
+<span class="o">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="n">set</span><span class="o">&lt;</span><span class="err">#</span><span class="n">Unit</span><span class="err">#</span><span class="o">&gt;</span><span class="n">ViewModel</span><span class="o">:</span><span class="p">(</span><span class="n">id</span><span class="o">&lt;&lt;</span><span class="err">#</span><span class="n">Unit</span><span class="err">#</span><span class="o">&gt;</span><span class="n">ViewModelInterface</span><span class="o">&gt;</span><span class="p">)</span><span class="o">&lt;</span><span class="err">#</span><span class="n">unit</span><span class="err">#</span><span class="o">&gt;</span><span class="n">ViewModel</span> <span class="p">{</span>
+    <span class="n">_</span><span class="o">&lt;</span><span class="err">#</span><span class="n">unit</span><span class="err">#</span><span class="o">&gt;</span><span class="n">ViewModel</span> <span class="o">=</span> <span class="o">&lt;</span><span class="err">#</span><span class="n">unit</span><span class="err">#</span><span class="o">&gt;</span><span class="n">ViewModel</span><span class="p">;</span>
+    <span class="p">[</span><span class="n">_tableView</span> <span class="nf">reloadData</span><span class="p">];</span>
+<span class="p">}</span>
+
+<span class="o">-</span> <span class="p">(</span><span class="n">NSInteger</span><span class="p">)</span><span class="n">tableView</span><span class="o">:</span><span class="p">(</span><span class="n">UITableView</span> <span class="o">*</span><span class="p">)</span><span class="n">tableView</span> <span class="n">numberOfRowsInSection</span><span class="o">:</span><span class="p">(</span><span class="n">NSInteger</span><span class="p">)</span><span class="n">section</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="o">-</span> <span class="p">(</span><span class="n">UITableViewCell</span> <span class="o">*</span><span class="p">)</span><span class="n">tableView</span><span class="o">:</span><span class="p">(</span><span class="n">UITableView</span> <span class="o">*</span><span class="p">)</span><span class="n">tableView</span> <span class="n">cellForRowAtIndexPath</span><span class="o">:</span><span class="p">(</span><span class="n">NSIndexPath</span> <span class="o">*</span><span class="p">)</span><span class="n">indexPath</span> <span class="p">{</span>
+    
+    <span class="k">static</span> <span class="n">NSString</span> <span class="o">*</span> <span class="n">identifier</span> <span class="o">=</span> <span class="s">@"identifier"</span><span class="p">;</span>
+    <span class="n">UITableViewCell</span> <span class="o">*</span> <span class="n">cell</span> <span class="o">=</span> <span class="p">[</span><span class="n">tableView</span> <span class="nf">dequeueReusableCellWithIdentifier</span><span class="p">:</span><span class="n">identifier</span><span class="p">];</span>
+    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">cell</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">cell</span> <span class="o">=</span> <span class="p">[[</span><span class="n">UITableViewCell</span> <span class="nf">alloc</span><span class="p">]</span><span class="nf">initWithStyle</span><span class="p">:</span><span class="n">UITableViewCellStyleSubtitle</span> <span class="nf">reuseIdentifier</span><span class="p">:</span><span class="n">identifier</span><span class="p">];</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="n">cell</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="o">-</span> <span class="p">(</span><span class="n">CGFloat</span><span class="p">)</span><span class="n">tableView</span><span class="o">:</span><span class="p">(</span><span class="n">UITableView</span> <span class="o">*</span><span class="p">)</span><span class="n">tableView</span> <span class="n">heightForRowAtIndexPath</span><span class="o">:</span><span class="p">(</span><span class="n">NSIndexPath</span> <span class="o">*</span><span class="p">)</span><span class="n">indexPath</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="mi">44</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="o">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="n">tableView</span><span class="o">:</span><span class="p">(</span><span class="n">UITableView</span> <span class="o">*</span><span class="p">)</span><span class="n">tableView</span> <span class="n">didSelectRowAtIndexPath</span><span class="o">:</span><span class="p">(</span><span class="n">NSIndexPath</span> <span class="o">*</span><span class="p">)</span><span class="n">indexPath</span> <span class="p">{</span>
+    <span class="p">[</span><span class="n">tableView</span> <span class="nf">deselectRowAtIndexPath</span><span class="p">:</span><span class="n">indexPath</span> <span class="nf">animated</span><span class="p">:</span><span class="nb">YES</span><span class="p">];</span>
+<span class="p">}</span>
+
+<span class="o">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="n">layoutSubviews</span> <span class="p">{</span>
+    <span class="p">[</span><span class="n">super</span> <span class="nf">layoutSubviews</span><span class="p">];</span>
+    <span class="n">_tableView</span><span class="p">.</span><span class="n">frame</span> <span class="o">=</span> <span class="n">self</span><span class="p">.</span><span class="n">bounds</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="k">@end</span>
+
+</code></pre>
+</div>
+<ul>
+  <li>仅实现了一个基本的TableView, 如需更改可替换.</li>
+</ul>
+
+<h5 id="controllertemplateh">ControllerTemplate.h</h5>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="cp">#import &lt;UIKit/UIKit.h&gt;
+#import "&lt;#Root#&gt;ViewController.h"
+</span>
+<span class="k">@interface</span> <span class="err">&lt;#</span><span class="nc">Unit</span><span class="err">#</span><span class="o">&gt;</span><span class="n">ViewController</span> <span class="o">:</span> <span class="o">&lt;</span><span class="err">#</span><span class="n">Root</span><span class="err">#</span><span class="o">&gt;</span><span class="n">ViewController</span>
+
+<span class="k">@end</span>
+</code></pre>
+</div>
+<h5 id="controllertemplatem">ControllerTemplate.m</h5>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="cp">#import "&lt;#Unit#&gt;ViewController.h"
+#import "&lt;#Unit#&gt;Presenter.h"
+#import "&lt;#Unit#&gt;ViewModel.h"
+#import "&lt;#Unit#&gt;View.h"
+</span>
+<span class="k">@interface</span> <span class="err">&lt;#</span><span class="nc">Unit</span><span class="err">#</span><span class="o">&gt;</span><span class="n">ViewController</span> <span class="p">()</span>
+
+<span class="k">@property</span> <span class="p">(</span><span class="n">nonatomic</span><span class="p">,</span><span class="n">strong</span><span class="p">)</span> <span class="o">&lt;</span><span class="err">#</span><span class="n">Unit</span><span class="err">#</span><span class="o">&gt;</span><span class="n">Presenter</span> <span class="o">*</span> <span class="o">&lt;</span><span class="err">#</span><span class="n">unit</span><span class="err">#</span><span class="o">&gt;</span><span class="n">Presenter</span><span class="p">;</span>
+<span class="k">@property</span> <span class="p">(</span><span class="n">nonatomic</span><span class="p">,</span><span class="n">strong</span><span class="p">)</span> <span class="o">&lt;</span><span class="err">#</span><span class="n">Unit</span><span class="err">#</span><span class="o">&gt;</span><span class="n">ViewModel</span> <span class="o">*</span> <span class="o">&lt;</span><span class="err">#</span><span class="n">unit</span><span class="err">#</span><span class="o">&gt;</span><span class="n">ViewModel</span><span class="p">;</span>
+<span class="k">@property</span> <span class="p">(</span><span class="n">nonatomic</span><span class="p">,</span><span class="n">strong</span><span class="p">)</span> <span class="o">&lt;</span><span class="err">#</span><span class="n">Unit</span><span class="err">#</span><span class="o">&gt;</span><span class="n">View</span> <span class="o">*</span> <span class="o">&lt;</span><span class="err">#</span><span class="n">unit</span><span class="err">#</span><span class="o">&gt;</span><span class="n">View</span><span class="p">;</span>
+
+<span class="k">@end</span>
+
+<span class="k">@implementation</span> <span class="err">&lt;#</span><span class="nc">Unit</span><span class="err">#</span><span class="o">&gt;</span><span class="n">ViewController</span>
+
+<span class="o">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="n">loadView</span> <span class="p">{</span>
+    <span class="p">[</span><span class="n">super</span> <span class="nf">loadView</span><span class="p">];</span>
+<span class="p">}</span>
+
+<span class="o">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="n">viewDidLoad</span> <span class="p">{</span>
+    <span class="p">[</span><span class="n">super</span> <span class="nf">viewDidLoad</span><span class="p">];</span>
+    <span class="p">[</span><span class="n">self</span> <span class="nf">setupView</span><span class="p">];</span>
+    <span class="p">[</span><span class="n">self</span> <span class="nf">adapterView</span><span class="p">];</span>
+<span class="p">}</span>
+
+<span class="o">-</span> <span class="p">(</span><span class="o">&lt;</span><span class="err">#</span><span class="n">Unit</span><span class="err">#</span><span class="o">&gt;</span><span class="n">Presenter</span> <span class="o">*</span><span class="p">)</span><span class="o">&lt;</span><span class="err">#</span><span class="n">unit</span><span class="err">#</span><span class="o">&gt;</span><span class="n">Presenter</span> <span class="p">{</span>
+    
+    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">_</span><span class="o">&lt;</span><span class="err">#</span><span class="n">unit</span><span class="err">#</span><span class="o">&gt;</span><span class="n">Presenter</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">_</span><span class="o">&lt;</span><span class="err">#</span><span class="n">unit</span><span class="err">#</span><span class="o">&gt;</span><span class="n">Presenter</span> <span class="o">=</span> <span class="p">[</span><span class="o">&lt;</span><span class="err">#</span><span class="n">Unit</span><span class="err">#</span><span class="o">&gt;</span><span class="n">Presenter</span> <span class="nf">new</span><span class="p">];</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="n">_</span><span class="o">&lt;</span><span class="err">#</span><span class="n">unit</span><span class="err">#</span><span class="o">&gt;</span><span class="n">Presenter</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="o">-</span> <span class="p">(</span><span class="o">&lt;</span><span class="err">#</span><span class="n">Unit</span><span class="err">#</span><span class="o">&gt;</span><span class="n">ViewModel</span> <span class="o">*</span><span class="p">)</span><span class="o">&lt;</span><span class="err">#</span><span class="n">unit</span><span class="err">#</span><span class="o">&gt;</span><span class="n">ViewModel</span> <span class="p">{</span>
+    
+    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">_</span><span class="o">&lt;</span><span class="err">#</span><span class="n">unit</span><span class="err">#</span><span class="o">&gt;</span><span class="n">ViewModel</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">_</span><span class="o">&lt;</span><span class="err">#</span><span class="n">unit</span><span class="err">#</span><span class="o">&gt;</span><span class="n">ViewModel</span> <span class="o">=</span> <span class="p">[</span><span class="o">&lt;</span><span class="err">#</span><span class="n">Unit</span><span class="err">#</span><span class="o">&gt;</span><span class="n">ViewModel</span> <span class="nf">new</span><span class="p">];</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="n">_</span><span class="o">&lt;</span><span class="err">#</span><span class="n">unit</span><span class="err">#</span><span class="o">&gt;</span><span class="n">ViewModel</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="o">-</span> <span class="p">(</span><span class="o">&lt;</span><span class="err">#</span><span class="n">Unit</span><span class="err">#</span><span class="o">&gt;</span><span class="n">View</span> <span class="o">*</span><span class="p">)</span><span class="o">&lt;</span><span class="err">#</span><span class="n">unit</span><span class="err">#</span><span class="o">&gt;</span><span class="n">View</span> <span class="p">{</span>
+    
+    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">_</span><span class="o">&lt;</span><span class="err">#</span><span class="n">unit</span><span class="err">#</span><span class="o">&gt;</span><span class="n">View</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">_</span><span class="o">&lt;</span><span class="err">#</span><span class="n">unit</span><span class="err">#</span><span class="o">&gt;</span><span class="n">View</span> <span class="o">=</span> <span class="p">[</span><span class="o">&lt;</span><span class="err">#</span><span class="n">Unit</span><span class="err">#</span><span class="o">&gt;</span><span class="n">View</span> <span class="nf">new</span><span class="p">];</span>
+        <span class="n">_</span><span class="o">&lt;</span><span class="err">#</span><span class="n">unit</span><span class="err">#</span><span class="o">&gt;</span><span class="n">View</span><span class="p">.</span><span class="n">frame</span> <span class="o">=</span> <span class="n">self</span><span class="p">.</span><span class="n">view</span><span class="p">.</span><span class="n">bounds</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="n">_</span><span class="o">&lt;</span><span class="err">#</span><span class="n">unit</span><span class="err">#</span><span class="o">&gt;</span><span class="n">View</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="o">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="n">setupView</span> <span class="p">{</span>
+    <span class="p">[</span><span class="n">self</span><span class="p">.</span><span class="n">view</span> <span class="nf">addSubview</span><span class="p">:</span><span class="n">self</span><span class="p">.</span><span class="o">&lt;</span><span class="err">#</span><span class="n">unit</span><span class="err">#</span><span class="o">&gt;</span><span class="n">View</span><span class="p">];</span>
+<span class="p">}</span>
+
+<span class="o">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="n">adapterView</span> <span class="p">{</span>
+    <span class="p">[</span><span class="n">self</span><span class="p">.</span><span class="o">&lt;</span><span class="err">#</span><span class="n">unit</span><span class="err">#</span><span class="o">&gt;</span><span class="n">Presenter</span> <span class="n">adapterWith</span><span class="o">&lt;</span><span class="err">#</span><span class="n">Unit</span><span class="err">#</span><span class="o">&gt;</span><span class="nf">View</span><span class="p">:</span><span class="n">self</span><span class="p">.</span><span class="o">&lt;</span><span class="err">#</span><span class="n">unit</span><span class="err">#</span><span class="o">&gt;</span><span class="n">View</span> <span class="o">&lt;</span><span class="err">#</span><span class="n">unit</span><span class="err">#</span><span class="o">&gt;</span><span class="nf">ViewModel</span><span class="p">:</span><span class="n">self</span><span class="p">.</span><span class="o">&lt;</span><span class="err">#</span><span class="n">unit</span><span class="err">#</span><span class="o">&gt;</span><span class="n">ViewModel</span><span class="p">];</span>
+<span class="p">}</span>
+
+<span class="k">@end</span>
+
+</code></pre>
+</div>
+<ul>
+  <li>进行所有层的配置</li>
+</ul>
+
+<p>以上的内容在<a href="http://www.jianshu.com/p/7054a694cfeb">热修复架构</a>的时候分别分了五篇来进行讲解, 这里仅是把Swift替换成了OC的版本.</p>
+
+<h5 id="configjson">config.json</h5>
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="p">{</span><span class="w">
+	</span><span class="nt">"super"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w"> </span><span class="err">//父类的前缀</span><span class="w">
+	</span><span class="nt">"controller"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Home"</span><span class="p">,</span><span class="w"> </span><span class="err">//控制器的前缀名</span><span class="w">
+	</span><span class="nt">"model"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="err">//模型的属性定义</span><span class="w">
+		</span><span class="nt">"models"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Array"</span><span class="w">
+	</span><span class="p">},</span><span class="w">
+	</span><span class="nt">"viewModel"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="err">//获取数据的方法定义</span><span class="w">
+		</span><span class="s2">"register"</span><span class="p">,</span><span class="w">
+		</span><span class="s2">"login"</span><span class="p">,</span><span class="w">
+		</span><span class="s2">"exit"</span><span class="p">,</span><span class="w">
+		</span><span class="s2">"refresh"</span><span class="w">
+	</span><span class="p">],</span><span class="w">
+	</span><span class="nt">"presenter"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="err">//用户交互的方法定义</span><span class="w">
+		</span><span class="s2">"pushToNextViewController"</span><span class="p">,</span><span class="w">
+		</span><span class="s2">"popToRootViewController"</span><span class="p">,</span><span class="w">
+		</span><span class="s2">"showAlert"</span><span class="p">,</span><span class="w">
+		</span><span class="s2">"closeButtonClick"</span><span class="w">
+	</span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre>
+</div>
+<ul>
+  <li>生成器的设计思想是通过读取一个JSON的规则, 来生成对应的一套架构模板, 便于进行快速开发和代码规范. 当然规则可以根据不同的项目制定不同的规则, 这里为了演示只做了最简单的版本.</li>
+</ul>
+
+<h3 id="生成器的实现">生成器的实现</h3>
+<p>进行代码生成, 之前的老大是通过java进行实现了,奈何我对java很是无感, 最近在学习算法, 准备尝试数据和人工智能的方向, 就捎带学习了Python, 这里就使用Python实现OC的代码架构生成.</p>
+
+<h5 id="builderpy">builder.py</h5>
+
+<div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">os</span><span class="o">,</span> <span class="nn">sys</span><span class="o">,</span> <span class="nn">json</span> <span class="o">//</span><span class="err">导入</span><span class="n">python</span><span class="err">模块</span>
+
+<span class="k">def</span> <span class="nf">cur_file_dir</span><span class="p">():</span> <span class="o">//</span><span class="err">获取路径</span>
+   <span class="n">path</span> <span class="o">=</span> <span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+   <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isdir</span><span class="p">(</span><span class="n">path</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">path</span>
+   <span class="k">elif</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isfile</span><span class="p">(</span><span class="n">path</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
+
+<span class="n">file_json</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">cur_file_dir</span><span class="p">()</span> <span class="o">+</span> <span class="s">"/config.json"</span><span class="p">,</span> <span class="s">"r"</span><span class="p">)</span> <span class="o">//</span><span class="err">打开</span><span class="n">JSON</span><span class="err">的配置表</span>
+<span class="n">data_json</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">file_json</span><span class="o">.</span><span class="n">read</span><span class="p">())</span> <span class="o">//</span><span class="err">读取配置表中的数据</span>
+
+<span class="n">root</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">data_json</span><span class="p">[</span><span class="s">"super"</span><span class="p">])</span> <span class="o">//</span><span class="err">获取父类的前缀</span>
+<span class="n">controller</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">data_json</span><span class="p">[</span><span class="s">"controller"</span><span class="p">])</span> <span class="o">//</span><span class="err">获取控制器的前缀名</span>
+
+<span class="n">presenter_h</span> <span class="o">=</span> <span class="s">''</span>
+<span class="n">presenter_m</span> <span class="o">=</span> <span class="s">''</span>
+<span class="k">for</span> <span class="n">operation</span> <span class="ow">in</span> <span class="n">data_json</span><span class="p">[</span><span class="s">"presenter"</span><span class="p">]:</span>
+   <span class="n">presenter_h</span> <span class="o">+=</span> <span class="s">'</span><span class="se">\n</span><span class="s">- (void)'</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">operation</span><span class="p">)</span> <span class="o">+</span> <span class="s">';'</span>
+   <span class="n">presenter_m</span> <span class="o">+=</span> <span class="s">'- (void)'</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">operation</span><span class="p">)</span> <span class="o">+</span> <span class="s">' {</span><span class="se">\n\n</span><span class="s">}</span><span class="se">\n\n</span><span class="s">'</span>
+
+<span class="n">view_model_h</span> <span class="o">=</span> <span class="s">''</span>
+<span class="n">view_model_m</span> <span class="o">=</span> <span class="s">''</span>
+<span class="k">for</span> <span class="n">request</span> <span class="ow">in</span> <span class="n">data_json</span><span class="p">[</span><span class="s">"viewModel"</span><span class="p">]:</span> <span class="o">//</span><span class="err">遍历获取数据的方法</span>
+   <span class="n">view_model_h</span> <span class="o">+=</span> <span class="s">'- (void)'</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">request</span><span class="p">)</span> <span class="o">+</span> <span class="s">'WithParameter:(NSDictionary *)parameter finishedCallBack:(void (^)())finishCallBack;</span><span class="se">\n</span><span class="s">'</span> <span class="o">//</span><span class="err">进行</span><span class="n">OC</span><span class="err">版本的字符串拼接</span>
+   <span class="n">view_model_m</span> <span class="o">+=</span> <span class="s">'</span><span class="se">\n</span><span class="s">- (void)'</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">request</span><span class="p">)</span> <span class="o">+</span> <span class="s">'WithParameter:(NSDictionary *)parameter finishedCallBack:(void (^)())finishCallBack {</span><span class="se">\n\n</span><span class="s">}</span><span class="se">\n</span><span class="s">'</span>
+
+<span class="n">model</span> <span class="o">=</span> <span class="s">''</span>
+<span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">data_json</span><span class="p">[</span><span class="s">"model"</span><span class="p">]:</span> <span class="o">//</span><span class="err">遍历数据模型</span>
+   <span class="nb">type</span> <span class="o">=</span> <span class="s">''</span>
+   <span class="n">modified</span> <span class="o">=</span> <span class="s">''</span>
+   <span class="n">value</span> <span class="o">=</span> <span class="n">data_json</span><span class="p">[</span><span class="s">"model"</span><span class="p">][</span><span class="n">key</span><span class="p">]</span>
+   <span class="k">if</span> <span class="n">value</span> <span class="o">==</span> <span class="s">'String'</span><span class="p">:</span>
+      <span class="nb">type</span> <span class="o">=</span> <span class="s">'NSString * '</span> 
+      <span class="n">modified</span> <span class="o">=</span> <span class="s">'copy'</span>
+   <span class="k">elif</span> <span class="n">value</span> <span class="o">==</span> <span class="s">'Int'</span><span class="p">:</span>
+   	  <span class="nb">type</span> <span class="o">=</span> <span class="s">'NSInteger '</span>
+   	  <span class="n">modified</span> <span class="o">=</span> <span class="s">'assign'</span>
+   <span class="k">elif</span> <span class="n">value</span> <span class="o">==</span> <span class="s">'Float'</span><span class="p">:</span>
+   	  <span class="nb">type</span> <span class="o">=</span> <span class="s">'CGFloat '</span>
+   	  <span class="n">modified</span> <span class="o">=</span> <span class="s">'assign'</span>
+   <span class="k">elif</span> <span class="n">value</span> <span class="o">==</span> <span class="s">'Bool'</span><span class="p">:</span>
+   	  <span class="nb">type</span> <span class="o">=</span> <span class="s">'BOOL '</span>
+   	  <span class="n">modified</span> <span class="o">=</span> <span class="s">'assign'</span>
+   <span class="k">elif</span> <span class="n">value</span> <span class="o">==</span> <span class="s">'Array'</span><span class="p">:</span>
+   	  <span class="nb">type</span> <span class="o">=</span> <span class="s">'NSArray * '</span>
+   	  <span class="n">modified</span> <span class="o">=</span> <span class="s">'strong'</span>
+   <span class="k">elif</span> <span class="n">value</span> <span class="o">==</span> <span class="s">'Dictionary'</span><span class="p">:</span>
+   	  <span class="nb">type</span> <span class="o">=</span> <span class="s">'NSDictionary * '</span>
+   	  <span class="n">modified</span> <span class="o">=</span> <span class="s">'strong'</span>
+   <span class="k">else</span><span class="p">:</span>
+   	  <span class="nb">type</span> <span class="o">=</span> <span class="n">value</span>
+   	  <span class="n">modified</span> <span class="o">=</span> <span class="s">'strong'</span>
+   <span class="n">model</span> <span class="o">+=</span> <span class="s">'</span><span class="se">\n</span><span class="s">@property (nonatomic,'</span> <span class="o">+</span> <span class="n">modified</span> <span class="o">+</span> <span class="s">') '</span> <span class="o">+</span> <span class="nb">type</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">key</span><span class="p">)</span> <span class="o">+</span> <span class="s">';'</span> <span class="o">//</span><span class="err">拼接数据的属性</span>
+
+<span class="n">file_json</span><span class="o">.</span><span class="n">close</span><span class="p">()</span> <span class="o">//</span><span class="err">关闭</span><span class="n">JSON</span><span class="err">文件</span>
+
+<span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">cur_file_dir</span><span class="p">(),</span> <span class="n">controller</span><span class="p">)</span> <span class="o">//</span><span class="err">进行文件夹之间的关联</span>
+<span class="n">os</span><span class="o">.</span><span class="n">mkdir</span><span class="p">(</span><span class="n">cur_file_dir</span><span class="p">()</span> <span class="o">+</span> <span class="s">"/"</span> <span class="o">+</span> <span class="n">controller</span><span class="p">)</span> <span class="o">//</span><span class="err">创建关联文件夹</span>
+
+<span class="k">def</span> <span class="nf">builder</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="nb">file</span><span class="p">):</span> <span class="o">//</span><span class="err">获取模板生成的封装</span>
+   <span class="n">r</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">cur_file_dir</span><span class="p">()</span> <span class="o">+</span> <span class="s">'/Template/'</span> <span class="o">+</span> <span class="n">path</span><span class="p">,</span> <span class="s">'r'</span><span class="p">)</span> <span class="o">//</span><span class="err">打开模板文件</span>
+   <span class="n">d</span> <span class="o">=</span> <span class="n">r</span><span class="o">.</span><span class="n">read</span><span class="p">()</span> <span class="o">//</span><span class="err">读模板文件的数据</span>
+   <span class="n">r</span><span class="o">.</span><span class="n">close</span><span class="p">()</span> <span class="o">//</span><span class="err">关闭模板文件</span>
+   <span class="n">w</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">cur_file_dir</span><span class="p">()</span> <span class="o">+</span> <span class="s">'/'</span> <span class="o">+</span> <span class="n">controller</span> <span class="o">+</span> <span class="s">'/'</span> <span class="o">+</span> <span class="n">controller</span> <span class="o">+</span> <span class="nb">file</span><span class="p">,</span> <span class="s">'w'</span><span class="p">)</span> <span class="o">//</span><span class="err">创建目标文件</span>
+   <span class="n">w</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">d</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s">'&lt;#Unit#&gt;'</span><span class="p">,</span> <span class="n">controller</span><span class="p">)</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s">'&lt;#unit#&gt;'</span><span class="p">,</span> <span class="n">controller</span><span class="o">.</span><span class="n">lower</span><span class="p">())</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s">'&lt;#Root#&gt;'</span><span class="p">,</span> <span class="n">root</span><span class="p">)</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s">'&lt;#ViewOperation#&gt;'</span><span class="p">,</span> <span class="n">presenter_h</span><span class="p">)</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s">'&lt;#ViewOperation_m#&gt;'</span><span class="p">,</span> <span class="n">presenter_m</span><span class="p">)</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s">'&lt;#ModelInterface#&gt;'</span><span class="p">,</span> <span class="n">model</span><span class="p">)</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s">'&lt;#ViewModelInterface#&gt;'</span><span class="p">,</span> <span class="n">view_model_h</span><span class="p">)</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s">'&lt;#ViewModelImplementation#&gt;'</span><span class="p">,</span> <span class="n">view_model_m</span><span class="p">))</span> <span class="err">进行写入文件</span>
+   <span class="n">w</span><span class="o">.</span><span class="n">close</span><span class="p">()</span> <span class="o">//</span><span class="err">关闭文件</span>
+
+<span class="n">builder</span><span class="p">(</span><span class="s">'InterfaceTemplate.h'</span><span class="p">,</span> <span class="s">'Interface.h'</span><span class="p">)</span>
+<span class="n">builder</span><span class="p">(</span><span class="s">'ControllerTemplate.h'</span><span class="p">,</span> <span class="s">'ViewController.h'</span><span class="p">)</span>
+<span class="n">builder</span><span class="p">(</span><span class="s">'ControllerTemplate.m'</span><span class="p">,</span> <span class="s">'ViewController.m'</span><span class="p">)</span>
+<span class="n">builder</span><span class="p">(</span><span class="s">'ModelTemplate.h'</span><span class="p">,</span> <span class="s">'Model.h'</span><span class="p">)</span>
+<span class="n">builder</span><span class="p">(</span><span class="s">'ModelTemplate.m'</span><span class="p">,</span> <span class="s">'Model.m'</span><span class="p">)</span>
+<span class="n">builder</span><span class="p">(</span><span class="s">'PresenterTemplate.h'</span><span class="p">,</span> <span class="s">'Presenter.h'</span><span class="p">)</span>
+<span class="n">builder</span><span class="p">(</span><span class="s">'PresenterTemplate.m'</span><span class="p">,</span> <span class="s">'Presenter.m'</span><span class="p">)</span>
+<span class="n">builder</span><span class="p">(</span><span class="s">'ViewModelTemplate.h'</span><span class="p">,</span> <span class="s">'ViewModel.h'</span><span class="p">)</span>
+<span class="n">builder</span><span class="p">(</span><span class="s">'ViewModelTemplate.m'</span><span class="p">,</span> <span class="s">'ViewModel.m'</span><span class="p">)</span>
+<span class="n">builder</span><span class="p">(</span><span class="s">'ViewTemplate.h'</span><span class="p">,</span> <span class="s">'View.h'</span><span class="p">)</span>
+<span class="n">builder</span><span class="p">(</span><span class="s">'ViewTemplate.m'</span><span class="p">,</span> <span class="s">'View.m'</span><span class="p">)</span>
+
+</code></pre>
+</div>
+<ul>
+  <li>这样通过在终端中 python builder.py, 就能根据JSON表进行架构的生成了.</li>
+</ul>
+
+<h5 id="彩蛋">彩蛋:</h5>
+
+<p>最近看了下Realm数据库, 虽说是很简单便捷, 但是需要继承, 耦合度太高, 原先使用的FMDB需要写SQL语句, 操作繁琐, 也不能一步到位. CoreData, 一直没有尝试过, 之后会进行学习.</p>
+
+<p>只进行页面的缓存, 没有读写需求的使用数据库真是太痛苦了. 还不如写plist一劳永逸.
+######.h</p>
+<div class="highlighter-rouge"><pre class="highlight"><code>+ (void)cache:(Class)cls data:(NSDictionary *)data;  //存
++ (void)requestDataWithClass:(Class)cls finishedCallBack:(void(^)(NSDictionary * response))finishedCallBack; //读
+</code></pre>
+</div>
+<h6 id="m">.m</h6>
+<div class="highlighter-rouge"><pre class="highlight"><code>+ (NSString *)cacheWithClass:(Class)cls {
+    return [[NSHomeDirectory() stringByAppendingPathComponent:@"Documents"] stringByAppendingPathComponent:[NSString stringWithFormat:@"%@.plist", NSStringFromClass([cls class])]];
+    //返回路径
+}
+
++ (void)cache:(Class)cls data:(NSDictionary *)data {
+    [data writeToFile:[DataBase cacheWithClass:cls] atomically:YES];
+    //写入沙盒
+}
+
++ (void)requestDataWithClass:(Class)cls finishedCallBack:(void(^)(NSDictionary * response))finishedCallBack {
+    finishedCallBack([NSDictionary dictionaryWithContentsOfFile:[DataBase cacheWithClass:cls]]);
+    //抛出数据
+}
+</code></pre>
+</div>
+<h6 id="viewmodel">viewModel</h6>
+<div class="highlighter-rouge"><pre class="highlight"><code>- (void)dynamicBindingWithFinishedCallBack:(void (^)())finishCallBack {
+
+    [DataBase requestDataWithClass:[NSObject class] finishedCallBack:^(NSDictionary *response) {
+        
+        NSDictionary * data = response;
+        NSArray * models = data[@"models"];
+        
+        [self.models removeAllObjects];
+        for (NSDictionary * dict in models) {
+            [self.models addObject:[ModelTemplate modelWithDictionary:dict]];
+        }
+        
+        finishCallBack();
+    }];
+    
+    [NetWork requestDataWithType:MethodGetType URLString:@"http://localhost:3001/api/J1/getJ1List" parameter:nil finishedCallBack:^(NSDictionary * response){
+        
+        NSDictionary * data = response[@"data"];
+        NSArray * models = data[@"models"];
+        
+        [self.models removeAllObjects];
+        for (NSDictionary * dict in models) {
+            [self.models addObject:[ModelTemplate modelWithDictionary:dict]];
+        }
+        
+        [DataBase cache:[NSObject class] data:data[@"models"]];
+        finishCallBack();
+    }];
+}
+</code></pre>
+</div>
+<ul>
+  <li>上面是在vm层进行获取数据时的使用, 这里用NSObject作为参数, 实际用时可以缓存不同的Model类. 这样数据读取和网络读取的代码也非常的工整了.</li>
+</ul>
+
+<h5 id="github-下载地址">github 下载地址!!!</h5>
+<p><img src="http://upload-images.jianshu.io/upload_images/1229762-0a46036fb613eb0f.jpeg!heading?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="" />
+ <a href="https://github.com/coderZsq/coderZsq.project.oc">具体源码及SQTemplates Demo 请到github上进行下载! 喜欢的朋友送下小星星哟!!</a></p>
+
+  </section>
+</article>
+
+<section class="read-more">
+   
+   
+   <div class="read-more-item">
+       <span class="read-more-item-dim">最近的文章</span>
+       <h2 class="post-list__post-title post-title"><a href="/2017/05/iOS-%E6%89%A7%E8%A1%8C.py%E8%84%9A%E6%9C%AC%E7%94%9F%E6%88%90UI%E5%B1%82%E7%BB%93%E6%9E%84/" title="link to iOS 执行.py脚本生成UI层结构">iOS 执行.py脚本生成UI层结构</a></h2>
+       <p class="excerpt">  上篇我们实现了架构代码生成器, 顿时觉得代码生成器这个东西只要掌握了写代码真的就是配置的问题了, 今天我们就来实现我一直以来就想做的功能 – UI界面适配代码生成器, 和之前一样我们通过JSON配置和Python来进行实现, 没看过上一篇的直接看这篇即可, 主要是思想.参考链接:  iOS 执行.py脚本生成解耦架构上篇有一个内存泄露的问题, 需要将P层的模板的.h属性改为weak即可, 适配UI界面代码生成器的模板是我一直以来的的OC编码习惯,  代码风格无需强求, 直接修改模板即可...&hellip;</p>
+       <div class="post-list__meta"><time datetime="2017-05-12 14:42:00 +0800" class="post-list__meta--date date">2017-05-12</time> &#8226; <span class="post-list__meta--tags tags">移动开发</span><a class="btn-border-small" href=/2017/05/iOS-%E6%89%A7%E8%A1%8C.py%E8%84%9A%E6%9C%AC%E7%94%9F%E6%88%90UI%E5%B1%82%E7%BB%93%E6%9E%84/>继续阅读</a></div>
+   </div>
+   
+   
+   
+   
+   <div class="read-more-item">
+       <span class="read-more-item-dim">更早的文章</span>
+       <h2 class="post-list__post-title post-title"><a href="/2017/05/SpriteKit-%E7%B3%BB%E7%BB%9F%E6%A1%86%E6%9E%B6%E4%B8%ADCocos2d-x%E7%9A%84%E6%80%A8%E5%BF%B5/" title="link to SpriteKit 系统框架中Cocos2d-x的怨念">SpriteKit 系统框架中Cocos2d-x的怨念</a></h2>
+       <p class="excerpt">  动画进阶之路就告一段落了, 其实关于动画还有一些知识没有涉及到, 比如说Layer子类的动画, m34的使用等等, 关于这些可以看iOS Core Animation的翻译版, 这里面介绍的很详细, 是非常好的入门书, 今天开始我们就进入一个全新的系列, SpriteKit, 之前巩固动画, 完全就是为了游戏的, 不多说, 代码见:github本期的内容就是使用SpriteKit实现一个简单的游戏, 通过一个游戏来进行SpriteKit的入门, 熟练2D游戏的API, 也可以更好的结合...&hellip;</p>
+       <div class="post-list__meta"><time datetime="2017-05-05 13:39:00 +0800" class="post-list__meta--date date">2017-05-05</time> &#8226; <span class="post-list__meta--tags tags">移动开发</span><a class="btn-border-small" href=/2017/05/SpriteKit-%E7%B3%BB%E7%BB%9F%E6%A1%86%E6%9E%B6%E4%B8%ADCocos2d-x%E7%9A%84%E6%80%A8%E5%BF%B5/>继续阅读</a></div>
+   </div>
+   
+</section>
+
+<section class="post-comments">
+  
+  
+  
+  
+</section>
+
+
+            <section class="footer">
+    <footer>
+    	<span class="footer__copyright">本站点采用<a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">知识共享 署名-非商业性使用-相同方式共享 4.0 国际 许可协议</a></span>
+        <span class="footer__copyright">由 <a href="https://jekyllrb.com">Jekyll</a> 于 2019-09-28 生成，感谢 <a href="https://www.digitalocean.com/?refcode=30ed2d146762">Digital Ocean</a> 为本站提供稳定的 VPS 服务</span>
+        <span class="footer__copyright">本站由 <a href="https://github.com/coderZsq">@Castie!</a> 创建，采用 <a href="https://github.com/onevcat/vno-jekyll">Vno - Jekyll</a> 作为主题，您可以在 GitHub 找到<a href="https://github.com/onevcat/OneV-s-Den">本站源码</a> - &copy; 2019</span>
+    </footer>
+</section>
+
+        </div>
+    </div>
+    
+    <script type="text/javascript" src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+
+<script type="text/javascript" src="/js/main.js"></script>
+
+
+
+    
+  </body>
+
+</html>

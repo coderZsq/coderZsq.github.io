@@ -1,0 +1,1294 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <title>Castie! Notes</title>
+  <meta name="description" content="  本文作为这一系列的收尾总结, 详细叙述了这个架构工具的设计思路以及一步步的优化, 在此也分享与你, 完整keynote可查阅github">
+  <meta name="author" content="Wei Wang">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="iOS 移动端架构初探心得">
+  <meta name="twitter:description" content="  本文作为这一系列的收尾总结, 详细叙述了这个架构工具的设计思路以及一步步的优化, 在此也分享与你, 完整keynote可查阅github">
+  
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="iOS 移动端架构初探心得">
+  <meta property="og:description" content="  本文作为这一系列的收尾总结, 详细叙述了这个架构工具的设计思路以及一步步的优化, 在此也分享与你, 完整keynote可查阅github">
+  
+  <link rel="icon" type="image/ico" href="/assets/images/favicon.ico" />
+  <link href="/assets/images/favicon.ico" rel="shortcut icon" type="image/ico">
+  
+  <link rel="stylesheet" href="/css/main.css">
+  <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+
+  <link rel="canonical" href="http://localhost:4000/2017/11/iOS-%E7%A7%BB%E5%8A%A8%E7%AB%AF%E6%9E%B6%E6%9E%84%E5%88%9D%E6%8E%A2%E5%BF%83%E5%BE%97/">
+  <link rel="alternate" type="application/rss+xml" title="Castie!" href="http://localhost:4000/feed.xml">
+  
+  <meta name="google-site-verification" content="1-1ZlHoRvM0T2FqPbW2S-qLgYXN6rsn52kErlMPd_gw" />
+  
+</head>
+
+
+  <body>
+
+    <span class="mobile btn-mobile-menu">
+        <i class="fa fa-list btn-mobile-menu__icon"></i>
+        <i class="fa fa-angle-up btn-mobile-close__icon hidden"></i>
+    </span>
+    
+    <header class="panel-cover panel-cover--collapsed" style="background-image: url('/assets/images/background-cover.jpg')">
+  <div class="panel-main">
+
+    <div class="panel-main__inner panel-inverted">
+    <div class="panel-main__content">
+
+        <a href="/#blog" title="前往 Castie! 的主页" class="blog-button"><img src="/assets/images/avatar.jpg" width="80" alt="Castie! logo" class="panel-cover__logo logo" /></a>
+        <h1 class="panel-cover__title panel-title"><a href="/#blog" title="link to homepage for Castie!" class="blog-button">Castie!</a></h1>
+        
+        <span class="panel-cover__subtitle panel-subtitle">正态分布, 优劣伴生</span>
+        
+        <hr class="panel-cover__divider" />
+        <p class="panel-cover__description">北冥有鱼，其名为鲲（kūn）。鲲之大，不知其几千里也；化而为鸟，其名为鹏。鹏之背，不知其几千里也；怒而飞，其翼若垂天之云。是鸟也，海运则将徙于南冥。南冥者，天池也。</p>
+        <hr class="panel-cover__divider panel-cover__divider--secondary" />
+        
+        
+        <p class="panel-cover__description">北海若曰：“井鼃不可以语于海者，拘于虚也；夏虫不可以语于冰者，笃于时也；曲士不可以语于道者，束于教也。今尔出于崖涘，观于大海，乃知尔丑，尔将可与语大理矣。</p>
+        
+        
+        <div class="navigation-wrapper">
+          <div>
+            <nav class="cover-navigation cover-navigation--primary">
+              <ul class="navigation">
+                <li class="navigation__item"><a href="/#blog" title="访问博客" class="blog-button">博客</a></li>
+                
+                  <li class="navigation__item"><a href="https://coderzsq.github.io/coderZsq.practice.web/" target="_blank" title="我的简历">简历</a></li>
+                
+              </ul>
+            </nav>
+          </div>
+          
+          <div><nav class="cover-navigation navigation--social">
+  <ul class="navigation">
+
+    
+    <!-- juejin-->
+    <li class="navigation__item">
+      <a href="https://juejin.im/user/57e735dfa22b9d00614eecb8/posts" title="@coderZsq 的稀土掘金" target="_blank">
+        <i class='social fa fa-book'></i>
+        <span class="label">juejin</span>
+      </a>
+    </li>
+    
+
+  
+
+  
+  <!-- Github -->
+  <li class="navigation__item">
+    <a href="https://github.com/coderZsq" title="@coderZsq 的 Github" target="_blank">
+      <i class='social fa fa-github'></i>
+      <span class="label">Github</span>
+    </a>
+  </li>
+  
+
+  
+
+  
+
+  <!-- RSS -->
+  <li class="navigation__item">
+    <a href="/feed.xml" rel="author" title="RSS" target="_blank">
+      <i class='social fa fa-rss'></i>
+      <span class="label">RSS</span>
+    </a>
+  </li>
+
+  
+  <!-- Email -->
+  <li class="navigation__item">
+    <a href="mailto:a13701777868@gmail.com" title="Contact me">
+      <i class='social fa fa-envelope'></i>
+      <span class="label">Email</span>
+    </a>
+  </li>
+  
+
+  </ul>
+</nav>
+</div>
+        </div>
+      </div>
+    </div>
+    
+    
+    <div class="panel-cover--overlay cover-disabled"></div>
+    
+  </div>
+</header>
+
+
+    <div class="content-wrapper">
+        <div class="content-wrapper__inner">
+            <article class="post-container post-container--single" itemscope itemtype="http://schema.org/BlogPosting">
+  <header class="post-header">
+    <div class="post-meta">
+      <time datetime="2017-11-23 15:46:00 +0800" itemprop="datePublished" class="post-meta__date date">2017-11-23</time> &#8226; <span class="post-meta__tags tags">移动开发</span>
+    </div>
+    <h1 class="post-title">iOS 移动端架构初探心得</h1>
+  </header>
+
+  <section class="post">
+    <blockquote>
+  <p>本文作为这一系列的收尾总结, 详细叙述了这个架构工具的设计思路以及一步步的优化, 在此也分享与你, 完整<code class="highlighter-rouge">keynote</code>可查阅<a href="https://github.com/coderZsq/coderZsq.project.oc">github</a></p>
+</blockquote>
+
+<p><img src="http://upload-images.jianshu.io/upload_images/1229762-6b2c8bed102c297f.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="" /></p>
+
+<h6 id="参考链接">参考链接:</h6>
+
+<ul>
+  <li><a href="http://www.jianshu.com/p/5a03995a6ce1">Hybird 搭建零耦合架构从MVC开始</a></li>
+  <li><a href="http://www.jianshu.com/p/846b9f181cb7">Hybird 搭建后端Koa.js并过度到MVVM</a></li>
+  <li><a href="http://www.jianshu.com/p/8d4a84e3ddaa">Hybird 搭建前端Vue.js并升级至MVP</a></li>
+  <li><a href="http://www.jianshu.com/p/36314d0c0032">Hybird 搭建路由Router实现组件化</a></li>
+  <li><a href="http://www.jianshu.com/p/7054a694cfeb">Hybird 搭建客户端实时降级架构</a></li>
+  <li><a href="http://www.jianshu.com/p/47d565bf200e">iOS 执行.py脚本生成解耦架构</a></li>
+  <li><a href="http://www.jianshu.com/p/d15379908582">iOS 执行.py脚本生成UI层结构</a></li>
+  <li><a href="http://www.jianshu.com/p/b35d06cf189a">iOS 移动端面向文档开发</a></li>
+  <li><a href="http://www.jianshu.com/p/cb36b36f90dd">iOS 移动端生成工具开发</a></li>
+</ul>
+
+<p>本文作为以上文章系列的总结, 如何一步一步进行思考总结, 如何开发出适合自己的通用架构设计.</p>
+
+<h4 id="设计思路">设计思路</h4>
+
+<p><img src="http://upload-images.jianshu.io/upload_images/1229762-ea7c24d2e3c27b2f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="" /></p>
+
+<p>对于架构, 移动端常见的架构设计包括<code class="highlighter-rouge">MVC</code>, <code class="highlighter-rouge">MVVM</code>, <code class="highlighter-rouge">MVP</code>等, 上图简要的说明了各种常见的架构之间的交互及数据传递方式.</p>
+
+<p><img src="http://upload-images.jianshu.io/upload_images/1229762-7272787947be81a7.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="" /></p>
+
+<p>对于<code class="highlighter-rouge">MVC</code>, <code class="highlighter-rouge">MVVM</code>, <code class="highlighter-rouge">MVP</code>这三种架构设计模式, 相信大家一定了然于心, 相关的文章也是多如繁星, 对于这些常用架构, 每个人都肯定有每个人的理解, 但这样会导致一个问题, 就是极大的自由度导致了没有代码规范, 对于移动端或者前端及后端来说, 其本质工作就是数据层和展示层的交互, 如何将数据正确安全高效的传输到展示层.</p>
+
+<p>这里的数据层从整个项目来说, 可以说是后端, 也就是服务端, 对于服务端开发的流程就是从数据库获取数据并将数据进行各种逻辑过滤作为响应返回给前端用于展示层展示, 对于java为例, 我们普通的项目就会分为<code class="highlighter-rouge">controller</code>, <code class="highlighter-rouge">service</code>, <code class="highlighter-rouge">dao</code>, <code class="highlighter-rouge">pojo</code>, <code class="highlighter-rouge">vo</code>, <code class="highlighter-rouge">bo</code>等层级设计, 就会将不同功能进行抽象, 使得代码更容易维护.</p>
+
+<p>而作为展示层的前端, 也就是客户端, 其实移动端在我感觉其实也是前端的一个分支, 而前端的架构通常为组件化设计, 每一个功能<code class="highlighter-rouge">view</code>对应一个组件, 而整个页面可以通过多个组件分离进行维护, 很高效的将业务代码和视图进行分离, 使得代码更有规范及易维护.</p>
+
+<p>而对于移动端, 为什么要在<code class="highlighter-rouge">controller</code>中写那么多不知所云的代码? 为什么一个控制器能超过1k行? 为什么<code class="highlighter-rouge">view</code>的逻辑回调代理要写在<code class="highlighter-rouge">controller</code>中? 为什么控制器之间的参数传递的耦合性那么强? 为什么网络请求的方法随处可见? 为什么我们不能够像前后端那样有条理的控制我们的代码? 而让其像脱缰的野马难以驾驭呢?</p>
+
+<p><img src="http://upload-images.jianshu.io/upload_images/1229762-98b7db037d14f441.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="" /></p>
+
+<p>为了解决这些问题, 我们需要考虑一些架构设计模式, 最先想到的就是以<code class="highlighter-rouge">controller</code>为中心的抽象, 将控制器的功能抽象到该具体负责的模块, 从图上可以看到, <code class="highlighter-rouge">controller</code>维护了<code class="highlighter-rouge">presenter</code>, <code class="highlighter-rouge">viewmodel</code>, <code class="highlighter-rouge">view</code>, 而<code class="highlighter-rouge">viewmodel</code>又维护了<code class="highlighter-rouge">model</code>, 其中的<code class="highlighter-rouge">model</code>也可以说就是<code class="highlighter-rouge">javabean</code>完全的纯数据结构, <code class="highlighter-rouge">viewmodel</code>是<code class="highlighter-rouge">model</code>的上一层, 用于操作对应的数据, 可以看到<code class="highlighter-rouge">controller</code>将代码下发至下面三层, 使得各个层级各司其职.</p>
+
+<p><img src="http://upload-images.jianshu.io/upload_images/1229762-3b1cabac93147e7c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="" /></p>
+
+<p>刚才是站在<code class="highlighter-rouge">controller</code>的视角上来看的, 对于数据的传输, 这次我们站在<code class="highlighter-rouge">presenter</code>的视角上来看, 这个设计就是将<code class="highlighter-rouge">viewmodel</code>作为传递对象通过<code class="highlighter-rouge">presenter</code>这个中间件传输至<code class="highlighter-rouge">view</code>层, 这样view层不仅可以拿到数据, 也可以对数据进行操作, 掌控性有所提高.</p>
+
+<p><img src="http://upload-images.jianshu.io/upload_images/1229762-43ef0b18f3f5f1f0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="" /></p>
+
+<p>刚才我们站在了<code class="highlighter-rouge">controller</code>和<code class="highlighter-rouge">presenter</code>视角上分析了架构设计的思路, 但这样各个层级的耦合会越来越大, 从而导致项目代码无法分割, 这时想到了后端<code class="highlighter-rouge">controller</code>和<code class="highlighter-rouge">service</code>之间通过接口进行交互来降低耦合, 我们是不是也可以参考这种方案通过一个<code class="highlighter-rouge">protocol</code>文档文件来降低各个层级之间的耦合呢, 如图所示, 将除了<code class="highlighter-rouge">controller</code>之外的其他层级进行解耦. 进行高度抽象.</p>
+
+<p><img src="http://upload-images.jianshu.io/upload_images/1229762-6fa4db1de5f4ff15.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="" /></p>
+
+<p>上面我们解决了各个层级之间的耦合, 但我们怎么解决控制器之间的耦合呢? 答案是<code class="highlighter-rouge">router</code>, 我们站在路由的视角上看, 各大控制器都是独立存在的个体, 彼此之间的交互通过路由的映射进行交互, 这样我们就能够去除各大控制器之间的耦合了. 路由这个思路最先也是在前端的架构框架中看到的, 后来就有了<code class="highlighter-rouge">cocoapods</code>私有库组件化这种集成化的解决方案, 通过路由映射能够很好的做到模块分离, 更可以做到页面降级, 所谓的页面降级就是指不仅路由可以和<code class="highlighter-rouge">native</code>进行交互, 也可以和<code class="highlighter-rouge">h5</code>进行交互, 当<code class="highlighter-rouge">native</code>和<code class="highlighter-rouge">h5</code>是一套业务逻辑的时候, <code class="highlighter-rouge">native</code>不慎出现<code class="highlighter-rouge">bug</code>我们可以请求后端接口修改数据库将页面直接降级至<code class="highlighter-rouge">h5</code>页面而不用重新打包等待苹果审核及使用热修复工具带来了时间消耗. 能够第一时间解决问题.</p>
+
+<p><img src="http://upload-images.jianshu.io/upload_images/1229762-07a68a7051508021.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="" /></p>
+
+<p>解决了上述问题, 我们就只剩下页面的问题了, 对于现在的iOSer来说, 写页面几乎是日常工作的绝大部分, 但是写页面, 写业务, 当逻辑复杂的时候也会产生一系列不易维护的问题, 这时候我们就可以使用类似<code class="highlighter-rouge">redux</code>这种状态机的模式, 将业务逻辑拆分出不同复杂的状态, 当变量改变的时候, 触发不同的状态, 这样就能够有效的管理我们的页面逻辑. 推荐可以看看<code class="highlighter-rouge">react</code>和<code class="highlighter-rouge">redux</code>的思路, 对这块也会有更好的掌握.</p>
+
+<p>设计思路的总结就是, 通过高度抽象进行分层, 通过接口文档进行项目层级解耦, 通过路由进行组件化及降级, 通过<code class="highlighter-rouge">CDD</code>模式贯穿<code class="highlighter-rouge">subview</code>使得所有的<code class="highlighter-rouge">view</code>都能够拿到数据及操控数据, 通过<code class="highlighter-rouge">AOP</code>切面进行<code class="highlighter-rouge">hook</code>一些特殊功能如埋点统计, 全局当前控制器等等.</p>
+
+<h4 id="设计实现">设计实现</h4>
+
+<p>上面部分, 叙述了整个架构的设计思路, 接下来, 我们来看看如何具体实现. 以下代码取自真实项目, 对应<code class="highlighter-rouge">view视角</code>图中的设计图.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="c1">//
+//  InterfaceTemplate.h
+//  SQTemplate
+//
+//  Created by 双泉 朱 on 17/5/5.
+//  Copyright © 2017年 Doubles_Z. All rights reserved.
+//
+</span>
+<span class="cp">#import &lt;UIKit/UIKit.h&gt;
+</span>
+<span class="k">@protocol</span> <span class="nc">HYAbroadShoppingHomeModelInterface</span> <span class="o">&lt;</span><span class="n">NSObject</span><span class="o">&gt;</span>
+
+<span class="cm">/**
+ * 仅用来保持PB不为空
+ */</span>
+<span class="k">@property</span><span class="p">(</span><span class="n">nonatomic</span><span class="p">)</span> <span class="n">NSInteger</span> <span class="n">status</span> <span class="p">;</span>
+<span class="cm">/**
+ * 广告位
+ */</span>
+<span class="k">@property</span><span class="p">(</span><span class="n">nonatomic</span><span class="p">,</span><span class="n">strong</span><span class="p">)</span> <span class="n">NSMutableArray</span> <span class="o">*</span> <span class="n">banners</span> <span class="p">;</span>
+<span class="cm">/**
+ * 四个icon
+ */</span>
+<span class="k">@property</span><span class="p">(</span><span class="n">nonatomic</span><span class="p">,</span><span class="n">strong</span><span class="p">)</span> <span class="n">NSMutableArray</span> <span class="o">*</span> <span class="n">shortCutIcons</span> <span class="p">;</span>
+<span class="cm">/**
+ * 促销时间戳，活动剩余时间,转换成毫秒
+ */</span>
+<span class="k">@property</span><span class="p">(</span><span class="n">nonatomic</span><span class="p">,</span><span class="n">strong</span><span class="p">)</span> <span class="n">NSString</span> <span class="o">*</span> <span class="n">remainingTime</span> <span class="p">;</span>
+<span class="cm">/**
+ * 倒计时的商品，客户端根据当该字段有的时候，展示“今日剁手价”图片
+ */</span>
+<span class="k">@property</span><span class="p">(</span><span class="n">nonatomic</span><span class="p">,</span><span class="n">strong</span><span class="p">)</span> <span class="n">NSMutableArray</span> <span class="o">*</span> <span class="n">salesGoods</span> <span class="p">;</span>
+<span class="cm">/**
+ * 全球精选商品集合
+ */</span>
+<span class="k">@property</span><span class="p">(</span><span class="n">nonatomic</span><span class="p">,</span><span class="n">strong</span><span class="p">)</span> <span class="n">NSMutableArray</span> <span class="o">*</span> <span class="n">selectGoods</span> <span class="p">;</span>
+
+<span class="k">@property</span> <span class="p">(</span><span class="n">nonatomic</span><span class="p">,</span><span class="n">assign</span><span class="p">,</span><span class="n">getter</span><span class="o">=</span><span class="n">isLoaded</span><span class="p">)</span> <span class="n">BOOL</span> <span class="n">loaded</span><span class="p">;</span>
+<span class="k">@property</span> <span class="p">(</span><span class="n">nonatomic</span><span class="p">,</span><span class="n">assign</span><span class="p">,</span><span class="n">getter</span><span class="o">=</span><span class="n">isReload</span><span class="p">)</span> <span class="n">BOOL</span> <span class="n">reload</span><span class="p">;</span>
+
+<span class="k">@end</span>
+
+<span class="k">@protocol</span> <span class="nc">HYAbroadShoppingHomeViewModelInterface</span> <span class="o">&lt;</span><span class="n">NSObject</span><span class="o">&gt;</span>
+
+<span class="k">@optional</span>
+<span class="k">@property</span> <span class="p">(</span><span class="n">nonatomic</span><span class="p">,</span><span class="n">strong</span><span class="p">)</span> <span class="n">id</span><span class="o">&lt;</span><span class="n">HYAbroadShoppingHomeModelInterface</span><span class="o">&gt;</span> <span class="n">model</span><span class="p">;</span>
+
+<span class="k">@optional</span>
+<span class="o">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="n">initializeWithModel</span><span class="o">:</span><span class="p">(</span><span class="n">id</span><span class="o">&lt;</span><span class="n">HYAbroadShoppingHomeModelInterface</span><span class="o">&gt;</span><span class="p">)</span><span class="n">model</span> <span class="n">completion</span><span class="o">:</span><span class="p">(</span><span class="kt">void</span><span class="p">(</span><span class="o">^</span><span class="p">)())</span><span class="n">completion</span><span class="p">;</span>
+<span class="cm">/**
+*立即购买
+* @para goodsId 这里Android就去调用CommonUtils里面的方法即可。IOS这里自行添加相应的代码。注意这里保持一个逻辑：如果是处方药进入到商品详情页，隐形眼镜…..
+*/</span>
+
+<span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">senderAddShoppingCartWithModel</span><span class="p">:(</span><span class="n">id</span><span class="o">&lt;</span><span class="n">HYAbroadShoppingHomeModelInterface</span><span class="o">&gt;</span><span class="p">)</span><span class="nv">model</span> <span class="nf">goodsId</span><span class="p">:(</span><span class="n">GoodsID</span> <span class="o">*</span><span class="p">)</span><span class="nv">goodsId</span> <span class="nf">completion</span><span class="p">:(</span><span class="kt">void</span><span class="p">(</span><span class="o">^</span><span class="p">)())</span><span class="nv">completion</span><span class="p">;</span>
+<span class="cm">/**
+*获取海外购首页
+*/</span>
+
+<span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">senderAbroadShoppingHomeWithModel</span><span class="p">:(</span><span class="n">id</span><span class="o">&lt;</span><span class="n">HYAbroadShoppingHomeModelInterface</span><span class="o">&gt;</span><span class="p">)</span><span class="nv">model</span> <span class="nf">completion</span><span class="p">:(</span><span class="kt">void</span><span class="p">(</span><span class="o">^</span><span class="p">)())</span><span class="nv">completion</span><span class="p">;</span>
+
+<span class="k">@end</span>
+
+<span class="k">@protocol</span> <span class="nc">HYAbroadShoppingHomeViewInterface</span> <span class="o">&lt;</span><span class="n">NSObject</span><span class="o">&gt;</span>
+
+<span class="k">@property</span> <span class="p">(</span><span class="n">nonatomic</span><span class="p">,</span><span class="n">strong</span><span class="p">)</span> <span class="n">id</span><span class="o">&lt;</span><span class="n">HYAbroadShoppingHomeViewModelInterface</span><span class="o">&gt;</span> <span class="n">abroadshoppinghomeViewModel</span><span class="p">;</span>
+<span class="k">@property</span> <span class="p">(</span><span class="n">nonatomic</span><span class="p">,</span><span class="n">strong</span><span class="p">)</span> <span class="n">id</span><span class="o">&lt;</span><span class="n">HYAbroadShoppingHomeViewModelInterface</span><span class="o">&gt;</span> <span class="n">abroadshoppinghomeOperator</span><span class="p">;</span>
+
+<span class="k">@end</span>
+
+</code></pre>
+</div>
+
+<p>接口文档文件将整个页面模块分成了<code class="highlighter-rouge">ModelInterface</code>, <code class="highlighter-rouge">ViewModelInterface</code>, <code class="highlighter-rouge">ViewInterface</code>三个接口,<code class="highlighter-rouge">ModelInterface</code>接口对应了服务器返回的外层数据结构, <code class="highlighter-rouge">ViewModelInterface</code>接口对应了操作<code class="highlighter-rouge">model</code>数据的方法, 如发起请求和从数据库读取诸如此类. <code class="highlighter-rouge">ViewInterface</code>拥有两者的能力.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="c1">//
+//  ControllerTemplate.m
+//  SQTemplate
+//
+//  Created by 双泉 朱 on 17/5/5.
+//  Copyright © 2017年 Doubles_Z. All rights reserved.
+//
+</span>
+<span class="cp">#import "HYAbroadShoppingHomeViewController.h"
+#import "HYAbroadShoppingHomePresenter.h"
+#import "HYAbroadShoppingHomeViewModel.h"
+#import "HYAbroadShoppingHomeView.h"
+</span>
+<span class="k">@interface</span> <span class="nc">HYAbroadShoppingHomeViewController</span> <span class="p">()</span>
+
+<span class="k">@property</span> <span class="p">(</span><span class="n">nonatomic</span><span class="p">,</span><span class="n">strong</span><span class="p">)</span> <span class="n">HYAbroadShoppingHomePresenter</span> <span class="o">*</span> <span class="n">abroadshoppinghomePresenter</span><span class="p">;</span>
+<span class="k">@property</span> <span class="p">(</span><span class="n">nonatomic</span><span class="p">,</span><span class="n">strong</span><span class="p">)</span> <span class="n">HYAbroadShoppingHomeViewModel</span> <span class="o">*</span> <span class="n">abroadshoppinghomeViewModel</span><span class="p">;</span>
+<span class="k">@property</span> <span class="p">(</span><span class="n">nonatomic</span><span class="p">,</span><span class="n">strong</span><span class="p">)</span> <span class="n">HYAbroadShoppingHomeView</span> <span class="o">*</span> <span class="n">abroadshoppinghomeView</span><span class="p">;</span>
+
+<span class="k">@end</span>
+
+<span class="k">@implementation</span> <span class="nc">HYAbroadShoppingHomeViewController</span>
+
+<span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="n">viewDidLoad</span> <span class="p">{</span>
+    <span class="p">[</span><span class="n">super</span> <span class="nf">viewDidLoad</span><span class="p">];</span>
+    <span class="n">self</span><span class="p">.</span><span class="n">title</span> <span class="o">=</span> <span class="s">@"全球购"</span><span class="p">;</span>
+    <span class="p">[</span><span class="n">self</span> <span class="nf">setupView</span><span class="p">];</span>
+<span class="p">}</span>
+
+<span class="o">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="n">viewWillAppear</span><span class="o">:</span><span class="p">(</span><span class="n">BOOL</span><span class="p">)</span><span class="n">animated</span> <span class="p">{</span>
+    <span class="p">[</span><span class="n">super</span> <span class="nf">viewWillAppear</span><span class="p">:</span><span class="n">animated</span><span class="p">];</span>
+    <span class="p">[</span><span class="n">self</span> <span class="nf">adapterView</span><span class="p">];</span>
+<span class="p">}</span>
+
+<span class="o">-</span> <span class="p">(</span><span class="n">HYAbroadShoppingHomePresenter</span> <span class="o">*</span><span class="p">)</span><span class="n">abroadshoppinghomePresenter</span> <span class="p">{</span>
+    
+    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">_abroadshoppinghomePresenter</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">_abroadshoppinghomePresenter</span> <span class="o">=</span> <span class="p">[</span><span class="n">HYAbroadShoppingHomePresenter</span> <span class="nf">new</span><span class="p">];</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="n">_abroadshoppinghomePresenter</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="o">-</span> <span class="p">(</span><span class="n">HYAbroadShoppingHomeViewModel</span> <span class="o">*</span><span class="p">)</span><span class="n">abroadshoppinghomeViewModel</span> <span class="p">{</span>
+    
+    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">_abroadshoppinghomeViewModel</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">_abroadshoppinghomeViewModel</span> <span class="o">=</span> <span class="p">[</span><span class="n">HYAbroadShoppingHomeViewModel</span> <span class="nf">new</span><span class="p">];</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="n">_abroadshoppinghomeViewModel</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="o">-</span> <span class="p">(</span><span class="n">HYAbroadShoppingHomeView</span> <span class="o">*</span><span class="p">)</span><span class="n">abroadshoppinghomeView</span> <span class="p">{</span>
+    
+    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">_abroadshoppinghomeView</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">_abroadshoppinghomeView</span> <span class="o">=</span> <span class="p">[</span><span class="n">HYAbroadShoppingHomeView</span> <span class="nf">new</span><span class="p">];</span>
+        <span class="n">_abroadshoppinghomeView</span><span class="p">.</span><span class="n">frame</span> <span class="o">=</span> <span class="n">self</span><span class="p">.</span><span class="n">view</span><span class="p">.</span><span class="n">bounds</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="n">_abroadshoppinghomeView</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="o">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="n">setupView</span> <span class="p">{</span>
+    <span class="p">[</span><span class="n">self</span><span class="p">.</span><span class="n">view</span> <span class="nf">addSubview</span><span class="p">:</span><span class="n">self</span><span class="p">.</span><span class="n">abroadshoppinghomeView</span><span class="p">];</span>
+<span class="p">}</span>
+
+<span class="o">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="n">adapterView</span> <span class="p">{</span>
+    <span class="p">[</span><span class="n">self</span><span class="p">.</span><span class="n">abroadshoppinghomePresenter</span> <span class="nf">adapterWithAbroadShoppingHomeView</span><span class="p">:</span><span class="n">self</span><span class="p">.</span><span class="n">abroadshoppinghomeView</span> <span class="nf">abroadshoppinghomeViewModel</span><span class="p">:</span><span class="n">self</span><span class="p">.</span><span class="n">abroadshoppinghomeViewModel</span><span class="p">];</span>
+<span class="p">}</span>
+
+<span class="k">@end</span>
+
+</code></pre>
+</div>
+<p>经过抽象后, 我们再来看看<code class="highlighter-rouge">controller</code>的文件, 我们可以看到, 经过抽象后的控制器加上顶部的注释也只有<code class="highlighter-rouge">68</code>行, 基本是不用再用心维护上千行的控制器了.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="c1">//
+//  PresenterTemplate.m
+//  SQTemplate
+//
+//  Created by 双泉 朱 on 17/5/5.
+//  Copyright © 2017年 Doubles_Z. All rights reserved.
+//
+</span>
+<span class="cp">#import "HYAbroadShoppingHomePresenter.h"
+</span>
+<span class="k">@interface</span> <span class="nc">HYAbroadShoppingHomePresenter</span> <span class="p">()</span>
+
+<span class="k">@property</span> <span class="p">(</span><span class="n">nonatomic</span><span class="p">,</span><span class="n">weak</span><span class="p">)</span> <span class="n">id</span><span class="o">&lt;</span><span class="n">HYAbroadShoppingHomeViewInterface</span><span class="o">&gt;</span> <span class="n">abroadshoppinghomeView</span><span class="p">;</span>
+<span class="k">@property</span> <span class="p">(</span><span class="n">nonatomic</span><span class="p">,</span><span class="n">weak</span><span class="p">)</span> <span class="n">id</span><span class="o">&lt;</span><span class="n">HYAbroadShoppingHomeViewModelInterface</span><span class="o">&gt;</span> <span class="n">abroadshoppinghomeViewModel</span><span class="p">;</span>
+
+<span class="k">@end</span>
+
+<span class="k">@implementation</span> <span class="nc">HYAbroadShoppingHomePresenter</span>
+
+<span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">adapterWithAbroadShoppingHomeView</span><span class="p">:(</span><span class="n">id</span><span class="o">&lt;</span><span class="n">HYAbroadShoppingHomeViewInterface</span><span class="o">&gt;</span><span class="p">)</span><span class="nv">abroadshoppinghomeView</span> <span class="nf">abroadshoppinghomeViewModel</span><span class="p">:(</span><span class="n">id</span><span class="o">&lt;</span><span class="n">HYAbroadShoppingHomeViewModelInterface</span><span class="o">&gt;</span><span class="p">)</span><span class="nv">abroadshoppinghomeViewModel</span> <span class="p">{</span>
+
+    <span class="n">_abroadshoppinghomeView</span> <span class="o">=</span> <span class="n">abroadshoppinghomeView</span><span class="p">;</span>
+    <span class="n">_abroadshoppinghomeViewModel</span> <span class="o">=</span> <span class="n">abroadshoppinghomeViewModel</span><span class="p">;</span>
+
+    <span class="n">__weak</span> <span class="n">typeof</span><span class="p">(</span><span class="n">self</span><span class="p">)</span> <span class="n">_self</span> <span class="o">=</span> <span class="n">self</span><span class="p">;</span>
+    <span class="n">__weak</span> <span class="n">id</span><span class="o">&lt;</span><span class="n">HYAbroadShoppingHomeViewModelInterface</span><span class="o">&gt;</span> <span class="n">__abroadshoppinghomeViewModel</span> <span class="o">=</span> <span class="n">_abroadshoppinghomeViewModel</span><span class="p">;</span>
+    <span class="p">[</span><span class="n">_abroadshoppinghomeViewModel</span> <span class="nf">initializeWithModel</span><span class="p">:</span><span class="n">__abroadshoppinghomeViewModel</span><span class="p">.</span><span class="n">model</span> <span class="nf">completion</span><span class="p">:</span><span class="o">^</span><span class="p">{</span>
+        <span class="n">_self</span><span class="p">.</span><span class="n">abroadshoppinghomeView</span><span class="p">.</span><span class="n">abroadshoppinghomeViewModel</span> <span class="o">=</span> <span class="n">__abroadshoppinghomeViewModel</span><span class="p">;</span>
+        <span class="n">_self</span><span class="p">.</span><span class="n">abroadshoppinghomeView</span><span class="p">.</span><span class="n">abroadshoppinghomeOperator</span> <span class="o">=</span> <span class="n">_self</span><span class="p">;</span>
+    <span class="p">}];</span>
+<span class="p">}</span>
+
+<span class="cm">/**
+*立即购买
+* @para goodsId 这里Android就去调用CommonUtils里面的方法即可。IOS这里自行添加相应的代码。注意这里保持一个逻辑：如果是处方药进入到商品详情页，隐形眼镜…..
+*/</span>
+
+<span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">senderAddShoppingCartWithModel</span><span class="p">:(</span><span class="n">id</span><span class="o">&lt;</span><span class="n">HYAbroadShoppingHomeModelInterface</span><span class="o">&gt;</span><span class="p">)</span><span class="nv">model</span> <span class="nf">goodsId</span><span class="p">:(</span><span class="n">GoodsID</span> <span class="o">*</span><span class="p">)</span><span class="nv">goodsId</span> <span class="nf">completion</span><span class="p">:(</span><span class="kt">void</span><span class="p">(</span><span class="o">^</span><span class="p">)())</span><span class="nv">completion</span> <span class="p">{</span>
+
+    <span class="n">__weak</span> <span class="n">typeof</span><span class="p">(</span><span class="n">self</span><span class="p">)</span> <span class="n">_self</span> <span class="o">=</span> <span class="n">self</span><span class="p">;</span>
+    <span class="n">__weak</span> <span class="n">id</span><span class="o">&lt;</span><span class="n">HYAbroadShoppingHomeViewModelInterface</span><span class="o">&gt;</span> <span class="n">__abroadshoppinghomeViewModel</span> <span class="o">=</span> <span class="n">_abroadshoppinghomeViewModel</span><span class="p">;</span>
+    <span class="p">[</span><span class="n">_abroadshoppinghomeViewModel</span> <span class="nf">senderAddShoppingCartWithModel</span><span class="p">:</span><span class="n">model</span> <span class="nf">goodsId</span><span class="p">:</span><span class="n">goodsId</span> <span class="n">completion</span><span class="o">:^</span><span class="p">{</span>
+        <span class="n">_self</span><span class="p">.</span><span class="n">abroadshoppinghomeView</span><span class="p">.</span><span class="n">abroadshoppinghomeViewModel</span> <span class="o">=</span> <span class="n">__abroadshoppinghomeViewModel</span><span class="p">;</span>
+        <span class="n">completion</span><span class="p">();</span>
+    <span class="p">}];</span>
+<span class="p">}</span>
+
+<span class="cm">/**
+*获取海外购首页
+*/</span>
+
+<span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">senderAbroadShoppingHomeWithModel</span><span class="p">:(</span><span class="n">id</span><span class="o">&lt;</span><span class="n">HYAbroadShoppingHomeModelInterface</span><span class="o">&gt;</span><span class="p">)</span><span class="nv">model</span> <span class="nf">completion</span><span class="p">:(</span><span class="kt">void</span><span class="p">(</span><span class="o">^</span><span class="p">)())</span><span class="nv">completion</span> <span class="p">{</span>
+
+    <span class="n">__weak</span> <span class="n">typeof</span><span class="p">(</span><span class="n">self</span><span class="p">)</span> <span class="n">_self</span> <span class="o">=</span> <span class="n">self</span><span class="p">;</span>
+    <span class="n">__weak</span> <span class="n">id</span><span class="o">&lt;</span><span class="n">HYAbroadShoppingHomeViewModelInterface</span><span class="o">&gt;</span> <span class="n">__abroadshoppinghomeViewModel</span> <span class="o">=</span> <span class="n">_abroadshoppinghomeViewModel</span><span class="p">;</span>
+    <span class="p">[</span><span class="n">_abroadshoppinghomeViewModel</span> <span class="nf">senderAbroadShoppingHomeWithModel</span><span class="p">:</span><span class="n">model</span> <span class="nf">completion</span><span class="p">:</span><span class="o">^</span><span class="p">{</span>
+        <span class="n">_self</span><span class="p">.</span><span class="n">abroadshoppinghomeView</span><span class="p">.</span><span class="n">abroadshoppinghomeViewModel</span> <span class="o">=</span> <span class="n">__abroadshoppinghomeViewModel</span><span class="p">;</span>
+        <span class="n">completion</span><span class="p">();</span>
+    <span class="p">}];</span>
+<span class="p">}</span>
+
+<span class="k">@end</span>
+
+</code></pre>
+</div>
+<p>在<code class="highlighter-rouge">controller</code>中, 我们将<code class="highlighter-rouge">viewmodel</code>和<code class="highlighter-rouge">view</code>, 也就是上述的数据层和展示层传输到 <code class="highlighter-rouge">presenter</code>的中间件进行交互, 我们通过观察可以看到当请求完成后, 先进行赋值操作, 再进行自定义业务逻辑, 这样能够保证操作业务逻辑时数据是最新的.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="c1">//
+//  ViewModelTemplate.m
+//  SQTemplate
+//
+//  Created by 双泉 朱 on 17/5/5.
+//  Copyright © 2017年 Doubles_Z. All rights reserved.
+//
+</span>
+<span class="cp">#import "HYAbroadShoppingHomeViewModel.h"
+#import "HYAbroadShoppingHomeModel.h"
+#import "HYAbroadShoppingSender.h"
+#import "HYMallGoodsSender.h"
+</span>
+<span class="k">@implementation</span> <span class="nc">HYAbroadShoppingHomeViewModel</span>
+
+<span class="k">-</span> <span class="p">(</span><span class="n">HYAbroadShoppingHomeModel</span> <span class="o">*</span><span class="p">)</span><span class="n">model</span> <span class="p">{</span>
+    
+    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">_model</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">_model</span> <span class="o">=</span> <span class="p">[</span><span class="n">HYAbroadShoppingHomeModel</span> <span class="nf">new</span><span class="p">];</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="n">_model</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="o">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="n">initializeWithModel</span><span class="o">:</span><span class="p">(</span><span class="n">id</span><span class="o">&lt;</span><span class="n">HYAbroadShoppingHomeModelInterface</span><span class="o">&gt;</span><span class="p">)</span><span class="n">model</span> <span class="n">completion</span><span class="o">:</span><span class="p">(</span><span class="kt">void</span><span class="p">(</span><span class="o">^</span><span class="p">)())</span><span class="n">completion</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">model</span><span class="p">.</span><span class="n">isLoaded</span><span class="p">)</span> <span class="p">{</span>
+        <span class="p">[</span><span class="n">self</span> <span class="nf">senderAbroadShoppingHomeWithModel</span><span class="p">:</span><span class="n">model</span> <span class="nf">completion</span><span class="p">:</span><span class="n">completion</span><span class="p">];</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="cm">/**
+*立即购买
+* @para goodsId 这里Android就去调用CommonUtils里面的方法即可。IOS这里自行添加相应的代码。注意这里保持一个逻辑：如果是处方药进入到商品详情页，隐形眼镜…..
+*/</span>
+
+<span class="o">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="n">senderAddShoppingCartWithModel</span><span class="o">:</span><span class="p">(</span><span class="n">id</span><span class="o">&lt;</span><span class="n">HYAbroadShoppingHomeModelInterface</span><span class="o">&gt;</span><span class="p">)</span><span class="n">model</span> <span class="n">goodsId</span><span class="o">:</span><span class="p">(</span><span class="n">GoodsID</span> <span class="o">*</span><span class="p">)</span><span class="n">goodsId</span> <span class="n">completion</span><span class="o">:</span><span class="p">(</span><span class="kt">void</span><span class="p">(</span><span class="o">^</span><span class="p">)())</span><span class="n">completion</span> <span class="p">{</span>
+  
+    <span class="n">NSMutableArray</span> <span class="o">*</span> <span class="n">editArray</span><span class="o">=</span><span class="p">[@[]</span> <span class="nf">mutableCopy</span><span class="p">];</span>
+    <span class="n">EditGoodsM_Builder</span> <span class="o">*</span> <span class="n">editGoodsM_Builder</span><span class="o">=</span><span class="p">[[</span><span class="n">EditGoodsM_Builder</span> <span class="nf">alloc</span><span class="p">]</span><span class="nf">init</span><span class="p">];</span>
+    <span class="n">editGoodsM_Builder</span><span class="p">.</span><span class="n">goodsId</span> <span class="o">=</span> <span class="n">goodsId</span><span class="p">;</span>
+    <span class="n">editGoodsM_Builder</span><span class="p">.</span><span class="n">amount</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+    <span class="p">[</span><span class="n">editArray</span> <span class="nf">addObject</span><span class="p">:[</span><span class="n">editGoodsM_Builder</span> <span class="nf">build</span><span class="p">]];</span>
+    
+    <span class="n">HYSenderResultModel</span> <span class="o">*</span> <span class="n">resultModel</span> <span class="o">=</span> <span class="p">[</span><span class="n">HYMallGoodsSender</span> <span class="nf">senderAddShoppingCart</span><span class="p">:</span><span class="nb">nil</span> <span class="nf">token</span><span class="p">:</span><span class="nb">nil</span>  <span class="n">editGoods</span><span class="o">:</span><span class="n">editArray</span> <span class="n">promoteIDs</span><span class="o">:</span><span class="nb">nil</span><span class="p">];</span>
+    <span class="n">HYViewController</span> <span class="o">*</span> <span class="n">vc</span> <span class="o">=</span> <span class="p">[</span><span class="n">HYCurrentVCmanager</span> <span class="nf">shareInstance</span><span class="p">].</span><span class="n">getCurrentVC</span><span class="p">;</span>
+    <span class="p">[</span><span class="n">vc</span> <span class="nf">startLoading</span><span class="p">];</span>
+    <span class="p">[</span><span class="n">vc</span> <span class="nf">requestWithModel</span><span class="p">:</span><span class="n">resultModel</span> <span class="nf">success</span><span class="p">:</span><span class="o">^</span><span class="p">(</span><span class="n">HYResponseModel</span> <span class="o">*</span><span class="n">model</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">_model</span><span class="p">.</span><span class="n">reload</span> <span class="o">=</span> <span class="nb">NO</span><span class="p">;</span>
+        <span class="n">completion</span><span class="p">();</span>
+        <span class="p">[</span><span class="n">vc</span> <span class="nf">endLoading</span><span class="p">];</span>
+    <span class="p">}</span> <span class="n">failure</span><span class="o">:^</span><span class="p">(</span><span class="n">HYResponseModel</span> <span class="o">*</span> <span class="n">model</span><span class="p">)</span> <span class="p">{</span>
+        <span class="p">[</span><span class="n">vc</span> <span class="nf">endLoading</span><span class="p">];</span>
+    <span class="p">}];</span>
+<span class="p">}</span>
+
+<span class="cm">/**
+*获取海外购首页
+*/</span>
+
+<span class="o">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="n">senderAbroadShoppingHomeWithModel</span><span class="o">:</span><span class="p">(</span><span class="n">id</span><span class="o">&lt;</span><span class="n">HYAbroadShoppingHomeModelInterface</span><span class="o">&gt;</span><span class="p">)</span><span class="n">model</span> <span class="n">completion</span><span class="o">:</span><span class="p">(</span><span class="kt">void</span><span class="p">(</span><span class="o">^</span><span class="p">)())</span><span class="n">completion</span> <span class="p">{</span>
+    <span class="n">HYSenderResultModel</span> <span class="o">*</span> <span class="n">resultModel</span> <span class="o">=</span> <span class="p">[</span><span class="n">HYAbroadShoppingSender</span> <span class="nf">senderAbroadShoppingHome</span><span class="p">:</span><span class="n">model</span> <span class="nf">status</span><span class="p">:</span><span class="mi">0</span><span class="p">];</span>
+    <span class="n">HYViewController</span> <span class="o">*</span> <span class="n">vc</span> <span class="o">=</span> <span class="p">[</span><span class="n">HYCurrentVCmanager</span> <span class="nf">shareInstance</span><span class="p">].</span><span class="n">getCurrentVC</span><span class="p">;</span>
+    <span class="p">[</span><span class="n">vc</span> <span class="nf">startLoading</span><span class="p">];</span>
+    <span class="p">[</span><span class="n">vc</span> <span class="nf">requestWithModel</span><span class="p">:</span><span class="n">resultModel</span> <span class="nf">success</span><span class="p">:</span><span class="o">^</span><span class="p">(</span><span class="n">HYResponseModel</span> <span class="o">*</span><span class="n">model</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">_model</span><span class="p">.</span><span class="n">loaded</span> <span class="o">=</span> <span class="nb">YES</span><span class="p">;</span>
+        <span class="n">completion</span><span class="p">();</span>
+        <span class="p">[</span><span class="n">vc</span> <span class="nf">endLoading</span><span class="p">];</span>
+    <span class="p">}</span> <span class="n">failure</span><span class="o">:^</span><span class="p">(</span><span class="n">HYResponseModel</span> <span class="o">*</span> <span class="n">model</span><span class="p">)</span> <span class="p">{</span>
+        <span class="p">[</span><span class="n">vc</span> <span class="nf">endLoading</span><span class="p">];</span>
+    <span class="p">}];</span>
+<span class="p">}</span>
+
+
+<span class="k">@end</span>
+
+</code></pre>
+</div>
+
+<p>我们再来看看<code class="highlighter-rouge">viewmodel</code>层如何设计, <code class="highlighter-rouge">viewmodel</code>层持有<code class="highlighter-rouge">model</code>, 并进行数据获取, 将获取的数据赋值到<code class="highlighter-rouge">model</code>中, 由于线上真实项目使用的是<code class="highlighter-rouge">TCP</code>+<code class="highlighter-rouge">ProtoBuffer</code>, 代码显示的是我司自行封装的一套网络逻辑, 所以可能对一些同学不是很友好, 请看下面的例子:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="c1">//
+//  ViewModelTemplate.m
+//  SQTemplate
+//
+//  Created by 双泉 朱 on 17/5/5.
+//  Copyright © 2017年 Doubles_Z. All rights reserved.
+//
+</span>
+<span class="cp">#import "ViewModelTemplate.h"
+#import "ModelTemplate.h"
+#import "NetWork.h"
+#import "DataBase.h"
+</span>
+<span class="k">@implementation</span> <span class="nc">ViewModelTemplate</span>
+
+<span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">dynamicBindingWithFinishedCallBack</span><span class="p">:(</span><span class="kt">void</span> <span class="p">(</span><span class="o">^</span><span class="p">)())</span><span class="nv">finishCallBack</span> <span class="p">{</span>
+
+    <span class="p">[</span><span class="n">DataBase</span> <span class="nf">requestDataWithClass</span><span class="p">:[</span><span class="n">ModelTemplate</span> <span class="nf">class</span><span class="p">]</span> <span class="nf">finishedCallBack</span><span class="p">:</span><span class="o">^</span><span class="p">(</span><span class="n">NSDictionary</span> <span class="o">*</span><span class="n">response</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">_model</span> <span class="o">=</span> <span class="p">[</span><span class="n">ModelTemplate</span> <span class="nf">modelWithDictionary</span><span class="p">:</span><span class="n">response</span><span class="p">];</span>
+        <span class="n">finishCallBack</span><span class="p">();</span>
+    <span class="p">}];</span>
+    
+    <span class="p">[</span><span class="n">NetWork</span> <span class="nf">requestDataWithType</span><span class="p">:</span><span class="n">MethodGetType</span> <span class="nf">URLString</span><span class="p">:</span><span class="s">@"http://localhost:3001/api/J1/getJ1List"</span> <span class="n">parameter</span><span class="o">:</span><span class="nb">nil</span> <span class="n">finishedCallBack</span><span class="o">:^</span><span class="p">(</span><span class="n">NSDictionary</span> <span class="o">*</span> <span class="n">response</span><span class="p">){</span>
+        <span class="n">_model</span> <span class="o">=</span> <span class="p">[</span><span class="n">ModelTemplate</span> <span class="nf">modelWithDictionary</span><span class="p">:</span><span class="n">response</span><span class="p">[</span><span class="s">@"data"</span><span class="p">]];</span>
+        <span class="p">[</span><span class="n">DataBase</span> <span class="nf">cache</span><span class="p">:[</span><span class="n">ModelTemplate</span> <span class="nf">class</span><span class="p">]</span> <span class="nf">data</span><span class="p">:</span><span class="n">response</span><span class="p">[</span><span class="s">@"data"</span><span class="p">]];</span>
+        <span class="n">finishCallBack</span><span class="p">();</span>
+    <span class="p">}];</span>
+<span class="p">}</span>
+
+<span class="k">@end</span>
+
+</code></pre>
+</div>
+
+<p>其中<code class="highlighter-rouge">DataBase</code>仅仅是<code class="highlighter-rouge">plist</code>的缓存, 而<code class="highlighter-rouge">NetWork</code>是封装的<code class="highlighter-rouge">AFNetworking</code>, 这样大部分同学就很熟悉了吧, 在<code class="highlighter-rouge">viewmodel</code>层可以将数数据库和网络请求这两种获取数据的方式封装在一个层级里面, 这样逻辑分明也对外界没有耦合, 而对于我们线上项目我们在底层还有一个<code class="highlighter-rouge">sender</code>层用于管理上述问题及一些其他业务逻辑, 通用的架构设计是一个思想, 需要结合实际业务逻辑进行调整, 正所谓不能脱离业务谈架构.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="c1">//
+//  ViewTemplate.m
+//  SQTemplate
+//
+//  Created by 双泉 朱 on 17/5/5.
+//  Copyright © 2017年 Doubles_Z. All rights reserved.
+//
+</span>
+<span class="cp">#import "HYAbroadShoppingHomeView.h"
+#import "HYAbroadShoppingHomeHeaderView.h"
+#import "HYAbroadSelectGoodsViewCell.h"
+</span>
+<span class="k">@interface</span> <span class="nc">HYAbroadShoppingHomeView</span> <span class="p">()</span> <span class="o">&lt;</span><span class="n">UITableViewDataSource</span><span class="p">,</span> <span class="n">UITableViewDelegate</span><span class="o">&gt;</span>
+
+<span class="k">@property</span> <span class="p">(</span><span class="n">nonatomic</span><span class="p">,</span><span class="n">strong</span><span class="p">)</span> <span class="n">UITableView</span> <span class="o">*</span> <span class="n">tableView</span><span class="p">;</span>
+<span class="k">@property</span> <span class="p">(</span><span class="n">nonatomic</span><span class="p">,</span><span class="n">strong</span><span class="p">)</span> <span class="n">HYAbroadShoppingHomeHeaderView</span> <span class="o">*</span> <span class="n">headerView</span><span class="p">;</span>
+
+<span class="k">@end</span>
+
+<span class="k">@implementation</span> <span class="nc">HYAbroadShoppingHomeView</span>
+
+<span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="n">dealloc</span> <span class="p">{</span>
+    <span class="n">NSLog</span><span class="p">(</span><span class="s">@"%@ - execute %s"</span><span class="p">,</span><span class="n">NSStringFromClass</span><span class="p">([</span><span class="n">self</span> <span class="nf">class</span><span class="p">]),</span><span class="n">__func__</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="o">-</span> <span class="p">(</span><span class="n">instancetype</span><span class="p">)</span><span class="n">initWithFrame</span><span class="o">:</span><span class="p">(</span><span class="n">CGRect</span><span class="p">)</span><span class="n">frame</span> <span class="p">{</span>
+    
+    <span class="n">self</span> <span class="o">=</span> <span class="p">[</span><span class="n">super</span> <span class="nf">initWithFrame</span><span class="p">:</span><span class="n">frame</span><span class="p">];</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">self</span><span class="p">)</span> <span class="p">{</span>
+        <span class="p">[</span><span class="n">self</span> <span class="nf">setupSubviews</span><span class="p">];</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="n">self</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="o">-</span> <span class="p">(</span><span class="n">instancetype</span><span class="p">)</span><span class="n">initWithCoder</span><span class="o">:</span><span class="p">(</span><span class="n">NSCoder</span> <span class="o">*</span><span class="p">)</span><span class="n">coder</span>  <span class="p">{</span>
+    
+    <span class="n">self</span> <span class="o">=</span> <span class="p">[</span><span class="n">super</span> <span class="nf">initWithCoder</span><span class="p">:</span><span class="n">coder</span><span class="p">];</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">self</span><span class="p">)</span> <span class="p">{</span>
+        <span class="p">[</span><span class="n">self</span> <span class="nf">setupSubviews</span><span class="p">];</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="n">self</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="o">-</span> <span class="p">(</span><span class="n">UITableView</span> <span class="o">*</span><span class="p">)</span><span class="n">tableView</span> <span class="p">{</span>
+    
+    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">_tableView</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">_tableView</span> <span class="o">=</span> <span class="p">[</span><span class="n">UITableView</span> <span class="nf">new</span><span class="p">];</span>
+        <span class="n">_tableView</span><span class="p">.</span><span class="n">dataSource</span> <span class="o">=</span> <span class="n">self</span><span class="p">;</span>
+        <span class="n">_tableView</span><span class="p">.</span><span class="n">delegate</span> <span class="o">=</span> <span class="n">self</span><span class="p">;</span>
+        <span class="n">_tableView</span><span class="p">.</span><span class="n">tableHeaderView</span> <span class="o">=</span> <span class="n">self</span><span class="p">.</span><span class="n">headerView</span><span class="p">;</span>
+        <span class="n">_tableView</span><span class="p">.</span><span class="n">backgroundColor</span> <span class="o">=</span> <span class="n">SQBGC</span><span class="p">;</span>
+        <span class="n">_tableView</span><span class="p">.</span><span class="n">separatorStyle</span> <span class="o">=</span> <span class="n">UITableViewCellSeparatorStyleNone</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="n">_tableView</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="o">-</span> <span class="p">(</span><span class="n">HYAbroadShoppingHomeHeaderView</span> <span class="o">*</span><span class="p">)</span><span class="n">headerView</span> <span class="p">{</span>
+    
+    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">_headerView</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">_headerView</span> <span class="o">=</span> <span class="p">[</span><span class="n">HYAbroadShoppingHomeHeaderView</span> <span class="nf">new</span><span class="p">];</span>
+        <span class="n">_headerView</span><span class="p">.</span><span class="n">hidden</span> <span class="o">=</span> <span class="nb">YES</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="n">_headerView</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="o">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="n">setupSubviews</span> <span class="p">{</span>
+    <span class="p">[</span><span class="n">self</span> <span class="nf">addSubview</span><span class="p">:</span><span class="n">self</span><span class="p">.</span><span class="n">tableView</span><span class="p">];</span>
+<span class="p">}</span>
+
+<span class="o">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="n">setAbroadshoppinghomeViewModel</span><span class="o">:</span><span class="p">(</span><span class="n">id</span><span class="o">&lt;</span><span class="n">HYAbroadShoppingHomeViewModelInterface</span><span class="o">&gt;</span><span class="p">)</span><span class="n">abroadshoppinghomeViewModel</span> <span class="p">{</span>
+    <span class="n">_abroadshoppinghomeViewModel</span> <span class="o">=</span> <span class="n">abroadshoppinghomeViewModel</span><span class="p">;</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">abroadshoppinghomeViewModel</span><span class="p">.</span><span class="n">model</span><span class="p">.</span><span class="n">reload</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">_headerView</span><span class="p">.</span><span class="n">hidden</span> <span class="o">=</span> <span class="o">!</span><span class="n">abroadshoppinghomeViewModel</span><span class="p">.</span><span class="n">model</span><span class="p">.</span><span class="n">isLoaded</span><span class="p">;</span>
+        <span class="n">_headerView</span><span class="p">.</span><span class="n">model</span> <span class="o">=</span> <span class="n">abroadshoppinghomeViewModel</span><span class="p">.</span><span class="n">model</span><span class="p">;</span>
+        <span class="n">CGFloat</span> <span class="n">headerViewH</span> <span class="o">=</span> <span class="n">abroadshoppinghomeViewModel</span><span class="p">.</span><span class="n">model</span><span class="p">.</span><span class="n">remainingTime</span><span class="p">.</span><span class="n">length</span>
+        <span class="p">?</span> <span class="n">kscaleDeviceLength</span><span class="p">(</span><span class="mi">160</span><span class="p">)</span> <span class="o">+</span> <span class="p">(</span><span class="n">self</span><span class="p">.</span><span class="n">width</span> <span class="o">/</span> <span class="mi">4</span><span class="p">)</span> <span class="o">*</span> <span class="mi">1</span><span class="p">.</span><span class="mi">1</span> <span class="o">+</span> <span class="mi">290</span>
+        <span class="p">:</span> <span class="n">kscaleDeviceLength</span><span class="p">(</span><span class="mi">160</span><span class="p">)</span> <span class="o">+</span> <span class="p">(</span><span class="n">self</span><span class="p">.</span><span class="n">width</span> <span class="o">/</span> <span class="mi">4</span><span class="p">)</span> <span class="o">*</span> <span class="mi">1</span><span class="p">.</span><span class="mi">1</span> <span class="o">+</span> <span class="mi">50</span><span class="p">;</span>
+        <span class="n">_headerView</span><span class="p">.</span><span class="n">frame</span> <span class="o">=</span> <span class="n">CGRectMake</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">headerViewH</span><span class="p">);</span>
+        <span class="p">[</span><span class="n">_tableView</span> <span class="nf">reloadData</span><span class="p">];</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="o">-</span> <span class="p">(</span><span class="n">NSInteger</span><span class="p">)</span><span class="n">tableView</span><span class="o">:</span><span class="p">(</span><span class="n">UITableView</span> <span class="o">*</span><span class="p">)</span><span class="n">tableView</span> <span class="n">numberOfRowsInSection</span><span class="o">:</span><span class="p">(</span><span class="n">NSInteger</span><span class="p">)</span><span class="n">section</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="n">_abroadshoppinghomeViewModel</span><span class="p">.</span><span class="n">model</span><span class="p">.</span><span class="n">selectGoods</span><span class="p">.</span><span class="n">count</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="o">-</span> <span class="p">(</span><span class="n">UITableViewCell</span> <span class="o">*</span><span class="p">)</span><span class="n">tableView</span><span class="o">:</span><span class="p">(</span><span class="n">UITableView</span> <span class="o">*</span><span class="p">)</span><span class="n">tableView</span> <span class="n">cellForRowAtIndexPath</span><span class="o">:</span><span class="p">(</span><span class="n">NSIndexPath</span> <span class="o">*</span><span class="p">)</span><span class="n">indexPath</span> <span class="p">{</span>
+    
+    <span class="n">HYAbroadSelectGoodsViewCell</span> <span class="o">*</span> <span class="n">cell</span> <span class="o">=</span> <span class="p">[</span><span class="n">HYAbroadSelectGoodsViewCell</span> <span class="nf">cellWithTableView</span><span class="p">:</span><span class="n">tableView</span><span class="p">];</span>
+    <span class="n">cell</span><span class="p">.</span><span class="n">good</span> <span class="o">=</span> <span class="n">_abroadshoppinghomeViewModel</span><span class="p">.</span><span class="n">model</span><span class="p">.</span><span class="n">selectGoods</span><span class="p">[</span><span class="n">indexPath</span><span class="p">.</span><span class="nf">item</span><span class="p">];</span>
+    <span class="n">cell</span><span class="p">.</span><span class="n">abroadshoppinghomeOperator</span> <span class="o">=</span> <span class="n">_abroadshoppinghomeOperator</span><span class="p">;</span>
+    <span class="k">return</span> <span class="n">cell</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="o">-</span> <span class="p">(</span><span class="n">CGFloat</span><span class="p">)</span><span class="n">tableView</span><span class="o">:</span><span class="p">(</span><span class="n">UITableView</span> <span class="o">*</span><span class="p">)</span><span class="n">tableView</span> <span class="n">heightForRowAtIndexPath</span><span class="o">:</span><span class="p">(</span><span class="n">NSIndexPath</span> <span class="o">*</span><span class="p">)</span><span class="n">indexPath</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="p">[</span><span class="n">HYAbroadSelectGoodsViewCell</span> <span class="nf">cellHeightWithGood</span><span class="p">:</span><span class="n">_abroadshoppinghomeViewModel</span><span class="p">.</span><span class="n">model</span><span class="p">.</span><span class="n">selectGoods</span><span class="p">[</span><span class="n">indexPath</span><span class="p">.</span><span class="nf">item</span><span class="p">]];</span>
+<span class="p">}</span>
+
+<span class="o">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="n">tableView</span><span class="o">:</span><span class="p">(</span><span class="n">UITableView</span> <span class="o">*</span><span class="p">)</span><span class="n">tableView</span> <span class="n">didSelectRowAtIndexPath</span><span class="o">:</span><span class="p">(</span><span class="n">NSIndexPath</span> <span class="o">*</span><span class="p">)</span><span class="n">indexPath</span> <span class="p">{</span>
+    <span class="p">[</span><span class="n">tableView</span> <span class="nf">deselectRowAtIndexPath</span><span class="p">:</span><span class="n">indexPath</span> <span class="nf">animated</span><span class="p">:</span><span class="nb">YES</span><span class="p">];</span>
+<span class="p">}</span>
+
+<span class="o">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="n">layoutSubviews</span> <span class="p">{</span>
+    <span class="p">[</span><span class="n">super</span> <span class="nf">layoutSubviews</span><span class="p">];</span>
+    <span class="n">_tableView</span><span class="p">.</span><span class="n">frame</span> <span class="o">=</span> <span class="n">self</span><span class="p">.</span><span class="n">bounds</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="k">@end</span>
+
+</code></pre>
+</div>
+<p>接着我们来看<code class="highlighter-rouge">view</code>,根据之前的设计图, 我们将其区分为两个模块, <code class="highlighter-rouge">tableview</code>的<code class="highlighter-rouge">headerview</code>和<code class="highlighter-rouge">tableviewcell</code>, 其中<code class="highlighter-rouge">headerview</code>负责上面不需要复用的<code class="highlighter-rouge">view</code>, 而<code class="highlighter-rouge">tableviewcell</code>负责需要复用的部分.</p>
+
+<p>这里我们看到重写<code class="highlighter-rouge">set</code>方法时根据是否需要刷新<code class="highlighter-rouge">tableview</code>, 一定限度避免了无效的刷新消耗.</p>
+
+<p>还有一个知识点是将<code class="highlighter-rouge">operator</code>直接贯穿传递到各级<code class="highlighter-rouge">subview</code>这里用到的就是<code class="highlighter-rouge">CDD</code>模式的精髓, 使得所有的<code class="highlighter-rouge">subview</code>都能够获取数据, 避免了<code class="highlighter-rouge">delegate</code>, <code class="highlighter-rouge">block</code>这种冗余回调带来耦合的尴尬, 关键是丑.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="c1">//
+//  HYAbroadSelectGoodsViewFrameHub.m
+//  Mall
+//
+//  Created by 朱双泉 on 19/10/2017.
+//  Copyright © 2017 _Zhizi_. All rights reserved.
+//
+</span>
+<span class="cp">#import "HYAbroadSelectGoodsViewFrameHub.h"
+#import "NSString+SQExtension.h"
+</span>
+<span class="k">@implementation</span> <span class="nc">HYAbroadSelectGoodsViewFrameHub</span>
+
+<span class="k">-</span> <span class="p">(</span><span class="n">instancetype</span><span class="p">)</span><span class="nf">initWithGoodsName</span><span class="p">:(</span><span class="n">NSString</span> <span class="o">*</span><span class="p">)</span><span class="nv">goodsName</span> <span class="nf">nameGoodEvalution</span><span class="p">:(</span><span class="n">NSString</span> <span class="o">*</span><span class="p">)</span><span class="nv">nameGoodEvalution</span> <span class="p">{</span>
+    
+    <span class="n">self</span> <span class="o">=</span> <span class="p">[</span><span class="n">super</span> <span class="nf">init</span><span class="p">];</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">self</span><span class="p">)</span> <span class="p">{</span>
+        
+        <span class="n">CGFloat</span> <span class="n">width</span> <span class="o">=</span> <span class="n">DeviceWidth</span> <span class="o">-</span> <span class="mi">30</span><span class="p">;</span>
+        <span class="n">CGFloat</span> <span class="n">proImageUrlButtonX</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span>
+        <span class="n">CGFloat</span> <span class="n">proImageUrlButtonY</span> <span class="o">=</span> <span class="n">proImageUrlButtonX</span><span class="p">;</span>
+        <span class="n">CGFloat</span> <span class="n">proImageUrlButtonW</span> <span class="o">=</span> <span class="n">width</span> <span class="o">-</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">proImageUrlButtonX</span><span class="p">;</span>
+        <span class="n">CGFloat</span> <span class="n">proImageUrlButtonH</span> <span class="o">=</span> <span class="n">proImageUrlButtonW</span><span class="p">;</span>
+        <span class="n">_proImageUrlButtonFrame</span> <span class="o">=</span> <span class="n">CGRectMake</span><span class="p">(</span><span class="n">proImageUrlButtonX</span><span class="p">,</span> <span class="n">proImageUrlButtonY</span><span class="p">,</span> <span class="n">proImageUrlButtonW</span><span class="p">,</span> <span class="n">proImageUrlButtonH</span><span class="p">);</span>
+        
+        <span class="n">CGFloat</span> <span class="n">goodsSellerImageViewX</span> <span class="o">=</span> <span class="n">proImageUrlButtonX</span><span class="p">;</span>
+        <span class="n">CGFloat</span> <span class="n">goodsSellerImageViewY</span> <span class="o">=</span> <span class="n">proImageUrlButtonY</span> <span class="o">+</span> <span class="n">proImageUrlButtonH</span> <span class="o">+</span> <span class="mi">13</span><span class="p">;</span>
+        <span class="n">CGFloat</span> <span class="n">goodsSellerImageViewW</span> <span class="o">=</span> <span class="mi">20</span><span class="p">;</span>
+        <span class="n">CGFloat</span> <span class="n">goodsSellerImageViewH</span> <span class="o">=</span> <span class="mi">15</span><span class="p">;</span>
+        <span class="n">_goodsSellerImageViewFrame</span> <span class="o">=</span> <span class="n">CGRectMake</span><span class="p">(</span><span class="n">goodsSellerImageViewX</span><span class="p">,</span> <span class="n">goodsSellerImageViewY</span><span class="p">,</span> <span class="n">goodsSellerImageViewW</span><span class="p">,</span> <span class="n">goodsSellerImageViewH</span><span class="p">);</span>
+        
+        <span class="n">CGFloat</span> <span class="n">goodsNameLabelX</span> <span class="o">=</span> <span class="n">goodsSellerImageViewX</span><span class="p">;</span>
+        <span class="n">CGFloat</span> <span class="n">goodsNameLabelY</span> <span class="o">=</span> <span class="n">proImageUrlButtonY</span> <span class="o">+</span> <span class="n">proImageUrlButtonH</span> <span class="o">+</span> <span class="mi">10</span><span class="p">;</span>
+        <span class="n">CGFloat</span> <span class="n">goodsNameLabelW</span> <span class="o">=</span> <span class="n">proImageUrlButtonW</span><span class="p">;</span>
+        <span class="n">CGSize</span>  <span class="n">goodsNameLabelSize</span> <span class="o">=</span> <span class="p">[</span><span class="n">goodsName</span> <span class="nf">getSizeWithConstraint</span><span class="p">:</span><span class="n">CGSizeMake</span><span class="p">(</span><span class="n">goodsNameLabelW</span><span class="p">,</span> <span class="mi">60</span><span class="p">)</span> <span class="nf">font</span><span class="p">:</span><span class="n">KF03_17</span><span class="p">];</span>
+        <span class="n">CGFloat</span> <span class="n">goodsNameLabelH</span> <span class="o">=</span> <span class="n">goodsNameLabelSize</span><span class="p">.</span><span class="n">height</span><span class="p">;</span>
+        <span class="n">_goodsNameLabelFrame</span> <span class="o">=</span> <span class="n">CGRectMake</span><span class="p">(</span><span class="n">goodsNameLabelX</span><span class="p">,</span> <span class="n">goodsNameLabelY</span><span class="p">,</span> <span class="n">goodsNameLabelW</span><span class="p">,</span> <span class="n">goodsNameLabelH</span><span class="p">);</span>
+        
+        <span class="n">CGFloat</span> <span class="n">costPriceLabelY</span> <span class="o">=</span> <span class="mi">0</span><span class="p">.</span><span class="mi">0</span><span class="p">;</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">nameGoodEvalution</span><span class="p">.</span><span class="n">length</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">CGFloat</span> <span class="n">userEvalutionLabelX</span> <span class="o">=</span> <span class="n">proImageUrlButtonX</span> <span class="o">+</span> <span class="mi">10</span><span class="p">;</span>
+            <span class="n">CGFloat</span> <span class="n">userEvalutionLabelY</span> <span class="o">=</span> <span class="n">goodsNameLabelY</span> <span class="o">+</span> <span class="n">goodsNameLabelH</span> <span class="o">+</span> <span class="mi">10</span><span class="p">;</span>
+            <span class="n">CGFloat</span> <span class="n">userEvalutionLabelW</span> <span class="o">=</span> <span class="mi">55</span><span class="p">;</span>
+            <span class="n">CGFloat</span> <span class="n">userEvalutionLabelH</span> <span class="o">=</span> <span class="mi">20</span><span class="p">;</span>
+            <span class="n">_userEvalutionLabelFrame</span> <span class="o">=</span> <span class="n">CGRectMake</span><span class="p">(</span><span class="n">userEvalutionLabelX</span><span class="p">,</span> <span class="n">userEvalutionLabelY</span><span class="p">,</span> <span class="n">userEvalutionLabelW</span><span class="p">,</span> <span class="n">userEvalutionLabelH</span><span class="p">);</span>
+            
+            <span class="n">CGFloat</span> <span class="n">userEvalutionBackgroundX</span> <span class="o">=</span> <span class="n">proImageUrlButtonX</span><span class="p">;</span>
+            <span class="n">CGFloat</span> <span class="n">userEvalutionBackgroundY</span> <span class="o">=</span> <span class="n">userEvalutionLabelY</span> <span class="o">+</span> <span class="n">userEvalutionLabelH</span> <span class="o">/</span> <span class="mi">2</span><span class="p">;</span>
+            <span class="n">CGFloat</span> <span class="n">userEvalutionBackgroundW</span> <span class="o">=</span> <span class="n">proImageUrlButtonW</span><span class="p">;</span>
+            
+            <span class="n">CGFloat</span> <span class="n">nameGoodEvalutionLabelX</span> <span class="o">=</span> <span class="n">userEvalutionBackgroundX</span> <span class="o">+</span> <span class="mi">10</span><span class="p">;</span>
+            <span class="n">CGFloat</span> <span class="n">nameGoodEvalutionLabelY</span> <span class="o">=</span> <span class="n">userEvalutionLabelY</span> <span class="o">+</span> <span class="n">userEvalutionLabelH</span> <span class="o">+</span> <span class="mi">10</span><span class="p">;</span>
+            <span class="n">CGFloat</span> <span class="n">nameGoodEvalutionLabelW</span> <span class="o">=</span> <span class="n">userEvalutionBackgroundW</span> <span class="o">-</span> <span class="mi">20</span><span class="p">;</span>
+            <span class="n">CGSize</span>  <span class="n">nameGoodEvalutionLabelSize</span> <span class="o">=</span> <span class="p">[</span><span class="n">nameGoodEvalution</span> <span class="nf">getSizeWithConstraint</span><span class="p">:</span><span class="n">CGSizeMake</span><span class="p">(</span><span class="n">nameGoodEvalutionLabelW</span><span class="p">,</span> <span class="mi">40</span><span class="p">)</span> <span class="nf">font</span><span class="p">:</span><span class="n">KF06_12</span><span class="p">];</span>
+            
+            <span class="n">CGFloat</span> <span class="n">nameGoodEvalutionLabelH</span> <span class="o">=</span> <span class="n">nameGoodEvalutionLabelSize</span><span class="p">.</span><span class="n">height</span><span class="p">;</span>
+            <span class="n">_nameGoodEvalutionLabelFrame</span> <span class="o">=</span> <span class="n">CGRectMake</span><span class="p">(</span><span class="n">nameGoodEvalutionLabelX</span><span class="p">,</span> <span class="n">nameGoodEvalutionLabelY</span><span class="p">,</span> <span class="n">nameGoodEvalutionLabelW</span><span class="p">,</span> <span class="n">nameGoodEvalutionLabelH</span><span class="p">);</span>
+            
+            <span class="n">CGFloat</span> <span class="n">userEvalutionBackgroundH</span> <span class="o">=</span> <span class="n">nameGoodEvalutionLabelH</span> <span class="o">+</span> <span class="mi">30</span><span class="p">;</span>
+            <span class="n">_userEvalutionBackgroundFrame</span> <span class="o">=</span> <span class="n">CGRectMake</span><span class="p">(</span><span class="n">userEvalutionBackgroundX</span><span class="p">,</span> <span class="n">userEvalutionBackgroundY</span><span class="p">,</span> <span class="n">userEvalutionBackgroundW</span><span class="p">,</span> <span class="n">userEvalutionBackgroundH</span><span class="p">);</span>
+            
+            <span class="n">costPriceLabelY</span> <span class="o">=</span> <span class="n">userEvalutionBackgroundY</span> <span class="o">+</span> <span class="n">userEvalutionBackgroundH</span> <span class="o">+</span> <span class="mi">10</span><span class="p">;</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+            <span class="n">costPriceLabelY</span> <span class="o">=</span> <span class="n">goodsNameLabelY</span> <span class="o">+</span> <span class="n">goodsNameLabelH</span> <span class="o">+</span> <span class="mi">10</span><span class="p">;</span>
+        <span class="p">}</span>
+        
+        <span class="n">CGFloat</span> <span class="n">costPriceLabelX</span> <span class="o">=</span> <span class="n">goodsNameLabelX</span><span class="p">;</span>
+        <span class="n">CGFloat</span> <span class="n">costPriceLabelW</span> <span class="o">=</span> <span class="mi">180</span><span class="p">;</span>
+        <span class="n">CGFloat</span> <span class="n">costPriceLabelH</span> <span class="o">=</span> <span class="mi">30</span><span class="p">;</span>
+        <span class="n">_costPriceLabelFrame</span> <span class="o">=</span> <span class="n">CGRectMake</span><span class="p">(</span><span class="n">costPriceLabelX</span><span class="p">,</span> <span class="n">costPriceLabelY</span><span class="p">,</span> <span class="n">costPriceLabelW</span><span class="p">,</span> <span class="n">costPriceLabelH</span><span class="p">);</span>
+        
+        <span class="n">CGFloat</span> <span class="n">buyButtonW</span> <span class="o">=</span> <span class="mi">80</span><span class="p">;</span>
+        <span class="n">CGFloat</span> <span class="n">buyButtonX</span> <span class="o">=</span> <span class="n">goodsNameLabelX</span> <span class="o">+</span> <span class="n">goodsNameLabelW</span> <span class="o">-</span> <span class="n">buyButtonW</span><span class="p">;</span>
+        <span class="n">CGFloat</span> <span class="n">buyButtonY</span> <span class="o">=</span> <span class="n">costPriceLabelY</span><span class="p">;</span>
+        <span class="n">CGFloat</span> <span class="n">buyButtonH</span> <span class="o">=</span> <span class="n">costPriceLabelH</span><span class="p">;</span>
+        <span class="n">_buyButtonFrame</span> <span class="o">=</span> <span class="n">CGRectMake</span><span class="p">(</span><span class="n">buyButtonX</span><span class="p">,</span> <span class="n">buyButtonY</span><span class="p">,</span> <span class="n">buyButtonW</span><span class="p">,</span> <span class="n">buyButtonH</span><span class="p">);</span>
+        
+        <span class="n">_calculateHeight</span> <span class="o">=</span> <span class="n">CGRectGetMaxY</span><span class="p">(</span><span class="n">_buyButtonFrame</span><span class="p">)</span> <span class="o">+</span> <span class="mi">10</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="n">self</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="k">@end</span>
+
+</code></pre>
+</div>
+
+<p>当需要动态计算高度的时候, 我们可以使用<code class="highlighter-rouge">framehub</code>这种模式, 名字是自己取的, 请别见怪, 对性能有要求的同学可以将高度计算值缓存下来, 以免<code class="highlighter-rouge">cpu</code>重复大量计算导致手机的耗电.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="c1">//
+//  HYAbroadSelectGoodsViewCell.m
+//  Mall
+//
+//  Created by 朱双泉 on 12/10/2017.
+//  Copyright © 2017 _Zhizi_. All rights reserved.
+//
+</span>
+<span class="cp">#import "HYAbroadSelectGoodsViewCell.h"
+#import "HYAbroadSelectGoodsView.h"
+#import "HYGoodsDetailViewController.h"
+#import "HYCartNewViewController.h"
+#import "UIAlertView+SQExtension.h"
+#import "NSString+SQExtension.h"
+</span>
+<span class="k">@interface</span> <span class="nc">HYAbroadSelectGoodsViewCell</span> <span class="p">()</span>
+
+<span class="k">@property</span> <span class="p">(</span><span class="n">nonatomic</span><span class="p">,</span><span class="n">strong</span><span class="p">)</span> <span class="n">HYAbroadSelectGoodsView</span> <span class="o">*</span> <span class="n">selectGoodsView</span><span class="p">;</span>
+
+<span class="k">@end</span>
+
+<span class="k">@implementation</span> <span class="nc">HYAbroadSelectGoodsViewCell</span>
+
+<span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="n">dealloc</span> <span class="p">{</span>
+<span class="cp">#if DEBUG
+</span>    <span class="n">NSLog</span><span class="p">(</span><span class="s">@"--------"</span><span class="p">);</span>
+    <span class="n">NSLog</span><span class="p">(</span><span class="s">@"%@ - execute %s"</span><span class="p">,</span><span class="n">NSStringFromClass</span><span class="p">([</span><span class="n">self</span> <span class="nf">class</span><span class="p">]),</span><span class="n">__func__</span><span class="p">);</span>
+    <span class="n">NSLog</span><span class="p">(</span><span class="s">@"--------"</span><span class="p">);</span>
+<span class="cp">#endif
+</span><span class="p">}</span>
+
+<span class="o">+</span> <span class="p">(</span><span class="n">instancetype</span><span class="p">)</span><span class="n">cellWithTableView</span><span class="o">:</span><span class="p">(</span><span class="n">UITableView</span> <span class="o">*</span><span class="p">)</span><span class="n">tableView</span> <span class="p">{</span>
+    
+    <span class="n">NSString</span> <span class="o">*</span> <span class="n">identifier</span> <span class="o">=</span> <span class="n">NSStringFromClass</span><span class="p">([</span><span class="n">HYAbroadSelectGoodsViewCell</span> <span class="nf">class</span><span class="p">]);</span>
+    <span class="n">HYAbroadSelectGoodsViewCell</span> <span class="o">*</span> <span class="n">cell</span> <span class="o">=</span> <span class="p">[</span><span class="n">tableView</span> <span class="nf">dequeueReusableCellWithIdentifier</span><span class="p">:</span><span class="n">identifier</span><span class="p">];</span>
+    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">cell</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">cell</span> <span class="o">=</span> <span class="p">[[</span><span class="n">HYAbroadSelectGoodsViewCell</span> <span class="nf">alloc</span><span class="p">]</span><span class="nf">initWithStyle</span><span class="p">:</span><span class="n">UITableViewCellStyleDefault</span> <span class="nf">reuseIdentifier</span><span class="p">:</span><span class="n">identifier</span><span class="p">];</span>
+        <span class="n">cell</span><span class="p">.</span><span class="n">selectionStyle</span> <span class="o">=</span> <span class="n">UITableViewCellSelectionStyleNone</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="n">cell</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="o">-</span> <span class="p">(</span><span class="n">instancetype</span><span class="p">)</span><span class="n">initWithStyle</span><span class="o">:</span><span class="p">(</span><span class="n">UITableViewCellStyle</span><span class="p">)</span><span class="n">style</span> <span class="n">reuseIdentifier</span><span class="o">:</span><span class="p">(</span><span class="n">NSString</span> <span class="o">*</span><span class="p">)</span><span class="n">reuseIdentifier</span> <span class="p">{</span>
+    
+    <span class="n">self</span> <span class="o">=</span> <span class="p">[</span><span class="n">super</span> <span class="nf">initWithStyle</span><span class="p">:</span><span class="n">style</span> <span class="nf">reuseIdentifier</span><span class="p">:</span><span class="n">reuseIdentifier</span><span class="p">];</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">self</span><span class="p">)</span> <span class="p">{</span>
+        <span class="p">[</span><span class="n">self</span> <span class="nf">setupSubviews</span><span class="p">];</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="n">self</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="o">-</span> <span class="p">(</span><span class="n">HYAbroadSelectGoodsView</span> <span class="o">*</span><span class="p">)</span><span class="n">selectGoodsView</span> <span class="p">{</span>
+    
+    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">_selectGoodsView</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">_selectGoodsView</span> <span class="o">=</span> <span class="p">[</span><span class="n">HYAbroadSelectGoodsView</span> <span class="nf">new</span><span class="p">];</span>
+        <span class="n">_selectGoodsView</span><span class="p">.</span><span class="n">backgroundColor</span> <span class="o">=</span> <span class="p">[</span><span class="n">UIColor</span> <span class="nf">whiteColor</span><span class="p">];</span>
+        <span class="n">_selectGoodsView</span><span class="p">.</span><span class="n">layer</span><span class="p">.</span><span class="n">cornerRadius</span> <span class="o">=</span> <span class="mi">4</span><span class="p">;</span>
+        <span class="n">_selectGoodsView</span><span class="p">.</span><span class="n">layer</span><span class="p">.</span><span class="n">masksToBounds</span> <span class="o">=</span> <span class="nb">YES</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="n">_selectGoodsView</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="o">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="n">setupSubviews</span> <span class="p">{</span>
+    <span class="n">self</span><span class="p">.</span><span class="n">contentView</span><span class="p">.</span><span class="n">backgroundColor</span> <span class="o">=</span> <span class="n">SQBGC</span><span class="p">;</span>
+    <span class="p">[</span><span class="n">self</span><span class="p">.</span><span class="n">contentView</span> <span class="nf">addSubview</span><span class="p">:</span><span class="n">self</span><span class="p">.</span><span class="n">selectGoodsView</span><span class="p">];</span>
+<span class="p">}</span>
+
+<span class="o">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="n">setGood</span><span class="o">:</span><span class="p">(</span><span class="n">AbroadGoods</span> <span class="o">*</span><span class="p">)</span><span class="n">good</span> <span class="p">{</span>
+    <span class="n">_good</span> <span class="o">=</span> <span class="n">good</span><span class="p">;</span>
+    <span class="n">__weak</span> <span class="n">typeof</span><span class="p">(</span><span class="n">self</span><span class="p">)</span> <span class="n">_self</span> <span class="o">=</span> <span class="n">self</span><span class="p">;</span>
+    <span class="p">[</span><span class="n">_selectGoodsView</span><span class="p">.</span><span class="n">proImageUrlButton</span> <span class="nf">sd_setBackgroundImageWithURL</span><span class="p">:[</span><span class="n">NSURL</span> <span class="nf">URLWithString</span><span class="p">:</span><span class="n">good</span><span class="p">.</span><span class="n">proImageUrl</span><span class="p">]</span> <span class="nf">forState</span><span class="p">:</span><span class="mi">0</span> <span class="n">placeholderImage</span><span class="o">:</span><span class="p">[</span><span class="n">UIImage</span> <span class="nf">imageNamed</span><span class="p">:</span><span class="s">@"placeholder_200"</span><span class="p">]];</span>
+    <span class="p">[</span><span class="n">_selectGoodsView</span><span class="p">.</span><span class="n">proImageUrlButton</span> <span class="nf">whenTapped</span><span class="p">:</span><span class="o">^</span><span class="p">{</span>
+        <span class="p">[[</span><span class="n">HYCurrentVCmanager</span> <span class="nf">shareInstance</span><span class="p">].</span><span class="n">getCurrentVC</span> <span class="nf">hyPushDetail</span><span class="p">:</span><span class="n">_self</span><span class="p">.</span><span class="n">good</span><span class="p">.</span><span class="n">targetUrl</span><span class="p">];</span>
+    <span class="p">}];</span>
+    <span class="p">[</span><span class="n">_selectGoodsView</span><span class="p">.</span><span class="n">goodsSellerImageView</span> <span class="nf">sd_setImageWithURL</span><span class="p">:[</span><span class="n">NSURL</span> <span class="nf">URLWithString</span><span class="p">:</span><span class="n">good</span><span class="p">.</span><span class="n">goodsSellerImage</span><span class="p">]];</span>
+    <span class="n">_selectGoodsView</span><span class="p">.</span><span class="n">goodsNameLabel</span><span class="p">.</span><span class="n">text</span> <span class="o">=</span> <span class="p">[</span><span class="n">NSString</span> <span class="nf">stringWithFormat</span><span class="p">:</span><span class="s">@"      %@"</span><span class="p">,</span> <span class="p">[</span><span class="n">good</span><span class="p">.</span><span class="n">goodsName</span> <span class="nf">trim</span><span class="p">]];</span>
+    <span class="n">_selectGoodsView</span><span class="p">.</span><span class="n">nameGoodEvalutionLabel</span><span class="p">.</span><span class="n">text</span> <span class="o">=</span> <span class="p">[</span><span class="n">good</span><span class="p">.</span><span class="n">nameGoodEvalution</span> <span class="nf">trim</span><span class="p">];</span>
+    <span class="n">_selectGoodsView</span><span class="p">.</span><span class="n">costPriceLabel</span><span class="p">.</span><span class="n">text</span> <span class="o">=</span> <span class="n">good</span><span class="p">.</span><span class="n">ecPrice</span><span class="p">;</span>
+    <span class="p">[</span><span class="n">_selectGoodsView</span><span class="p">.</span><span class="n">buyButton</span> <span class="nf">whenTapped</span><span class="p">:</span><span class="o">^</span><span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">_self</span><span class="p">.</span><span class="n">good</span><span class="p">.</span><span class="n">goodsType</span> <span class="o">==</span> <span class="n">GoodsTypePrescriptionAllow</span> <span class="o">||</span>
+            <span class="n">_self</span><span class="p">.</span><span class="n">good</span><span class="p">.</span><span class="n">goodsType</span> <span class="o">==</span> <span class="n">GoodsTypePrescriptionForbid</span> <span class="o">||</span>
+            <span class="n">_self</span><span class="p">.</span><span class="n">good</span><span class="p">.</span><span class="n">goodsType</span> <span class="o">==</span> <span class="n">GoodsTypeGlasses</span><span class="p">)</span> <span class="p">{</span>
+            <span class="p">[[</span><span class="n">HYCurrentVCmanager</span> <span class="nf">shareInstance</span><span class="p">].</span><span class="n">getCurrentVC</span> <span class="nf">HYPushViewController</span><span class="p">:[</span><span class="n">HYGoodsDetailViewController</span> <span class="nf">new</span><span class="p">]</span> <span class="nf">animated</span><span class="p">:</span><span class="nb">YES</span><span class="p">];</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+            <span class="p">[</span><span class="n">_self</span><span class="p">.</span><span class="n">abroadshoppinghomeOperator</span> <span class="nf">senderAddShoppingCartWithModel</span><span class="p">:</span><span class="nb">nil</span> <span class="nf">goodsId</span><span class="p">:</span><span class="n">_self</span><span class="p">.</span><span class="n">good</span><span class="p">.</span><span class="n">goodsId</span> <span class="n">completion</span><span class="o">:^</span><span class="p">{</span>
+                <span class="p">[</span><span class="n">UIAlertView</span> <span class="nf">showAlertViewWithTitle</span><span class="p">:</span><span class="s">@"添加成功!"</span> <span class="nf">message</span><span class="p">:</span><span class="s">@"商品已加入购物车"</span> <span class="n">cancelButtonTitle</span><span class="o">:</span><span class="s">@"再逛逛"</span> <span class="n">otherButtonTitles</span><span class="o">:</span><span class="p">@[</span><span class="s">@"去购物车"</span><span class="p">]</span> <span class="n">clickAtIndex</span><span class="o">:^</span><span class="p">(</span><span class="n">NSInteger</span> <span class="n">buttonIndex</span><span class="p">)</span> <span class="p">{</span>
+                    <span class="k">if</span> <span class="p">(</span><span class="n">buttonIndex</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
+                        <span class="p">[[</span><span class="n">HYCurrentVCmanager</span> <span class="nf">shareInstance</span><span class="p">].</span><span class="n">getCurrentVC</span> <span class="nf">HYPushViewController</span><span class="p">:[</span><span class="n">HYCartNewViewController</span> <span class="nf">new</span><span class="p">]</span> <span class="nf">animated</span><span class="p">:</span><span class="nb">YES</span><span class="p">];</span>
+                    <span class="p">}</span>
+                <span class="p">}];</span>
+            <span class="p">}];</span>
+        <span class="p">}</span>
+    <span class="p">}];</span>
+    <span class="p">[</span><span class="n">_selectGoodsView</span> <span class="nf">setNeedsLayout</span><span class="p">];</span>
+    <span class="p">[</span><span class="n">self</span> <span class="nf">setNeedsLayout</span><span class="p">];</span>
+<span class="p">}</span>
+
+<span class="o">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="n">layoutSubviews</span> <span class="p">{</span>
+    <span class="p">[</span><span class="n">super</span> <span class="nf">layoutSubviews</span><span class="p">];</span>
+    
+    <span class="n">CGFloat</span> <span class="n">selectGoodsViewX</span> <span class="o">=</span> <span class="mi">15</span><span class="p">;</span>
+    <span class="n">CGFloat</span> <span class="n">selectGoodsViewY</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="n">CGFloat</span> <span class="n">selectGoodsViewW</span> <span class="o">=</span> <span class="n">self</span><span class="p">.</span><span class="n">width</span> <span class="o">-</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">selectGoodsViewX</span><span class="p">;</span>
+    <span class="n">CGFloat</span> <span class="n">selectGoodsViewH</span> <span class="o">=</span> <span class="p">[</span><span class="n">HYAbroadSelectGoodsView</span> <span class="nf">viewHeightWithGoodsName</span><span class="p">:[</span><span class="n">NSString</span> <span class="nf">stringWithFormat</span><span class="p">:</span><span class="s">@"      %@"</span><span class="p">,</span> <span class="p">[</span><span class="n">_good</span><span class="p">.</span><span class="n">goodsName</span> <span class="nf">trim</span><span class="p">]]</span> <span class="nf">nameGoodEvalution</span><span class="p">:[</span><span class="n">_good</span><span class="p">.</span><span class="n">nameGoodEvalution</span> <span class="nf">trim</span><span class="p">]];</span>
+    <span class="n">_selectGoodsView</span><span class="p">.</span><span class="n">frame</span> <span class="o">=</span> <span class="n">CGRectMake</span><span class="p">(</span><span class="n">selectGoodsViewX</span><span class="p">,</span> <span class="n">selectGoodsViewY</span><span class="p">,</span> <span class="n">selectGoodsViewW</span><span class="p">,</span> <span class="n">selectGoodsViewH</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="o">+</span> <span class="p">(</span><span class="n">CGFloat</span><span class="p">)</span><span class="n">cellHeightWithGood</span><span class="o">:</span><span class="p">(</span><span class="n">AbroadGoods</span> <span class="o">*</span><span class="p">)</span><span class="n">good</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="p">[</span><span class="n">HYAbroadSelectGoodsView</span> <span class="nf">viewHeightWithGoodsName</span><span class="p">:[</span><span class="n">NSString</span> <span class="nf">stringWithFormat</span><span class="p">:</span><span class="s">@"      %@"</span><span class="p">,</span> <span class="p">[</span><span class="n">good</span><span class="p">.</span><span class="n">goodsName</span> <span class="nf">trim</span><span class="p">]]</span> <span class="nf">nameGoodEvalution</span><span class="p">:[</span><span class="n">good</span><span class="p">.</span><span class="n">nameGoodEvalution</span> <span class="nf">trim</span><span class="p">]]</span> <span class="o">+</span> <span class="mi">10</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="k">@end</span>
+
+</code></pre>
+</div>
+
+<p>可以看到, 推荐将<code class="highlighter-rouge">tableviewcell</code>的高度及获取封装在内, 避免和<code class="highlighter-rouge">tableview</code>进行耦合, 这里注意的是以下代码:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>[_self.abroadshoppinghomeOperator senderAddShoppingCartWithModel:nil goodsId:_self.good.goodsId completion:^{
+                [UIAlertView showAlertViewWithTitle:@"添加成功!" message:@"商品已加入购物车" cancelButtonTitle:@"再逛逛" otherButtonTitles:@[@"去购物车"] clickAtIndex:^(NSInteger buttonIndex) {
+                    if (buttonIndex == 1) {
+                        [[HYCurrentVCmanager shareInstance].getCurrentVC HYPushViewController:[HYCartNewViewController new] animated:YES];
+                    }
+                }];
+            }];
+</code></pre>
+</div>
+
+<p>直接在<code class="highlighter-rouge">subview</code>中获取了请求的逻辑, 当调用<code class="highlighter-rouge">opeator</code>的方法时会通过<code class="highlighter-rouge">presenter</code>中间件传递给<code class="highlighter-rouge">viewmodel</code>进行请求, 当请求成功后进行赋值操作刷新<code class="highlighter-rouge">tableview</code>, 最后回调自定义操作弹出了<code class="highlighter-rouge">alert</code>框, 由于都是主线程操作, 也不会有线程安全的问题.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>//
+//  Router.swift
+//  RouterPatterm
+//
+//  Created by 双泉 朱 on 17/4/12.
+//  Copyright © 2017年 Doubles_Z. All rights reserved.
+//
+
+import UIKit
+
+class Router {
+    static let shareRouter = Router()
+    var params: [String : Any]?
+    var routers: [String : Any]?
+    fileprivate let map = ["J1" : "Controller"]
+    
+    func guardRouters(finishedCallback : @escaping () -&gt; ()) {
+        
+        Http.requestData(.get, URLString: "http://localhost:3001/api/J1/getRouters") { (response) in
+            guard let result = response as? [String : Any] else { return }
+            guard let data:[String : Any] = result["data"] as? [String : Any] else { return }
+            guard let routers:[String : Any] = data["routers"] as? [String : Any] else { return }
+            self.routers = routers
+            finishedCallback()
+        }
+    }
+}
+
+extension Router {
+    
+    func addParam(key: String, value: Any) {
+        params?[key] = value
+    }
+    
+    func clearParams() {
+        params?.removeAll()
+    }
+    
+    func push(_ path: String) {
+        
+        guardRouters {
+            guard let state = self.routers?[path] as? String else { return }
+            
+            if state == "app" {
+                guard let nativeController = NSClassFromString("RouterPatterm.\(self.map[path]!)") as? UIViewController.Type else { return }
+                currentController?.navigationController?.pushViewController(nativeController.init(), animated: true)
+            }
+            
+            if state == "web" {
+                
+                let host = "http://localhost:3000/"
+                var query = ""
+                let ref = "client=app"
+                
+                guard let params = self.params else { return }
+                for (key, value) in params {
+                    query += "\(key)=\(value)&amp;"
+                }
+                
+                self.clearParams()
+                
+                let webViewController = WebViewController("\(host)\(path)?\(query)\(ref)")
+                currentController?.navigationController?.pushViewController(webViewController, animated: true)
+            }
+        }
+    }
+}
+
+</code></pre>
+</div>
+<p>由于线上真实项目的路由涉及公司业务, 这里就通过我的一个小<code class="highlighter-rouge">demo</code>进行讲解, <code class="highlighter-rouge">router</code>的本质就是一个映射, 首先<code class="highlighter-rouge">router</code>类是一个单例, 需要有添加和删除参数的接口, 以及可以区分是<code class="highlighter-rouge">native</code>和<code class="highlighter-rouge">h5</code>的设计, 以及之前讲到的降级, 不用看一些三方库的设计多么酷炫, 究其本质还是对于<code class="highlighter-rouge">"\(host)\(path)?\(query)\(ref)"</code>进行逻辑拆分, 使用路由的好处是当使用<code class="highlighter-rouge">cocoapod</code>私有库组件化的时候, 完全避免了多控制器之间的耦合.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="cp">#import &lt;objc/runtime.h&gt;
+</span><span class="k">@interface</span> <span class="nc">MySafeDictionary</span> <span class="p">:</span> <span class="nc">NSObject</span>
+<span class="k">@end</span>
+<span class="k">static</span> <span class="n">NSLock</span> <span class="o">*</span><span class="n">kMySafeLock</span> <span class="o">=</span> <span class="nb">nil</span><span class="p">;</span>
+<span class="k">static</span> <span class="n">IMP</span> <span class="n">kMySafeOriginalIMP</span> <span class="o">=</span> <span class="nb">NULL</span><span class="p">;</span>
+<span class="k">static</span> <span class="n">IMP</span> <span class="n">kMySafeSwizzledIMP</span> <span class="o">=</span> <span class="nb">NULL</span><span class="p">;</span>
+<span class="k">@implementation</span> <span class="nc">MySafeDictionary</span>
+<span class="k">+</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="n">swizzlling</span> <span class="p">{</span>
+    <span class="k">static</span> <span class="n">dispatch_once_t</span> <span class="n">onceToken</span><span class="p">;</span>
+    <span class="n">dispatch_once</span><span class="p">(</span><span class="o">&amp;</span><span class="n">onceToken</span><span class="p">,</span> <span class="o">^</span><span class="p">{</span>
+        <span class="n">kMySafeLock</span> <span class="o">=</span> <span class="p">[[</span><span class="n">NSLock</span> <span class="nf">alloc</span><span class="p">]</span> <span class="nf">init</span><span class="p">];</span>
+    <span class="p">});</span>
+    
+    <span class="p">[</span><span class="n">kMySafeLock</span> <span class="nf">lock</span><span class="p">];</span>
+    
+    <span class="k">do</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">kMySafeOriginalIMP</span> <span class="o">||</span> <span class="n">kMySafeSwizzledIMP</span><span class="p">)</span> <span class="k">break</span><span class="p">;</span>
+        
+        <span class="n">Class</span> <span class="n">originalClass</span> <span class="o">=</span> <span class="n">NSClassFromString</span><span class="p">(</span><span class="s">@"__NSDictionaryM"</span><span class="p">);</span>
+        <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">originalClass</span><span class="p">)</span> <span class="k">break</span><span class="p">;</span>
+        
+        <span class="n">Class</span> <span class="n">swizzledClass</span> <span class="o">=</span> <span class="p">[</span><span class="n">self</span> <span class="nf">class</span><span class="p">];</span>
+        <span class="n">SEL</span> <span class="n">originalSelector</span> <span class="o">=</span> <span class="k">@selector</span><span class="p">(</span><span class="n">setObject</span><span class="o">:</span><span class="n">forKey</span><span class="o">:</span><span class="p">);</span>
+        <span class="n">SEL</span> <span class="n">swizzledSelector</span> <span class="o">=</span> <span class="k">@selector</span><span class="p">(</span><span class="n">safe_setObject</span><span class="o">:</span><span class="n">forKey</span><span class="o">:</span><span class="p">);</span>
+        <span class="n">Method</span> <span class="n">originalMethod</span> <span class="o">=</span> <span class="n">class_getInstanceMethod</span><span class="p">(</span><span class="n">originalClass</span><span class="p">,</span> <span class="n">originalSelector</span><span class="p">);</span>
+        <span class="n">Method</span> <span class="n">swizzledMethod</span> <span class="o">=</span> <span class="n">class_getInstanceMethod</span><span class="p">(</span><span class="n">swizzledClass</span><span class="p">,</span> <span class="n">swizzledSelector</span><span class="p">);</span>
+        <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">originalMethod</span> <span class="o">||</span> <span class="o">!</span><span class="n">swizzledMethod</span><span class="p">)</span> <span class="k">break</span><span class="p">;</span>
+        
+        <span class="n">IMP</span> <span class="n">originalIMP</span> <span class="o">=</span> <span class="n">method_getImplementation</span><span class="p">(</span><span class="n">originalMethod</span><span class="p">);</span>
+        <span class="n">IMP</span> <span class="n">swizzledIMP</span> <span class="o">=</span> <span class="n">method_getImplementation</span><span class="p">(</span><span class="n">swizzledMethod</span><span class="p">);</span>
+        <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span><span class="n">originalType</span> <span class="o">=</span> <span class="n">method_getTypeEncoding</span><span class="p">(</span><span class="n">originalMethod</span><span class="p">);</span>
+        <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span><span class="n">swizzledType</span> <span class="o">=</span> <span class="n">method_getTypeEncoding</span><span class="p">(</span><span class="n">swizzledMethod</span><span class="p">);</span>
+        
+        <span class="n">kMySafeOriginalIMP</span> <span class="o">=</span> <span class="n">originalIMP</span><span class="p">;</span>
+        <span class="n">kMySafeSwizzledIMP</span> <span class="o">=</span> <span class="n">swizzledIMP</span><span class="p">;</span>
+        
+        <span class="n">class_replaceMethod</span><span class="p">(</span><span class="n">originalClass</span><span class="p">,</span><span class="n">swizzledSelector</span><span class="p">,</span><span class="n">originalIMP</span><span class="p">,</span><span class="n">originalType</span><span class="p">);</span>
+        <span class="n">class_replaceMethod</span><span class="p">(</span><span class="n">originalClass</span><span class="p">,</span><span class="n">originalSelector</span><span class="p">,</span><span class="n">swizzledIMP</span><span class="p">,</span><span class="n">swizzledType</span><span class="p">);</span>
+    <span class="p">}</span> <span class="k">while</span> <span class="p">(</span><span class="nb">NO</span><span class="p">);</span>
+    
+    <span class="p">[</span><span class="n">kMySafeLock</span> <span class="nf">unlock</span><span class="p">];</span>
+<span class="p">}</span>
+<span class="o">+</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="n">restore</span> <span class="p">{</span>
+    <span class="p">[</span><span class="n">kMySafeLock</span> <span class="nf">lock</span><span class="p">];</span>
+    
+    <span class="k">do</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">kMySafeOriginalIMP</span> <span class="o">||</span> <span class="o">!</span><span class="n">kMySafeSwizzledIMP</span><span class="p">)</span> <span class="k">break</span><span class="p">;</span>
+        
+        <span class="n">Class</span> <span class="n">originalClass</span> <span class="o">=</span> <span class="n">NSClassFromString</span><span class="p">(</span><span class="s">@"__NSDictionaryM"</span><span class="p">);</span>
+        <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">originalClass</span><span class="p">)</span> <span class="k">break</span><span class="p">;</span>
+        
+        <span class="n">Method</span> <span class="n">originalMethod</span> <span class="o">=</span> <span class="nb">NULL</span><span class="p">;</span>
+        <span class="n">Method</span> <span class="n">swizzledMethod</span> <span class="o">=</span> <span class="nb">NULL</span><span class="p">;</span>
+        <span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">outCount</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+        <span class="n">Method</span> <span class="o">*</span><span class="n">methodList</span> <span class="o">=</span> <span class="n">class_copyMethodList</span><span class="p">(</span><span class="n">originalClass</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">outCount</span><span class="p">);</span>
+        <span class="k">for</span> <span class="p">(</span><span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">idx</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span> <span class="n">idx</span> <span class="o">&lt;</span> <span class="n">outCount</span><span class="p">;</span> <span class="n">idx</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">Method</span> <span class="n">aMethod</span> <span class="o">=</span> <span class="n">methodList</span><span class="p">[</span><span class="nf">idx</span><span class="p">];</span>
+            <span class="n">IMP</span> <span class="n">aIMP</span> <span class="o">=</span> <span class="n">method_getImplementation</span><span class="p">(</span><span class="n">aMethod</span><span class="p">);</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">aIMP</span> <span class="o">==</span> <span class="n">kMySafeSwizzledIMP</span><span class="p">)</span> <span class="p">{</span>
+                <span class="n">originalMethod</span> <span class="o">=</span> <span class="n">aMethod</span><span class="p">;</span>
+            <span class="p">}</span>
+            <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">aIMP</span> <span class="o">==</span> <span class="n">kMySafeOriginalIMP</span><span class="p">)</span> <span class="p">{</span>
+                <span class="n">swizzledMethod</span> <span class="o">=</span> <span class="n">aMethod</span><span class="p">;</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+        <span class="c1">// 尽可能使用exchange,因为它是atomic的
+</span>        <span class="k">if</span> <span class="p">(</span><span class="n">originalMethod</span> <span class="o">&amp;&amp;</span> <span class="n">swizzledMethod</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">method_exchangeImplementations</span><span class="p">(</span><span class="n">originalMethod</span><span class="p">,</span> <span class="n">swizzledMethod</span><span class="p">);</span>
+        <span class="p">}</span>
+        <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">originalMethod</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">method_setImplementation</span><span class="p">(</span><span class="n">originalMethod</span><span class="p">,</span> <span class="n">kMySafeOriginalIMP</span><span class="p">);</span>
+        <span class="p">}</span>
+        <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">swizzledMethod</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">method_setImplementation</span><span class="p">(</span><span class="n">swizzledMethod</span><span class="p">,</span> <span class="n">kMySafeSwizzledIMP</span><span class="p">);</span>
+        <span class="p">}</span>
+        <span class="n">kMySafeOriginalIMP</span> <span class="o">=</span> <span class="nb">NULL</span><span class="p">;</span>
+        <span class="n">kMySafeSwizzledIMP</span> <span class="o">=</span> <span class="nb">NULL</span><span class="p">;</span>
+    <span class="p">}</span> <span class="k">while</span> <span class="p">(</span><span class="nb">NO</span><span class="p">);</span>
+    
+    <span class="p">[</span><span class="n">kMySafeLock</span> <span class="nf">unlock</span><span class="p">];</span>
+<span class="p">}</span>
+<span class="o">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="n">safe_setObject</span><span class="o">:</span><span class="p">(</span><span class="n">id</span><span class="p">)</span><span class="n">anObject</span> <span class="n">forKey</span><span class="o">:</span><span class="p">(</span><span class="n">id</span><span class="o">&lt;</span><span class="n">NSCopying</span><span class="o">&gt;</span><span class="p">)</span><span class="n">aKey</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">anObject</span> <span class="o">&amp;&amp;</span> <span class="n">aKey</span><span class="p">)</span> <span class="p">{</span>
+        <span class="p">[</span><span class="n">self</span> <span class="nf">safe_setObject</span><span class="p">:</span><span class="n">anObject</span> <span class="nf">forKey</span><span class="p">:</span><span class="n">aKey</span><span class="p">];</span>
+    <span class="p">}</span>
+    <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">aKey</span><span class="p">)</span> <span class="p">{</span>
+        <span class="p">[(</span><span class="n">NSMutableDictionary</span> <span class="o">*</span><span class="p">)</span><span class="n">self</span> <span class="nf">removeObjectForKey</span><span class="p">:</span><span class="n">aKey</span><span class="p">];</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+<span class="k">@end</span>
+</code></pre>
+</div>
+<p>对于<code class="highlighter-rouge">AOP</code>这种, 我截取了一位<a href="http://www.tanhao.me/code/160723.html/">大佬博客</a>中的代码, 可以看到的是, 当多线程的时候, 我们只需要在<code class="highlighter-rouge">hook</code>的时候进行加锁和解锁保持线程安全就可以了, 当然也可以使用<code class="highlighter-rouge">Aspects</code>这个库来简化<code class="highlighter-rouge">hook</code>操作,毕竟<code class="highlighter-rouge">AOP</code>这块是要看业务逻辑的, 并不能一概而论.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="c1">//
+//  UIViewController+hook.m
+//  SQTemplate
+//
+//  Created by 朱双泉 on 23/11/2017.
+//  Copyright © 2017 Doubles_Z. All rights reserved.
+//
+</span>
+<span class="cp">#import "UIViewController+hook.h"
+#import "CurrentViewController.h"
+#import &lt;Aspects.h&gt;
+</span>
+<span class="k">@implementation</span> <span class="nc">UIViewController</span> <span class="p">(</span><span class="nl">hook</span><span class="p">)</span>
+
+<span class="k">+</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="n">load</span> <span class="p">{</span>
+    
+    <span class="k">static</span> <span class="n">dispatch_once_t</span> <span class="n">onceToken</span><span class="p">;</span>
+    <span class="n">dispatch_once</span><span class="p">(</span><span class="o">&amp;</span><span class="n">onceToken</span><span class="p">,</span> <span class="o">^</span><span class="p">{</span>
+        <span class="p">[</span><span class="n">UIViewController</span> <span class="nf">aspect_hookSelector</span><span class="p">:</span><span class="k">@selector</span><span class="p">(</span><span class="nf">viewWillAppear</span><span class="p">:)</span> <span class="n">withOptions</span><span class="o">:</span><span class="n">AspectPositionAfter</span> <span class="n">usingBlock</span><span class="o">:^</span><span class="p">(</span><span class="n">id</span><span class="o">&lt;</span><span class="n">AspectInfo</span><span class="o">&gt;</span> <span class="n">aspectInfo</span><span class="p">,</span> <span class="n">BOOL</span> <span class="n">animated</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">kCurrentViewController</span> <span class="o">=</span> <span class="n">aspectInfo</span><span class="p">.</span><span class="n">instance</span><span class="p">;</span>
+        <span class="p">}</span> <span class="n">error</span><span class="o">:</span><span class="nb">NULL</span><span class="p">];</span>
+    <span class="p">});</span>
+<span class="p">}</span>    
+<span class="k">@end</span>
+
+</code></pre>
+</div>
+<p>最常用的<code class="highlighter-rouge">AOP</code>就是<code class="highlighter-rouge">hook</code>生命周期来获取当前控制器, 通过一个全局变量可以全方位获取, 以上代码就是通过<code class="highlighter-rouge">AOP</code>模式进行面向切片编程, 避免需要继承一个基类而带来的强耦合.</p>
+
+<h4 id="生成工具">生成工具</h4>
+
+<p><img src="http://upload-images.jianshu.io/upload_images/1229762-b379242482f64cae.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="" /></p>
+
+<p>所谓工欲善其事必先利其器, 上面的架构设计虽好, 但要让其他同学模仿写法实在是太麻烦了, 也会导致抵触情绪, 但为了我们之前代码规范的目标, 架构设计的执行也是志在必行, 这时我们就需要进行代码自动生成的工作.</p>
+
+<p>所谓的代码生成究其本质就是字符串替换, 就是将可变的字符串替换模板中的标记, <code class="highlighter-rouge">ES6</code>中的模板字符串<code class="highlighter-rouge">${变量}</code>也是这个道理.</p>
+
+<p>我们来看一下模板:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="c1">//
+//  InterfaceTemplate.h
+//  SQTemplate
+//
+//  Created by 双泉 朱 on 17/5/5.
+//  Copyright © 2017年 Doubles_Z. All rights reserved.
+//
+</span>
+<span class="cp">#import &lt;UIKit/UIKit.h&gt;
+</span>
+<span class="k">@protocol</span> <span class="err">&lt;#</span><span class="nc">Root</span><span class="err">#</span><span class="o">&gt;&lt;</span><span class="err">#</span><span class="n">Unit</span><span class="err">#</span><span class="o">&gt;</span><span class="n">ModelInterface</span> <span class="o">&lt;</span><span class="n">NSObject</span><span class="o">&gt;</span>
+
+<span class="o">&lt;</span><span class="err">#</span><span class="n">ModelInterface</span><span class="err">#</span><span class="o">&gt;</span>
+<span class="k">@end</span>
+
+<span class="k">@protocol</span> <span class="err">&lt;#</span><span class="nc">Root</span><span class="err">#</span><span class="o">&gt;&lt;</span><span class="err">#</span><span class="n">Unit</span><span class="err">#</span><span class="o">&gt;</span><span class="n">ViewModelInterface</span> <span class="o">&lt;</span><span class="n">NSObject</span><span class="o">&gt;</span>
+
+<span class="k">@optional</span>
+<span class="k">@property</span> <span class="p">(</span><span class="n">nonatomic</span><span class="p">,</span><span class="n">strong</span><span class="p">)</span> <span class="n">id</span><span class="o">&lt;&lt;</span><span class="err">#</span><span class="n">Root</span><span class="err">#</span><span class="o">&gt;&lt;</span><span class="err">#</span><span class="n">Unit</span><span class="err">#</span><span class="o">&gt;</span><span class="n">ModelInterface</span><span class="o">&gt;</span> <span class="n">model</span><span class="p">;</span>
+
+<span class="k">@optional</span>
+<span class="o">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="n">initializeWithModel</span><span class="o">:</span><span class="p">(</span><span class="n">id</span><span class="o">&lt;&lt;</span><span class="err">#</span><span class="n">Root</span><span class="err">#</span><span class="o">&gt;&lt;</span><span class="err">#</span><span class="n">Unit</span><span class="err">#</span><span class="o">&gt;</span><span class="n">ModelInterface</span><span class="o">&gt;</span><span class="p">)</span><span class="n">model</span> <span class="o">&lt;</span><span class="err">#</span><span class="n">InitializeInterface</span><span class="err">#</span><span class="o">&gt;</span><span class="n">completion</span><span class="o">:</span><span class="p">(</span><span class="kt">void</span><span class="p">(</span><span class="o">^</span><span class="p">)())</span><span class="n">completion</span><span class="p">;</span>
+<span class="o">&lt;</span><span class="err">#</span><span class="n">ViewModelInterface</span><span class="err">#</span><span class="o">&gt;</span>
+<span class="k">@end</span>
+
+<span class="k">@protocol</span> <span class="err">&lt;#</span><span class="nc">Root</span><span class="err">#</span><span class="o">&gt;&lt;</span><span class="err">#</span><span class="n">Unit</span><span class="err">#</span><span class="o">&gt;</span><span class="n">ViewInterface</span> <span class="o">&lt;</span><span class="n">NSObject</span><span class="o">&gt;</span>
+
+<span class="k">@property</span> <span class="p">(</span><span class="n">nonatomic</span><span class="p">,</span><span class="n">weak</span><span class="p">)</span> <span class="n">id</span><span class="o">&lt;&lt;</span><span class="err">#</span><span class="n">Root</span><span class="err">#</span><span class="o">&gt;&lt;</span><span class="err">#</span><span class="n">Unit</span><span class="err">#</span><span class="o">&gt;</span><span class="n">ViewModelInterface</span><span class="o">&gt;</span> <span class="o">&lt;</span><span class="err">#</span><span class="n">unit</span><span class="err">#</span><span class="o">&gt;</span><span class="n">ViewModel</span><span class="p">;</span>
+<span class="k">@property</span> <span class="p">(</span><span class="n">nonatomic</span><span class="p">,</span><span class="n">weak</span><span class="p">)</span> <span class="n">id</span><span class="o">&lt;&lt;</span><span class="err">#</span><span class="n">Root</span><span class="err">#</span><span class="o">&gt;&lt;</span><span class="err">#</span><span class="n">Unit</span><span class="err">#</span><span class="o">&gt;</span><span class="n">ViewModelInterface</span><span class="o">&gt;</span> <span class="o">&lt;</span><span class="err">#</span><span class="n">unit</span><span class="err">#</span><span class="o">&gt;</span><span class="n">Operator</span><span class="p">;</span>
+
+<span class="k">@end</span>
+
+</code></pre>
+</div>
+
+<p>并进行读写操作:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="c1">//
+//  SQFileParser.m
+//  SQBuilder
+//
+//  Created by 朱双泉 on 17/08/2017.
+//  Copyright © 2017 Castie!. All rights reserved.
+//
+</span>
+<span class="cp">#import "SQFileParser.h"
+</span>
+<span class="k">@implementation</span> <span class="nc">SQFileParser</span>
+
+<span class="k">+</span> <span class="p">(</span><span class="n">NSDictionary</span> <span class="o">*</span><span class="p">)</span><span class="n">parser_plist_r</span> <span class="p">{</span>
+    
+    <span class="n">NSBundle</span> <span class="o">*</span> <span class="n">bundle</span> <span class="o">=</span> <span class="p">[</span><span class="n">NSBundle</span> <span class="nf">bundleWithPath</span><span class="p">:[[</span><span class="n">NSBundle</span> <span class="nf">mainBundle</span><span class="p">]</span> <span class="nf">pathForResource</span><span class="p">:</span><span class="s">@"builder.bundle"</span> <span class="nf">ofType</span><span class="p">:</span><span class="nb">nil</span><span class="p">]];</span>
+    <span class="n">NSDictionary</span> <span class="o">*</span> <span class="n">config</span> <span class="o">=</span> <span class="p">[</span><span class="n">NSDictionary</span> <span class="nf">dictionaryWithContentsOfFile</span><span class="p">:[</span><span class="n">bundle</span> <span class="nf">pathForResource</span><span class="p">:</span><span class="s">@"config/config.plist"</span> <span class="nf">ofType</span><span class="p">:</span><span class="nb">nil</span><span class="p">]];</span>
+    <span class="n">NSMutableDictionary</span> <span class="o">*</span> <span class="n">plist</span> <span class="o">=</span> <span class="p">[</span><span class="n">NSDictionary</span> <span class="nf">dictionaryWithContentsOfFile</span><span class="p">:[</span><span class="n">bundle</span> <span class="nf">pathForResource</span><span class="p">:[</span><span class="n">NSString</span> <span class="nf">stringWithFormat</span><span class="p">:</span><span class="s">@"config/%@.plist"</span><span class="p">,</span><span class="n">config</span><span class="p">[</span><span class="s">@"builderSource"</span><span class="p">]]</span> <span class="nf">ofType</span><span class="p">:</span><span class="nb">nil</span><span class="p">]].</span><span class="n">mutableCopy</span><span class="p">;</span>
+    <span class="p">[</span><span class="n">config</span> <span class="nf">enumerateKeysAndObjectsUsingBlock</span><span class="p">:</span><span class="o">^</span><span class="p">(</span><span class="n">id</span>  <span class="n">_Nonnull</span> <span class="n">key</span><span class="p">,</span> <span class="n">id</span>  <span class="n">_Nonnull</span> <span class="n">obj</span><span class="p">,</span> <span class="n">BOOL</span> <span class="o">*</span> <span class="n">_Nonnull</span> <span class="n">stop</span><span class="p">)</span> <span class="p">{</span>
+        <span class="p">[</span><span class="n">plist</span> <span class="nf">setObject</span><span class="p">:</span><span class="n">obj</span> <span class="nf">forKey</span><span class="p">:</span><span class="n">key</span><span class="p">];</span>
+    <span class="p">}];</span>
+    <span class="k">return</span> <span class="n">plist</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="o">+</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="n">parser_rw</span><span class="o">:</span><span class="p">(</span><span class="n">NSString</span> <span class="o">*</span><span class="p">)</span><span class="n">path</span> <span class="n">code</span><span class="o">:</span><span class="p">(</span><span class="n">NSString</span> <span class="o">*</span><span class="p">)</span><span class="n">code</span> <span class="n">filename</span><span class="o">:</span><span class="p">(</span><span class="n">NSString</span> <span class="o">*</span><span class="p">)</span><span class="n">filename</span> <span class="n">header</span><span class="o">:</span><span class="p">(</span><span class="n">NSString</span> <span class="o">*</span><span class="p">)</span><span class="n">header</span> <span class="n">parameter</span><span class="o">:</span><span class="p">(</span><span class="n">NSMutableArray</span> <span class="o">*</span><span class="p">)</span><span class="n">parameter</span> <span class="p">{</span>
+
+    <span class="n">NSString</span> <span class="o">*</span> <span class="n">arch</span> <span class="o">=</span> <span class="p">[[</span><span class="n">filename</span> <span class="nf">componentsSeparatedByString</span><span class="p">:</span><span class="s">@"."</span><span class="p">]</span><span class="nf">firstObject</span><span class="p">];</span>
+    <span class="n">NSString</span> <span class="o">*</span> <span class="n">suffix</span> <span class="o">=</span> <span class="p">[[</span><span class="n">filename</span> <span class="nf">componentsSeparatedByString</span><span class="p">:</span><span class="s">@"."</span><span class="p">]</span><span class="nf">lastObject</span><span class="p">];</span>
+    <span class="n">NSString</span> <span class="o">*</span> <span class="n">filename_r</span> <span class="o">=</span> <span class="p">[</span><span class="n">NSString</span> <span class="nf">stringWithFormat</span><span class="p">:</span><span class="s">@"%@Template.%@"</span><span class="p">,</span> <span class="n">arch</span><span class="p">,</span><span class="n">suffix</span><span class="p">];</span>
+    <span class="n">NSString</span> <span class="o">*</span> <span class="n">filename_w</span> <span class="o">=</span> <span class="p">[</span><span class="n">NSString</span> <span class="nf">stringWithFormat</span><span class="p">:</span><span class="s">@"%@/%@%@.%@"</span><span class="p">,</span> <span class="n">path</span><span class="p">,</span><span class="n">header</span><span class="p">,</span><span class="n">arch</span><span class="p">,</span><span class="n">suffix</span><span class="p">];</span>
+    <span class="n">NSString</span> <span class="o">*</span> <span class="n">template</span> <span class="o">=</span>  <span class="p">[</span><span class="n">SQFileParser</span> <span class="nf">parser_r</span><span class="p">:</span><span class="n">filename_r</span> <span class="nf">code</span><span class="p">:[</span><span class="n">code</span> <span class="nf">lowercaseString</span><span class="p">]];</span>
+    <span class="p">[[</span><span class="n">SQFileParser</span> <span class="nf">replaceThougth</span><span class="p">:</span><span class="n">template</span> <span class="nf">parameter</span><span class="p">:</span><span class="nf">parameter</span><span class="p">]</span> <span class="n">writeToFile</span><span class="o">:</span><span class="n">filename_w</span> <span class="n">atomically</span><span class="o">:</span><span class="nb">YES</span> <span class="n">encoding</span><span class="o">:</span><span class="n">NSUTF8StringEncoding</span> <span class="n">error</span><span class="o">:</span><span class="nb">nil</span><span class="p">];</span>
+<span class="p">}</span>
+
+<span class="o">+</span> <span class="p">(</span><span class="n">NSString</span> <span class="o">*</span><span class="p">)</span><span class="n">parser_r</span><span class="o">:</span><span class="p">(</span><span class="n">NSString</span> <span class="o">*</span><span class="p">)</span><span class="n">filename</span> <span class="n">code</span><span class="o">:</span><span class="p">(</span><span class="n">NSString</span> <span class="o">*</span><span class="p">)</span><span class="n">code</span> <span class="p">{</span>
+    
+    <span class="n">NSBundle</span> <span class="o">*</span> <span class="n">bundle</span> <span class="o">=</span> <span class="p">[</span><span class="n">NSBundle</span> <span class="nf">bundleWithPath</span><span class="p">:[[</span><span class="n">NSBundle</span> <span class="nf">mainBundle</span><span class="p">]</span> <span class="nf">pathForResource</span><span class="p">:</span><span class="s">@"builder.bundle"</span> <span class="nf">ofType</span><span class="p">:</span><span class="nb">nil</span><span class="p">]];</span>
+    <span class="k">return</span> <span class="p">[</span><span class="n">NSMutableString</span> <span class="nf">stringWithContentsOfFile</span><span class="p">:[</span><span class="n">bundle</span> <span class="nf">pathForResource</span><span class="p">:[</span><span class="n">NSString</span> <span class="nf">stringWithFormat</span><span class="p">:</span><span class="s">@"template/%@/%@"</span><span class="p">,</span> <span class="n">code</span><span class="p">,</span> <span class="n">filename</span><span class="p">]</span> <span class="nf">ofType</span><span class="p">:</span><span class="nb">nil</span><span class="p">]</span> <span class="n">encoding</span><span class="o">:</span><span class="n">NSUTF8StringEncoding</span> <span class="n">error</span><span class="o">:</span><span class="nb">nil</span><span class="p">];</span>
+<span class="p">}</span>
+
+<span class="k">static</span> <span class="n">NSString</span> <span class="o">*</span> <span class="n">code</span><span class="p">;</span>
+
+<span class="k">+</span> <span class="p">(</span><span class="n">NSString</span> <span class="o">*</span><span class="p">)</span><span class="nf">replaceThougth</span><span class="p">:(</span><span class="n">NSString</span> <span class="o">*</span><span class="p">)</span><span class="nv">templete</span> <span class="nf">parameter</span><span class="p">:(</span><span class="n">NSMutableArray</span> <span class="o">*</span><span class="p">)</span><span class="nv">parameter</span> <span class="p">{</span>
+    
+    <span class="n">__block</span> <span class="n">NSString</span> <span class="o">*</span> <span class="n">temp</span> <span class="o">=</span> <span class="n">templete</span><span class="p">;</span>
+    <span class="p">[[</span><span class="n">parameter</span> <span class="nf">firstObject</span><span class="p">]</span> <span class="nf">enumerateKeysAndObjectsUsingBlock</span><span class="p">:</span><span class="o">^</span><span class="p">(</span><span class="n">NSString</span> <span class="o">*</span>  <span class="n">_Nonnull</span> <span class="n">key</span><span class="p">,</span> <span class="n">NSString</span> <span class="o">*</span>  <span class="n">_Nonnull</span> <span class="n">obj</span><span class="p">,</span> <span class="n">BOOL</span> <span class="o">*</span> <span class="n">_Nonnull</span> <span class="n">stop</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">temp</span> <span class="o">=</span> <span class="p">[</span><span class="n">templete</span> <span class="nf">stringByReplacingOccurrencesOfString</span><span class="p">:</span><span class="n">key</span> <span class="nf">withString</span><span class="p">:</span><span class="n">obj</span><span class="p">];</span>
+    <span class="p">}];</span>
+    <span class="p">[</span><span class="n">parameter</span> <span class="nf">removeObjectAtIndex</span><span class="p">:</span><span class="mi">0</span><span class="p">];</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">parameter</span><span class="p">.</span><span class="n">count</span><span class="p">)</span> <span class="p">{</span>
+        <span class="p">[</span><span class="n">SQFileParser</span> <span class="nf">replaceThougth</span><span class="p">:</span><span class="n">temp</span> <span class="nf">parameter</span><span class="p">:</span><span class="n">parameter</span><span class="p">];</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+        <span class="n">code</span> <span class="o">=</span> <span class="n">temp</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="n">code</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="k">@end</span>
+
+</code></pre>
+</div>
+
+<p>关于生成工具的开发之前有一篇详细论述了, 这里就不过多赘述了. <a href="http://www.jianshu.com/p/cb36b36f90dd">点击跳转</a></p>
+
+<p><img src="http://upload-images.jianshu.io/upload_images/1229762-192d8c731f9f7a40.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="" /></p>
+
+<p>我司已经通过读取表格进行生成<code class="highlighter-rouge">iOS</code>和<code class="highlighter-rouge">Android</code>两端的代码, 保持两端逻辑相同, 但由于表格的设计与公司业务及个人习惯相关, 这部分代码不予公开, 请谅解.</p>
+
+<p><img src="http://upload-images.jianshu.io/upload_images/1229762-21cbe486dc345f6e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="" /></p>
+
+<p>可以看到生成的文件通过文件夹的形式存在, 只需要将文件夹导入项目中即可立即获得之前所设计的架构.</p>
+
+<p><img src="http://upload-images.jianshu.io/upload_images/1229762-4b973424329156f3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="" /></p>
+
+<p>最后我将<code class="highlighter-rouge">架构demo</code>以及<code class="highlighter-rouge">工具</code>放在了<a href="https://github.com/coderZsq/coderZsq.project.oc">github</a>上, 关于上面<code class="highlighter-rouge">router</code>降级这块可以<a href="https://github.com/coderZsq/coderZsq.target.swift">点击这里下载</a></p>
+
+<h4 id="如何使用">如何使用</h4>
+
+<p><a href="https://github.com/coderZsq/coderZsq.project.oc">coderZsq.project.oc</a></p>
+
+<p><img src="http://upload-images.jianshu.io/upload_images/1229762-57f504685f17ac57.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="" /></p>
+
+<table>
+  <tbody>
+    <tr>
+      <td><code class="highlighter-rouge">git clone</code></td>
+      <td><code class="highlighter-rouge">download</code> 后打开<code class="highlighter-rouge">SQTemplate</code>工作空间, 就能够看到两个项目.</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><code class="highlighter-rouge">SQBuilder</code>是生成工具的项目.
+<img src="http://upload-images.jianshu.io/upload_images/1229762-070ec94a17dfb88d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="" /></p>
+
+<p>配置生成工具的接口文档字段后, 点击<code class="highlighter-rouge">Run</code>即可生成代码, 显示在桌面.</p>
+
+<p><code class="highlighter-rouge">SQTemplate</code>是模板生成后在项目中使用的<code class="highlighter-rouge">demo</code>.</p>
+
+<p><img src="http://upload-images.jianshu.io/upload_images/1229762-73c1cf4e7e79c57c.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="" /></p>
+
+<p>可以看到上述所有的架构设计模式的简单引用, 点击秒速五厘米的图片, 可以通过路由跳转到下一页面.</p>
+
+<p>图片下面的数据是通过<code class="highlighter-rouge">koa</code>服务返回的数据, 下载<a href="https://github.com/coderZsq/coderZsq.target.swift">coderZsq.target.swift</a>中的<code class="highlighter-rouge">RouterPattern</code>中的<code class="highlighter-rouge">/server/RouterPattern</code>, <code class="highlighter-rouge">cd</code>进去后执行<code class="highlighter-rouge">npm start</code>, 即可开启服务. 当然你需要<code class="highlighter-rouge">Node</code>, 环境和<code class="highlighter-rouge">webpack</code>的全局环境.</p>
+
+<p>如果你需要查看了解<code class="highlighter-rouge">Router</code>部分, 可以通过<a href="https://github.com/coderZsq/coderZsq.target.swift">coderZsq.target.swift</a>这个项目进行学习交流.</p>
+
+<ul>
+  <li><code class="highlighter-rouge">app/RouterPattern</code> 直接双击打开项目即可</li>
+  <li><code class="highlighter-rouge">web/RouterPattern</code> <code class="highlighter-rouge">cd</code> 进去 <code class="highlighter-rouge">npm run dev</code></li>
+  <li><code class="highlighter-rouge">server/RouterPattern</code> <code class="highlighter-rouge">cd</code> 进去 <code class="highlighter-rouge">npm start</code></li>
+</ul>
+
+<p>具体可以查看<a href="http://www.jianshu.com/p/7054a694cfeb">Hybird 搭建客户端实时降级架构</a>系列.</p>
+
+<p>注意!!! 使用<code class="highlighter-rouge">git</code>上传时会通过<code class="highlighter-rouge">.gitignore</code>忽略上传文件, 所以<code class="highlighter-rouge">pull</code>下来记得<code class="highlighter-rouge">pod install</code>  <code class="highlighter-rouge">npm install</code>, 记得<code class="highlighter-rouge">pod install</code>  <code class="highlighter-rouge">npm install</code>记得<code class="highlighter-rouge">pod install</code>  <code class="highlighter-rouge">npm install</code>, 重要的事情说三遍!!</p>
+
+<p>以上就是我对于移动端架构初探的心得, 期待与各位大佬进行交流.</p>
+
+<h5 id="about">About:</h5>
+
+<p><img src="http://upload-images.jianshu.io/upload_images/1229762-3f8925783027b3fa.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="点击下方链接跳转!!" /></p>
+
+<p><a href="https://github.com/coderZsq/coderZsq.project.oc">🌟 项目源码 请点这里🌟 »&gt; 喜欢的朋友请点喜欢 »&gt; 下载源码的同学请送下小星星 »&gt; 有闲钱的壕们可以进行打赏 »&gt; 小弟会尽快推出更好的文章和大家分享 »&gt; 你的激励就是我的动力!! </a></p>
+
+
+  </section>
+</article>
+
+<section class="read-more">
+   
+   
+   <div class="read-more-item">
+       <span class="read-more-item-dim">最近的文章</span>
+       <h2 class="post-list__post-title post-title"><a href="/2017/11/iOS-%E5%85%B3%E4%BA%8E%E7%BB%84%E4%BB%B6%E5%8C%96Router%E8%AE%BE%E8%AE%A1%E7%9A%84%E4%BA%89%E8%BE%A9/" title="link to iOS 关于组件化Router设计的争辩">iOS 关于组件化Router设计的争辩</a></h2>
+       <p class="excerpt">  本文记录了与一位同学关于Router设计的争论, 对于url router 和 protocol router 的争论, 架构并没有孰优孰劣, 只有适合与否, 希望能有更多的同学一起踊跃探讨.对于组件化, 相信大家一定不陌生, 但针对组件化的方案及思路, 大家或多或少都有一些自己的想法, 如果不清楚组件化的同学可以先通过以下文章预习一下.参考阅读:alibaba/BeeHive蘑菇街 App 的组件化之路蘑菇街 App 的组件化之路·续iOS应用架构谈 组件化方案iOS组件化方案组件化...&hellip;</p>
+       <div class="post-list__meta"><time datetime="2017-11-28 20:16:00 +0800" class="post-list__meta--date date">2017-11-28</time> &#8226; <span class="post-list__meta--tags tags">移动开发</span><a class="btn-border-small" href=/2017/11/iOS-%E5%85%B3%E4%BA%8E%E7%BB%84%E4%BB%B6%E5%8C%96Router%E8%AE%BE%E8%AE%A1%E7%9A%84%E4%BA%89%E8%BE%A9/>继续阅读</a></div>
+   </div>
+   
+   
+   
+   
+   <div class="read-more-item">
+       <span class="read-more-item-dim">更早的文章</span>
+       <h2 class="post-list__post-title post-title"><a href="/2017/11/Web-%E4%BD%BF%E7%94%A8fetch%E8%AF%B7%E6%B1%82%E5%90%8E%E7%AB%AF%E6%9C%8D%E5%8A%A1/" title="link to Web 使用fetch请求后端服务">Web 使用fetch请求后端服务</a></h2>
+       <p class="excerpt">  上篇我们使用了ssm构建了我们简历的服务, 这篇我们从前端的视角进行网络请求, 对于react就要讲讲fetch这个库的使用, 对于vue就要讲讲axios这个库, 对于axios之前已经讲过, 这篇就来讲讲fetch的使用.参考链接:  Web 是时候用前端写个简历了!  Web 前端项目要从基本布局开始  Web 简历一定要设计的美美的  Web 使用Vue代替陈旧的jQuery  Web Vue项目速转.htm静态网页  Web 将项目快速迁移至React  Web PC项目快速...&hellip;</p>
+       <div class="post-list__meta"><time datetime="2017-11-15 11:33:00 +0800" class="post-list__meta--date date">2017-11-15</time> &#8226; <span class="post-list__meta--tags tags">前端开发</span><a class="btn-border-small" href=/2017/11/Web-%E4%BD%BF%E7%94%A8fetch%E8%AF%B7%E6%B1%82%E5%90%8E%E7%AB%AF%E6%9C%8D%E5%8A%A1/>继续阅读</a></div>
+   </div>
+   
+</section>
+
+<section class="post-comments">
+  
+  
+  
+  
+</section>
+
+
+            <section class="footer">
+    <footer>
+    	<span class="footer__copyright">本站点采用<a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">知识共享 署名-非商业性使用-相同方式共享 4.0 国际 许可协议</a></span>
+        <span class="footer__copyright">由 <a href="https://jekyllrb.com">Jekyll</a> 于 2019-09-28 生成，感谢 <a href="https://www.digitalocean.com/?refcode=30ed2d146762">Digital Ocean</a> 为本站提供稳定的 VPS 服务</span>
+        <span class="footer__copyright">本站由 <a href="https://github.com/coderZsq">@Castie!</a> 创建，采用 <a href="https://github.com/onevcat/vno-jekyll">Vno - Jekyll</a> 作为主题，您可以在 GitHub 找到<a href="https://github.com/onevcat/OneV-s-Den">本站源码</a> - &copy; 2019</span>
+    </footer>
+</section>
+
+        </div>
+    </div>
+    
+    <script type="text/javascript" src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+
+<script type="text/javascript" src="/js/main.js"></script>
+
+
+
+    
+  </body>
+
+</html>

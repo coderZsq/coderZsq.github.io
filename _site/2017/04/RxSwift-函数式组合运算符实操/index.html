@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <title>Castie! Notes</title>
+  <meta name="description" content="  上周我们开启了RxSwift的学习之旅, 从可观察序列–&gt;过滤运算符–&gt;映射运算符, 接下来我们来说说组合运算符. 说实话, 对于之前的内容的学习, 我觉得还是比较通俗易懂的, 但是这次的组合运算符相比之前在理解难易程度上又上了个档次, 本节我们就来攻克这一挑战吧! 代码见:github">
+  <meta name="author" content="Wei Wang">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="RxSwift 函数式组合运算符实操">
+  <meta name="twitter:description" content="  上周我们开启了RxSwift的学习之旅, 从可观察序列–&gt;过滤运算符–&gt;映射运算符, 接下来我们来说说组合运算符. 说实话, 对于之前的内容的学习, 我觉得还是比较通俗易懂的, 但是这次的组合运算符相比之前在理解难易程度上又上了个档次, 本节我们就来攻克这一挑战吧! 代码见:github">
+  
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="RxSwift 函数式组合运算符实操">
+  <meta property="og:description" content="  上周我们开启了RxSwift的学习之旅, 从可观察序列–&gt;过滤运算符–&gt;映射运算符, 接下来我们来说说组合运算符. 说实话, 对于之前的内容的学习, 我觉得还是比较通俗易懂的, 但是这次的组合运算符相比之前在理解难易程度上又上了个档次, 本节我们就来攻克这一挑战吧! 代码见:github">
+  
+  <link rel="icon" type="image/ico" href="/assets/images/favicon.ico" />
+  <link href="/assets/images/favicon.ico" rel="shortcut icon" type="image/ico">
+  
+  <link rel="stylesheet" href="/css/main.css">
+  <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+
+  <link rel="canonical" href="http://localhost:4000/2017/04/RxSwift-%E5%87%BD%E6%95%B0%E5%BC%8F%E7%BB%84%E5%90%88%E8%BF%90%E7%AE%97%E7%AC%A6%E5%AE%9E%E6%93%8D/">
+  <link rel="alternate" type="application/rss+xml" title="Castie!" href="http://localhost:4000/feed.xml">
+  
+  <meta name="google-site-verification" content="1-1ZlHoRvM0T2FqPbW2S-qLgYXN6rsn52kErlMPd_gw" />
+  
+</head>
+
+
+  <body>
+
+    <span class="mobile btn-mobile-menu">
+        <i class="fa fa-list btn-mobile-menu__icon"></i>
+        <i class="fa fa-angle-up btn-mobile-close__icon hidden"></i>
+    </span>
+    
+    <header class="panel-cover panel-cover--collapsed" style="background-image: url('/assets/images/background-cover.jpg')">
+  <div class="panel-main">
+
+    <div class="panel-main__inner panel-inverted">
+    <div class="panel-main__content">
+
+        <a href="/#blog" title="前往 Castie! 的主页" class="blog-button"><img src="/assets/images/avatar.jpg" width="80" alt="Castie! logo" class="panel-cover__logo logo" /></a>
+        <h1 class="panel-cover__title panel-title"><a href="/#blog" title="link to homepage for Castie!" class="blog-button">Castie!</a></h1>
+        
+        <span class="panel-cover__subtitle panel-subtitle">正态分布, 优劣伴生</span>
+        
+        <hr class="panel-cover__divider" />
+        <p class="panel-cover__description">北冥有鱼，其名为鲲（kūn）。鲲之大，不知其几千里也；化而为鸟，其名为鹏。鹏之背，不知其几千里也；怒而飞，其翼若垂天之云。是鸟也，海运则将徙于南冥。南冥者，天池也。</p>
+        <hr class="panel-cover__divider panel-cover__divider--secondary" />
+        
+        
+        <p class="panel-cover__description">北海若曰：“井鼃不可以语于海者，拘于虚也；夏虫不可以语于冰者，笃于时也；曲士不可以语于道者，束于教也。今尔出于崖涘，观于大海，乃知尔丑，尔将可与语大理矣。</p>
+        
+        
+        <div class="navigation-wrapper">
+          <div>
+            <nav class="cover-navigation cover-navigation--primary">
+              <ul class="navigation">
+                <li class="navigation__item"><a href="/#blog" title="访问博客" class="blog-button">博客</a></li>
+                
+                  <li class="navigation__item"><a href="https://coderzsq.github.io/coderZsq.practice.web/" target="_blank" title="我的简历">简历</a></li>
+                
+              </ul>
+            </nav>
+          </div>
+          
+          <div><nav class="cover-navigation navigation--social">
+  <ul class="navigation">
+
+    
+    <!-- juejin-->
+    <li class="navigation__item">
+      <a href="https://juejin.im/user/57e735dfa22b9d00614eecb8/posts" title="@coderZsq 的稀土掘金" target="_blank">
+        <i class='social fa fa-book'></i>
+        <span class="label">juejin</span>
+      </a>
+    </li>
+    
+
+  
+
+  
+  <!-- Github -->
+  <li class="navigation__item">
+    <a href="https://github.com/coderZsq" title="@coderZsq 的 Github" target="_blank">
+      <i class='social fa fa-github'></i>
+      <span class="label">Github</span>
+    </a>
+  </li>
+  
+
+  
+
+  
+
+  <!-- RSS -->
+  <li class="navigation__item">
+    <a href="/feed.xml" rel="author" title="RSS" target="_blank">
+      <i class='social fa fa-rss'></i>
+      <span class="label">RSS</span>
+    </a>
+  </li>
+
+  
+  <!-- Email -->
+  <li class="navigation__item">
+    <a href="mailto:a13701777868@gmail.com" title="Contact me">
+      <i class='social fa fa-envelope'></i>
+      <span class="label">Email</span>
+    </a>
+  </li>
+  
+
+  </ul>
+</nav>
+</div>
+        </div>
+      </div>
+    </div>
+    
+    
+    <div class="panel-cover--overlay cover-disabled"></div>
+    
+  </div>
+</header>
+
+
+    <div class="content-wrapper">
+        <div class="content-wrapper__inner">
+            <article class="post-container post-container--single" itemscope itemtype="http://schema.org/BlogPosting">
+  <header class="post-header">
+    <div class="post-meta">
+      <time datetime="2017-04-24 14:51:00 +0800" itemprop="datePublished" class="post-meta__date date">2017-04-24</time> &#8226; <span class="post-meta__tags tags">移动开发</span>
+    </div>
+    <h1 class="post-title">RxSwift 函数式组合运算符实操</h1>
+  </header>
+
+  <section class="post">
+    <blockquote>
+  <p>上周我们开启了RxSwift的学习之旅, 从可观察序列–&gt;过滤运算符–&gt;映射运算符, 接下来我们来说说组合运算符. 说实话, 对于之前的内容的学习, 我觉得还是比较通俗易懂的, 但是这次的组合运算符相比之前在理解难易程度上又上了个档次, 本节我们就来攻克这一挑战吧! 代码见:<a href="https://github.com/coderZsq/coderZsq.target.swift">github</a></p>
+</blockquote>
+
+<p><img src="http://upload-images.jianshu.io/upload_images/1229762-a67b7f2ab21d4b23.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="" /></p>
+
+<p>本节所需的一些关于组合的基本知识已经更新到<a href="https://github.com/coderZsq/coderZsq.target.swift">github</a>代码中的playground文件中, 没有接触过响应式编程的同学请和之前一样先行在<a href="https://github.com/coderZsq/coderZsq.target.swift/blob/master/Our%20Planet/Our%20Planet.playground/Contents.swift">playground</a>中了解概要以便更好的理解本文. 本节我们就通过案例逐步精讲组合操作符在实际开发时的作用.</p>
+
+<p>这次的UI层面也不是特别复杂, 一个TableView的列表页和一个有Slider控制的TableView列表页: 
+<img src="http://upload-images.jianshu.io/upload_images/1229762-821df01cb8ecc097.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="" /></p>
+
+<p>本章是对于<a href="http://www.jianshu.com/p/6b80a0db56bd">RxSwift 响应式编程实战 映射运算符</a>进行升级的一节, 所以我们接着网络请求这块讲起, 我们先将模型类(<code class="highlighter-rouge">EOCategory</code> ` EOError<code class="highlighter-rouge"> </code> EOLocation<code class="highlighter-rouge"> </code> EOEvent`)添加到工程中.</p>
+<div class="highlighter-rouge"><pre class="highlight"><code>    fileprivate static let API = "https://eonet.sci.gsfc.nasa.gov/api/v2.1"
+    static let categoriesEndpoint = "/categories"
+    fileprivate static let eventsEndpoint = "/events"
+</code></pre>
+</div>
+<div class="highlighter-rouge"><pre class="highlight"><code>   fileprivate static func request(endpoint: String, query: [String : Any] = [:]) -&gt; Observable&lt;[String : Any]&gt; {
+    
+        do {
+            guard let url = URL(string: API)?.appendingPathComponent(endpoint), var components = URLComponents(url: url, resolvingAgainstBaseURL: true) else {
+                throw EOError.invalidURL(endpoint)
+            }
+            
+            components.queryItems = try query.flatMap { (key, value) in
+                guard let v = value as? CustomStringConvertible else {
+                    throw EOError.invalidParameter(key, value)
+                }
+                return URLQueryItem(name: key , value: v.description)
+            }
+            
+            guard let finalURL = components.url else {
+                throw EOError.invalidURL(endpoint)
+            }
+            
+            let request = URLRequest(url: finalURL)
+            return URLSession.shared.rx.response(request: request).map { _, data -&gt; [String : Any] in
+                guard let jsonObject = try? JSONSerialization.jsonObject(with: data, options: []), let result = jsonObject as? [String : Any] else {
+                    throw EOError.invalidJSON(finalURL.absoluteString)
+                }
+                return result
+            }
+        } catch {
+            return Observable.empty()
+        }
+    }
+</code></pre>
+</div>
+<p>我们从请求的函数开始讲起, 和之前不同的是, 这次我们将请求直接封装在模型里, 传统的MVC模式.</p>
+<ul>
+  <li>通过对<code class="highlighter-rouge">API</code>接口进行校验得到可用的<code class="highlighter-rouge">URLComponents</code>, 如果url不可用抛出异常.</li>
+  <li>将参数赋值给<code class="highlighter-rouge">URLQueryItem</code>, 如果<code class="highlighter-rouge">value</code>不符合规则抛出异常.</li>
+  <li>拿到最终的<code class="highlighter-rouge">URL</code>, 如果拿不到抛出异常.</li>
+  <li>将<code class="highlighter-rouge">URL</code>转换成<code class="highlighter-rouge">URLRequest</code>.</li>
+  <li>进行JSON序列化, 返回<code class="highlighter-rouge">(HTTPURLResponse, Data)</code>中的<code class="highlighter-rouge">Data</code>.</li>
+  <li>如果抛出异常则返回空的可观察序列.</li>
+</ul>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>    static var categories: Observable&lt;[EOCategory]&gt; = {
+        return EONET.request(endpoint: categoriesEndpoint)
+            .map { data in
+                let categories = data["categories"] as? [[String: Any]] ?? []
+                return categories
+                    .flatMap(EOCategory.init)
+                    .sorted { $0.name &lt; $1.name }
+            }
+            .shareReplay(1)
+    }()
+
+    ...
+
+    fileprivate static func events(forLast days: Int, closed: Bool, endpoint: String) -&gt; Observable&lt;[EOEvent]&gt; {
+        
+        return request(endpoint: eventsEndpoint, query: [
+            "days": NSNumber(value: days),
+            "status": (closed ? "closed" : "open")
+        ]).map { json in
+            guard let raw = json["events"] as? [[String : Any]] else {
+                throw EOError.invalidJSON(endpoint)
+            }
+            return raw.flatMap(EOEvent.init)
+        }
+    }
+</code></pre>
+</div>
+<p>接着我们对categories的外部变量进行计算属性的get方法.</p>
+<ul>
+  <li>进行请求调用上面的请求并传入尾部节点.</li>
+  <li>进行排序并<code class="highlighter-rouge">map</code>映射到<code class="highlighter-rouge">EOCategory </code>模型上.</li>
+  <li><code class="highlighter-rouge">shareReplay(1)</code>将请求进行一次缓存, 下次调用订阅不再进行请求.</li>
+  <li><code class="highlighter-rouge">events</code>和<code class="highlighter-rouge">categories</code>相同, 进行请求映射.</li>
+</ul>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>static func events(forLast days: Int = 360) -&gt; Observable&lt;[EOEvent]&gt; {
+  let openEvents = events(forLast: days, closed: false)
+  let closedEvents = events(forLast: days, closed: true)
+  return openEvents.concat(closedEvents)
+}
+</code></pre>
+</div>
+<ul>
+  <li>将<code class="highlighter-rouge">closedEvents </code>进行请求映射后的模型数组添加到<code class="highlighter-rouge">openEvents</code>之后.</li>
+</ul>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>    static func events(forLast days: Int = 360, category: EOCategory) -&gt; Observable&lt;[EOEvent]&gt; {
+
+        let openEvents = events(forLast: days, closed: false, endpoint: category.endpoint)
+        let closedEvents = events(forLast: days, closed: true, endpoint: category.endpoint)
+        
+        return Observable.of(openEvents, closedEvents).merge().reduce([]) { running, new in
+            running + new
+        }
+    }
+</code></pre>
+</div>
+<ul>
+  <li>进行<code class="highlighter-rouge">marge</code>, 用工<code class="highlighter-rouge">git</code>的同学一定知道, 其效果和<code class="highlighter-rouge">concat</code>类似.</li>
+</ul>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>func startDownload() {
+        
+        download.progress.progress = 0.0
+        download.label.text = "Download: 0%"
+        
+        let eoCategories = EONET.categories
+        let downloadedEvents = eoCategories.flatMap { categories in
+            return Observable.from(categories.map { category in
+                EONET.events(forLast: 360, category: category)
+            })
+            }.merge(maxConcurrent: 2)
+        let updatedCategories = eoCategories.flatMap { categories in
+            downloadedEvents.scan(categories) { updated, events in
+                return updated.map { category in
+                    let eventsForCategory = EONET.filteredEvents(events: events, forCategory: category)
+                    if !eventsForCategory.isEmpty {
+                        var cat = category
+                        cat.events = cat.events + eventsForCategory
+                        return cat
+                    }
+                    return category
+                }
+            }
+        }
+        eoCategories.concat(updatedCategories).bind(to: categories).addDisposableTo(disposeBag)
+    }
+
+</code></pre>
+</div>
+<p>这段是我们本节的重头戏, 我们逐一来讲解下:</p>
+<ul>
+  <li><code class="highlighter-rouge">eoCategories </code>首先我们拿到请求到的数据<code class="highlighter-rouge">EONET.categories</code> 属性观察get进行请求, 这个之前说过了.</li>
+  <li><code class="highlighter-rouge">downloadedEvents </code>通过<code class="highlighter-rouge">flatMap </code>映射转换成<code class="highlighter-rouge">merge</code>合并后的每个相对应的<code class="highlighter-rouge">EOEvent</code>模型数组, 并发数设为2.</li>
+  <li><code class="highlighter-rouge">updatedCategories</code>通过<code class="highlighter-rouge">flatMap</code>映射进行对合并完的<code class="highlighter-rouge">downloadedEvents</code>模型数组进行<code class="highlighter-rouge">scan</code>扫描, 并重新组合新的<code class="highlighter-rouge">category</code>内的<code class="highlighter-rouge">events</code>模型数组.</li>
+  <li>最后将更新后的数据<code class="highlighter-rouge">concat</code>添加并<code class="highlighter-rouge">bind</code>绑定在<code class="highlighter-rouge">categories</code>变量上就大功告成了.</li>
+</ul>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -&gt; UITableViewCell {
+        
+        let cell = tableView.dequeueReusableCell(withIdentifier: "categoryCell")!
+
+        let category = categories.value[indexPath.row]
+        cell.textLabel?.text = "\(category.name) (\(category.events.count))"
+        cell.accessoryType = (category.events.count &gt; 0) ? .disclosureIndicator : .none
+        return cell
+    }
+</code></pre>
+</div>
+<ul>
+  <li>categories即为上面请求映射过滤组合后绑定的变量, 通过对Cell的自定义 就能够得到下面请求的列表了.
+<img src="http://upload-images.jianshu.io/upload_images/1229762-de67226ed07f5b2e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="" /></li>
+</ul>
+
+<p>完成了第一个页面, 我们开始着下一个页面: EventsViewController</p>
+<div class="highlighter-rouge"><pre class="highlight"><code>        tableView.rowHeight = UITableViewAutomaticDimension
+        tableView.estimatedRowHeight = 60
+</code></pre>
+</div>
+<ul>
+  <li>进行Autolayout约束后, 我们可以在添加以下代码来代替之前复杂的cell高度的运算.</li>
+</ul>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>        events.asObservable().subscribe(onNext: { [weak self] _ in
+            self?.tableView.reloadData()
+        }).addDisposableTo(disposeBag)
+        
+        Observable.combineLatest(days.asObservable(), events.asObservable()) { (days, events) -&gt; [EOEvent] in
+            let maxInterval = TimeInterval(days * 24 * 3600)
+            return events.filter { event in
+                if let date = event.closeDate {
+                    return abs(date.timeIntervalSinceNow) &lt; maxInterval
+                }
+                return true
+            }
+        }.bind(to: filteredEvent).addDisposableTo(disposeBag)
+    
+        filteredEvent.asObservable().subscribe(onNext: { [weak self] _ in
+            self?.tableView.reloadData()
+        }).addDisposableTo(disposeBag)
+
+        days.asObservable().subscribe(onNext: { [weak self] days in
+            self?.daysLabel.text = "Last \(days) days"
+        }).addDisposableTo(disposeBag)
+</code></pre>
+</div>
+<ul>
+  <li><code class="highlighter-rouge">events</code>是从上个页面传递过来的变量, 类型为<code class="highlighter-rouge">let events = Variable&lt;[EOEvent]&gt;([])</code></li>
+  <li>通过对<code class="highlighter-rouge">events</code>的作为可观察序列并进行订阅, 当可观察者被添加进订阅就进行列表的刷新.</li>
+  <li><code class="highlighter-rouge">Observable.combineLatest()</code>对日期和时间做最后的绑定, 只保留可观察序列的最后的值的组合,并进行过滤绑定在<code class="highlighter-rouge">filteredEvent</code>变量上, 类型是<code class="highlighter-rouge">let filteredEvent = Variable&lt;[EOEvent]&gt;([])</code></li>
+  <li>接下来两行对于关注本系列的同学应该不用解释, 就是进行订阅并刷新UI.</li>
+</ul>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>    @IBAction func sliderAction(_ sender: AnyObject) {
+        days.value = Int(slider.value)
+    }
+</code></pre>
+</div>
+<p>最后对slider添加事件, 并改变days的值.接下来会触发一系列的订阅.</p>
+<div class="highlighter-rouge"><pre class="highlight"><code>        days.asObservable().subscribe(onNext: { [weak self] days in
+            self?.daysLabel.text = "Last \(days) days"
+        }).addDisposableTo(disposeBag)
+</code></pre>
+</div>
+<ul>
+  <li>触发上面的订阅并进行<code class="highlighter-rouge">UILabel</code>的UI刷新</li>
+</ul>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>        Observable.combineLatest(days.asObservable(), events.asObservable()) { (days, events) -&gt; [EOEvent] in
+            let maxInterval = TimeInterval(days * 24 * 3600)
+            return events.filter { event in
+                if let date = event.closeDate {
+                    return abs(date.timeIntervalSinceNow) &lt; maxInterval
+                }
+                return true
+            }
+        }.bind(to: filteredEvent).addDisposableTo(disposeBag)
+</code></pre>
+</div>
+<ul>
+  <li>触发<code class="highlighter-rouge">combineLatest</code>最新组合运算符, 并重新进行过滤绑定.</li>
+</ul>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>        events.asObservable().subscribe(onNext: { [weak self] _ in
+            self?.tableView.reloadData()
+        }).addDisposableTo(disposeBag)
+
+</code></pre>
+</div>
+<ul>
+  <li>在对<code class="highlighter-rouge">event</code>过滤的过程中触发订阅进行列表刷新.</li>
+</ul>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>        filteredEvent.asObservable().subscribe(onNext: { [weak self] _ in
+            self?.tableView.reloadData()
+        }).addDisposableTo(disposeBag)
+</code></pre>
+</div>
+<ul>
+  <li>在过滤完成重新绑定后, 触发订阅进行最后的刷新.</li>
+</ul>
+
+<p>本文因为篇幅所限, 仅保留一些核心的代码, 并对核心代码进行逐条讲解, 需要详细了解, 请去github下载源码后对照阅读. 通过对于可观察序列, 过滤, 映射, 组合的理解和实战, 通过一个事件的改变异步触发订阅的响应式编程的思想, 我们应该已经能算入门了.</p>
+
+<p>演示效果:</p>
+
+<p><img src="http://upload-images.jianshu.io/upload_images/1229762-c95ba5ed107bd458.gif?imageMogr2/auto-orient/strip" alt="" /></p>
+
+<p>About:</p>
+
+<p><img src="http://upload-images.jianshu.io/upload_images/1229762-3f8925783027b3fa.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="点击下方链接跳转!!" /></p>
+
+<p><a href="https://github.com/coderZsq/coderZsq.target.swift">🌟 源码 请点这里🌟 »&gt; 喜欢的朋友请点喜欢 »&gt; 下载源码的同学请送下小星星 »&gt; 有闲钱的壕们可以进行打赏 »&gt; 小弟会尽快推出更好的文章和大家分享 »&gt; 你的激励就是我的动力!! </a></p>
+
+  </section>
+</article>
+
+<section class="read-more">
+   
+   
+   <div class="read-more-item">
+       <span class="read-more-item-dim">最近的文章</span>
+       <h2 class="post-list__post-title post-title"><a href="/2017/04/Animations-%E4%BD%A0%E7%9C%9F%E7%9A%84%E4%BC%9A%E7%94%A8View%E7%9A%84%E5%8A%A8%E7%94%BB%E5%90%97/" title="link to Animations 你真的会用View的动画吗?">Animations 你真的会用View的动画吗?</a></h2>
+       <p class="excerpt">  RxSwift的学习我们先告一段落, 实在是太烧脑了, 今天我们换换脑子, 玩点轻松的动画, 去年我连载了一系列基于本人封装的Objective-C框架SQExtension展开的项目实战, 里面关于动画方面的涉及还是蛮多的以至于受到了腾讯的关注. 这个系列我们就来细讲动画, 一起走上进阶之路. 代码见:github对于动画方面除了最基本的View动画之外, 关于Layer的核心动画我都是看这篇wiki学的, 像去年连载的一些自定义转场动画是从Objc中学的. 这次买了Ray家的一系列...&hellip;</p>
+       <div class="post-list__meta"><time datetime="2017-04-26 11:58:00 +0800" class="post-list__meta--date date">2017-04-26</time> &#8226; <span class="post-list__meta--tags tags">移动开发</span><a class="btn-border-small" href=/2017/04/Animations-%E4%BD%A0%E7%9C%9F%E7%9A%84%E4%BC%9A%E7%94%A8View%E7%9A%84%E5%8A%A8%E7%94%BB%E5%90%97/>继续阅读</a></div>
+   </div>
+   
+   
+   
+   
+   <div class="read-more-item">
+       <span class="read-more-item-dim">更早的文章</span>
+       <h2 class="post-list__post-title post-title"><a href="/2017/04/RxSwift-%E5%87%BD%E6%95%B0%E5%BC%8F%E6%98%A0%E5%B0%84%E8%BF%90%E7%AE%97%E7%AC%A6%E5%AE%9E%E6%93%8D/" title="link to RxSwift 函数式映射运算符实操">RxSwift 函数式映射运算符实操</a></h2>
+       <p class="excerpt">  一路走来, 感觉RxSwift也不像之前一样晦涩难懂了, 甚至渐渐的喜欢上了这种响应式编程的思想, 将对象作为可观察对象并进行订阅, 加上过滤操作符的协作, 一切的逻辑运算都在后台线程执行, 本节所要讲的是Rx中最为强大的功能 — 映射, 代码见:github本节所需的一些关于映射的基本知识已经更新到github代码中的playground文件中, 没有接触过响应式编程的同学请和之前一样先行在playground中了解概要以便更好的理解本文. 本节我们就通过案例逐步精讲映射操作符在网络...&hellip;</p>
+       <div class="post-list__meta"><time datetime="2017-04-20 10:45:00 +0800" class="post-list__meta--date date">2017-04-20</time> &#8226; <span class="post-list__meta--tags tags">移动开发</span><a class="btn-border-small" href=/2017/04/RxSwift-%E5%87%BD%E6%95%B0%E5%BC%8F%E6%98%A0%E5%B0%84%E8%BF%90%E7%AE%97%E7%AC%A6%E5%AE%9E%E6%93%8D/>继续阅读</a></div>
+   </div>
+   
+</section>
+
+<section class="post-comments">
+  
+  
+  
+  
+</section>
+
+
+            <section class="footer">
+    <footer>
+    	<span class="footer__copyright">本站点采用<a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">知识共享 署名-非商业性使用-相同方式共享 4.0 国际 许可协议</a></span>
+        <span class="footer__copyright">由 <a href="https://jekyllrb.com">Jekyll</a> 于 2019-09-28 生成，感谢 <a href="https://www.digitalocean.com/?refcode=30ed2d146762">Digital Ocean</a> 为本站提供稳定的 VPS 服务</span>
+        <span class="footer__copyright">本站由 <a href="https://github.com/coderZsq">@Castie!</a> 创建，采用 <a href="https://github.com/onevcat/vno-jekyll">Vno - Jekyll</a> 作为主题，您可以在 GitHub 找到<a href="https://github.com/onevcat/OneV-s-Den">本站源码</a> - &copy; 2019</span>
+    </footer>
+</section>
+
+        </div>
+    </div>
+    
+    <script type="text/javascript" src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+
+<script type="text/javascript" src="/js/main.js"></script>
+
+
+
+    
+  </body>
+
+</html>

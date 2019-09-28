@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <title>Castie! Notes</title>
+  <meta name="description" content="  上周的 收到大家一致的好评和转载, 小弟心中感到很是欣慰, 所以今天再此决定分享一个干货给各位小伙伴们!!">
+  <meta name="author" content="Wei Wang">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="iOS 会跳舞的TabbarController">
+  <meta name="twitter:description" content="  上周的 收到大家一致的好评和转载, 小弟心中感到很是欣慰, 所以今天再此决定分享一个干货给各位小伙伴们!!">
+  
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="iOS 会跳舞的TabbarController">
+  <meta property="og:description" content="  上周的 收到大家一致的好评和转载, 小弟心中感到很是欣慰, 所以今天再此决定分享一个干货给各位小伙伴们!!">
+  
+  <link rel="icon" type="image/ico" href="/assets/images/favicon.ico" />
+  <link href="/assets/images/favicon.ico" rel="shortcut icon" type="image/ico">
+  
+  <link rel="stylesheet" href="/css/main.css">
+  <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+
+  <link rel="canonical" href="http://localhost:4000/2016/06/iOS-%E4%BC%9A%E8%B7%B3%E8%88%9E%E7%9A%84TabbarController/">
+  <link rel="alternate" type="application/rss+xml" title="Castie!" href="http://localhost:4000/feed.xml">
+  
+  <meta name="google-site-verification" content="1-1ZlHoRvM0T2FqPbW2S-qLgYXN6rsn52kErlMPd_gw" />
+  
+</head>
+
+
+  <body>
+
+    <span class="mobile btn-mobile-menu">
+        <i class="fa fa-list btn-mobile-menu__icon"></i>
+        <i class="fa fa-angle-up btn-mobile-close__icon hidden"></i>
+    </span>
+    
+    <header class="panel-cover panel-cover--collapsed" style="background-image: url('/assets/images/background-cover.jpg')">
+  <div class="panel-main">
+
+    <div class="panel-main__inner panel-inverted">
+    <div class="panel-main__content">
+
+        <a href="/#blog" title="前往 Castie! 的主页" class="blog-button"><img src="/assets/images/avatar.jpg" width="80" alt="Castie! logo" class="panel-cover__logo logo" /></a>
+        <h1 class="panel-cover__title panel-title"><a href="/#blog" title="link to homepage for Castie!" class="blog-button">Castie!</a></h1>
+        
+        <span class="panel-cover__subtitle panel-subtitle">正态分布, 优劣伴生</span>
+        
+        <hr class="panel-cover__divider" />
+        <p class="panel-cover__description">北冥有鱼，其名为鲲（kūn）。鲲之大，不知其几千里也；化而为鸟，其名为鹏。鹏之背，不知其几千里也；怒而飞，其翼若垂天之云。是鸟也，海运则将徙于南冥。南冥者，天池也。</p>
+        <hr class="panel-cover__divider panel-cover__divider--secondary" />
+        
+        
+        <p class="panel-cover__description">北海若曰：“井鼃不可以语于海者，拘于虚也；夏虫不可以语于冰者，笃于时也；曲士不可以语于道者，束于教也。今尔出于崖涘，观于大海，乃知尔丑，尔将可与语大理矣。</p>
+        
+        
+        <div class="navigation-wrapper">
+          <div>
+            <nav class="cover-navigation cover-navigation--primary">
+              <ul class="navigation">
+                <li class="navigation__item"><a href="/#blog" title="访问博客" class="blog-button">博客</a></li>
+                
+                  <li class="navigation__item"><a href="https://coderzsq.github.io/coderZsq.practice.web/" target="_blank" title="我的简历">简历</a></li>
+                
+              </ul>
+            </nav>
+          </div>
+          
+          <div><nav class="cover-navigation navigation--social">
+  <ul class="navigation">
+
+    
+    <!-- juejin-->
+    <li class="navigation__item">
+      <a href="https://juejin.im/user/57e735dfa22b9d00614eecb8/posts" title="@coderZsq 的稀土掘金" target="_blank">
+        <i class='social fa fa-book'></i>
+        <span class="label">juejin</span>
+      </a>
+    </li>
+    
+
+  
+
+  
+  <!-- Github -->
+  <li class="navigation__item">
+    <a href="https://github.com/coderZsq" title="@coderZsq 的 Github" target="_blank">
+      <i class='social fa fa-github'></i>
+      <span class="label">Github</span>
+    </a>
+  </li>
+  
+
+  
+
+  
+
+  <!-- RSS -->
+  <li class="navigation__item">
+    <a href="/feed.xml" rel="author" title="RSS" target="_blank">
+      <i class='social fa fa-rss'></i>
+      <span class="label">RSS</span>
+    </a>
+  </li>
+
+  
+  <!-- Email -->
+  <li class="navigation__item">
+    <a href="mailto:a13701777868@gmail.com" title="Contact me">
+      <i class='social fa fa-envelope'></i>
+      <span class="label">Email</span>
+    </a>
+  </li>
+  
+
+  </ul>
+</nav>
+</div>
+        </div>
+      </div>
+    </div>
+    
+    
+    <div class="panel-cover--overlay cover-disabled"></div>
+    
+  </div>
+</header>
+
+
+    <div class="content-wrapper">
+        <div class="content-wrapper__inner">
+            <article class="post-container post-container--single" itemscope itemtype="http://schema.org/BlogPosting">
+  <header class="post-header">
+    <div class="post-meta">
+      <time datetime="2016-06-18 14:19:00 +0800" itemprop="datePublished" class="post-meta__date date">2016-06-18</time> &#8226; <span class="post-meta__tags tags">移动开发</span>
+    </div>
+    <h1 class="post-title">iOS 会跳舞的TabbarController</h1>
+  </header>
+
+  <section class="post">
+    <blockquote>
+  <p>上周的<投机流实现 无限轮播图=""> 收到大家一致的好评和转载, 小弟心中感到很是欣慰, 所以今天再此决定分享一个干货给各位小伙伴们!!</投机流实现></p>
+</blockquote>
+
+<h6 id="参考链接">参考链接:</h6>
+
+<ul>
+  <li><a href="http://www.jianshu.com/p/a3e1b54c73d6">iOS 做好开工前的准备</a></li>
+  <li><a href="http://www.jianshu.com/p/861c9c916b2a">iOS 集成Reveal UI调试利器</a></li>
+  <li><a href="http://www.jianshu.com/p/440bdc425c02">UI/UX 产品原型 从Axure开始</a></li>
+  <li><a href="http://www.jianshu.com/p/56eb4917f956">UI/UX 使用Ps 进行视觉设计</a></li>
+  <li><a href="http://www.jianshu.com/p/e42db267d5f1">iOS 投机流实现 无限轮播图</a></li>
+</ul>
+
+<p>以下内容在上述文章基础上进行, 请事先查阅.</p>
+
+<p>具体是什么干货呢, 今天要分享的是会跳舞的TabbarController, 什么是会跳舞的TabbarController? 很简单,就是使用自定义转场给Tabbar切换加上动画!! 鄙人会在能力范围内尽力的用最简练的语句和精简的方法给大家解释清楚!!</p>
+
+<h5 id="自定义转场">自定义转场</h5>
+<p>那什么是自定义转场呢, iOS7中的视图控制器切换分为两种, 自定义切换动画和交互式切换动画, 蒙圈的小伙伴别着急,且往下看:</p>
+
+<p>在iOS中 控制器转场分为 Push/Pop流 ,Modal流(present/dismiss流), 但是最会被大家忽视的就是TabbarController的切换, Tabbar的切换也能做动画吗?? 是的他可以!! 话不多说, 直接进入我们的项目中来!!</p>
+
+<h5 id="实现方法">实现方法</h5>
+<p>首先我们先进入<code class="highlighter-rouge">SQTabBarController.m</code>这是之前在我SQExtension中封装的框架的一部分, 找不到的同学可以通过(<code class="highlighter-rouge">CMD+shift+O</code>进行搜索) 其实自定义转场就是通过调用系统的代理方法实现的! 设置代理三步走 走起~~</p>
+
+<h6 id="设置代理">设置代理</h6>
+<div class="highlighter-rouge"><pre class="highlight"><code>- (void)tabBar:(SQTabBar *)tabBar didSelectItemFrom:(NSInteger)preIndex to:(NSInteger)selectedIndex {
+
+    self.selectedIndex = selectedIndex;
+    self.delegate = self;
+}
+</code></pre>
+</div>
+<p>这里有一个不能叫天坑,简直能被称为神坑的坑!! 我使用最新Xcode7时, 如果在TabbarController实例化后马上设置代理为self, 那个时候的代理将会是nil,
+届时代理方法就不会响应!! 而最坑的是,当我将开发环境切换到Xcode5的时候, 相同的代码居然连TabbarController得子控制器都不能进行渲染(不走viewDidLoad等生命周期方法)</p>
+
+<p><code class="highlighter-rouge">经过一段时间的调试,只有将代理设在响应代理方法(如 pushViewController:/presentViewController:/selectedIndex)之后 才不会出现上述问题!! 在此深深的为iOS底层API着了一把小急…</code></p>
+
+<h6 id="遵守协议">遵守协议</h6>
+<div class="highlighter-rouge"><pre class="highlight"><code>@interface SQTabBarController () &lt;SQTabBarDelegate,UITabBarControllerDelegate&gt;
+</code></pre>
+</div>
+
+<h6 id="实现代理方法">实现代理方法</h6>
+<div class="highlighter-rouge"><pre class="highlight"><code>- (id &lt;UIViewControllerAnimatedTransitioning&gt;)tabBarController:(UITabBarController *)tabBarController animationControllerForTransitionFromViewController:(UIViewController *)fromVC toViewController:(UIViewController *)toVC {
+    return [NSObject new];
+}
+</code></pre>
+</div>
+<p>在这里需要返回的是id <UIViewControllerAnimatedTransitioning>也就是遵守UIViewControllerAnimatedTransitioning协议的任意对象, 我们为了让程序正常运行 先返回一个NSObject.</UIViewControllerAnimatedTransitioning></p>
+
+<h6 id="实现id--对象">实现id <UIViewControllerAnimatedTransitioning> 对象</UIViewControllerAnimatedTransitioning></h6>
+<p>这个就是自定义转场的关键, 正如UICollectionViewLayout一样重要!! 我们先创建一个继承与NSObject的类,我将其取名SQTabbarControllerAnimatedTransitioning并遵守协议.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>@interface SQTabbarControllerAnimatedTransitioning : NSObject &lt;UIViewControllerAnimatedTransitioning&gt;
+</code></pre>
+</div>
+
+<p>这里需要实现两个方法</p>
+
+<p><code class="highlighter-rouge">转换效果持续时间</code></p>
+<ul>
+  <li>(NSTimeInterval)transitionDuration:(id<UIViewControllerContextTransitioning>)transitionContext;</UIViewControllerContextTransitioning></li>
+</ul>
+
+<p><code class="highlighter-rouge">转换效果的定义</code></p>
+<ul>
+  <li>(void)animateTransition:(id<UIViewControllerContextTransitioning>)transitionContext;</UIViewControllerContextTransitioning></li>
+</ul>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>static CGFloat const kPadding  = 10;
+static CGFloat const kDamping  = 0.75;
+static CGFloat const kVelocity = 2;
+
+- (NSTimeInterval)transitionDuration:(id&lt;UIViewControllerContextTransitioning&gt;)transitionContext {
+    return 0.75f;
+}
+
+- (void)animateTransition:(id&lt;UIViewControllerContextTransitioning&gt;)transitionContext {
+    
+    UIViewController * toViewController = [transitionContext viewControllerForKey:UITransitionContextToViewControllerKey];
+    UIViewController * fromViewController = [transitionContext viewControllerForKey:UITransitionContextFromViewControllerKey];
+    UIView * containerView = [transitionContext containerView];
+    
+    CGFloat translation = containerView.bounds.size.width + kPadding;
+    CGAffineTransform transform = CGAffineTransformMakeTranslation (translation, 0);
+    toViewController.view.transform = CGAffineTransformInvert (transform);
+    [containerView addSubview:toViewController.view];
+    
+    [UIView animateWithDuration:[self transitionDuration:transitionContext] delay:0 usingSpringWithDamping:kDamping initialSpringVelocity:kVelocity options:UIViewAnimationOptionCurveEaseInOut animations:^{
+        fromViewController.view.transform = transform;
+        toViewController.view.transform = CGAffineTransformIdentity;
+    } completion:^(BOOL finished) {
+        fromViewController.view.transform = CGAffineTransformIdentity;
+        [transitionContext completeTransition:![transitionContext transitionWasCancelled]];
+    }];
+}
+</code></pre>
+</div>
+<p>我们来分析一下这串代码, 这个代理方法传了一个(id<UIViewControllerContextTransitioning>)transitionContext, 我相信使用过Quartz2D的同学们对上下文应该不会太陌生. 我先说说这个类的必须了解的三个方法:</UIViewControllerContextTransitioning></p>
+
+<p><code class="highlighter-rouge">viewController切换所发生的view容器,开发者应该将切出的view移除, 将切入的view加到该view容器中</code></p>
+
+<ul>
+  <li>(UIView *)containerView;</li>
+</ul>
+
+<p><code class="highlighter-rouge">提供一个key返回对应的viewController</code></p>
+
+<ul>
+  <li>(UIViewController *)viewControllerForKey:(NSString *)key;</li>
+</ul>
+
+<p><code class="highlighter-rouge">向这个上下文报告切换已经完成</code></p>
+
+<ul>
+  <li>(void)completeTransition:(BOOL)didComplete;</li>
+</ul>
+
+<p><code class="highlighter-rouge">这三个方法必须实现 不然将不会进行转场!! 谨记!!</code></p>
+
+<p>实现了上述方法 我们来自定义动画, 这里我使用的是UIView的弹簧动画, 这个不多讲,大家随便设值就能了解个大概.</p>
+
+<p>最后我们将这个类返回给代理方法</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>- (id &lt;UIViewControllerAnimatedTransitioning&gt;)tabBarController:(UITabBarController *)tabBarController animationControllerForTransitionFromViewController:(UIViewController *)fromVC toViewController:(UIViewController *)toVC {
+    return [SQTabbarControllerAnimatedTransitioning new];
+}
+</code></pre>
+</div>
+
+<h5 id="解决冲突">解决冲突</h5>
+
+<p>来 我们运行一下程序, 发现切换tabbar的时候已经有过度动画了, 是不是很神奇!! 不过细心的同学已经发现了, 当进行自定义动画的切换的时候会和之前的轮播图产生冲突而引起Bug, 来, 我们先来解决这个Bug.</p>
+
+<p>来到我们<code class="highlighter-rouge">SQLifestyleBannerCell.m</code>替换成collectionView的动画效果即可!</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>- (void)updateTimer {
+//    [self.collectionView setContentOffset:CGPointMake(self.collectionView.contentOffset.x + self.contentView.frame.size.width, 0) animated:YES];
+
+    NSInteger item = (self.collectionView.contentOffset.x + self.contentView.frame.size.width) * (kCounts * kMultiply)/ self.collectionView.contentSize.width;
+    [self.collectionView scrollToItemAtIndexPath:[NSIndexPath indexPathForItem:item inSection:0] atScrollPosition:UICollectionViewScrollPositionCenteredHorizontally animated:YES];
+}
+</code></pre>
+</div>
+
+<h5 id="投机流-改善用户体验">投机流 改善用户体验</h5>
+
+<p>现在我们发现现在的转场动画都是往一边的, 感觉用户体验不好, 能不能实现我切换的时候能够识别tabbarButton的顺序呢? 我看了下喵神的博客, 发现他是实现了自定义的上下文然后使用上下文的以下方法:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>// The frame's are set to CGRectZero when they are not known or
+// otherwise undefined.  For example the finalFrame of the
+// fromViewController will be CGRectZero if and only if the fromView will be
+// removed from the window at the end of the transition. On the other
+// hand, if the finalFrame is not CGRectZero then it must be respected
+// at the end of the transition.
+- (CGRect)initialFrameForViewController:(UIViewController *)vc;
+- (CGRect)finalFrameForViewController:(UIViewController *)vc;
+</code></pre>
+</div>
+
+<p>但是正如我上篇文章所述, 能够投机的就不用搞得那么复杂嘛…</p>
+
+<p>来, 我们先创建个全局类来记录对应的Index下标.</p>
+
+<p>.h</p>
+<div class="highlighter-rouge"><pre class="highlight"><code>extern NSInteger _preIndex;
+extern NSInteger _selectedIndex;
+</code></pre>
+</div>
+
+<p>.m</p>
+<div class="highlighter-rouge"><pre class="highlight"><code>NSInteger _preIndex = 0;
+NSInteger _selectedIndex = 0;
+</code></pre>
+</div>
+
+<p>在<code class="highlighter-rouge">SQTabBarController.m</code>中记录下标</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>- (void)tabBar:(SQTabBar *)tabBar didSelectItemFrom:(NSInteger)preIndex to:(NSInteger)selectedIndex {
+
+                         _preIndex      = preIndex;
+    self.selectedIndex = _selectedIndex = selectedIndex;
+    self.delegate      = self;
+}
+</code></pre>
+</div>
+<p>在自定义转场类中做判断</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>- (void)animateTransition:(id&lt;UIViewControllerContextTransitioning&gt;)transitionContext {
+    
+    UIViewController * toViewController = [transitionContext viewControllerForKey:UITransitionContextToViewControllerKey];
+    UIViewController * fromViewController = [transitionContext viewControllerForKey:UITransitionContextFromViewControllerKey];
+    UIView * containerView = [transitionContext containerView];
+    
+    CGFloat translation = containerView.bounds.size.width + kPadding;
+    CGAffineTransform transform = CGAffineTransformMakeTranslation ((_preIndex &gt; _selectedIndex ? YES : NO) ? translation : -translation, 0);
+    toViewController.view.transform = CGAffineTransformInvert (transform);
+    [containerView addSubview:toViewController.view];
+    
+    [UIView animateWithDuration:[self transitionDuration:transitionContext] delay:0 usingSpringWithDamping:kDamping initialSpringVelocity:kVelocity options:UIViewAnimationOptionCurveEaseInOut animations:^{
+        fromViewController.view.transform = transform;
+        toViewController.view.transform = CGAffineTransformIdentity;
+    } completion:^(BOOL finished) {
+        fromViewController.view.transform = CGAffineTransformIdentity;
+        [transitionContext completeTransition:![transitionContext transitionWasCancelled]];
+}
+   
+</code></pre>
+</div>
+<p>这样就大功告成了!! 这个自定义转场类不仅可以为Tabbar我转成, 如本文之前所说, 任何控制器转场都可以使用!!欲知Push/Pop流 ,Modal流(present/dismiss流)以及交互式切换, 后期有机会会为大家讲解!!</p>
+
+<p>来我们看下实现的效果:
+<img src="http://upload-images.jianshu.io/upload_images/1229762-53e832042f558ff7.gif?imageMogr2/auto-orient/strip" alt="" /></p>
+
+<p>具体源码及SQExtension方法信息 请到<a href="https://github.com/coderZsq">github</a>上进行下载! 喜欢的朋友请点一下左上角的小星星哦!!</p>
+
+  </section>
+</article>
+
+<section class="read-more">
+   
+   
+   <div class="read-more-item">
+       <span class="read-more-item-dim">最近的文章</span>
+       <h2 class="post-list__post-title post-title"><a href="/2016/06/iOS-%E8%B6%85Easy%E5%AE%9E%E7%8E%B0-%E6%B8%90%E5%8F%98%E5%AF%BC%E8%88%AA%E6%A0%8F/" title="link to iOS 超Easy实现 渐变导航栏">iOS 超Easy实现 渐变导航栏</a></h2>
+       <p class="excerpt">  接着上周的项目, 在上周我别出心裁的在自定义TabbarController中加入了自定义转场动画, 受到了大家广泛的喜爱, 再次表示感激, 今天我们继续实现LifestyleViewController的第二个功能渐变导航栏!!参考链接:  iOS 做好开工前的准备  iOS 集成Reveal UI调试利器  UI/UX 产品原型 从Axure开始  UI/UX 使用Ps 进行视觉设计  iOS 会跳舞的TabbarController以下内容在上述文章基础上进行, 请事先查阅.渐变...&hellip;</p>
+       <div class="post-list__meta"><time datetime="2016-06-25 16:27:00 +0800" class="post-list__meta--date date">2016-06-25</time> &#8226; <span class="post-list__meta--tags tags">移动开发</span><a class="btn-border-small" href=/2016/06/iOS-%E8%B6%85Easy%E5%AE%9E%E7%8E%B0-%E6%B8%90%E5%8F%98%E5%AF%BC%E8%88%AA%E6%A0%8F/>继续阅读</a></div>
+   </div>
+   
+   
+   
+   
+   <div class="read-more-item">
+       <span class="read-more-item-dim">更早的文章</span>
+       <h2 class="post-list__post-title post-title"><a href="/2016/06/iOS-%E6%8A%95%E6%9C%BA%E6%B5%81%E5%AE%9E%E7%8E%B0-%E6%97%A0%E9%99%90%E8%BD%AE%E6%92%AD%E5%9B%BE/" title="link to iOS 投机流实现 无限轮播图">iOS 投机流实现 无限轮播图</a></h2>
+       <p class="excerpt">  在上周, 我们已经通过Ps将Lifestyle页面给设计出来了, 本周我们就可以按照设计图纸进行开工啦, 今天我们就按部就班的完成LifestyleViewController的第一个功能无限轮播图!!参考链接:  iOS 做好开工前的准备  iOS 集成Reveal UI调试利器  UI/UX 产品原型 从Axure开始  UI/UX 使用Ps 进行视觉设计以下内容在上述文章基础上进行, 请事先查阅.无限轮播图, 这种简单的功能没什么技术含量, 实现的方式也各种各样, 技术含量较高的...&hellip;</p>
+       <div class="post-list__meta"><time datetime="2016-06-10 13:22:00 +0800" class="post-list__meta--date date">2016-06-10</time> &#8226; <span class="post-list__meta--tags tags">移动开发</span><a class="btn-border-small" href=/2016/06/iOS-%E6%8A%95%E6%9C%BA%E6%B5%81%E5%AE%9E%E7%8E%B0-%E6%97%A0%E9%99%90%E8%BD%AE%E6%92%AD%E5%9B%BE/>继续阅读</a></div>
+   </div>
+   
+</section>
+
+<section class="post-comments">
+  
+  
+  
+  
+</section>
+
+
+            <section class="footer">
+    <footer>
+    	<span class="footer__copyright">本站点采用<a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">知识共享 署名-非商业性使用-相同方式共享 4.0 国际 许可协议</a></span>
+        <span class="footer__copyright">由 <a href="https://jekyllrb.com">Jekyll</a> 于 2019-09-28 生成，感谢 <a href="https://www.digitalocean.com/?refcode=30ed2d146762">Digital Ocean</a> 为本站提供稳定的 VPS 服务</span>
+        <span class="footer__copyright">本站由 <a href="https://github.com/coderZsq">@Castie!</a> 创建，采用 <a href="https://github.com/onevcat/vno-jekyll">Vno - Jekyll</a> 作为主题，您可以在 GitHub 找到<a href="https://github.com/onevcat/OneV-s-Den">本站源码</a> - &copy; 2019</span>
+    </footer>
+</section>
+
+        </div>
+    </div>
+    
+    <script type="text/javascript" src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+
+<script type="text/javascript" src="/js/main.js"></script>
+
+
+
+    
+  </body>
+
+</html>

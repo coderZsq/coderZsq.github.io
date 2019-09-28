@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <title>Castie! Notes</title>
+  <meta name="description" content="  好久没写技术博客了, 原因在于最近在学习前端方面的技术, 熟悉我的同学都知道, 之前我有使用Vue搭建了一个个人简历, 体验了一把最新的前端技术, 但之前我们使用的是vue-cli脚手架工具, 对于如何自己实现前端构建工具, 当下最为流行的就是webpack和gulp了, 之前一篇我们讲了gulp, 这一篇我...">
+  <meta name="author" content="Wei Wang">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Web 使用webpack构建前端项目">
+  <meta name="twitter:description" content="  好久没写技术博客了, 原因在于最近在学习前端方面的技术, 熟悉我的同学都知道, 之前我有使用Vue搭建了一个个人简历, 体验了一把最新的前端技术, 但之前我们使用的是vue-cli脚手架工具, 对于如何自己实现前端构建工具, 当下最为流行的就是webpack和gulp了, 之前一篇我们讲了gulp, 这一篇我...">
+  
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Web 使用webpack构建前端项目">
+  <meta property="og:description" content="  好久没写技术博客了, 原因在于最近在学习前端方面的技术, 熟悉我的同学都知道, 之前我有使用Vue搭建了一个个人简历, 体验了一把最新的前端技术, 但之前我们使用的是vue-cli脚手架工具, 对于如何自己实现前端构建工具, 当下最为流行的就是webpack和gulp了, 之前一篇我们讲了gulp, 这一篇我...">
+  
+  <link rel="icon" type="image/ico" href="/assets/images/favicon.ico" />
+  <link href="/assets/images/favicon.ico" rel="shortcut icon" type="image/ico">
+  
+  <link rel="stylesheet" href="/css/main.css">
+  <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+
+  <link rel="canonical" href="http://localhost:4000/2017/09/Web-%E4%BD%BF%E7%94%A8webpack%E6%9E%84%E5%BB%BA%E5%89%8D%E7%AB%AF%E9%A1%B9%E7%9B%AE/">
+  <link rel="alternate" type="application/rss+xml" title="Castie!" href="http://localhost:4000/feed.xml">
+  
+  <meta name="google-site-verification" content="1-1ZlHoRvM0T2FqPbW2S-qLgYXN6rsn52kErlMPd_gw" />
+  
+</head>
+
+
+  <body>
+
+    <span class="mobile btn-mobile-menu">
+        <i class="fa fa-list btn-mobile-menu__icon"></i>
+        <i class="fa fa-angle-up btn-mobile-close__icon hidden"></i>
+    </span>
+    
+    <header class="panel-cover panel-cover--collapsed" style="background-image: url('/assets/images/background-cover.jpg')">
+  <div class="panel-main">
+
+    <div class="panel-main__inner panel-inverted">
+    <div class="panel-main__content">
+
+        <a href="/#blog" title="前往 Castie! 的主页" class="blog-button"><img src="/assets/images/avatar.jpg" width="80" alt="Castie! logo" class="panel-cover__logo logo" /></a>
+        <h1 class="panel-cover__title panel-title"><a href="/#blog" title="link to homepage for Castie!" class="blog-button">Castie!</a></h1>
+        
+        <span class="panel-cover__subtitle panel-subtitle">正态分布, 优劣伴生</span>
+        
+        <hr class="panel-cover__divider" />
+        <p class="panel-cover__description">北冥有鱼，其名为鲲（kūn）。鲲之大，不知其几千里也；化而为鸟，其名为鹏。鹏之背，不知其几千里也；怒而飞，其翼若垂天之云。是鸟也，海运则将徙于南冥。南冥者，天池也。</p>
+        <hr class="panel-cover__divider panel-cover__divider--secondary" />
+        
+        
+        <p class="panel-cover__description">北海若曰：“井鼃不可以语于海者，拘于虚也；夏虫不可以语于冰者，笃于时也；曲士不可以语于道者，束于教也。今尔出于崖涘，观于大海，乃知尔丑，尔将可与语大理矣。</p>
+        
+        
+        <div class="navigation-wrapper">
+          <div>
+            <nav class="cover-navigation cover-navigation--primary">
+              <ul class="navigation">
+                <li class="navigation__item"><a href="/#blog" title="访问博客" class="blog-button">博客</a></li>
+                
+                  <li class="navigation__item"><a href="https://coderzsq.github.io/coderZsq.practice.web/" target="_blank" title="我的简历">简历</a></li>
+                
+              </ul>
+            </nav>
+          </div>
+          
+          <div><nav class="cover-navigation navigation--social">
+  <ul class="navigation">
+
+    
+    <!-- juejin-->
+    <li class="navigation__item">
+      <a href="https://juejin.im/user/57e735dfa22b9d00614eecb8/posts" title="@coderZsq 的稀土掘金" target="_blank">
+        <i class='social fa fa-book'></i>
+        <span class="label">juejin</span>
+      </a>
+    </li>
+    
+
+  
+
+  
+  <!-- Github -->
+  <li class="navigation__item">
+    <a href="https://github.com/coderZsq" title="@coderZsq 的 Github" target="_blank">
+      <i class='social fa fa-github'></i>
+      <span class="label">Github</span>
+    </a>
+  </li>
+  
+
+  
+
+  
+
+  <!-- RSS -->
+  <li class="navigation__item">
+    <a href="/feed.xml" rel="author" title="RSS" target="_blank">
+      <i class='social fa fa-rss'></i>
+      <span class="label">RSS</span>
+    </a>
+  </li>
+
+  
+  <!-- Email -->
+  <li class="navigation__item">
+    <a href="mailto:a13701777868@gmail.com" title="Contact me">
+      <i class='social fa fa-envelope'></i>
+      <span class="label">Email</span>
+    </a>
+  </li>
+  
+
+  </ul>
+</nav>
+</div>
+        </div>
+      </div>
+    </div>
+    
+    
+    <div class="panel-cover--overlay cover-disabled"></div>
+    
+  </div>
+</header>
+
+
+    <div class="content-wrapper">
+        <div class="content-wrapper__inner">
+            <article class="post-container post-container--single" itemscope itemtype="http://schema.org/BlogPosting">
+  <header class="post-header">
+    <div class="post-meta">
+      <time datetime="2017-09-23 15:46:00 +0800" itemprop="datePublished" class="post-meta__date date">2017-09-23</time> &#8226; <span class="post-meta__tags tags">前端开发</span>
+    </div>
+    <h1 class="post-title">Web 使用webpack构建前端项目</h1>
+  </header>
+
+  <section class="post">
+    <blockquote>
+  <p>好久没写技术博客了, 原因在于最近在学习前端方面的技术, 熟悉我的同学都知道, 之前我有使用Vue搭建了一个个人简历, 体验了一把最新的前端技术, 但之前我们使用的是vue-cli脚手架工具, 对于如何自己实现前端构建工具, 当下最为流行的就是webpack和gulp了, 之前一篇我们讲了gulp, 这一篇我们来好好讨论webpack.</p>
+</blockquote>
+
+<p><img src="http://upload-images.jianshu.io/upload_images/1229762-e8ed33b306d59976.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="" /></p>
+
+<p>说起webpack, 想必做前端的同学肯定不会陌生, 其实之前我们使用gulp构建的时候, 也使用了webpack的打包技术, 其实gulp和webpack并不是相互替代的关系, 而是相辅相成, 今天我们就来好好看看webpack的神奇之处吧.</p>
+
+<p>我们学习一样新技术, 首先肯定是从他的<a href="https://webpack.js.org/guides/getting-started/">官方文档</a>入手, 当然我们要学习也是学最新版的.webpack的官方教程写的非常好, 一步一步讲的很到位, 各位同学可以直接阅读官方文档, 比起博客中的二手, 三手以及四手的资料, 官方文档肯定是你更好的选择.</p>
+
+<p>这篇文章, 不是教你什么看这一篇就够了之类的对于官方文档拷贝的水文, 而是能让你快速上手并且觉得所谓的webpack其实也就这么一回事, webpack你只要记住一个中心思想, 就和上面的图示一样, 将所有错综复杂的文件逻辑打包压缩成几个静态资源, 不多说了, 我们还是看代码来的实际.</p>
+
+<h4 id="webpackconfigjs">webpack.config.js</h4>
+
+<p>对于一些抛弃jquery迎接react和vue的前端开发者来说, webpack虽然可能自己没有写过, 但看总是看过的吧, 一般来说, 都会有一个<code class="highlighter-rouge">webpack.config.js</code>的webpack配置文件.下面的代码就是一个简单的webpack的配置, 麻雀虽小五脏俱全.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>var debug = process.env.NODE_ENV !== "production"; //是否是测试环境
+var webpack = require('webpack'); //导入webpack包
+var path = require('path');
+
+module.exports = { //导出 webpack固定写法
+  context: path.join(__dirname),
+  devtool: debug ? "inline-sourcemap" : null, //是否使用map工具, 用于浏览器debug
+  entry: "./src/js/root.js", //打包的实体
+  module: {
+    loaders: [ //加载的配置
+      {
+        test: /\.js?$/,
+        exclude: /(node_modules)/,
+        loader: 'babel-loader',
+        query: {
+          presets: ['react', 'es2015'], //添加预处理器
+          plugins: ['react-html-attrs'], //添加组件的插件配置
+        }
+      },
+      { test: /\.css$/, loader: 'style-loader!css-loader' },
+      {
+        test: /\.less$/,
+        loader: "style!css!less"
+      }
+    ]
+  },
+  output: { //输出的路径及文件名
+    path: __dirname,
+    filename: "./src/bundle.js"
+  },
+  plugins: debug ? [] : [ //一些插件
+    new webpack.optimize.DedupePlugin(),
+    new webpack.optimize.OccurenceOrderPlugin(),
+    new webpack.optimize.UglifyJsPlugin({ mangle: false, sourcemap: false }),
+  ],
+};
+
+</code></pre>
+</div>
+
+<p>webpack主要包括<code class="highlighter-rouge">entry </code>, <code class="highlighter-rouge">module </code>, <code class="highlighter-rouge">output </code>, <code class="highlighter-rouge">plugins </code>四大类, 官方文档说的已经很清楚了, 想要进一步的学习,请翻阅官方文档, 如果不想折腾直接拷贝上述代码即可.</p>
+
+<p>相较gulp, webpack在打包方面更为精简, 这也是流行的原因吧, 但光看上面的文件, 的确也是简单, 但是还有进一步改善的空间.</p>
+
+<h4 id="packagejson">package.json</h4>
+
+<p>对于npm的介绍我就不多说了, 我们直接来看文件.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"webpack"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"version"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1.0.0"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"main"</span><span class="p">:</span><span class="w"> </span><span class="s2">"index.js"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"scripts"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="err">//命令行工具</span><span class="w">
+    </span><span class="nt">"test"</span><span class="p">:</span><span class="w"> </span><span class="s2">"echo \"Error: no test specified\" &amp;&amp; exit 1"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"watch"</span><span class="p">:</span><span class="w"> </span><span class="s2">"webpack --progress --watch"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"start"</span><span class="p">:</span><span class="w"> </span><span class="s2">"webpack-dev-server --open --config webpack.dev.js"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"build"</span><span class="p">:</span><span class="w"> </span><span class="s2">"webpack --config webpack.prod.js"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nt">"keywords"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+  </span><span class="nt">"author"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"license"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ISC"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"devDependencies"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="err">//开发环境依赖</span><span class="w">
+    </span><span class="nt">"babel-loader"</span><span class="p">:</span><span class="w"> </span><span class="s2">"^7.1.2"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"babel-plugin-import"</span><span class="p">:</span><span class="w"> </span><span class="s2">"^1.5.0"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"babel-plugin-react-html-attrs"</span><span class="p">:</span><span class="w"> </span><span class="s2">"^2.0.0"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"babel-preset-es2015"</span><span class="p">:</span><span class="w"> </span><span class="s2">"^6.24.1"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"babel-preset-react"</span><span class="p">:</span><span class="w"> </span><span class="s2">"^6.24.1"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"babelify"</span><span class="p">:</span><span class="w"> </span><span class="s2">"^7.3.0"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"clean-webpack-plugin"</span><span class="p">:</span><span class="w"> </span><span class="s2">"^0.1.16"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"css-loader"</span><span class="p">:</span><span class="w"> </span><span class="s2">"^0.28.7"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"csv-loader"</span><span class="p">:</span><span class="w"> </span><span class="s2">"^2.1.1"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"file-loader"</span><span class="p">:</span><span class="w"> </span><span class="s2">"^0.11.2"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"html-webpack-plugin"</span><span class="p">:</span><span class="w"> </span><span class="s2">"^2.30.1"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"json-loader"</span><span class="p">:</span><span class="w"> </span><span class="s2">"^0.5.7"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"lodash"</span><span class="p">:</span><span class="w"> </span><span class="s2">"^4.17.4"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"style-loader"</span><span class="p">:</span><span class="w"> </span><span class="s2">"^0.18.2"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"uglifyjs-webpack-plugin"</span><span class="p">:</span><span class="w"> </span><span class="s2">"^0.4.6"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"webpack"</span><span class="p">:</span><span class="w"> </span><span class="s2">"^3.6.0"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"webpack-dev-middleware"</span><span class="p">:</span><span class="w"> </span><span class="s2">"^1.12.0"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"webpack-dev-server"</span><span class="p">:</span><span class="w"> </span><span class="s2">"^2.8.2"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"webpack-merge"</span><span class="p">:</span><span class="w"> </span><span class="s2">"^4.1.0"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"xml-loader"</span><span class="p">:</span><span class="w"> </span><span class="s2">"^1.2.1"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nt">"dependencies"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="err">//生产环境依赖</span><span class="w">
+    </span><span class="nt">"react"</span><span class="p">:</span><span class="w"> </span><span class="s2">"^15.6.1"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"react-dom"</span><span class="p">:</span><span class="w"> </span><span class="s2">"^15.6.1"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"react-mixin"</span><span class="p">:</span><span class="w"> </span><span class="s2">"^4.0.0"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"react-router"</span><span class="p">:</span><span class="w"> </span><span class="s2">"^4.2.0"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre>
+</div>
+
+<p>命令行工具就是<code class="highlighter-rouge">npm run build</code>等于执行了<code class="highlighter-rouge">webpack --config webpack.prod.js</code>, 而<code class="highlighter-rouge">npm start</code> 等于执行了<code class="highlighter-rouge">webpack-dev-server --open --config webpack.dev.js</code>.简单易懂吧.</p>
+
+<p>在项目依赖中, 哦们加了很多的插件和loader, 都是用来搭建webpack的, 官方文档的教程中都会讲到, 值得注意的就是<code class="highlighter-rouge">webpack-merge</code>这个包, 这个包可以让我们生产环境和开发环境很好的隔离配置, 我们看看怎么做呢?</p>
+
+<p>首先我们需要将之前的<code class="highlighter-rouge">webpack.config.js</code>分成三个文件 — <code class="highlighter-rouge">webpack.common.js</code>, <code class="highlighter-rouge">webpack.dev.js</code>, <code class="highlighter-rouge">webpack.prod.js</code>.</p>
+
+<h4 id="webpackcommonjs">webpack.common.js</h4>
+
+<p>这个是webpack的共同配置, 总体和之前看到的大同小异, 我们主要是导入了两个插件, 一个是清除插件, 一个是创建html的插件.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>const path = require('path');
+const webpack = require('webpack');
+const CleanWebpackPlugin = require('clean-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+
+module.exports = {
+  entry: './src/index.js',
+  plugins: [
+    new CleanWebpackPlugin(['dist']),
+    new HtmlWebpackPlugin({title: 'webpack'}),
+    new webpack.HashedModuleIdsPlugin()
+  ],
+  output: {
+    filename: '[name].[chunkhash].js',
+    path: path.resolve(__dirname, 'dist')
+  },
+  module: {
+    rules: [
+      {
+        test: /\.js?$/,
+        exclude: /(node_modules)/,
+        loader: 'babel-loader',
+        query: {
+          presets: [
+            'react', 'es2015'
+          ],
+          plugins: ['react-html-attrs']
+        }
+      },
+      {
+        test: /\.css$/,
+        use: ['style-loader', 'css-loader']
+      }, {
+        test: /\.(png|svg|jpg|gif)$/,
+        use: ['file-loader']
+      }, {
+        test: /\.(woff|woff2|eot|ttf|otf)$/,
+        use: ['file-loader']
+      }, {
+        test: /\.(csv|tsv)$/,
+        use: ['csv-loader']
+      }, {
+        test: /\.xml$/,
+        use: ['xml-loader']
+      }
+    ]
+  }
+};
+
+</code></pre>
+</div>
+
+<p><code class="highlighter-rouge">rules</code>配置中我们也就是将一些可能用到的文件也配置到webpack中来, <code class="highlighter-rouge">babel-loader</code>这种如果要讲还可以再开一篇, 其实就是个js的兼容性工具, 这样理解就可以了.</p>
+
+<h4 id="webpackdevjs">webpack.dev.js</h4>
+
+<p>webpack开发环境的配置, 非常简单, 就是用了之前讲的<code class="highlighter-rouge">webpack-merge</code>工具, 就和git一样, 合并了<code class="highlighter-rouge">webpack.common.js</code>的配置外新加了可以进行调试的<code class="highlighter-rouge">inline-source-map</code>工具, 以及热更新的内容索引.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>const merge = require('webpack-merge');
+const common = require('./webpack.common.js');
+
+module.exports = merge(common, {
+  devtool: 'inline-source-map',
+  devServer: {
+    contentBase: './dist'
+  }
+});
+</code></pre>
+</div>
+
+<h4 id="webpackprodjs">webpack.prod.js</h4>
+
+<p>webpack生产环境的配置, 新加了一个压缩插件以及环境配置的插件, 这里的开发工具和开发还款下的有所不同, 具体可直接看官方文档.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>const webpack = require('webpack');
+const merge = require('webpack-merge');
+const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
+const common = require('./webpack.common.js');
+
+module.exports = merge(common, {
+  devtool: 'source-map',
+  plugins: [
+    new UglifyJSPlugin({sourceMap: true}),
+    new webpack.DefinePlugin({
+      'process.env': {
+        'NODE_ENV': JSON.stringify('production')
+      }
+    })
+  ]
+});
+
+</code></pre>
+</div>
+
+<h4 id="terminal">terminal</h4>
+
+<p>这样我们就配置完成啦, 我们在终端上输入看下效果:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>cd ../ &amp;&amp; npm i 
+</code></pre>
+</div>
+<p>首先我们进入到目录下并进行node包的安装.</p>
+
+<h5 id="npm-run-build">npm run build</h5>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>MacBook-Pro-15:webpack zhushuangquan$ npm run build
+
+&gt; webpack@1.0.0 build /Users/zhushuangquan/Documents/code/webpack
+&gt; webpack --config webpack.prod.js
+
+clean-webpack-plugin: /Users/zhushuangquan/Documents/code/webpack/dist has been removed.
+Hash: 85b65f54ef1436b295a5
+Version: webpack 3.6.0
+Time: 1148ms
+                           Asset       Size  Chunks             Chunk Names
+    main.014ac9aa420264da48eb.js  671 bytes       0  [emitted]  main
+main.014ac9aa420264da48eb.js.map    6.47 kB       0  [emitted]  main
+                      index.html  197 bytes          [emitted]  
+[lVK7] ./src/index.js 184 bytes {0} [built]
+Child html-webpack-plugin for "index.html":
+     1 asset
+    [3IRH] (webpack)/buildin/module.js 517 bytes {0} [built]
+    [DuR2] (webpack)/buildin/global.js 509 bytes {0} [built]
+        + 2 hidden modules
+</code></pre>
+</div>
+
+<p>我们可以看到已经打包好的文件:</p>
+
+<h6 id="main014ac9aa420264da48ebjs">main.014ac9aa420264da48eb.js</h6>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>!function(e){function n(r){if(t[r])return t[r].exports;var o=t[r]={i:r,l:!1,exports:{}};return e[r].call(o.exports,o,o.exports,n),o.l=!0,o.exports}var t={};n.m=e,n.c=t,n.d=function(e,t,r){n.o(e,t)||Object.defineProperty(e,t,{configurable:!1,enumerable:!0,get:r})},n.n=function(e){var t=e&amp;&amp;e.__esModule?function(){return e.default}:function(){return e};return n.d(t,"a",t),t},n.o=function(e,n){return Object.prototype.hasOwnProperty.call(e,n)},n.p="",n(n.s="lVK7")}({lVK7:function(e,n,t){"use strict";document.body.appendChild(function(){var e=document.createElement("div");return e.innerHTML="Hello webpack",e}())}});
+//# sourceMappingURL=main.014ac9aa420264da48eb.js.map
+</code></pre>
+</div>
+
+<p>我们可以看到在webpack的打包和压缩下, 代码已经基本不可读了. 所以我们需要加上之前的调试插件, 以便生产环境出现bug后的补救.</p>
+
+<h5 id="npm-start">npm start</h5>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>MacBook-Pro-15:webpack zhushuangquan$ npm start
+
+&gt; webpack@1.0.0 start /Users/zhushuangquan/Documents/code/webpack
+&gt; webpack-dev-server --open --config webpack.dev.js
+
+clean-webpack-plugin: /Users/zhushuangquan/Documents/code/webpack/dist has been removed.
+Project is running at http://localhost:8080/
+webpack output is served from /
+Content not from webpack is served from ./dist
+webpack: wait until bundle finished: /
+Hash: 06f20ec519d58fbd5c28
+Version: webpack 3.6.0
+Time: 1460ms
+                       Asset       Size  Chunks                    Chunk Names
+main.5eb4d4e3f458c49658a2.js     852 kB       0  [emitted]  [big]  main
+                  index.html  197 bytes          [emitted]         
+[6Um2] (webpack)/node_modules/url/util.js 314 bytes {0} [built]
+[8o/D] (webpack)-dev-server/client/overlay.js 3.71 kB {0} [built]
+[HPf+] (webpack)/node_modules/url/url.js 23.3 kB {0} [built]
+[Lx3u] (webpack)/hot/log.js 1.04 kB {0} [optional] [built]
+[Sj28] (webpack)-dev-server/node_modules/strip-ansi/index.js 161 bytes {0} [built]
+[TfA6] (webpack)/hot nonrecursive ^\.\/log$ 170 bytes {0} [built]
+[U2me] (webpack)/hot/emitter.js 77 bytes {0} [built]
+[V3KU] (webpack)-dev-server/client/socket.js 1.04 kB {0} [built]
+[cMmS] (webpack)-dev-server/client?http://localhost:8080 7.27 kB {0} [built]
+[gqsi] (webpack)-dev-server/node_modules/loglevel/lib/loglevel.js 7.74 kB {0} [built]
+   [0] multi (webpack)-dev-server/client?http://localhost:8080 ./src/index.js 40 bytes {0} [built]
+[gt+Q] (webpack)-dev-server/node_modules/ansi-regex/index.js 135 bytes {0} [built]
+[lVK7] ./src/index.js 184 bytes {0} [built]
+[p7Vd] (webpack)/node_modules/punycode/punycode.js 14.7 kB {0} [built]
+[pEPF] (webpack)/node_modules/querystring-es3/index.js 127 bytes {0} [built]
+    + 73 hidden modules
+Child html-webpack-plugin for "index.html":
+     1 asset
+    [3IRH] (webpack)/buildin/module.js 517 bytes {0} [built]
+    [DuR2] (webpack)/buildin/global.js 509 bytes {0} [built]
+    [M4fF] ./node_modules/lodash/lodash.js 540 kB {0} [built]
+    [a/t9] ./node_modules/html-webpack-plugin/lib/loader.js!./node_modules/html-webpack-plugin/default_index.ejs 538 bytes {0} [built]
+webpack: Compiled successfully.
+
+</code></pre>
+</div>
+<p>我们可以看到打开了一个内容为<code class="highlighter-rouge">Hello webpack</code>的网页在8080端口, 当我们修改了文件时候网页会自动刷新.</p>
+
+<h4 id="知识点">知识点:</h4>
+
+<p>回到我们刚才的package.json的命令行配置来看.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>  "scripts": { //命令行工具
+    "test": "echo \"Error: no test specified\" &amp;&amp; exit 1",
+    "watch": "webpack --progress --watch",
+    "start": "webpack-dev-server --open --config webpack.dev.js",
+    "build": "webpack --config webpack.prod.js"
+  },
+</code></pre>
+</div>
+
+<ul>
+  <li>
+    <p>上面的<code class="highlighter-rouge">npm run build</code> =&gt; <code class="highlighter-rouge">webpack</code> =&gt; <code class="highlighter-rouge">webpack.prod.js</code>, 就是执行了生产环境的配置的打包命令.</p>
+  </li>
+  <li>
+    <p>上面的<code class="highlighter-rouge">npm start</code> =&gt; <code class="highlighter-rouge">webpack-dev-server --open</code> =&gt; <code class="highlighter-rouge">webpack.dev.js</code>, 就是执行了开发环境配置的服务端命令.</p>
+  </li>
+  <li><code class="highlighter-rouge">--config</code>是用于执行webpack配置文件的命令, 而默认为<code class="highlighter-rouge">webpack.config.js</code>.</li>
+  <li><code class="highlighter-rouge">webpack</code>命令就是和之前的gulp的逻辑相似, 将<code class="highlighter-rouge">entry</code>实例复制到<code class="highlighter-rouge">output</code>路径的逻辑. 当然还伴随着一系列的操作.</li>
+  <li><code class="highlighter-rouge">webpack-dev-server --open</code>命令是打开服务器并进行热加载的用途.</li>
+</ul>
+
+<p>以上就是webpack的使用及逻辑, 并没有想象中的复杂吧, 甚至可以说是简单, 实测一天即可入门webpack.</p>
+
+<p>想要了解webpack进阶, 提高性能的同学可以关注鹅厂的沙龙视频 –&gt; <a href="http://www.imooc.com/video/14125">点击跳转</a></p>
+
+<p>由于webpack的通用配置是固定代码, 我已经打包上传<a href="https://github.com/coderZsq/coderZsq.webpack.js">github</a>, 需要的同学可以进行<a href="https://github.com/coderZsq/coderZsq.webpack.js">下载</a>.</p>
+
+  </section>
+</article>
+
+<section class="read-more">
+   
+   
+   <div class="read-more-item">
+       <span class="read-more-item-dim">最近的文章</span>
+       <h2 class="post-list__post-title post-title"><a href="/2017/09/Web-%E5%B0%86%E9%A1%B9%E7%9B%AE%E5%BF%AB%E9%80%9F%E8%BF%81%E7%A7%BB%E8%87%B3React/" title="link to Web 将项目快速迁移至React">Web 将项目快速迁移至React</a></h2>
+       <p class="excerpt">  最近在学习前端方面的知识, 粗浅的将webpack和gulp的文档翻阅了一遍, 虽然之前有使用过Vue的经验, 但是就社区来说, 现在的主流还是React, 所以我也不免俗的进行学习, 为以后React Native的hybird架构的建设打好基础.参考链接:  Web 是时候用前端写个简历了!  Web 前端项目要从基本布局开始  Web 简历一定要设计的美美的  Web 使用Vue代替陈旧的jQuery  Web Vue项目速转.htm静态网页以下内容在上述文章基础上进行, 请事先...&hellip;</p>
+       <div class="post-list__meta"><time datetime="2017-09-29 11:38:00 +0800" class="post-list__meta--date date">2017-09-29</time> &#8226; <span class="post-list__meta--tags tags">前端开发</span><a class="btn-border-small" href=/2017/09/Web-%E5%B0%86%E9%A1%B9%E7%9B%AE%E5%BF%AB%E9%80%9F%E8%BF%81%E7%A7%BB%E8%87%B3React/>继续阅读</a></div>
+   </div>
+   
+   
+   
+   
+   <div class="read-more-item">
+       <span class="read-more-item-dim">更早的文章</span>
+       <h2 class="post-list__post-title post-title"><a href="/2017/09/Web-%E4%BD%BF%E7%94%A8gulp%E6%9E%84%E5%BB%BA%E5%89%8D%E7%AB%AF%E9%A1%B9%E7%9B%AE/" title="link to Web 使用gulp构建前端项目">Web 使用gulp构建前端项目</a></h2>
+       <p class="excerpt">  对于现在的前端开发来说, 比起之前jQuery时期真心方便很多, 自从ES6的更新后, 更是进一步加快了前端开发的脚步, 并有统一天下的趋势, 随之而出的React / React-Native, Vue / Weex (Vue-Native)之流的框架兴起更是降低了前端开发的门槛, 以至于开发者们对大前端时代趋之若鹜.对于现在的前端开发已经不想以前仅靠切图加上HTML+CSS+JS三件套就能够轻松搞定了, 现在三方提供的工具层出不穷, jQuery, Angular, BootStr...&hellip;</p>
+       <div class="post-list__meta"><time datetime="2017-09-04 14:39:00 +0800" class="post-list__meta--date date">2017-09-04</time> &#8226; <span class="post-list__meta--tags tags">前端开发</span><a class="btn-border-small" href=/2017/09/Web-%E4%BD%BF%E7%94%A8gulp%E6%9E%84%E5%BB%BA%E5%89%8D%E7%AB%AF%E9%A1%B9%E7%9B%AE/>继续阅读</a></div>
+   </div>
+   
+</section>
+
+<section class="post-comments">
+  
+  
+  
+  
+</section>
+
+
+            <section class="footer">
+    <footer>
+    	<span class="footer__copyright">本站点采用<a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">知识共享 署名-非商业性使用-相同方式共享 4.0 国际 许可协议</a></span>
+        <span class="footer__copyright">由 <a href="https://jekyllrb.com">Jekyll</a> 于 2019-09-28 生成，感谢 <a href="https://www.digitalocean.com/?refcode=30ed2d146762">Digital Ocean</a> 为本站提供稳定的 VPS 服务</span>
+        <span class="footer__copyright">本站由 <a href="https://github.com/coderZsq">@Castie!</a> 创建，采用 <a href="https://github.com/onevcat/vno-jekyll">Vno - Jekyll</a> 作为主题，您可以在 GitHub 找到<a href="https://github.com/onevcat/OneV-s-Den">本站源码</a> - &copy; 2019</span>
+    </footer>
+</section>
+
+        </div>
+    </div>
+    
+    <script type="text/javascript" src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+
+<script type="text/javascript" src="/js/main.js"></script>
+
+
+
+    
+  </body>
+
+</html>

@@ -1,0 +1,1890 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <title>Castie! Notes</title>
+  <meta name="description" content="  GitHub Repo：coderZsq.github.ioFollow: coderZsq · GitHubResume: https://coderzsq.github.io/coderZsq.webpack.js/#/">
+  <meta name="author" content="Wei Wang">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="C++ 一把剖析OC底层的军刀">
+  <meta name="twitter:description" content="  GitHub Repo：coderZsq.github.ioFollow: coderZsq · GitHubResume: https://coderzsq.github.io/coderZsq.webpack.js/#/">
+  
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="C++ 一把剖析OC底层的军刀">
+  <meta property="og:description" content="  GitHub Repo：coderZsq.github.ioFollow: coderZsq · GitHubResume: https://coderzsq.github.io/coderZsq.webpack.js/#/">
+  
+  <link rel="icon" type="image/ico" href="/assets/images/favicon.ico" />
+  <link href="/assets/images/favicon.ico" rel="shortcut icon" type="image/ico">
+  
+  <link rel="stylesheet" href="/css/main.css">
+  <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+
+  <link rel="canonical" href="http://localhost:4000/2018/03/C++-%E4%B8%80%E6%8A%8A%E5%89%96%E6%9E%90OC%E5%BA%95%E5%B1%82%E7%9A%84%E5%86%9B%E5%88%80/">
+  <link rel="alternate" type="application/rss+xml" title="Castie!" href="http://localhost:4000/feed.xml">
+  
+  <meta name="google-site-verification" content="1-1ZlHoRvM0T2FqPbW2S-qLgYXN6rsn52kErlMPd_gw" />
+  
+</head>
+
+
+  <body>
+
+    <span class="mobile btn-mobile-menu">
+        <i class="fa fa-list btn-mobile-menu__icon"></i>
+        <i class="fa fa-angle-up btn-mobile-close__icon hidden"></i>
+    </span>
+    
+    <header class="panel-cover panel-cover--collapsed" style="background-image: url('/assets/images/background-cover.jpg')">
+  <div class="panel-main">
+
+    <div class="panel-main__inner panel-inverted">
+    <div class="panel-main__content">
+
+        <a href="/#blog" title="前往 Castie! 的主页" class="blog-button"><img src="/assets/images/avatar.jpg" width="80" alt="Castie! logo" class="panel-cover__logo logo" /></a>
+        <h1 class="panel-cover__title panel-title"><a href="/#blog" title="link to homepage for Castie!" class="blog-button">Castie!</a></h1>
+        
+        <span class="panel-cover__subtitle panel-subtitle">正态分布, 优劣伴生</span>
+        
+        <hr class="panel-cover__divider" />
+        <p class="panel-cover__description">北冥有鱼，其名为鲲（kūn）。鲲之大，不知其几千里也；化而为鸟，其名为鹏。鹏之背，不知其几千里也；怒而飞，其翼若垂天之云。是鸟也，海运则将徙于南冥。南冥者，天池也。</p>
+        <hr class="panel-cover__divider panel-cover__divider--secondary" />
+        
+        
+        <p class="panel-cover__description">北海若曰：“井鼃不可以语于海者，拘于虚也；夏虫不可以语于冰者，笃于时也；曲士不可以语于道者，束于教也。今尔出于崖涘，观于大海，乃知尔丑，尔将可与语大理矣。</p>
+        
+        
+        <div class="navigation-wrapper">
+          <div>
+            <nav class="cover-navigation cover-navigation--primary">
+              <ul class="navigation">
+                <li class="navigation__item"><a href="/#blog" title="访问博客" class="blog-button">博客</a></li>
+                
+                  <li class="navigation__item"><a href="https://coderzsq.github.io/coderZsq.practice.web/" target="_blank" title="我的简历">简历</a></li>
+                
+              </ul>
+            </nav>
+          </div>
+          
+          <div><nav class="cover-navigation navigation--social">
+  <ul class="navigation">
+
+    
+    <!-- juejin-->
+    <li class="navigation__item">
+      <a href="https://juejin.im/user/57e735dfa22b9d00614eecb8/posts" title="@coderZsq 的稀土掘金" target="_blank">
+        <i class='social fa fa-book'></i>
+        <span class="label">juejin</span>
+      </a>
+    </li>
+    
+
+  
+
+  
+  <!-- Github -->
+  <li class="navigation__item">
+    <a href="https://github.com/coderZsq" title="@coderZsq 的 Github" target="_blank">
+      <i class='social fa fa-github'></i>
+      <span class="label">Github</span>
+    </a>
+  </li>
+  
+
+  
+
+  
+
+  <!-- RSS -->
+  <li class="navigation__item">
+    <a href="/feed.xml" rel="author" title="RSS" target="_blank">
+      <i class='social fa fa-rss'></i>
+      <span class="label">RSS</span>
+    </a>
+  </li>
+
+  
+  <!-- Email -->
+  <li class="navigation__item">
+    <a href="mailto:a13701777868@gmail.com" title="Contact me">
+      <i class='social fa fa-envelope'></i>
+      <span class="label">Email</span>
+    </a>
+  </li>
+  
+
+  </ul>
+</nav>
+</div>
+        </div>
+      </div>
+    </div>
+    
+    
+    <div class="panel-cover--overlay cover-disabled"></div>
+    
+  </div>
+</header>
+
+
+    <div class="content-wrapper">
+        <div class="content-wrapper__inner">
+            <article class="post-container post-container--single" itemscope itemtype="http://schema.org/BlogPosting">
+  <header class="post-header">
+    <div class="post-meta">
+      <time datetime="2018-03-17 14:16:00 +0800" itemprop="datePublished" class="post-meta__date date">2018-03-17</time> &#8226; <span class="post-meta__tags tags">移动开发</span>
+    </div>
+    <h1 class="post-title">C++ 一把剖析OC底层的军刀</h1>
+  </header>
+
+  <section class="post">
+    <blockquote>
+  <p>GitHub Repo：<a href="https://github.com/coderZsq/coderZsq.github.io">coderZsq.github.io</a>
+<br />Follow: <a href="https://github.com/coderZsq">coderZsq · GitHub</a>
+<br />Resume: <a href="https://coderzsq.github.io/coderZsq.webpack.js/#/">https://coderzsq.github.io/coderZsq.webpack.js/#/</a></p>
+</blockquote>
+
+<h4 id="日常扯淡">日常扯淡</h4>
+
+<p>明天就要出国了, 所以本来想将.md的旅行攻略放到网上共享的, 就使用了简书的.md编译器, 没想到的是, 用完之后我的账号就被冻结了….</p>
+
+<blockquote>
+  <p>尊敬的简书用户您好，由于您有可能违反了简书社区管理规定（包括但不仅限于违反法律法规，不友善行为，发布垃圾信息，恶意行为如简信滋扰），具体可查看《「简书」指导原则和管理细则》http://dwz.cn/3BcYrg 和《简书社区指导规则》http://dwz.cn/3BcZi1 ，现根据情节严重程度，给予您冻结账户的惩罚，冻结期间帐号无法发表和编辑任何内容，您的数据将会为您保留60天，在此期间您可以备份您的文章，钱包里如有余额可及时提现，如您对结果处理有异议，也可联系邮箱 help@jianshu.com ，60天后将会直接注销您的账号并删除所有数据</p>
+</blockquote>
+
+<p>真是的… 现在简书给我的印象是越来越差了, 随随便便写一点水文都有上千的阅读量, 而现在那个事件之后, 许多大佬的出走, 简书也可能对程序员这个群体不再重视了吧, 所以以后的文章会陆续发在掘金上. 简书的账号可能会在60天之后被删除吧… 也无所谓了…反正我已经全部迁移到<a href="https://github.com/coderZsq/coderZsq.github.io">githubpages</a>上去了. 有兴趣的同学可以<code class="highlighter-rouge">star</code>关注.</p>
+
+<p>上周我们就简单了解了, <code class="highlighter-rouge">C</code>和<code class="highlighter-rouge">C++</code>之间的差异为切入点, 而有了上周的基础, 这次, 我们就能够更加深入的理解<code class="highlighter-rouge">OC</code>的底层实现原理了.</p>
+
+<h4 id="c-作者的建议">C++ 作者的建议</h4>
+
+<ol>
+  <li>在C++中几乎不需要用宏, 用const和enum定义显式的常量, 用inline避免函数调用的额外开销, 用模板去刻画一组函数或类型, 用namespace去避免命名冲突.</li>
+  <li>不要在你需要变量之前去声明, 以保证你能立即对它进行初始化.</li>
+  <li>不要用malloc, new运算会做的更好.</li>
+  <li>避免使用void*, 指针算数, 联合和强制, 大多数情况下, 强制类型转换是设计错误的指示器.</li>
+  <li>尽量少用数组和C风格的字符串, 标准库中的string和vector可以简化程序.</li>
+  <li>更加重要的是, 试着将程序考虑为一组由类和对象表示的互相作用的概念年, 而不是一堆数据结构和一些可以拨弄的二进制.</li>
+</ol>
+
+<h4 id="自实现-string">自实现 string</h4>
+
+<p><code class="highlighter-rouge">string</code>本质其实就是对<code class="highlighter-rouge">char * </code>的包装, 而<code class="highlighter-rouge">NSString</code>也是如此.</p>
+
+<div class="language-cpp highlighter-rouge"><pre class="highlight"><code><span class="kt">int</span> <span class="nf">sq_strlen</span><span class="p">(</span><span class="k">const</span> <span class="kt">char</span> <span class="o">*</span> <span class="n">str</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kt">int</span> <span class="n">len</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="k">while</span> <span class="p">(</span><span class="o">*</span><span class="n">str</span><span class="o">++</span><span class="p">)</span>
+        <span class="n">len</span><span class="o">++</span><span class="p">;</span>
+    <span class="k">return</span> <span class="n">len</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kt">char</span> <span class="o">*</span> <span class="nf">sq_strcpy</span><span class="p">(</span><span class="kt">char</span> <span class="o">*</span> <span class="n">dst</span><span class="p">,</span> <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span> <span class="n">src</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kt">char</span> <span class="o">*</span> <span class="n">d</span> <span class="o">=</span> <span class="n">dst</span><span class="p">;</span>
+    <span class="k">while</span> <span class="p">((</span><span class="o">*</span><span class="n">dst</span><span class="o">++</span> <span class="o">=</span> <span class="o">*</span><span class="n">src</span><span class="o">++</span><span class="p">));</span>
+    <span class="k">return</span> <span class="n">d</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kt">int</span> <span class="nf">sq_strcmp</span><span class="p">(</span><span class="k">const</span> <span class="kt">char</span> <span class="o">*</span> <span class="n">str1</span><span class="p">,</span> <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span> <span class="n">str2</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">for</span> <span class="p">(;</span> <span class="o">*</span><span class="n">str1</span> <span class="o">&amp;&amp;</span> <span class="o">*</span><span class="n">str2</span><span class="p">;</span> <span class="n">str1</span><span class="o">++</span><span class="p">,</span> <span class="n">str2</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="o">*</span><span class="n">str1</span> <span class="o">==</span> <span class="o">*</span><span class="n">str2</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">continue</span><span class="p">;</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="o">*</span><span class="n">str1</span> <span class="o">-</span> <span class="o">*</span><span class="n">str2</span><span class="p">;</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="o">*</span><span class="n">str1</span> <span class="o">-</span> <span class="o">*</span><span class="n">str2</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kt">char</span> <span class="o">*</span> <span class="nf">sq_strcat</span><span class="p">(</span><span class="kt">char</span> <span class="o">*</span> <span class="n">dst</span><span class="p">,</span> <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span> <span class="n">src</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kt">char</span> <span class="o">*</span> <span class="n">d</span> <span class="o">=</span> <span class="n">dst</span><span class="p">;</span>
+    <span class="k">while</span> <span class="p">(</span><span class="o">*</span><span class="n">dst</span><span class="p">)</span>
+        <span class="n">dst</span><span class="o">++</span><span class="p">;</span>
+    <span class="k">while</span> <span class="p">((</span><span class="o">*</span><span class="n">dst</span><span class="o">++</span> <span class="o">=</span> <span class="o">*</span><span class="n">src</span><span class="o">++</span><span class="p">));</span>
+    <span class="k">return</span> <span class="n">d</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<p>我们先来自实现一下<code class="highlighter-rouge">&lt;string.h&gt;</code>中的常用方法, 代码公开了, 我就不细讲原理了, 自己多试试应该就能够有所领悟.</p>
+
+<div class="language-cpp highlighter-rouge"><pre class="highlight"><code><span class="k">class</span> <span class="nc">SQString</span> <span class="p">{</span>
+    
+<span class="k">public</span><span class="o">:</span>
+    <span class="n">SQString</span><span class="p">(</span><span class="k">const</span> <span class="kt">char</span> <span class="o">*</span> <span class="n">str</span> <span class="o">=</span> <span class="nb">nullptr</span><span class="p">);</span>
+    <span class="n">SQString</span><span class="p">(</span><span class="k">const</span> <span class="n">SQString</span> <span class="o">&amp;</span> <span class="n">another</span><span class="p">);</span>
+    <span class="n">SQString</span><span class="o">&amp;</span> <span class="k">operator</span><span class="o">=</span><span class="p">(</span><span class="k">const</span> <span class="n">SQString</span> <span class="o">&amp;</span> <span class="n">another</span><span class="p">);</span>
+    <span class="kt">bool</span> <span class="k">operator</span><span class="o">==</span><span class="p">(</span><span class="k">const</span> <span class="n">SQString</span> <span class="o">&amp;</span> <span class="n">another</span><span class="p">);</span>
+    <span class="kt">bool</span> <span class="k">operator</span><span class="o">&gt;</span><span class="p">(</span><span class="k">const</span> <span class="n">SQString</span> <span class="o">&amp;</span> <span class="n">another</span><span class="p">);</span>
+    <span class="kt">bool</span> <span class="k">operator</span><span class="o">&lt;</span><span class="p">(</span><span class="k">const</span> <span class="n">SQString</span> <span class="o">&amp;</span> <span class="n">another</span><span class="p">);</span>
+    <span class="kt">bool</span> <span class="k">operator</span><span class="o">&gt;=</span><span class="p">(</span><span class="k">const</span> <span class="n">SQString</span> <span class="o">&amp;</span> <span class="n">another</span><span class="p">);</span>
+    <span class="kt">bool</span> <span class="k">operator</span><span class="o">&lt;=</span><span class="p">(</span><span class="k">const</span> <span class="n">SQString</span> <span class="o">&amp;</span> <span class="n">another</span><span class="p">);</span>
+    <span class="n">SQString</span> <span class="k">operator</span><span class="o">+</span><span class="p">(</span><span class="k">const</span> <span class="n">SQString</span> <span class="o">&amp;</span> <span class="n">another</span><span class="p">);</span>
+    <span class="n">SQString</span><span class="o">&amp;</span> <span class="k">operator</span><span class="o">+=</span><span class="p">(</span><span class="k">const</span> <span class="n">SQString</span> <span class="o">&amp;</span> <span class="n">another</span><span class="p">);</span>
+    <span class="o">~</span><span class="n">SQString</span><span class="p">();</span>
+    <span class="kt">char</span> <span class="n">at</span><span class="p">(</span><span class="kt">int</span> <span class="n">n</span><span class="p">);</span>
+    <span class="kt">char</span> <span class="k">operator</span><span class="p">[](</span><span class="kt">int</span> <span class="n">n</span><span class="p">);</span>
+    <span class="kt">char</span> <span class="o">*</span> <span class="n">c_str</span><span class="p">();</span>
+    <span class="kt">void</span> <span class="n">description</span><span class="p">();</span>
+<span class="k">private</span><span class="o">:</span>
+    <span class="kt">char</span> <span class="o">*</span> <span class="n">_str</span><span class="p">;</span>
+<span class="p">};</span>
+
+</code></pre>
+</div>
+
+<p>猜测<code class="highlighter-rouge">string</code>内部实现原理, 其实就是构造器, 拷贝构造器, 运算符重载, 和一些常用函数的封装罢了, 并没有什么很神奇的东西.</p>
+
+<div class="language-cpp highlighter-rouge"><pre class="highlight"><code><span class="n">SQString</span><span class="o">::</span><span class="n">SQString</span><span class="p">(</span><span class="k">const</span> <span class="kt">char</span> <span class="o">*</span> <span class="n">str</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">str</span> <span class="o">==</span> <span class="nb">nullptr</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">_str</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">char</span><span class="p">[</span><span class="mi">1</span><span class="p">];</span>
+        <span class="o">*</span><span class="n">_str</span> <span class="o">=</span> <span class="sc">'\0'</span><span class="p">;</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+        <span class="n">_str</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">char</span><span class="p">[</span><span class="n">sq_strlen</span><span class="p">(</span><span class="n">str</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="p">];</span>
+        <span class="n">sq_strcpy</span><span class="p">(</span><span class="n">_str</span><span class="p">,</span> <span class="n">str</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="n">SQString</span><span class="o">::</span><span class="n">SQString</span><span class="p">(</span><span class="k">const</span> <span class="n">SQString</span> <span class="o">&amp;</span> <span class="n">another</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">_str</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">char</span><span class="p">[</span><span class="n">sq_strlen</span><span class="p">(</span><span class="n">another</span><span class="p">.</span><span class="n">_str</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="p">];</span>
+    <span class="n">sq_strcpy</span><span class="p">(</span><span class="n">_str</span><span class="p">,</span> <span class="n">another</span><span class="p">.</span><span class="n">_str</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="n">SQString</span><span class="o">&amp;</span> <span class="n">SQString</span><span class="o">::</span><span class="k">operator</span><span class="o">=</span><span class="p">(</span><span class="k">const</span> <span class="n">SQString</span> <span class="o">&amp;</span> <span class="n">another</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="k">this</span> <span class="o">==</span> <span class="o">&amp;</span><span class="n">another</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="o">*</span><span class="k">this</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="k">delete</span> <span class="p">[]</span><span class="k">this</span><span class="o">-&gt;</span><span class="n">_str</span><span class="p">;</span>
+    <span class="n">_str</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">char</span><span class="p">[</span><span class="n">sq_strlen</span><span class="p">(</span><span class="n">another</span><span class="p">.</span><span class="n">_str</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="p">];</span>
+    <span class="n">sq_strcpy</span><span class="p">(</span><span class="n">_str</span><span class="p">,</span> <span class="n">another</span><span class="p">.</span><span class="n">_str</span><span class="p">);</span>
+    <span class="k">return</span> <span class="o">*</span><span class="k">this</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kt">bool</span> <span class="n">SQString</span><span class="o">::</span><span class="k">operator</span><span class="o">==</span><span class="p">(</span><span class="k">const</span> <span class="n">SQString</span> <span class="o">&amp;</span> <span class="n">another</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="n">sq_strcmp</span><span class="p">(</span><span class="k">this</span><span class="o">-&gt;</span><span class="n">_str</span><span class="p">,</span> <span class="n">another</span><span class="p">.</span><span class="n">_str</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="kt">bool</span> <span class="n">SQString</span><span class="o">::</span><span class="k">operator</span><span class="o">&gt;</span><span class="p">(</span><span class="k">const</span> <span class="n">SQString</span> <span class="o">&amp;</span> <span class="n">another</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="n">sq_strcmp</span><span class="p">(</span><span class="k">this</span><span class="o">-&gt;</span><span class="n">_str</span><span class="p">,</span> <span class="n">another</span><span class="p">.</span><span class="n">_str</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="kt">bool</span> <span class="n">SQString</span><span class="o">::</span><span class="k">operator</span><span class="o">&lt;</span><span class="p">(</span><span class="k">const</span> <span class="n">SQString</span> <span class="o">&amp;</span> <span class="n">another</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="n">sq_strcmp</span><span class="p">(</span><span class="k">this</span><span class="o">-&gt;</span><span class="n">_str</span><span class="p">,</span> <span class="n">another</span><span class="p">.</span><span class="n">_str</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="kt">bool</span> <span class="n">SQString</span><span class="o">::</span><span class="k">operator</span><span class="o">&gt;=</span><span class="p">(</span><span class="k">const</span> <span class="n">SQString</span> <span class="o">&amp;</span> <span class="n">another</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="n">sq_strcmp</span><span class="p">(</span><span class="k">this</span><span class="o">-&gt;</span><span class="n">_str</span><span class="p">,</span> <span class="n">another</span><span class="p">.</span><span class="n">_str</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="kt">bool</span> <span class="n">SQString</span><span class="o">::</span><span class="k">operator</span><span class="o">&lt;=</span><span class="p">(</span><span class="k">const</span> <span class="n">SQString</span> <span class="o">&amp;</span> <span class="n">another</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="n">sq_strcmp</span><span class="p">(</span><span class="k">this</span><span class="o">-&gt;</span><span class="n">_str</span><span class="p">,</span> <span class="n">another</span><span class="p">.</span><span class="n">_str</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="n">SQString</span> <span class="n">SQString</span><span class="o">::</span><span class="k">operator</span><span class="o">+</span><span class="p">(</span><span class="k">const</span> <span class="n">SQString</span> <span class="o">&amp;</span> <span class="n">another</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kt">int</span> <span class="n">len</span> <span class="o">=</span> <span class="n">sq_strlen</span><span class="p">(</span><span class="k">this</span><span class="o">-&gt;</span><span class="n">_str</span><span class="p">)</span> <span class="o">+</span> <span class="n">sq_strlen</span><span class="p">(</span><span class="n">another</span><span class="p">.</span><span class="n">_str</span><span class="p">);</span>
+    <span class="n">SQString</span> <span class="n">str</span><span class="p">;</span>
+    <span class="k">delete</span> <span class="p">[]</span><span class="n">str</span><span class="p">.</span><span class="n">_str</span><span class="p">;</span>
+    <span class="n">str</span><span class="p">.</span><span class="n">_str</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">char</span><span class="p">[</span><span class="n">len</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]{</span><span class="mi">0</span><span class="p">};</span>
+    <span class="n">sq_strcat</span><span class="p">(</span><span class="n">sq_strcat</span><span class="p">(</span><span class="n">str</span><span class="p">.</span><span class="n">_str</span><span class="p">,</span> <span class="k">this</span><span class="o">-&gt;</span><span class="n">_str</span><span class="p">),</span> <span class="n">another</span><span class="p">.</span><span class="n">_str</span><span class="p">);</span>
+    <span class="k">return</span> <span class="n">str</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="n">SQString</span><span class="o">&amp;</span> <span class="n">SQString</span><span class="o">::</span><span class="k">operator</span><span class="o">+=</span><span class="p">(</span><span class="k">const</span> <span class="n">SQString</span> <span class="o">&amp;</span> <span class="n">another</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kt">int</span> <span class="n">catLen</span> <span class="o">=</span> <span class="n">sq_strlen</span><span class="p">(</span><span class="k">this</span><span class="o">-&gt;</span><span class="n">_str</span><span class="p">);</span>
+    <span class="kt">int</span> <span class="n">srcLen</span> <span class="o">=</span> <span class="n">sq_strlen</span><span class="p">(</span><span class="n">another</span><span class="p">.</span><span class="n">_str</span><span class="p">);</span>
+    <span class="kt">int</span> <span class="n">len</span> <span class="o">=</span> <span class="n">catLen</span> <span class="o">+</span> <span class="n">srcLen</span><span class="p">;</span>
+    <span class="k">this</span><span class="o">-&gt;</span><span class="n">_str</span> <span class="o">=</span> <span class="p">(</span><span class="kt">char</span> <span class="o">*</span><span class="p">)</span><span class="n">realloc</span><span class="p">(</span><span class="k">this</span><span class="o">-&gt;</span><span class="n">_str</span><span class="p">,</span> <span class="n">len</span> <span class="o">+</span> <span class="mi">1</span><span class="p">);</span>
+    <span class="n">memset</span><span class="p">(</span><span class="k">this</span><span class="o">-&gt;</span><span class="n">_str</span> <span class="o">+</span> <span class="n">catLen</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">srcLen</span> <span class="o">+</span> <span class="mi">1</span><span class="p">);</span>
+    <span class="n">sq_strcat</span><span class="p">(</span><span class="k">this</span><span class="o">-&gt;</span><span class="n">_str</span><span class="p">,</span> <span class="n">another</span><span class="p">.</span><span class="n">_str</span><span class="p">);</span>
+    <span class="k">return</span> <span class="o">*</span><span class="k">this</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="n">SQString</span><span class="o">::~</span><span class="n">SQString</span><span class="p">()</span> <span class="p">{</span>
+    <span class="n">cout</span><span class="o">&lt;&lt;</span><span class="s">"delete: "</span><span class="o">&lt;&lt;</span><span class="k">this</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
+    <span class="k">delete</span> <span class="p">[]</span><span class="n">_str</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kt">char</span> <span class="n">SQString</span><span class="o">::</span><span class="n">at</span><span class="p">(</span><span class="kt">int</span> <span class="n">n</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="n">_str</span><span class="p">[</span><span class="n">n</span><span class="p">];</span>
+<span class="p">}</span>
+
+<span class="kt">char</span> <span class="n">SQString</span><span class="o">::</span><span class="k">operator</span><span class="p">[](</span><span class="kt">int</span> <span class="n">n</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="n">_str</span><span class="p">[</span><span class="n">n</span><span class="p">];</span>
+<span class="p">}</span>
+
+<span class="kt">void</span> <span class="n">SQString</span><span class="o">::</span><span class="n">description</span><span class="p">()</span> <span class="p">{</span>
+    <span class="n">cout</span><span class="o">&lt;&lt;</span><span class="n">_str</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kt">char</span> <span class="o">*</span> <span class="n">SQString</span><span class="o">::</span><span class="n">c_str</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="n">_str</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<p>上面就是一些<code class="highlighter-rouge">string</code>的基础实现方式, 并没有超出上篇文章所涉及的范畴, 简单易理解, 对我们以后看<code class="highlighter-rouge">runtime</code>源码会有帮助.</p>
+
+<div class="language-cpp highlighter-rouge"><pre class="highlight"><code><span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">int</span> <span class="n">argc</span><span class="p">,</span> <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span> <span class="n">argv</span><span class="p">[])</span> <span class="p">{</span>
+    
+    <span class="n">SQString</span> <span class="o">*</span> <span class="n">s</span>  <span class="o">=</span> <span class="k">new</span> <span class="n">SQString</span><span class="p">;</span>
+    <span class="n">SQString</span> <span class="o">*</span> <span class="n">s1</span> <span class="o">=</span> <span class="k">new</span> <span class="n">SQString</span><span class="p">(</span><span class="s">"Castiel"</span><span class="p">);</span>
+    <span class="n">SQString</span> <span class="o">*</span> <span class="n">s2</span> <span class="o">=</span> <span class="k">new</span> <span class="n">SQString</span><span class="p">(</span><span class="o">*</span><span class="n">s1</span><span class="p">);</span>
+    <span class="n">SQString</span>   <span class="n">s3</span> <span class="o">=</span> <span class="o">*</span><span class="n">s</span> <span class="o">=</span> <span class="o">*</span><span class="n">s1</span><span class="p">;</span>
+    <span class="n">SQString</span>   <span class="n">s4</span> <span class="o">=</span> <span class="o">*</span><span class="n">s1</span> <span class="o">+</span> <span class="n">SQString</span><span class="p">(</span><span class="s">" is perpect!"</span><span class="p">);</span>
+    <span class="n">SQString</span>   <span class="n">s5</span> <span class="o">=</span> <span class="n">SQString</span><span class="p">(</span><span class="s">"Tell a joke: "</span><span class="p">)</span> <span class="o">+=</span> <span class="n">s4</span><span class="p">;</span>
+    
+    <span class="n">cout</span><span class="o">&lt;&lt;</span><span class="s">"s:  "</span><span class="p">;</span> <span class="n">s</span><span class="o">-&gt;</span><span class="n">description</span><span class="p">();</span>
+    <span class="n">cout</span><span class="o">&lt;&lt;</span><span class="s">"s1: "</span><span class="p">;</span> <span class="n">s1</span><span class="o">-&gt;</span><span class="n">description</span><span class="p">();</span>
+    <span class="n">cout</span><span class="o">&lt;&lt;</span><span class="s">"s2: "</span><span class="p">;</span> <span class="n">s2</span><span class="o">-&gt;</span><span class="n">description</span><span class="p">();</span>
+    <span class="n">cout</span><span class="o">&lt;&lt;</span><span class="s">"s3: "</span><span class="p">;</span> <span class="n">s3</span><span class="p">.</span><span class="n">description</span><span class="p">();</span>
+    <span class="n">cout</span><span class="o">&lt;&lt;</span><span class="s">"s4: "</span><span class="p">;</span> <span class="n">s4</span><span class="p">.</span><span class="n">description</span><span class="p">();</span>
+    <span class="n">cout</span><span class="o">&lt;&lt;</span><span class="s">"s5: "</span><span class="p">;</span> <span class="n">s5</span><span class="p">.</span><span class="n">description</span><span class="p">();</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="o">*</span><span class="n">s</span> <span class="o">==</span> <span class="n">s3</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">cout</span><span class="o">&lt;&lt;</span><span class="s">"*s == s3"</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="k">if</span> <span class="p">(</span><span class="o">*</span><span class="n">s2</span> <span class="o">&gt;=</span> <span class="n">s3</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">cout</span><span class="o">&lt;&lt;</span><span class="s">"*s2 &gt;= s3"</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="k">if</span> <span class="p">(</span><span class="o">*</span><span class="n">s</span> <span class="o">&lt;</span> <span class="n">SQString</span><span class="p">(</span><span class="s">"abc"</span><span class="p">))</span> <span class="p">{</span>
+        <span class="n">cout</span><span class="o">&lt;&lt;</span><span class="s">"*s &lt; SQString(</span><span class="se">\"</span><span class="s">abc</span><span class="se">\"</span><span class="s">)"</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
+    <span class="p">}</span>
+    
+    <span class="n">cout</span><span class="o">&lt;&lt;</span><span class="s">"s5.at(2): "</span><span class="o">&lt;&lt;</span><span class="n">s5</span><span class="p">.</span><span class="n">at</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
+    <span class="n">cout</span><span class="o">&lt;&lt;</span><span class="s">"s5[5]: "</span><span class="o">&lt;&lt;</span><span class="n">s5</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
+    <span class="n">cout</span><span class="o">&lt;&lt;</span><span class="s">"s5.c_str(): "</span><span class="o">&lt;&lt;</span><span class="n">s5</span><span class="p">.</span><span class="n">c_str</span><span class="p">()</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
+
+    <span class="n">cout</span><span class="o">&lt;&lt;</span><span class="s">"sizeof(SQString) : "</span><span class="o">&lt;&lt;</span><span class="k">sizeof</span><span class="p">(</span><span class="n">SQString</span><span class="p">)</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
+    
+    <span class="k">delete</span> <span class="n">s</span><span class="p">;</span>
+    <span class="k">delete</span> <span class="n">s1</span><span class="p">;</span>
+    <span class="k">delete</span> <span class="n">s2</span><span class="p">;</span>
+    
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+
+</code></pre>
+</div>
+<p>我们来用自实现的想系统的<code class="highlighter-rouge">string</code>一样使用, 会感觉并无差别.</p>
+
+<div class="language-cpp highlighter-rouge"><pre class="highlight"><code><span class="nl">delete:</span> <span class="mh">0x7ffeefbff560</span>
+<span class="k">delete</span><span class="o">:</span> <span class="mh">0x7ffeefbff550</span>
+<span class="n">s</span><span class="o">:</span>  <span class="n">Castiel</span>
+<span class="n">s1</span><span class="o">:</span> <span class="n">Castiel</span>
+<span class="n">s2</span><span class="o">:</span> <span class="n">Castiel</span>
+<span class="n">s3</span><span class="o">:</span> <span class="n">Castiel</span>
+<span class="n">s4</span><span class="o">:</span> <span class="n">Castiel</span> <span class="n">is</span> <span class="n">perpect</span><span class="o">!</span>
+<span class="n">s5</span><span class="o">:</span> <span class="n">Tell</span> <span class="n">a</span> <span class="n">joke</span><span class="o">:</span> <span class="n">Castiel</span> <span class="n">is</span> <span class="n">perpect</span><span class="o">!</span>
+<span class="o">*</span><span class="n">s</span> <span class="o">==</span> <span class="n">s3</span>
+<span class="o">*</span><span class="n">s2</span> <span class="o">&gt;=</span> <span class="n">s3</span>
+<span class="k">delete</span><span class="o">:</span> <span class="mh">0x7ffeefbff548</span>
+<span class="o">*</span><span class="n">s</span> <span class="o">&lt;</span> <span class="n">SQString</span><span class="p">(</span><span class="s">"abc"</span><span class="p">)</span>
+<span class="n">s5</span><span class="p">.</span><span class="n">at</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span><span class="o">:</span> <span class="n">l</span>
+<span class="n">s5</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span><span class="o">:</span> <span class="n">a</span>
+<span class="n">s5</span><span class="p">.</span><span class="n">c_str</span><span class="p">()</span><span class="o">:</span> <span class="n">Tell</span> <span class="n">a</span> <span class="n">joke</span><span class="o">:</span> <span class="n">Castiel</span> <span class="n">is</span> <span class="n">perpect</span><span class="o">!</span>
+<span class="k">sizeof</span><span class="p">(</span><span class="n">SQString</span><span class="p">)</span> <span class="o">:</span> <span class="mi">8</span>
+<span class="k">delete</span><span class="o">:</span> <span class="mh">0x100419ad0</span>
+<span class="k">delete</span><span class="o">:</span> <span class="mh">0x100404b60</span>
+<span class="k">delete</span><span class="o">:</span> <span class="mh">0x100403f40</span>
+<span class="k">delete</span><span class="o">:</span> <span class="mh">0x7ffeefbff558</span>
+<span class="k">delete</span><span class="o">:</span> <span class="mh">0x7ffeefbff568</span>
+<span class="k">delete</span><span class="o">:</span> <span class="mh">0x7ffeefbff570</span>
+<span class="n">Program</span> <span class="n">ended</span> <span class="n">with</span> <span class="n">exit</span> <span class="n">code</span><span class="o">:</span> <span class="mi">0</span>
+</code></pre>
+</div>
+
+<p>使用起来还是如此的自然, 当然, 自实现只是让我们更好的了解本质, 并不是要使用自实现的东西, 而重复造轮子炫技.</p>
+
+<h4 id="const">const</h4>
+
+<p>接下来, 我们来说说<code class="highlighter-rouge">const</code>, <code class="highlighter-rouge">const</code>这个东西非常的厉害, 比如 <code class="highlighter-rouge">int const * a</code>, 和 <code class="highlighter-rouge">int * const a</code>就是完全两个概念, 这在上一篇文章里也有说到了, 这次我们来看下<code class="highlighter-rouge">const</code>在类中的表述.</p>
+
+<div class="language-cpp highlighter-rouge"><pre class="highlight"><code><span class="k">struct</span> <span class="n">A</span>
+<span class="p">{</span>
+<span class="k">public</span><span class="o">:</span>
+    <span class="n">A</span><span class="p">(</span><span class="kt">int</span> <span class="n">x</span><span class="p">,</span> <span class="kt">int</span> <span class="n">y</span><span class="p">,</span> <span class="kt">int</span> <span class="o">&amp;</span> <span class="n">z</span><span class="p">)</span><span class="o">:</span><span class="n">_x</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="n">_y</span><span class="p">(</span><span class="n">y</span><span class="p">),</span> <span class="n">_z</span><span class="p">(</span><span class="n">z</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">cout</span><span class="o">&lt;&lt;</span><span class="s">"const x: "</span><span class="o">&lt;&lt;</span><span class="n">_x</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
+        <span class="n">cout</span><span class="o">&lt;&lt;</span><span class="s">"      y: "</span><span class="o">&lt;&lt;</span><span class="n">_y</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
+        <span class="n">cout</span><span class="o">&lt;&lt;</span><span class="s">"      z: "</span><span class="o">&lt;&lt;</span><span class="n">_z</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="k">private</span><span class="o">:</span>
+    <span class="k">const</span> <span class="kt">int</span> <span class="n">_x</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="n">_y</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="o">&amp;</span> <span class="n">_z</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">int</span> <span class="n">argc</span><span class="p">,</span> <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span> <span class="n">argv</span><span class="p">[])</span> <span class="p">{</span>
+    
+    <span class="kt">int</span> <span class="n">z</span> <span class="o">=</span> <span class="mi">300</span><span class="p">;</span>
+    <span class="n">A</span> <span class="n">a</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">200</span><span class="p">,</span> <span class="n">z</span><span class="p">);</span>
+    
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<div class="language-cpp highlighter-rouge"><pre class="highlight"><code><span class="k">const</span> <span class="n">x</span><span class="o">:</span> <span class="mi">100</span>
+      <span class="n">y</span><span class="o">:</span> <span class="mi">200</span>
+      <span class="n">z</span><span class="o">:</span> <span class="mi">300</span>
+<span class="n">Program</span> <span class="n">ended</span> <span class="n">with</span> <span class="n">exit</span> <span class="n">code</span><span class="o">:</span> <span class="mi">0</span>
+</code></pre>
+</div>
+<p>在类中<code class="highlighter-rouge">const</code>与 初始化列表的使用, 可以使用初始化列表为<code class="highlighter-rouge">const</code>变量初始化.</p>
+
+<div class="language-cpp highlighter-rouge"><pre class="highlight"><code><span class="kt">int</span> <span class="nf">add</span><span class="p">(</span><span class="kt">int</span> <span class="o">&amp;</span> <span class="n">a</span><span class="p">,</span> <span class="kt">int</span> <span class="o">&amp;</span> <span class="n">b</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kt">int</span> <span class="nf">add</span><span class="p">(</span><span class="k">const</span> <span class="kt">int</span> <span class="o">&amp;</span> <span class="n">a</span><span class="p">,</span> <span class="k">const</span> <span class="kt">int</span> <span class="o">&amp;</span> <span class="n">b</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">int</span> <span class="n">argc</span><span class="p">,</span> <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span> <span class="n">argv</span><span class="p">[])</span> <span class="p">{</span>
+
+    <span class="kt">int</span> <span class="n">a</span> <span class="o">=</span> <span class="mi">3</span><span class="p">;</span> <span class="kt">int</span> <span class="n">b</span> <span class="o">=</span> <span class="mi">5</span><span class="p">;</span>
+    <span class="n">cout</span><span class="o">&lt;&lt;</span><span class="n">add</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
+    <span class="n">cout</span><span class="o">&lt;&lt;</span><span class="n">add</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">6</span><span class="p">)</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
+    
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+<div class="language-cpp highlighter-rouge"><pre class="highlight"><code><span class="mi">8</span>
+<span class="mi">10</span>
+<span class="n">Program</span> <span class="n">ended</span> <span class="n">with</span> <span class="n">exit</span> <span class="n">code</span><span class="o">:</span> <span class="mi">0</span>
+</code></pre>
+</div>
+<p>使用<code class="highlighter-rouge">const</code>可以在传递参数的时候, 重载常量引用.</p>
+
+<div class="language-cpp highlighter-rouge"><pre class="highlight"><code><span class="k">class</span> <span class="nc">A</span> <span class="p">{</span>
+<span class="k">public</span><span class="o">:</span>
+    <span class="n">A</span><span class="p">(</span><span class="kt">int</span> <span class="n">x</span><span class="p">,</span> <span class="kt">int</span> <span class="n">y</span><span class="p">)</span><span class="o">:</span><span class="n">_x</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="n">_y</span><span class="p">(</span><span class="n">y</span><span class="p">)</span> <span class="p">{}</span>
+    <span class="kt">void</span> <span class="n">foo</span><span class="p">();</span>
+    <span class="kt">void</span> <span class="n">foo</span><span class="p">()</span> <span class="k">const</span><span class="p">;</span>
+<span class="k">private</span><span class="o">:</span>
+    <span class="kt">int</span> <span class="n">_x</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="n">_y</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="kt">void</span> <span class="n">A</span><span class="o">::</span><span class="n">foo</span><span class="p">()</span> <span class="p">{</span>
+    <span class="n">_x</span> <span class="o">=</span> <span class="mi">300</span><span class="p">;</span>
+    <span class="n">cout</span><span class="o">&lt;&lt;</span><span class="s">"non-const : "</span><span class="o">&lt;&lt;</span><span class="n">_x</span><span class="o">&lt;&lt;</span><span class="n">_y</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="kt">void</span> <span class="n">A</span><span class="o">::</span><span class="n">foo</span><span class="p">()</span> <span class="k">const</span> <span class="p">{</span>
+    <span class="n">cout</span><span class="o">&lt;&lt;</span><span class="s">"const: "</span><span class="o">&lt;&lt;</span><span class="n">_x</span><span class="o">&lt;&lt;</span><span class="n">_y</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kt">int</span> <span class="n">main</span><span class="p">(</span><span class="kt">int</span> <span class="n">argc</span><span class="p">,</span> <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span> <span class="n">argv</span><span class="p">[])</span> <span class="p">{</span>
+
+    <span class="k">const</span> <span class="n">A</span> <span class="n">a</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">);</span>
+    <span class="n">a</span><span class="p">.</span><span class="n">foo</span><span class="p">();</span>
+    
+    <span class="n">A</span> <span class="n">a1</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">);</span>
+    <span class="n">a1</span><span class="p">.</span><span class="n">foo</span><span class="p">();</span>
+
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<div class="language-cpp highlighter-rouge"><pre class="highlight"><code><span class="nl">const:</span> <span class="mi">34</span>
+<span class="n">non</span><span class="o">-</span><span class="k">const</span> <span class="o">:</span> <span class="mi">3006</span>
+<span class="n">Program</span> <span class="n">ended</span> <span class="n">with</span> <span class="n">exit</span> <span class="n">code</span><span class="o">:</span> <span class="mi">0</span>
+</code></pre>
+</div>
+
+<p>总结一下:</p>
+
+<p><code class="highlighter-rouge">const</code>修饰函数以后, 承诺, 不改变, 在本函数不会发生改变数据成员的行为.</p>
+
+<p><code class="highlighter-rouge">const</code>构成的重载函数, 非<code class="highlighter-rouge">const</code>对象, 优先调用非<code class="highlighter-rouge">const</code>版本.</p>
+
+<p><code class="highlighter-rouge">const</code> 对象, 只能调用<code class="highlighter-rouge">const</code>版本的函数. 很多库常见提供两个版本.</p>
+
+<p><code class="highlighter-rouge">const</code> 修饰的对象, 其内可以有非<code class="highlighter-rouge">const</code>数据成员, 但不可修改. 只能调用<code class="highlighter-rouge">const</code> 成员函数.</p>
+
+<h4 id="static">static</h4>
+
+<p>接下来, 我们来说说<code class="highlighter-rouge">static</code>, <code class="highlighter-rouge">static</code>是全局的存储在代码段的<code class="highlighter-rouge">rw</code>段, 我们平时的场景比如在 <code class="highlighter-rouge">cell</code>的标识符的引用, <code class="highlighter-rouge">static const</code>代替宏, <code class="highlighter-rouge">gcd单例</code> 等等.</p>
+
+<div class="language-cpp highlighter-rouge"><pre class="highlight"><code><span class="k">class</span> <span class="nc">A</span> <span class="p">{</span>
+    
+<span class="k">public</span><span class="o">:</span>
+    <span class="kt">int</span> <span class="n">_m</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">_n</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="k">static</span> <span class="kt">int</span> <span class="n">_share</span><span class="p">;</span>
+<span class="p">};</span>
+<span class="kt">int</span> <span class="n">A</span><span class="o">::</span><span class="n">_share</span> <span class="o">=</span> <span class="mi">100</span><span class="p">;</span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">int</span> <span class="n">argc</span><span class="p">,</span> <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span> <span class="n">argv</span><span class="p">[])</span> <span class="p">{</span>
+
+    <span class="n">A</span> <span class="n">a</span><span class="p">;</span>
+    <span class="n">cout</span><span class="o">&lt;&lt;</span><span class="n">a</span><span class="p">.</span><span class="n">_n</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
+    <span class="n">cout</span><span class="o">&lt;&lt;</span><span class="n">a</span><span class="p">.</span><span class="n">_m</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
+    <span class="n">cout</span><span class="o">&lt;&lt;</span><span class="n">a</span><span class="p">.</span><span class="n">_share</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
+    <span class="n">cout</span><span class="o">&lt;&lt;</span><span class="n">A</span><span class="o">::</span><span class="n">_share</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
+    
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+<div class="language-cpp highlighter-rouge"><pre class="highlight"><code><span class="mi">0</span>
+<span class="mi">0</span>
+<span class="mi">100</span>
+<span class="mi">100</span>
+<span class="n">Program</span> <span class="n">ended</span> <span class="n">with</span> <span class="n">exit</span> <span class="n">code</span><span class="o">:</span> <span class="mi">0</span>
+</code></pre>
+</div>
+
+<p><code class="highlighter-rouge">static</code> 修饰数据成员, 需要初始化, 不可以类内初始化.</p>
+
+<p>类外初始化, 需要类名空间, 且不需要<code class="highlighter-rouge">static</code>.</p>
+
+<p><code class="highlighter-rouge">static</code>声明的数据成员, 不占用类的大小, 存储在<code class="highlighter-rouge">data rw</code>段.</p>
+
+<div class="language-cpp highlighter-rouge"><pre class="highlight"><code><span class="k">class</span> <span class="nc">A</span> <span class="p">{</span>
+    
+<span class="k">public</span><span class="o">:</span>
+    <span class="o">~</span><span class="n">A</span><span class="p">();</span>
+    <span class="kt">void</span> <span class="n">foo</span><span class="p">();</span>
+    <span class="kt">int</span> <span class="n">_m</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">_n</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="k">static</span> <span class="kt">int</span> <span class="n">_fooCount</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="kt">int</span> <span class="n">A</span><span class="o">::</span><span class="n">_fooCount</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+
+<span class="n">A</span><span class="o">::~</span><span class="n">A</span><span class="p">()</span> <span class="p">{</span>
+    <span class="n">cout</span><span class="o">&lt;&lt;</span><span class="s">"dealloc"</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kt">void</span> <span class="n">A</span><span class="o">::</span><span class="n">foo</span><span class="p">()</span> <span class="p">{</span>
+    <span class="n">cout</span><span class="o">&lt;&lt;</span><span class="s">"void foo()"</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
+    <span class="n">_fooCount</span><span class="o">++</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kt">int</span> <span class="n">main</span><span class="p">(</span><span class="kt">int</span> <span class="n">argc</span><span class="p">,</span> <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span> <span class="n">argv</span><span class="p">[])</span> <span class="p">{</span>
+
+    <span class="p">{</span>
+        <span class="n">A</span> <span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">,</span><span class="n">c</span><span class="p">;</span>
+        <span class="n">a</span><span class="p">.</span><span class="n">foo</span><span class="p">();</span>
+        <span class="n">b</span><span class="p">.</span><span class="n">foo</span><span class="p">();</span>
+        <span class="n">c</span><span class="p">.</span><span class="n">foo</span><span class="p">();</span>
+    <span class="p">}</span>
+    <span class="n">cout</span><span class="o">&lt;&lt;</span><span class="n">A</span><span class="o">::</span><span class="n">_fooCount</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
+    
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<div class="language-cpp highlighter-rouge"><pre class="highlight"><code><span class="kt">void</span> <span class="n">foo</span><span class="p">()</span>
+<span class="kt">void</span> <span class="n">foo</span><span class="p">()</span>
+<span class="kt">void</span> <span class="n">foo</span><span class="p">()</span>
+<span class="n">dealloc</span>
+<span class="n">dealloc</span>
+<span class="n">dealloc</span>
+<span class="mi">3</span>
+<span class="n">Program</span> <span class="n">ended</span> <span class="n">with</span> <span class="n">exit</span> <span class="n">code</span><span class="o">:</span> <span class="mi">0</span>
+</code></pre>
+</div>
+
+<div class="language-cpp highlighter-rouge"><pre class="highlight"><code><span class="k">class</span> <span class="nc">A</span> <span class="p">{</span>
+    
+<span class="k">public</span><span class="o">:</span>
+    <span class="o">~</span><span class="n">A</span><span class="p">();</span>
+    <span class="kt">void</span> <span class="n">foo</span><span class="p">();</span>
+    <span class="k">static</span> <span class="kt">int</span> <span class="n">invokeFooCount</span><span class="p">();</span>
+<span class="k">private</span><span class="o">:</span>
+    <span class="kt">int</span> <span class="n">_m</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">_n</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="k">static</span> <span class="kt">int</span> <span class="n">_fooCount</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="kt">int</span> <span class="n">A</span><span class="o">::</span><span class="n">_fooCount</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+
+<span class="n">A</span><span class="o">::~</span><span class="n">A</span><span class="p">()</span> <span class="p">{</span>
+    <span class="n">cout</span><span class="o">&lt;&lt;</span><span class="s">"dealloc"</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kt">void</span> <span class="n">A</span><span class="o">::</span><span class="n">foo</span><span class="p">()</span> <span class="p">{</span>
+    <span class="n">cout</span><span class="o">&lt;&lt;</span><span class="s">"void foo()"</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
+    <span class="n">_fooCount</span><span class="o">++</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kt">int</span> <span class="n">A</span><span class="o">::</span><span class="n">invokeFooCount</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="n">_fooCount</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kt">int</span> <span class="n">main</span><span class="p">(</span><span class="kt">int</span> <span class="n">argc</span><span class="p">,</span> <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span> <span class="n">argv</span><span class="p">[])</span> <span class="p">{</span>
+
+    <span class="p">{</span>
+        <span class="n">A</span> <span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">,</span><span class="n">c</span><span class="p">;</span>
+        <span class="n">a</span><span class="p">.</span><span class="n">foo</span><span class="p">();</span>
+        <span class="n">b</span><span class="p">.</span><span class="n">foo</span><span class="p">();</span>
+        <span class="n">c</span><span class="p">.</span><span class="n">foo</span><span class="p">();</span>
+        
+        <span class="n">cout</span><span class="o">&lt;&lt;</span><span class="n">a</span><span class="p">.</span><span class="n">invokeFooCount</span><span class="p">()</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="n">cout</span><span class="o">&lt;&lt;</span><span class="n">A</span><span class="o">::</span><span class="n">invokeFooCount</span><span class="p">()</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
+    
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+
+</code></pre>
+</div>
+<div class="language-cpp highlighter-rouge"><pre class="highlight"><code><span class="kt">void</span> <span class="n">foo</span><span class="p">()</span>
+<span class="kt">void</span> <span class="n">foo</span><span class="p">()</span>
+<span class="kt">void</span> <span class="n">foo</span><span class="p">()</span>
+<span class="mi">3</span>
+<span class="n">dealloc</span>
+<span class="n">dealloc</span>
+<span class="n">dealloc</span>
+<span class="mi">3</span>
+<span class="n">Program</span> <span class="n">ended</span> <span class="n">with</span> <span class="n">exit</span> <span class="n">code</span><span class="o">:</span> <span class="mi">0</span>
+</code></pre>
+</div>
+<p>static修饰函数, 目的为管理静态变量.</p>
+
+<div class="language-cpp highlighter-rouge"><pre class="highlight"><code><span class="k">class</span> <span class="nc">University</span> <span class="p">{</span>
+<span class="k">public</span><span class="o">:</span>
+    <span class="n">University</span><span class="p">(</span><span class="n">string</span> <span class="n">t</span><span class="p">,</span> <span class="n">string</span> <span class="n">l</span><span class="p">);</span>
+    <span class="k">static</span> <span class="n">string</span> <span class="o">&amp;</span> <span class="n">getLib</span><span class="p">();</span>
+    <span class="kt">void</span> <span class="n">display</span><span class="p">();</span>
+<span class="k">private</span><span class="o">:</span>
+    <span class="n">string</span> <span class="n">_tower</span><span class="p">;</span>
+    <span class="n">string</span> <span class="n">_lake</span><span class="p">;</span>
+    <span class="k">static</span> <span class="n">string</span> <span class="n">_lib</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="n">string</span> <span class="n">University</span><span class="o">::</span><span class="n">_lib</span> <span class="o">=</span> <span class="s">""</span><span class="p">;</span>
+
+<span class="n">University</span><span class="o">::</span><span class="n">University</span><span class="p">(</span><span class="n">string</span> <span class="n">t</span><span class="p">,</span> <span class="n">string</span> <span class="n">l</span><span class="p">)</span><span class="o">:</span><span class="n">_tower</span><span class="p">(</span><span class="n">t</span><span class="p">),</span> <span class="n">_lake</span><span class="p">(</span><span class="n">l</span><span class="p">){}</span>
+
+<span class="n">string</span> <span class="o">&amp;</span> <span class="n">University</span><span class="o">::</span><span class="n">getLib</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="n">_lib</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="kt">void</span> <span class="n">University</span><span class="o">::</span><span class="n">display</span><span class="p">()</span> <span class="p">{</span>
+    <span class="n">cout</span><span class="o">&lt;&lt;</span><span class="s">"tower: "</span><span class="o">&lt;&lt;</span><span class="n">_tower</span><span class="o">&lt;&lt;</span><span class="s">" lake: "</span><span class="o">&lt;&lt;</span><span class="n">_lake</span><span class="o">&lt;&lt;</span><span class="s">" lib: "</span><span class="o">&lt;&lt;</span><span class="n">_lib</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kt">int</span> <span class="n">main</span><span class="p">(</span><span class="kt">int</span> <span class="n">argc</span><span class="p">,</span> <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span> <span class="n">argv</span><span class="p">[])</span> <span class="p">{</span>
+
+    <span class="n">University</span> <span class="n">u1</span><span class="p">(</span><span class="s">"tower1"</span><span class="p">,</span> <span class="s">"lake1"</span><span class="p">);</span>
+    <span class="n">University</span> <span class="n">u2</span><span class="p">(</span><span class="s">"tower2"</span><span class="p">,</span> <span class="s">"lake2"</span><span class="p">);</span>
+    <span class="n">University</span> <span class="n">u3</span><span class="p">(</span><span class="s">"tower3"</span><span class="p">,</span> <span class="s">"lake3"</span><span class="p">);</span>
+
+    <span class="n">University</span><span class="o">::</span><span class="n">getLib</span><span class="p">()</span> <span class="o">+=</span> <span class="s">"lib1"</span><span class="p">;</span>
+    <span class="n">u1</span><span class="p">.</span><span class="n">display</span><span class="p">();</span>
+
+    <span class="n">u2</span><span class="p">.</span><span class="n">getLib</span><span class="p">()</span> <span class="o">+=</span> <span class="s">"lib2"</span><span class="p">;</span>
+    <span class="n">u2</span><span class="p">.</span><span class="n">display</span><span class="p">();</span>
+
+    <span class="n">u3</span><span class="p">.</span><span class="n">getLib</span><span class="p">()</span> <span class="o">+=</span> <span class="s">"lib3"</span><span class="p">;</span>
+    <span class="n">u3</span><span class="p">.</span><span class="n">display</span><span class="p">();</span>
+    
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<div class="language-cpp highlighter-rouge"><pre class="highlight"><code><span class="nl">tower:</span> <span class="n">tower1</span> <span class="n">lake</span><span class="o">:</span> <span class="n">lake1</span> <span class="n">lib</span><span class="o">:</span> <span class="n">lib1</span>
+<span class="n">tower</span><span class="o">:</span> <span class="n">tower2</span> <span class="n">lake</span><span class="o">:</span> <span class="n">lake2</span> <span class="n">lib</span><span class="o">:</span> <span class="n">lib1lib2</span>
+<span class="n">tower</span><span class="o">:</span> <span class="n">tower3</span> <span class="n">lake</span><span class="o">:</span> <span class="n">lake3</span> <span class="n">lib</span><span class="o">:</span> <span class="n">lib1lib2lib3</span>
+<span class="n">Program</span> <span class="n">ended</span> <span class="n">with</span> <span class="n">exit</span> <span class="n">code</span><span class="o">:</span> <span class="mi">0</span>
+</code></pre>
+</div>
+<p><code class="highlighter-rouge">static</code> 共享</p>
+
+<p>静态成员函数, 只能访问静态的成员. (数据成员和函数成员), 不能访问非静态的成员. 是因为非静态函数没有隐式传入this指针.</p>
+
+<p>非静态函数访问静态函数式可以的.</p>
+
+<h4 id="singleton">singleton</h4>
+
+<p>单例, 这个非常简单, 对于有经验的<code class="highlighter-rouge">iOS</code>开发者来说, 其实就会写一个单例的宏, 但我们还是要知道如何实现.</p>
+
+<div class="language-cpp highlighter-rouge"><pre class="highlight"><code><span class="k">class</span> <span class="nc">Singleton</span> <span class="p">{</span>
+<span class="k">public</span><span class="o">:</span>
+    <span class="k">static</span> <span class="n">Singleton</span> <span class="o">*</span> <span class="n">shareInstance</span><span class="p">();</span>
+    <span class="k">static</span> <span class="kt">void</span> <span class="n">releaseInstance</span><span class="p">();</span>
+<span class="k">private</span><span class="o">:</span>
+    <span class="n">Singleton</span><span class="p">(){};</span>
+    <span class="o">~</span><span class="n">Singleton</span><span class="p">(){};</span>
+    <span class="n">Singleton</span><span class="p">(</span><span class="k">const</span> <span class="n">Singleton</span> <span class="o">&amp;</span> <span class="n">another</span><span class="p">){};</span>
+    <span class="n">Singleton</span> <span class="o">&amp;</span> <span class="k">operator</span><span class="o">=</span><span class="p">(</span><span class="k">const</span> <span class="n">Singleton</span> <span class="o">&amp;</span> <span class="n">another</span><span class="p">){</span><span class="k">return</span> <span class="o">*</span><span class="k">this</span><span class="p">;};</span>
+    <span class="k">static</span> <span class="n">Singleton</span> <span class="o">*</span> <span class="n">_instance</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="n">Singleton</span> <span class="o">*</span> <span class="n">Singleton</span><span class="o">::</span><span class="n">_instance</span> <span class="o">=</span> <span class="nb">nullptr</span><span class="p">;</span>
+
+<span class="n">Singleton</span> <span class="o">*</span> <span class="n">Singleton</span><span class="o">::</span><span class="n">shareInstance</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">_instance</span> <span class="o">==</span> <span class="nb">nullptr</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">_instance</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Singleton</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="n">_instance</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kt">void</span> <span class="n">Singleton</span><span class="o">::</span><span class="n">releaseInstance</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">_instance</span> <span class="o">!=</span> <span class="nb">NULL</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">delete</span> <span class="n">_instance</span><span class="p">;</span>
+        <span class="n">_instance</span> <span class="o">=</span> <span class="nb">nullptr</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kt">int</span> <span class="n">main</span><span class="p">(</span><span class="kt">int</span> <span class="n">argc</span><span class="p">,</span> <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span> <span class="n">argv</span><span class="p">[])</span> <span class="p">{</span>
+
+    <span class="n">Singleton</span> <span class="o">*</span> <span class="n">ps</span> <span class="o">=</span> <span class="n">Singleton</span><span class="o">::</span><span class="n">shareInstance</span><span class="p">();</span>
+    <span class="n">Singleton</span> <span class="o">*</span> <span class="n">ps2</span> <span class="o">=</span> <span class="n">Singleton</span><span class="o">::</span><span class="n">shareInstance</span><span class="p">();</span>
+    <span class="n">Singleton</span> <span class="o">*</span> <span class="n">ps3</span> <span class="o">=</span> <span class="n">Singleton</span><span class="o">::</span><span class="n">shareInstance</span><span class="p">();</span>
+
+    <span class="n">cout</span><span class="o">&lt;&lt;</span><span class="n">ps</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
+    <span class="n">cout</span><span class="o">&lt;&lt;</span><span class="n">ps2</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
+    <span class="n">cout</span><span class="o">&lt;&lt;</span><span class="n">ps3</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
+    
+    <span class="n">Singleton</span><span class="o">::</span><span class="n">releaseInstance</span><span class="p">();</span>
+    
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+<div class="language-cpp highlighter-rouge"><pre class="highlight"><code><span class="mh">0x100412a60</span>
+<span class="mh">0x100412a60</span>
+<span class="mh">0x100412a60</span>
+<span class="n">Program</span> <span class="n">ended</span> <span class="n">with</span> <span class="n">exit</span> <span class="n">code</span><span class="o">:</span> <span class="mi">0</span>
+</code></pre>
+</div>
+<p>总结就是静态读取, 私有构造.</p>
+
+<h4 id="自实现-autoreleasepool">自实现 autoreleasepool</h4>
+
+<p>自动释放池这个概念对于我们做<code class="highlighter-rouge">iOS</code>的并不会陌生吧, 接下来, 我们就来自实现一个简版的自动释放池, 当然这个版本并不会有引用计数的内容, 仅仅是内存托管的实现.</p>
+
+<div class="language-cpp highlighter-rouge"><pre class="highlight"><code><span class="cp">#include &lt;iostream&gt;
+#include &lt;stdlib.h&gt;
+#include &lt;time.h&gt;
+</span>
+<span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">SQObject</span> <span class="p">{</span>
+<span class="k">public</span><span class="o">:</span>
+    <span class="n">SQObject</span><span class="p">(){}</span>
+    <span class="k">static</span> <span class="n">SQObject</span> <span class="o">*</span> <span class="n">create</span><span class="p">()</span> <span class="p">{</span>
+        <span class="n">SQObject</span> <span class="o">*</span> <span class="n">obj</span> <span class="o">=</span> <span class="k">new</span> <span class="n">SQObject</span><span class="p">();</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">obj</span> <span class="o">&amp;&amp;</span> <span class="n">obj</span><span class="o">-&gt;</span><span class="n">init</span><span class="p">())</span> <span class="p">{</span>
+            <span class="n">obj</span><span class="o">-&gt;</span><span class="n">autoRealease</span><span class="p">();</span>
+            <span class="k">return</span> <span class="n">obj</span><span class="p">;</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+            <span class="k">delete</span> <span class="n">obj</span><span class="p">;</span>
+            <span class="n">obj</span> <span class="o">=</span> <span class="nb">nullptr</span><span class="p">;</span>
+            <span class="n">exit</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">);</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+    <span class="kt">bool</span> <span class="n">init</span><span class="p">()</span> <span class="p">{</span>
+        <span class="n">cout</span><span class="o">&lt;&lt;</span><span class="s">"initial"</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
+        <span class="n">ch</span> <span class="o">=</span> <span class="n">rand</span><span class="p">()</span><span class="o">%</span><span class="p">(</span><span class="mi">127</span><span class="o">-</span><span class="mi">32</span><span class="p">)</span> <span class="o">+</span> <span class="mi">33</span><span class="p">;</span>
+        <span class="k">return</span> <span class="nb">true</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="kt">void</span> <span class="n">autoRealease</span><span class="p">()</span> <span class="p">{</span>
+<span class="c1">//        if (head == nullptr) {
+//            head = this;
+//            this-&gt;next = nullptr;
+//        } else {
+//            this-&gt;next = head;
+//            head = this;
+//        }
+</span>        <span class="k">this</span><span class="o">-&gt;</span><span class="n">next</span> <span class="o">=</span> <span class="n">head</span><span class="p">;</span>
+        <span class="n">head</span> <span class="o">=</span> <span class="k">this</span><span class="p">;</span>
+    <span class="p">}</span>
+    
+    <span class="k">static</span> <span class="kt">void</span> <span class="n">autoRealeasePool</span><span class="p">()</span> <span class="p">{</span>
+        <span class="n">SQObject</span> <span class="o">*</span> <span class="n">t</span> <span class="o">=</span> <span class="n">head</span><span class="p">;</span>
+        <span class="k">while</span> <span class="p">(</span><span class="n">t</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">cout</span><span class="o">&lt;&lt;</span><span class="s">"realease: "</span><span class="o">&lt;&lt;</span><span class="n">t</span><span class="o">-&gt;</span><span class="n">ch</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
+            <span class="n">t</span> <span class="o">=</span> <span class="n">t</span><span class="o">-&gt;</span><span class="n">next</span><span class="p">;</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+    
+<span class="k">private</span><span class="o">:</span>
+    <span class="k">static</span> <span class="n">SQObject</span> <span class="o">*</span> <span class="n">head</span><span class="p">;</span>
+    <span class="n">SQObject</span> <span class="o">*</span> <span class="n">next</span><span class="p">;</span>
+    <span class="kt">char</span> <span class="n">ch</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="n">SQObject</span> <span class="o">*</span> <span class="n">SQObject</span><span class="o">::</span><span class="n">head</span> <span class="o">=</span> <span class="nb">nullptr</span><span class="p">;</span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">int</span> <span class="n">argc</span><span class="p">,</span> <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span> <span class="n">argv</span><span class="p">[])</span> <span class="p">{</span>
+
+    <span class="n">srand</span><span class="p">(</span><span class="n">time</span><span class="p">(</span><span class="nb">NULL</span><span class="p">));</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">5</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">SQObject</span> <span class="o">*</span> <span class="n">obj</span> <span class="o">=</span> <span class="n">SQObject</span><span class="o">::</span><span class="n">create</span><span class="p">();</span>
+    <span class="p">}</span>
+    <span class="n">SQObject</span><span class="o">::</span><span class="n">autoRealeasePool</span><span class="p">();</span>
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+<div class="language-cpp highlighter-rouge"><pre class="highlight"><code><span class="n">initial</span>
+<span class="n">initial</span>
+<span class="n">initial</span>
+<span class="n">initial</span>
+<span class="n">initial</span>
+<span class="n">realease</span><span class="o">:</span> <span class="n">n</span>
+<span class="n">realease</span><span class="o">:</span> <span class="p">.</span>
+<span class="n">realease</span><span class="o">:</span> <span class="o">^</span>
+<span class="n">realease</span><span class="o">:</span> <span class="n">i</span>
+<span class="n">realease</span><span class="o">:</span> <span class="n">k</span>
+<span class="n">Program</span> <span class="n">ended</span> <span class="n">with</span> <span class="n">exit</span> <span class="n">code</span><span class="o">:</span> <span class="mi">0</span>
+</code></pre>
+</div>
+<p>其实就和我们感觉上一样, 自动释放池用一个链表就可以解决, 当出了作用域的时候后, 将自动释放池链表中引用计数为<code class="highlighter-rouge">0</code>的地址给赋值<code class="highlighter-rouge">null</code>就完成了, 真是easy~</p>
+
+<h4 id="static-const">static const</h4>
+
+<p>这个我就不多说了, 大家日常使用都会有心得的东西.</p>
+
+<div class="language-cpp highlighter-rouge"><pre class="highlight"><code><span class="k">class</span> <span class="nc">A</span> <span class="p">{</span>
+<span class="k">public</span><span class="o">:</span>
+    <span class="k">static</span> <span class="k">const</span> <span class="kt">int</span> <span class="n">a</span> <span class="o">=</span> <span class="mi">100</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">int</span> <span class="n">argc</span><span class="p">,</span> <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span> <span class="n">argv</span><span class="p">[])</span> <span class="p">{</span>
+
+    <span class="n">cout</span><span class="o">&lt;&lt;</span><span class="n">A</span><span class="o">::</span><span class="n">a</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<p><code class="highlighter-rouge">static const</code> 存储在数据段的 <code class="highlighter-rouge">ro</code>段;</p>
+
+<h4 id="pointer2class---ivar--func">pointer2class -&gt; ivar &amp; func</h4>
+
+<p>这一章会比较晦涩难懂些, 可以翻阅一下其他的文章, 其实就是如何通过指针来指向类内的成员变量及函数.</p>
+
+<div class="language-cpp highlighter-rouge"><pre class="highlight"><code><span class="k">class</span> <span class="nc">Student</span> <span class="p">{</span>
+<span class="k">public</span><span class="o">:</span>
+    <span class="n">Student</span><span class="p">(</span><span class="n">string</span> <span class="n">n</span><span class="p">,</span> <span class="kt">int</span> <span class="n">nu</span><span class="p">)</span><span class="o">:</span><span class="n">name</span><span class="p">(</span><span class="n">n</span><span class="p">),</span> <span class="n">num</span><span class="p">(</span><span class="n">nu</span><span class="p">){}</span>
+    <span class="kt">void</span> <span class="n">display</span><span class="p">(</span><span class="kt">int</span> <span class="n">idx</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">cout</span><span class="o">&lt;&lt;</span><span class="s">"idx "</span><span class="o">&lt;&lt;</span><span class="n">idx</span><span class="o">&lt;&lt;</span><span class="s">" name "</span><span class="o">&lt;&lt;</span><span class="n">name</span><span class="o">&lt;&lt;</span><span class="s">" num "</span><span class="o">&lt;&lt;</span><span class="n">num</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="c1">//private:
+</span>    <span class="n">string</span> <span class="n">name</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="n">num</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">int</span> <span class="n">argc</span><span class="p">,</span> <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span> <span class="n">argv</span><span class="p">[])</span> <span class="p">{</span>
+
+    <span class="n">Student</span> <span class="n">s</span><span class="p">(</span><span class="s">"Castiel"</span><span class="p">,</span> <span class="mi">1024</span><span class="p">);</span>
+    <span class="n">Student</span> <span class="o">*</span> <span class="n">ps</span> <span class="o">=</span> <span class="o">&amp;</span><span class="n">s</span><span class="p">;</span>
+    
+    <span class="n">Student</span> <span class="n">ss</span><span class="p">(</span><span class="s">"Aquas"</span><span class="p">,</span> <span class="mi">3328</span><span class="p">);</span>
+    <span class="n">Student</span> <span class="o">*</span> <span class="n">pss</span> <span class="o">=</span> <span class="o">&amp;</span><span class="n">ss</span><span class="p">;</span>
+    
+    <span class="n">string</span> <span class="n">Student</span><span class="o">::*</span> <span class="n">psn</span> <span class="o">=</span> <span class="o">&amp;</span><span class="n">Student</span><span class="o">::</span><span class="n">name</span><span class="p">;</span>
+    <span class="n">cout</span><span class="o">&lt;&lt;</span><span class="n">s</span><span class="p">.</span><span class="o">*</span><span class="n">psn</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
+    <span class="n">cout</span><span class="o">&lt;&lt;</span><span class="n">ps</span><span class="o">-&gt;*</span><span class="n">psn</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
+
+    <span class="n">cout</span><span class="o">&lt;&lt;</span><span class="n">ss</span><span class="p">.</span><span class="o">*</span><span class="n">psn</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
+    <span class="n">cout</span><span class="o">&lt;&lt;</span><span class="n">pss</span><span class="o">-&gt;*</span><span class="n">psn</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
+    
+    <span class="kt">void</span> <span class="p">(</span><span class="n">Student</span><span class="o">::*</span> <span class="n">pf</span><span class="p">)(</span><span class="kt">int</span><span class="p">)</span> <span class="o">=</span> <span class="o">&amp;</span><span class="n">Student</span><span class="o">::</span><span class="n">display</span><span class="p">;</span>
+    <span class="p">(</span><span class="n">s</span><span class="p">.</span><span class="o">*</span><span class="n">pf</span><span class="p">)(</span><span class="mi">1</span><span class="p">);</span>
+    <span class="p">(</span><span class="n">ss</span><span class="p">.</span><span class="o">*</span><span class="n">pf</span><span class="p">)(</span><span class="mi">2</span><span class="p">);</span>
+    <span class="p">(</span><span class="n">ps</span><span class="o">-&gt;*</span><span class="n">pf</span><span class="p">)(</span><span class="mi">3</span><span class="p">);</span>
+    <span class="p">(</span><span class="n">pss</span><span class="o">-&gt;*</span><span class="n">pf</span><span class="p">)(</span><span class="mi">4</span><span class="p">);</span>
+
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+<div class="language-cpp highlighter-rouge"><pre class="highlight"><code><span class="n">Castiel</span>
+<span class="n">Castiel</span>
+<span class="n">Aquas</span>
+<span class="n">Aquas</span>
+<span class="n">idx</span> <span class="mi">1</span> <span class="n">name</span> <span class="n">Castiel</span> <span class="n">num</span> <span class="mi">1024</span>
+<span class="n">idx</span> <span class="mi">2</span> <span class="n">name</span> <span class="n">Aquas</span> <span class="n">num</span> <span class="mi">3328</span>
+<span class="n">idx</span> <span class="mi">3</span> <span class="n">name</span> <span class="n">Castiel</span> <span class="n">num</span> <span class="mi">1024</span>
+<span class="n">idx</span> <span class="mi">4</span> <span class="n">name</span> <span class="n">Aquas</span> <span class="n">num</span> <span class="mi">3328</span>
+<span class="n">Program</span> <span class="n">ended</span> <span class="n">with</span> <span class="n">exit</span> <span class="n">code</span><span class="o">:</span> <span class="mi">0</span>
+</code></pre>
+</div>
+
+<p>关注<code class="highlighter-rouge">void (Student::* pf)(int) = &amp;Student::display;</code> 和 <code class="highlighter-rouge">string Student::* psn = &amp;Student::name;
+</code>就可以了, 编译器固定格式.</p>
+
+<h5 id="科里化">科里化</h5>
+
+<p>通过上述的指针, 我们还可以实现科里化, 也就是<code class="highlighter-rouge">喵神100tips</code>中的第一章内容的本质.</p>
+
+<div class="language-cpp highlighter-rouge"><pre class="highlight"><code><span class="k">struct</span> <span class="n">Point</span> <span class="p">{</span>
+    <span class="kt">int</span> <span class="n">add</span><span class="p">(</span><span class="kt">int</span> <span class="n">x</span><span class="p">,</span> <span class="kt">int</span> <span class="n">y</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="n">x</span> <span class="o">+</span> <span class="n">y</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="kt">int</span> <span class="n">minus</span><span class="p">(</span><span class="kt">int</span> <span class="n">x</span><span class="p">,</span> <span class="kt">int</span> <span class="n">y</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="n">x</span> <span class="o">-</span> <span class="n">y</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="kt">int</span> <span class="n">mul</span><span class="p">(</span><span class="kt">int</span> <span class="n">x</span><span class="p">,</span> <span class="kt">int</span> <span class="n">y</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="n">x</span> <span class="o">*</span> <span class="n">y</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="kt">int</span> <span class="n">div</span><span class="p">(</span><span class="kt">int</span> <span class="n">x</span><span class="p">,</span> <span class="kt">int</span> <span class="n">y</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="n">x</span> <span class="o">/</span> <span class="n">y</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">};</span>
+
+<span class="kt">int</span> <span class="nf">oper</span><span class="p">(</span><span class="n">Point</span> <span class="o">&amp;</span> <span class="n">p</span><span class="p">,</span> <span class="kt">int</span> <span class="p">(</span><span class="n">Point</span><span class="o">::*</span><span class="n">pf</span><span class="p">)(</span><span class="kt">int</span> <span class="n">x</span><span class="p">,</span> <span class="kt">int</span> <span class="n">y</span><span class="p">),</span> <span class="kt">int</span> <span class="n">x</span><span class="p">,</span> <span class="kt">int</span> <span class="n">y</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">p</span><span class="p">.</span><span class="o">*</span><span class="n">pf</span><span class="p">)(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="k">typedef</span> <span class="kt">int</span> <span class="p">(</span><span class="n">Point</span><span class="o">::*</span><span class="n">PF</span><span class="p">)(</span><span class="kt">int</span><span class="p">,</span> <span class="kt">int</span><span class="p">);</span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">int</span> <span class="n">argc</span><span class="p">,</span> <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span> <span class="n">argv</span><span class="p">[])</span> <span class="p">{</span>
+    
+    <span class="n">Point</span> <span class="n">p</span><span class="p">;</span>
+    <span class="n">PF</span> <span class="n">pf</span> <span class="o">=</span> <span class="o">&amp;</span><span class="n">Point</span><span class="o">::</span><span class="n">add</span><span class="p">;</span>
+    <span class="n">pf</span> <span class="o">=</span> <span class="o">&amp;</span><span class="n">Point</span><span class="o">::</span><span class="n">mul</span><span class="p">;</span>
+    <span class="n">cout</span><span class="o">&lt;&lt;</span><span class="n">oper</span><span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="n">pf</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
+    
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<div class="language-cpp highlighter-rouge"><pre class="highlight"><code><span class="mi">10</span>
+<span class="n">Program</span> <span class="n">ended</span> <span class="n">with</span> <span class="n">exit</span> <span class="n">code</span><span class="o">:</span> <span class="mi">0</span>
+</code></pre>
+</div>
+
+<h5 id="隐蔽接口">隐蔽接口</h5>
+
+<p>更高级点的做法, 我们可以使用这个方法来隐藏接口, 这样别人在用我们做好的功能的时候, 就能傻瓜式的操作, 而隐蔽内部逻辑了.</p>
+
+<div class="language-cpp highlighter-rouge"><pre class="highlight"><code><span class="k">class</span> <span class="nc">Game</span> <span class="p">{</span>
+<span class="k">public</span><span class="o">:</span>
+    <span class="n">Game</span><span class="p">()</span> <span class="p">{</span>
+        <span class="n">pf</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="o">&amp;</span><span class="n">Game</span><span class="o">::</span><span class="n">a</span><span class="p">;</span>
+        <span class="n">pf</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="o">&amp;</span><span class="n">Game</span><span class="o">::</span><span class="n">b</span><span class="p">;</span>
+        <span class="n">pf</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="o">&amp;</span><span class="n">Game</span><span class="o">::</span><span class="n">c</span><span class="p">;</span>
+        <span class="n">pf</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="o">=</span> <span class="o">&amp;</span><span class="n">Game</span><span class="o">::</span><span class="n">d</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="kt">void</span> <span class="n">select</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">i</span> <span class="o">&gt;=</span> <span class="mi">0</span> <span class="o">&amp;&amp;</span> <span class="n">i</span> <span class="o">&lt;=</span> <span class="mi">3</span><span class="p">)</span> <span class="p">{</span>
+            <span class="p">(</span><span class="k">this</span><span class="o">-&gt;*</span><span class="n">pf</span><span class="p">[</span><span class="n">i</span><span class="p">])(</span><span class="n">i</span><span class="p">);</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="k">private</span><span class="o">:</span>
+    <span class="kt">void</span> <span class="n">a</span><span class="p">(</span><span class="kt">int</span> <span class="n">idx</span><span class="p">){</span><span class="n">cout</span><span class="o">&lt;&lt;</span><span class="s">"void a(int idx)"</span><span class="o">&lt;&lt;</span><span class="n">idx</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;}</span>
+    <span class="kt">void</span> <span class="n">b</span><span class="p">(</span><span class="kt">int</span> <span class="n">idx</span><span class="p">){</span><span class="n">cout</span><span class="o">&lt;&lt;</span><span class="s">"void b(int idx)"</span><span class="o">&lt;&lt;</span><span class="n">idx</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;}</span>
+    <span class="kt">void</span> <span class="n">c</span><span class="p">(</span><span class="kt">int</span> <span class="n">idx</span><span class="p">){</span><span class="n">cout</span><span class="o">&lt;&lt;</span><span class="s">"void c(int idx)"</span><span class="o">&lt;&lt;</span><span class="n">idx</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;}</span>
+    <span class="kt">void</span> <span class="n">d</span><span class="p">(</span><span class="kt">int</span> <span class="n">idx</span><span class="p">){</span><span class="n">cout</span><span class="o">&lt;&lt;</span><span class="s">"void d(int idx)"</span><span class="o">&lt;&lt;</span><span class="n">idx</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;}</span>
+    <span class="k">enum</span> <span class="p">{</span>
+        <span class="n">nc</span> <span class="o">=</span> <span class="mi">4</span>
+    <span class="p">};</span>
+    <span class="kt">void</span> <span class="p">(</span><span class="n">Game</span><span class="o">::*</span><span class="n">pf</span><span class="p">[</span><span class="n">nc</span><span class="p">])(</span><span class="kt">int</span> <span class="n">idx</span><span class="p">);</span>
+<span class="p">};</span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">int</span> <span class="n">argc</span><span class="p">,</span> <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span> <span class="n">argv</span><span class="p">[])</span> <span class="p">{</span>
+    
+    <span class="n">Game</span> <span class="n">g</span><span class="p">;</span>
+    <span class="n">g</span><span class="p">.</span><span class="n">select</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+    <span class="n">g</span><span class="p">.</span><span class="n">select</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
+    <span class="n">g</span><span class="p">.</span><span class="n">select</span><span class="p">(</span><span class="mi">3</span><span class="p">);</span>
+    
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+<div class="language-cpp highlighter-rouge"><pre class="highlight"><code><span class="kt">void</span> <span class="n">b</span><span class="p">(</span><span class="kt">int</span> <span class="n">idx</span><span class="p">)</span><span class="mi">1</span>
+<span class="kt">void</span> <span class="n">c</span><span class="p">(</span><span class="kt">int</span> <span class="n">idx</span><span class="p">)</span><span class="mi">2</span>
+<span class="kt">void</span> <span class="n">d</span><span class="p">(</span><span class="kt">int</span> <span class="n">idx</span><span class="p">)</span><span class="mi">3</span>
+<span class="n">Program</span> <span class="n">ended</span> <span class="n">with</span> <span class="n">exit</span> <span class="n">code</span><span class="o">:</span> <span class="mi">0</span>
+</code></pre>
+</div>
+
+<h4 id="friend">friend</h4>
+
+<p>友元, 其实就是一种便捷访问非本类私有方法的. 是对封装的破坏.</p>
+
+<div class="language-cpp highlighter-rouge"><pre class="highlight"><code><span class="k">class</span> <span class="nc">Sprite</span> <span class="p">{</span>
+    <span class="k">friend</span> <span class="kt">void</span> <span class="n">fight</span><span class="p">(</span><span class="n">Sprite</span> <span class="o">&amp;</span> <span class="n">sp</span><span class="p">);</span>
+<span class="k">public</span><span class="o">:</span>
+    <span class="n">Sprite</span><span class="p">(</span><span class="kt">int</span> <span class="n">lb</span> <span class="o">=</span> <span class="mi">100</span><span class="p">)</span><span class="o">:</span> <span class="n">_lifeBlood</span><span class="p">(</span><span class="n">lb</span><span class="p">){}</span>
+    <span class="kt">int</span> <span class="n">getLifeBlood</span><span class="p">()</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="n">_lifeBlood</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="kt">void</span> <span class="n">setLifeBlood</span><span class="p">(</span><span class="kt">int</span> <span class="n">lb</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">_lifeBlood</span> <span class="o">=</span> <span class="n">lb</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="k">private</span><span class="o">:</span>
+    <span class="kt">int</span> <span class="n">_lifeBlood</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="kt">void</span> <span class="nf">fight</span><span class="p">(</span><span class="n">Sprite</span> <span class="o">&amp;</span> <span class="n">sp</span><span class="p">)</span> <span class="p">{</span>
+<span class="c1">//    sp.setLifeBlood(sp.getLifeBlood() - 20);
+//    cout&lt;&lt;sp.getLifeBlood()&lt;&lt;endl;
+</span>    <span class="n">sp</span><span class="p">.</span><span class="n">_lifeBlood</span> <span class="o">=</span> <span class="n">sp</span><span class="p">.</span><span class="n">_lifeBlood</span> <span class="o">-</span> <span class="mi">20</span><span class="p">;</span>
+    <span class="n">cout</span><span class="o">&lt;&lt;</span><span class="n">sp</span><span class="p">.</span><span class="n">_lifeBlood</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">int</span> <span class="n">argc</span><span class="p">,</span> <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span> <span class="n">argv</span><span class="p">[])</span> <span class="p">{</span>
+    
+    <span class="n">Sprite</span> <span class="n">sp</span><span class="p">;</span>
+    <span class="n">fight</span><span class="p">(</span><span class="n">sp</span><span class="p">);</span>
+    
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+
+</code></pre>
+</div>
+
+<div class="language-cpp highlighter-rouge"><pre class="highlight"><code><span class="k">class</span> <span class="nc">Complex</span> <span class="p">{</span>
+    <span class="k">friend</span> <span class="n">Complex</span> <span class="k">operator</span><span class="o">+</span><span class="p">(</span><span class="n">Complex</span> <span class="o">&amp;</span> <span class="n">c1</span><span class="p">,</span> <span class="n">Complex</span> <span class="o">&amp;</span> <span class="n">c2</span><span class="p">);</span>
+<span class="k">public</span><span class="o">:</span>
+    <span class="n">Complex</span><span class="p">(</span><span class="kt">double</span> <span class="n">r</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="kt">double</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span><span class="o">:</span> <span class="n">real</span><span class="p">(</span><span class="n">r</span><span class="p">),</span> <span class="n">image</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="p">{}</span>
+    <span class="kt">void</span> <span class="n">dumpFormat</span><span class="p">()</span> <span class="p">{</span>
+        <span class="n">cout</span><span class="o">&lt;&lt;</span><span class="s">"("</span><span class="o">&lt;&lt;</span><span class="n">real</span><span class="o">&lt;&lt;</span><span class="s">","</span><span class="o">&lt;&lt;</span><span class="n">image</span><span class="o">&lt;&lt;</span><span class="s">")"</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="k">private</span><span class="o">:</span>
+    <span class="kt">double</span> <span class="n">real</span><span class="p">;</span>
+    <span class="kt">double</span> <span class="n">image</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="n">Complex</span> <span class="k">operator</span><span class="o">+</span><span class="p">(</span><span class="n">Complex</span> <span class="o">&amp;</span> <span class="n">c1</span><span class="p">,</span> <span class="n">Complex</span> <span class="o">&amp;</span> <span class="n">c2</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">Complex</span> <span class="n">c</span><span class="p">;</span>
+    <span class="n">c</span><span class="p">.</span><span class="n">real</span> <span class="o">=</span> <span class="n">c1</span><span class="p">.</span><span class="n">real</span> <span class="o">+</span> <span class="n">c2</span><span class="p">.</span><span class="n">real</span><span class="p">;</span>
+    <span class="n">c</span><span class="p">.</span><span class="n">image</span> <span class="o">=</span> <span class="n">c1</span><span class="p">.</span><span class="n">image</span> <span class="o">+</span> <span class="n">c2</span><span class="p">.</span><span class="n">image</span><span class="p">;</span>
+    <span class="k">return</span> <span class="n">c</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kt">int</span> <span class="n">main</span><span class="p">(</span><span class="kt">int</span> <span class="n">argc</span><span class="p">,</span> <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span> <span class="n">argv</span><span class="p">[])</span> <span class="p">{</span>
+    
+    <span class="n">Complex</span> <span class="n">c1</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">);</span>
+    <span class="n">Complex</span> <span class="n">c2</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">);</span>
+    <span class="n">Complex</span> <span class="n">sum</span><span class="p">;</span>
+    <span class="n">sum</span> <span class="o">=</span> <span class="n">c1</span> <span class="o">+</span> <span class="n">c2</span><span class="p">;</span>
+    <span class="n">sum</span><span class="p">.</span><span class="n">dumpFormat</span><span class="p">();</span>
+    
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<p>声明为谁的友元, 就可以通过谁的对象, 访问谁的私有函数.</p>
+
+<div class="language-cpp highlighter-rouge"><pre class="highlight"><code><span class="k">class</span> <span class="nc">Point</span> <span class="p">{</span>
+    <span class="k">friend</span> <span class="kt">float</span> <span class="n">getDistance</span><span class="p">(</span><span class="n">Point</span> <span class="o">&amp;</span> <span class="n">p1</span><span class="p">,</span> <span class="k">const</span> <span class="n">Point</span> <span class="o">&amp;</span> <span class="n">p2</span><span class="p">);</span>
+<span class="k">public</span><span class="o">:</span>
+    <span class="n">Point</span><span class="p">(</span><span class="kt">int</span> <span class="n">x</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="kt">int</span> <span class="n">y</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span><span class="o">:</span><span class="n">_x</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="n">_y</span><span class="p">(</span><span class="n">y</span><span class="p">){}</span>
+    <span class="kt">void</span> <span class="n">dumpFormat</span><span class="p">()</span> <span class="p">{</span>
+        <span class="n">cout</span><span class="o">&lt;&lt;</span><span class="s">"("</span><span class="o">&lt;&lt;</span><span class="n">_x</span><span class="o">&lt;&lt;</span><span class="s">","</span><span class="o">&lt;&lt;</span><span class="n">_y</span><span class="o">&lt;&lt;</span><span class="s">")"</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="k">private</span><span class="o">:</span>
+    <span class="kt">float</span> <span class="n">_x</span><span class="p">;</span>
+    <span class="kt">float</span> <span class="n">_y</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="kt">float</span> <span class="nf">getDistance</span><span class="p">(</span><span class="k">const</span> <span class="n">Point</span> <span class="o">&amp;</span> <span class="n">p1</span><span class="p">,</span> <span class="k">const</span> <span class="n">Point</span> <span class="o">&amp;</span> <span class="n">p2</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kt">float</span> <span class="n">dx</span> <span class="o">=</span> <span class="n">p1</span><span class="p">.</span><span class="n">_x</span> <span class="o">-</span> <span class="n">p2</span><span class="p">.</span><span class="n">_x</span><span class="p">;</span>
+    <span class="kt">float</span> <span class="n">dy</span> <span class="o">=</span> <span class="n">p1</span><span class="p">.</span><span class="n">_y</span> <span class="o">-</span> <span class="n">p2</span><span class="p">.</span><span class="n">_y</span><span class="p">;</span>
+    <span class="k">return</span> <span class="n">sqrt</span><span class="p">(</span><span class="n">dx</span> <span class="o">*</span> <span class="n">dx</span> <span class="o">+</span> <span class="n">dy</span> <span class="o">*</span> <span class="n">dy</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">int</span> <span class="n">argc</span><span class="p">,</span> <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span> <span class="n">argv</span><span class="p">[])</span> <span class="p">{</span>
+    
+    <span class="n">Point</span> <span class="n">p1</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">);</span>
+    <span class="n">p1</span><span class="p">.</span><span class="n">dumpFormat</span><span class="p">();</span>
+    <span class="n">Point</span> <span class="n">p2</span><span class="p">(</span><span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">);</span>
+    <span class="n">p2</span><span class="p">.</span><span class="n">dumpFormat</span><span class="p">();</span>
+    
+    <span class="n">cout</span><span class="o">&lt;&lt;</span><span class="s">"dis:"</span><span class="o">&lt;&lt;</span><span class="n">getDistance</span><span class="p">(</span><span class="n">p1</span><span class="p">,</span> <span class="n">p2</span><span class="p">)</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
+    
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+<p>全局做friend 不受类的权限控制</p>
+
+<div class="language-cpp highlighter-rouge"><pre class="highlight"><code><span class="k">class</span> <span class="nc">Point</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">ManagePoint</span> <span class="p">{</span>
+<span class="k">public</span><span class="o">:</span>
+    <span class="kt">float</span> <span class="n">getDistance</span><span class="p">(</span><span class="n">Point</span> <span class="o">&amp;</span> <span class="n">p1</span><span class="p">,</span> <span class="k">const</span> <span class="n">Point</span> <span class="o">&amp;</span> <span class="n">p2</span><span class="p">);</span>
+<span class="p">};</span>
+
+<span class="k">class</span> <span class="nc">Point</span> <span class="p">{</span>
+    <span class="k">friend</span> <span class="kt">float</span> <span class="n">ManagePoint</span><span class="o">::</span><span class="n">getDistance</span><span class="p">(</span><span class="n">Point</span> <span class="o">&amp;</span> <span class="n">p1</span><span class="p">,</span> <span class="k">const</span> <span class="n">Point</span> <span class="o">&amp;</span> <span class="n">p2</span><span class="p">);</span>
+<span class="k">public</span><span class="o">:</span>
+    <span class="n">Point</span><span class="p">(</span><span class="kt">int</span> <span class="n">x</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="kt">int</span> <span class="n">y</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span><span class="o">:</span><span class="n">_x</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="n">_y</span><span class="p">(</span><span class="n">y</span><span class="p">){}</span>
+    <span class="kt">void</span> <span class="n">dumpFormat</span><span class="p">()</span> <span class="p">{</span>
+        <span class="n">cout</span><span class="o">&lt;&lt;</span><span class="s">"("</span><span class="o">&lt;&lt;</span><span class="n">_x</span><span class="o">&lt;&lt;</span><span class="s">","</span><span class="o">&lt;&lt;</span><span class="n">_y</span><span class="o">&lt;&lt;</span><span class="s">")"</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="k">private</span><span class="o">:</span>
+    <span class="kt">float</span> <span class="n">_x</span><span class="p">;</span>
+    <span class="kt">float</span> <span class="n">_y</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="kt">float</span> <span class="n">ManagePoint</span><span class="o">::</span><span class="n">getDistance</span><span class="p">(</span><span class="k">const</span> <span class="n">Point</span> <span class="o">&amp;</span> <span class="n">p1</span><span class="p">,</span> <span class="k">const</span> <span class="n">Point</span> <span class="o">&amp;</span> <span class="n">p2</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kt">float</span> <span class="n">dx</span> <span class="o">=</span> <span class="n">p1</span><span class="p">.</span><span class="n">_x</span> <span class="o">-</span> <span class="n">p2</span><span class="p">.</span><span class="n">_x</span><span class="p">;</span>
+    <span class="kt">float</span> <span class="n">dy</span> <span class="o">=</span> <span class="n">p1</span><span class="p">.</span><span class="n">_y</span> <span class="o">-</span> <span class="n">p2</span><span class="p">.</span><span class="n">_y</span><span class="p">;</span>
+    <span class="k">return</span> <span class="n">sqrt</span><span class="p">(</span><span class="n">dx</span> <span class="o">*</span> <span class="n">dx</span> <span class="o">+</span> <span class="n">dy</span> <span class="o">*</span> <span class="n">dy</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="kt">int</span> <span class="n">main</span><span class="p">(</span><span class="kt">int</span> <span class="n">argc</span><span class="p">,</span> <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span> <span class="n">argv</span><span class="p">[])</span> <span class="p">{</span>
+    
+    <span class="n">Point</span> <span class="n">p1</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">);</span>
+    <span class="n">p1</span><span class="p">.</span><span class="n">dumpFormat</span><span class="p">();</span>
+    <span class="n">Point</span> <span class="n">p2</span><span class="p">(</span><span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">);</span>
+    <span class="n">p2</span><span class="p">.</span><span class="n">dumpFormat</span><span class="p">();</span>
+    
+    <span class="n">ManagePoint</span> <span class="n">mp</span><span class="p">;</span>
+    <span class="n">cout</span><span class="o">&lt;&lt;</span><span class="s">"dis:"</span><span class="o">&lt;&lt;</span><span class="n">mp</span><span class="p">.</span><span class="n">getDistance</span><span class="p">(</span><span class="n">p1</span><span class="p">,</span> <span class="n">p2</span><span class="p">)</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
+    
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<p>前向声明的问题 前向声明, 是一种不完全类型的声明, 不能定义对象.</p>
+
+<p>可以定义指针和引用 作参数和返回值, 仅用在函数声明中.</p>
+
+<div class="language-cpp highlighter-rouge"><pre class="highlight"><code><span class="k">class</span> <span class="nc">Point</span> <span class="p">{</span>
+    <span class="k">friend</span> <span class="k">class</span> <span class="nc">ManagePoint</span><span class="p">;</span>
+<span class="k">public</span><span class="o">:</span>
+    <span class="n">Point</span><span class="p">(</span><span class="kt">int</span> <span class="n">x</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="kt">int</span> <span class="n">y</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span><span class="o">:</span><span class="n">_x</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="n">_y</span><span class="p">(</span><span class="n">y</span><span class="p">){}</span>
+    <span class="kt">void</span> <span class="n">dumpFormat</span><span class="p">()</span> <span class="p">{</span>
+        <span class="n">cout</span><span class="o">&lt;&lt;</span><span class="s">"("</span><span class="o">&lt;&lt;</span><span class="n">_x</span><span class="o">&lt;&lt;</span><span class="s">","</span><span class="o">&lt;&lt;</span><span class="n">_y</span><span class="o">&lt;&lt;</span><span class="s">")"</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="k">private</span><span class="o">:</span>
+    <span class="kt">float</span> <span class="n">_x</span><span class="p">;</span>
+    <span class="kt">float</span> <span class="n">_y</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="k">class</span> <span class="nc">ManagePoint</span> <span class="p">{</span>
+<span class="k">public</span><span class="o">:</span>
+    <span class="kt">float</span> <span class="n">getDistance</span><span class="p">(</span><span class="k">const</span> <span class="n">Point</span> <span class="o">&amp;</span> <span class="n">p1</span><span class="p">,</span> <span class="k">const</span> <span class="n">Point</span> <span class="o">&amp;</span> <span class="n">p2</span><span class="p">)</span> <span class="p">{</span>
+        <span class="kt">float</span> <span class="n">dx</span> <span class="o">=</span> <span class="n">p1</span><span class="p">.</span><span class="n">_x</span> <span class="o">-</span> <span class="n">p2</span><span class="p">.</span><span class="n">_x</span><span class="p">;</span>
+        <span class="kt">float</span> <span class="n">dy</span> <span class="o">=</span> <span class="n">p1</span><span class="p">.</span><span class="n">_y</span> <span class="o">-</span> <span class="n">p2</span><span class="p">.</span><span class="n">_y</span><span class="p">;</span>
+        <span class="k">return</span> <span class="n">sqrt</span><span class="p">(</span><span class="n">dx</span> <span class="o">*</span> <span class="n">dx</span> <span class="o">+</span> <span class="n">dy</span> <span class="o">*</span> <span class="n">dy</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">};</span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">int</span> <span class="n">argc</span><span class="p">,</span> <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span> <span class="n">argv</span><span class="p">[])</span> <span class="p">{</span>
+    
+    <span class="n">Point</span> <span class="n">p1</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">);</span>
+    <span class="n">p1</span><span class="p">.</span><span class="n">dumpFormat</span><span class="p">();</span>
+    <span class="n">Point</span> <span class="n">p2</span><span class="p">(</span><span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">);</span>
+    <span class="n">p2</span><span class="p">.</span><span class="n">dumpFormat</span><span class="p">();</span>
+    
+    <span class="n">ManagePoint</span> <span class="n">mp</span><span class="p">;</span>
+    <span class="n">cout</span><span class="o">&lt;&lt;</span><span class="s">"dis:"</span><span class="o">&lt;&lt;</span><span class="n">mp</span><span class="p">.</span><span class="n">getDistance</span><span class="p">(</span><span class="n">p1</span><span class="p">,</span> <span class="n">p2</span><span class="p">)</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
+    
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+<div class="language-cpp highlighter-rouge"><pre class="highlight"><code><span class="k">class</span> <span class="nc">Point</span> <span class="p">{</span>
+    <span class="k">friend</span> <span class="k">class</span> <span class="nc">ManagePoint</span><span class="p">;</span>
+<span class="k">public</span><span class="o">:</span>
+    <span class="n">Point</span><span class="p">(</span><span class="kt">int</span> <span class="n">x</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="kt">int</span> <span class="n">y</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span><span class="o">:</span><span class="n">_x</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="n">_y</span><span class="p">(</span><span class="n">y</span><span class="p">){}</span>
+    <span class="kt">void</span> <span class="n">dumpFormat</span><span class="p">()</span> <span class="p">{</span>
+        <span class="n">cout</span><span class="o">&lt;&lt;</span><span class="s">"("</span><span class="o">&lt;&lt;</span><span class="n">_x</span><span class="o">&lt;&lt;</span><span class="s">","</span><span class="o">&lt;&lt;</span><span class="n">_y</span><span class="o">&lt;&lt;</span><span class="s">")"</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="k">private</span><span class="o">:</span>
+    <span class="kt">float</span> <span class="n">_x</span><span class="p">;</span>
+    <span class="kt">float</span> <span class="n">_y</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="k">class</span> <span class="nc">ManagePoint</span> <span class="p">{</span>
+<span class="k">public</span><span class="o">:</span>
+    <span class="kt">float</span> <span class="n">getDistance</span><span class="p">(</span><span class="k">const</span> <span class="n">Point</span> <span class="o">&amp;</span> <span class="n">p1</span><span class="p">,</span> <span class="k">const</span> <span class="n">Point</span> <span class="o">&amp;</span> <span class="n">p2</span><span class="p">)</span> <span class="p">{</span>
+        <span class="kt">float</span> <span class="n">dx</span> <span class="o">=</span> <span class="n">p1</span><span class="p">.</span><span class="n">_x</span> <span class="o">-</span> <span class="n">p2</span><span class="p">.</span><span class="n">_x</span><span class="p">;</span>
+        <span class="kt">float</span> <span class="n">dy</span> <span class="o">=</span> <span class="n">p1</span><span class="p">.</span><span class="n">_y</span> <span class="o">-</span> <span class="n">p2</span><span class="p">.</span><span class="n">_y</span><span class="p">;</span>
+        <span class="k">return</span> <span class="n">sqrt</span><span class="p">(</span><span class="n">dx</span> <span class="o">*</span> <span class="n">dx</span> <span class="o">+</span> <span class="n">dy</span> <span class="o">*</span> <span class="n">dy</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="kt">float</span> <span class="n">getArea</span><span class="p">(</span><span class="k">const</span> <span class="n">Point</span> <span class="o">&amp;</span> <span class="n">p1</span><span class="p">,</span> <span class="k">const</span> <span class="n">Point</span> <span class="o">&amp;</span> <span class="n">p2</span><span class="p">,</span> <span class="k">const</span> <span class="n">Point</span> <span class="o">&amp;</span> <span class="n">p3</span><span class="p">)</span> <span class="p">{</span>
+        <span class="kt">float</span> <span class="n">da</span> <span class="o">=</span> <span class="n">getDistance</span><span class="p">(</span><span class="n">p1</span><span class="p">,</span> <span class="n">p2</span><span class="p">);</span>
+        <span class="kt">float</span> <span class="n">db</span> <span class="o">=</span> <span class="n">getDistance</span><span class="p">(</span><span class="n">p2</span><span class="p">,</span> <span class="n">p3</span><span class="p">);</span>
+        <span class="kt">float</span> <span class="n">dc</span> <span class="o">=</span> <span class="n">getDistance</span><span class="p">(</span><span class="n">p3</span><span class="p">,</span> <span class="n">p1</span><span class="p">);</span>
+        <span class="kt">float</span> <span class="n">p</span> <span class="o">=</span> <span class="p">(</span><span class="n">da</span> <span class="o">+</span> <span class="n">db</span> <span class="o">+</span> <span class="n">dc</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span><span class="p">;</span>
+        <span class="k">return</span> <span class="n">sqrt</span><span class="p">(</span><span class="n">p</span> <span class="o">*</span> <span class="p">(</span><span class="n">p</span> <span class="o">-</span> <span class="n">da</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">p</span> <span class="o">-</span> <span class="n">db</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">p</span> <span class="o">-</span> <span class="n">dc</span><span class="p">));</span>
+    <span class="p">}</span>
+<span class="p">};</span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">int</span> <span class="n">argc</span><span class="p">,</span> <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span> <span class="n">argv</span><span class="p">[])</span> <span class="p">{</span>
+    
+    <span class="n">Point</span> <span class="n">p1</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">);</span>
+    <span class="n">p1</span><span class="p">.</span><span class="n">dumpFormat</span><span class="p">();</span>
+    <span class="n">Point</span> <span class="n">p2</span><span class="p">(</span><span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">);</span>
+    <span class="n">p2</span><span class="p">.</span><span class="n">dumpFormat</span><span class="p">();</span>
+    <span class="n">Point</span> <span class="n">p3</span><span class="p">(</span><span class="o">-</span><span class="mi">100</span><span class="p">,</span> <span class="mi">900</span><span class="p">);</span>
+
+    <span class="n">ManagePoint</span> <span class="n">mp</span><span class="p">;</span>
+    <span class="n">cout</span><span class="o">&lt;&lt;</span><span class="s">"dis:"</span><span class="o">&lt;&lt;</span><span class="n">mp</span><span class="p">.</span><span class="n">getDistance</span><span class="p">(</span><span class="n">p1</span><span class="p">,</span> <span class="n">p2</span><span class="p">)</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
+    <span class="n">cout</span><span class="o">&lt;&lt;</span><span class="s">"area:"</span><span class="o">&lt;&lt;</span><span class="n">mp</span><span class="p">.</span><span class="n">getArea</span><span class="p">(</span><span class="n">p1</span><span class="p">,</span> <span class="n">p2</span><span class="p">,</span> <span class="n">p3</span><span class="p">)</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
+    
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<p>友元类的使用, 可以避免前向声明的麻烦, 仅仅是提供便捷.</p>
+
+<h4 id="operator">operator</h4>
+
+<p>运算符重载的使用, 和上篇一样, 这里更加深入.</p>
+
+<div class="language-cpp highlighter-rouge"><pre class="highlight"><code><span class="k">class</span> <span class="nc">Complex</span> <span class="p">{</span>
+<span class="k">public</span><span class="o">:</span>
+    <span class="n">Complex</span><span class="p">(</span><span class="kt">double</span> <span class="n">r</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="kt">double</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span><span class="o">:</span><span class="n">real</span><span class="p">(</span><span class="n">r</span><span class="p">),</span> <span class="n">image</span><span class="p">(</span><span class="n">i</span><span class="p">){}</span>
+    <span class="kt">void</span> <span class="n">dumpFormat</span><span class="p">()</span> <span class="p">{</span>
+        <span class="n">cout</span><span class="o">&lt;&lt;</span><span class="s">"("</span><span class="o">&lt;&lt;</span><span class="k">this</span><span class="o">-&gt;</span><span class="n">real</span><span class="o">&lt;&lt;</span><span class="s">","</span><span class="o">&lt;&lt;</span><span class="k">this</span><span class="o">-&gt;</span><span class="n">image</span><span class="o">&lt;&lt;</span><span class="s">")"</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="n">Complex</span> <span class="o">&amp;</span> <span class="k">operator</span><span class="o">=</span> <span class="p">(</span><span class="k">const</span> <span class="n">Complex</span> <span class="o">&amp;</span> <span class="n">another</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">this</span><span class="o">-&gt;</span><span class="n">real</span> <span class="o">=</span> <span class="n">another</span><span class="p">.</span><span class="n">real</span><span class="p">;</span>
+        <span class="k">this</span><span class="o">-&gt;</span><span class="n">image</span> <span class="o">=</span> <span class="n">another</span><span class="p">.</span><span class="n">image</span><span class="p">;</span>
+        <span class="k">return</span> <span class="o">*</span><span class="k">this</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="k">const</span> <span class="n">Complex</span> <span class="k">operator</span><span class="o">+</span><span class="p">(</span><span class="k">const</span> <span class="n">Complex</span> <span class="o">&amp;</span> <span class="n">another</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">Complex</span> <span class="n">sum</span><span class="p">;</span>
+        <span class="n">sum</span><span class="p">.</span><span class="n">real</span> <span class="o">=</span> <span class="k">this</span><span class="o">-&gt;</span><span class="n">real</span> <span class="o">+</span> <span class="n">another</span><span class="p">.</span><span class="n">real</span><span class="p">;</span>
+        <span class="n">sum</span><span class="p">.</span><span class="n">image</span> <span class="o">=</span> <span class="k">this</span><span class="o">-&gt;</span><span class="n">image</span> <span class="o">+</span> <span class="n">another</span><span class="p">.</span><span class="n">image</span><span class="p">;</span>
+        <span class="k">return</span> <span class="n">sum</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="k">private</span><span class="o">:</span>
+    <span class="kt">double</span> <span class="n">real</span><span class="p">;</span>
+    <span class="kt">double</span> <span class="n">image</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">int</span> <span class="n">argc</span><span class="p">,</span> <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span> <span class="n">argv</span><span class="p">[])</span> <span class="p">{</span>
+    
+    <span class="n">Complex</span> <span class="n">a</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="n">b</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">);</span>
+    <span class="n">Complex</span> <span class="n">s</span> <span class="o">=</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span><span class="p">;</span>
+    <span class="n">b</span><span class="p">.</span><span class="n">dumpFormat</span><span class="p">();</span>
+    <span class="n">a</span><span class="p">.</span><span class="n">dumpFormat</span><span class="p">();</span>
+    <span class="n">s</span><span class="p">.</span><span class="n">dumpFormat</span><span class="p">();</span>
+    
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<div class="language-cpp highlighter-rouge"><pre class="highlight"><code><span class="k">class</span> <span class="nc">Complex</span> <span class="p">{</span>
+<span class="k">public</span><span class="o">:</span>
+    <span class="n">Complex</span><span class="p">(</span><span class="kt">double</span> <span class="n">r</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="kt">double</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span><span class="o">:</span><span class="n">real</span><span class="p">(</span><span class="n">r</span><span class="p">),</span> <span class="n">image</span><span class="p">(</span><span class="n">i</span><span class="p">){}</span>
+    <span class="kt">void</span> <span class="n">dumpFormat</span><span class="p">()</span> <span class="p">{</span>
+        <span class="n">cout</span><span class="o">&lt;&lt;</span><span class="s">"("</span><span class="o">&lt;&lt;</span><span class="k">this</span><span class="o">-&gt;</span><span class="n">real</span><span class="o">&lt;&lt;</span><span class="s">","</span><span class="o">&lt;&lt;</span><span class="k">this</span><span class="o">-&gt;</span><span class="n">image</span><span class="o">&lt;&lt;</span><span class="s">")"</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="n">Complex</span> <span class="o">&amp;</span> <span class="k">operator</span> <span class="o">+=</span><span class="p">(</span><span class="k">const</span> <span class="n">Complex</span> <span class="o">&amp;</span> <span class="n">another</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">this</span><span class="o">-&gt;</span><span class="n">real</span> <span class="o">+=</span> <span class="n">another</span><span class="p">.</span><span class="n">real</span><span class="p">;</span>
+        <span class="k">this</span><span class="o">-&gt;</span><span class="n">image</span> <span class="o">+=</span> <span class="n">another</span><span class="p">.</span><span class="n">image</span><span class="p">;</span>
+        <span class="k">return</span> <span class="o">*</span><span class="k">this</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="k">private</span><span class="o">:</span>
+    <span class="kt">double</span> <span class="n">real</span><span class="p">;</span>
+    <span class="kt">double</span> <span class="n">image</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">int</span> <span class="n">argc</span><span class="p">,</span> <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span> <span class="n">argv</span><span class="p">[])</span> <span class="p">{</span>
+    
+    <span class="kt">int</span> <span class="n">a</span> <span class="o">=</span> <span class="mi">10</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="mi">20</span><span class="p">,</span> <span class="n">c</span> <span class="o">=</span> <span class="mi">30</span><span class="p">;</span>
+    <span class="n">a</span> <span class="o">+=</span> <span class="n">b</span><span class="p">;</span>
+    <span class="n">b</span> <span class="o">+=</span> <span class="n">c</span><span class="p">;</span>
+    <span class="n">cout</span><span class="o">&lt;&lt;</span><span class="s">"a: "</span><span class="o">&lt;&lt;</span><span class="n">a</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
+    <span class="n">cout</span><span class="o">&lt;&lt;</span><span class="s">"b: "</span><span class="o">&lt;&lt;</span><span class="n">b</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
+    <span class="n">cout</span><span class="o">&lt;&lt;</span><span class="s">"c: "</span><span class="o">&lt;&lt;</span><span class="n">c</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
+
+    <span class="n">Complex</span> <span class="n">ca</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">cb</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">cc</span><span class="p">(</span><span class="mi">30</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
+    <span class="n">ca</span> <span class="o">+=</span> <span class="n">cb</span><span class="p">;</span> <span class="c1">// plus return *this
+</span>    <span class="n">cb</span> <span class="o">+=</span> <span class="n">cc</span><span class="p">;</span>
+    <span class="n">ca</span><span class="p">.</span><span class="n">dumpFormat</span><span class="p">();</span>
+    <span class="n">cb</span><span class="p">.</span><span class="n">dumpFormat</span><span class="p">();</span>
+    <span class="n">cc</span><span class="p">.</span><span class="n">dumpFormat</span><span class="p">();</span>
+    
+    <span class="kt">int</span> <span class="n">a1</span> <span class="o">=</span> <span class="mi">10</span><span class="p">,</span> <span class="n">b1</span> <span class="o">=</span> <span class="mi">20</span><span class="p">,</span> <span class="n">c1</span> <span class="o">=</span> <span class="mi">30</span><span class="p">;</span>
+    <span class="n">a1</span> <span class="o">+=</span> <span class="n">b1</span> <span class="o">+=</span> <span class="n">c1</span><span class="p">;</span>
+    <span class="n">cout</span><span class="o">&lt;&lt;</span><span class="s">"a1: "</span><span class="o">&lt;&lt;</span><span class="n">a1</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
+    <span class="n">cout</span><span class="o">&lt;&lt;</span><span class="s">"b1: "</span><span class="o">&lt;&lt;</span><span class="n">b1</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
+    <span class="n">cout</span><span class="o">&lt;&lt;</span><span class="s">"c1: "</span><span class="o">&lt;&lt;</span><span class="n">c1</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
+    
+    <span class="n">Complex</span> <span class="n">ca1</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">cb1</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">cc1</span><span class="p">(</span><span class="mi">30</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
+    <span class="n">ca1</span> <span class="o">+=</span> <span class="n">cb1</span> <span class="o">+=</span> <span class="n">cc1</span><span class="p">;</span> <span class="c1">// plus const
+</span>    <span class="n">ca1</span><span class="p">.</span><span class="n">dumpFormat</span><span class="p">();</span>
+    <span class="n">cb1</span><span class="p">.</span><span class="n">dumpFormat</span><span class="p">();</span>
+    <span class="n">cc1</span><span class="p">.</span><span class="n">dumpFormat</span><span class="p">();</span>
+    
+    <span class="kt">int</span> <span class="n">a2</span> <span class="o">=</span> <span class="mi">10</span><span class="p">,</span> <span class="n">b2</span> <span class="o">=</span> <span class="mi">20</span><span class="p">,</span> <span class="n">c2</span> <span class="o">=</span> <span class="mi">30</span><span class="p">;</span>
+    <span class="p">(</span><span class="n">a2</span> <span class="o">+=</span> <span class="n">b2</span><span class="p">)</span> <span class="o">+=</span> <span class="n">c2</span><span class="p">;</span>
+    <span class="n">cout</span><span class="o">&lt;&lt;</span><span class="s">"a2: "</span><span class="o">&lt;&lt;</span><span class="n">a2</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
+    <span class="n">cout</span><span class="o">&lt;&lt;</span><span class="s">"b2: "</span><span class="o">&lt;&lt;</span><span class="n">b2</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
+    <span class="n">cout</span><span class="o">&lt;&lt;</span><span class="s">"c2: "</span><span class="o">&lt;&lt;</span><span class="n">c2</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
+    
+    <span class="n">Complex</span> <span class="n">ca2</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">cb2</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">cc2</span><span class="p">(</span><span class="mi">30</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
+    <span class="p">(</span><span class="n">ca2</span> <span class="o">+=</span> <span class="n">cb2</span><span class="p">)</span> <span class="o">+=</span> <span class="n">cc2</span><span class="p">;</span> <span class="c1">// plus &amp;
+</span>    <span class="n">ca2</span><span class="p">.</span><span class="n">dumpFormat</span><span class="p">();</span>
+    <span class="n">cb2</span><span class="p">.</span><span class="n">dumpFormat</span><span class="p">();</span>
+    <span class="n">cc2</span><span class="p">.</span><span class="n">dumpFormat</span><span class="p">();</span>
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+<div class="language-cpp highlighter-rouge"><pre class="highlight"><code><span class="nl">a:</span> <span class="mi">30</span>
+<span class="n">b</span><span class="o">:</span> <span class="mi">50</span>
+<span class="n">c</span><span class="o">:</span> <span class="mi">30</span>
+<span class="p">(</span><span class="mi">30</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span>
+<span class="p">(</span><span class="mi">50</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span>
+<span class="p">(</span><span class="mi">30</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">a1</span><span class="o">:</span> <span class="mi">60</span>
+<span class="n">b1</span><span class="o">:</span> <span class="mi">50</span>
+<span class="n">c1</span><span class="o">:</span> <span class="mi">30</span>
+<span class="p">(</span><span class="mi">60</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span>
+<span class="p">(</span><span class="mi">50</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span>
+<span class="p">(</span><span class="mi">30</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">a2</span><span class="o">:</span> <span class="mi">60</span>
+<span class="n">b2</span><span class="o">:</span> <span class="mi">20</span>
+<span class="n">c2</span><span class="o">:</span> <span class="mi">30</span>
+<span class="p">(</span><span class="mi">60</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span>
+<span class="p">(</span><span class="mi">20</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span>
+<span class="p">(</span><span class="mi">30</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">Program</span> <span class="n">ended</span> <span class="n">with</span> <span class="n">exit</span> <span class="n">code</span><span class="o">:</span> <span class="mi">0</span>
+</code></pre>
+</div>
+
+<div class="language-cpp highlighter-rouge"><pre class="highlight"><code><span class="k">class</span> <span class="nc">Complex</span> <span class="p">{</span>
+<span class="k">public</span><span class="o">:</span>
+    <span class="n">Complex</span><span class="p">(</span><span class="kt">double</span> <span class="n">r</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="kt">double</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span><span class="o">:</span><span class="n">real</span><span class="p">(</span><span class="n">r</span><span class="p">),</span> <span class="n">image</span><span class="p">(</span><span class="n">i</span><span class="p">){}</span>
+    <span class="kt">void</span> <span class="n">dumpFormat</span><span class="p">()</span> <span class="p">{</span>
+        <span class="n">cout</span><span class="o">&lt;&lt;</span><span class="s">"("</span><span class="o">&lt;&lt;</span><span class="k">this</span><span class="o">-&gt;</span><span class="n">real</span><span class="o">&lt;&lt;</span><span class="s">","</span><span class="o">&lt;&lt;</span><span class="k">this</span><span class="o">-&gt;</span><span class="n">image</span><span class="o">&lt;&lt;</span><span class="s">")"</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="k">const</span> <span class="n">Complex</span> <span class="k">operator</span><span class="o">-</span><span class="p">()</span> <span class="k">const</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="n">Complex</span><span class="p">(</span><span class="o">-</span><span class="k">this</span><span class="o">-&gt;</span><span class="n">real</span><span class="p">,</span> <span class="o">-</span><span class="k">this</span><span class="o">-&gt;</span><span class="n">image</span><span class="p">);</span>
+    <span class="p">}</span>
+    
+<span class="k">private</span><span class="o">:</span>
+    <span class="kt">double</span> <span class="n">real</span><span class="p">;</span>
+    <span class="kt">double</span> <span class="n">image</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">int</span> <span class="n">argc</span><span class="p">,</span> <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span> <span class="n">argv</span><span class="p">[])</span> <span class="p">{</span>
+    
+    <span class="kt">int</span> <span class="n">n</span> <span class="o">=</span> <span class="mi">5</span><span class="p">;</span>
+<span class="c1">//    -n = 10;
+</span>    <span class="n">cout</span><span class="o">&lt;&lt;-</span><span class="n">n</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
+    <span class="n">cout</span><span class="o">&lt;&lt;</span><span class="n">n</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
+    <span class="n">cout</span><span class="o">&lt;&lt;-</span><span class="p">(</span><span class="o">-</span><span class="n">n</span><span class="p">)</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
+
+    <span class="n">Complex</span> <span class="n">c</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
+    <span class="n">Complex</span> <span class="n">c1</span> <span class="o">=</span> <span class="o">-</span><span class="n">c</span><span class="p">;</span>
+<span class="c1">//    -cc = Complex(10, 0); //plus const
+</span>    <span class="n">Complex</span> <span class="n">c2</span> <span class="o">=</span> <span class="o">-</span><span class="p">(</span><span class="o">-</span><span class="n">c</span><span class="p">);</span> <span class="c1">//plus func const
+</span>    <span class="n">c1</span><span class="p">.</span><span class="n">dumpFormat</span><span class="p">();</span>
+    <span class="n">c</span><span class="p">.</span><span class="n">dumpFormat</span><span class="p">();</span>
+    <span class="n">c2</span><span class="p">.</span><span class="n">dumpFormat</span><span class="p">();</span>
+    
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<div class="language-cpp highlighter-rouge"><pre class="highlight"><code><span class="o">-</span><span class="mi">5</span>
+<span class="mi">5</span>
+<span class="mi">5</span>
+<span class="p">(</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span><span class="o">-</span><span class="mi">0</span><span class="p">)</span>
+<span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span>
+<span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">Program</span> <span class="n">ended</span> <span class="n">with</span> <span class="n">exit</span> <span class="n">code</span><span class="o">:</span> <span class="mi">0</span>
+</code></pre>
+</div>
+
+<div class="language-cpp highlighter-rouge"><pre class="highlight"><code><span class="k">class</span> <span class="nc">Complex</span> <span class="p">{</span>
+<span class="k">public</span><span class="o">:</span>
+    <span class="n">Complex</span><span class="p">(</span><span class="kt">double</span> <span class="n">r</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="kt">double</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span><span class="o">:</span><span class="n">real</span><span class="p">(</span><span class="n">r</span><span class="p">),</span> <span class="n">image</span><span class="p">(</span><span class="n">i</span><span class="p">){}</span>
+    <span class="kt">void</span> <span class="n">dumpFormat</span><span class="p">()</span> <span class="k">const</span> <span class="p">{</span>
+        <span class="n">cout</span><span class="o">&lt;&lt;</span><span class="s">"("</span><span class="o">&lt;&lt;</span><span class="k">this</span><span class="o">-&gt;</span><span class="n">real</span><span class="o">&lt;&lt;</span><span class="s">","</span><span class="o">&lt;&lt;</span><span class="k">this</span><span class="o">-&gt;</span><span class="n">image</span><span class="o">&lt;&lt;</span><span class="s">")"</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="n">Complex</span> <span class="o">&amp;</span> <span class="k">operator</span><span class="o">++</span><span class="p">()</span> <span class="p">{</span>
+        <span class="k">this</span><span class="o">-&gt;</span><span class="n">real</span><span class="o">++</span><span class="p">;</span>
+        <span class="k">this</span><span class="o">-&gt;</span><span class="n">image</span><span class="o">++</span><span class="p">;</span>
+        <span class="k">return</span> <span class="o">*</span><span class="k">this</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="k">const</span> <span class="n">Complex</span> <span class="k">operator</span><span class="o">++</span><span class="p">(</span><span class="kt">int</span><span class="p">)</span> <span class="cm">/*编译器的规则*/</span> <span class="p">{</span>
+        <span class="n">Complex</span> <span class="n">r</span><span class="p">(</span><span class="o">*</span><span class="k">this</span><span class="p">);</span>
+        <span class="o">++</span><span class="k">this</span><span class="o">-&gt;</span><span class="n">real</span><span class="p">;</span>
+        <span class="o">++</span><span class="k">this</span><span class="o">-&gt;</span><span class="n">image</span><span class="p">;</span>
+        <span class="k">return</span> <span class="n">r</span><span class="p">;</span>
+    <span class="p">}</span>
+    
+<span class="k">private</span><span class="o">:</span>
+    <span class="kt">double</span> <span class="n">real</span><span class="p">;</span>
+    <span class="kt">double</span> <span class="n">image</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">int</span> <span class="n">argc</span><span class="p">,</span> <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span> <span class="n">argv</span><span class="p">[])</span> <span class="p">{</span>
+    
+    <span class="kt">int</span> <span class="n">a</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span>
+    <span class="n">cout</span><span class="o">&lt;&lt;++</span><span class="n">a</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
+    <span class="n">cout</span><span class="o">&lt;&lt;</span><span class="n">a</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
+    <span class="n">cout</span><span class="o">&lt;&lt;++++</span><span class="n">a</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
+    <span class="n">cout</span><span class="o">&lt;&lt;</span><span class="n">a</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
+    <span class="n">cout</span><span class="o">&lt;&lt;</span><span class="n">a</span><span class="o">++&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
+    <span class="n">cout</span><span class="o">&lt;&lt;</span><span class="n">a</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
+<span class="c1">//    cout&lt;&lt;a++++&lt;&lt;endl;
+</span>
+    <span class="n">Complex</span> <span class="n">c</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
+    <span class="p">(</span><span class="o">++</span><span class="n">c</span><span class="p">).</span><span class="n">dumpFormat</span><span class="p">();</span>
+    <span class="n">c</span><span class="p">.</span><span class="n">dumpFormat</span><span class="p">();</span>
+    <span class="p">(</span><span class="o">++++</span><span class="n">c</span><span class="p">).</span><span class="n">dumpFormat</span><span class="p">();</span>
+    <span class="n">c</span><span class="p">.</span><span class="n">dumpFormat</span><span class="p">();</span>
+    <span class="p">(</span><span class="n">c</span><span class="o">++</span><span class="p">).</span><span class="n">dumpFormat</span><span class="p">();</span>
+    <span class="n">c</span><span class="p">.</span><span class="n">dumpFormat</span><span class="p">();</span>
+    
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<div class="language-cpp highlighter-rouge"><pre class="highlight"><code><span class="mi">11</span>
+<span class="mi">11</span>
+<span class="mi">13</span>
+<span class="mi">13</span>
+<span class="mi">13</span>
+<span class="mi">14</span>
+<span class="p">(</span><span class="mi">11</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+<span class="p">(</span><span class="mi">11</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+<span class="p">(</span><span class="mi">13</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span>
+<span class="p">(</span><span class="mi">13</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span>
+<span class="p">(</span><span class="mi">13</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span>
+<span class="p">(</span><span class="mi">14</span><span class="p">,</span><span class="mi">4</span><span class="p">)</span>
+<span class="n">Program</span> <span class="n">ended</span> <span class="n">with</span> <span class="n">exit</span> <span class="n">code</span><span class="o">:</span> <span class="mi">0</span>
+</code></pre>
+</div>
+
+<div class="language-cpp highlighter-rouge"><pre class="highlight"><code><span class="k">class</span> <span class="nc">Mail</span> <span class="p">{</span>
+    <span class="k">friend</span> <span class="k">class</span> <span class="nc">Sender</span><span class="p">;</span>
+<span class="k">public</span><span class="o">:</span>
+    <span class="n">Mail</span><span class="p">(</span><span class="n">string</span> <span class="n">title</span><span class="p">,</span> <span class="n">string</span> <span class="n">contents</span><span class="p">)</span><span class="o">:</span><span class="n">_title</span><span class="p">(</span><span class="n">title</span><span class="p">),</span> <span class="n">_contents</span><span class="p">(</span><span class="n">contents</span><span class="p">){}</span>
+<span class="k">private</span><span class="o">:</span>
+    <span class="n">string</span> <span class="n">_title</span><span class="p">;</span>
+    <span class="n">string</span> <span class="n">_contents</span><span class="p">;</span>
+<span class="p">};</span>
+
+
+<span class="k">class</span> <span class="nc">Sender</span> <span class="p">{</span>
+<span class="k">public</span><span class="o">:</span>
+    <span class="n">Sender</span><span class="p">(</span><span class="n">string</span> <span class="n">addr</span><span class="p">)</span><span class="o">:</span><span class="n">_addr</span><span class="p">(</span><span class="n">addr</span><span class="p">){}</span>
+    <span class="n">Sender</span> <span class="o">&amp;</span> <span class="k">operator</span><span class="o">&lt;&lt;</span><span class="p">(</span><span class="k">const</span> <span class="n">Mail</span> <span class="o">&amp;</span> <span class="n">mail</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">cout</span><span class="o">&lt;&lt;</span><span class="n">mail</span><span class="p">.</span><span class="n">_title</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
+        <span class="n">cout</span><span class="o">&lt;&lt;</span><span class="n">mail</span><span class="p">.</span><span class="n">_contents</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
+        <span class="k">return</span> <span class="o">*</span><span class="k">this</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="k">private</span><span class="o">:</span>
+    <span class="n">string</span> <span class="n">_addr</span><span class="p">;</span>
+<span class="p">};</span>
+
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">int</span> <span class="n">argc</span><span class="p">,</span> <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span> <span class="n">argv</span><span class="p">[])</span> <span class="p">{</span>
+    
+    <span class="n">Sender</span> <span class="n">sender</span><span class="p">(</span><span class="s">"github.com/coderzsq"</span><span class="p">);</span>
+    <span class="n">Mail</span> <span class="n">mail</span><span class="p">(</span><span class="s">"title1"</span><span class="p">,</span> <span class="s">"description1"</span><span class="p">);</span>
+    <span class="n">Mail</span> <span class="n">mail2</span><span class="p">(</span><span class="s">"title2"</span><span class="p">,</span> <span class="s">"description2"</span><span class="p">);</span>
+    <span class="n">sender</span><span class="o">&lt;&lt;</span><span class="n">mail</span><span class="o">&lt;&lt;</span><span class="n">mail2</span><span class="p">;</span>
+    
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<div class="language-cpp highlighter-rouge"><pre class="highlight"><code><span class="n">title1</span>
+<span class="n">description1</span>
+<span class="n">title2</span>
+<span class="n">description2</span>
+<span class="n">Program</span> <span class="n">ended</span> <span class="n">with</span> <span class="n">exit</span> <span class="n">code</span><span class="o">:</span> <span class="mi">0</span>
+</code></pre>
+</div>
+
+<div class="language-cpp highlighter-rouge"><pre class="highlight"><code><span class="k">class</span> <span class="nc">Complex</span> <span class="p">{</span>
+<span class="k">public</span><span class="o">:</span>
+    <span class="n">Complex</span><span class="p">(</span><span class="kt">double</span> <span class="n">r</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="kt">double</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span><span class="o">:</span><span class="n">real</span><span class="p">(</span><span class="n">r</span><span class="p">),</span> <span class="n">image</span><span class="p">(</span><span class="n">i</span><span class="p">){}</span>
+    <span class="k">friend</span> <span class="n">istream</span> <span class="o">&amp;</span> <span class="k">operator</span><span class="o">&gt;&gt;</span><span class="p">(</span><span class="n">istream</span> <span class="o">&amp;</span> <span class="n">ci</span><span class="p">,</span> <span class="n">Complex</span> <span class="o">&amp;</span> <span class="n">c</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">ci</span><span class="o">&gt;&gt;</span><span class="n">c</span><span class="p">.</span><span class="n">real</span><span class="p">;</span>
+        <span class="n">ci</span><span class="o">&gt;&gt;</span><span class="n">c</span><span class="p">.</span><span class="n">image</span><span class="p">;</span>
+        <span class="k">return</span> <span class="n">ci</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="k">friend</span> <span class="n">ostream</span> <span class="o">&amp;</span> <span class="k">operator</span><span class="o">&lt;&lt;</span><span class="p">(</span><span class="n">ostream</span> <span class="o">&amp;</span> <span class="n">co</span><span class="p">,</span> <span class="n">Complex</span> <span class="o">&amp;</span> <span class="n">c</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">co</span><span class="o">&lt;&lt;</span><span class="s">"("</span><span class="o">&lt;&lt;</span><span class="n">c</span><span class="p">.</span><span class="n">real</span><span class="o">&lt;&lt;</span><span class="s">","</span><span class="o">&lt;&lt;</span><span class="n">c</span><span class="p">.</span><span class="n">image</span><span class="o">&lt;&lt;</span><span class="s">")"</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
+        <span class="k">return</span> <span class="n">co</span><span class="p">;</span>
+    <span class="p">}</span>
+    
+<span class="k">private</span><span class="o">:</span>
+    <span class="kt">double</span> <span class="n">real</span><span class="p">;</span>
+    <span class="kt">double</span> <span class="n">image</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">int</span> <span class="n">argc</span><span class="p">,</span> <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span> <span class="n">argv</span><span class="p">[])</span> <span class="p">{</span>
+
+    <span class="n">Complex</span> <span class="n">c</span><span class="p">,</span> <span class="n">c1</span><span class="p">;</span>
+    <span class="n">cin</span><span class="o">&gt;&gt;</span><span class="n">c</span><span class="o">&gt;&gt;</span><span class="n">c1</span><span class="p">;</span>
+    <span class="n">cout</span><span class="o">&lt;&lt;</span><span class="n">c</span><span class="o">&lt;&lt;</span><span class="n">c1</span><span class="p">;</span>
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<div class="language-cpp highlighter-rouge"><pre class="highlight"><code><span class="mi">1</span> <span class="mi">2</span>
+<span class="mi">3</span> <span class="mi">4</span>
+<span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
+<span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">)</span>
+<span class="n">Program</span> <span class="n">ended</span> <span class="n">with</span> <span class="n">exit</span> <span class="n">code</span><span class="o">:</span> <span class="mi">0</span>
+</code></pre>
+</div>
+
+<h4 id="custom-type-conversion">custom type conversion</h4>
+
+<p>自动类型转换, 其实就是一个单参数构造函数而已, 没有什么神奇的.</p>
+
+<div class="language-cpp highlighter-rouge"><pre class="highlight"><code><span class="k">class</span> <span class="nc">Point3D</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">Point2D</span> <span class="p">{</span>
+    <span class="k">friend</span> <span class="k">class</span> <span class="nc">Point3D</span><span class="p">;</span>
+<span class="k">public</span><span class="o">:</span>
+    <span class="n">Point2D</span><span class="p">(</span><span class="kt">int</span> <span class="n">x</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="kt">int</span> <span class="n">y</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span><span class="o">:</span><span class="n">_x</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="n">_y</span><span class="p">(</span><span class="n">y</span><span class="p">){}</span>
+    <span class="k">operator</span> <span class="n">Point3D</span><span class="p">(</span><span class="kt">void</span><span class="p">);</span>
+<span class="k">private</span><span class="o">:</span>
+    <span class="kt">int</span> <span class="n">_x</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="n">_y</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="k">class</span> <span class="nc">Point3D</span> <span class="p">{</span>
+    <span class="k">friend</span> <span class="k">class</span> <span class="nc">Point2D</span><span class="p">;</span>
+<span class="k">public</span><span class="o">:</span>
+    <span class="n">Point3D</span><span class="p">(</span><span class="kt">int</span> <span class="n">x</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="kt">int</span> <span class="n">y</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="kt">int</span> <span class="n">z</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span><span class="o">:</span><span class="n">_x</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="n">_y</span><span class="p">(</span><span class="n">y</span><span class="p">),</span> <span class="n">_z</span><span class="p">(</span><span class="n">z</span><span class="p">){}</span>
+    <span class="k">explicit</span> <span class="n">Point3D</span><span class="p">(</span><span class="k">const</span> <span class="n">Point2D</span> <span class="o">&amp;</span> <span class="n">d2</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">this</span><span class="o">-&gt;</span><span class="n">_x</span> <span class="o">=</span> <span class="n">d2</span><span class="p">.</span><span class="n">_x</span><span class="p">;</span>
+        <span class="k">this</span><span class="o">-&gt;</span><span class="n">_y</span> <span class="o">=</span> <span class="n">d2</span><span class="p">.</span><span class="n">_y</span><span class="p">;</span>
+        <span class="k">this</span><span class="o">-&gt;</span><span class="n">_z</span> <span class="o">=</span> <span class="n">rand</span><span class="p">()</span><span class="o">%</span><span class="mi">100</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="kt">void</span> <span class="n">dumpFormat</span><span class="p">()</span> <span class="p">{</span>
+        <span class="n">cout</span><span class="o">&lt;&lt;</span><span class="s">"("</span><span class="o">&lt;&lt;</span><span class="n">_x</span><span class="o">&lt;&lt;</span><span class="s">","</span><span class="o">&lt;&lt;</span><span class="n">_y</span><span class="o">&lt;&lt;</span><span class="s">","</span><span class="o">&lt;&lt;</span><span class="n">_z</span><span class="o">&lt;&lt;</span><span class="s">")"</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="k">private</span><span class="o">:</span>
+    <span class="kt">int</span> <span class="n">_x</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="n">_y</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="n">_z</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="n">Point2D</span><span class="o">::</span><span class="k">operator</span> <span class="n">Point3D</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="n">Point3D</span><span class="p">(</span><span class="k">this</span><span class="o">-&gt;</span><span class="n">_x</span><span class="p">,</span> <span class="k">this</span><span class="o">-&gt;</span><span class="n">_y</span><span class="p">,</span> <span class="n">rand</span><span class="p">()</span><span class="o">%</span><span class="mi">100</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="n">Point3D</span> <span class="n">convert</span><span class="p">(</span><span class="n">Point2D</span> <span class="n">d2</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="n">Point3D</span><span class="p">(</span><span class="n">d2</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="kt">int</span> <span class="n">main</span><span class="p">(</span><span class="kt">int</span> <span class="n">argc</span><span class="p">,</span> <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span> <span class="n">argv</span><span class="p">[])</span> <span class="p">{</span>
+
+    <span class="n">srand</span><span class="p">((</span><span class="kt">unsigned</span><span class="p">)</span><span class="n">time</span><span class="p">(</span><span class="mi">0</span><span class="p">));</span>
+    <span class="n">Point2D</span> <span class="n">d2</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">100</span><span class="p">);</span>
+    <span class="n">Point3D</span> <span class="n">d3</span> <span class="o">=</span> <span class="k">static_cast</span><span class="o">&lt;</span><span class="n">Point3D</span><span class="o">&gt;</span><span class="p">(</span><span class="n">d2</span><span class="p">);</span>
+<span class="c1">//    Point3D d3 = (Point3D)d2;
+//    d3 = convert(d2);
+</span>    <span class="n">d3</span><span class="p">.</span><span class="n">dumpFormat</span><span class="p">();</span>
+     
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<h4 id="functor">functor</h4>
+
+<p>仿函数, 看似比较高级的应用, 其本质只不过和运算符从冲裁的本质是调用函数一样.</p>
+
+<div class="language-cpp highlighter-rouge"><pre class="highlight"><code><span class="k">class</span> <span class="nc">Pow</span> <span class="p">{</span>
+<span class="k">public</span><span class="o">:</span>
+    <span class="kt">double</span> <span class="k">operator</span><span class="p">()</span> <span class="p">(</span><span class="kt">double</span> <span class="n">x</span><span class="p">,</span> <span class="kt">int</span> <span class="n">y</span><span class="p">)</span> <span class="p">{</span>
+        <span class="kt">int</span> <span class="n">ret</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+        <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">y</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">ret</span> <span class="o">*=</span> <span class="n">x</span><span class="p">;</span>
+        <span class="p">}</span>
+        <span class="k">return</span> <span class="n">ret</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">};</span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">int</span> <span class="n">argc</span><span class="p">,</span> <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span> <span class="n">argv</span><span class="p">[])</span> <span class="p">{</span>
+
+    <span class="kt">int</span> <span class="n">a</span> <span class="o">=</span> <span class="mi">5</span><span class="p">;</span>
+    <span class="n">cout</span><span class="o">&lt;&lt;</span><span class="n">pow</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
+    <span class="n">Pow</span> <span class="n">mypow</span><span class="p">;</span>
+    <span class="n">mypow</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="mi">2</span><span class="p">);</span>
+    <span class="n">cout</span><span class="o">&lt;&lt;</span><span class="n">mypow</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
+
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<div class="language-cpp highlighter-rouge"><pre class="highlight"><code><span class="kt">bool</span> <span class="nf">myCompare</span><span class="p">(</span><span class="kt">int</span> <span class="n">a</span><span class="p">,</span> <span class="kt">int</span> <span class="n">b</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="n">a</span> <span class="o">&lt;</span> <span class="n">b</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="k">class</span> <span class="nc">Compare</span> <span class="p">{</span>
+<span class="k">public</span><span class="o">:</span>
+    <span class="n">Compare</span><span class="p">(</span><span class="kt">bool</span> <span class="n">b</span> <span class="o">=</span> <span class="nb">true</span><span class="p">)</span><span class="o">:</span><span class="n">flag</span><span class="p">(</span><span class="n">b</span><span class="p">){}</span>
+    <span class="kt">bool</span> <span class="k">operator</span><span class="p">()</span> <span class="p">(</span><span class="kt">int</span> <span class="n">a</span><span class="p">,</span> <span class="kt">int</span> <span class="n">b</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">flag</span> <span class="o">==</span> <span class="nb">true</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="n">a</span> <span class="o">&gt;</span> <span class="n">b</span><span class="p">;</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="n">a</span> <span class="o">&lt;</span> <span class="n">b</span><span class="p">;</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="k">private</span><span class="o">:</span>
+    <span class="kt">bool</span> <span class="n">flag</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">int</span> <span class="n">argc</span><span class="p">,</span> <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span> <span class="n">argv</span><span class="p">[])</span> <span class="p">{</span>
+
+    <span class="kt">int</span> <span class="n">arr</span><span class="p">[</span><span class="mi">6</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">4</span><span class="p">};</span>
+    <span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">vi</span><span class="p">(</span><span class="n">arr</span><span class="p">,</span> <span class="n">arr</span> <span class="o">+</span> <span class="mi">6</span><span class="p">);</span>
+<span class="c">#if 0
+    //method1
+    vector&lt;int&gt;::iterator itr;
+    for (itr = vi.begin(); itr != vi.end(); ++itr) {
+        cout&lt;&lt;*itr&lt;&lt;endl;
+    }
+    //method2
+    for (auto itr = vi.begin(); itr != vi.end(); ++itr) {
+        cout&lt;&lt;*itr&lt;&lt;endl;
+    }
+    //method3
+    for (auto i:vi) {
+        cout&lt;&lt;i&lt;&lt;endl;
+    }
+#endif
+</span>    
+    <span class="n">sort</span><span class="p">(</span><span class="n">vi</span><span class="p">.</span><span class="n">begin</span><span class="p">(),</span> <span class="n">vi</span><span class="p">.</span><span class="n">end</span><span class="p">(),</span> <span class="n">myCompare</span><span class="p">);</span>
+    <span class="k">for</span> <span class="p">(</span><span class="k">auto</span> <span class="n">i</span><span class="o">:</span><span class="n">vi</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">cout</span><span class="o">&lt;&lt;</span><span class="n">i</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
+    <span class="p">}</span>
+    
+    <span class="n">sort</span><span class="p">(</span><span class="n">vi</span><span class="p">.</span><span class="n">begin</span><span class="p">(),</span> <span class="n">vi</span><span class="p">.</span><span class="n">end</span><span class="p">(),</span> <span class="n">Compare</span><span class="p">(</span><span class="nb">false</span><span class="p">));</span>
+    <span class="k">for</span> <span class="p">(</span><span class="k">auto</span> <span class="n">i</span><span class="o">:</span><span class="n">vi</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">cout</span><span class="o">&lt;&lt;</span><span class="n">i</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
+    <span class="p">}</span>
+    
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<h4 id="smart-pointer">smart pointer</h4>
+
+<p>智能指针, 类似于自动释放池? 出了作用域后自动释放堆内存.</p>
+
+<div class="language-cpp highlighter-rouge"><pre class="highlight"><code><span class="k">class</span> <span class="nc">A</span> <span class="p">{</span>
+<span class="k">public</span><span class="o">:</span>
+    <span class="n">A</span><span class="p">()</span> <span class="p">{</span>
+        <span class="n">cout</span><span class="o">&lt;&lt;</span><span class="s">"A()"</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="kt">void</span> <span class="n">xxxx</span><span class="p">()</span> <span class="p">{</span>
+        <span class="n">cout</span><span class="o">&lt;&lt;</span><span class="s">"xxxx"</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="o">~</span><span class="n">A</span><span class="p">()</span> <span class="p">{</span>
+        <span class="n">cout</span><span class="o">&lt;&lt;</span><span class="s">"~A()"</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">};</span>
+
+<span class="k">class</span> <span class="nc">SmartPtr</span> <span class="p">{</span>
+<span class="k">public</span><span class="o">:</span>
+    <span class="n">SmartPtr</span><span class="p">(</span><span class="n">A</span> <span class="o">*</span> <span class="n">pa</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">_pa</span> <span class="o">=</span> <span class="n">pa</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="n">A</span> <span class="o">&amp;</span> <span class="k">operator</span><span class="o">*</span><span class="p">()</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="o">*</span><span class="n">_pa</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="n">A</span> <span class="o">*</span> <span class="k">operator</span><span class="o">-&gt;</span><span class="p">()</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="n">_pa</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="o">~</span><span class="n">SmartPtr</span><span class="p">()</span> <span class="p">{</span>
+        <span class="k">delete</span> <span class="n">_pa</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="k">private</span><span class="o">:</span>
+    <span class="n">A</span> <span class="o">*</span> <span class="n">_pa</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="kt">void</span> <span class="nf">foo</span><span class="p">()</span> <span class="p">{</span>
+<span class="c">#if 0
+    A a;
+    A * p = new A;
+    delete p;
+    
+    auto_ptr&lt;A&gt; p(new A);
+    p-&gt;xxxx();
+    (*p).xxxx();
+#endif
+</span>    
+    <span class="n">SmartPtr</span> <span class="n">sp</span><span class="p">(</span><span class="k">new</span> <span class="n">A</span><span class="p">);</span>
+    <span class="n">sp</span><span class="o">-&gt;</span><span class="n">xxxx</span><span class="p">();</span>
+    <span class="p">(</span><span class="o">*</span><span class="n">sp</span><span class="p">).</span><span class="n">xxxx</span><span class="p">();</span>
+<span class="p">}</span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">int</span> <span class="n">argc</span><span class="p">,</span> <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span> <span class="n">argv</span><span class="p">[])</span> <span class="p">{</span>
+
+    <span class="n">foo</span><span class="p">();</span>
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+<div class="language-cpp highlighter-rouge"><pre class="highlight"><code><span class="n">A</span><span class="p">()</span>
+<span class="n">xxxx</span>
+<span class="n">xxxx</span>
+<span class="o">~</span><span class="n">A</span><span class="p">()</span>
+<span class="n">Program</span> <span class="n">ended</span> <span class="n">with</span> <span class="n">exit</span> <span class="n">code</span><span class="o">:</span> <span class="mi">0</span>
+</code></pre>
+</div>
+
+<h4 id="memory-customization">memory customization</h4>
+
+<p>主要用于内存定制, 其实感觉没什么太大的意义, 封装的使用吧..</p>
+
+<div class="language-cpp highlighter-rouge"><pre class="highlight"><code><span class="k">class</span> <span class="nc">A</span> <span class="p">{</span>
+<span class="k">public</span><span class="o">:</span>
+    <span class="n">A</span><span class="p">()</span> <span class="p">{</span>
+<span class="c1">//        _x = 100;
+//        _y = 200;
+</span>        <span class="n">cout</span><span class="o">&lt;&lt;</span><span class="s">"A()"</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="kt">void</span> <span class="n">xxxx</span><span class="p">()</span> <span class="p">{</span>
+        <span class="n">cout</span><span class="o">&lt;&lt;</span><span class="n">_x</span><span class="o">&lt;&lt;</span><span class="n">_y</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="o">~</span><span class="n">A</span><span class="p">()</span> <span class="p">{</span>
+        <span class="n">cout</span><span class="o">&lt;&lt;</span><span class="s">"~A()"</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="kt">void</span> <span class="o">*</span><span class="k">operator</span> <span class="k">new</span><span class="p">(</span><span class="kt">size_t</span> <span class="n">size</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">cout</span><span class="o">&lt;&lt;</span><span class="s">"operator new"</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
+        <span class="n">cout</span><span class="o">&lt;&lt;</span><span class="n">size</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
+        <span class="kt">void</span> <span class="o">*</span> <span class="n">p</span> <span class="o">=</span> <span class="n">malloc</span><span class="p">(</span><span class="n">size</span><span class="p">);</span>
+        <span class="p">((</span><span class="n">A</span><span class="o">*</span><span class="p">)</span><span class="n">p</span><span class="p">)</span><span class="o">-&gt;</span><span class="n">_x</span> <span class="o">=</span> <span class="mi">100</span><span class="p">;</span>
+        <span class="p">((</span><span class="n">A</span><span class="o">*</span><span class="p">)</span><span class="n">p</span><span class="p">)</span><span class="o">-&gt;</span><span class="n">_y</span> <span class="o">=</span> <span class="mi">200</span><span class="p">;</span>
+        <span class="n">cout</span><span class="o">&lt;&lt;</span><span class="n">p</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
+        <span class="k">return</span> <span class="n">p</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="kt">void</span> <span class="k">operator</span> <span class="k">delete</span><span class="p">(</span><span class="kt">void</span> <span class="o">*</span> <span class="n">p</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">cout</span><span class="o">&lt;&lt;</span><span class="s">"operator delete"</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
+        <span class="n">cout</span><span class="o">&lt;&lt;</span><span class="n">p</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="kt">void</span> <span class="o">*</span> <span class="k">operator</span> <span class="k">new</span><span class="p">[](</span><span class="kt">size_t</span> <span class="n">size</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">cout</span><span class="o">&lt;&lt;</span><span class="s">"operator new[]"</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
+        <span class="n">cout</span><span class="o">&lt;&lt;</span><span class="n">size</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
+        <span class="kt">void</span> <span class="o">*</span><span class="n">p</span> <span class="o">=</span> <span class="n">malloc</span><span class="p">(</span><span class="n">size</span><span class="p">);</span>
+        <span class="n">cout</span><span class="o">&lt;&lt;</span><span class="n">p</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
+        <span class="k">return</span> <span class="n">p</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="kt">void</span> <span class="k">operator</span> <span class="k">delete</span><span class="p">[]</span> <span class="p">(</span><span class="kt">void</span> <span class="o">*</span> <span class="n">p</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">cout</span><span class="o">&lt;&lt;</span><span class="s">"operator delete[]"</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
+        <span class="n">cout</span><span class="o">&lt;&lt;</span><span class="n">p</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
+        <span class="n">free</span><span class="p">(</span><span class="n">p</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="k">private</span><span class="o">:</span>
+    <span class="kt">int</span> <span class="n">_x</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="n">_y</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">int</span> <span class="n">argc</span><span class="p">,</span> <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span> <span class="n">argv</span><span class="p">[])</span> <span class="p">{</span>
+<span class="c">#if 0
+    A * pa = new A;
+    pa-&gt;xxxx();
+    delete pa;
+#endif
+</span>    <span class="n">A</span> <span class="o">*</span> <span class="n">pa</span> <span class="o">=</span> <span class="k">new</span> <span class="n">A</span><span class="p">[</span><span class="mi">10</span><span class="p">];</span>
+    <span class="k">delete</span><span class="p">[]</span> <span class="n">pa</span><span class="p">;</span>
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<div class="language-cpp highlighter-rouge"><pre class="highlight"><code><span class="k">operator</span> <span class="k">new</span><span class="p">[]</span>
+<span class="mi">88</span>
+<span class="mh">0x10291f740</span>
+<span class="n">A</span><span class="p">()</span>
+<span class="n">A</span><span class="p">()</span>
+<span class="n">A</span><span class="p">()</span>
+<span class="n">A</span><span class="p">()</span>
+<span class="n">A</span><span class="p">()</span>
+<span class="n">A</span><span class="p">()</span>
+<span class="n">A</span><span class="p">()</span>
+<span class="n">A</span><span class="p">()</span>
+<span class="n">A</span><span class="p">()</span>
+<span class="n">A</span><span class="p">()</span>
+<span class="o">~</span><span class="n">A</span><span class="p">()</span>
+<span class="o">~</span><span class="n">A</span><span class="p">()</span>
+<span class="o">~</span><span class="n">A</span><span class="p">()</span>
+<span class="o">~</span><span class="n">A</span><span class="p">()</span>
+<span class="o">~</span><span class="n">A</span><span class="p">()</span>
+<span class="o">~</span><span class="n">A</span><span class="p">()</span>
+<span class="o">~</span><span class="n">A</span><span class="p">()</span>
+<span class="o">~</span><span class="n">A</span><span class="p">()</span>
+<span class="o">~</span><span class="n">A</span><span class="p">()</span>
+<span class="o">~</span><span class="n">A</span><span class="p">()</span>
+<span class="k">operator</span> <span class="k">delete</span><span class="p">[]</span>
+<span class="mh">0x10291f740</span>
+<span class="n">Program</span> <span class="n">ended</span> <span class="n">with</span> <span class="n">exit</span> <span class="n">code</span><span class="o">:</span> <span class="mi">0</span>
+</code></pre>
+</div>
+
+<h4 id="最后">最后</h4>
+
+<p>更多新鲜文章可以关注并<code class="highlighter-rouge">Star</code>, 我们一起学习.</p>
+
+<blockquote>
+  <p>GitHub Repo：<a href="https://github.com/coderZsq/coderZsq.github.io">coderZsq.github.io</a>
+<br />Follow: <a href="https://github.com/coderZsq">coderZsq · GitHub</a></p>
+</blockquote>
+
+  </section>
+</article>
+
+<section class="read-more">
+   
+   
+   <div class="read-more-item">
+       <span class="read-more-item-dim">最近的文章</span>
+       <h2 class="post-list__post-title post-title"><a href="/2018/04/Swift-%E7%AC%AC%E4%BA%8C%E6%A2%AF%E9%98%9FiOS%E9%9D%A2%E8%AF%95%E8%B4%A5%E5%8C%97%E6%84%9F%E6%82%9F/" title="link to Swift 第二梯队iOS面试败北感悟">Swift 第二梯队iOS面试败北感悟</a></h2>
+       <p class="excerpt">  GitHub Repo：coderZsq.target.swiftFollow: coderZsq · GitHubResume: https://coderzsq.github.io/coderZsq.webpack.js/#/日常扯淡从去年开始, 我就一直有尝试的面试些大公司, 因为对于一个半路出家(非计算机专业), 靠着MJ视频入门的iOS菜鸡玩家, 经过了3年的摸爬滚打, 终于也渐渐的可以做一些简单的前端, 后端, 移动端的交互, 但想要继续深入就感觉瓶颈越发的明显, 基础的薄...&hellip;</p>
+       <div class="post-list__meta"><time datetime="2018-04-14 01:16:00 +0800" class="post-list__meta--date date">2018-04-14</time> &#8226; <span class="post-list__meta--tags tags">移动开发</span><a class="btn-border-small" href=/2018/04/Swift-%E7%AC%AC%E4%BA%8C%E6%A2%AF%E9%98%9FiOS%E9%9D%A2%E8%AF%95%E8%B4%A5%E5%8C%97%E6%84%9F%E6%82%9F/>继续阅读</a></div>
+   </div>
+   
+   
+   
+   
+   <div class="read-more-item">
+       <span class="read-more-item-dim">更早的文章</span>
+       <h2 class="post-list__post-title post-title"><a href="/2018/03/C++-%E4%B8%80%E6%8A%8A%E7%AA%A5%E6%8E%A2OC%E5%BA%95%E5%B1%82%E7%9A%84%E5%88%A9%E5%88%83/" title="link to C++ 一把窥探OC底层的利刃">C++ 一把窥探OC底层的利刃</a></h2>
+       <p class="excerpt">  GitHub Repo：coderZsq.github.ioFollow: coderZsq · GitHubResume: https://coderzsq.github.io/coderZsq.webpack.js/#/日常扯淡作为iOS开发的菜鸡, 平日里的工作就是做业务, 调UI, 对于我们这种弱鸡玩家来说, 编程呢, 其实就是调方法, 调属性, 调库…但光是做业务UI的工作肯定会让自己日渐乏味, 为了不重复写那些看了想吐的代码, 去年就花了点时间写了一个代码生成工具, 用于配...&hellip;</p>
+       <div class="post-list__meta"><time datetime="2018-03-10 12:29:00 +0800" class="post-list__meta--date date">2018-03-10</time> &#8226; <span class="post-list__meta--tags tags">移动开发</span><a class="btn-border-small" href=/2018/03/C++-%E4%B8%80%E6%8A%8A%E7%AA%A5%E6%8E%A2OC%E5%BA%95%E5%B1%82%E7%9A%84%E5%88%A9%E5%88%83/>继续阅读</a></div>
+   </div>
+   
+</section>
+
+<section class="post-comments">
+  
+  
+  
+  
+</section>
+
+
+            <section class="footer">
+    <footer>
+    	<span class="footer__copyright">本站点采用<a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">知识共享 署名-非商业性使用-相同方式共享 4.0 国际 许可协议</a></span>
+        <span class="footer__copyright">由 <a href="https://jekyllrb.com">Jekyll</a> 于 2019-09-28 生成，感谢 <a href="https://www.digitalocean.com/?refcode=30ed2d146762">Digital Ocean</a> 为本站提供稳定的 VPS 服务</span>
+        <span class="footer__copyright">本站由 <a href="https://github.com/coderZsq">@Castie!</a> 创建，采用 <a href="https://github.com/onevcat/vno-jekyll">Vno - Jekyll</a> 作为主题，您可以在 GitHub 找到<a href="https://github.com/onevcat/OneV-s-Den">本站源码</a> - &copy; 2019</span>
+    </footer>
+</section>
+
+        </div>
+    </div>
+    
+    <script type="text/javascript" src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+
+<script type="text/javascript" src="/js/main.js"></script>
+
+
+
+    
+  </body>
+
+</html>

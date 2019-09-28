@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <title>Castie! Notes</title>
+  <meta name="description" content="  接着上周的项目, 在上周我别出心裁的在自定义TabbarController中加入了自定义转场动画, 受到了大家广泛的喜爱, 再次表示感激, 今天我们继续实现LifestyleViewController的第二个功能渐变导航栏!!">
+  <meta name="author" content="Wei Wang">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="iOS 超Easy实现 渐变导航栏">
+  <meta name="twitter:description" content="  接着上周的项目, 在上周我别出心裁的在自定义TabbarController中加入了自定义转场动画, 受到了大家广泛的喜爱, 再次表示感激, 今天我们继续实现LifestyleViewController的第二个功能渐变导航栏!!">
+  
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="iOS 超Easy实现 渐变导航栏">
+  <meta property="og:description" content="  接着上周的项目, 在上周我别出心裁的在自定义TabbarController中加入了自定义转场动画, 受到了大家广泛的喜爱, 再次表示感激, 今天我们继续实现LifestyleViewController的第二个功能渐变导航栏!!">
+  
+  <link rel="icon" type="image/ico" href="/assets/images/favicon.ico" />
+  <link href="/assets/images/favicon.ico" rel="shortcut icon" type="image/ico">
+  
+  <link rel="stylesheet" href="/css/main.css">
+  <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+
+  <link rel="canonical" href="http://localhost:4000/2016/06/iOS-%E8%B6%85Easy%E5%AE%9E%E7%8E%B0-%E6%B8%90%E5%8F%98%E5%AF%BC%E8%88%AA%E6%A0%8F/">
+  <link rel="alternate" type="application/rss+xml" title="Castie!" href="http://localhost:4000/feed.xml">
+  
+  <meta name="google-site-verification" content="1-1ZlHoRvM0T2FqPbW2S-qLgYXN6rsn52kErlMPd_gw" />
+  
+</head>
+
+
+  <body>
+
+    <span class="mobile btn-mobile-menu">
+        <i class="fa fa-list btn-mobile-menu__icon"></i>
+        <i class="fa fa-angle-up btn-mobile-close__icon hidden"></i>
+    </span>
+    
+    <header class="panel-cover panel-cover--collapsed" style="background-image: url('/assets/images/background-cover.jpg')">
+  <div class="panel-main">
+
+    <div class="panel-main__inner panel-inverted">
+    <div class="panel-main__content">
+
+        <a href="/#blog" title="前往 Castie! 的主页" class="blog-button"><img src="/assets/images/avatar.jpg" width="80" alt="Castie! logo" class="panel-cover__logo logo" /></a>
+        <h1 class="panel-cover__title panel-title"><a href="/#blog" title="link to homepage for Castie!" class="blog-button">Castie!</a></h1>
+        
+        <span class="panel-cover__subtitle panel-subtitle">正态分布, 优劣伴生</span>
+        
+        <hr class="panel-cover__divider" />
+        <p class="panel-cover__description">北冥有鱼，其名为鲲（kūn）。鲲之大，不知其几千里也；化而为鸟，其名为鹏。鹏之背，不知其几千里也；怒而飞，其翼若垂天之云。是鸟也，海运则将徙于南冥。南冥者，天池也。</p>
+        <hr class="panel-cover__divider panel-cover__divider--secondary" />
+        
+        
+        <p class="panel-cover__description">北海若曰：“井鼃不可以语于海者，拘于虚也；夏虫不可以语于冰者，笃于时也；曲士不可以语于道者，束于教也。今尔出于崖涘，观于大海，乃知尔丑，尔将可与语大理矣。</p>
+        
+        
+        <div class="navigation-wrapper">
+          <div>
+            <nav class="cover-navigation cover-navigation--primary">
+              <ul class="navigation">
+                <li class="navigation__item"><a href="/#blog" title="访问博客" class="blog-button">博客</a></li>
+                
+                  <li class="navigation__item"><a href="https://coderzsq.github.io/coderZsq.practice.web/" target="_blank" title="我的简历">简历</a></li>
+                
+              </ul>
+            </nav>
+          </div>
+          
+          <div><nav class="cover-navigation navigation--social">
+  <ul class="navigation">
+
+    
+    <!-- juejin-->
+    <li class="navigation__item">
+      <a href="https://juejin.im/user/57e735dfa22b9d00614eecb8/posts" title="@coderZsq 的稀土掘金" target="_blank">
+        <i class='social fa fa-book'></i>
+        <span class="label">juejin</span>
+      </a>
+    </li>
+    
+
+  
+
+  
+  <!-- Github -->
+  <li class="navigation__item">
+    <a href="https://github.com/coderZsq" title="@coderZsq 的 Github" target="_blank">
+      <i class='social fa fa-github'></i>
+      <span class="label">Github</span>
+    </a>
+  </li>
+  
+
+  
+
+  
+
+  <!-- RSS -->
+  <li class="navigation__item">
+    <a href="/feed.xml" rel="author" title="RSS" target="_blank">
+      <i class='social fa fa-rss'></i>
+      <span class="label">RSS</span>
+    </a>
+  </li>
+
+  
+  <!-- Email -->
+  <li class="navigation__item">
+    <a href="mailto:a13701777868@gmail.com" title="Contact me">
+      <i class='social fa fa-envelope'></i>
+      <span class="label">Email</span>
+    </a>
+  </li>
+  
+
+  </ul>
+</nav>
+</div>
+        </div>
+      </div>
+    </div>
+    
+    
+    <div class="panel-cover--overlay cover-disabled"></div>
+    
+  </div>
+</header>
+
+
+    <div class="content-wrapper">
+        <div class="content-wrapper__inner">
+            <article class="post-container post-container--single" itemscope itemtype="http://schema.org/BlogPosting">
+  <header class="post-header">
+    <div class="post-meta">
+      <time datetime="2016-06-25 16:27:00 +0800" itemprop="datePublished" class="post-meta__date date">2016-06-25</time> &#8226; <span class="post-meta__tags tags">移动开发</span>
+    </div>
+    <h1 class="post-title">iOS 超Easy实现 渐变导航栏</h1>
+  </header>
+
+  <section class="post">
+    <blockquote>
+  <p>接着上周的项目, 在上周我别出心裁的在自定义TabbarController中加入了自定义转场动画, 受到了大家广泛的喜爱, 再次表示感激, 今天我们继续实现LifestyleViewController的第二个功能渐变导航栏!!</p>
+</blockquote>
+
+<h6 id="参考链接">参考链接:</h6>
+
+<ul>
+  <li><a href="http://www.jianshu.com/p/a3e1b54c73d6">iOS 做好开工前的准备</a></li>
+  <li><a href="http://www.jianshu.com/p/861c9c916b2a">iOS 集成Reveal UI调试利器</a></li>
+  <li><a href="http://www.jianshu.com/p/440bdc425c02">UI/UX 产品原型 从Axure开始</a></li>
+  <li><a href="http://www.jianshu.com/p/56eb4917f956">UI/UX 使用Ps 进行视觉设计</a></li>
+  <li><a href="http://www.jianshu.com/p/c1a0cd2a348f">iOS 会跳舞的TabbarController</a></li>
+</ul>
+
+<p>以下内容在上述文章基础上进行, 请事先查阅.</p>
+
+<p>渐变导航栏, 现在很多项目里都有这个功能, 我们就把这个功能集成到我们的项目中来; 根据设计图纸需求, 我们需要在轮播图下面有一个搜索栏, 搜索栏根据滑动偏移到导航栏之上.
+具体怎么实现呢, Easy啦~ 不急,我们一步一步来.</p>
+
+<h5 id="创建搜索栏cell">创建搜索栏Cell</h5>
+<p>首先打开我们的项目先在轮播图Cell下创建一个搜索栏Cell 并添加子控件.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>- (UIImageView *)hotSpotsImageView {
+    
+    if (!_hotSpotsImageView) {
+        _hotSpotsImageView = [UIImageView new];
+        _hotSpotsImageView.image = [UIImage imageNamed:@"Hot Spots"];
+    }
+    return _hotSpotsImageView;
+}
+
+- (void)layoutSubviews {
+    [super layoutSubviews];
+    
+    CGFloat padding = kSpace;
+    
+    CGFloat hotSpotsImageViewX = padding;
+    CGFloat hotSpotsImageViewW = 90;
+    CGFloat hotSpotsImageViewH = 20;
+    CGFloat hotSpotsImageViewY = self.height - hotSpotsImageViewH - 5;
+    self.hotSpotsImageView.frame = CGRectMake(hotSpotsImageViewX, hotSpotsImageViewY, hotSpotsImageViewW, hotSpotsImageViewH);
+}
+
+</code></pre>
+</div>
+<p>这时你可能会问 为什么不在Cell中添加TextField之类的, 由于我们的效果,之后再向您揭晓;</p>
+
+<h5 id="控制器-多cell设计">控制器 多Cell设计</h5>
+<p>这时回到控制器, 但是控制器中不止一种Cell, 我们怎么来设计呢?? 我的实现方法是KeysArr, 那什么是KeysArr呢,我们来看代码.</p>
+
+<p>首先我们需要创建一个全局类 (这个写法和上周的 投机流 自定义转场有异曲同工之妙)</p>
+
+<h6 id="创建全局类">创建全局类</h6>
+<p>全局类中的每一个Key对应着你的一个Cell</p>
+
+<p><code class="highlighter-rouge">.h</code></p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>extern NSString * const kSQLifestyleBannerKey;
+extern NSString * const kSQLifestyleSearchKey;
+</code></pre>
+</div>
+
+<p><code class="highlighter-rouge">.m</code></p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>NSString * const kSQLifestyleBannerKey = @"轮播图";
+NSString * const kSQLifestyleSearchKey = @"热点";
+</code></pre>
+</div>
+<h6 id="keys数组">keys数组</h6>
+<p>接着我们创建一个数组来持有这些key;</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="k">@property</span> <span class="p">(</span><span class="n">nonatomic</span><span class="p">,</span><span class="n">strong</span><span class="p">)</span> <span class="n">NSArray</span> <span class="o">*</span> <span class="n">keysArr</span><span class="p">;</span>
+</code></pre>
+</div>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>- (NSArray *)keysArr {
+    
+    if (!_keysArr) {
+        _keysArr = @[kSQLifestyleBannerKey,
+                     kSQLifestyleSearchKey];
+    }
+    return _keysArr;
+}
+</code></pre>
+</div>
+<h6 id="tableview-delegate-mothod">Tableview delegate mothod</h6>
+<p>最后在代理方法中进行判断</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return self.keysArr.count;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+
+    NSString * const key = self.keysArr[indexPath.row];
+    if (key == kSQLifestyleBannerKey) {
+        SQLifestyleBannerCell * cell = [SQLifestyleBannerCell cellWithTableView:tableView];
+        return cell;
+    }
+    if (key == kSQLifestyleSearchKey) {
+        SQLifestyleSearchCell * cell = [SQLifestyleSearchCell cellWithTableView:tableView];
+        return cell;
+    }
+    return nil;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+
+    NSString * const key = self.keysArr[indexPath.row];
+    if (key == kSQLifestyleBannerKey) {
+        return [SQLifestyleBannerCell cellHeight];
+    }
+    if (key == kSQLifestyleSearchKey) {
+        return [SQLifestyleSearchCell cellHeight];
+    }
+    return 0;
+}
+
+</code></pre>
+</div>
+<p>这样当不需要某个cell显示的时候,只需要将keys从KeysArr中移除即可, 是不是很方便!!</p>
+
+<h5 id="创建搜索栏view">创建搜索栏View</h5>
+
+<p>这里需要提醒大家的一点, 当你在自定义View的时候最好要实现<code class="highlighter-rouge">initWithFrame</code>和<code class="highlighter-rouge">initWithCoder</code>两个方法, 这样无论是用纯代码还是Xib,Storyboard使用自定义View时都能够直接加载!!</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>- (instancetype)initWithFrame:(CGRect)frame {
+    
+    self = [super initWithFrame:frame];
+    if (self) {
+        [self setupSubviews];
+    }
+    return self;
+}
+
+- (instancetype)initWithCoder:(NSCoder *)coder  {
+    
+    self = [super initWithCoder:coder];
+    if (self) {
+        [self setupSubviews];
+    }
+    return self;
+}
+
+- (UITextField *)searchBarTextField {
+    
+    if (!_searchBarTextField) {
+        _searchBarTextField = [UITextField new];
+        _searchBarTextField.backgroundColor = [UIColor whiteColor];
+        _searchBarTextField.layer.borderColor = KC05_dddddd.CGColor;
+        _searchBarTextField.layer.borderWidth = 0.5f;
+        _searchBarTextField.layer.cornerRadius = 5;
+        _searchBarTextField.layer.masksToBounds= YES;
+        _searchBarTextField.placeholder = @"Searching for something new";
+        _searchBarTextField.leftView = self.magnifierImageView;
+        _searchBarTextField.leftViewMode = UITextFieldViewModeAlways;
+        [_searchBarTextField setValue:KC04_999999 forKeyPath:@"placeholderLabel.textColor"];
+    }
+    return _searchBarTextField;
+}
+
+- (UIImageView *)magnifierImageView {
+    
+    if (!_magnifierImageView) {
+        _magnifierImageView = [UIImageView new];
+        _magnifierImageView.image = [UIImage imageNamed:@"fa-search"];
+        _magnifierImageView.frame = CGRectMake(0, 0, 34, 34);
+        _magnifierImageView.contentMode = UIViewContentModeCenter;
+    }
+    return _magnifierImageView;
+}
+
+- (void)setupSubviews {
+    [self addSubview:self.searchBarTextField];
+}
+
+- (void)layoutSubviews {
+    [super layoutSubviews];
+    
+    CGFloat searchBarTextFieldX = 0;
+    CGFloat searchBarTextFieldY = 0;
+    CGFloat searchBarTextFieldW = self.width;
+    CGFloat searchBarTextFieldH = 34;
+    self.searchBarTextField.frame = CGRectMake(searchBarTextFieldX, searchBarTextFieldY, searchBarTextFieldW, searchBarTextFieldH);
+}
+</code></pre>
+</div>
+
+<h5 id="实现位移渐变">实现位移渐变</h5>
+
+<p>重于到今天的重头戏了, 我们来实现位移渐变!! 上面的自定义View 我们并不是将其添加到Cell之中, 而是将他添加到<code class="highlighter-rouge">navigationController.view</code>之上!!</p>
+
+<h6 id="创建两个自定义view">创建两个自定义View</h6>
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="k">@property</span> <span class="p">(</span><span class="n">nonatomic</span><span class="p">,</span><span class="n">strong</span><span class="p">)</span> <span class="n">SQLifestyleSearchBarView</span> <span class="o">*</span> <span class="n">titleView</span><span class="p">;</span>
+<span class="k">@property</span> <span class="p">(</span><span class="n">nonatomic</span><span class="p">,</span><span class="n">strong</span><span class="p">)</span> <span class="n">SQLifestyleSearchBarView</span> <span class="o">*</span> <span class="n">searchBarView</span><span class="p">;</span>
+</code></pre>
+</div>
+<div class="highlighter-rouge"><pre class="highlight"><code>- (SQLifestyleSearchBarView *)titleView {
+    
+    if (!_titleView) {
+        _titleView = [SQLifestyleSearchBarView new];
+        _titleView.frame = self.navigationController.navigationBar.frame;
+    }
+    return _titleView;
+}
+
+- (SQLifestyleSearchBarView *)searchBarView {
+    
+    if (!_searchBarView) {
+        _searchBarView = [SQLifestyleSearchBarView new];
+    }
+    return _searchBarView;
+}
+</code></pre>
+</div>
+<p>其中一个的<code class="highlighter-rouge">frame = self.navigationController.navigationBar.frame</code>
+并将其添加到<code class="highlighter-rouge">titleView</code>中!! 另一个将其加载<code class="highlighter-rouge">navigationController.view</code>中!! 并在<code class="highlighter-rouge">viewWillLayoutSubviews</code>中设置布局!!</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>- (void)loadView {
+    [super loadView];
+    [self.navigationItem setTitleView:self.titleView];
+    [self.navigationController.navigationBar setBackgroundImage:[UIImage imageWithColor:[UIColor clearColor]] forBarMetrics:UIBarMetricsDefault];
+    [self.navigationController.navigationBar setShadowImage:[UIImage imageWithColor:[UIColor clearColor]]];
+}
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    [self.view addSubview:self.tableView];
+    [self.navigationController.view addSubview:self.searchBarView];
+}
+
+- (void)viewWillLayoutSubviews {
+    [super viewWillLayoutSubviews];
+    CGFloat searchBarViewX = kSpace;
+    CGFloat searchBarViewW = self.titleView.width;
+    CGFloat searchBarViewH = self.titleView.height;
+    CGFloat searchBarViewY = kScaleLength(210) + searchBarViewH - self.tableView.contentOffset.y - searchBarViewH;
+    self.searchBarView.frame = CGRectMake(searchBarViewX, searchBarViewY, searchBarViewW, searchBarViewH);
+}
+
+</code></pre>
+</div>
+<h6 id="监听偏移">监听偏移</h6>
+<p>我们将设置导航栏背景颜色的方法从LoadView移到<code class="highlighter-rouge">scrollViewDidScroll</code>中来
+这里需要和大家细说一下监听偏移渐变,其实很简单,就是一个公式而已 <code class="highlighter-rouge">float alpha = 1 - (offset) - scrollView.contentOffset.y) / offset);</code> 其中的offset 指的是y轴方向从初始值<code class="highlighter-rouge">viewWillLayoutSubviews</code>中的初始设定 到导航栏的位移!!
+每滑动下重新调用<code class="highlighter-rouge">viewWillLayoutSubviews</code>方法重新布局, 当其到达位移点的时候, 两个View进行交换就达到了 预期的效果!!</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
+    [self viewWillLayoutSubviews];
+    [[[UIApplication sharedApplication] keyWindow] endEditing:YES];
+     float alpha = 1 - ((kScaleLength(190.5) - scrollView.contentOffset.y) / kScaleLength(190.5));
+    [self.navigationController.navigationBar setBackgroundImage:[UIImage imageWithColor:[KC01_57c2de colorWithAlphaComponent:alpha &gt; 0.95f ? 0.95f : alpha]] forBarMetrics:UIBarMetricsDefault];
+    self.titleView.hidden = scrollView.contentOffset.y &gt; kScaleLength(190.5) ? NO : YES;
+    self.searchBarView = !titleView.hidden;
+}
+</code></pre>
+</div>
+<h6 id="对位移渐变的封装">对位移渐变的封装</h6>
+<p>上面的代码看到晕晕乎乎,讲的不清不楚!! 我们来讲这个功能封装一下, 先创建一个UIViewController的Catagory 实现方法!!</p>
+
+<ul>
+  <li>scrollView:  传入需要位移的scrollView;</li>
+  <li>titleView:   传入导航栏上的titleView;</li>
+  <li>movableView: 传入需要移动的自定义View;</li>
+  <li>offset:      传入y轴方向从初始值到导航栏的位移;</li>
+  <li>color:       传入导航栏颜色</li>
+</ul>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>- (void)navigationBarGradualChangeWithScrollView:(UIScrollView *)scrollView titleView:(UIView *)titleView movableView:(UIView *)movableView offset:(CGFloat)offset color:(UIColor *)color {
+
+    float alpha = 1 - ((offset - scrollView.contentOffset.y) / offset);
+    [self.navigationController.navigationBar setBackgroundImage:[UIImage imageWithColor:[color colorWithAlphaComponent:alpha &gt; 0.95f ? 0.95f : alpha]] forBarMetrics:UIBarMetricsDefault];
+    titleView  .hidden = scrollView.contentOffset.y &gt; offset ? NO : YES;
+    movableView.hidden = !titleView  .hidden;
+}
+</code></pre>
+</div>
+
+<p>这样我们在调用的时候就简单明了多了!! 以后做到这个功能的时候可以直接拿来用了!!</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
+    [self viewWillLayoutSubviews];
+    [[[UIApplication sharedApplication] keyWindow] endEditing:YES];
+    [self navigationBarGradualChangeWithScrollView:scrollView titleView:self.titleView movableView:self.searchBarView offset:kScaleLength(190.5) color:KC01_57c2de];
+}
+</code></pre>
+</div>
+
+<h5 id="模拟效果">模拟效果</h5>
+<p>为了能看到效果 我们在控制器中多加几个cell 方法很简单只要在Key数组中多加几个对象即可! <code class="highlighter-rouge">并在key == @"" 时加载如下Cell</code></p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>- (NSArray *)keysArr {
+    
+    if (!_keysArr) {
+        _keysArr = @[kSQLifestyleBannerKey,
+                     kSQLifestyleSearchKey,
+                     @"",@"",@"",@"",@"",
+                     @"",@"",@"",@"",@"",
+                     @"",@"",@"",@"",@"",
+                     @"",@"",@"",@"",@""];
+    }
+    return _keysArr;
+}
+
+    static NSString * identifier = @"cell";
+    UITableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:identifier];
+    if (!cell) {
+        cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
+    }   cell.textLabel.text = @"https://coderZsq.github.io";
+    return cell;
+</code></pre>
+</div>
+<p>好了 我们来看下显示效果吧~~
+<img src="http://upload-images.jianshu.io/upload_images/1229762-6e7db679e73a8075.gif?imageMogr2/auto-orient/strip" alt="" /></p>
+
+<p>在Reaval中显示
+<img src="http://upload-images.jianshu.io/upload_images/1229762-1c7cddf4633b21a4.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="" /></p>
+
+<p>最终显示
+<img src="http://upload-images.jianshu.io/upload_images/1229762-b376f50d1e1d3aaf.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="" /></p>
+
+<hr />
+
+<h5 id="github-下载地址">github 下载地址!!!</h5>
+<p><img src="http://upload-images.jianshu.io/upload_images/1229762-0a46036fb613eb0f.jpeg!heading?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="" />
+上周有人说我没有放出Demo 小弟真是冤枉至极, 这次特地做出标注(下方链接跳转)!!
+ <a href="https://github.com/coderZsq/coderZsq.project.oc">具体源码及SQExtension方法信息 请到github上进行下载! 喜欢的朋友送下小星星哟!!</a></p>
+
+  </section>
+</article>
+
+<section class="read-more">
+   
+   
+   <div class="read-more-item">
+       <span class="read-more-item-dim">最近的文章</span>
+       <h2 class="post-list__post-title post-title"><a href="/2016/07/iOS-%E7%8B%82%E9%9C%B8%E9%85%B7%E7%82%AB%E6%8B%BD%E4%B9%8BButton%E5%8A%A8%E6%95%88/" title="link to iOS 狂霸酷炫拽之Button动效">iOS 狂霸酷炫拽之Button动效</a></h2>
+       <p class="excerpt">  上周的  引起热烈的反响, 小弟真的是受宠若惊, 还有些同学私信求更新的, 我特别推崇这种互帮互助的学习方式, 有利于共同学习, 好了开始今天的话题!参考链接:  iOS 做好开工前的准备  iOS 集成Reveal UI调试利器  UI/UX 产品原型 从Axure开始  UI/UX 使用Ps 进行视觉设计  iOS 会跳舞的TabbarController  iOS 超Easy实现 渐变导航栏以下内容在上述文章基础上进行, 请事先查阅.今天我们需要实现的功能是: 酷炫的Button...&hellip;</p>
+       <div class="post-list__meta"><time datetime="2016-07-02 15:08:00 +0800" class="post-list__meta--date date">2016-07-02</time> &#8226; <span class="post-list__meta--tags tags">移动开发</span><a class="btn-border-small" href=/2016/07/iOS-%E7%8B%82%E9%9C%B8%E9%85%B7%E7%82%AB%E6%8B%BD%E4%B9%8BButton%E5%8A%A8%E6%95%88/>继续阅读</a></div>
+   </div>
+   
+   
+   
+   
+   <div class="read-more-item">
+       <span class="read-more-item-dim">更早的文章</span>
+       <h2 class="post-list__post-title post-title"><a href="/2016/06/iOS-%E4%BC%9A%E8%B7%B3%E8%88%9E%E7%9A%84TabbarController/" title="link to iOS 会跳舞的TabbarController">iOS 会跳舞的TabbarController</a></h2>
+       <p class="excerpt">  上周的 收到大家一致的好评和转载, 小弟心中感到很是欣慰, 所以今天再此决定分享一个干货给各位小伙伴们!!参考链接:  iOS 做好开工前的准备  iOS 集成Reveal UI调试利器  UI/UX 产品原型 从Axure开始  UI/UX 使用Ps 进行视觉设计  iOS 投机流实现 无限轮播图以下内容在上述文章基础上进行, 请事先查阅.具体是什么干货呢, 今天要分享的是会跳舞的TabbarController, 什么是会跳舞的TabbarController? 很简单,就是使用自...&hellip;</p>
+       <div class="post-list__meta"><time datetime="2016-06-18 14:19:00 +0800" class="post-list__meta--date date">2016-06-18</time> &#8226; <span class="post-list__meta--tags tags">移动开发</span><a class="btn-border-small" href=/2016/06/iOS-%E4%BC%9A%E8%B7%B3%E8%88%9E%E7%9A%84TabbarController/>继续阅读</a></div>
+   </div>
+   
+</section>
+
+<section class="post-comments">
+  
+  
+  
+  
+</section>
+
+
+            <section class="footer">
+    <footer>
+    	<span class="footer__copyright">本站点采用<a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">知识共享 署名-非商业性使用-相同方式共享 4.0 国际 许可协议</a></span>
+        <span class="footer__copyright">由 <a href="https://jekyllrb.com">Jekyll</a> 于 2019-09-28 生成，感谢 <a href="https://www.digitalocean.com/?refcode=30ed2d146762">Digital Ocean</a> 为本站提供稳定的 VPS 服务</span>
+        <span class="footer__copyright">本站由 <a href="https://github.com/coderZsq">@Castie!</a> 创建，采用 <a href="https://github.com/onevcat/vno-jekyll">Vno - Jekyll</a> 作为主题，您可以在 GitHub 找到<a href="https://github.com/onevcat/OneV-s-Den">本站源码</a> - &copy; 2019</span>
+    </footer>
+</section>
+
+        </div>
+    </div>
+    
+    <script type="text/javascript" src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+
+<script type="text/javascript" src="/js/main.js"></script>
+
+
+
+    
+  </body>
+
+</html>

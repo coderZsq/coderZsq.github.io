@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <title>Castie! Notes</title>
+  <meta name="description" content="  喵神100Tips的解读连载已经到了第十篇了, 是要好好敲一个Demo来巩固一下自己Swift的学习情况, 说来也巧, 前两天领导来问我能不能帮他做一个需求, 要求web页面调用app原生相册, 选择照片后将图片加载到web页面上. (同学们先想想怎样才能够实现这个需求), 这正是一个锻炼Swift3的机会,...">
+  <meta name="author" content="Wei Wang">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Hybird 说说与Web交互的那些事儿">
+  <meta name="twitter:description" content="  喵神100Tips的解读连载已经到了第十篇了, 是要好好敲一个Demo来巩固一下自己Swift的学习情况, 说来也巧, 前两天领导来问我能不能帮他做一个需求, 要求web页面调用app原生相册, 选择照片后将图片加载到web页面上. (同学们先想想怎样才能够实现这个需求), 这正是一个锻炼Swift3的机会,...">
+  
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Hybird 说说与Web交互的那些事儿">
+  <meta property="og:description" content="  喵神100Tips的解读连载已经到了第十篇了, 是要好好敲一个Demo来巩固一下自己Swift的学习情况, 说来也巧, 前两天领导来问我能不能帮他做一个需求, 要求web页面调用app原生相册, 选择照片后将图片加载到web页面上. (同学们先想想怎样才能够实现这个需求), 这正是一个锻炼Swift3的机会,...">
+  
+  <link rel="icon" type="image/ico" href="/assets/images/favicon.ico" />
+  <link href="/assets/images/favicon.ico" rel="shortcut icon" type="image/ico">
+  
+  <link rel="stylesheet" href="/css/main.css">
+  <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+
+  <link rel="canonical" href="http://localhost:4000/2017/01/Hybird-%E8%AF%B4%E8%AF%B4%E4%B8%8EWeb%E4%BA%A4%E4%BA%92%E7%9A%84%E9%82%A3%E4%BA%9B%E4%BA%8B%E5%84%BF/">
+  <link rel="alternate" type="application/rss+xml" title="Castie!" href="http://localhost:4000/feed.xml">
+  
+  <meta name="google-site-verification" content="1-1ZlHoRvM0T2FqPbW2S-qLgYXN6rsn52kErlMPd_gw" />
+  
+</head>
+
+
+  <body>
+
+    <span class="mobile btn-mobile-menu">
+        <i class="fa fa-list btn-mobile-menu__icon"></i>
+        <i class="fa fa-angle-up btn-mobile-close__icon hidden"></i>
+    </span>
+    
+    <header class="panel-cover panel-cover--collapsed" style="background-image: url('/assets/images/background-cover.jpg')">
+  <div class="panel-main">
+
+    <div class="panel-main__inner panel-inverted">
+    <div class="panel-main__content">
+
+        <a href="/#blog" title="前往 Castie! 的主页" class="blog-button"><img src="/assets/images/avatar.jpg" width="80" alt="Castie! logo" class="panel-cover__logo logo" /></a>
+        <h1 class="panel-cover__title panel-title"><a href="/#blog" title="link to homepage for Castie!" class="blog-button">Castie!</a></h1>
+        
+        <span class="panel-cover__subtitle panel-subtitle">正态分布, 优劣伴生</span>
+        
+        <hr class="panel-cover__divider" />
+        <p class="panel-cover__description">北冥有鱼，其名为鲲（kūn）。鲲之大，不知其几千里也；化而为鸟，其名为鹏。鹏之背，不知其几千里也；怒而飞，其翼若垂天之云。是鸟也，海运则将徙于南冥。南冥者，天池也。</p>
+        <hr class="panel-cover__divider panel-cover__divider--secondary" />
+        
+        
+        <p class="panel-cover__description">北海若曰：“井鼃不可以语于海者，拘于虚也；夏虫不可以语于冰者，笃于时也；曲士不可以语于道者，束于教也。今尔出于崖涘，观于大海，乃知尔丑，尔将可与语大理矣。</p>
+        
+        
+        <div class="navigation-wrapper">
+          <div>
+            <nav class="cover-navigation cover-navigation--primary">
+              <ul class="navigation">
+                <li class="navigation__item"><a href="/#blog" title="访问博客" class="blog-button">博客</a></li>
+                
+                  <li class="navigation__item"><a href="https://coderzsq.github.io/coderZsq.practice.web/" target="_blank" title="我的简历">简历</a></li>
+                
+              </ul>
+            </nav>
+          </div>
+          
+          <div><nav class="cover-navigation navigation--social">
+  <ul class="navigation">
+
+    
+    <!-- juejin-->
+    <li class="navigation__item">
+      <a href="https://juejin.im/user/57e735dfa22b9d00614eecb8/posts" title="@coderZsq 的稀土掘金" target="_blank">
+        <i class='social fa fa-book'></i>
+        <span class="label">juejin</span>
+      </a>
+    </li>
+    
+
+  
+
+  
+  <!-- Github -->
+  <li class="navigation__item">
+    <a href="https://github.com/coderZsq" title="@coderZsq 的 Github" target="_blank">
+      <i class='social fa fa-github'></i>
+      <span class="label">Github</span>
+    </a>
+  </li>
+  
+
+  
+
+  
+
+  <!-- RSS -->
+  <li class="navigation__item">
+    <a href="/feed.xml" rel="author" title="RSS" target="_blank">
+      <i class='social fa fa-rss'></i>
+      <span class="label">RSS</span>
+    </a>
+  </li>
+
+  
+  <!-- Email -->
+  <li class="navigation__item">
+    <a href="mailto:a13701777868@gmail.com" title="Contact me">
+      <i class='social fa fa-envelope'></i>
+      <span class="label">Email</span>
+    </a>
+  </li>
+  
+
+  </ul>
+</nav>
+</div>
+        </div>
+      </div>
+    </div>
+    
+    
+    <div class="panel-cover--overlay cover-disabled"></div>
+    
+  </div>
+</header>
+
+
+    <div class="content-wrapper">
+        <div class="content-wrapper__inner">
+            <article class="post-container post-container--single" itemscope itemtype="http://schema.org/BlogPosting">
+  <header class="post-header">
+    <div class="post-meta">
+      <time datetime="2017-01-11 23:33:00 +0800" itemprop="datePublished" class="post-meta__date date">2017-01-11</time> &#8226; <span class="post-meta__tags tags">移动开发</span>
+    </div>
+    <h1 class="post-title">Hybird 说说与Web交互的那些事儿</h1>
+  </header>
+
+  <section class="post">
+    <blockquote>
+  <p>喵神100Tips的解读连载已经到了第十篇了, 是要好好敲一个Demo来巩固一下自己Swift的学习情况, 说来也巧, 前两天领导来问我能不能帮他做一个需求, 要求web页面调用app原生相册, 选择照片后将图片加载到web页面上. (同学们先想想怎样才能够实现这个需求), 这正是一个锻炼Swift3的机会, 绝对不能错过, 虽然一口答应, 但实际操作中还是有一些技术难点存在的, 在此与你分享.</p>
+</blockquote>
+
+<p><img src="http://upload-images.jianshu.io/upload_images/1229762-3866097366648136.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="" /></p>
+
+<p>要做这个功能, 虽然对我来说还是Objective-C比较熟悉, 各项技术黑魔法都手到擒来, 但是Swift毕竟是未来的趋势, 到Swift3后API也趋于稳定, 因此我就选择了Swift作为app端开发语言. web端当仁不让的就选择Javascript了, 领导一开始要求我使用HTML5的Canvas来实现, 可杀鸡焉用牛刀, 我就简单的使用img标签代替了, 其实Canvas与Quartz2D的API极为相似, 有经验的同学很好上手!</p>
+
+<p>我们先来分析一下这个需求, 更好的拆解需求能够设计出理想的代码, 首先, 我们想到了需要一个WebView, 然后实现代理进行交互, 但是一般来说我们与H5交互都是传字符串, 如何传输图片数据呢? (在此声明, 此需求不涉及请求及服务端)</p>
+
+<p>带着这个问题, 我们先把工程创建起来, 毕竟良好的开端是成功的一半!</p>
+<div class="highlighter-rouge"><pre class="highlight"><code>fileprivate lazy var webView: UIWebView = {[weak self] in
+     let webView = UIWebView()
+     webView.delegate = self       
+     webView.frame = CGRect(x: 0,
+                            y: 0,
+                            width:  kScreenW,
+                            height: kScreenH)
+     return webView
+}()
+</code></pre>
+</div>
+<p>我们先通过懒加载创建webView, 与Objective-C重写get方法不同的是, Swift中自带lazy关键字, 可以轻松实现懒加载, 上面是通过闭包形式的懒加载方式, 所以在闭包中引用self的话会造成循环引用, 所以我们需要加上[weak self] in, fileprivate关键字是Swift3更新的, 意思是本文件中似私有.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>extension ViewController {
+    
+    fileprivate func loadWebView() {
+        guard let file = Bundle.main.path(forResource: "index", ofType: "html") else { return }
+        guard let htmlString = try? String(contentsOfFile: file, encoding: .utf8) else { return }
+        let baseURL = URL(fileURLWithPath: Bundle.main.bundlePath)
+        webView.loadHTMLString(htmlString, baseURL: baseURL)
+    }
+}
+</code></pre>
+</div>
+<p>创建完webView我们就需要加载本地的HTML文件了, 加载方式还是和Objective-C的一样, 但需要注意的是我把这个scope放在了一个extension中, extension是Swift中本人最为喜欢的功能了, 对比Objective-C的Catagroy来说, 它的装饰模式的灵活性真是强大太多了.(不理解装饰模式的同学可以看看设计模式方面的书籍) guard也是Swift中我比较喜欢的功能, 可选绑定校验能够使代码逻辑更为清晰, 对我这种对代码美感有强迫症的人来说, 真是太合适不过了. 第三个注意点事try?, 在Objective-C的时代我们对异常的处理其实非常的少, 但在Swift中却极为常见, 可能是对安全方面的考量吧, 有兴趣的同学可以看看我之前分享的喵神的书中就有这一段分析.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>
+override func viewDidLoad() {
+      super.viewDidLoad()
+      setupWebView()
+      loadWebView()    
+}
+
+extension ViewController {
+    
+    fileprivate func setupWebView() {
+        view.addSubview(webView)
+    }
+}
+</code></pre>
+</div>
+<p>我们把webView添加到控制器的view上并进行读取HTML文件.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>
+<span class="cp">&lt;!DOCTYPE html&gt;</span>
+<span class="nt">&lt;html&gt;</span>
+
+<span class="nt">&lt;head&gt;</span>
+    <span class="nt">&lt;meta</span> <span class="na">charset=</span><span class="s">"utf-8"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;title&gt;</span>PhotoGallery<span class="nt">&lt;/title&gt;</span>
+
+<span class="nt">&lt;style&gt;</span>
+<span class="err">  </span> <span class="err"> </span>
+<span class="nt">p</span> <span class="p">{</span>
+<span class="err"> </span> <span class="err"> </span> <span class="nl">margin</span><span class="p">:</span> <span class="m">0</span><span class="p">;</span>
+<span class="err"> </span> <span class="err"> </span> <span class="nl">padding</span><span class="p">:</span> <span class="m">0</span><span class="p">;</span>
+<span class="err"> </span> <span class="err"> </span> <span class="nl">text-align</span><span class="p">:</span> <span class="nb">center</span><span class="p">;</span>
+<span class="err"> </span> <span class="err"> </span> <span class="nl">font-size</span><span class="p">:</span> <span class="m">18px</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="nt">&lt;/style&gt;</span>
+<span class="nt">&lt;/head&gt;</span>
+
+<span class="nt">&lt;body&gt;</span>
+    
+![](placeholder)
+<span class="nt">&lt;p&gt;</span> # click here to select a photo # <span class="nt">&lt;/p&gt;</span>
+
+<span class="nt">&lt;script </span><span class="na">type=</span><span class="s">"text/javascript"</span><span class="nt">&gt;</span>
+
+<span class="nt">&lt;/script&gt;</span>
+<span class="nt">&lt;/body&gt;</span>
+
+<span class="nt">&lt;/html&gt;</span>
+</code></pre>
+</div>
+<p>接下来我们先创建一个非常简单的HTML文件, 里面只包含了一张图片和一段文字, 这里我图个方便将CSS和JS都集成在HTML文件中了, 一般做项目建议分开引用. script标签按照规范放置在body标签的最后, 这是web项目最基础的优化.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>function prepareParagraphEvent() {
+    if (!document.getElementsByTagName) return false;
+    var ps = document.getElementsByTagName("p");
+    for (var i = 0; i &lt; ps.length; i++) {
+        ps[i].onclick = function() {
+            window.location.href = "ios://openPhotoGallery";
+        }
+    }
+}
+</code></pre>
+</div>
+<p>我们通过操作DOM的方式来给p标签绑定一个点击事件, 当然你也可以用jQuery这种JS库, 我这里就用原生的API进行实现了, 第一个判断的的意义是要让网页做到平稳退化, 当然现在大部分浏览器都支持的很好, 但我们也要照顾到那些不支持JS的浏览器不是吗? 这里有一个技术点: <strong>ios://openPhotoGallery</strong> 这个字符串其实就是跳转的关键, 如果在工作中就需要app端和web端制定规则, 因为app端需要根据这段字符串来进行解析.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>
+function addLoadEvent(func) {
+    var oldonload = window.onload;
+    if (typeof window.onload != 'function') {
+        window.onload = func;
+    } else {
+        window.onload = function() {
+            oldonload();
+            func();
+        }
+    }
+}
+
+addLoadEvent(prepareParagraphEvent);
+</code></pre>
+</div>
+<p>我们默认加载此prepareParagraphEvent函数, window.onload可以简单的理解为viewDidLoad.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>extension ViewController: UIWebViewDelegate {
+    
+    func webView(_ webView: UIWebView, shouldStartLoadWith request: URLRequest, navigationType: UIWebViewNavigationType) -&gt; Bool {
+        guard let href = request.url?.absoluteString else { return false }
+        if href.hasPrefix("ios") {
+            guard let method = href.components(separatedBy: "://").last else { return false }
+            let selector = Selector.init(method)
+            if self.responds(to: selector) {
+                self.perform(selector)
+            }
+            return false
+        }
+        return true
+    }
+}
+</code></pre>
+</div>
+<p>当window.location.href触发的时候, 会调用UIWebViewDelegate的上述代理方法. 我们根据刚才所制定的规则进行解析, 我这里是使用类似协议头的方式, 这样看起来更加的正式, 当然你也可以制定你想制定的任何一种方式. 我们根据协议头后的方法名字符串通过桥接Objective-C的runtime来动态执行方法.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>
+extension ViewController {
+    
+    @objc fileprivate func openPhotoGallery() {
+        if UIImagePickerController.isSourceTypeAvailable(.photoLibrary){
+            let picker = UIImagePickerController()
+            picker.delegate = self
+            picker.sourceType = .photoLibrary
+            picker.allowsEditing = true
+            self.present(picker, animated: true)
+        } else {
+            print("access photo gallery error")
+        }
+    }
+}
+</code></pre>
+</div>
+<p>当然我们也要准备相应的方法, @objc 关键字 就是进行与Objective-C的桥接, 方法内部的功能是,打开系统图片库, 这代码我就不分析了, 因为实在是没有什么可说的.. 到这一步, 我们就已经实现了一半了, 通过点击web中的标签打开了app的系统的照片库.当然就像伟大航线的新世界一样, 好戏在后头.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>extension ViewController: UIImagePickerControllerDelegate,UINavigationControllerDelegate {
+    
+    func imagePickerController(_ picker: UIImagePickerController,didFinishPickingMediaWithInfo info: [String : Any]) {
+        let image = info[UIImagePickerControllerOriginalImage] as? UIImage
+        guard let Document = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true).last
+            else { return }
+        let path = "\(Document)/\("image\(arc4random()%100).png")"
+        if FileManager.default.fileExists(atPath: path) {
+            try! FileManager.default.removeItem(atPath: path)
+        }
+        try! UIImagePNGRepresentation(image!)?.write(to: URL(fileURLWithPath: path))
+        picker.dismiss(animated: true) {
+            self.webView.stringByEvaluatingJavaScript(from: "loadImageWithPath('\(path)');")
+        }
+    }
+}
+</code></pre>
+</div>
+<p>这段代码可谓是这个Demo中最核心的一段了, 这个是UIImagePickerController的代理方法回调, 简单来说就是拿到选择的照片, 我实现的思路是将图片写入沙盒并将沙盒路径传递给Javascript. (在做这个的过程中了解到了一个之前忽视掉的细节, 就是在iOS8开始, 每次打开沙盒的路径都是不同的) 传递的核心代码就是 <strong>stringByEvaluatingJavaScript(from: “loadImageWithPath(‘(path)’);</strong>, 就是调用JS的函数.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>
+function loadImageWithPath(src) {
+    if (!document.getElementsByTagName) return false;
+    var imgs = document.getElementsByTagName("img");
+    for (var i = 0; i &lt; imgs.length; i++) {
+        imgs[i].src = src;
+    }
+}
+</code></pre>
+</div>
+<p>通过调用函数, 更改图片路径, 我们的功能也终于大功告成啦!!! 来看一下实现的效果.</p>
+
+<p><img src="http://upload-images.jianshu.io/upload_images/1229762-9a4eea0d27b2a9ae.gif?imageMogr2/auto-orient/strip" alt="" /></p>
+
+<p>其实还有一个bug并没有很好的解决, <strong>let path = “(Document)/(“image(arc4random()%100).png”)”</strong>, 我使用了随机数生成的图片名来抑制bug的产生, 但这并不是合适的做法, 如果不生成随机数的话, 切换第一张图片后, 第二张图片将不会切换, 但沙盒中的图片数据已经发生更改, 为了解决这个bug, 还请大神们伸出援助之手吧!</p>
+
+<p>About:</p>
+
+<p><img src="http://upload-images.jianshu.io/upload_images/1229762-3f8925783027b3fa.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="点击下方链接跳转!!" /></p>
+
+<p><a href="https://github.com/coderZsq/coderZsq.target.swift">🌟 源码 请点这里🌟 »&gt; 喜欢的朋友请点喜欢 »&gt; 下载源码的同学请送下小星星 »&gt; 有闲钱的壕们可以进行打赏 »&gt; 小弟会尽快推出更好的文章和大家分享 »&gt; 你的激励就是我的动力!! </a></p>
+
+  </section>
+</article>
+
+<section class="read-more">
+   
+   
+   <div class="read-more-item">
+       <span class="read-more-item-dim">最近的文章</span>
+       <h2 class="post-list__post-title post-title"><a href="/2017/04/Hybird-%E6%90%AD%E5%BB%BA%E9%9B%B6%E8%80%A6%E5%90%88%E6%9E%B6%E6%9E%84%E4%BB%8EMVC%E5%BC%80%E5%A7%8B/" title="link to Hybird 搭建零耦合架构从MVC开始">Hybird 搭建零耦合架构从MVC开始</a></h2>
+       <p class="excerpt">  写这个target的想法是源于接下来可能要接的新项目, 开发小组的成员们都要表达出一些对架构设计的想法, 自然平时懒散的我也不能例外, 所以这个系列会基于我浅显的知识来表达出我对于架构设计的一些思考, 和大家分享, 代码详见: github说到热修复, 最近JSPatch跪下来叫爸爸的经历还历历在目, 那我们真的有线上Bug就只能发紧急版本了吗? 虽然说审核比以前快了但时间也不短啊, 我们看如何通过架构设计来实现热修复吧!首先我们先创建一个目录结构:.├── app├── server...&hellip;</p>
+       <div class="post-list__meta"><time datetime="2017-04-10 17:17:00 +0800" class="post-list__meta--date date">2017-04-10</time> &#8226; <span class="post-list__meta--tags tags">移动开发</span><a class="btn-border-small" href=/2017/04/Hybird-%E6%90%AD%E5%BB%BA%E9%9B%B6%E8%80%A6%E5%90%88%E6%9E%B6%E6%9E%84%E4%BB%8EMVC%E5%BC%80%E5%A7%8B/>继续阅读</a></div>
+   </div>
+   
+   
+   
+   
+   <div class="read-more-item">
+       <span class="read-more-item-dim">更早的文章</span>
+       <h2 class="post-list__post-title post-title"><a href="/2016/07/iOS-5%E8%A1%8C%E4%BB%A3%E7%A0%81%E6%90%9E%E5%AE%9A%E5%85%A8%E5%B1%8FPop%E8%BD%AC%E5%9C%BA/" title="link to iOS 5行代码搞定全屏Pop转场">iOS 5行代码搞定全屏Pop转场</a></h2>
+       <p class="excerpt">  最近在写论文阶段, 没有足够的精力来写技术分享, 再此说声抱歉, 不过我也会尽力挤出时间不定期为大家更新一些干货的!! 请大家继续关注!!参考链接:  iOS 做好开工前的准备  iOS 集成Reveal UI调试利器  UI/UX 产品原型 从Axure开始  UI/UX 使用Ps 进行视觉设计  iOS 会跳舞的TabbarController  iOS 超Easy实现 渐变导航栏  iOS 狂霸酷炫拽之Button动效以下内容在上述文章基础上进行, 请事先查阅.POP全屏转场好了...&hellip;</p>
+       <div class="post-list__meta"><time datetime="2016-07-10 15:20:00 +0800" class="post-list__meta--date date">2016-07-10</time> &#8226; <span class="post-list__meta--tags tags">移动开发</span><a class="btn-border-small" href=/2016/07/iOS-5%E8%A1%8C%E4%BB%A3%E7%A0%81%E6%90%9E%E5%AE%9A%E5%85%A8%E5%B1%8FPop%E8%BD%AC%E5%9C%BA/>继续阅读</a></div>
+   </div>
+   
+</section>
+
+<section class="post-comments">
+  
+  
+  
+  
+</section>
+
+
+            <section class="footer">
+    <footer>
+    	<span class="footer__copyright">本站点采用<a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">知识共享 署名-非商业性使用-相同方式共享 4.0 国际 许可协议</a></span>
+        <span class="footer__copyright">由 <a href="https://jekyllrb.com">Jekyll</a> 于 2019-09-28 生成，感谢 <a href="https://www.digitalocean.com/?refcode=30ed2d146762">Digital Ocean</a> 为本站提供稳定的 VPS 服务</span>
+        <span class="footer__copyright">本站由 <a href="https://github.com/coderZsq">@Castie!</a> 创建，采用 <a href="https://github.com/onevcat/vno-jekyll">Vno - Jekyll</a> 作为主题，您可以在 GitHub 找到<a href="https://github.com/onevcat/OneV-s-Den">本站源码</a> - &copy; 2019</span>
+    </footer>
+</section>
+
+        </div>
+    </div>
+    
+    <script type="text/javascript" src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+
+<script type="text/javascript" src="/js/main.js"></script>
+
+
+
+    
+  </body>
+
+</html>

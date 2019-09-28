@@ -1,0 +1,1512 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <title>Castie! Notes</title>
+  <meta name="description" content="  GitHub Repo：coderZsq.github.ioFollow: coderZsq · GitHubResume: https://coderzsq.github.io/coderZsq.webpack.js/#/">
+  <meta name="author" content="Wei Wang">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="C++ 一把卍解OC底层的斩魄刀">
+  <meta name="twitter:description" content="  GitHub Repo：coderZsq.github.ioFollow: coderZsq · GitHubResume: https://coderzsq.github.io/coderZsq.webpack.js/#/">
+  
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="C++ 一把卍解OC底层的斩魄刀">
+  <meta property="og:description" content="  GitHub Repo：coderZsq.github.ioFollow: coderZsq · GitHubResume: https://coderzsq.github.io/coderZsq.webpack.js/#/">
+  
+  <link rel="icon" type="image/ico" href="/assets/images/favicon.ico" />
+  <link href="/assets/images/favicon.ico" rel="shortcut icon" type="image/ico">
+  
+  <link rel="stylesheet" href="/css/main.css">
+  <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+
+  <link rel="canonical" href="http://localhost:4000/2018/04/C++-%E4%B8%80%E6%8A%8A%E5%8D%8D%E8%A7%A3OC%E5%BA%95%E5%B1%82%E7%9A%84%E6%96%A9%E9%AD%84%E5%88%80/">
+  <link rel="alternate" type="application/rss+xml" title="Castie!" href="http://localhost:4000/feed.xml">
+  
+  <meta name="google-site-verification" content="1-1ZlHoRvM0T2FqPbW2S-qLgYXN6rsn52kErlMPd_gw" />
+  
+</head>
+
+
+  <body>
+
+    <span class="mobile btn-mobile-menu">
+        <i class="fa fa-list btn-mobile-menu__icon"></i>
+        <i class="fa fa-angle-up btn-mobile-close__icon hidden"></i>
+    </span>
+    
+    <header class="panel-cover panel-cover--collapsed" style="background-image: url('/assets/images/background-cover.jpg')">
+  <div class="panel-main">
+
+    <div class="panel-main__inner panel-inverted">
+    <div class="panel-main__content">
+
+        <a href="/#blog" title="前往 Castie! 的主页" class="blog-button"><img src="/assets/images/avatar.jpg" width="80" alt="Castie! logo" class="panel-cover__logo logo" /></a>
+        <h1 class="panel-cover__title panel-title"><a href="/#blog" title="link to homepage for Castie!" class="blog-button">Castie!</a></h1>
+        
+        <span class="panel-cover__subtitle panel-subtitle">正态分布, 优劣伴生</span>
+        
+        <hr class="panel-cover__divider" />
+        <p class="panel-cover__description">北冥有鱼，其名为鲲（kūn）。鲲之大，不知其几千里也；化而为鸟，其名为鹏。鹏之背，不知其几千里也；怒而飞，其翼若垂天之云。是鸟也，海运则将徙于南冥。南冥者，天池也。</p>
+        <hr class="panel-cover__divider panel-cover__divider--secondary" />
+        
+        
+        <p class="panel-cover__description">北海若曰：“井鼃不可以语于海者，拘于虚也；夏虫不可以语于冰者，笃于时也；曲士不可以语于道者，束于教也。今尔出于崖涘，观于大海，乃知尔丑，尔将可与语大理矣。</p>
+        
+        
+        <div class="navigation-wrapper">
+          <div>
+            <nav class="cover-navigation cover-navigation--primary">
+              <ul class="navigation">
+                <li class="navigation__item"><a href="/#blog" title="访问博客" class="blog-button">博客</a></li>
+                
+                  <li class="navigation__item"><a href="https://coderzsq.github.io/coderZsq.practice.web/" target="_blank" title="我的简历">简历</a></li>
+                
+              </ul>
+            </nav>
+          </div>
+          
+          <div><nav class="cover-navigation navigation--social">
+  <ul class="navigation">
+
+    
+    <!-- juejin-->
+    <li class="navigation__item">
+      <a href="https://juejin.im/user/57e735dfa22b9d00614eecb8/posts" title="@coderZsq 的稀土掘金" target="_blank">
+        <i class='social fa fa-book'></i>
+        <span class="label">juejin</span>
+      </a>
+    </li>
+    
+
+  
+
+  
+  <!-- Github -->
+  <li class="navigation__item">
+    <a href="https://github.com/coderZsq" title="@coderZsq 的 Github" target="_blank">
+      <i class='social fa fa-github'></i>
+      <span class="label">Github</span>
+    </a>
+  </li>
+  
+
+  
+
+  
+
+  <!-- RSS -->
+  <li class="navigation__item">
+    <a href="/feed.xml" rel="author" title="RSS" target="_blank">
+      <i class='social fa fa-rss'></i>
+      <span class="label">RSS</span>
+    </a>
+  </li>
+
+  
+  <!-- Email -->
+  <li class="navigation__item">
+    <a href="mailto:a13701777868@gmail.com" title="Contact me">
+      <i class='social fa fa-envelope'></i>
+      <span class="label">Email</span>
+    </a>
+  </li>
+  
+
+  </ul>
+</nav>
+</div>
+        </div>
+      </div>
+    </div>
+    
+    
+    <div class="panel-cover--overlay cover-disabled"></div>
+    
+  </div>
+</header>
+
+
+    <div class="content-wrapper">
+        <div class="content-wrapper__inner">
+            <article class="post-container post-container--single" itemscope itemtype="http://schema.org/BlogPosting">
+  <header class="post-header">
+    <div class="post-meta">
+      <time datetime="2018-04-24 17:18:00 +0800" itemprop="datePublished" class="post-meta__date date">2018-04-24</time> &#8226; <span class="post-meta__tags tags">移动开发</span>
+    </div>
+    <h1 class="post-title">C++ 一把卍解OC底层的斩魄刀</h1>
+  </header>
+
+  <section class="post">
+    <blockquote>
+  <p>GitHub Repo：<a href="https://github.com/coderZsq/coderZsq.github.io">coderZsq.github.io</a>
+<br />Follow: <a href="https://github.com/coderZsq">coderZsq · GitHub</a>
+<br />Resume: <a href="https://coderzsq.github.io/coderZsq.webpack.js/#/">https://coderzsq.github.io/coderZsq.webpack.js/#/</a></p>
+</blockquote>
+
+<h4 id="日常扯淡">日常扯淡</h4>
+
+<p>本期没什么好扯淡的, 这篇文章留着自己看.</p>
+
+<h4 id="c-作者的建议">C++ 作者的建议</h4>
+
+<ol>
+  <li>在C++中几乎不需要用宏, 用const和enum定义显式的常量, 用inline避免函数调用的额外开销, 用模板去刻画一组函数或类型, 用namespace去避免命名冲突.</li>
+  <li>不要在你需要变量之前去声明, 以保证你能立即对它进行初始化.</li>
+  <li>不要用malloc, new运算会做的更好.</li>
+  <li>避免使用void*, 指针算数, 联合和强制, 大多数情况下, 强制类型转换是设计错误的指示器.</li>
+  <li>尽量少用数组和C风格的字符串, 标准库中的string和vector可以简化程序.</li>
+  <li>更加重要的是, 试着将程序考虑为一组由类和对象表示的互相作用的概念年, 而不是一堆数据结构和一些可以拨弄的二进制.</li>
+</ol>
+
+<h4 id="inheritance">inheritance</h4>
+
+<div class="language-cpp highlighter-rouge"><pre class="highlight"><code><span class="k">class</span> <span class="nc">A</span> <span class="p">{</span>
+<span class="k">public</span><span class="o">:</span>
+    <span class="n">A</span><span class="p">(){}</span>
+    <span class="o">~</span><span class="n">A</span><span class="p">(){}</span>
+    <span class="n">A</span><span class="p">(</span><span class="k">const</span> <span class="n">A</span> <span class="o">&amp;</span><span class="p">){}</span>
+    <span class="n">A</span> <span class="o">&amp;</span> <span class="k">operator</span><span class="o">=</span><span class="p">(</span><span class="k">const</span> <span class="n">A</span> <span class="o">&amp;</span><span class="p">){</span> <span class="k">return</span> <span class="o">*</span><span class="k">this</span><span class="p">;</span> <span class="p">}</span>
+<span class="p">};</span>
+</code></pre>
+</div>
+
+<div class="language-cpp highlighter-rouge"><pre class="highlight"><code><span class="k">class</span> <span class="nc">Human</span> <span class="p">{</span>
+<span class="k">public</span><span class="o">:</span>
+    <span class="kt">void</span> <span class="n">eat</span><span class="p">(</span><span class="n">string</span> <span class="n">food</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">cout</span><span class="o">&lt;&lt;</span><span class="n">food</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">};</span>
+
+<span class="k">class</span> <span class="nc">Teacher</span><span class="o">:</span> <span class="k">public</span> <span class="n">Human</span> <span class="p">{</span>
+<span class="k">public</span><span class="o">:</span>
+    <span class="kt">void</span> <span class="n">teach</span><span class="p">(</span><span class="n">string</span> <span class="n">course</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">cout</span><span class="o">&lt;&lt;</span><span class="s">"i am a teacher i am teaching "</span><span class="o">&lt;&lt;</span><span class="n">course</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">};</span>
+
+<span class="k">class</span> <span class="nc">Student</span><span class="o">:</span> <span class="k">public</span> <span class="n">Human</span> <span class="p">{</span>
+<span class="k">public</span><span class="o">:</span>
+    <span class="kt">void</span> <span class="n">study</span><span class="p">(</span><span class="n">string</span> <span class="n">course</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">cout</span><span class="o">&lt;&lt;</span><span class="s">"i am student i am learing "</span><span class="o">&lt;&lt;</span><span class="n">course</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">};</span>
+
+<span class="k">class</span> <span class="nc">Worker</span><span class="o">:</span> <span class="k">public</span> <span class="n">Human</span> <span class="p">{};</span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">int</span> <span class="n">argc</span><span class="p">,</span> <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span> <span class="n">argv</span><span class="p">[])</span> <span class="p">{</span>
+    
+    <span class="n">Teacher</span> <span class="n">t</span><span class="p">;</span>
+    <span class="n">t</span><span class="p">.</span><span class="n">teach</span><span class="p">(</span><span class="s">"C++"</span><span class="p">);</span>
+    <span class="n">t</span><span class="p">.</span><span class="n">eat</span><span class="p">(</span><span class="s">"红烧牛肉面"</span><span class="p">);</span>
+    
+    <span class="n">Student</span> <span class="n">s</span><span class="p">;</span>
+    <span class="n">s</span><span class="p">.</span><span class="n">study</span><span class="p">(</span><span class="s">"C++"</span><span class="p">);</span>
+    <span class="n">s</span><span class="p">.</span><span class="n">eat</span><span class="p">(</span><span class="s">"老坛酸菜牛肉面"</span><span class="p">);</span>
+    
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<div class="language-cpp highlighter-rouge"><pre class="highlight"><code><span class="cp">#include &lt;iostream&gt;
+#include &lt;typeinfo&gt;
+</span>
+<span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">A</span> <span class="p">{</span>
+<span class="k">public</span><span class="o">:</span>
+    <span class="n">A</span><span class="p">()</span> <span class="p">{</span>
+        <span class="n">cout</span><span class="o">&lt;&lt;</span><span class="s">"A()"</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
+        <span class="n">cout</span><span class="o">&lt;&lt;</span><span class="s">"&amp;a: "</span><span class="o">&lt;&lt;&amp;</span><span class="n">a</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
+        <span class="n">cout</span><span class="o">&lt;&lt;</span><span class="s">"A-this: "</span><span class="o">&lt;&lt;</span><span class="k">this</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
+        <span class="n">cout</span><span class="o">&lt;&lt;</span><span class="s">"type A this: "</span><span class="o">&lt;&lt;</span><span class="k">typeid</span><span class="p">(</span><span class="k">this</span><span class="p">).</span><span class="n">name</span><span class="p">()</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="kt">int</span> <span class="n">a</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="k">class</span> <span class="nc">B</span><span class="o">:</span> <span class="k">public</span> <span class="n">A</span> <span class="p">{</span>
+<span class="k">public</span><span class="o">:</span>
+    <span class="n">B</span><span class="p">()</span> <span class="p">{</span>
+        <span class="n">cout</span><span class="o">&lt;&lt;</span><span class="s">"B()"</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
+        <span class="n">cout</span><span class="o">&lt;&lt;</span><span class="s">"&amp;b: "</span><span class="o">&lt;&lt;&amp;</span><span class="n">b</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
+        <span class="n">cout</span><span class="o">&lt;&lt;</span><span class="s">"B-this: "</span><span class="o">&lt;&lt;</span><span class="k">this</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
+        <span class="n">cout</span><span class="o">&lt;&lt;</span><span class="s">"type B this: "</span><span class="o">&lt;&lt;</span><span class="k">typeid</span><span class="p">(</span><span class="k">this</span><span class="p">).</span><span class="n">name</span><span class="p">()</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="kt">int</span> <span class="n">b</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="k">class</span> <span class="nc">C</span><span class="o">:</span> <span class="k">public</span> <span class="n">B</span> <span class="p">{</span>
+<span class="k">public</span><span class="o">:</span>
+    <span class="n">C</span><span class="p">()</span> <span class="p">{</span>
+        <span class="n">cout</span><span class="o">&lt;&lt;</span><span class="s">"C()"</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
+        <span class="n">cout</span><span class="o">&lt;&lt;</span><span class="s">"&amp;c: "</span><span class="o">&lt;&lt;&amp;</span><span class="n">c</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
+        <span class="n">cout</span><span class="o">&lt;&lt;</span><span class="s">"C-this: "</span><span class="o">&lt;&lt;</span><span class="k">this</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
+        <span class="n">cout</span><span class="o">&lt;&lt;</span><span class="s">"type C this: "</span><span class="o">&lt;&lt;</span><span class="k">typeid</span><span class="p">(</span><span class="k">this</span><span class="p">).</span><span class="n">name</span><span class="p">()</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="kt">int</span> <span class="n">c</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">int</span> <span class="n">argc</span><span class="p">,</span> <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span> <span class="n">argv</span><span class="p">[])</span> <span class="p">{</span>
+
+    <span class="n">C</span> <span class="n">cc</span><span class="p">;</span>
+    <span class="n">cout</span><span class="o">&lt;&lt;</span><span class="s">"&amp;cc: "</span><span class="o">&lt;&lt;&amp;</span><span class="n">cc</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<div class="language-cpp highlighter-rouge"><pre class="highlight"><code><span class="n">A</span><span class="p">()</span>
+<span class="o">&amp;</span><span class="n">a</span><span class="o">:</span> <span class="mh">0x7ffeefbff5f0</span>
+<span class="n">A</span><span class="o">-</span><span class="k">this</span><span class="o">:</span> <span class="mh">0x7ffeefbff5f0</span>
+<span class="n">type</span> <span class="n">A</span> <span class="k">this</span><span class="o">:</span> <span class="n">P1A</span>
+<span class="n">B</span><span class="p">()</span>
+<span class="o">&amp;</span><span class="n">b</span><span class="o">:</span> <span class="mh">0x7ffeefbff5f4</span>
+<span class="n">B</span><span class="o">-</span><span class="k">this</span><span class="o">:</span> <span class="mh">0x7ffeefbff5f0</span>
+<span class="n">type</span> <span class="n">B</span> <span class="k">this</span><span class="o">:</span> <span class="n">P1B</span>
+<span class="n">C</span><span class="p">()</span>
+<span class="o">&amp;</span><span class="n">c</span><span class="o">:</span> <span class="mh">0x7ffeefbff5f8</span>
+<span class="n">C</span><span class="o">-</span><span class="k">this</span><span class="o">:</span> <span class="mh">0x7ffeefbff5f0</span>
+<span class="n">type</span> <span class="n">C</span> <span class="k">this</span><span class="o">:</span> <span class="n">P1C</span>
+<span class="o">&amp;</span><span class="n">cc</span><span class="o">:</span> <span class="mh">0x7ffeefbff5f0</span>
+<span class="n">Program</span> <span class="n">ended</span> <span class="n">with</span> <span class="n">exit</span> <span class="n">code</span><span class="o">:</span> <span class="mi">0</span>
+</code></pre>
+</div>
+
+<h4 id="subclass-constructor">subclass constructor</h4>
+
+<div class="language-cpp highlighter-rouge"><pre class="highlight"><code><span class="k">class</span> <span class="nc">C</span> <span class="p">{</span>
+<span class="k">public</span><span class="o">:</span>
+    <span class="n">C</span><span class="p">(</span><span class="kt">int</span> <span class="n">k</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">cout</span><span class="o">&lt;&lt;</span><span class="s">"C()"</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
+        <span class="n">c</span> <span class="o">=</span> <span class="n">k</span><span class="p">;</span>
+    <span class="p">};</span>
+    <span class="kt">int</span> <span class="n">c</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="k">class</span> <span class="nc">A</span> <span class="p">{</span>
+<span class="k">public</span><span class="o">:</span>
+    <span class="n">A</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span><span class="p">)</span><span class="o">:</span> <span class="n">a</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">cout</span><span class="o">&lt;&lt;</span><span class="s">"A()"</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="kt">int</span> <span class="n">a</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="k">class</span> <span class="nc">B</span><span class="o">:</span> <span class="k">public</span> <span class="n">A</span> <span class="p">{</span>
+<span class="k">public</span><span class="o">:</span>
+    <span class="n">B</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span><span class="p">,</span> <span class="kt">int</span> <span class="n">j</span><span class="p">,</span> <span class="kt">int</span> <span class="n">k</span><span class="p">)</span><span class="o">:</span> <span class="n">A</span><span class="p">(</span><span class="n">i</span><span class="p">),</span> <span class="n">b</span><span class="p">(</span><span class="n">j</span><span class="p">),</span> <span class="n">c</span><span class="p">(</span><span class="n">k</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">cout</span><span class="o">&lt;&lt;</span><span class="s">"B()"</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="kt">int</span> <span class="n">b</span><span class="p">;</span>
+    <span class="n">C</span> <span class="n">c</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">int</span> <span class="n">argc</span><span class="p">,</span> <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span> <span class="n">argv</span><span class="p">[])</span> <span class="p">{</span>
+
+    <span class="n">B</span> <span class="n">b</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">10</span><span class="p">);</span>
+    <span class="n">cout</span><span class="o">&lt;&lt;</span><span class="n">b</span><span class="p">.</span><span class="n">a</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
+    <span class="n">cout</span><span class="o">&lt;&lt;</span><span class="n">b</span><span class="p">.</span><span class="n">b</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
+    <span class="n">cout</span><span class="o">&lt;&lt;</span><span class="n">b</span><span class="p">.</span><span class="n">c</span><span class="p">.</span><span class="n">c</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<div class="language-cpp highlighter-rouge"><pre class="highlight"><code><span class="n">A</span><span class="p">()</span>
+<span class="n">C</span><span class="p">()</span>
+<span class="n">B</span><span class="p">()</span>
+<span class="mi">3</span>
+<span class="mi">5</span>
+<span class="mi">10</span>
+<span class="n">Program</span> <span class="n">ended</span> <span class="n">with</span> <span class="n">exit</span> <span class="n">code</span><span class="o">:</span> <span class="mi">0</span>
+</code></pre>
+</div>
+
+<div class="language-cpp highlighter-rouge"><pre class="highlight"><code><span class="c1">//class Birthday {
+//public:
+//    Birthday(int y, int m, int d):_year(y), _month(m), _day(d) {}
+//    void disBirth() {
+//        cout&lt;&lt;"year: "&lt;&lt;_year&lt;&lt;endl;
+//        cout&lt;&lt;"month: "&lt;&lt;_month&lt;&lt;endl;
+//        cout&lt;&lt;"day: "&lt;&lt;_day&lt;&lt;endl;
+//    }
+//private:
+//    int _year;
+//    int _month;
+//    int _day;
+//};
+</span>
+<span class="k">class</span> <span class="nc">Student</span> <span class="p">{</span>
+<span class="k">public</span><span class="o">:</span>
+    <span class="n">Student</span><span class="p">(</span><span class="n">string</span> <span class="n">sn</span><span class="p">,</span> <span class="kt">char</span> <span class="n">cs</span><span class="p">,</span> <span class="kt">float</span> <span class="n">fs</span><span class="p">)</span><span class="o">:</span><span class="n">_name</span><span class="p">(</span><span class="n">sn</span><span class="p">),</span> <span class="n">_sex</span><span class="p">(</span><span class="n">cs</span><span class="p">),</span><span class="n">_score</span><span class="p">(</span><span class="n">fs</span><span class="p">)</span> <span class="p">{}</span>
+    <span class="kt">void</span> <span class="n">dis</span><span class="p">()</span> <span class="p">{</span>
+        <span class="n">cout</span><span class="o">&lt;&lt;</span><span class="s">"name: "</span><span class="o">&lt;&lt;</span><span class="n">_name</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
+        <span class="n">cout</span><span class="o">&lt;&lt;</span><span class="s">"sex: "</span><span class="o">&lt;&lt;</span><span class="n">_sex</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
+        <span class="n">cout</span><span class="o">&lt;&lt;</span><span class="s">"score: "</span><span class="o">&lt;&lt;</span><span class="n">_score</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="k">private</span><span class="o">:</span>
+    <span class="n">string</span> <span class="n">_name</span><span class="p">;</span>
+    <span class="kt">char</span> <span class="n">_sex</span><span class="p">;</span>
+    <span class="kt">float</span> <span class="n">_score</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="k">class</span> <span class="nc">Graduate</span><span class="o">:</span> <span class="k">public</span> <span class="n">Student</span> <span class="p">{</span>
+<span class="k">public</span><span class="o">:</span>
+    <span class="n">Graduate</span><span class="p">(</span><span class="n">string</span> <span class="n">sn</span><span class="p">,</span> <span class="kt">char</span> <span class="n">cs</span><span class="p">,</span> <span class="kt">float</span> <span class="n">fs</span><span class="p">,</span> <span class="kt">float</span> <span class="n">fsa</span><span class="cm">/*, int y, int m, int d*/</span><span class="p">)</span>
+    <span class="o">:</span> <span class="n">Student</span><span class="p">(</span><span class="n">sn</span><span class="p">,</span> <span class="n">cs</span><span class="p">,</span> <span class="n">fs</span><span class="p">)</span><span class="cm">/*, birth(y, m, d)*/</span> <span class="p">{</span>
+        <span class="n">_salary</span> <span class="o">=</span> <span class="n">fsa</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="kt">void</span> <span class="n">dump</span><span class="p">()</span> <span class="p">{</span>
+        <span class="n">dis</span><span class="p">();</span>
+<span class="c1">//        birth.disBirth();
+</span>        <span class="n">cout</span><span class="o">&lt;&lt;</span><span class="s">"salary: "</span><span class="o">&lt;&lt;</span><span class="n">_salary</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="k">private</span><span class="o">:</span>
+    <span class="kt">float</span> <span class="n">_salary</span><span class="p">;</span>
+<span class="c1">//    Birthday birth;
+</span><span class="p">};</span>
+
+<span class="k">class</span> <span class="nc">Doctor</span><span class="o">:</span> <span class="k">public</span> <span class="n">Graduate</span> <span class="p">{</span>
+<span class="k">public</span><span class="o">:</span>
+    <span class="n">Doctor</span><span class="p">(</span><span class="n">string</span> <span class="n">sn</span><span class="p">,</span> <span class="kt">char</span> <span class="n">cs</span><span class="p">,</span> <span class="kt">float</span> <span class="n">fs</span><span class="p">,</span> <span class="kt">float</span> <span class="n">fsa</span><span class="p">,</span> <span class="n">string</span> <span class="n">st</span><span class="p">)</span><span class="o">:</span><span class="n">Graduate</span><span class="p">(</span><span class="n">sn</span><span class="p">,</span> <span class="n">cs</span><span class="p">,</span> <span class="n">fs</span><span class="p">,</span> <span class="n">fsa</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">_title</span> <span class="o">=</span> <span class="n">st</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="kt">void</span> <span class="n">disDump</span><span class="p">()</span> <span class="p">{</span>
+        <span class="n">dump</span><span class="p">();</span>
+        <span class="n">cout</span><span class="o">&lt;&lt;</span><span class="s">"title: "</span><span class="o">&lt;&lt;</span><span class="n">_title</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="k">private</span><span class="o">:</span>
+    <span class="n">string</span> <span class="n">_title</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">int</span> <span class="n">argc</span><span class="p">,</span> <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span> <span class="n">argv</span><span class="p">[])</span> <span class="p">{</span>
+
+<span class="c1">//    Graduate g("zhangsan", 's', 99, 1000, 1989, 9, 9);
+//    g.dump();
+</span>    
+    <span class="n">Doctor</span> <span class="n">d</span><span class="p">(</span><span class="s">"zhaosi"</span><span class="p">,</span> <span class="sc">'s'</span><span class="p">,</span> <span class="mi">99</span><span class="p">,</span> <span class="mi">3000</span><span class="p">,</span> <span class="s">"doctor zhao"</span><span class="p">);</span>
+    <span class="n">d</span><span class="p">.</span><span class="n">disDump</span><span class="p">();</span>
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<h4 id="subclass-copy-constructor">subclass copy constructor</h4>
+
+<div class="language-cpp highlighter-rouge"><pre class="highlight"><code>
+<span class="c1">//当子类, 不自实现时, 默认调用父类的拷贝构造
+//若自实现, 不作特殊处理, 此时只会调用父类的构造器, 此时失去了拷贝构造的意义
+//特殊处理 显示的调用父类的拷贝构造, 子类对象赋给父类的引用, 赋值兼容.
+</span>
+<span class="k">class</span> <span class="nc">A</span> <span class="p">{</span>
+<span class="k">public</span><span class="o">:</span>
+    <span class="n">A</span><span class="p">(</span><span class="kt">int</span> <span class="n">x</span> <span class="o">=</span> <span class="mi">99</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">cout</span><span class="o">&lt;&lt;</span><span class="s">"A()"</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
+        <span class="n">a</span> <span class="o">=</span> <span class="n">x</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="n">A</span><span class="p">(</span><span class="k">const</span> <span class="n">A</span> <span class="o">&amp;</span> <span class="n">another</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">this</span><span class="o">-&gt;</span><span class="n">a</span> <span class="o">=</span> <span class="n">another</span><span class="p">.</span><span class="n">a</span><span class="p">;</span>
+        <span class="n">cout</span><span class="o">&lt;&lt;</span><span class="s">"const A &amp; another"</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="kt">int</span> <span class="n">a</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="k">class</span> <span class="nc">B</span><span class="o">:</span> <span class="k">public</span> <span class="n">A</span> <span class="p">{</span>
+<span class="k">public</span><span class="o">:</span>
+    <span class="n">B</span><span class="p">(</span><span class="kt">int</span> <span class="n">x</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="kt">int</span> <span class="n">y</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span><span class="o">:</span> <span class="n">A</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">cout</span><span class="o">&lt;&lt;</span><span class="s">"B()"</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
+        <span class="n">b</span> <span class="o">=</span> <span class="n">y</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="n">B</span><span class="p">(</span><span class="k">const</span> <span class="n">B</span> <span class="o">&amp;</span> <span class="n">another</span><span class="p">)</span><span class="o">:</span> <span class="n">A</span><span class="p">(</span><span class="n">another</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">this</span><span class="o">-&gt;</span><span class="n">b</span> <span class="o">=</span> <span class="n">another</span><span class="p">.</span><span class="n">b</span><span class="p">;</span>
+        <span class="n">cout</span><span class="o">&lt;&lt;</span><span class="s">"const B &amp; another"</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="kt">int</span> <span class="n">b</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">int</span> <span class="n">argc</span><span class="p">,</span> <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span> <span class="n">argv</span><span class="p">[])</span> <span class="p">{</span>
+
+    <span class="n">B</span> <span class="n">b</span><span class="p">(</span><span class="mi">199</span><span class="p">,</span> <span class="mi">200</span><span class="p">);</span>
+    <span class="n">B</span> <span class="n">bb</span><span class="p">(</span><span class="n">b</span><span class="p">);</span>
+    
+    <span class="n">cout</span><span class="o">&lt;&lt;</span><span class="n">bb</span><span class="p">.</span><span class="n">a</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
+    <span class="n">cout</span><span class="o">&lt;&lt;</span><span class="n">bb</span><span class="p">.</span><span class="n">b</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
+    
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+
+</code></pre>
+</div>
+
+<div class="language-cpp highlighter-rouge"><pre class="highlight"><code><span class="k">class</span> <span class="nc">Birthday</span> <span class="p">{</span>
+<span class="k">public</span><span class="o">:</span>
+    <span class="n">Birthday</span><span class="p">(</span><span class="kt">int</span> <span class="n">y</span><span class="p">,</span> <span class="kt">int</span> <span class="n">m</span><span class="p">,</span> <span class="kt">int</span> <span class="n">d</span><span class="p">)</span><span class="o">:</span><span class="n">_year</span><span class="p">(</span><span class="n">y</span><span class="p">),</span> <span class="n">_month</span><span class="p">(</span><span class="n">m</span><span class="p">),</span> <span class="n">_day</span><span class="p">(</span><span class="n">d</span><span class="p">)</span> <span class="p">{}</span>
+    <span class="n">Birthday</span><span class="p">(</span><span class="k">const</span> <span class="n">Birthday</span> <span class="o">&amp;</span> <span class="n">another</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">this</span><span class="o">-&gt;</span><span class="n">_year</span> <span class="o">=</span> <span class="n">another</span><span class="p">.</span><span class="n">_year</span><span class="p">;</span>
+        <span class="k">this</span><span class="o">-&gt;</span><span class="n">_month</span> <span class="o">=</span> <span class="n">another</span><span class="p">.</span><span class="n">_month</span><span class="p">;</span>
+        <span class="k">this</span><span class="o">-&gt;</span><span class="n">_day</span> <span class="o">=</span> <span class="n">another</span><span class="p">.</span><span class="n">_day</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="kt">void</span> <span class="n">disBirth</span><span class="p">()</span> <span class="p">{</span>
+        <span class="n">cout</span><span class="o">&lt;&lt;</span><span class="s">"year: "</span><span class="o">&lt;&lt;</span><span class="n">_year</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
+        <span class="n">cout</span><span class="o">&lt;&lt;</span><span class="s">"month: "</span><span class="o">&lt;&lt;</span><span class="n">_month</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
+        <span class="n">cout</span><span class="o">&lt;&lt;</span><span class="s">"day: "</span><span class="o">&lt;&lt;</span><span class="n">_day</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="k">private</span><span class="o">:</span>
+    <span class="kt">int</span> <span class="n">_year</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="n">_month</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="n">_day</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="k">class</span> <span class="nc">Student</span> <span class="p">{</span>
+<span class="k">public</span><span class="o">:</span>
+    <span class="n">Student</span><span class="p">(</span><span class="n">string</span> <span class="n">sn</span><span class="p">,</span> <span class="kt">char</span> <span class="n">cs</span><span class="p">,</span> <span class="kt">float</span> <span class="n">fs</span><span class="p">)</span><span class="o">:</span><span class="n">_name</span><span class="p">(</span><span class="n">sn</span><span class="p">),</span> <span class="n">_sex</span><span class="p">(</span><span class="n">cs</span><span class="p">),</span><span class="n">_score</span><span class="p">(</span><span class="n">fs</span><span class="p">)</span> <span class="p">{}</span>
+    <span class="n">Student</span><span class="p">(</span><span class="k">const</span> <span class="n">Student</span> <span class="o">&amp;</span> <span class="n">another</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">this</span><span class="o">-&gt;</span><span class="n">_name</span> <span class="o">=</span> <span class="n">another</span><span class="p">.</span><span class="n">_name</span><span class="p">;</span>
+        <span class="k">this</span><span class="o">-&gt;</span><span class="n">_sex</span> <span class="o">=</span> <span class="n">another</span><span class="p">.</span><span class="n">_sex</span><span class="p">;</span>
+        <span class="k">this</span><span class="o">-&gt;</span><span class="n">_score</span> <span class="o">=</span> <span class="n">another</span><span class="p">.</span><span class="n">_score</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="kt">void</span> <span class="n">dis</span><span class="p">()</span> <span class="p">{</span>
+        <span class="n">cout</span><span class="o">&lt;&lt;</span><span class="s">"name: "</span><span class="o">&lt;&lt;</span><span class="n">_name</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
+        <span class="n">cout</span><span class="o">&lt;&lt;</span><span class="s">"sex: "</span><span class="o">&lt;&lt;</span><span class="n">_sex</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
+        <span class="n">cout</span><span class="o">&lt;&lt;</span><span class="s">"score: "</span><span class="o">&lt;&lt;</span><span class="n">_score</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="k">private</span><span class="o">:</span>
+    <span class="n">string</span> <span class="n">_name</span><span class="p">;</span>
+    <span class="kt">char</span> <span class="n">_sex</span><span class="p">;</span>
+    <span class="kt">float</span> <span class="n">_score</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="k">class</span> <span class="nc">Graduate</span><span class="o">:</span> <span class="k">public</span> <span class="n">Student</span> <span class="p">{</span>
+<span class="k">public</span><span class="o">:</span>
+    <span class="n">Graduate</span><span class="p">(</span><span class="n">string</span> <span class="n">sn</span><span class="p">,</span> <span class="kt">char</span> <span class="n">cs</span><span class="p">,</span> <span class="kt">float</span> <span class="n">fs</span><span class="p">,</span> <span class="kt">float</span> <span class="n">fsa</span><span class="p">,</span> <span class="kt">int</span> <span class="n">y</span><span class="p">,</span> <span class="kt">int</span> <span class="n">m</span><span class="p">,</span> <span class="kt">int</span> <span class="n">d</span><span class="p">)</span>
+    <span class="o">:</span> <span class="n">Student</span><span class="p">(</span><span class="n">sn</span><span class="p">,</span> <span class="n">cs</span><span class="p">,</span> <span class="n">fs</span><span class="p">),</span> <span class="n">birth</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">m</span><span class="p">,</span> <span class="n">d</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">_salary</span> <span class="o">=</span> <span class="n">fsa</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="n">Graduate</span><span class="p">(</span><span class="k">const</span> <span class="n">Graduate</span> <span class="o">&amp;</span> <span class="n">another</span><span class="p">)</span><span class="o">:</span> <span class="n">Student</span><span class="p">(</span><span class="n">another</span><span class="p">),</span> <span class="n">birth</span><span class="p">(</span><span class="n">another</span><span class="p">.</span><span class="n">birth</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">this</span><span class="o">-&gt;</span><span class="n">_salary</span> <span class="o">=</span> <span class="n">another</span><span class="p">.</span><span class="n">_salary</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="kt">void</span> <span class="n">dump</span><span class="p">()</span> <span class="p">{</span>
+        <span class="n">dis</span><span class="p">();</span>
+        <span class="n">birth</span><span class="p">.</span><span class="n">disBirth</span><span class="p">();</span>
+        <span class="n">cout</span><span class="o">&lt;&lt;</span><span class="s">"salary: "</span><span class="o">&lt;&lt;</span><span class="n">_salary</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="k">private</span><span class="o">:</span>
+    <span class="kt">float</span> <span class="n">_salary</span><span class="p">;</span>
+    <span class="n">Birthday</span> <span class="n">birth</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">int</span> <span class="n">argc</span><span class="p">,</span> <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span> <span class="n">argv</span><span class="p">[])</span> <span class="p">{</span>
+
+    <span class="n">Graduate</span> <span class="n">g</span><span class="p">(</span><span class="s">"zhaosi"</span><span class="p">,</span> <span class="sc">'s'</span><span class="p">,</span> <span class="mi">99</span><span class="p">,</span> <span class="mi">1000</span><span class="p">,</span> <span class="mi">1992</span><span class="p">,</span> <span class="mo">06</span><span class="p">,</span> <span class="mi">19</span><span class="p">);</span>
+    <span class="n">g</span><span class="p">.</span><span class="n">dump</span><span class="p">();</span>
+    <span class="n">Graduate</span> <span class="n">gg</span><span class="p">(</span><span class="n">g</span><span class="p">);</span>
+    <span class="n">gg</span><span class="p">.</span><span class="n">dump</span><span class="p">();</span>
+    
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<h4 id="subclass-operator-overload">subclass operator overload</h4>
+
+<div class="language-cpp highlighter-rouge"><pre class="highlight"><code><span class="k">class</span> <span class="nc">C</span> <span class="p">{</span>
+<span class="k">public</span><span class="o">:</span>
+    <span class="n">C</span><span class="p">()</span> <span class="p">{</span>
+        <span class="n">cout</span><span class="o">&lt;&lt;</span><span class="s">"C()"</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="n">C</span> <span class="o">&amp;</span> <span class="k">operator</span><span class="o">=</span> <span class="p">(</span><span class="k">const</span> <span class="n">C</span> <span class="o">&amp;</span> <span class="n">another</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">cout</span><span class="o">&lt;&lt;</span><span class="s">"C &amp; operator= (const C &amp; another)"</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
+        <span class="k">return</span> <span class="o">*</span><span class="k">this</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="kt">int</span> <span class="n">c</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="k">class</span> <span class="nc">A</span> <span class="p">{</span>
+<span class="k">public</span><span class="o">:</span>
+    <span class="n">A</span><span class="p">(</span><span class="kt">int</span> <span class="n">x</span><span class="p">)</span><span class="o">:</span> <span class="n">a</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">cout</span><span class="o">&lt;&lt;</span><span class="s">"A()"</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="n">A</span> <span class="o">&amp;</span> <span class="k">operator</span><span class="o">=</span> <span class="p">(</span><span class="k">const</span> <span class="n">A</span> <span class="o">&amp;</span> <span class="n">another</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="k">this</span> <span class="o">==</span> <span class="o">&amp;</span><span class="n">another</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="o">*</span><span class="k">this</span><span class="p">;</span>
+        <span class="p">}</span>
+        <span class="n">cout</span><span class="o">&lt;&lt;</span><span class="s">"A &amp; operator= (const A &amp; another)"</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
+        <span class="k">this</span><span class="o">-&gt;</span><span class="n">a</span> <span class="o">=</span> <span class="n">another</span><span class="p">.</span><span class="n">a</span><span class="p">;</span>
+        <span class="k">return</span> <span class="o">*</span><span class="k">this</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="kt">int</span> <span class="n">a</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="k">class</span> <span class="nc">B</span><span class="o">:</span> <span class="k">public</span> <span class="n">A</span> <span class="p">{</span>
+<span class="k">public</span><span class="o">:</span>
+    <span class="n">B</span><span class="p">(</span><span class="kt">int</span> <span class="n">x</span><span class="p">,</span> <span class="kt">int</span> <span class="n">y</span><span class="p">)</span><span class="o">:</span> <span class="n">A</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">b</span> <span class="o">=</span> <span class="n">y</span><span class="p">;</span>
+        <span class="n">cout</span><span class="o">&lt;&lt;</span><span class="s">"B()"</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="n">B</span> <span class="o">&amp;</span> <span class="k">operator</span><span class="o">=</span> <span class="p">(</span><span class="k">const</span> <span class="n">B</span> <span class="o">&amp;</span> <span class="n">another</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="k">this</span> <span class="o">==</span> <span class="o">&amp;</span><span class="n">another</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="o">*</span><span class="k">this</span><span class="p">;</span>
+        <span class="p">}</span>
+        <span class="n">A</span><span class="o">::</span><span class="k">operator</span><span class="o">=</span><span class="p">(</span><span class="n">another</span><span class="p">);</span>
+        <span class="n">cout</span><span class="o">&lt;&lt;</span><span class="s">"B &amp; operator= (const B &amp; another)"</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
+        <span class="k">this</span><span class="o">-&gt;</span><span class="n">b</span> <span class="o">=</span> <span class="n">another</span><span class="p">.</span><span class="n">b</span><span class="p">;</span>
+        <span class="n">c</span> <span class="o">=</span> <span class="n">another</span><span class="p">.</span><span class="n">c</span><span class="p">;</span>
+        <span class="k">return</span> <span class="o">*</span><span class="k">this</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="kt">int</span> <span class="n">b</span><span class="p">;</span>
+    <span class="n">C</span> <span class="n">c</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">int</span> <span class="n">argc</span><span class="p">,</span> <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span> <span class="n">argv</span><span class="p">[])</span> <span class="p">{</span>
+
+    <span class="n">B</span> <span class="n">b</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">);</span>
+    <span class="n">B</span> <span class="n">bb</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">);</span>
+    <span class="n">b</span> <span class="o">=</span> <span class="n">bb</span><span class="p">;</span>
+    <span class="n">cout</span><span class="o">&lt;&lt;</span><span class="n">b</span><span class="p">.</span><span class="n">a</span><span class="o">&lt;&lt;</span><span class="n">b</span><span class="p">.</span><span class="n">b</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
+    
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<div class="language-cpp highlighter-rouge"><pre class="highlight"><code><span class="k">class</span> <span class="nc">Birthday</span> <span class="p">{</span>
+<span class="k">public</span><span class="o">:</span>
+    <span class="n">Birthday</span><span class="p">(</span><span class="kt">int</span> <span class="n">y</span><span class="p">,</span> <span class="kt">int</span> <span class="n">m</span><span class="p">,</span> <span class="kt">int</span> <span class="n">d</span><span class="p">)</span><span class="o">:</span><span class="n">_year</span><span class="p">(</span><span class="n">y</span><span class="p">),</span> <span class="n">_month</span><span class="p">(</span><span class="n">m</span><span class="p">),</span> <span class="n">_day</span><span class="p">(</span><span class="n">d</span><span class="p">)</span> <span class="p">{}</span>
+    <span class="n">Birthday</span><span class="p">(</span><span class="k">const</span> <span class="n">Birthday</span> <span class="o">&amp;</span> <span class="n">another</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">this</span><span class="o">-&gt;</span><span class="n">_year</span> <span class="o">=</span> <span class="n">another</span><span class="p">.</span><span class="n">_year</span><span class="p">;</span>
+        <span class="k">this</span><span class="o">-&gt;</span><span class="n">_month</span> <span class="o">=</span> <span class="n">another</span><span class="p">.</span><span class="n">_month</span><span class="p">;</span>
+        <span class="k">this</span><span class="o">-&gt;</span><span class="n">_day</span> <span class="o">=</span> <span class="n">another</span><span class="p">.</span><span class="n">_day</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="kt">void</span> <span class="n">disBirth</span><span class="p">()</span> <span class="p">{</span>
+        <span class="n">cout</span><span class="o">&lt;&lt;</span><span class="s">"year: "</span><span class="o">&lt;&lt;</span><span class="n">_year</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
+        <span class="n">cout</span><span class="o">&lt;&lt;</span><span class="s">"month: "</span><span class="o">&lt;&lt;</span><span class="n">_month</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
+        <span class="n">cout</span><span class="o">&lt;&lt;</span><span class="s">"day: "</span><span class="o">&lt;&lt;</span><span class="n">_day</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="k">private</span><span class="o">:</span>
+    <span class="kt">int</span> <span class="n">_year</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="n">_month</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="n">_day</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="k">class</span> <span class="nc">Student</span> <span class="p">{</span>
+<span class="k">public</span><span class="o">:</span>
+    <span class="n">Student</span><span class="p">(</span><span class="n">string</span> <span class="n">sn</span><span class="p">,</span> <span class="kt">char</span> <span class="n">cs</span><span class="p">,</span> <span class="kt">float</span> <span class="n">fs</span><span class="p">)</span><span class="o">:</span><span class="n">_name</span><span class="p">(</span><span class="n">sn</span><span class="p">),</span> <span class="n">_sex</span><span class="p">(</span><span class="n">cs</span><span class="p">),</span><span class="n">_score</span><span class="p">(</span><span class="n">fs</span><span class="p">)</span> <span class="p">{}</span>
+    <span class="n">Student</span><span class="p">(</span><span class="k">const</span> <span class="n">Student</span> <span class="o">&amp;</span> <span class="n">another</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">this</span><span class="o">-&gt;</span><span class="n">_name</span> <span class="o">=</span> <span class="n">another</span><span class="p">.</span><span class="n">_name</span><span class="p">;</span>
+        <span class="k">this</span><span class="o">-&gt;</span><span class="n">_sex</span> <span class="o">=</span> <span class="n">another</span><span class="p">.</span><span class="n">_sex</span><span class="p">;</span>
+        <span class="k">this</span><span class="o">-&gt;</span><span class="n">_score</span> <span class="o">=</span> <span class="n">another</span><span class="p">.</span><span class="n">_score</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="kt">void</span> <span class="n">dis</span><span class="p">()</span> <span class="p">{</span>
+        <span class="n">cout</span><span class="o">&lt;&lt;</span><span class="s">"name: "</span><span class="o">&lt;&lt;</span><span class="n">_name</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
+        <span class="n">cout</span><span class="o">&lt;&lt;</span><span class="s">"sex: "</span><span class="o">&lt;&lt;</span><span class="n">_sex</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
+        <span class="n">cout</span><span class="o">&lt;&lt;</span><span class="s">"score: "</span><span class="o">&lt;&lt;</span><span class="n">_score</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="k">private</span><span class="o">:</span>
+    <span class="n">string</span> <span class="n">_name</span><span class="p">;</span>
+    <span class="kt">char</span> <span class="n">_sex</span><span class="p">;</span>
+    <span class="kt">float</span> <span class="n">_score</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="k">class</span> <span class="nc">Graduate</span><span class="o">:</span> <span class="k">public</span> <span class="n">Student</span> <span class="p">{</span>
+<span class="k">public</span><span class="o">:</span>
+    <span class="n">Graduate</span><span class="p">(</span><span class="n">string</span> <span class="n">sn</span><span class="p">,</span> <span class="kt">char</span> <span class="n">cs</span><span class="p">,</span> <span class="kt">float</span> <span class="n">fs</span><span class="p">,</span> <span class="kt">float</span> <span class="n">fsa</span><span class="p">,</span> <span class="kt">int</span> <span class="n">y</span><span class="p">,</span> <span class="kt">int</span> <span class="n">m</span><span class="p">,</span> <span class="kt">int</span> <span class="n">d</span><span class="p">)</span>
+    <span class="o">:</span> <span class="n">Student</span><span class="p">(</span><span class="n">sn</span><span class="p">,</span> <span class="n">cs</span><span class="p">,</span> <span class="n">fs</span><span class="p">),</span> <span class="n">birth</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">m</span><span class="p">,</span> <span class="n">d</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">_salary</span> <span class="o">=</span> <span class="n">fsa</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="n">Graduate</span><span class="p">(</span><span class="k">const</span> <span class="n">Graduate</span> <span class="o">&amp;</span> <span class="n">another</span><span class="p">)</span><span class="o">:</span> <span class="n">Student</span><span class="p">(</span><span class="n">another</span><span class="p">),</span> <span class="n">birth</span><span class="p">(</span><span class="n">another</span><span class="p">.</span><span class="n">birth</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">this</span><span class="o">-&gt;</span><span class="n">_salary</span> <span class="o">=</span> <span class="n">another</span><span class="p">.</span><span class="n">_salary</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="n">Graduate</span> <span class="o">&amp;</span> <span class="k">operator</span><span class="o">=</span><span class="p">(</span><span class="k">const</span> <span class="n">Graduate</span> <span class="o">&amp;</span> <span class="n">another</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="k">this</span> <span class="o">==</span> <span class="o">&amp;</span><span class="n">another</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="o">*</span><span class="k">this</span><span class="p">;</span>
+        <span class="p">}</span>
+        <span class="n">Student</span><span class="o">::</span><span class="k">operator</span><span class="o">=</span><span class="p">(</span><span class="n">another</span><span class="p">);</span>
+        <span class="k">this</span><span class="o">-&gt;</span><span class="n">_salary</span> <span class="o">=</span> <span class="n">another</span><span class="p">.</span><span class="n">_salary</span><span class="p">;</span>
+        <span class="n">birth</span> <span class="o">=</span> <span class="n">another</span><span class="p">.</span><span class="n">birth</span><span class="p">;</span>
+        <span class="k">return</span> <span class="o">*</span><span class="k">this</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="kt">void</span> <span class="n">dump</span><span class="p">()</span> <span class="p">{</span>
+        <span class="n">dis</span><span class="p">();</span>
+        <span class="n">birth</span><span class="p">.</span><span class="n">disBirth</span><span class="p">();</span>
+        <span class="n">cout</span><span class="o">&lt;&lt;</span><span class="s">"salary: "</span><span class="o">&lt;&lt;</span><span class="n">_salary</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="k">private</span><span class="o">:</span>
+    <span class="kt">float</span> <span class="n">_salary</span><span class="p">;</span>
+    <span class="n">Birthday</span> <span class="n">birth</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">int</span> <span class="n">argc</span><span class="p">,</span> <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span> <span class="n">argv</span><span class="p">[])</span> <span class="p">{</span>
+
+    <span class="n">Graduate</span> <span class="n">g</span><span class="p">(</span><span class="s">"zhaoqi"</span><span class="p">,</span> <span class="sc">'s'</span><span class="p">,</span> <span class="mi">99</span><span class="p">,</span> <span class="mi">1000</span><span class="p">,</span> <span class="mi">1992</span><span class="p">,</span> <span class="mo">06</span><span class="p">,</span> <span class="mi">19</span><span class="p">);</span>
+    <span class="n">g</span><span class="p">.</span><span class="n">dump</span><span class="p">();</span>
+    <span class="n">Graduate</span> <span class="n">gg</span><span class="p">(</span><span class="s">"xxx"</span><span class="p">,</span> <span class="sc">'x'</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">9999</span><span class="p">,</span> <span class="mi">1111</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">11</span><span class="p">);</span>
+    <span class="n">g</span> <span class="o">=</span> <span class="n">gg</span><span class="p">;</span>
+    <span class="n">g</span><span class="p">.</span><span class="n">dump</span><span class="p">();</span>
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<h4 id="subclass-friend">subclass friend</h4>
+
+<div class="language-cpp highlighter-rouge"><pre class="highlight"><code><span class="k">class</span> <span class="nc">Student</span> <span class="p">{</span>
+    <span class="k">friend</span> <span class="kt">void</span> <span class="k">operator</span><span class="o">&lt;&lt;</span><span class="p">(</span><span class="n">ostream</span> <span class="o">&amp;</span> <span class="n">out</span><span class="p">,</span> <span class="n">Student</span> <span class="o">&amp;</span> <span class="n">stu</span><span class="p">);</span>
+<span class="k">public</span><span class="o">:</span>
+    <span class="n">Student</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span><span class="p">,</span> <span class="kt">int</span> <span class="n">j</span><span class="p">)</span><span class="o">:</span> <span class="n">a</span><span class="p">(</span><span class="n">i</span><span class="p">),</span> <span class="n">b</span><span class="p">(</span><span class="n">j</span><span class="p">)</span> <span class="p">{}</span>
+<span class="k">private</span><span class="o">:</span>
+    <span class="kt">int</span> <span class="n">a</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="n">b</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="kt">void</span> <span class="k">operator</span><span class="o">&lt;&lt;</span><span class="p">(</span><span class="n">ostream</span> <span class="o">&amp;</span> <span class="n">out</span><span class="p">,</span> <span class="n">Student</span> <span class="o">&amp;</span> <span class="n">stu</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">out</span><span class="o">&lt;&lt;</span><span class="n">stu</span><span class="p">.</span><span class="n">a</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
+    <span class="n">out</span><span class="o">&lt;&lt;</span><span class="n">stu</span><span class="p">.</span><span class="n">b</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="k">class</span> <span class="nc">Graduate</span><span class="o">:</span> <span class="k">public</span> <span class="n">Student</span> <span class="p">{</span>
+    <span class="k">friend</span> <span class="kt">void</span> <span class="k">operator</span><span class="o">&lt;&lt;</span><span class="p">(</span><span class="n">ostream</span> <span class="o">&amp;</span> <span class="n">out</span><span class="p">,</span> <span class="n">Graduate</span> <span class="o">&amp;</span> <span class="n">gra</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">out</span><span class="o">&lt;&lt;</span><span class="p">(</span><span class="n">Student</span><span class="o">&amp;</span><span class="p">)</span><span class="n">gra</span><span class="p">;</span>
+        <span class="n">out</span><span class="o">&lt;&lt;</span><span class="n">gra</span><span class="p">.</span><span class="n">c</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="k">public</span><span class="o">:</span>
+    <span class="n">Graduate</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span><span class="p">,</span> <span class="kt">int</span> <span class="n">j</span><span class="p">,</span> <span class="kt">int</span> <span class="n">k</span><span class="p">)</span><span class="o">:</span><span class="n">Student</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">),</span> <span class="n">c</span><span class="p">(</span><span class="n">k</span><span class="p">)</span> <span class="p">{}</span>
+<span class="k">private</span><span class="o">:</span>
+    <span class="kt">int</span> <span class="n">c</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">int</span> <span class="n">argc</span><span class="p">,</span> <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span> <span class="n">argv</span><span class="p">[])</span> <span class="p">{</span>
+
+    <span class="n">Graduate</span> <span class="n">g</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">);</span>
+    <span class="n">cout</span><span class="o">&lt;&lt;</span><span class="n">g</span><span class="p">;</span>
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+
+</code></pre>
+</div>
+
+<h4 id="multiple-inheritance">multiple inheritance</h4>
+
+<div class="language-cpp highlighter-rouge"><pre class="highlight"><code><span class="k">class</span> <span class="nc">Sofa</span> <span class="p">{</span>
+<span class="k">public</span><span class="o">:</span>
+    <span class="kt">void</span> <span class="n">sit</span><span class="p">()</span> <span class="p">{</span>
+        <span class="n">cout</span><span class="o">&lt;&lt;</span><span class="s">"take a sit have a rest"</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">};</span>
+
+<span class="k">class</span> <span class="nc">Bed</span> <span class="p">{</span>
+<span class="k">public</span><span class="o">:</span>
+    <span class="kt">void</span> <span class="n">sleep</span><span class="p">()</span> <span class="p">{</span>
+        <span class="n">cout</span><span class="o">&lt;&lt;</span><span class="s">"have a sleep ......"</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">};</span>
+
+<span class="k">class</span> <span class="nc">SofaBed</span><span class="o">:</span> <span class="k">public</span> <span class="n">Sofa</span><span class="p">,</span> <span class="k">public</span> <span class="n">Bed</span> <span class="p">{</span>
+    
+<span class="p">};</span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">int</span> <span class="n">argc</span><span class="p">,</span> <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span> <span class="n">argv</span><span class="p">[])</span> <span class="p">{</span>
+
+    <span class="n">Sofa</span> <span class="n">sf</span><span class="p">;</span>
+    <span class="n">sf</span><span class="p">.</span><span class="n">sit</span><span class="p">();</span>
+    
+    <span class="n">Bed</span> <span class="n">bd</span><span class="p">;</span>
+    <span class="n">bd</span><span class="p">.</span><span class="n">sleep</span><span class="p">();</span>
+    
+    <span class="n">SofaBed</span> <span class="n">sb</span><span class="p">;</span>
+    <span class="n">sb</span><span class="p">.</span><span class="n">sit</span><span class="p">();</span>
+    <span class="n">sb</span><span class="p">.</span><span class="n">sleep</span><span class="p">();</span>
+    
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<div class="language-cpp highlighter-rouge"><pre class="highlight"><code><span class="c1">//1. 数据冗余的问题, 2. 访问方便
+//三角转四角的问题
+//1. 提取各父类, 相同的成员, 构成祖父类
+//2. 让各父类, 继承祖父类
+//3. 虚继承是一种继承的扩展, virtual 继承祖父类
+//4. 虚继承也是一种设计的结果
+</span>
+<span class="k">class</span> <span class="nc">A</span> <span class="p">{</span>
+
+<span class="k">protected</span><span class="o">:</span>
+    <span class="kt">int</span> <span class="n">_data</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="k">class</span> <span class="nc">X</span><span class="o">:</span> <span class="k">virtual</span> <span class="k">public</span> <span class="n">A</span> <span class="p">{</span>
+<span class="k">public</span><span class="o">:</span>
+    <span class="n">X</span><span class="p">(</span><span class="kt">int</span> <span class="n">d</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">_data</span> <span class="o">=</span> <span class="n">d</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="kt">void</span> <span class="n">setData</span><span class="p">(</span><span class="kt">int</span> <span class="n">d</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">_data</span> <span class="o">=</span> <span class="n">d</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">};</span>
+
+<span class="k">class</span> <span class="nc">Y</span><span class="o">:</span> <span class="k">virtual</span> <span class="k">public</span> <span class="n">A</span> <span class="p">{</span>
+<span class="k">public</span><span class="o">:</span>
+    <span class="n">Y</span><span class="p">(</span><span class="kt">int</span> <span class="n">d</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">_data</span> <span class="o">=</span> <span class="n">d</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="kt">int</span> <span class="n">getData</span><span class="p">()</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="n">_data</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">};</span>
+
+<span class="k">class</span> <span class="nc">Z</span><span class="o">:</span> <span class="k">public</span> <span class="n">X</span><span class="p">,</span> <span class="k">public</span> <span class="n">Y</span> <span class="p">{</span>
+<span class="k">public</span><span class="o">:</span>
+    <span class="n">Z</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span><span class="p">,</span> <span class="kt">int</span> <span class="n">j</span><span class="p">)</span><span class="o">:</span><span class="n">X</span><span class="p">(</span><span class="n">i</span><span class="p">),</span> <span class="n">Y</span><span class="p">(</span><span class="n">j</span><span class="p">)</span> <span class="p">{}</span>
+    <span class="kt">void</span> <span class="n">dis</span><span class="p">()</span> <span class="p">{</span>
+        <span class="n">cout</span><span class="o">&lt;&lt;</span><span class="n">_data</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">};</span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">int</span> <span class="n">argc</span><span class="p">,</span> <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span> <span class="n">argv</span><span class="p">[])</span> <span class="p">{</span>
+    
+    <span class="n">Z</span> <span class="n">z</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">200</span><span class="p">);</span>
+    <span class="n">z</span><span class="p">.</span><span class="n">dis</span><span class="p">();</span>
+    <span class="n">z</span><span class="p">.</span><span class="n">setData</span><span class="p">(</span><span class="mi">100000</span><span class="p">);</span>
+    <span class="n">cout</span><span class="o">&lt;&lt;</span><span class="n">z</span><span class="p">.</span><span class="n">getData</span><span class="p">()</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
+    <span class="n">z</span><span class="p">.</span><span class="n">dis</span><span class="p">();</span>
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<div class="language-cpp highlighter-rouge"><pre class="highlight"><code><span class="c1">//虚基类, 被虚继承的类就叫虚基类;
+//虚继承, 是一种对继承的扩展;
+</span>
+<span class="k">class</span> <span class="nc">A</span> <span class="p">{</span>
+<span class="k">protected</span><span class="o">:</span>
+    <span class="kt">int</span> <span class="n">_data</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="k">class</span> <span class="nc">B</span><span class="o">:</span> <span class="k">virtual</span> <span class="k">public</span> <span class="n">A</span> <span class="p">{</span>
+<span class="k">public</span><span class="o">:</span>
+    <span class="n">B</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">cout</span><span class="o">&lt;&lt;</span><span class="s">"B(int i)"</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
+        <span class="n">_data</span> <span class="o">=</span> <span class="n">i</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">};</span>
+
+<span class="k">class</span> <span class="nc">C</span><span class="o">:</span> <span class="k">virtual</span> <span class="k">public</span> <span class="n">A</span> <span class="p">{</span>
+<span class="k">public</span><span class="o">:</span>
+    <span class="n">C</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">cout</span><span class="o">&lt;&lt;</span><span class="s">"C(int i)"</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
+        <span class="n">_data</span> <span class="o">=</span> <span class="n">i</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">};</span>
+
+<span class="k">class</span> <span class="nc">D</span><span class="o">:</span> <span class="k">public</span> <span class="n">B</span><span class="p">,</span> <span class="n">C</span> <span class="p">{</span>
+<span class="k">public</span><span class="o">:</span>
+    <span class="n">D</span><span class="p">(</span><span class="kt">int</span> <span class="n">d</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">cout</span><span class="o">&lt;&lt;</span><span class="s">"D(int i)"</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
+        <span class="n">_data</span> <span class="o">=</span> <span class="n">d</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="kt">void</span> <span class="n">dis</span><span class="p">()</span> <span class="p">{</span>
+        <span class="n">cout</span><span class="o">&lt;&lt;</span><span class="n">_data</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">};</span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">int</span> <span class="n">argc</span><span class="p">,</span> <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span> <span class="n">argv</span><span class="p">[])</span> <span class="p">{</span>
+    
+    <span class="n">D</span> <span class="n">d</span><span class="p">(</span><span class="mi">10</span><span class="p">);</span>
+    <span class="n">d</span><span class="p">.</span><span class="n">dis</span><span class="p">();</span>
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<div class="language-cpp highlighter-rouge"><pre class="highlight"><code><span class="k">class</span> <span class="nc">Furniture</span> <span class="p">{</span>
+<span class="k">public</span><span class="o">:</span>
+    <span class="kt">void</span> <span class="n">descript</span><span class="p">()</span> <span class="p">{</span>
+        <span class="n">cout</span><span class="o">&lt;&lt;</span><span class="s">"_weight :"</span><span class="o">&lt;&lt;</span><span class="n">_weight</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
+        <span class="n">cout</span><span class="o">&lt;&lt;</span><span class="s">"_color :"</span><span class="o">&lt;&lt;</span><span class="n">_color</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="k">protected</span><span class="o">:</span>
+    <span class="kt">float</span> <span class="n">_weight</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="n">_color</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="k">class</span> <span class="nc">Sofa</span><span class="o">:</span> <span class="k">virtual</span> <span class="k">public</span> <span class="n">Furniture</span> <span class="p">{</span>
+<span class="k">public</span><span class="o">:</span>
+    <span class="n">Sofa</span><span class="p">(</span><span class="kt">float</span> <span class="n">w</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="kt">int</span> <span class="n">c</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">_weight</span> <span class="o">=</span> <span class="n">w</span><span class="p">;</span>
+        <span class="n">_color</span> <span class="o">=</span> <span class="n">c</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="kt">void</span> <span class="n">sit</span><span class="p">()</span> <span class="p">{</span>
+        <span class="n">cout</span><span class="o">&lt;&lt;</span><span class="s">"take a sit have a rest"</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">};</span>
+
+<span class="k">class</span> <span class="nc">Bed</span><span class="o">:</span> <span class="k">virtual</span> <span class="k">public</span> <span class="n">Furniture</span> <span class="p">{</span>
+<span class="k">public</span><span class="o">:</span>
+    <span class="n">Bed</span><span class="p">(</span><span class="kt">float</span> <span class="n">w</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="kt">int</span> <span class="n">c</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">_weight</span> <span class="o">=</span> <span class="n">w</span><span class="p">;</span>
+        <span class="n">_color</span> <span class="o">=</span> <span class="n">c</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="kt">void</span> <span class="n">sleep</span><span class="p">()</span> <span class="p">{</span>
+        <span class="n">cout</span><span class="o">&lt;&lt;</span><span class="s">"have a sleep ......"</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">};</span>
+
+<span class="k">class</span> <span class="nc">SofaBed</span><span class="o">:</span> <span class="k">public</span> <span class="n">Sofa</span><span class="p">,</span> <span class="k">public</span> <span class="n">Bed</span> <span class="p">{</span>
+<span class="k">public</span><span class="o">:</span>
+    <span class="n">SofaBed</span><span class="p">(</span><span class="kt">float</span> <span class="n">w</span><span class="p">,</span> <span class="kt">int</span> <span class="n">c</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">_weight</span> <span class="o">=</span> <span class="n">w</span><span class="p">;</span>
+        <span class="n">_color</span> <span class="o">=</span> <span class="n">c</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">};</span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">int</span> <span class="n">argc</span><span class="p">,</span> <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span> <span class="n">argv</span><span class="p">[])</span> <span class="p">{</span>
+    
+    <span class="n">SofaBed</span> <span class="n">sb</span><span class="p">(</span><span class="mi">1000</span><span class="p">,</span> <span class="mi">2</span><span class="p">);</span>
+    <span class="n">sb</span><span class="p">.</span><span class="n">sit</span><span class="p">();</span>
+    <span class="n">sb</span><span class="p">.</span><span class="n">sleep</span><span class="p">();</span>
+    <span class="n">sb</span><span class="p">.</span><span class="n">descript</span><span class="p">();</span>
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<h4 id="polymorphism">polymorphism</h4>
+
+<div class="language-cpp highlighter-rouge"><pre class="highlight"><code><span class="c1">//1. 派生类的对象可以赋值给基类对象
+//2. 派生类的对象可以初始化基类的引用
+//3. 派生类对象的地址可以赋值给指向基类的指针
+</span>
+<span class="k">class</span> <span class="nc">Shape</span> <span class="p">{</span>
+<span class="k">public</span><span class="o">:</span>
+    <span class="n">Shape</span><span class="p">(</span><span class="kt">int</span> <span class="n">x</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="kt">int</span> <span class="n">y</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span><span class="o">:</span><span class="n">_x</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="n">_y</span><span class="p">(</span><span class="n">y</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">cout</span><span class="o">&lt;&lt;</span><span class="s">"Shape: "</span><span class="o">&lt;&lt;</span><span class="k">this</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
+        <span class="n">cout</span><span class="o">&lt;&lt;</span><span class="k">typeid</span><span class="p">(</span><span class="k">this</span><span class="p">).</span><span class="n">name</span><span class="p">()</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="kt">void</span> <span class="n">draw</span><span class="p">()</span> <span class="p">{</span>
+        <span class="n">cout</span><span class="o">&lt;&lt;</span><span class="s">"draw shape from "</span><span class="o">&lt;&lt;</span><span class="s">"("</span><span class="o">&lt;&lt;</span><span class="n">_x</span><span class="o">&lt;&lt;</span><span class="s">", "</span><span class="o">&lt;&lt;</span><span class="n">_y</span><span class="o">&lt;&lt;</span><span class="s">")"</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="k">protected</span><span class="o">:</span>
+    <span class="kt">int</span> <span class="n">_x</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="n">_y</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="k">class</span> <span class="nc">Circle</span><span class="o">:</span> <span class="k">public</span> <span class="n">Shape</span> <span class="p">{</span>
+<span class="k">public</span><span class="o">:</span>
+    <span class="n">Circle</span><span class="p">(</span><span class="kt">int</span> <span class="n">x</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="kt">int</span> <span class="n">y</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="kt">int</span> <span class="n">r</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span><span class="o">:</span><span class="n">Shape</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">),</span> <span class="n">_radius</span><span class="p">(</span><span class="n">r</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">cout</span><span class="o">&lt;&lt;</span><span class="s">"Circle: "</span><span class="o">&lt;&lt;</span><span class="k">this</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
+        <span class="n">cout</span><span class="o">&lt;&lt;</span><span class="k">typeid</span><span class="p">(</span><span class="k">this</span><span class="p">).</span><span class="n">name</span><span class="p">()</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="kt">void</span> <span class="n">draw</span><span class="p">()</span> <span class="p">{</span>
+        <span class="n">cout</span><span class="o">&lt;&lt;</span><span class="s">"draw shape from "</span><span class="o">&lt;&lt;</span><span class="s">"("</span><span class="o">&lt;&lt;</span><span class="n">_x</span><span class="o">&lt;&lt;</span><span class="s">", "</span><span class="o">&lt;&lt;</span><span class="n">_y</span><span class="o">&lt;&lt;</span><span class="s">", "</span><span class="o">&lt;&lt;</span><span class="n">_radius</span><span class="o">&lt;&lt;</span><span class="s">")"</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="k">protected</span><span class="o">:</span>
+    <span class="kt">int</span> <span class="n">_radius</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="k">class</span> <span class="nc">Rect</span><span class="o">:</span> <span class="k">public</span> <span class="n">Shape</span> <span class="p">{</span>
+    
+<span class="p">};</span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">int</span> <span class="n">argc</span><span class="p">,</span> <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span> <span class="n">argv</span><span class="p">[])</span> <span class="p">{</span>
+    
+<span class="c1">//    Shape s(1, 2);
+//    s.draw();
+</span>    
+    <span class="n">Circle</span> <span class="n">c</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">);</span>
+<span class="c1">//    s = c;
+//    s.draw();
+</span>    
+<span class="c1">//    Shape &amp; rs = c;
+//    rs.draw();
+</span>    
+    <span class="n">Shape</span> <span class="o">*</span> <span class="n">ps</span> <span class="o">=</span> <span class="o">&amp;</span><span class="n">c</span><span class="p">;</span>
+    <span class="n">ps</span><span class="o">-&gt;</span><span class="n">draw</span><span class="p">();</span>
+    
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<div class="language-cpp highlighter-rouge"><pre class="highlight"><code><span class="c1">//多态形成的条件有3个
+//1. 父类中有虚函数, 加virtual 声明型关键字
+//2. 子类override了父类的虚函数, 子类中同名, 同参, 同返回, 才能构成override
+//3. 子类对象赋给父类的指针, 通过父类的指针, 调用虚函数, 形成多态
+</span>
+
+<span class="k">class</span> <span class="nc">Shape</span> <span class="p">{</span>
+<span class="k">public</span><span class="o">:</span>
+    <span class="n">Shape</span><span class="p">(</span><span class="kt">int</span> <span class="n">x</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="kt">int</span> <span class="n">y</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span><span class="o">:</span><span class="n">_x</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="n">_y</span><span class="p">(</span><span class="n">y</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">cout</span><span class="o">&lt;&lt;</span><span class="s">"Shape: "</span><span class="o">&lt;&lt;</span><span class="k">this</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
+        <span class="n">cout</span><span class="o">&lt;&lt;</span><span class="k">typeid</span><span class="p">(</span><span class="k">this</span><span class="p">).</span><span class="n">name</span><span class="p">()</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="k">virtual</span> <span class="kt">void</span> <span class="n">draw</span><span class="p">()</span> <span class="p">{</span>
+        <span class="n">cout</span><span class="o">&lt;&lt;</span><span class="s">"draw shape from "</span><span class="o">&lt;&lt;</span><span class="s">"("</span><span class="o">&lt;&lt;</span><span class="n">_x</span><span class="o">&lt;&lt;</span><span class="s">", "</span><span class="o">&lt;&lt;</span><span class="n">_y</span><span class="o">&lt;&lt;</span><span class="s">")"</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="k">protected</span><span class="o">:</span>
+    <span class="kt">int</span> <span class="n">_x</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="n">_y</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="k">class</span> <span class="nc">Circle</span><span class="o">:</span> <span class="k">public</span> <span class="n">Shape</span> <span class="p">{</span>
+<span class="k">public</span><span class="o">:</span>
+    <span class="n">Circle</span><span class="p">(</span><span class="kt">int</span> <span class="n">x</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="kt">int</span> <span class="n">y</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="kt">int</span> <span class="n">r</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span><span class="o">:</span><span class="n">Shape</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">),</span> <span class="n">_radius</span><span class="p">(</span><span class="n">r</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">cout</span><span class="o">&lt;&lt;</span><span class="s">"Circle: "</span><span class="o">&lt;&lt;</span><span class="k">this</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
+        <span class="n">cout</span><span class="o">&lt;&lt;</span><span class="k">typeid</span><span class="p">(</span><span class="k">this</span><span class="p">).</span><span class="n">name</span><span class="p">()</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="k">virtual</span> <span class="kt">void</span> <span class="n">draw</span><span class="p">()</span> <span class="p">{</span>
+        <span class="n">cout</span><span class="o">&lt;&lt;</span><span class="s">"draw shape from "</span><span class="o">&lt;&lt;</span><span class="s">"("</span><span class="o">&lt;&lt;</span><span class="n">_x</span><span class="o">&lt;&lt;</span><span class="s">", "</span><span class="o">&lt;&lt;</span><span class="n">_y</span><span class="o">&lt;&lt;</span><span class="s">", "</span><span class="o">&lt;&lt;</span><span class="n">_radius</span><span class="o">&lt;&lt;</span><span class="s">")"</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="k">protected</span><span class="o">:</span>
+    <span class="kt">int</span> <span class="n">_radius</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="k">class</span> <span class="nc">Rect</span><span class="o">:</span> <span class="k">public</span> <span class="n">Shape</span> <span class="p">{</span>
+<span class="k">public</span><span class="o">:</span>
+    <span class="n">Rect</span><span class="p">(</span><span class="kt">int</span> <span class="n">x</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="kt">int</span> <span class="n">y</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="kt">int</span> <span class="n">w</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="kt">int</span> <span class="n">l</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span><span class="o">:</span> <span class="n">Shape</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">),</span> <span class="n">_width</span><span class="p">(</span><span class="n">w</span><span class="p">),</span> <span class="n">_length</span><span class="p">(</span><span class="n">l</span><span class="p">)</span> <span class="p">{}</span>
+    <span class="k">virtual</span> <span class="kt">void</span> <span class="n">draw</span><span class="p">()</span> <span class="p">{</span>
+        <span class="n">cout</span><span class="o">&lt;&lt;</span><span class="s">"draw rect from "</span><span class="o">&lt;&lt;</span><span class="s">"("</span><span class="o">&lt;&lt;</span><span class="n">_x</span><span class="o">&lt;&lt;</span><span class="s">", "</span><span class="o">&lt;&lt;</span><span class="n">_y</span><span class="o">&lt;&lt;</span><span class="s">", "</span><span class="o">&lt;&lt;</span><span class="n">_width</span><span class="o">&lt;&lt;</span><span class="s">", "</span><span class="o">&lt;&lt;</span><span class="n">_length</span><span class="o">&lt;&lt;</span><span class="s">")"</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="k">protected</span><span class="o">:</span>
+    <span class="kt">int</span> <span class="n">_width</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="n">_length</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">int</span> <span class="n">argc</span><span class="p">,</span> <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span> <span class="n">argv</span><span class="p">[])</span> <span class="p">{</span>
+    
+    <span class="n">Circle</span> <span class="n">c</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">);</span>
+    <span class="n">Rect</span> <span class="n">r</span><span class="p">(</span><span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">10</span><span class="p">);</span>
+    <span class="n">Shape</span> <span class="o">*</span> <span class="n">ps</span><span class="p">;</span>
+    
+    <span class="k">while</span> <span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
+        <span class="kt">int</span> <span class="n">choice</span><span class="p">;</span>
+        <span class="n">cin</span><span class="o">&gt;&gt;</span><span class="n">choice</span><span class="p">;</span>
+        <span class="k">switch</span> <span class="p">(</span><span class="n">choice</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">case</span> <span class="mi">1</span><span class="p">:</span>
+                <span class="n">ps</span> <span class="o">=</span> <span class="o">&amp;</span><span class="n">c</span><span class="p">;</span>
+                <span class="k">break</span><span class="p">;</span>
+            <span class="k">case</span> <span class="mi">2</span><span class="p">:</span>
+                <span class="n">ps</span> <span class="o">=</span> <span class="o">&amp;</span><span class="n">r</span><span class="p">;</span>
+                <span class="k">break</span><span class="p">;</span>
+            <span class="nl">default:</span>
+                <span class="k">break</span><span class="p">;</span>
+        <span class="p">}</span>
+        <span class="n">ps</span><span class="o">-&gt;</span><span class="n">draw</span><span class="p">();</span>
+    <span class="p">}</span>
+    
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<h4 id="virtual-function">virtual function</h4>
+
+<div class="language-cpp highlighter-rouge"><pre class="highlight"><code><span class="c1">//virtual 声明型关键字, 用于声明一个函数, 虚, 子类override的函数, 也是virtual
+//override 同名, 同参, 同返回
+//虚函数在子类中, 访问属性并不影响多态, 具体需求, 要看子类
+</span>
+<span class="k">class</span> <span class="nc">A</span> <span class="p">{</span>
+<span class="k">public</span><span class="o">:</span>
+    <span class="k">virtual</span> <span class="kt">void</span> <span class="n">foo</span><span class="p">()</span> <span class="p">{</span>
+        <span class="n">cout</span><span class="o">&lt;&lt;</span><span class="s">"A: foo"</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">};</span>
+
+<span class="k">class</span> <span class="nc">B</span><span class="o">:</span> <span class="k">public</span> <span class="n">A</span> <span class="p">{</span>
+<span class="k">private</span><span class="o">:</span>
+    <span class="k">virtual</span> <span class="kt">void</span> <span class="n">foo</span><span class="p">()</span> <span class="n">override</span> <span class="p">{</span>
+        <span class="n">cout</span><span class="o">&lt;&lt;</span><span class="s">"B: foo"</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">};</span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">int</span> <span class="n">argc</span><span class="p">,</span> <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span> <span class="n">argv</span><span class="p">[])</span> <span class="p">{</span>
+    
+    <span class="n">B</span> <span class="n">b</span><span class="p">;</span>
+    <span class="n">A</span> <span class="o">*</span> <span class="n">pa</span> <span class="o">=</span> <span class="o">&amp;</span><span class="n">b</span><span class="p">;</span>
+    <span class="n">pa</span><span class="o">-&gt;</span><span class="n">foo</span><span class="p">();</span>
+    
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<h4 id="pure-virtual-function">pure virtual function</h4>
+
+<div class="language-cpp highlighter-rouge"><pre class="highlight"><code><span class="k">class</span> <span class="nc">A</span> <span class="p">{</span>
+<span class="k">public</span><span class="o">:</span>
+    <span class="k">virtual</span> <span class="kt">void</span> <span class="n">foo</span><span class="p">()</span> <span class="p">{</span>
+        <span class="n">cout</span><span class="o">&lt;&lt;</span><span class="s">"A: foo"</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">};</span>
+
+<span class="k">class</span> <span class="nc">B</span><span class="o">:</span> <span class="k">public</span> <span class="n">A</span> <span class="p">{</span>
+
+<span class="p">};</span>
+
+<span class="k">class</span> <span class="nc">C</span><span class="o">:</span> <span class="k">public</span> <span class="n">B</span> <span class="p">{</span>
+<span class="k">public</span><span class="o">:</span>
+    <span class="k">virtual</span> <span class="kt">void</span> <span class="n">foo</span><span class="p">()</span> <span class="p">{</span>
+        <span class="n">cout</span><span class="o">&lt;&lt;</span><span class="s">"C: foo"</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">};</span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">int</span> <span class="n">argc</span><span class="p">,</span> <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span> <span class="n">argv</span><span class="p">[])</span> <span class="p">{</span>
+    
+    <span class="n">C</span> <span class="n">c</span><span class="p">;</span>
+    <span class="n">B</span> <span class="o">*</span> <span class="n">bp</span> <span class="o">=</span> <span class="o">&amp;</span><span class="n">c</span><span class="p">;</span>
+    <span class="n">bp</span><span class="o">-&gt;</span><span class="n">foo</span><span class="p">();</span>
+    <span class="n">A</span> <span class="o">*</span> <span class="n">ap</span> <span class="o">=</span> <span class="o">&amp;</span><span class="n">c</span><span class="p">;</span>
+    <span class="n">ap</span><span class="o">-&gt;</span><span class="n">foo</span><span class="p">();</span>
+    
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<div class="language-cpp highlighter-rouge"><pre class="highlight"><code><span class="c1">//纯虚函数, virtual 没有实现体, 被"初始化"为0
+//纯接口类, 才配具备, 拥有纯虚函数, 含有纯虚函数的类, 称为抽象基类 Interface
+//抽象基类不能实例化
+//子类中若无override, 则依然为纯虚, 依然不能实例化
+</span>
+<span class="k">class</span> <span class="nc">A</span> <span class="p">{</span>
+<span class="k">public</span><span class="o">:</span>
+    <span class="k">virtual</span> <span class="kt">void</span> <span class="n">foo</span><span class="p">()</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="k">class</span> <span class="nc">B</span><span class="o">:</span> <span class="k">public</span> <span class="n">A</span> <span class="p">{</span>
+    
+<span class="p">};</span>
+
+<span class="k">class</span> <span class="nc">C</span><span class="o">:</span> <span class="k">public</span> <span class="n">B</span> <span class="p">{</span>
+<span class="k">public</span><span class="o">:</span>
+    <span class="k">virtual</span> <span class="kt">void</span> <span class="n">foo</span><span class="p">()</span> <span class="n">override</span> <span class="p">{</span>
+        <span class="n">cout</span><span class="o">&lt;&lt;</span><span class="s">"C: foo"</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">};</span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">int</span> <span class="n">argc</span><span class="p">,</span> <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span> <span class="n">argv</span><span class="p">[])</span> <span class="p">{</span>
+    
+    <span class="n">C</span> <span class="n">c</span><span class="p">;</span>
+    <span class="n">B</span> <span class="o">*</span> <span class="n">bp</span> <span class="o">=</span> <span class="o">&amp;</span><span class="n">c</span><span class="p">;</span>
+    <span class="n">bp</span><span class="o">-&gt;</span><span class="n">foo</span><span class="p">();</span>
+    <span class="n">A</span> <span class="o">*</span> <span class="n">ap</span> <span class="o">=</span> <span class="o">&amp;</span><span class="n">c</span><span class="p">;</span>
+    <span class="n">ap</span><span class="o">-&gt;</span><span class="n">foo</span><span class="p">();</span>
+    
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<h4 id="virtual-destructor">virtual destructor</h4>
+
+<div class="language-cpp highlighter-rouge"><pre class="highlight"><code><span class="k">class</span> <span class="nc">Animal</span> <span class="p">{</span>
+<span class="k">public</span><span class="o">:</span>
+    <span class="n">Animal</span><span class="p">();</span>
+    <span class="o">~</span><span class="n">Animal</span><span class="p">();</span>
+    <span class="k">virtual</span> <span class="kt">void</span> <span class="n">voice</span><span class="p">()</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="k">class</span> <span class="nc">Dog</span><span class="o">:</span> <span class="k">public</span> <span class="n">Animal</span> <span class="p">{</span>
+<span class="k">public</span><span class="o">:</span>
+    <span class="n">Dog</span><span class="p">();</span>
+    <span class="o">~</span><span class="n">Dog</span><span class="p">();</span>
+    <span class="k">virtual</span> <span class="kt">void</span> <span class="n">voice</span><span class="p">();</span>
+<span class="p">};</span>
+
+<span class="k">class</span> <span class="nc">Cat</span><span class="o">:</span> <span class="k">public</span> <span class="n">Animal</span> <span class="p">{</span>
+<span class="k">public</span><span class="o">:</span>
+    <span class="n">Cat</span><span class="p">();</span>
+    <span class="o">~</span><span class="n">Cat</span><span class="p">();</span>
+    <span class="k">virtual</span> <span class="kt">void</span> <span class="n">voice</span><span class="p">();</span>
+<span class="p">};</span>
+
+<span class="n">Animal</span><span class="o">::</span><span class="n">Animal</span><span class="p">()</span> <span class="p">{</span>
+    <span class="n">cout</span><span class="o">&lt;&lt;</span><span class="s">"Animal::Animal()"</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="n">Animal</span><span class="o">::~</span><span class="n">Animal</span><span class="p">()</span> <span class="p">{</span>
+    <span class="n">cout</span><span class="o">&lt;&lt;</span><span class="s">"Animal::~Animal()"</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="n">Dog</span><span class="o">::</span><span class="n">Dog</span><span class="p">()</span> <span class="p">{</span>
+    <span class="n">cout</span><span class="o">&lt;&lt;</span><span class="s">"Dog::Dog()"</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="n">Dog</span><span class="o">::~</span><span class="n">Dog</span><span class="p">()</span> <span class="p">{</span>
+    <span class="n">cout</span><span class="o">&lt;&lt;</span><span class="s">"Dog::~Dog()"</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kt">void</span> <span class="n">Dog</span><span class="o">::</span><span class="n">voice</span><span class="p">()</span> <span class="p">{</span>
+    <span class="n">cout</span><span class="o">&lt;&lt;</span><span class="s">"wang wang wang"</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="n">Cat</span><span class="o">::</span><span class="n">Cat</span><span class="p">()</span> <span class="p">{</span>
+    <span class="n">cout</span><span class="o">&lt;&lt;</span><span class="s">"Cat::Cat()"</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="n">Cat</span><span class="o">::~</span><span class="n">Cat</span><span class="p">()</span> <span class="p">{</span>
+    <span class="n">cout</span><span class="o">&lt;&lt;</span><span class="s">"Cat::~Cat()"</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kt">void</span> <span class="n">Cat</span><span class="o">::</span><span class="n">voice</span><span class="p">()</span> <span class="p">{</span>
+    <span class="n">cout</span><span class="o">&lt;&lt;</span><span class="s">"mew mew mew"</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kt">int</span> <span class="n">main</span><span class="p">(</span><span class="kt">int</span> <span class="n">argc</span><span class="p">,</span> <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span> <span class="n">argv</span><span class="p">[])</span> <span class="p">{</span>
+    
+    <span class="n">Cat</span> <span class="n">c</span><span class="p">;</span>
+    <span class="n">Dog</span> <span class="n">d</span><span class="p">;</span>
+    <span class="n">Animal</span> <span class="o">*</span><span class="n">pa</span> <span class="o">=</span> <span class="o">&amp;</span><span class="n">c</span><span class="p">;</span>
+    <span class="n">pa</span><span class="o">-&gt;</span><span class="n">voice</span><span class="p">();</span>
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<div class="language-cpp highlighter-rouge"><pre class="highlight"><code><span class="n">Animal</span><span class="o">::</span><span class="n">Animal</span><span class="p">()</span>
+<span class="n">Cat</span><span class="o">::</span><span class="n">Cat</span><span class="p">()</span>
+<span class="n">Animal</span><span class="o">::</span><span class="n">Animal</span><span class="p">()</span>
+<span class="n">Dog</span><span class="o">::</span><span class="n">Dog</span><span class="p">()</span>
+<span class="n">mew</span> <span class="n">mew</span> <span class="n">mew</span>
+<span class="n">Dog</span><span class="o">::~</span><span class="n">Dog</span><span class="p">()</span>
+<span class="n">Animal</span><span class="o">::~</span><span class="n">Animal</span><span class="p">()</span>
+<span class="n">Cat</span><span class="o">::~</span><span class="n">Cat</span><span class="p">()</span>
+<span class="n">Animal</span><span class="o">::~</span><span class="n">Animal</span><span class="p">()</span>
+<span class="n">Program</span> <span class="n">ended</span> <span class="n">with</span> <span class="n">exit</span> <span class="n">code</span><span class="o">:</span> <span class="mi">0</span>
+</code></pre>
+</div>
+
+<h4 id="dependency-inversion">dependency inversion</h4>
+<div class="language-cpp highlighter-rouge"><pre class="highlight"><code><span class="k">class</span> <span class="nc">IReader</span> <span class="p">{</span>
+<span class="k">public</span><span class="o">:</span>
+    <span class="k">virtual</span> <span class="n">string</span> <span class="n">getContents</span><span class="p">()</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="k">class</span> <span class="nc">Book</span><span class="o">:</span> <span class="k">public</span> <span class="n">IReader</span> <span class="p">{</span>
+<span class="k">public</span><span class="o">:</span>
+    <span class="n">string</span> <span class="n">getContents</span><span class="p">()</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="s">"从前有座山, 山里有座庙, 庙里有个小和尚"</span>
+               <span class="s">"听老和尚讲故事, 从前有座山"</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">};</span>
+
+<span class="k">class</span> <span class="nc">EBook</span><span class="o">:</span> <span class="k">public</span> <span class="n">IReader</span> <span class="p">{</span>
+<span class="k">public</span><span class="o">:</span>
+    <span class="n">string</span> <span class="n">getContents</span><span class="p">()</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="s">"郭文贵, 在美国瞎bb"</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">};</span>
+
+<span class="k">class</span> <span class="nc">NewsPaper</span><span class="o">:</span> <span class="k">public</span> <span class="n">IReader</span> <span class="p">{</span>
+<span class="k">public</span><span class="o">:</span>
+    <span class="n">string</span> <span class="n">getContents</span><span class="p">()</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="s">"Trump 要在墨西哥边境建一堵墙"</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">};</span>
+
+<span class="k">class</span> <span class="nc">Mother</span> <span class="p">{</span>
+<span class="k">public</span><span class="o">:</span>
+    <span class="kt">void</span> <span class="n">tellStory</span><span class="p">(</span><span class="n">IReader</span> <span class="o">*</span> <span class="n">pi</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">cout</span><span class="o">&lt;&lt;</span><span class="n">pi</span><span class="o">-&gt;</span><span class="n">getContents</span><span class="p">()</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">};</span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">int</span> <span class="n">argc</span><span class="p">,</span> <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span> <span class="n">argv</span><span class="p">[])</span> <span class="p">{</span>
+    
+    <span class="n">Mother</span> <span class="n">m</span><span class="p">;</span>
+    <span class="n">Book</span> <span class="n">b</span><span class="p">;</span>
+    <span class="n">EBook</span> <span class="n">eb</span><span class="p">;</span>
+    <span class="n">NewsPaper</span> <span class="n">n</span><span class="p">;</span>
+    <span class="n">m</span><span class="p">.</span><span class="n">tellStory</span><span class="p">(</span><span class="o">&amp;</span><span class="n">b</span><span class="p">);</span>
+    <span class="n">m</span><span class="p">.</span><span class="n">tellStory</span><span class="p">(</span><span class="o">&amp;</span><span class="n">eb</span><span class="p">);</span>
+    <span class="n">m</span><span class="p">.</span><span class="n">tellStory</span><span class="p">(</span><span class="o">&amp;</span><span class="n">n</span><span class="p">);</span>
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<h4 id="func-template">func template</h4>
+
+<div class="language-cpp highlighter-rouge"><pre class="highlight"><code><span class="k">class</span> <span class="nc">MyType</span> <span class="p">{</span>
+<span class="k">public</span><span class="o">:</span>
+    <span class="n">MyType</span><span class="p">(</span><span class="kt">int</span> <span class="n">x</span><span class="p">,</span> <span class="kt">int</span> <span class="n">y</span><span class="p">)</span><span class="o">:</span><span class="n">_x</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="n">_y</span><span class="p">(</span><span class="n">y</span><span class="p">){}</span>
+    <span class="kt">int</span> <span class="n">_x</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="n">_y</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="c1">//类型参数化, 设置默认类型
+</span>
+<span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span> <span class="n">T</span><span class="o">&gt;</span>
+<span class="kt">void</span> <span class="n">myswap</span><span class="p">(</span><span class="n">T</span> <span class="o">&amp;</span> <span class="n">a</span><span class="p">,</span> <span class="n">T</span> <span class="o">&amp;</span> <span class="n">b</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">T</span> <span class="n">t</span> <span class="o">=</span> <span class="n">a</span><span class="p">;</span>
+    <span class="n">a</span> <span class="o">=</span> <span class="n">b</span><span class="p">;</span>
+    <span class="n">b</span> <span class="o">=</span> <span class="n">t</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="c1">//函数模板   实例化模板函数    模板函数的调用
+//myswap -&gt; myswap&lt;int&gt; -&gt; myswap&lt;int&gt;(1, 2)
+</span>
+<span class="kt">int</span> <span class="n">main</span><span class="p">(</span><span class="kt">int</span> <span class="n">argc</span><span class="p">,</span> <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span> <span class="n">argv</span><span class="p">[])</span> <span class="p">{</span>
+
+    <span class="kt">int</span> <span class="n">a</span> <span class="o">=</span> <span class="mi">3</span><span class="p">;</span> <span class="kt">int</span> <span class="n">b</span> <span class="o">=</span> <span class="mi">4</span><span class="p">;</span>
+    <span class="n">myswap</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">);</span>
+    <span class="n">cout</span><span class="o">&lt;&lt;</span><span class="s">"a: "</span><span class="o">&lt;&lt;</span><span class="n">a</span><span class="o">&lt;&lt;</span><span class="s">", b: "</span><span class="o">&lt;&lt;</span><span class="n">b</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
+
+    <span class="n">string</span> <span class="n">s1</span> <span class="o">=</span> <span class="s">"china"</span><span class="p">;</span> <span class="n">string</span> <span class="n">s2</span> <span class="o">=</span> <span class="s">"america"</span><span class="p">;</span>
+    <span class="n">myswap</span><span class="p">(</span><span class="n">s1</span><span class="p">,</span> <span class="n">s2</span><span class="p">);</span>
+    <span class="n">cout</span><span class="o">&lt;&lt;</span><span class="s">"s1: "</span><span class="o">&lt;&lt;</span><span class="n">s1</span><span class="o">&lt;&lt;</span><span class="s">", s2: "</span><span class="o">&lt;&lt;</span><span class="n">s2</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
+    
+    <span class="kt">double</span> <span class="n">d1</span> <span class="o">=</span> <span class="mf">3.1</span><span class="p">;</span> <span class="kt">double</span> <span class="n">d2</span> <span class="o">=</span> <span class="mf">4.1</span><span class="p">;</span>
+    <span class="n">myswap</span><span class="p">(</span><span class="n">d1</span><span class="p">,</span> <span class="n">d2</span><span class="p">);</span>
+    <span class="n">cout</span><span class="o">&lt;&lt;</span><span class="s">"d1: "</span><span class="o">&lt;&lt;</span><span class="n">d1</span><span class="o">&lt;&lt;</span><span class="s">", d2: "</span><span class="o">&lt;&lt;</span><span class="n">d2</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
+    
+    <span class="n">MyType</span> <span class="n">mt1</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">);</span> <span class="n">MyType</span> <span class="n">mt2</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">);</span>
+    <span class="n">myswap</span><span class="p">(</span><span class="n">mt1</span><span class="p">,</span> <span class="n">mt2</span><span class="p">);</span>
+    <span class="n">cout</span><span class="o">&lt;&lt;</span><span class="n">mt1</span><span class="p">.</span><span class="n">_x</span><span class="o">&lt;&lt;</span><span class="n">mt2</span><span class="p">.</span><span class="n">_x</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
+
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<div class="language-cpp highlighter-rouge"><pre class="highlight"><code><span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">T</span><span class="o">&gt;</span>
+<span class="kt">void</span> <span class="n">quickSort</span><span class="p">(</span><span class="n">T</span> <span class="o">*</span> <span class="n">p</span><span class="p">,</span> <span class="kt">int</span> <span class="n">low</span><span class="p">,</span> <span class="kt">int</span> <span class="n">high</span><span class="p">)</span> <span class="p">{</span>
+    
+    <span class="k">if</span> <span class="p">(</span><span class="n">low</span> <span class="o">&lt;</span> <span class="n">high</span><span class="p">)</span> <span class="p">{</span>
+        <span class="kt">int</span> <span class="n">l</span> <span class="o">=</span> <span class="n">low</span><span class="p">,</span> <span class="n">h</span> <span class="o">=</span> <span class="n">high</span><span class="p">;</span>
+        <span class="n">T</span> <span class="n">pivot</span> <span class="o">=</span> <span class="n">p</span><span class="p">[</span><span class="n">l</span><span class="p">];</span>
+        <span class="k">while</span> <span class="p">(</span><span class="n">l</span> <span class="o">&lt;</span> <span class="n">h</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">while</span> <span class="p">(</span><span class="n">p</span><span class="p">[</span><span class="n">h</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="n">pivot</span> <span class="o">&amp;&amp;</span> <span class="n">l</span> <span class="o">&lt;</span> <span class="n">h</span><span class="p">)</span> <span class="p">{</span>
+                <span class="n">h</span><span class="o">--</span><span class="p">;</span>
+            <span class="p">}</span>
+            <span class="n">p</span><span class="p">[</span><span class="n">l</span><span class="p">]</span> <span class="o">=</span> <span class="n">p</span><span class="p">[</span><span class="n">h</span><span class="p">];</span>
+            <span class="k">while</span> <span class="p">(</span><span class="n">p</span><span class="p">[</span><span class="n">l</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="n">pivot</span> <span class="o">&amp;&amp;</span> <span class="n">l</span> <span class="o">&lt;</span> <span class="n">h</span><span class="p">)</span> <span class="p">{</span>
+                <span class="n">l</span><span class="o">++</span><span class="p">;</span>
+            <span class="p">}</span>
+            <span class="n">p</span><span class="p">[</span><span class="n">h</span><span class="p">]</span> <span class="o">=</span> <span class="n">p</span><span class="p">[</span><span class="n">l</span><span class="p">];</span>
+            <span class="n">p</span><span class="p">[</span><span class="n">l</span><span class="p">]</span> <span class="o">=</span> <span class="n">pivot</span><span class="p">;</span>
+            <span class="n">quickSort</span><span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="n">low</span><span class="p">,</span> <span class="n">l</span> <span class="o">-</span> <span class="mi">1</span><span class="p">);</span>
+            <span class="n">quickSort</span><span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="n">l</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">high</span><span class="p">);</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kt">int</span> <span class="n">main</span><span class="p">(</span><span class="kt">int</span> <span class="n">argc</span><span class="p">,</span> <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span> <span class="n">argv</span><span class="p">[])</span> <span class="p">{</span>
+
+    <span class="n">string</span> <span class="n">arr</span><span class="p">[</span><span class="mi">8</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span><span class="s">"1"</span><span class="p">,</span> <span class="s">"2"</span><span class="p">,</span> <span class="s">"3"</span><span class="p">,</span> <span class="s">"8"</span><span class="p">,</span> <span class="s">"7"</span><span class="p">,</span> <span class="s">"6"</span><span class="p">,</span> <span class="s">"4"</span><span class="p">,</span> <span class="s">"5"</span><span class="p">};</span>
+<span class="c1">//    sort(arr, arr + 8, [](int x, int y) {return x &lt; y;});
+</span>    <span class="n">quickSort</span><span class="p">(</span><span class="n">arr</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">7</span><span class="p">);</span>
+    <span class="k">for</span> <span class="p">(</span><span class="k">auto</span> <span class="n">i</span><span class="o">:</span> <span class="n">arr</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">cout</span><span class="o">&lt;&lt;</span><span class="n">i</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<div class="language-cpp highlighter-rouge"><pre class="highlight"><code><span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">T</span><span class="o">&gt;</span>
+<span class="kt">int</span> <span class="n">compare</span><span class="p">(</span><span class="n">T</span> <span class="n">a</span><span class="p">,</span> <span class="n">T</span> <span class="n">b</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">a</span> <span class="o">&gt;</span> <span class="n">b</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="mi">1</span><span class="p">;</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">a</span> <span class="o">&lt;</span> <span class="n">b</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="o">-</span><span class="mi">1</span><span class="p">;</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="k">template</span> <span class="o">&lt;&gt;</span> <span class="kt">int</span> <span class="n">compare</span><span class="o">&lt;</span><span class="k">const</span> <span class="kt">char</span> <span class="o">*&gt;</span><span class="p">(</span><span class="k">const</span> <span class="kt">char</span> <span class="o">*</span> <span class="n">a</span><span class="p">,</span> <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span> <span class="n">b</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">cout</span><span class="o">&lt;&lt;</span><span class="s">"template &lt;&gt; int compare&lt;const char *&gt;"</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">strcmp</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">))</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="mi">1</span><span class="p">;</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">a</span> <span class="o">&lt;</span> <span class="n">b</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="o">-</span><span class="mi">1</span><span class="p">;</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kt">int</span> <span class="n">main</span><span class="p">(</span><span class="kt">int</span> <span class="n">argc</span><span class="p">,</span> <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span> <span class="n">argv</span><span class="p">[])</span> <span class="p">{</span>
+
+    <span class="kt">int</span> <span class="n">a</span> <span class="o">=</span> <span class="mi">10</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="mi">20</span><span class="p">;</span>
+    <span class="n">cout</span><span class="o">&lt;&lt;</span><span class="n">compare</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
+    
+    <span class="n">string</span> <span class="n">sa</span> <span class="o">=</span> <span class="s">"abc"</span><span class="p">,</span> <span class="n">sb</span> <span class="o">=</span> <span class="s">"Abc"</span><span class="p">;</span>
+    <span class="n">cout</span><span class="o">&lt;&lt;</span><span class="n">compare</span><span class="p">(</span><span class="n">sa</span><span class="p">,</span> <span class="n">sb</span><span class="p">)</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
+    
+    <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span><span class="n">ca</span> <span class="o">=</span> <span class="s">"abc"</span><span class="p">,</span> <span class="o">*</span><span class="n">cb</span> <span class="o">=</span> <span class="s">"Abc"</span><span class="p">;</span>
+    <span class="n">cout</span><span class="o">&lt;&lt;</span><span class="n">compare</span><span class="p">(</span><span class="n">cb</span><span class="p">,</span> <span class="n">ca</span><span class="p">)</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
+    
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<h4 id="class-template">class template</h4>
+
+<div class="language-cpp highlighter-rouge"><pre class="highlight"><code><span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">T</span><span class="o">&gt;</span>
+<span class="k">class</span> <span class="nc">Stack</span> <span class="p">{</span>
+<span class="k">public</span><span class="o">:</span>
+    <span class="n">Stack</span><span class="p">(</span><span class="kt">int</span> <span class="n">size</span> <span class="o">=</span> <span class="mi">1024</span><span class="p">);</span>
+    <span class="o">~</span><span class="n">Stack</span><span class="p">();</span>
+    <span class="kt">bool</span> <span class="n">isEmpty</span><span class="p">();</span>
+    <span class="kt">bool</span> <span class="n">isFull</span><span class="p">();</span>
+    <span class="kt">void</span> <span class="n">push</span><span class="p">(</span><span class="n">T</span> <span class="n">data</span><span class="p">);</span>
+    <span class="n">T</span> <span class="n">pop</span><span class="p">();</span>
+<span class="k">private</span><span class="o">:</span>
+    <span class="n">T</span> <span class="o">*</span> <span class="n">space</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="n">top</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">T</span><span class="o">&gt;</span>
+<span class="n">Stack</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;::</span><span class="n">Stack</span><span class="p">(</span><span class="kt">int</span> <span class="n">size</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">space</span> <span class="o">=</span> <span class="k">new</span> <span class="n">T</span><span class="p">[</span><span class="n">size</span><span class="p">];</span>
+    <span class="n">top</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">T</span><span class="o">&gt;</span>
+<span class="n">Stack</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;::~</span><span class="n">Stack</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">delete</span> <span class="p">[]</span><span class="n">space</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">T</span><span class="o">&gt;</span>
+<span class="kt">bool</span> <span class="n">Stack</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;::</span><span class="n">isEmpty</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="n">top</span> <span class="o">==</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">T</span><span class="o">&gt;</span>
+<span class="kt">bool</span> <span class="n">Stack</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;::</span><span class="n">isFull</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="n">top</span> <span class="o">==</span> <span class="mi">1024</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">T</span><span class="o">&gt;</span>
+<span class="kt">void</span> <span class="n">Stack</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;::</span><span class="n">push</span><span class="p">(</span><span class="n">T</span> <span class="n">data</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">space</span><span class="p">[</span><span class="n">top</span><span class="o">++</span><span class="p">]</span> <span class="o">=</span> <span class="n">data</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">T</span><span class="o">&gt;</span>
+<span class="n">T</span> <span class="n">Stack</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;::</span><span class="n">pop</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="n">space</span><span class="p">[</span><span class="o">--</span><span class="n">top</span><span class="p">];</span>
+<span class="p">}</span>
+
+<span class="kt">int</span> <span class="n">main</span><span class="p">(</span><span class="kt">int</span> <span class="n">argc</span><span class="p">,</span> <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span> <span class="n">argv</span><span class="p">[])</span> <span class="p">{</span>
+
+    <span class="n">Stack</span><span class="o">&lt;</span><span class="n">string</span><span class="o">&gt;</span> <span class="n">s</span><span class="p">;</span>
+    <span class="n">s</span><span class="p">.</span><span class="n">push</span><span class="p">(</span><span class="s">"aaa"</span><span class="p">);</span>
+    <span class="n">s</span><span class="p">.</span><span class="n">push</span><span class="p">(</span><span class="s">"bbb"</span><span class="p">);</span>
+    <span class="n">s</span><span class="p">.</span><span class="n">push</span><span class="p">(</span><span class="s">"ccc"</span><span class="p">);</span>
+
+    <span class="k">while</span> <span class="p">(</span><span class="o">!</span><span class="n">s</span><span class="p">.</span><span class="n">isEmpty</span><span class="p">())</span> <span class="p">{</span>
+        <span class="n">cout</span><span class="o">&lt;&lt;</span><span class="n">s</span><span class="p">.</span><span class="n">pop</span><span class="p">()</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
+    <span class="p">}</span>
+    
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<h4 id="iostream">iostream</h4>
+
+<div class="language-cpp highlighter-rouge"><pre class="highlight"><code><span class="k">class</span> <span class="nc">A</span> <span class="p">{</span>
+<span class="k">public</span><span class="o">:</span>
+    <span class="n">A</span><span class="p">()</span> <span class="p">{}</span>
+    <span class="o">~</span><span class="n">A</span><span class="p">()</span> <span class="p">{}</span>
+    <span class="k">operator</span> <span class="kt">void</span><span class="o">*</span> <span class="p">()</span> <span class="k">const</span> <span class="p">{</span>
+        <span class="n">cout</span><span class="o">&lt;&lt;</span><span class="s">"operator void* () cast to void*; "</span><span class="p">;</span>
+        <span class="k">return</span> <span class="p">(</span><span class="kt">void</span> <span class="o">*</span><span class="p">)</span><span class="k">this</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="kt">bool</span> <span class="k">operator</span><span class="o">!</span><span class="p">()</span> <span class="k">const</span> <span class="p">{</span>
+        <span class="n">cout</span><span class="o">&lt;&lt;</span><span class="s">"bool operator!() return bool; "</span><span class="p">;</span>
+        <span class="k">return</span> <span class="nb">true</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">};</span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">int</span> <span class="n">argc</span><span class="p">,</span> <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span> <span class="n">argv</span><span class="p">[])</span> <span class="p">{</span>
+
+    <span class="n">A</span> <span class="n">a</span><span class="p">;</span>
+    <span class="k">while</span><span class="p">(</span><span class="n">a</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">cout</span><span class="o">&lt;&lt;</span><span class="s">"first"</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
+        <span class="k">break</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">a</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">cout</span><span class="o">&lt;&lt;</span><span class="s">"second"</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
+    <span class="p">}</span>
+    
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+
+</code></pre>
+</div>
+
+<div class="language-cpp highlighter-rouge"><pre class="highlight"><code><span class="k">operator</span> <span class="kt">void</span><span class="o">*</span> <span class="p">()</span> <span class="n">cast</span> <span class="n">to</span> <span class="kt">void</span><span class="o">*</span><span class="p">;</span> <span class="n">first</span>
+<span class="kt">bool</span> <span class="k">operator</span><span class="o">!</span><span class="p">()</span> <span class="k">return</span> <span class="kt">bool</span><span class="p">;</span> <span class="n">second</span>
+<span class="n">Program</span> <span class="n">ended</span> <span class="n">with</span> <span class="n">exit</span> <span class="n">code</span><span class="o">:</span> <span class="mi">0</span>
+</code></pre>
+</div>
+
+<h4 id="最后">最后</h4>
+
+<p>更多新鲜文章可以关注并<code class="highlighter-rouge">Star</code>, 我们一起学习.</p>
+
+<blockquote>
+  <p>GitHub Repo：<a href="https://github.com/coderZsq/coderZsq.github.io">coderZsq.github.io</a>
+<br />Follow: <a href="https://github.com/coderZsq">coderZsq · GitHub</a></p>
+</blockquote>
+
+  </section>
+</article>
+
+<section class="read-more">
+   
+   
+   <div class="read-more-item">
+       <span class="read-more-item-dim">最近的文章</span>
+       <h2 class="post-list__post-title post-title"><a href="/2018/05/STL-%E4%B8%80%E9%83%A8%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E7%9A%84%E4%BD%BF%E7%94%A8%E5%AE%9D%E5%85%B8/" title="link to STL 一部数据结构的使用宝典">STL 一部数据结构的使用宝典</a></h2>
+       <p class="excerpt">  GitHub Repo：coderZsq.github.ioFollow: coderZsq · GitHubResume: https://coderzsq.github.io/coderZsq.webpack.js/#/日常扯淡一些STL的代码片段, 记录而已.C++ 作者的建议  在C++中几乎不需要用宏, 用const和enum定义显式的常量, 用inline避免函数调用的额外开销, 用模板去刻画一组函数或类型, 用namespace去避免命名冲突.  不要在你需要变量之前去声...&hellip;</p>
+       <div class="post-list__meta"><time datetime="2018-05-02 17:08:00 +0800" class="post-list__meta--date date">2018-05-02</time> &#8226; <span class="post-list__meta--tags tags">移动开发</span><a class="btn-border-small" href=/2018/05/STL-%E4%B8%80%E9%83%A8%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E7%9A%84%E4%BD%BF%E7%94%A8%E5%AE%9D%E5%85%B8/>继续阅读</a></div>
+   </div>
+   
+   
+   
+   
+   <div class="read-more-item">
+       <span class="read-more-item-dim">更早的文章</span>
+       <h2 class="post-list__post-title post-title"><a href="/2018/04/Swift-%E7%AC%AC%E4%BA%8C%E6%A2%AF%E9%98%9FiOS%E9%9D%A2%E8%AF%95%E8%B4%A5%E5%8C%97%E6%84%9F%E6%82%9F/" title="link to Swift 第二梯队iOS面试败北感悟">Swift 第二梯队iOS面试败北感悟</a></h2>
+       <p class="excerpt">  GitHub Repo：coderZsq.target.swiftFollow: coderZsq · GitHubResume: https://coderzsq.github.io/coderZsq.webpack.js/#/日常扯淡从去年开始, 我就一直有尝试的面试些大公司, 因为对于一个半路出家(非计算机专业), 靠着MJ视频入门的iOS菜鸡玩家, 经过了3年的摸爬滚打, 终于也渐渐的可以做一些简单的前端, 后端, 移动端的交互, 但想要继续深入就感觉瓶颈越发的明显, 基础的薄...&hellip;</p>
+       <div class="post-list__meta"><time datetime="2018-04-14 01:16:00 +0800" class="post-list__meta--date date">2018-04-14</time> &#8226; <span class="post-list__meta--tags tags">移动开发</span><a class="btn-border-small" href=/2018/04/Swift-%E7%AC%AC%E4%BA%8C%E6%A2%AF%E9%98%9FiOS%E9%9D%A2%E8%AF%95%E8%B4%A5%E5%8C%97%E6%84%9F%E6%82%9F/>继续阅读</a></div>
+   </div>
+   
+</section>
+
+<section class="post-comments">
+  
+  
+  
+  
+</section>
+
+
+            <section class="footer">
+    <footer>
+    	<span class="footer__copyright">本站点采用<a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">知识共享 署名-非商业性使用-相同方式共享 4.0 国际 许可协议</a></span>
+        <span class="footer__copyright">由 <a href="https://jekyllrb.com">Jekyll</a> 于 2019-09-28 生成，感谢 <a href="https://www.digitalocean.com/?refcode=30ed2d146762">Digital Ocean</a> 为本站提供稳定的 VPS 服务</span>
+        <span class="footer__copyright">本站由 <a href="https://github.com/coderZsq">@Castie!</a> 创建，采用 <a href="https://github.com/onevcat/vno-jekyll">Vno - Jekyll</a> 作为主题，您可以在 GitHub 找到<a href="https://github.com/onevcat/OneV-s-Den">本站源码</a> - &copy; 2019</span>
+    </footer>
+</section>
+
+        </div>
+    </div>
+    
+    <script type="text/javascript" src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+
+<script type="text/javascript" src="/js/main.js"></script>
+
+
+
+    
+  </body>
+
+</html>
