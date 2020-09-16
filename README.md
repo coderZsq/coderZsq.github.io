@@ -10,5 +10,4 @@
 <img src="https://img.shields.io/badge/language-JavaScript-EFDF70.svg">
 <img src="https://img.shields.io/badge/language-Java-A8732F.svg">
 <img src="https://img.shields.io/badge/language-Python-4372A1.svg">
-<a href=""><img src="https://img.shields.io/badge/license-MIT-000000.svg"></a>
 </p>
