@@ -7,30 +7,35 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
   <title>Castie! Notes</title>
-  <meta name="description" content="  基础动画, 核心动画到自定义转场动画其实都不是什么新东西了, 所以我也是草草看一遍就能够读个大概, 但今天要说的UIViewPropertyAnimator, 是iOS10新的API, 其他的好处我还不太清楚, 但抽象动画逻辑和监控动画的进程上真的是方便很多.代码见:github">
+  <meta name="description"
+    content="  基础动画, 核心动画到自定义转场动画其实都不是什么新东西了, 所以我也是草草看一遍就能够读个大概, 但今天要说的UIViewPropertyAnimator, 是iOS10新的API, 其他的好处我还不太清楚, 但抽象动画逻辑和监控动画的进程上真的是方便很多.代码见:github">
   <meta name="author" content="Wei Wang">
 
   <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="Animations 快速上手 iOS10 属性动画">
-  <meta name="twitter:description" content="  基础动画, 核心动画到自定义转场动画其实都不是什么新东西了, 所以我也是草草看一遍就能够读个大概, 但今天要说的UIViewPropertyAnimator, 是iOS10新的API, 其他的好处我还不太清楚, 但抽象动画逻辑和监控动画的进程上真的是方便很多.代码见:github">
-  
+  <meta name="twitter:title"
+    content="Animations 快速上手 iOS10 属性动画">
+  <meta name="twitter:description"
+    content="  基础动画, 核心动画到自定义转场动画其实都不是什么新东西了, 所以我也是草草看一遍就能够读个大概, 但今天要说的UIViewPropertyAnimator, 是iOS10新的API, 其他的好处我还不太清楚, 但抽象动画逻辑和监控动画的进程上真的是方便很多.代码见:github">
+
   <meta property="og:type" content="article">
-  <meta property="og:title" content="Animations 快速上手 iOS10 属性动画">
-  <meta property="og:description" content="  基础动画, 核心动画到自定义转场动画其实都不是什么新东西了, 所以我也是草草看一遍就能够读个大概, 但今天要说的UIViewPropertyAnimator, 是iOS10新的API, 其他的好处我还不太清楚, 但抽象动画逻辑和监控动画的进程上真的是方便很多.代码见:github">
-  
+  <meta property="og:title"
+    content="Animations 快速上手 iOS10 属性动画">
+  <meta property="og:description"
+    content="  基础动画, 核心动画到自定义转场动画其实都不是什么新东西了, 所以我也是草草看一遍就能够读个大概, 但今天要说的UIViewPropertyAnimator, 是iOS10新的API, 其他的好处我还不太清楚, 但抽象动画逻辑和监控动画的进程上真的是方便很多.代码见:github">
+
   <link rel="icon" type="image/ico" href="/assets/images/favicon.ico" />
   <link href="/assets/images/favicon.ico" rel="shortcut icon" type="image/ico">
-  
+
   <link rel="stylesheet" href="/css/main.css">
   <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
 
   <link rel="canonical" href="http://localhost:4000/2017/05/Animations-%E5%BF%AB%E9%80%9F%E4%B8%8A%E6%89%8B-iOS10-%E5%B1%9E%E6%80%A7%E5%8A%A8%E7%94%BB/">
-  <link rel="alternate" type="application/rss+xml" title="Castie!" href="http://localhost:4000/feed.xml">
-  
-  <meta name="google-site-verification" content="1-1ZlHoRvM0T2FqPbW2S-qLgYXN6rsn52kErlMPd_gw" />
-  
-</head>
+  <link rel="alternate" type="application/rss+xml" title="Castie!"
+    href="http://localhost:4000/feed.xml">
 
+  <meta name="google-site-verification" content="1-1ZlHoRvM0T2FqPbW2S-qLgYXN6rsn52kErlMPd_gw" />
+  <script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
+</head>
 
   <body>
 
@@ -500,8 +505,8 @@ public enum UIViewAnimatingPosition : Int {
             <section class="footer">
     <footer>
     	<span class="footer__copyright">本站点采用<a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">知识共享 署名-非商业性使用-相同方式共享 4.0 国际 许可协议</a></span>
-        <span class="footer__copyright">由 <a href="https://jekyllrb.com">Jekyll</a> 于 2019-09-28 生成，感谢 <a href="https://www.digitalocean.com/?refcode=30ed2d146762">Digital Ocean</a> 为本站提供稳定的 VPS 服务</span>
-        <span class="footer__copyright">本站由 <a href="https://github.com/coderZsq">@Castie!</a> 创建，采用 <a href="https://github.com/onevcat/vno-jekyll">Vno - Jekyll</a> 作为主题，您可以在 GitHub 找到<a href="https://github.com/onevcat/OneV-s-Den">本站源码</a> - &copy; 2019</span>
+        <span class="footer__copyright">由 <a href="https://jekyllrb.com">Jekyll</a> 于 2020-09-16 生成，感谢 <a href="https://www.digitalocean.com/?refcode=30ed2d146762">Digital Ocean</a> 为本站提供稳定的 VPS 服务</span>
+        <span class="footer__copyright">本站由 <a href="https://github.com/coderZsq">@Castie!</a> 创建，采用 <a href="https://github.com/onevcat/vno-jekyll">Vno - Jekyll</a> 作为主题，您可以在 GitHub 找到<a href="https://github.com/onevcat/OneV-s-Den">本站源码</a> - &copy; 2020</span>
     </footer>
 </section>
 
